@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
         var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
         var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
+	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
         var mycustomcheckbox1 = document.querySelectorAll('input[name="test556"]');
         var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
         var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
