@@ -32,30 +32,7 @@ var popupAnswer1 = document.querySelector('.div-summary.mathe')[0];
 	var popupAnswer16 = document.querySelector('.div-summary.wirtschaft')[0];
 	var popupAnswer17 = document.querySelector('.div-summary.sonstiges')[0];
 	var popupAnswer18 = document.querySelector('.div-summary.nachhilfe')[0];
-	var popupAnswer19 = document.querySelector('.div-summary.pruefungsvorbereitung')[0];
-	var popupAnswer20 = document.querySelector('.div-summary.klausurvorbereitung')[0];
-	var popupAnswer21 = document.querySelector('.div-summary.hausaufgabenbetreuung')[0];
-	var popupAnswer22 = document.querySelector('.div-summary.etwasanderes')[0];
-	var popupAnswer23 = document.querySelector('.div-summary.zuhause')[0];
-	var popupAnswer24 = document.querySelector('.div-summary.hybrid')[0];
-	var popupAnswer25 = document.querySelector('.div-summary.online')[0];
-	var popupAnswer26 = document.querySelector('.div-summary.eineinheit')[0];
-	var popupAnswer27 = document.querySelector('.div-summary.zweieinheiten')[0];
-	var popupAnswer28 = document.querySelector('.div-summary.dreieinheiten')[0];
-	var popupAnswer29 = document.querySelector('.div-summary.nullmonate')[0];
-	var popupAnswer30 = document.querySelector('.div-summary.zwoelflmonate')[0];
-	var popupAnswer31 = document.querySelector('.div-summary.vierundzwanzigmonate')[0];
-	var popupAnswer32 = document.querySelector('.div-summary.wunschgeschlechtmann')[0];
-	var popupAnswer33 = document.querySelector('.div-summary.wunschgeschlechtfrau')[0];
-	var popupAnswer34 = document.querySelector('.div-summary.lehrkraftfueralles')[0];
-	var popupAnswer35 = document.querySelector('.div-summary.muttersprachler')[0];
-	var popupAnswer36 = document.querySelector('.div-summary.erfahrenelehrkraft')[0];
-	var popupAnswer37 = document.querySelector('.div-summary.premiumlehrkraft')[0];
-	var popupAnswer38 = document.querySelector('.div-summary.vertragspause')[0];
-	var popupAnswer39 = document.querySelector('.div-summary.gutstundenspeicher')[0];
-	var popupAnswer40 = document.querySelector('.div-summary.analyse')[0];
-	var popupAnswer41 = document.querySelector('.div-summary.chatsupporthausaufgaben')[0];
-	var popupAnswer42 = document.querySelector('.div-summary.abholservice')[0];
+
 
 
 function isCondition1Met(codegenerator) {
