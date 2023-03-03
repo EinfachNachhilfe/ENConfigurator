@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
   var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
   var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
-  var popupAnswer9 = document.querySelectorAll('.div-summary.deutsch')[0];
+  var popupAnswer9 = document.querySelector('.div-summary.deutsch')[0];
 
 
 
