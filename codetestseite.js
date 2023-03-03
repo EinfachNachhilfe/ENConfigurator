@@ -132,12 +132,6 @@ function calculation() {
     });
   });
   
-     teachingLocationRadios1.forEach(function(radio) {
-    radio.addEventListener('change', function() {
-      calculation();
-    });
-  });
-
   calculation();
 
   for (var i = 0; i < teachingLocationRadios.length; i++) {
