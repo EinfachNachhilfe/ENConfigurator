@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomcheckbox53 = document.querySelectorAll('input[name="supportKlausurvorbereitung"]');
 	var mycustomcheckbox54 = document.querySelectorAll('input[name="supportHausaufgabenbetreuung"]');
 	var mycustomcheckbox55 = document.querySelectorAll('input[name="supportEtwasAnderes"]');
-	var popupAnswer1 = document.querySelector('.div-summary.mathe')[0];
+	
 	var popupAnswer2 = document.querySelector('.div-summary.deutsch')[0];
 	var popupAnswer3 = document.querySelector('.div-summary.englisch')[0];
 	var popupAnswer4 = document.querySelector('.div-summary.franzoesisch')[0];
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		var codegenerator = "0A0A0A0XXXXXX0A0A0A0A0A0A0A0A";
 
 		// zuerst alle Pop-up-Elemente ausblenden
-		popupAnswer1.style.display = "none";
+		
 		popupAnswer2.style.display = "none";
 		popupAnswer3.style.display = "none";
 		popupAnswer4.style.display = "none";
