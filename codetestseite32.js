@@ -17,6 +17,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomcheckbox8 = document.querySelectorAll('input[name="oneTutor-2Unit"]');
 	var mycustomcheckbox9 = document.querySelectorAll('input[name="oneTutor-3Unit"]');
 	var mycustomcheckbox10 = document.querySelectorAll('input[name="nativSpeaker-1Unit"]');
+	var mycustomcheckbox11 = document.querySelectorAll('input[name="nativSpeaker-2Unit"]');
+	var mycustomcheckbox12 = document.querySelectorAll('input[name="nativSpeaker-3Unit"]');
+	var mycustomcheckbox13 = document.querySelectorAll('input[name="experiencedTutor-1Unit"]');
+	var mycustomcheckbox14 = document.querySelectorAll('input[name="experiencedTutor-2Unit"]');
+	var mycustomcheckbox15 = document.querySelectorAll('input[name="experiencedTutor-3Unit"]');
+	var mycustomcheckbox16 = document.querySelectorAll('input[name="premiumTutor-1Unit"]');
+	var mycustomcheckbox17 = document.querySelectorAll('input[name="premiumTutor-2Unit"]');
+	var mycustomcheckbox18 = document.querySelectorAll('input[name="premiumTutor-3Unit"]');
+	var mycustomcheckbox19 = document.querySelectorAll('input[name="contractBreak-1Unit"]');
+	var mycustomcheckbox20 = document.querySelectorAll('input[name="contractBreak-2Unit"]');
 	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
 	var mycustomcheckbox35 = document.querySelectorAll('input[name="subjectDeutsch"]');
 	var mycustomcheckbox36 = document.querySelectorAll('input[name="subjectEnglisch"]');
