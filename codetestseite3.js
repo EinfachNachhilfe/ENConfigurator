@@ -131,6 +131,12 @@ function calculation() {
       calculation();
     });
   });
+  
+     teachingLocationRadios1.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      calculation();
+    });
+  });
 
   calculation();
 
