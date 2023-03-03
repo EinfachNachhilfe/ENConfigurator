@@ -1,15 +1,16 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-var mycustomradiobox1 = document.querySelectorAll('input[name="teachingLocation"]');
+        var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
+        var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
 	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
 	var mycustomradiobox3 = document.querySelectorAll('input[name="unit90"]');
 	var mycustomradiobox4 = document.querySelectorAll('input[name="runtime-1Unit"]');
 	var mycustomradiobox5 = document.querySelectorAll('input[name="runtime-2Unit"]');
 	var mycustomradiobox6 = document.querySelectorAll('input[name="runtime-3Unit"]');
-	var mycustomcheckbox1 = document.querySelectorAll('input[name="TutorFemale-1Unit"]');
-	var mycustomcheckbox2 = document.querySelectorAll('input[name="TutorFemale-2Unit"]');
-	var mycustomcheckbox3 = document.querySelectorAll('input[name="TutorFemale-3Unit"]');
-	var mycustomcheckbox4 = document.querySelectorAll('input[name="TutorMale-1Unit"]');
+        var mycustomcheckbox1 = document.querySelectorAll('input[name="test556"]');
+        var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
+        var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
+        var mycustomcheckbox4 = document.querySelectorAll('input[name="test559"]');
 	var mycustomcheckbox5 = document.querySelectorAll('input[name="TutorMale-2Unit"]');
 	var mycustomcheckbox6 = document.querySelectorAll('input[name="TutorMale-3Unit"]');
 	var mycustomcheckbox7 = document.querySelectorAll('input[name="oneTutor-1Unit"]');
@@ -61,14 +62,14 @@ var mycustomradiobox1 = document.querySelectorAll('input[name="teachingLocation"
 	var mycustomcheckbox53 = document.querySelectorAll('input[name="supportKlausurvorbereitung"]');
 	var mycustomcheckbox54 = document.querySelectorAll('input[name="supportHausaufgabenbetreuung"]');
 	var mycustomcheckbox55 = document.querySelectorAll('input[name="supportEtwasAnderes"]');
-	var popupAnswer1 = document.querySelectorAll('.div-summary.mathe')[0];
-	var popupAnswer2 = document.querySelectorAll('.div-summary.deutsch')[0];
-	var popupAnswer3 = document.querySelectorAll('.div-summary.englisch')[0];
-	var popupAnswer4 = document.querySelectorAll('.div-summary.franzoesisch')[0];
-	var popupAnswer5 = document.querySelectorAll('.div-summary.latein')[0];
-	var popupAnswer6 = document.querySelectorAll('.div-summary.italienisch')[0];
-	var popupAnswer7 = document.querySelectorAll('.div-summary.spanisch')[0];
-	var popupAnswer8 = document.querySelectorAll('.div-summary.physik')[0];
+        var popupAnswer1 = document.querySelectorAll('.div-test1')[0];
+        var popupAnswer2 = document.querySelectorAll('.div-test2')[0];
+        var popupAnswer3 = document.querySelectorAll('.div-test3')[0];
+        var popupAnswer4 = document.querySelectorAll('.div-test4')[0];
+        var popupAnswer5 = document.querySelectorAll('.div-test5')[0];
+        var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
+        var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
+        var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
 	var popupAnswer9 = document.querySelectorAll('.div-summary.chemie')[0];
 	var popupAnswer10 = document.querySelectorAll('.div-summary.biologie')[0];
 	var popupAnswer11 = document.querySelectorAll('.div-summary.geografie')[0];
