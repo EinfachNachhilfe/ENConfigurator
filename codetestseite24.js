@@ -36,6 +36,40 @@ document.addEventListener("DOMContentLoaded", function() {
         var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
         var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
         var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
+	var popupAnswer9 = document.querySelectorAll('.div-summary.chemie')[0];
+	var popupAnswer10 = document.querySelectorAll('.div-summary.biologie')[0];
+	var popupAnswer11 = document.querySelectorAll('.div-summary.geografie')[0];
+	var popupAnswer12 = document.querySelectorAll('.div-summary.geschichte')[0];
+	var popupAnswer13 = document.querySelectorAll('.div-summary.sozialkunde')[0];
+	var popupAnswer14 = document.querySelectorAll('.div-summary.informatik')[0];
+	var popupAnswer15 = document.querySelectorAll('.div-summary.sport')[0];
+	var popupAnswer16 = document.querySelectorAll('.div-summary.wirtschaft')[0];
+	var popupAnswer17 = document.querySelectorAll('.div-summary.sonstiges')[0];
+	var popupAnswer18 = document.querySelectorAll('.div-summary.nachhilfe')[0];
+	var popupAnswer19 = document.querySelectorAll('.div-summary.pruefungsvorbereitung')[0];
+	var popupAnswer20 = document.querySelectorAll('.div-summary.klausurvorbereitung')[0];
+	var popupAnswer21 = document.querySelectorAll('.div-summary.hausaufgabenbetreuung')[0];
+	var popupAnswer22 = document.querySelectorAll('.div-summary.etwasanderes')[0];
+	var popupAnswer23 = document.querySelectorAll('.div-summary.zuhause')[0];
+	var popupAnswer24 = document.querySelectorAll('.div-summary.hybrid')[0];
+	var popupAnswer25 = document.querySelectorAll('.div-summary.online')[0];
+	var popupAnswer26 = document.querySelectorAll('.div-summary.eineinheit')[0];
+	var popupAnswer27 = document.querySelectorAll('.div-summary.zweieinheiten')[0];
+	var popupAnswer28 = document.querySelectorAll('.div-summary.dreieinheiten')[0];
+	var popupAnswer29 = document.querySelectorAll('.div-summary.nullmonate')[0];
+	var popupAnswer30 = document.querySelectorAll('.div-summary.zwoelflmonate')[0];
+	var popupAnswer31 = document.querySelectorAll('.div-summary.vierundzwanzigmonate')[0];
+	var popupAnswer32 = document.querySelectorAll('.div-summary.wunschgeschlechtmann')[0];
+	var popupAnswer33 = document.querySelectorAll('.div-summary.wunschgeschlechtfrau')[0];
+	var popupAnswer34 = document.querySelectorAll('.div-summary.lehrkraftfueralles')[0];
+	var popupAnswer35 = document.querySelectorAll('.div-summary.muttersprachler')[0];
+	var popupAnswer36 = document.querySelectorAll('.div-summary.erfahrenelehrkraft')[0];
+	var popupAnswer37 = document.querySelectorAll('.div-summary.premiumlehrkraft')[0];
+	var popupAnswer38 = document.querySelectorAll('.div-summary.vertragspause')[0];
+	var popupAnswer39 = document.querySelectorAll('.div-summary.gutstundenspeicher')[0];
+	var popupAnswer40 = document.querySelectorAll('.div-summary.analyse')[0];
+	var popupAnswer41 = document.querySelectorAll('.div-summary.chatsupporthausaufgaben')[0];
+	var popupAnswer42 = document.querySelectorAll('.div-summary.abholservice')[0];
 
 
 
