@@ -15,23 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
   var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
 var popupAnswer1 = document.querySelector('.div-summary.mathe')[0];
-	var popupAnswer2 = document.querySelector('.div-summary.deutsch')[0];
-	var popupAnswer3 = document.querySelector('.div-summary.englisch')[0];
-	var popupAnswer4 = document.querySelector('.div-summary.franzoesisch')[0];
-	var popupAnswer5 = document.querySelector('.div-summary.latein')[0];
-	var popupAnswer6 = document.querySelector('.div-summary.italienisch')[0];
-	var popupAnswer7 = document.querySelector('.div-summary.spanisch')[0];
-	var popupAnswer8 = document.querySelector('.div-summary.physik')[0];
-	var popupAnswer9 = document.querySelector('.div-summary.chemie')[0];
-	var popupAnswer10 = document.querySelector('.div-summary.biologie')[0];
-	var popupAnswer11 = document.querySelector('.div-summary.geografie')[0];
-	var popupAnswer12 = document.querySelector('.div-summary.geschichte')[0];
-	var popupAnswer13 = document.querySelector('.div-summary.sozialkunde')[0];
-	var popupAnswer14 = document.querySelector('.div-summary.informatik')[0];
-	var popupAnswer15 = document.querySelector('.div-summary.sport')[0];
-	var popupAnswer16 = document.querySelector('.div-summary.wirtschaft')[0];
-	var popupAnswer17 = document.querySelector('.div-summary.sonstiges')[0];
-	var popupAnswer18 = document.querySelector('.div-summary.nachhilfe')[0];
+	var popupAnswer9 = document.querySelector('.div-summary.deutsch')[0];
 
 
 
