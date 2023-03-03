@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
         var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
         var mycustomcheckbox4 = document.querySelectorAll('input[name="test559"]');
+	var mycustomcheckbox5 = document.querySelectorAll('input[name="TutorMale-2Unit"]');
+	var mycustomcheckbox6 = document.querySelectorAll('input[name="TutorMale-3Unit"]');
+	var mycustomcheckbox7 = document.querySelectorAll('input[name="oneTutor-1Unit"]');
+	var mycustomcheckbox8 = document.querySelectorAll('input[name="oneTutor-2Unit"]');
+	var mycustomcheckbox9 = document.querySelectorAll('input[name="oneTutor-3Unit"]');
+	var mycustomcheckbox10 = document.querySelectorAll('input[name="nativSpeaker-1Unit"]');
 	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
 	var mycustomcheckbox35 = document.querySelectorAll('input[name="subjectDeutsch"]');
 	var mycustomcheckbox36 = document.querySelectorAll('input[name="subjectEnglisch"]');
