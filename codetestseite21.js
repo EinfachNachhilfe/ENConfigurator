@@ -1,12 +1,12 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-  var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
-  var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
-  var mycustomcheckbox1 = document.querySelectorAll('input[name="test556"]');
-  var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
-  var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
-  var mycustomcheckbox4 = document.querySelectorAll('input[name="test559"]');
-  var mycustomcheckbox4 = document.querySelectorAll('input[name="TutorMale-1Unit"]');
+        var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
+        var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
+        var mycustomcheckbox1 = document.querySelectorAll('input[name="test556"]');
+        var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
+        var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
+        var mycustomcheckbox4 = document.querySelectorAll('input[name="test559"]');
+        var mycustomcheckbox4 = document.querySelectorAll('input[name="TutorMale-1Unit"]');
 	var mycustomcheckbox5 = document.querySelectorAll('input[name="TutorMale-2Unit"]');
 	var mycustomcheckbox6 = document.querySelectorAll('input[name="TutorMale-3Unit"]');
 	var mycustomcheckbox7 = document.querySelectorAll('input[name="oneTutor-1Unit"]');
@@ -58,14 +58,14 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomcheckbox53 = document.querySelectorAll('input[name="supportKlausurvorbereitung"]');
 	var mycustomcheckbox54 = document.querySelectorAll('input[name="supportHausaufgabenbetreuung"]');
 	var mycustomcheckbox55 = document.querySelectorAll('input[name="supportEtwasAnderes"]');
-  var popupAnswer1 = document.querySelectorAll('.div-test1')[0];
-  var popupAnswer2 = document.querySelectorAll('.div-test2')[0];
-  var popupAnswer3 = document.querySelectorAll('.div-test3')[0];
-  var popupAnswer4 = document.querySelectorAll('.div-test4')[0];
-  var popupAnswer5 = document.querySelectorAll('.div-test5')[0];
-  var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
-  var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
-  var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
+        var popupAnswer1 = document.querySelectorAll('.div-test1')[0];
+        var popupAnswer2 = document.querySelectorAll('.div-test2')[0];
+        var popupAnswer3 = document.querySelectorAll('.div-test3')[0];
+        var popupAnswer4 = document.querySelectorAll('.div-test4')[0];
+        var popupAnswer5 = document.querySelectorAll('.div-test5')[0];
+        var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
+        var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
+        var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
 
 
 
