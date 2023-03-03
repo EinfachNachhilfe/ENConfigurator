@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var popupAnswer4 = document.querySelectorAll('.div-test4')[0];
   var popupAnswer5 = document.querySelectorAll('.div-test5')[0];
   var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
-  var popupAnswer6 = document.querySelectorAll('.div-test7')[0];
+  var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
 
 
 function isCondition1Met(codegenerator) {
