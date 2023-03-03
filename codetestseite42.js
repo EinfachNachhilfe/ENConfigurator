@@ -1,7 +1,9 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-	var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
+        var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
         var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
+	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
+	var mycustomradiobox3 = document.querySelectorAll('input[name="unit90"]');
 	var mycustomradiobox4 = document.querySelectorAll('input[name="runtime-1Unit"]');
 	var mycustomradiobox5 = document.querySelectorAll('input[name="runtime-2Unit"]');
 	var mycustomradiobox6 = document.querySelectorAll('input[name="runtime-3Unit"]');
@@ -102,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	var popupAnswer40 = document.querySelectorAll('.div-summary.analyse')[0];
 	var popupAnswer41 = document.querySelectorAll('.div-summary.chatsupporthausaufgaben')[0];
 	var popupAnswer42 = document.querySelectorAll('.div-summary.abholservice')[0];
-
 
 
 
