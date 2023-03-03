@@ -34,6 +34,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomcheckbox25 = document.querySelectorAll('input[name="qualityAnalysis-1Unit"]');
 	var mycustomcheckbox26 = document.querySelectorAll('input[name="qualityAnalysis-2Unit"]');
 	var mycustomcheckbox27 = document.querySelectorAll('input[name="qualityAnalysis-3Unit"]');
+	var mycustomcheckbox28 = document.querySelectorAll('input[name="chatsupport-1Unit"]');
+	var mycustomcheckbox29 = document.querySelectorAll('input[name="chatsupport-2Unit"]');
+	var mycustomcheckbox30 = document.querySelectorAll('input[name="chatsupport-3Unit"]');
+	var mycustomcheckbox31 = document.querySelectorAll('input[name="PickUpService-1Unit"]');
+	var mycustomcheckbox32 = document.querySelectorAll('input[name="PickUpService-2Unit"]');
+	var mycustomcheckbox33 = document.querySelectorAll('input[name="PickUpService-3Unit"]');
 	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
 	var mycustomcheckbox35 = document.querySelectorAll('input[name="subjectDeutsch"]');
 	var mycustomcheckbox36 = document.querySelectorAll('input[name="subjectEnglisch"]');
