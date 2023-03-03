@@ -43,11 +43,11 @@ function calculation() {
     totalBudget += 0.6;
     popupAnswer1.style.display = "block";
     if (isCondition1Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 0) + "11" + codegenerator.substr(2);
+      codegenerator = codegenerator.substr(0, 0) + "AA" + codegenerator.substr(2);
     } else if (isCondition2Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 2) + "11" + codegenerator.substr(4);
+      codegenerator = codegenerator.substr(0, 2) + "AA" + codegenerator.substr(4);
     } else if (isCondition3Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 4) + "11" + codegenerator.substr(6);
+      codegenerator = codegenerator.substr(0, 4) + "AA" + codegenerator.substr(6);
     }
   }
 
@@ -55,11 +55,11 @@ function calculation() {
     totalBudget += 2.0;
     popupAnswer2.style.display = "block";
     if (isCondition1Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 0) + "12" + codegenerator.substr(2);
+      codegenerator = codegenerator.substr(0, 0) + "BB" + codegenerator.substr(2);
     } else if (isCondition2Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 2) + "12" + codegenerator.substr(4);
+      codegenerator = codegenerator.substr(0, 2) + "BB" + codegenerator.substr(4);
     } else if (isCondition3Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 4) + "12" + codegenerator.substr(6);
+      codegenerator = codegenerator.substr(0, 4) + "BB" + codegenerator.substr(6);
     }
   }
 
@@ -67,11 +67,11 @@ function calculation() {
     totalBudget += 3.0;
     popupAnswer3.style.display = "block";
     if (isCondition1Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 0) + "13" + codegenerator.substr(2);
+      codegenerator = codegenerator.substr(0, 0) + "CC" + codegenerator.substr(2);
     } else if (isCondition2Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 2) + "13" + codegenerator.substr(4);
+      codegenerator = codegenerator.substr(0, 2) + "CC" + codegenerator.substr(4);
     } else if (isCondition3Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 4) + "13" + codegenerator.substr(6);
+      codegenerator = codegenerator.substr(0, 4) + "CC" + codegenerator.substr(6);
     }
   }
   
