@@ -1,4 +1,4 @@
-<script>
+
 document.addEventListener("DOMContentLoaded", function() {
   var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
   var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
@@ -201,4 +201,4 @@ function calculation() {
   
 
 });
-</script>
+
