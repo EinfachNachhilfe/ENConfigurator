@@ -1,5 +1,3 @@
-src= "https://cdn.jsdelivr.net/gh/jquery/jquery@3.2.1/dist/jquery.min.js.js"
-
 document.addEventListener("DOMContentLoaded", function() {
   var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
   var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
