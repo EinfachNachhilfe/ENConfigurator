@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomcheckbox32 = document.querySelectorAll('input[name="PickUpService-2Unit"]');
 	var mycustomcheckbox33 = document.querySelectorAll('input[name="PickUpService-3Unit"]');
 	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
-	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
 	var mycustomcheckbox35 = document.querySelectorAll('input[name="subjectDeutsch"]');
 	var mycustomcheckbox36 = document.querySelectorAll('input[name="subjectEnglisch"]');
 	var mycustomcheckbox37 = document.querySelectorAll('input[name="subjectFranzoesisch"]');
