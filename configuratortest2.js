@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
 	var mycustomradiobox1 = document.querySelectorAll('input[name="teachingLocation"]');
 	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
-	var popupAnswer1 = document.querySelector('.div-summary.mathe')[0];
-	var popupAnswer2 = document.querySelector('.div-summary.deutsch')[0];
-	var popupAnswer3 = document.querySelector('.div-summary.englisch')[0];
-	var popupAnswer23 = document.querySelector('.div-summary.zuhause')[0];
-	var popupAnswer24 = document.querySelector('.div-summary.hybrid')[0];
-	var popupAnswer25 = document.querySelector('.div-summary.online')[0];
-	var popupAnswer26 = document.querySelector('.div-summary.eineinheit')[0];
-	var popupAnswer27 = document.querySelector('.div-summary.zweieinheiten')[0];
-	var popupAnswer28 = document.querySelector('.div-summary.dreieinheiten')[0];
+	var popupAnswer1 = document.querySelectorAll('.div-summary.mathe')[0];
+	var popupAnswer2 = document.querySelectorAll('.div-summary.deutsch')[0];
+	var popupAnswer3 = document.querySelectorAll('.div-summary.englisch')[0];
+	var popupAnswer23 = document.querySelectorAll('.div-summary.zuhause')[0];
+	var popupAnswer24 = document.querySelectorAll('.div-summary.hybrid')[0];
+	var popupAnswer25 = document.querySelectorAll('.div-summary.online')[0];
+	var popupAnswer26 = document.querySelectorAll('.div-summary.eineinheit')[0];
+	var popupAnswer27 = document.querySelectorAll('.div-summary.zweieinheiten')[0];
+	var popupAnswer28 = document.querySelectorAll('.div-summary.dreieinheiten')[0];
 	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
 	var mycustomcheckbox35 = document.querySelectorAll('input[name="subjectDeutsch"]');
 	var mycustomcheckbox36 = document.querySelectorAll('input[name="subjectEnglisch"]');
