@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var popupAnswer4 = document.querySelectorAll('.div-test4')[0];
   var popupAnswer5 = document.querySelectorAll('.div-test5')[0];
   var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
+  var popupAnswer6 = document.querySelectorAll('.div-test7')[0];
 
 
 function isCondition1Met(codegenerator) {
@@ -76,7 +77,7 @@ function calculation() {
   
     if (mycustomcheckbox4[0].checked) {
     totalBudget += 4.0;
-    popupAnswer3.style.display = "block";
+    popupAnswer7.style.display = "block";
     if (isCondition1Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 0) + "14" + codegenerator.substr(2);
     } else if (isCondition2Met(codegenerator)) {
