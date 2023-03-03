@@ -38,6 +38,7 @@ function calculation() {
   popupAnswer4.style.display = "none";
   popupAnswer5.style.display = "none";
   popupAnswer6.style.display = "none";
+  popupAnswer7.style.display = "none";
 
   if (mycustomcheckbox1[0].checked) {
     totalBudget += 0.6;
