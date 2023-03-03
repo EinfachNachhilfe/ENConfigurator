@@ -6,6 +6,58 @@ document.addEventListener("DOMContentLoaded", function() {
   var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
   var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
   var mycustomcheckbox4 = document.querySelectorAll('input[name="test559"]');
+  var mycustomcheckbox4 = document.querySelectorAll('input[name="TutorMale-1Unit"]');
+	var mycustomcheckbox5 = document.querySelectorAll('input[name="TutorMale-2Unit"]');
+	var mycustomcheckbox6 = document.querySelectorAll('input[name="TutorMale-3Unit"]');
+	var mycustomcheckbox7 = document.querySelectorAll('input[name="oneTutor-1Unit"]');
+	var mycustomcheckbox8 = document.querySelectorAll('input[name="oneTutor-2Unit"]');
+	var mycustomcheckbox9 = document.querySelectorAll('input[name="oneTutor-3Unit"]');
+	var mycustomcheckbox10 = document.querySelectorAll('input[name="nativSpeaker-1Unit"]');
+	var mycustomcheckbox11 = document.querySelectorAll('input[name="nativSpeaker-2Unit"]');
+	var mycustomcheckbox12 = document.querySelectorAll('input[name="nativSpeaker-3Unit"]');
+	var mycustomcheckbox13 = document.querySelectorAll('input[name="experiencedTutor-1Unit"]');
+	var mycustomcheckbox14 = document.querySelectorAll('input[name="experiencedTutor-2Unit"]');
+	var mycustomcheckbox15 = document.querySelectorAll('input[name="experiencedTutor-3Unit"]');
+	var mycustomcheckbox16 = document.querySelectorAll('input[name="premiumTutor-1Unit"]');
+	var mycustomcheckbox17 = document.querySelectorAll('input[name="premiumTutor-2Unit"]');
+	var mycustomcheckbox18 = document.querySelectorAll('input[name="premiumTutor-3Unit"]');
+	var mycustomcheckbox19 = document.querySelectorAll('input[name="contractBreak-1Unit"]');
+	var mycustomcheckbox20 = document.querySelectorAll('input[name="contractBreak-2Unit"]');
+	var mycustomcheckbox21 = document.querySelectorAll('input[name="contractBreak-3Unit"]');
+	var mycustomcheckbox22 = document.querySelectorAll('input[name="doubleStorage-1Unit"]');
+	var mycustomcheckbox23 = document.querySelectorAll('input[name="doubleStorage-2Unit"]');
+	var mycustomcheckbox24 = document.querySelectorAll('input[name="doubleStorage-3Unit"]');
+	var mycustomcheckbox25 = document.querySelectorAll('input[name="qualityAnalysis-1Unit"]');
+	var mycustomcheckbox26 = document.querySelectorAll('input[name="qualityAnalysis-2Unit"]');
+	var mycustomcheckbox27 = document.querySelectorAll('input[name="qualityAnalysis-3Unit"]');
+	var mycustomcheckbox28 = document.querySelectorAll('input[name="chatsupport-1Unit"]');
+	var mycustomcheckbox29 = document.querySelectorAll('input[name="chatsupport-2Unit"]');
+	var mycustomcheckbox30 = document.querySelectorAll('input[name="chatsupport-3Unit"]');
+	var mycustomcheckbox31 = document.querySelectorAll('input[name="PickUpService-1Unit"]');
+	var mycustomcheckbox32 = document.querySelectorAll('input[name="PickUpService-2Unit"]');
+	var mycustomcheckbox33 = document.querySelectorAll('input[name="PickUpService-3Unit"]');
+	var mycustomcheckbox34 = document.querySelectorAll('input[name="subjectMathe"]');
+	var mycustomcheckbox35 = document.querySelectorAll('input[name="subjectDeutsch"]');
+	var mycustomcheckbox36 = document.querySelectorAll('input[name="subjectEnglisch"]');
+	var mycustomcheckbox37 = document.querySelectorAll('input[name="subjectFranzoesisch"]');
+	var mycustomcheckbox38 = document.querySelectorAll('input[name="subjectLatein"]');
+	var mycustomcheckbox39 = document.querySelectorAll('input[name="subjectItalienisch"]');
+	var mycustomcheckbox40 = document.querySelectorAll('input[name="subjectSpanisch"]');
+	var mycustomcheckbox41 = document.querySelectorAll('input[name="subjectPhysik"]');
+	var mycustomcheckbox42 = document.querySelectorAll('input[name="subjectChemie"]');
+	var mycustomcheckbox43 = document.querySelectorAll('input[name="subjectBiologie"]');
+	var mycustomcheckbox44 = document.querySelectorAll('input[name="subjectGeografie"]');
+	var mycustomcheckbox45 = document.querySelectorAll('input[name="subjectGeschichte"]');
+	var mycustomcheckbox46 = document.querySelectorAll('input[name="subjectSozialkunde"]');
+	var mycustomcheckbox47 = document.querySelectorAll('input[name="subjectInformatik"]');
+	var mycustomcheckbox48 = document.querySelectorAll('input[name="subjectSport"]');
+	var mycustomcheckbox49 = document.querySelectorAll('input[name="subjectWirtschaft"]');
+	var mycustomcheckbox50 = document.querySelectorAll('input[name="subjectSonstiges"]');
+	var mycustomcheckbox51 = document.querySelectorAll('input[name="supportNachhilfe"]');
+	var mycustomcheckbox52 = document.querySelectorAll('input[name="supportPruefungsvorbereitung"]');
+	var mycustomcheckbox53 = document.querySelectorAll('input[name="supportKlausurvorbereitung"]');
+	var mycustomcheckbox54 = document.querySelectorAll('input[name="supportHausaufgabenbetreuung"]');
+	var mycustomcheckbox55 = document.querySelectorAll('input[name="supportEtwasAnderes"]');
   var popupAnswer1 = document.querySelectorAll('.div-test1')[0];
   var popupAnswer2 = document.querySelectorAll('.div-test2')[0];
   var popupAnswer3 = document.querySelectorAll('.div-test3')[0];
@@ -14,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var popupAnswer6 = document.querySelectorAll('.div-test6')[0];
   var popupAnswer7 = document.querySelectorAll('.div-test7')[0];
   var popupAnswer8 = document.querySelectorAll('.div-test8')[0];
-  var popupAnswer8 = document.querySelectorAll('.div-summary.deutsch')[0];
+
 
 
 
