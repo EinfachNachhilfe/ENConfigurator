@@ -2455,4 +2455,75 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
+	for (var i = 0; i < mycustomcheckbox1.length; i++) {
+		mycustomcheckbox1[i].addEventListener('change', function() {
+			mycustomcheckbox4.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox4.length; i++) {
+		mycustomcheckbox4[i].addEventListener('change', function() {
+			mycustomcheckbox1.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox2.length; i++) {
+		mycustomcheckbox2[i].addEventListener('change', function() {
+			mycustomcheckbox5.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox5.length; i++) {
+		mycustomcheckbox5[i].addEventListener('change', function() {
+			mycustomcheckbox2.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox3.length; i++) {
+		mycustomcheckbox3[i].addEventListener('change', function() {
+			mycustomcheckbox6.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox6.length; i++) {
+		mycustomcheckbox6[i].addEventListener('change', function() {
+			mycustomcheckbox3.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
 });
