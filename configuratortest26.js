@@ -1282,8 +1282,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
-		$('.send-codegenerator').val(codegenerator);
-		$('.send-vertragscode').val(totalBudget);
+		$('.send-vertragscode').val(codegenerator);
+		$('.send-preisPro45Min').val(totalBudget);
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
