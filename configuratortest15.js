@@ -1531,6 +1531,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1538,48 +1539,56 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox4.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox5.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox6.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox1.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox2.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox3.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox4.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1587,12 +1596,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox6.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1600,12 +1611,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox8.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1613,12 +1626,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox10.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1626,12 +1641,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox12.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1639,6 +1656,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1646,12 +1664,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox15.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1659,12 +1679,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox17.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1672,12 +1694,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox19.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1685,12 +1709,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox21.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1698,12 +1724,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox23.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1711,12 +1739,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox25.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1724,6 +1754,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1731,12 +1762,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox27.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1744,12 +1777,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox29.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1757,12 +1792,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox31.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1770,12 +1807,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox33.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1788,42 +1827,49 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox5.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox6.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox1.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox2.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox3.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox4.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1831,12 +1877,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox6.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1844,12 +1892,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox8.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1857,12 +1907,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox10.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1870,12 +1922,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox12.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1883,6 +1937,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1890,12 +1945,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox15.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1903,12 +1960,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox17.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1916,12 +1975,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox19.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1929,12 +1990,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox21.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1942,12 +2005,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox23.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1955,12 +2020,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox25.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1968,6 +2035,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1975,12 +2043,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox27.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -1988,12 +2058,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox29.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2001,12 +2073,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox31.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2014,12 +2088,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox33.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2032,42 +2108,49 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox5.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomradiobox6.forEach(function(radio) {
 				if (radio.checked) {
 					radio.checked = false;
 					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox1.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox2.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox3.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox4.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2075,12 +2158,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox6.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2088,12 +2173,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox8.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2101,12 +2188,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox10.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2114,12 +2203,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox12.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2127,6 +2218,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2134,12 +2226,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox15.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2147,12 +2241,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox17.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2160,12 +2256,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox19.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2173,12 +2271,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox21.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2186,12 +2286,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox23.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2199,12 +2301,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox25.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2212,6 +2316,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2219,12 +2324,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox27.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2232,12 +2339,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox29.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2245,12 +2354,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox31.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
@@ -2258,12 +2369,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 			mycustomcheckbox33.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 
 				}
 			});
