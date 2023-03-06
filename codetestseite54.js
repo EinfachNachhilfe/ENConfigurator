@@ -179,8 +179,8 @@ function calculation() {
       });
     });
   }
-    for (var j = 0; j < mycustomcheckbox1.length; j++) {
-    mycustomcheckbox1[j].addEventListener('change', function() {
+    for (var j = 0; i < mycustomcheckbox1.length; i++) {
+    mycustomcheckbox1[i].addEventListener('change', function() {
       mycustomcheckbox2.forEach(function(checkbox) {
         if (checkbox.checked) {
           $(checkbox).prop("checked", false);
@@ -190,8 +190,8 @@ function calculation() {
       });
     });
   }
-      for (var k = 0; k < mycustomcheckbox2.length; k++) {
-    mycustomcheckbox2[k].addEventListener('change', function() {
+      for (var i = 0; i < mycustomcheckbox2.length; i++) {
+    mycustomcheckbox2[i].addEventListener('change', function() {
       mycustomcheckbox1.forEach(function(checkbox) {
         if (checkbox.checked) {
           $(checkbox).prop("checked", false);
