@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function isCondition1Met(codegenerator) {
-  return codegenerator.substr(0, 2) === "0A";
+  return codegenerator.substr(12, 2) === "0A";
 }
 
 function isCondition2Met(codegenerator) {
-  return codegenerator.substr(2, 2) === "0A";
+  return codegenerator.substr(14, 2) === "0A";
 }
 
 function isCondition3Met(codegenerator) {
-  return codegenerator.substr(4, 2) === "0A";
+  return codegenerator.substr(16, 2) === "0A";
 }
 
 function calculation() {
@@ -45,11 +45,11 @@ function calculation() {
     totalBudget += 0.6;
     popupAnswer1.style.display = "block";
     if (isCondition1Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 0) + "AA" + codegenerator.substr(2);
+      codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
     } else if (isCondition2Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 2) + "AA" + codegenerator.substr(4);
+      codegenerator = codegenerator.substr(0, 14) + "AA" + codegenerator.substr(16);
     } else if (isCondition3Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 4) + "AA" + codegenerator.substr(6);
+      codegenerator = codegenerator.substr(0, 16) + "AA" + codegenerator.substr(18);
     }
   }
 
