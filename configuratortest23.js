@@ -1283,6 +1283,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-codegenerator').val(codegenerator);
+		$('.preisPro45Min').val(codegenerator);
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
