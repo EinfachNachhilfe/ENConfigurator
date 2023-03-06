@@ -98,11 +98,11 @@ function calculation() {
           popupAnswer4.style.display = "block";
         } else if (radio.value == '2') {
           totalBudget += 3.4;
-          codegenerator = codegenerator.substr(0, 8) + "12" + codegenerator.substr(14);
+          codegenerator = codegenerator.substr(0, 12) + "12" + codegenerator.substr(14);
           popupAnswer5.style.display = "block";
         } else if (radio.value == '3') {
           totalBudget += 2.3;
-          codegenerator = codegenerator.substr(0, 10) + "15" + codegenerator.substr(17);
+          codegenerator = codegenerator.substr(0, 15) + "15" + codegenerator.substr(17);
           popupAnswer6.style.display = "block";
         }
       }
