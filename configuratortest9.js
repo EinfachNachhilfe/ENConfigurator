@@ -1650,7 +1650,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	for (var k = 0; k < myCheckboxes.length; k++) {
+	for (var i = 0; i < myCheckboxes.length; i++) {
 		mycustomradiobox2[i].addEventListener('change', function() {
 			mycustomradiobox4.forEach(function(radio) {
 				if (radio.checked) {
@@ -1894,7 +1894,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	for (var l = 0; l < myCheckboxes.length; l++) {
+	for (var i = 0; i < myCheckboxes.length; i++) {
 		mycustomradiobox3[i].addEventListener('change', function() {
 			mycustomradiobox4.forEach(function(radio) {
 				if (radio.checked) {
