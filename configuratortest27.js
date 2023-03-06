@@ -156,9 +156,25 @@ document.addEventListener("DOMContentLoaded", function() {
 		return codegenerator.substr(32, 2) === "0A";
 	}
 
+	function isCondition12Met(codegenerator) {
+		return codegenerator.substr(34, 2) === "0A";
+	}
+
+	function isCondition13Met(codegenerator) {
+		return codegenerator.substr(36, 2) === "0A";
+	}
+
+	function isCondition14Met(codegenerator) {
+		return codegenerator.substr(38, 2) === "0A";
+	}
+
+	function isCondition15Met(codegenerator) {
+		return codegenerator.substr(40, 2) === "0A";
+	}
+
 	function calculation() {
 		var totalBudget = 16.49;
-		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A";
+		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -568,6 +584,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "CA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "CA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "CA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "CA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "CA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "CA" + codegenerator.substr(42);
 			}
 		}
 
@@ -590,6 +614,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "CA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "CA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "CA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "CA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "CA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "CA" + codegenerator.substr(42);
 			}
 		}
 
@@ -612,6 +644,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "CA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "CA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "CA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "CA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "CA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "CA" + codegenerator.substr(42);
 			}
 		}
 
@@ -634,6 +674,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "BA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "BA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "BA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "BA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "BA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "BA" + codegenerator.substr(42);
 			}
 		}
 
@@ -656,6 +704,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "BA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "BA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "BA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "BA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "BA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "BA" + codegenerator.substr(42);
 			}
 		}
 
@@ -678,6 +734,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "BA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "BA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "BA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "BA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "BA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "BA" + codegenerator.substr(42);
 			}
 		}
 
@@ -700,6 +764,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "DA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "DA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "DA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "DA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "DA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "DA" + codegenerator.substr(42);
 			}
 		}
 
@@ -722,6 +794,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "DA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "DA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "DA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "DA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "DA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "DA" + codegenerator.substr(42);
 			}
 		}
 
@@ -744,6 +824,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "DA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "DA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "DA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "DA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "DA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "DA" + codegenerator.substr(42);
 			}
 		}
 
@@ -766,6 +854,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "GA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "GA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "GA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "GA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "GA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "GA" + codegenerator.substr(42);
 			}
 		}
 
@@ -788,6 +884,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "GA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "GA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "GA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "GA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "GA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "GA" + codegenerator.substr(42);
 			}
 		}
 
@@ -810,6 +914,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "GA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "GA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "GA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "GA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "GA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "GA" + codegenerator.substr(42);
 			}
 		}
 
@@ -833,6 +945,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "QA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "QA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "GA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "GA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "GA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "GA" + codegenerator.substr(42);
 			}
 		}
 
@@ -855,6 +975,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "QA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "QA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "QA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "QA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "QA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "QA" + codegenerator.substr(42);
 			}
 		}
 
@@ -877,6 +1005,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "QA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "QA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "QA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "QA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "QA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "QA" + codegenerator.substr(42);
 			}
 		}
 
@@ -900,6 +1036,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "MA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "MA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "QA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "QA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "QA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "QA" + codegenerator.substr(42);
 			}
 		}
 
@@ -922,6 +1066,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "MA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "MA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "MA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "MA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "MA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "MA" + codegenerator.substr(42);
 			}
 		}
 
@@ -944,6 +1096,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "MA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "MA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "MA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "MA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "MA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "MA" + codegenerator.substr(42);
 			}
 		}
 
@@ -966,6 +1126,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "EA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "EA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "EA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "EA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "EA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "EA" + codegenerator.substr(42);
 			}
 		}
 
@@ -988,6 +1156,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "EA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "EA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "EA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "EA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "EA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "EA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1010,6 +1186,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "EA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "EA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "EA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "EA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "EA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "EA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1032,6 +1216,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "HA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "HA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "HA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "HA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "HA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "HA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1054,6 +1246,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "HA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "HA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "HA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "HA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "HA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "HA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1076,6 +1276,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "HA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "HA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "HA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "HA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "HA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "HA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1098,6 +1306,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "OA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "OA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "OA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "OA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "OA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "OA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1120,6 +1336,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "LA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "LA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "LA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "LA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "LA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "LA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1142,6 +1366,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "JA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "JA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "JA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "JA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "JA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "JA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1164,6 +1396,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "NA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "NA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "NA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "NA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "NA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "NA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1187,6 +1427,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "KA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "KA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "KA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "KA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "KA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "KA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1210,6 +1458,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "IA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "IA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "IA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "IA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "IA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "IA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1232,6 +1488,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "PA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "PA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "PA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "PA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "PA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "PA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1254,6 +1518,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "PA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "PA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "PA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "PA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "PA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "PA" + codegenerator.substr(42);
 			}
 		}
 
@@ -1276,6 +1548,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				codegenerator = codegenerator.substr(0, 30) + "PA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 32) + "PA" + codegenerator.substr(34);
+			} else if (isCondition12Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 34) + "PA" + codegenerator.substr(36);
+			} else if (isCondition13Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 36) + "PA" + codegenerator.substr(38);
+			} else if (isCondition14Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 38) + "PA" + codegenerator.substr(40);
+			} else if (isCondition15Met(codegenerator)) {
+				codegenerator = codegenerator.substr(0, 40) + "PA" + codegenerator.substr(42);
 			}
 		}
 
