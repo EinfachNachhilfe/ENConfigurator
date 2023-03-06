@@ -57,7 +57,7 @@ function calculation() {
     totalBudget += 2.0;
     popupAnswer2.style.display = "block";
     if (isCondition1Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 0) + "BB" + codegenerator.substr(2);
+      codegenerator = codegenerator.substr(0, 2) + "BB" + codegenerator.substr(4);
     } else if (isCondition2Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 2) + "BB" + codegenerator.substr(4);
     } else if (isCondition3Met(codegenerator)) {
