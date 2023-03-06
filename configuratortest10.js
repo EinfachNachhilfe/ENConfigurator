@@ -2141,8 +2141,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-	for (var j = 0; j < mycustomcheckbox16.length; j++) {
-		mycustomcheckbox16[j].addEventListener('change', function() {
+	for (var i = 0; i < mycustomcheckbox16.length; i++) {
+		mycustomcheckbox16[i].addEventListener('change', function() {
 			mycustomcheckbox13.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop("checked", false);
@@ -2152,8 +2152,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		});
 	}
-	for (var j = 0; j < mycustomcheckbox17.length; j++) {
-		mycustomcheckbox17[j].addEventListener('change', function() {
+	for (var i = 0; i < mycustomcheckbox17.length; i++) {
+		mycustomcheckbox17[i].addEventListener('change', function() {
 			mycustomcheckbox14.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop("checked", false);
@@ -2164,8 +2164,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	for (var j = 0; j < mycustomcheckbox18.length; j++) {
-		mycustomcheckbox18[j].addEventListener('change', function() {
+	for (var i = 0; i < mycustomcheckbox18.length; i++) {
+		mycustomcheckbox18[i].addEventListener('change', function() {
 			mycustomcheckbox15.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop("checked", false);
@@ -2175,8 +2175,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		});
 	}
-	for (var j = 0; j < mycustomcheckbox13.length; j++) {
-		mycustomcheckbox13[j].addEventListener('change', function() {
+	for (var i = 0; i < mycustomcheckbox13.length; i++) {
+		mycustomcheckbox13[i].addEventListener('change', function() {
 			mycustomcheckbox16.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop("checked", false);
@@ -2187,8 +2187,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	for (var j = 0; j < mycustomcheckbox14.length; j++) {
-		mycustomcheckbox14[j].addEventListener('change', function() {
+	for (var i = 0; i < mycustomcheckbox14.length; i++) {
+		mycustomcheckbox14[i].addEventListener('change', function() {
 			mycustomcheckbox17.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop("checked", false);
@@ -2198,8 +2198,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		});
 	}
-	for (var j = 0; j < mycustomcheckbox15.length; j++) {
-		mycustomcheckbox15[j].addEventListener('change', function() {
+	for (var i = 0; i < mycustomcheckbox15.length; i++) {
+		mycustomcheckbox15[i].addEventListener('change', function() {
 			mycustomcheckbox18.forEach(function(checkbox) {
 				if (checkbox.checked) {
 					$(checkbox).prop("checked", false);
