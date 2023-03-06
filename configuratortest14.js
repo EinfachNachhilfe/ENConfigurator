@@ -1525,7 +1525,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	// Aufruf der Funktion calculation() beim Laden der Seite
 	calculation();
 
-	for (var i = 0; i < myCheckboxes.length; i++) {
+	for (var i = 0; i < mycustomradiobox1.length; i++) {
 		mycustomradiobox1[i].addEventListener('change', function() {
 			mycustomradiobox2.forEach(function(radio) {
 				if (radio.checked) {
@@ -1777,6 +1777,566 @@ document.addEventListener("DOMContentLoaded", function() {
 					$(checkbox).prop('checked', false);
 					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
 
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomradiobox2.length; i++) {
+		mycustomradiobox2[i].addEventListener('change', function() {
+			mycustomradiobox4.forEach(function(radio) {
+				if (radio.checked) {
+					radio.checked = false;
+					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomradiobox5.forEach(function(radio) {
+				if (radio.checked) {
+					radio.checked = false;
+					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomradiobox6.forEach(function(radio) {
+				if (radio.checked) {
+					radio.checked = false;
+					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox1.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox2.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox3.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox4.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox5.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox6.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox7.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox8.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox9.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox10.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox11.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox12.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox13.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox14.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox15.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox16.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox17.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox18.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox19.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox20.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox21.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox22.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox23.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox24.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox25.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox25.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox26.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox27.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox28.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox29.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox30.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox31.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox32.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox33.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomradiobox3.length; i++) {
+		mycustomradiobox3[i].addEventListener('change', function() {
+			mycustomradiobox4.forEach(function(radio) {
+				if (radio.checked) {
+					radio.checked = false;
+					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomradiobox5.forEach(function(radio) {
+				if (radio.checked) {
+					radio.checked = false;
+					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomradiobox6.forEach(function(radio) {
+				if (radio.checked) {
+					radio.checked = false;
+					$(radio).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox1.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox2.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox3.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox4.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox5.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox6.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox7.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox8.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox9.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox10.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox11.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox12.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox13.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox14.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox15.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox16.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox17.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox18.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox19.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox20.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox21.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox22.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox23.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox24.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox25.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox25.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox26.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox27.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox28.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox29.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox30.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox31.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+			mycustomcheckbox32.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+				}
+			});
+			mycustomcheckbox33.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop('checked', false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+
+				}
+			});
+		});
+	}
+
+
+
+
+	for (var i = 0; i < mycustomcheckbox16.length; i++) {
+		mycustomcheckbox16[i].addEventListener('change', function() {
+			mycustomcheckbox13.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+	for (var i = 0; i < mycustomcheckbox17.length; i++) {
+		mycustomcheckbox17[i].addEventListener('change', function() {
+			mycustomcheckbox14.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox18.length; i++) {
+		mycustomcheckbox18[i].addEventListener('change', function() {
+			mycustomcheckbox15.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+	for (var i = 0; i < mycustomcheckbox13.length; i++) {
+		mycustomcheckbox13[i].addEventListener('change', function() {
+			mycustomcheckbox16.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+
+	for (var i = 0; i < mycustomcheckbox14.length; i++) {
+		mycustomcheckbox14[i].addEventListener('change', function() {
+			mycustomcheckbox17.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
+				}
+			});
+		});
+	}
+	for (var i = 0; i < mycustomcheckbox15.length; i++) {
+		mycustomcheckbox15[i].addEventListener('change', function() {
+			mycustomcheckbox18.forEach(function(checkbox) {
+				if (checkbox.checked) {
+					$(checkbox).prop("checked", false);
+					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
+					calculation();
 				}
 			});
 		});
