@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function isCondition1Met(codegenerator) {
-  return codegenerator.substr(12, 2) === "0A";
+  return codegenerator.substr(0, 2) === "0A";
 }
 
 function isCondition2Met(codegenerator) {
-  return codegenerator.substr(14, 2) === "0A";
+  return codegenerator.substr(2, 2) === "0A";
 }
 
 function isCondition3Met(codegenerator) {
-  return codegenerator.substr(16, 2) === "0A";
+  return codegenerator.substr(4, 2) === "0A";
 }
 
 function calculation() {
