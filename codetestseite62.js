@@ -45,11 +45,11 @@ function calculation() {
     totalBudget += 0.6;
     popupAnswer1.style.display = "block";
     if (isCondition1Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
+      codegenerator = codegenerator.substr(0, 12) + "UU" + codegenerator.substr(14);
     } else if (isCondition2Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 14) + "AA" + codegenerator.substr(16);
+      codegenerator = codegenerator.substr(0, 14) + "UU" + codegenerator.substr(16);
     } else if (isCondition3Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 16) + "AA" + codegenerator.substr(18);
+      codegenerator = codegenerator.substr(0, 16) + "UU" + codegenerator.substr(18);
     }
   }
 
