@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomradiobox4 = document.querySelectorAll('input[name="runtime-1Unit"]');
 	var mycustomradiobox5 = document.querySelectorAll('input[name="runtime-2Unit"]');
 	var mycustomradiobox6 = document.querySelectorAll('input[name="runtime-3Unit"]');
-        var mycustomcheckbox1 = document.querySelectorAll('input[name="test556"]');
+        var mycustomcheckbox1 = document.querySelectorAll('input[name="test55644"]');
         var mycustomcheckbox2 = document.querySelectorAll('input[name="test557"]');
         var mycustomcheckbox3 = document.querySelectorAll('input[name="test558"]');
         var mycustomcheckbox4 = document.querySelectorAll('input[name="test559"]');
