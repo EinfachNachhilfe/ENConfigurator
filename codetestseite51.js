@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-        var teachingLocationRadios = document.querySelectorAll('input[name="radiotest1"]');
+        var teachingLocationRadios = document.querySelectorAll('input[name="radiotest5"]');
         var teachingLocationRadios1 = document.querySelectorAll('input[name="radiotest2"]');
 	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
 	var mycustomradiobox3 = document.querySelectorAll('input[name="unit90"]');
