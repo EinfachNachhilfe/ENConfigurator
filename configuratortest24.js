@@ -113,52 +113,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 	function isCondition1Met(codegenerator) {
-		return codegenerator.substr(1, 2) === "0A";
+		return codegenerator.substr(2, 2) === "0A";
 	}
 
 	function isCondition2Met(codegenerator) {
-		return codegenerator.substr(3, 2) === "0A";
+		return codegenerator.substr(4, 2) === "0A";
 	}
 
 	function isCondition3Met(codegenerator) {
-		return codegenerator.substr(5, 2) === "0A";
+		return codegenerator.substr(6, 2) === "0A";
 	}
 
 	function isCondition4Met(codegenerator) {
-		return codegenerator.substr(13, 2) === "0A";
+		return codegenerator.substr(18, 2) === "0A";
 	}
 
 	function isCondition5Met(codegenerator) {
-		return codegenerator.substr(15, 2) === "0A";
+		return codegenerator.substr(20, 2) === "0A";
 	}
 
 	function isCondition6Met(codegenerator) {
-		return codegenerator.substr(17, 2) === "0A";
+		return codegenerator.substr(22, 2) === "0A";
 	}
 
 	function isCondition7Met(codegenerator) {
-		return codegenerator.substr(19, 2) === "0A";
+		return codegenerator.substr(24, 2) === "0A";
 	}
 
 	function isCondition8Met(codegenerator) {
-		return codegenerator.substr(21, 2) === "0A";
+		return codegenerator.substr(26, 2) === "0A";
 	}
 
 	function isCondition9Met(codegenerator) {
-		return codegenerator.substr(23, 2) === "0A";
+		return codegenerator.substr(28, 2) === "0A";
 	}
 
 	function isCondition10Met(codegenerator) {
-		return codegenerator.substr(25, 2) === "0A";
+		return codegenerator.substr(30, 2) === "0A";
 	}
 
 	function isCondition11Met(codegenerator) {
-		return codegenerator.substr(27, 2) === "0A";
+		return codegenerator.substr(32, 2) === "0A";
 	}
 
 	function calculation() {
 		var totalBudget = 16.49;
-		var codegenerator = "A0A0A0AXXXXXX0A0A0A0A0A0A0A0A";
+		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A";
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -213,32 +213,32 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.6;
 			popupAnswer1.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "CA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "CA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "CA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "CA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "CA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "CA" + codegenerator.substr(8);
 			}
 		}
 
 		if (mycustomcheckbox35[0].checked) {
 			popupAnswer2.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "AA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "AA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "AA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "AA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "AA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "AA" + codegenerator.substr(8);
 			}
 		}
 		if (mycustomcheckbox36[0].checked) {
 			popupAnswer3.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "BA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "BA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "BA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "BA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "BA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "BA" + codegenerator.substr(8);
 			}
 		}
 
@@ -246,11 +246,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer4.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "DA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "DA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "DA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "DA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "DA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "DA" + codegenerator.substr(8);
 			}
 		}
 
@@ -258,11 +258,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.4;
 			popupAnswer5.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "EA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "EA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "EA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "EA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "EA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "EA" + codegenerator.substr(8);
 			}
 		}
 
@@ -270,11 +270,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer6.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "GA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "GA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "GA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "GA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "GA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "GA" + codegenerator.substr(8);
 			}
 		}
 
@@ -282,11 +282,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.8;
 			popupAnswer7.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "FA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "FA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "FA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "FA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "FA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "FA" + codegenerator.substr(8);
 			}
 		}
 
@@ -294,11 +294,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.20;
 			popupAnswer8.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "HA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "HA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "HA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "HA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "HA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "HA" + codegenerator.substr(8);
 			}
 		}
 
@@ -306,11 +306,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.40;
 			popupAnswer9.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "IA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "IA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "IA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "IA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "IA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 5) + "IA" + codegenerator.substr(8);
 			}
 		}
 
@@ -318,11 +318,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.8;
 			popupAnswer10.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "JA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "JA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "JA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "JA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "JA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "JA" + codegenerator.substr(8);
 			}
 		}
 
@@ -330,11 +330,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.2;
 			popupAnswer11.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "KA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "KA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "KA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "KA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "KA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "KA" + codegenerator.substr(8);
 			}
 		}
 
@@ -342,11 +342,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.2;
 			popupAnswer12.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "LA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "LA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "LA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "LA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "LA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "LA" + codegenerator.substr(8);
 			}
 		}
 
@@ -354,11 +354,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.2;
 			popupAnswer13.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "MA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "MA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "MA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "MA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "MA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "MA" + codegenerator.substr(8);
 			}
 		}
 
@@ -366,11 +366,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.6;
 			popupAnswer14.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "NA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "NA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "NA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "NA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "NA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "NA" + codegenerator.substr(8);
 			}
 		}
 
@@ -378,11 +378,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.8;
 			popupAnswer15.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "OA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "OA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "OA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "OA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "OA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "OA" + codegenerator.substr(8);
 			}
 		}
 
@@ -390,22 +390,22 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.4;
 			popupAnswer16.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "PA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "PA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "PA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "PA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "PA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "PA" + codegenerator.substr(8);
 			}
 		}
 		if (mycustomcheckbox50[0].checked) {
 			totalBudget += 2.20;
 			popupAnswer17.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 1) + "QA" + codegenerator.substr(3);
+				codegenerator = codegenerator.substr(0, 2) + "QA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 3) + "QA" + codegenerator.substr(5);
+				codegenerator = codegenerator.substr(0, 4) + "QA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "QA" + codegenerator.substr(7);
+				codegenerator = codegenerator.substr(0, 6) + "QA" + codegenerator.substr(8);
 			}
 		}
 
@@ -451,14 +451,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (radio.checked) {
 				if (radio.value == '1') {
 					totalBudget += 4.2;
-					codegenerator = codegenerator.substr(0, 8) + "CA" + codegenerator.substr(10);
+					codegenerator = codegenerator.substr(0, 9) + "CA" + codegenerator.substr(11);
 					popupAnswer23.style.display = "block";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
-					codegenerator = codegenerator.substr(0, 8) + "BA" + codegenerator.substr(10);
+					codegenerator = codegenerator.substr(0, 9) + "BA" + codegenerator.substr(11);
 					popupAnswer24.style.display = "block";
 				} else if (radio.value == '3') {
-					codegenerator = codegenerator.substr(0, 8) + "AA" + codegenerator.substr(10);
+					codegenerator = codegenerator.substr(0, 9) + "AA" + codegenerator.substr(11);
 					popupAnswer25.style.display = "block";
 				}
 			}
@@ -468,14 +468,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (radio.checked) {
 				if (radio.value == '1') {
 					totalBudget += 6.0;
-					codegenerator = codegenerator.substr(0, 12) + "EA" + codegenerator.substr(14);
+					codegenerator = codegenerator.substr(0, 15) + "EA" + codegenerator.substr(17);
 					popupAnswer26.style.display = "block";
 				} else if (radio.value == '2') {
 					totalBudget += 2.6;
-					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
+					codegenerator = codegenerator.substr(0, 15) + "CA" + codegenerator.substr(17);
 					popupAnswer27.style.display = "block";
 				} else if (radio.value == '3') {
-					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
+					codegenerator = codegenerator.substr(0, 15) + "AA" + codegenerator.substr(17);
 					popupAnswer28.style.display = "block";
 				}
 			}
@@ -485,14 +485,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (radio.checked) {
 				if (radio.value == '1') {
 					totalBudget += 6.0;
-					codegenerator = codegenerator.substr(0, 12) + "FA" + codegenerator.substr(14);
+					codegenerator = codegenerator.substr(0, 15) + "FA" + codegenerator.substr(17);
 					popupAnswer26.style.display = "block";
 				} else if (radio.value == '2') {
 					totalBudget += 2.6;
-					codegenerator = codegenerator.substr(0, 12) + "DA" + codegenerator.substr(14);
+					codegenerator = codegenerator.substr(0, 15) + "DA" + codegenerator.substr(17);
 					popupAnswer27.style.display = "block";
 				} else if (radio.value == '3') {
-					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
+					codegenerator = codegenerator.substr(0, 15) + "BA" + codegenerator.substr(17);
 					popupAnswer28.style.display = "block";
 				}
 			}
@@ -502,14 +502,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (radio.checked) {
 				if (radio.value == '1') {
 					totalBudget += 6.8;
-					codegenerator = codegenerator.substr(0, 10) + "CA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
 					popupAnswer29.style.display = "block";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
-					codegenerator = codegenerator.substr(0, 10) + "BA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
 					popupAnswer30.style.display = "block";
 				} else if (radio.value == '3') {
-					codegenerator = codegenerator.substr(0, 10) + "AA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
 					popupAnswer31.style.display = "block";
 				}
 			}
@@ -519,14 +519,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (radio.checked) {
 				if (radio.value == '1') {
 					totalBudget += 6.8;
-					codegenerator = codegenerator.substr(0, 10) + "CA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
 					popupAnswer29.style.display = "block";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
-					codegenerator = codegenerator.substr(0, 10) + "BA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
 					popupAnswer30.style.display = "block";
 				} else if (radio.value == '3') {
-					codegenerator = codegenerator.substr(0, 10) + "AA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
 					popupAnswer31.style.display = "block";
 				}
 			}
@@ -536,14 +536,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (radio.checked) {
 				if (radio.value == '1') {
 					totalBudget += 6.8;
-					codegenerator = codegenerator.substr(0, 10) + "CA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
 					popupAnswer29.style.display = "block";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
-					codegenerator = codegenerator.substr(0, 10) + "BA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
 					popupAnswer30.style.display = "block";
 				} else if (radio.value == '3') {
-					codegenerator = codegenerator.substr(0, 10) + "AA" + codegenerator.substr(12);
+					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
 					popupAnswer31.style.display = "block";
 				}
 			}
@@ -553,21 +553,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.4;
 			popupAnswer33.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "CA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "CA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "CA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "CA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "CA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "CA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "CA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "CA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "CA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "CA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "CA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "CA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "CA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "CA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "CA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "CA" + codegenerator.substr(34);
 			}
 		}
 
@@ -575,21 +575,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.4;
 			popupAnswer33.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "CA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "CA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "CA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "CA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "CA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "CA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "CA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "CA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "CA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "CA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "CA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "CA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "CA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "CA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "CA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "CA" + codegenerator.substr(34);
 			}
 		}
 
@@ -597,21 +597,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.4;
 			popupAnswer33.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "CA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "CA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "CA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "CA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "CA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "CA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "CA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "CA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "CA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "CA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "CA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "CA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "CA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "CA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "CA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "CA" + codegenerator.substr(34);
 			}
 		}
 
@@ -619,21 +619,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.4;
 			popupAnswer32.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "BA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "BA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "BA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "BA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "BA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "BA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "BA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "BA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "BA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "BA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "BA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "BA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "BA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "BA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "BA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "BA" + codegenerator.substr(34);
 			}
 		}
 
@@ -641,21 +641,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.4;
 			popupAnswer32.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "BA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "BA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "BA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "BA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "BA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "BA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "BA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "BA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "BA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "BA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "BA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "BA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "BA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "BA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "BA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "BA" + codegenerator.substr(34);
 			}
 		}
 
@@ -663,21 +663,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.4;
 			popupAnswer32.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "BA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "BA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "BA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "BA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "BA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "BA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "BA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "BA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "BA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "BA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "BA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "BA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "BA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "BA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "BA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "BA" + codegenerator.substr(34);
 			}
 		}
 
@@ -685,21 +685,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.6;
 			popupAnswer34.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "DA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "DA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "DA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "DA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "DA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "DA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "DA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "DA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "DA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "DA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "DA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "DA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "DA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "DA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "DA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "DA" + codegenerator.substr(34);
 			}
 		}
 
@@ -707,21 +707,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.6;
 			popupAnswer34.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "DA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "DA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "DA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "DA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "DA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "DA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "DA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "DA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "DA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "DA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "DA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "DA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "DA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "DA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "DA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "DA" + codegenerator.substr(34);
 			}
 		}
 
@@ -729,21 +729,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.6;
 			popupAnswer34.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "DA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "DA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "DA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "DA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "DA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "DA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "DA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "DA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "DA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "DA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "DA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "DA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "DA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "DA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "DA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "DA" + codegenerator.substr(34);
 			}
 		}
 
@@ -751,21 +751,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer35.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "GA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "GA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "GA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "GA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "GA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "GA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "GA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "GA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "GA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "GA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "GA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "GA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "GA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "GA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "GA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "GA" + codegenerator.substr(34);
 			}
 		}
 
@@ -773,21 +773,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer35.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "GA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "GA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "GA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "GA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "GA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "GA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "GA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "GA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "GA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "GA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "GA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "GA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "GA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "GA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "GA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "GA" + codegenerator.substr(34);
 			}
 		}
 
@@ -795,21 +795,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer35.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "GA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "GA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "GA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "GA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "GA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "GA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "GA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "GA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "GA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "GA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "GA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "GA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "GA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "GA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "GA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "GA" + codegenerator.substr(34);
 			}
 		}
 
@@ -818,21 +818,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer36.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "QA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "QA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "QA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "QA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "QA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "QA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "QA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "QA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "QA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "QA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "QA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "QA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "QA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "QA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "QA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "QA" + codegenerator.substr(34);
 			}
 		}
 
@@ -840,21 +840,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer36.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "QA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "QA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "QA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "QA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "QA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "QA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "QA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "QA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "QA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "QA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "QA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "QA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "QA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "QA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "QA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "QA" + codegenerator.substr(34);
 			}
 		}
 
@@ -862,21 +862,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer36.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "QA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "QA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "QA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "QA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "QA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "QA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "QA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "QA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "QA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "QA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "QA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "QA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "QA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "QA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "QA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "QA" + codegenerator.substr(34);
 			}
 		}
 
@@ -885,21 +885,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 2.6;
 			popupAnswer37.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "MA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "MA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "MA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "MA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "MA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "MA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "MA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "MA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "MA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "MA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "MA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "MA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "MA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "MA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "MA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "MA" + codegenerator.substr(34);
 			}
 		}
 
@@ -907,21 +907,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 2.6;
 			popupAnswer37.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "MA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "MA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "MA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "MA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "MA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "MA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "MA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "MA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "MA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "MA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "MA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "MA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "MA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "MA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "MA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "MA" + codegenerator.substr(34);
 			}
 		}
 
@@ -929,21 +929,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 2.6;
 			popupAnswer37.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "MA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "MA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "MA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "MA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "MA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "MA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "MA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "MA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "MA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "MA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "MA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "MA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "MA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "MA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "MA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "MA" + codegenerator.substr(34);
 			}
 		}
 
@@ -951,21 +951,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.2;
 			popupAnswer38.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "EA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "EA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "EA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "EA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "EA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "EA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "EA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "EA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "EA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "EA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "EA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "EA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "EA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "EA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "EA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "EA" + codegenerator.substr(34);
 			}
 		}
 
@@ -973,21 +973,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.2;
 			popupAnswer38.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "EA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "EA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "EA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "EA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "EA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "EA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "EA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "EA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "EA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "EA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "EA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "EA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "EA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "EA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "EA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "EA" + codegenerator.substr(34);
 			}
 		}
 
@@ -995,21 +995,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.2;
 			popupAnswer38.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "EA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "EA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "EA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "EA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "EA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "EA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "EA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "EA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "EA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "EA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "EA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "EA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "EA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "EA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "EA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "EA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1017,21 +1017,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer39.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "HA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "HA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "HA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "HA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "HA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "HA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "HA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "HA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "HA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "HA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "HA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "HA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "HA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "HA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "HA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "HA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1039,21 +1039,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer39.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "HA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "HA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "HA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "HA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "HA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "HA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "HA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "HA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "HA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "HA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "HA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "HA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "HA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "HA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "HA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "HA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1061,21 +1061,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.2;
 			popupAnswer39.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "HA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "HA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "HA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "HA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "HA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "HA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "HA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "HA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "HA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "HA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "HA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "HA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "HA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "HA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "HA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "HA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1083,21 +1083,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 5.4;
 			popupAnswer40.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "OA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "OA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "OA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "OA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "OA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "OA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "OA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "OA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "OA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "OA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "OA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "OA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "OA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "OA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "OA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "OA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1105,21 +1105,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 3.6;
 			popupAnswer40.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "LA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "LA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "LA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "LA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "LA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "LA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "LA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "LA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "LA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "LA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "LA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "LA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "LA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "LA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "LA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "LA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1127,21 +1127,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.8;
 			popupAnswer40.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "JA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "JA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "JA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "JA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "JA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "JA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "JA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "JA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "JA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "JA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "JA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "JA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "JA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "JA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "JA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "JA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1149,21 +1149,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 3.2;
 			popupAnswer41.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "NA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "NA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "NA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "NA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "NA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "NA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "NA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "NA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "NA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "NA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "NA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "NA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "NA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "NA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "NA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "NA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1172,21 +1172,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.8;
 			popupAnswer41.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "KA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "KA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "KA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "KA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "KA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "KA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "KA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "KA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "KA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "KA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "KA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "KA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "KA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "KA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "KA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "KA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1195,21 +1195,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 1.4;
 			popupAnswer41.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "IA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "IA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "IA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "IA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "IA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "IA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "IA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "IA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "IA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "IA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "IA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "IA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "IA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "IA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "IA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "IA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1217,21 +1217,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 5.0;
 			popupAnswer42.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "PA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "PA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "PA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "PA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "PA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "PA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "PA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "PA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "PA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "PA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "PA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "PA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "PA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "PA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "PA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "PA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1239,21 +1239,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 5.0;
 			popupAnswer42.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "PA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "PA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "PA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "PA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "PA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "PA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "PA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "PA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "PA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "PA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "PA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "PA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "PA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "PA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "PA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "PA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1261,21 +1261,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 5.0;
 			popupAnswer42.style.display = "block";
 			if (isCondition4Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 13) + "PA" + codegenerator.substr(15);
+				codegenerator = codegenerator.substr(0, 18) + "PA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 15) + "PA" + codegenerator.substr(17);
+				codegenerator = codegenerator.substr(0, 20) + "PA" + codegenerator.substr(22);
 			} else if (isCondition6Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 17) + "PA" + codegenerator.substr(19);
+				codegenerator = codegenerator.substr(0, 22) + "PA" + codegenerator.substr(24);
 			} else if (isCondition7Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 19) + "PA" + codegenerator.substr(21);
+				codegenerator = codegenerator.substr(0, 24) + "PA" + codegenerator.substr(26);
 			} else if (isCondition8Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 21) + "PA" + codegenerator.substr(23);
+				codegenerator = codegenerator.substr(0, 26) + "PA" + codegenerator.substr(28);
 			} else if (isCondition9Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 23) + "PA" + codegenerator.substr(25);
+				codegenerator = codegenerator.substr(0, 28) + "PA" + codegenerator.substr(30);
 			} else if (isCondition10Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 25) + "PA" + codegenerator.substr(27);
+				codegenerator = codegenerator.substr(0, 30) + "PA" + codegenerator.substr(32);
 			} else if (isCondition11Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 27) + "PA" + codegenerator.substr(29);
+				codegenerator = codegenerator.substr(0, 32) + "PA" + codegenerator.substr(34);
 			}
 		}
 
@@ -1283,7 +1283,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-codegenerator').val(codegenerator);
-		$('.preisPro45Min').val(codegenerator);
+		$('.send-preisPro45Min').val(totalBudget);
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
