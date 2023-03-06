@@ -17,20 +17,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function isCondition4Met(codegenerator) {
-  return codegenerator.substr(12, 2) === "0A";
+  return codegenerator.substr(18, 2) === "0A";
 }
 
 function isCondition5Met(codegenerator) {
-  return codegenerator.substr(14, 2) === "0A";
+  return codegenerator.substr(20, 2) === "0A";
 }
 
 function isCondition6Met(codegenerator) {
-  return codegenerator.substr(16, 2) === "0A";
+  return codegenerator.substr(22, 2) === "0A";
 }
 
 function calculation() {
   var totalBudget = 16.49;
-  var codegenerator = "0A0A0AXXXXXX0A0A0A0A0A0A0A";
+  var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A";
 
   // zuerst alle Pop-up-Elemente ausblenden
   popupAnswer1.style.display = "none";
@@ -45,11 +45,11 @@ function calculation() {
     totalBudget += 0.6;
     popupAnswer1.style.display = "block";
     if (isCondition4Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 12) + "UU" + codegenerator.substr(14);
+      codegenerator = codegenerator.substr(0, 18) + "UU" + codegenerator.substr(19);
     } else if (isCondition5Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 14) + "UU" + codegenerator.substr(16);
+      codegenerator = codegenerator.substr(0, 20) + "UU" + codegenerator.substr(21);
     } else if (isCondition6Met(codegenerator)) {
-      codegenerator = codegenerator.substr(0, 16) + "UU" + codegenerator.substr(18);
+      codegenerator = codegenerator.substr(0, 22) + "UU" + codegenerator.substr(23);
     }
   }
 
