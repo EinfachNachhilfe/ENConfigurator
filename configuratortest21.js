@@ -113,52 +113,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 	function isCondition1Met(codegenerator) {
-		return codegenerator.substr(0, 2) === "0A";
+		return codegenerator.substr(1, 2) === "0A";
 	}
 
 	function isCondition2Met(codegenerator) {
-		return codegenerator.substr(2, 2) === "0A";
+		return codegenerator.substr(3, 2) === "0A";
 	}
 
 	function isCondition3Met(codegenerator) {
-		return codegenerator.substr(4, 2) === "0A";
+		return codegenerator.substr(5, 2) === "0A";
 	}
 
 	function isCondition4Met(codegenerator) {
-		return codegenerator.substr(12, 2) === "0A";
+		return codegenerator.substr(13, 2) === "0A";
 	}
 
 	function isCondition5Met(codegenerator) {
-		return codegenerator.substr(14, 2) === "0A";
+		return codegenerator.substr(15, 2) === "0A";
 	}
 
 	function isCondition6Met(codegenerator) {
-		return codegenerator.substr(16, 2) === "0A";
+		return codegenerator.substr(17, 2) === "0A";
 	}
 
 	function isCondition7Met(codegenerator) {
-		return codegenerator.substr(18, 2) === "0A";
+		return codegenerator.substr(19, 2) === "0A";
 	}
 
 	function isCondition8Met(codegenerator) {
-		return codegenerator.substr(20, 2) === "0A";
+		return codegenerator.substr(21, 2) === "0A";
 	}
 
 	function isCondition9Met(codegenerator) {
-		return codegenerator.substr(22, 2) === "0A";
+		return codegenerator.substr(23, 2) === "0A";
 	}
 
 	function isCondition10Met(codegenerator) {
-		return codegenerator.substr(24, 2) === "0A";
+		return codegenerator.substr(25, 2) === "0A";
 	}
 
 	function isCondition11Met(codegenerator) {
-		return codegenerator.substr(26, 2) === "0A";
+		return codegenerator.substr(27, 2) === "0A";
 	}
 
 	function calculation() {
 		var totalBudget = 16.49;
-		var codegenerator = "0A0A0AXXXXXX0A0A0A0A0A0A0A0A";
+		var codegenerator = "A0A0A0AXXXXXX0A0A0A0A0A0A0A0A";
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -213,11 +213,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			totalBudget += 0.6;
 			popupAnswer1.style.display = "block";
 			if (isCondition1Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 0) + "CA" + codegenerator.substr(2);
+				codegenerator = codegenerator.substr(0, 1) + "CA" + codegenerator.substr(3);
 			} else if (isCondition2Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 2) + "CA" + codegenerator.substr(4);
+				codegenerator = codegenerator.substr(0, 3) + "CA" + codegenerator.substr(5);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 4) + "CA" + codegenerator.substr(6);
+				codegenerator = codegenerator.substr(0, 5) + "CA" + codegenerator.substr(7);
 			}
 		}
 
@@ -1282,6 +1282,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
+		$('.send-codegenerator').val(codegenerator);
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
