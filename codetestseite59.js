@@ -30,7 +30,7 @@ function isCondition3Met(codegenerator) {
 
 function calculation() {
   var totalBudget = 16.49;
-  var codegenerator = "0A0A0A000000AAAAAAAAAAAAAAAAAA";
+  var codegenerator = "0A0A0A0A0A0A0A0A0A0A0A0A0A";
 
   // zuerst alle Pop-up-Elemente ausblenden
   popupAnswer1.style.display = "none";
