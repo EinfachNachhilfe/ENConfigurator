@@ -16,15 +16,15 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 
 
-function isCondition1Met(codegenerator) {
+function isCondition4Met(codegenerator) {
   return codegenerator.substr(12, 2) === "0A";
 }
 
-function isCondition2Met(codegenerator) {
+function isCondition5Met(codegenerator) {
   return codegenerator.substr(14, 2) === "0A";
 }
 
-function isCondition3Met(codegenerator) {
+function isCondition6Met(codegenerator) {
   return codegenerator.substr(16, 2) === "0A";
 }
 
@@ -44,11 +44,11 @@ function calculation() {
   if (mycustomcheckbox1[0].checked) {
     totalBudget += 0.6;
     popupAnswer1.style.display = "block";
-    if (isCondition1Met(codegenerator)) {
+    if (isCondition4Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 12) + "UU" + codegenerator.substr(14);
-    } else if (isCondition2Met(codegenerator)) {
+    } else if (isCondition5Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 14) + "UU" + codegenerator.substr(16);
-    } else if (isCondition3Met(codegenerator)) {
+    } else if (isCondition6Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 16) + "UU" + codegenerator.substr(18);
     }
   }
@@ -56,11 +56,11 @@ function calculation() {
   if (mycustomcheckbox2[0].checked) {
     totalBudget += 2.0;
     popupAnswer2.style.display = "block";
-    if (isCondition1Met(codegenerator)) {
+    if (isCondition4Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 2) + "BB" + codegenerator.substr(4);
-    } else if (isCondition2Met(codegenerator)) {
+    } else if (isCondition5Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 2) + "BB" + codegenerator.substr(4);
-    } else if (isCondition3Met(codegenerator)) {
+    } else if (isCondition6Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 4) + "BB" + codegenerator.substr(6);
     }
   }
@@ -68,11 +68,11 @@ function calculation() {
   if (mycustomcheckbox3[0].checked) {
     totalBudget += 3.0;
     popupAnswer3.style.display = "block";
-    if (isCondition1Met(codegenerator)) {
+    if (isCondition4Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 0) + "CC" + codegenerator.substr(2);
-    } else if (isCondition2Met(codegenerator)) {
+    } else if (isCondition5Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 2) + "CC" + codegenerator.substr(4);
-    } else if (isCondition3Met(codegenerator)) {
+    } else if (isCondition6Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 4) + "CC" + codegenerator.substr(6);
     }
   }
@@ -80,11 +80,11 @@ function calculation() {
     if (mycustomcheckbox4[0].checked) {
     totalBudget += 4.0;
     popupAnswer7.style.display = "block";
-    if (isCondition1Met(codegenerator)) {
+    if (isCondition4Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 0) + "14" + codegenerator.substr(2);
-    } else if (isCondition2Met(codegenerator)) {
+    } else if (isCondition5Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 2) + "14" + codegenerator.substr(4);
-    } else if (isCondition3Met(codegenerator)) {
+    } else if (isCondition6Met(codegenerator)) {
       codegenerator = codegenerator.substr(0, 4) + "14" + codegenerator.substr(6);
     }
   }
