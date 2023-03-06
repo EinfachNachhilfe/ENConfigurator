@@ -94,15 +94,15 @@ function calculation() {
       if (radio.checked) {
         if (radio.value == '1') {
           totalBudget += 0.6;
-          codegenerator = codegenerator.substr(0, 6) + "12" + codegenerator.substr(8);
+          codegenerator = codegenerator.substr(0, 9) + "12" + codegenerator.substr(11);
           popupAnswer4.style.display = "block";
         } else if (radio.value == '2') {
           totalBudget += 3.4;
-          codegenerator = codegenerator.substr(0, 8) + "13" + codegenerator.substr(10);
+          codegenerator = codegenerator.substr(0, 8) + "12" + codegenerator.substr(14);
           popupAnswer5.style.display = "block";
         } else if (radio.value == '3') {
           totalBudget += 2.3;
-          codegenerator = codegenerator.substr(0, 10) + "14" + codegenerator.substr(12);
+          codegenerator = codegenerator.substr(0, 10) + "15" + codegenerator.substr(17);
           popupAnswer6.style.display = "block";
         }
       }
