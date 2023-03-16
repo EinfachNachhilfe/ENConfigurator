@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		popupAnswer17.style.display = "none";
 		popupAnswer18.style.display = "none";
 		popupAnswer19.style.display = "none";
-		popupAnswer20.style.display = "none";
 		popupAnswer21.style.display = "none";
 		popupAnswer22.style.display = "none";
 		popupAnswer23.style.display = "none";
