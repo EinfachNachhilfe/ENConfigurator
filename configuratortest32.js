@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomcheckbox50 = document.querySelectorAll('input[name="subjectSonstiges"]');
 	var mycustomcheckbox51 = document.querySelectorAll('input[name="supportNachhilfe"]');
 	var mycustomcheckbox52 = document.querySelectorAll('input[name="supportPruefungsvorbereitung"]');
-	var mycustomcheckbox53 = document.querySelectorAll('input[name="supportKlausurvorbereitung"]');
 	var mycustomcheckbox54 = document.querySelectorAll('input[name="supportHausaufgabenbetreuung"]');
 	var mycustomcheckbox55 = document.querySelectorAll('input[name="supportEtwasAnderes"]');
 	var mycustomcheckbox56 = document.querySelectorAll('input[name="continueTutor-1Unit"]');
@@ -85,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	var popupAnswer17 = document.querySelectorAll('.div-summary.sonstiges')[0];
 	var popupAnswer18 = document.querySelectorAll('.div-summary.nachhilfe')[0];
 	var popupAnswer19 = document.querySelectorAll('.div-summary.pruefungsvorbereitung')[0];
-	var popupAnswer20 = document.querySelectorAll('.div-summary.klausurvorbereitung')[0];
 	var popupAnswer21 = document.querySelectorAll('.div-summary.hausaufgabenbetreuung')[0];
 	var popupAnswer22 = document.querySelectorAll('.div-summary.etwasanderes')[0];
 	var popupAnswer23 = document.querySelectorAll('.div-summary.zuhause')[0];
@@ -431,10 +429,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox52[0].checked) {
 			popupAnswer19.style.display = "block";
-		}
-
-		if (mycustomcheckbox53[0].checked) {
-			popupAnswer20.style.display = "block";
 		}
 
 		if (mycustomcheckbox54[0].checked) {
@@ -1771,10 +1765,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 	mycustomcheckbox52[0].addEventListener("change", function() {
-		calculation();
-	});
-
-	mycustomcheckbox53[0].addEventListener("change", function() {
 		calculation();
 	});
 
