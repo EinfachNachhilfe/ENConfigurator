@@ -1,3 +1,7 @@
+#div-subject2, #div-subject3, #div-subject4, #div-subject5, #div-subject6 {
+  display: none;
+}
+
 $(document).ready(function(){
     $('#div-add-subject').click(function(){
       if ($('#div-subject2').is(':hidden')) {
