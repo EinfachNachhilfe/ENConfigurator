@@ -16,6 +16,7 @@ $(document).ready(function(){
       } else if ($('#div-subject5').is(':visible') && $('#div-subject6').is(':hidden')) {
         $('#div-subject6').show();
         $('#image-subject5').hide();
+        $('#div-add-subject').hide();
       }
     });
 
