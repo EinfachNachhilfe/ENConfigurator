@@ -1,4 +1,4 @@
-<script>
+
   $(document).ready(function(){
     $('#div-add-subject').click(function(){
       if ($('#div-subject2').is(':hidden')) {
@@ -16,4 +16,4 @@
       $('#div-subject3').hide();
     });
   });
-</script>
+
