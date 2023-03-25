@@ -1,7 +1,6 @@
-$(document).ready(function(){
-    $('#div-subject2, #div-subject3, #div-subject4, #div-subject5, #div-subject6').hide();
 
-    $('#div-add-subject').click(function(){
+  $(document).ready(function(){
+    $('.div-add-subject').click(function(){
       if ($('#div-subject2').is(':hidden')) {
         $('#div-subject2').show();
       } else if ($('#div-subject2').is(':visible')) {
@@ -53,3 +52,4 @@ $(document).ready(function(){
     
     
   });
+
