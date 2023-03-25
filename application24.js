@@ -5,7 +5,8 @@ $(document).ready(function(){
       if ($('#div-subject2').is(':hidden')) {
         $('#div-subject2').show();
       } else if ($('#div-subject2').is(':visible') && $('#div-subject3').is(':hidden')) {
-        $('#div-subject3').show(); 
+        $('#div-subject3').show();
+        $('#image-subject2').hide();
       } else if ($('#div-subject3').is(':visible') && $('#div-subject4').is(':hidden')) {
         $('#div-subject4').show();
       } else if ($('#div-subject4').is(':visible') && $('#div-subject5').is(':hidden')) {
