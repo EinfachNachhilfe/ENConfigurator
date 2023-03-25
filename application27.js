@@ -9,10 +9,13 @@ $(document).ready(function(){
         $('#image-subject2').hide();
       } else if ($('#div-subject3').is(':visible') && $('#div-subject4').is(':hidden')) {
         $('#div-subject4').show();
+         $('#image-subject3').hide();
       } else if ($('#div-subject4').is(':visible') && $('#div-subject5').is(':hidden')) {
-        $('#div-subject5').show();   
+        $('#div-subject5').show();
+        $('#image-subject4').hide();
       } else if ($('#div-subject5').is(':visible') && $('#div-subject6').is(':hidden')) {
-        $('#div-subject6').show();   
+        $('#div-subject6').show();
+        $('#image-subject5').hide();
       }
     });
 
@@ -36,6 +39,7 @@ $(document).ready(function(){
       $('#classTo-4').prop('selectedIndex',0);
       $('#classFrom-4').prop('selectedIndex',0);
       $('#div-subject4').hide();
+      $('#image-subject3').show();
     });
     
     $('#image-subject5').click(function(){
@@ -43,6 +47,7 @@ $(document).ready(function(){
       $('#classTo-5').prop('selectedIndex',0);
       $('#classFrom-5').prop('selectedIndex',0);
       $('#div-subject5').hide();
+      $('#image-subject4').show();
     });
     
     $('#image-subject6').click(function(){
@@ -50,5 +55,6 @@ $(document).ready(function(){
       $('#classTo-6').prop('selectedIndex',0);
       $('#classFrom-6').prop('selectedIndex',0);
       $('#div-subject6').hide();
+      $('#image-subject5').show();
     });
 });
