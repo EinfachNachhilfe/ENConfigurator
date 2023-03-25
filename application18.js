@@ -5,8 +5,6 @@ $(document).ready(function(){
       } else if ($('#div-subject2').is(':visible')) {
         $('#div-subject3').show(); 
       } else if ($('#div-subject3').is(':visible')) {
-        $('#div-subject4').show();
-      } else if ($('#div-subject4').is(':visible')) {
         $('#div-subject5').show();  
       } else if ($('#div-subject5').is(':visible')) {
         $('#div-subject6').show();   
