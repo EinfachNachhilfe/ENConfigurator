@@ -4,6 +4,7 @@ $(document).ready(function(){
     $('#div-add-subject').click(function(){
       if ($('#div-subject2').is(':hidden')) {
         $('#div-subject2').show();
+        $('#image-subject2').show();
       } else if ($('#div-subject2').is(':visible') && $('#div-subject3').is(':hidden')) {
         $('#div-subject3').show();
         $('#image-subject2').hide();
