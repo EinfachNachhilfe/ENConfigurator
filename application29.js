@@ -57,5 +57,6 @@ $(document).ready(function(){
       $('#classFrom-6').prop('selectedIndex',0);
       $('#div-subject6').hide();
       $('#image-subject5').show();
+      $('#div-add-subject').show();
     });
 });
