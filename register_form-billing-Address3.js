@@ -2,7 +2,7 @@
 $(document).ready(function() {
   $('#div_billing-address').hide();
   
-  $('input[name="billing-Address"]').change(function() {
+  $('input[name="billing-address"]').change(function() {
     if ($(this).val() == '1') {
       $('#div_billing-address').hide();
       $('#street-name_payable').val('');
