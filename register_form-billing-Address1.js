@@ -2,13 +2,13 @@
 $(document).ready(function() {
   $('#div-billingAddress').hide();
   
-  $('input[name="billingAddress"]').change(function() {
+  $('input[name="billing-Address"]').change(function() {
     if ($(this).val() == '1') {
       $('#div-billingAddress').hide();
-      $('#street-name-payable').val('');
-      $('#house-number-payable').val('');
-      $('#ZIP-code-payable').val('');
-      $('#city-name-payable').val('');
+      $('#street-name_payable').val('');
+      $('#house-number_payable').val('');
+      $('#ZIP-code_payable').val('');
+      $('#city-name_payable').val('');
     } else if ($(this).val() == '2') {
       $('#div-billingAddress').show();
     }
