@@ -1,16 +1,16 @@
 
 $(document).ready(function() {
-  $('#div-billingAddress').hide();
+  $('#div_billing-address').hide();
   
   $('input[name="billing-Address"]').change(function() {
     if ($(this).val() == '1') {
-      $('#div-billingAddress').hide();
+      $('#div_billing-address').hide();
       $('#street-name_payable').val('');
       $('#house-number_payable').val('');
       $('#ZIP-code_payable').val('');
       $('#city-name_payable').val('');
     } else if ($(this).val() == '2') {
-      $('#div-billingAddress').show();
+      $('#div_billing-address').show();
     }
   });
 });
