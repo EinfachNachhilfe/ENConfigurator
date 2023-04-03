@@ -139,6 +139,7 @@ function checkTeachingLocationSelected() {
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
           }
+          isRuntimeSelected = true;
         } else if (radio.name === 'runtime-2Unit') {
           if (radio.value === '1') {
              tutor1.style.display = 'none';
@@ -153,7 +154,7 @@ function checkTeachingLocationSelected() {
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
           }
-
+          isRuntimeSelected = true;
         } else if (radio.name === 'runtime-3Unit') {
           if (radio.value === '1') {
              tutor1.style.display = 'none';
