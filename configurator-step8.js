@@ -122,55 +122,62 @@ function checkTeachingLocationSelected() {
   }
 
   function checkRuntimeSelected() {
-    runtimeRadios.forEach(function(radio) {
-      if (radio.checked) {
-        isChecked = true;
-        if (radio.name === 'runtime-1Unit') {
-          if (radio.value === '1') { 
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
-          } else if (radio.value === '2') {
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
-          } else if (radio.value === '3') {
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
-          }
-        } else if (radio.name === 'runtime-2Unit') {
-          if (radio.value === '1') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
-          } else if (radio.value === '2') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
-          } else if (radio.value === '3') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
-          }
-  
-        } else if (radio.name === 'runtime-3Unit') {
-          if (radio.value === '1') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          } else if (radio.value === '2') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          } else if (radio.value === '3') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          }
+      let isChecked = false; // Neue Variable zum Prüfen, ob ein Radiobutton ausgewählt wurde
+
+  runtimeRadios.forEach(function(radio) {
+    if (radio.checked) {
+      isChecked = true;
+      if (radio.name === 'runtime-1Unit') {
+        if (radio.value === '1') { 
+            tutor1.style.display = 'block';
+            tutor2.style.display = 'none';
+            tutor3.style.display = 'none';
+        } else if (radio.value === '2') {
+            tutor1.style.display = 'block';
+            tutor2.style.display = 'none';
+            tutor3.style.display = 'none';
+        } else if (radio.value === '3') {
+            tutor1.style.display = 'block';
+            tutor2.style.display = 'none';
+            tutor3.style.display = 'none';
+        }
+      } else if (radio.name === 'runtime-2Unit') {
+        if (radio.value === '1') {
+           tutor1.style.display = 'none';
+           tutor2.style.display = 'block';
+           tutor3.style.display = 'none';
+        } else if (radio.value === '2') {
+           tutor1.style.display = 'none';
+           tutor2.style.display = 'block';
+           tutor3.style.display = 'none';
+        } else if (radio.value === '3') {
+           tutor1.style.display = 'none';
+           tutor2.style.display = 'block';
+           tutor3.style.display = 'none';
+        }
+
+      } else if (radio.name === 'runtime-3Unit') {
+        if (radio.value === '1') {
+           tutor1.style.display = 'none';
+           tutor2.style.display = 'none';
+           tutor3.style.display = 'block';
+        } else if (radio.value === '2') {
+           tutor1.style.display = 'none';
+           tutor2.style.display = 'none';
+           tutor3.style.display = 'block';
+        } else if (radio.value === '3') {
+           tutor1.style.display = 'none';
+           tutor2.style.display = 'none';
+           tutor3.style.display = 'block';
         }
       }
-    });
+    }
+  });
+
+  // Wenn kein Radiobutton ausgewählt ist und isRuntimeSelected noch nicht auf true gesetzt wurde, setzen Sie isRuntimeSelected auf true.
+  if (!isChecked && !isRuntimeSelected) {
+    isRuntimeSelected = true;
+  }
     
     if (isRuntimeSelected) {
       nextBtn.classList.remove('disabled');
