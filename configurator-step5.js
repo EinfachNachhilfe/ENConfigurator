@@ -124,46 +124,45 @@ function checkTeachingLocationSelected() {
   function checkRuntimeSelected() {
     runtimeRadios.forEach(function(radio) {
       if (radio.checked) {
-        if (radio.name === 'runtime-2Unit') {
-          isRuntimeSelected = true;
-          if (radio.value === '1') { 
+        if (radio.name === 'runtime-1Unit') {
+          if (radio.value === '1' && isRuntimeSelected === true) { 
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-          } else if (radio.value === '2') {
+          } else if (radio.value === '2' && isRuntimeSelected === true) {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-          } else if (radio.value === '3') {
+          } else if (radio.value === '3' && isRuntimeSelected === true) {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
           }
-        } else if (radio.name === 'runtime-1Unit') {
-          if (radio.value === '1') {
+        } else if (radio.name === 'runtime-2Unit') {
+          if (radio.value === '1' && isRuntimeSelected === true) {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
-          } else if (radio.value === '2') {
+          } else if (radio.value === '2' && isRuntimeSelected === true) {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
-          } else if (radio.value === '3') {
+          } else if (radio.value === '3' && isRuntimeSelected === true) {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
           }
 
         } else if (radio.name === 'runtime-3Unit') {
-          if (radio.value === '1') {
+          if (radio.value === '1'&& isRuntimeSelected === true) {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
-          } else if (radio.value === '2') {
+          } else if (radio.value === '2'&& isRuntimeSelected === true) {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
-          } else if (radio.value === '3') {
+          } else if (radio.value === '3'&& isRuntimeSelected === true) {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
