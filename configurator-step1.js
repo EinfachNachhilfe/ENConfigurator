@@ -1,3 +1,4 @@
+
 var step1 = document.getElementById('step-item_subject');
 var step2 = document.getElementById('step-item_support');
 var step3 = document.getElementById('step-item_teaching-location');
@@ -121,7 +122,7 @@ function checkTeachingLocationSelected() {
   }
 
   function checkRuntimeSelected() {
-    unitRadios.forEach(function(radio) {
+    runtimeRadios.forEach(function(radio) {
       if (radio.checked) {
         if (radio.name === 'runtime-1Unit') {
           isUnitSelected = true;
