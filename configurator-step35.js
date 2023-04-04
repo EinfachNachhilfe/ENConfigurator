@@ -176,23 +176,6 @@ function checkTeachingLocationSelected() {
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
           }
-          
-          
-          isRuntimeSelected = true;
-        } else if (radio.name === 'runtime-1Unit') {
-          if (radio.value === '1') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          } else if (radio.value === '2') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          } else if (radio.value === '3') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          }
         }
       }
     });
