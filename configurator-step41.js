@@ -144,8 +144,8 @@ function checkRuntimeSelected() {
           tutor2.style.display = 'none';
           tutor3.style.display = 'none';
         }
-          isRuntimeSelected = true;
-            } else if (radio.name === 'runtime-2Unit') {
+                 } else if (radio.name === 'runtime-2Unit') {
+                       isRuntimeSelected = true;
         if (radio.value === '1') {
           tutor1.style.display = 'none';
           tutor2.style.display = 'block';
@@ -161,6 +161,7 @@ function checkRuntimeSelected() {
         }
                isRuntimeSelected = true;
       } else if (radio.name === 'runtime-3Unit') {
+            isRuntimeSelected = true;
         if (radio.value === '1') {
           tutor1.style.display = 'none';
           tutor2.style.display = 'none';
