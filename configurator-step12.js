@@ -121,64 +121,76 @@ function checkTeachingLocationSelected() {
     }
   }
 
-  function checkRuntimeSelected() {
-    runtimeRadios.forEach(function(radio) {
-      if (radio.checked) {
-        if (radio.name === 'runtime-1Unit') {
-          isRuntimeSelected = true;
-          if (radio.value === '1') { 
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
-          } else if (radio.value === '2') {
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
-          } else if (radio.value === '3') {
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
-          }
-          isRuntimeSelected = true;
-        } else if (radio.name === 'runtime-2Unit') {
-          if (radio.value === '1') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
-          } else if (radio.value === '2') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
-          } else if (radio.value === '3') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
-          }
-          isRuntimeSelected = true;
-        } else if (radio.name === 'runtime-3Unit') {
-          if (radio.value === '1') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          } else if (radio.value === '2') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          } else if (radio.value === '3') {
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
-          }
-        }
+function checkRuntimeSelected() {
+  runtimeRadios.forEach(function(radio) {
+    if (radio.checked) {
+      if (radio.name === 'runtime-1Unit') {
+        runtime1Selected(radio.value);
+      } else if (radio.name === 'runtime-2Unit') {
+        runtime2Selected(radio.value);
+      } else if (radio.name === 'runtime-3Unit') {
+        runtime3Selected(radio.value);
       }
-    });
-    
-    if (isRuntimeSelected) {
-      nextBtn.classList.remove('disabled');
-    } else {
-      nextBtn.classList.add('disabled');
     }
+  });
+
+  if (isRuntimeSelected) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
   }
+}
+
+function runtime1Selected(value) {
+  isRuntimeSelected = true;
+  if (value === '1') {
+    tutor1.style.display = 'block';
+    tutor2.style.display = 'none';
+    tutor3.style.display = 'none';
+  } else if (value === '2') {
+    tutor1.style.display = 'block';
+    tutor2.style.display = 'none';
+    tutor3.style.display = 'none';
+  } else if (value === '3') {
+    tutor1.style.display = 'block';
+    tutor2.style.display = 'none';
+    tutor3.style.display = 'none';
+  }
+}
+
+function runtime2Selected(value) {
+  isRuntimeSelected = true;
+  if (value === '1') {
+    tutor1.style.display = 'none';
+    tutor2.style.display = 'block';
+    tutor3.style.display = 'none';
+  } else if (value === '2') {
+    tutor1.style.display = 'none';
+    tutor2.style.display = 'block';
+    tutor3.style.display = 'none';
+  } else if (value === '3') {
+    tutor1.style.display = 'none';
+    tutor2.style.display = 'block';
+    tutor3.style.display = 'none';
+  }
+}
+
+function runtime3Selected(value) {
+  isRuntimeSelected = true;
+  if (value === '1') {
+    tutor1.style.display = 'none';
+    tutor2.style.display = 'none';
+    tutor3.style.display = 'block';
+  } else if (value === '2') {
+    tutor1.style.display = 'none';
+    tutor2.style.display = 'none';
+    tutor3.style.display = 'block';
+  } else if (value === '3') {
+    tutor1.style.display = 'none';
+    tutor2.style.display = 'none';
+    tutor3.style.display = 'block';
+  }
+}
 
 // Binden Sie das 'change'-Ereignis an alle Checkboxen im 'step1'
 checkboxes1.forEach(function(checkbox) {
