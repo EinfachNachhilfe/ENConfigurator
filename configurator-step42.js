@@ -125,66 +125,71 @@ function checkTeachingLocationSelected() {
     }
   }
 
-function checkRuntimeSelected() {
-  var isRuntimeSelected = false;
+  function checkRuntimeSelected() {
+    runtimeRadios.forEach(function(radio) {
+      if (radio.checked) {
+        if (radio.name === 'runtime-1Unit') {
+          isRuntimeSelected = true;
+          if (radio.value === '1') { 
+              tutor1.style.display = 'block';
+              tutor2.style.display = 'none';
+              tutor3.style.display = 'none';
+          } else if (radio.value === '2') {
+              tutor1.style.display = 'block';
+              tutor2.style.display = 'none';
+              tutor3.style.display = 'none';
+          } else if (radio.value === '3') {
+              tutor1.style.display = 'block';
+              tutor2.style.display = 'none';
+              tutor3.style.display = 'none';
+          }
 
-  runtimeRadios.forEach(function(radio) {
-    if (radio.checked) {
-       if (radio.name === 'runtime-1Unit') {
-        if (radio.value === '1') { 
-          tutor1.style.display = 'block';
-          tutor2.style.display = 'none';
-          tutor3.style.display = 'none';
-        } else if (radio.value === '2') {
-          tutor1.style.display = 'block';
-          tutor2.style.display = 'none';
-          tutor3.style.display = 'none';
-        } else if (radio.value === '3') {
-          tutor1.style.display = 'block';
-          tutor2.style.display = 'none';
-          tutor3.style.display = 'none';
-        }
-                 } else if (radio.name === 'runtime-2Unit') {
-                       isRuntimeSelected = true;
-        if (radio.value === '1') {
-          tutor1.style.display = 'none';
-          tutor2.style.display = 'block';
-          tutor3.style.display = 'none';
-        } else if (radio.value === '2') {
-          tutor1.style.display = 'none';
-          tutor2.style.display = 'block';
-          tutor3.style.display = 'none';
-        } else if (radio.value === '3') {
-          tutor1.style.display = 'none';
-          tutor2.style.display = 'block';
-          tutor3.style.display = 'none';
-        }
-               isRuntimeSelected = true;
-      } else if (radio.name === 'runtime-3Unit') {
-            isRuntimeSelected = true;
-        if (radio.value === '1') {
-          tutor1.style.display = 'none';
-          tutor2.style.display = 'none';
-          tutor3.style.display = 'block';
-        } else if (radio.value === '2') {
-          tutor1.style.display = 'none';
-          tutor2.style.display = 'none';
-          tutor3.style.display = 'block';
-        } else if (radio.value === '3') {
-          tutor1.style.display = 'none';
-          tutor2.style.display = 'none';
-          tutor3.style.display = 'block';
+          
+          isRuntimeSelected = true;
+        } else if (radio.name === 'runtime-2Unit') {
+          if (radio.value === '1') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
+          } else if (radio.value === '2') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
+          } else if (radio.value === '3') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
+          }
+          
+                 isRuntimeSelected = true;
+        } else if (radio.name === 'runtime-3Unit') {
+          if (radio.value === '1') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'none';
+             tutor3.style.display = 'block';
+          } else if (radio.value === '2') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'none';
+             tutor3.style.display = 'block';
+          } else if (radio.value === '3') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'none';
+             tutor3.style.display = 'block';
+         
+         }
+        // Der letzte else if BLock ist ohne Funktion, wird benutzt damit die anderen richtig funktionieren
+             isRuntimeSelected = true;
+        } else if (radio.name === 'runtime-4Unit') {
         }
       }
+    });
+    
+    if (isRuntimeSelected) {
+      nextBtn.classList.remove('disabled');
+    } else {
+      nextBtn.classList.add('disabled');
     }
-  });
-
-  if (isRuntimeSelected) {
-    nextBtn.classList.remove('disabled');
-  } else {
-    nextBtn.classList.add('disabled');
   }
-}
 
 // Binden Sie das 'change'-Ereignis an alle Checkboxen im 'step1'
 checkboxes1.forEach(function(checkbox) {
