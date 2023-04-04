@@ -316,11 +316,11 @@ nextBtn.addEventListener('click', function() {
       step1.style.display = 'none';
       step2.style.display = 'block';
       backBtn.style.display = 'block';
-      checkCheckboxSelected1();
+      checkCheckboxSelected2();
     } else if (isAnyCheckboxSelected2 && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step2.style.display = 'none';
       step3.style.display = 'block';
-      checkCheckboxSelected2();
+      checkUnitSelected();
     } else if (isTeachingLocationSelected && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step3.style.display = 'none';
       step4.style.display = 'block';
