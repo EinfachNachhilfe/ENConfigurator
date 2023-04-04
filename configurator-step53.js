@@ -378,6 +378,7 @@ backBtn.addEventListener('click', function() {
     step7.style.display = 'none';
     step6.style.display = 'block';
     checkCheckboxSelected3();
+    checkRuntimeSelected();
   } else if (step8.style.display === 'block') {
     step8.style.display = 'none';
     step7.style.display = 'block';
