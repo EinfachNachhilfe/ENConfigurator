@@ -121,19 +121,26 @@ function checkTeachingLocationSelected() {
     }
   }
 
-function checkRuntimeSelected() {
+function checkRuntimeSelected1() {
   runtimeRadios.forEach(function(radio) {
-    if (radio.checked) {
-      if (radio.name === 'runtime-1Unit') {
-        runtime1Selected(radio.value);
-      } else if (radio.name === 'runtime-2Unit') {
-        runtime2Selected(radio.value);
-      } else if (radio.name === 'runtime-3Unit') {
-        runtime3Selected(radio.value);
+    if (radio.checked && radio.name === 'runtime-1Unit') {
+      isRuntimeSelected = true;
+      if (radio.value === '1') { 
+        tutor1.style.display = 'block';
+        tutor2.style.display = 'none';
+        tutor3.style.display = 'none';
+      } else if (radio.value === '2') {
+        tutor1.style.display = 'block';
+        tutor2.style.display = 'none';
+        tutor3.style.display = 'none';
+      } else if (radio.value === '3') {
+        tutor1.style.display = 'block';
+        tutor2.style.display = 'none';
+        tutor3.style.display = 'none';
       }
     }
   });
-
+  
   if (isRuntimeSelected) {
     nextBtn.classList.remove('disabled');
   } else {
@@ -141,54 +148,57 @@ function checkRuntimeSelected() {
   }
 }
 
-function runtime1Selected(value) {
-  isRuntimeSelected = true;
-  if (value === '1') {
-    tutor1.style.display = 'block';
-    tutor2.style.display = 'none';
-    tutor3.style.display = 'none';
-  } else if (value === '2') {
-    tutor1.style.display = 'block';
-    tutor2.style.display = 'none';
-    tutor3.style.display = 'none';
-  } else if (value === '3') {
-    tutor1.style.display = 'block';
-    tutor2.style.display = 'none';
-    tutor3.style.display = 'none';
+function checkRuntimeSelected2() {
+  runtimeRadios.forEach(function(radio) {
+    if (radio.checked && radio.name === 'runtime-2Unit') {
+      isRuntimeSelected = true;
+      if (radio.value === '1') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'block';
+        tutor3.style.display = 'none';
+      } else if (radio.value === '2') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'block';
+        tutor3.style.display = 'none';
+      } else if (radio.value === '3') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'block';
+        tutor3.style.display = 'none';
+      }
+    }
+  });
+  
+  if (isRuntimeSelected) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
   }
 }
 
-function runtime2Selected(value) {
-  isRuntimeSelected = true;
-  if (value === '1') {
-    tutor1.style.display = 'none';
-    tutor2.style.display = 'block';
-    tutor3.style.display = 'none';
-  } else if (value === '2') {
-    tutor1.style.display = 'none';
-    tutor2.style.display = 'block';
-    tutor3.style.display = 'none';
-  } else if (value === '3') {
-    tutor1.style.display = 'none';
-    tutor2.style.display = 'block';
-    tutor3.style.display = 'none';
-  }
-}
-
-function runtime3Selected(value) {
-  isRuntimeSelected = true;
-  if (value === '1') {
-    tutor1.style.display = 'none';
-    tutor2.style.display = 'none';
-    tutor3.style.display = 'block';
-  } else if (value === '2') {
-    tutor1.style.display = 'none';
-    tutor2.style.display = 'none';
-    tutor3.style.display = 'block';
-  } else if (value === '3') {
-    tutor1.style.display = 'none';
-    tutor2.style.display = 'none';
-    tutor3.style.display = 'block';
+function checkRuntimeSelected3() {
+  runtimeRadios.forEach(function(radio) {
+    if (radio.checked && radio.name === 'runtime-3Unit') {
+      isRuntimeSelected = true;
+      if (radio.value === '1') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'none';
+        tutor3.style.display = 'block';
+      } else if (radio.value === '2') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'none';
+        tutor3.style.display = 'block';
+      } else if (radio.value === '3') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'none';
+        tutor3.style.display = 'block';
+      }
+    }
+  });
+  
+  if (isRuntimeSelected) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
   }
 }
 
@@ -228,7 +238,23 @@ teachingLocationRadios.forEach(function(radio) {
   runtimeRadios.forEach(function(radio) {
     radio.addEventListener('change', function() {
       isRuntimeSelected = false;
-      checkRuntimeSelected();
+      checkRuntimeSelected1();
+    });
+  });
+
+  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
+  runtimeRadios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      isRuntimeSelected = false;
+      checkRuntimeSelected2();
+    });
+  });
+
+  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
+  runtimeRadios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      isRuntimeSelected = false;
+      checkRuntimeSelected3();
     });
   });
 
@@ -252,7 +278,9 @@ nextBtn.addEventListener('click', function() {
       step4.style.display = 'none';
       step5.style.display = 'block';
       nextBtn.classList.add('disabled');
-      checkRuntimeSelected();
+      checkRuntimeSelected1();
+      checkRuntimeSelected2();
+      checkRuntimeSelected3();
     } else if (isRuntimeSelected && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step5.style.display = 'none';
       step6.style.display = 'block';
@@ -290,7 +318,9 @@ backBtn.addEventListener('click', function() {
   } else if (step6.style.display === 'block') {
     step6.style.display = 'none';
     step5.style.display = 'block';
-    checkRuntimeSelected();
+    checkRuntimeSelected1();
+    checkRuntimeSelected2();
+    checkRuntimeSelected3();
   } else if (step7.style.display === 'block') {
     step7.style.display = 'none';
     step6.style.display = 'block';
