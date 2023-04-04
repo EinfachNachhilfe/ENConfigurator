@@ -320,13 +320,13 @@ nextBtn.addEventListener('click', function() {
     } else if (isAnyCheckboxSelected2 && step1.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step2.style.display = 'none';
       step3.style.display = 'block';
-      checkUnitSelected();
+      checkTeachingLocationSelected();
     } else if (isTeachingLocationSelected && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step3.style.display = 'none';
       step4.style.display = 'block';
       nextBtn.classList.add('disabled');
       checkUnitSelected();
-    } else if (isUnitSelected && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
+    } else if (isUnitSelected && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step4.style.display = 'none';
       step5.style.display = 'block';
       nextBtn.classList.add('disabled');
@@ -363,7 +363,7 @@ backBtn.addEventListener('click', function() {
   } else if (step4.style.display === 'block') {
     step4.style.display = 'none';
     step3.style.display = 'block';
-
+    checkTeachingLocationSelected();
   } else if (step5.style.display === 'block') {
     step5.style.display = 'none';
     step4.style.display = 'block';
