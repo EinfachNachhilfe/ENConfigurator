@@ -188,22 +188,6 @@ teachingLocationRadios.forEach(function(radio) {
     });
   });
 
-  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
-  runtimeRadios.forEach(function(radio) {
-    radio.addEventListener('change', function() {
-      isRuntimeSelected = false;
-      checkRuntimeSelected2();
-    });
-  });
-
-  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
-  runtimeRadios.forEach(function(radio) {
-    radio.addEventListener('change', function() {
-      isRuntimeSelected = false;
-      checkRuntimeSelected3();
-    });
-  });
-
 // Binden Sie das 'click'-Ereignis an den 'nextBtn'
 nextBtn.addEventListener('click', function() {
     if (isAnyCheckboxSelected1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
