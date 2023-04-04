@@ -82,6 +82,8 @@ function checkCheckboxSelected3() {
       isAnyCheckboxSelected3 = true;
     }
   });
+
+  isAnyCheckboxSelected4 = false;
   
   if (isAnyCheckboxSelected3) {
     nextBtn.classList.remove('disabled');
@@ -251,6 +253,8 @@ function checkTeachingLocationSelected() {
       nextBtn.classList.add('disabled');
     }
   }
+
+  isAnyCheckboxSelected3 = false;
 
 // Binden Sie das 'change'-Ereignis an alle Checkboxen im 'step1'
 checkboxes1.forEach(function(checkbox) {
