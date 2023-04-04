@@ -82,6 +82,8 @@ function checkCheckboxSelected3() {
       isAnyCheckboxSelected3 = true;
     }
   });
+
+  isAnyCheckboxSelected4 = false;
   
   if (isAnyCheckboxSelected3) {
     nextBtn.classList.remove('disabled');
@@ -246,7 +248,6 @@ function checkTeachingLocationSelected() {
     });
     
     isAnyCheckboxSelected3 = false;
-    isAnyCheckboxSelected4 = false;
 
     if (isRuntimeSelected) {
       nextBtn.classList.remove('disabled');
@@ -381,6 +382,7 @@ backBtn.addEventListener('click', function() {
   } else if (step7.style.display === 'block') {
     step7.style.display = 'none';
     step6.style.display = 'block';
+    checkRuntimeSelected();
     checkCheckboxSelected3();
   } else if (step8.style.display === 'block') {
     step8.style.display = 'none';
