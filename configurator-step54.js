@@ -336,7 +336,6 @@ nextBtn.addEventListener('click', function() {
       step6.style.display = 'block';
       nextBtn.classList.add('disabled');
       checkCheckboxSelected3()
-      checkRuntimeSelected();
     } else if (isAnyCheckboxSelected3 && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step6.style.display = 'none';
       step7.style.display = 'block';
@@ -378,7 +377,6 @@ backBtn.addEventListener('click', function() {
     step7.style.display = 'none';
     step6.style.display = 'block';
     checkCheckboxSelected3();
-    checkRuntimeSelected();
   } else if (step8.style.display === 'block') {
     step8.style.display = 'none';
     step7.style.display = 'block';
