@@ -176,6 +176,7 @@ function checkTeachingLocationSelected() {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
+          }
         }
       }
     });
