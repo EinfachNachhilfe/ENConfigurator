@@ -355,7 +355,7 @@ backBtn.addEventListener('click', function() {
     step2.style.display = 'none';
     step1.style.display = 'block';
     backBtn.style.display = 'none';
-    checkTeachingLocationSelected();
+    checkCheckboxSelected1();
   } else if (step3.style.display === 'block') {
     step3.style.display = 'none';
     step2.style.display = 'block';
