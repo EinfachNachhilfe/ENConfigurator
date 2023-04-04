@@ -128,7 +128,7 @@ function checkTeachingLocationSelected() {
   function checkRuntimeSelected() {
     runtimeRadios.forEach(function(radio) {
       if (radio.checked) {
-        if (radio.name === 'runtime-1Unit') {
+        if (radio.name === 'runtime-3Unit') {
           isRuntimeSelected = true;
           if (radio.value === '1') { 
               tutor1.style.display = 'block';
@@ -163,7 +163,7 @@ function checkTeachingLocationSelected() {
           
           
           isRuntimeSelected = true;
-        } else if (radio.name === 'runtime-3Unit') {
+        } else if (radio.name === 'runtime-1Unit') {
           if (radio.value === '1') {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
