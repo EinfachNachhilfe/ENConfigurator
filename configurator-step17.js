@@ -148,6 +148,33 @@ function checkRuntimeSelected1() {
   }
 }
 
+function checkRuntimeSelected2() {
+  runtimeRadios.forEach(function(radio) {
+    if (radio.checked && radio.name === 'runtime-2Unit') {
+      isRuntimeSelected = true;
+      if (radio.value === '1') { 
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'block';
+        tutor3.style.display = 'none';
+      } else if (radio.value === '2') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'block';
+        tutor3.style.display = 'none';
+      } else if (radio.value === '3') {
+        tutor1.style.display = 'none';
+        tutor2.style.display = 'block';
+        tutor3.style.display = 'none';
+      }
+    }
+  });
+  
+  if (isRuntimeSelected) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  }
+}
+
 // Binden Sie das 'change'-Ereignis an alle Checkboxen im 'step1'
 checkboxes1.forEach(function(checkbox) {
   checkbox.addEventListener('change', function() {
@@ -188,6 +215,14 @@ teachingLocationRadios.forEach(function(radio) {
     });
   });
 
+  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
+  runtimeRadios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      isRuntimeSelected = false;
+      checkRuntimeSelected2();
+    });
+  });
+
 // Binden Sie das 'click'-Ereignis an den 'nextBtn'
 nextBtn.addEventListener('click', function() {
     if (isAnyCheckboxSelected1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
@@ -214,6 +249,7 @@ nextBtn.addEventListener('click', function() {
       step6.style.display = 'block';
       nextBtn.classList.add('disabled');
       checkRuntimeSelected1();
+      checkRuntimeSelected2();
     } else if (step6.style.display === 'block') {
       step6.style.display = 'none';
       step7.style.display = 'block';
@@ -248,6 +284,7 @@ backBtn.addEventListener('click', function() {
     step6.style.display = 'none';
     step5.style.display = 'block';
     checkRuntimeSelected1();
+    checkRuntimeSelected2();
   } else if (step7.style.display === 'block') {
     step7.style.display = 'none';
     step6.style.display = 'block';
