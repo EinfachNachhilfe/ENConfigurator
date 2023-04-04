@@ -120,6 +120,8 @@ function checkTeachingLocationSelected() {
         }
       }
     });
+  
+   isUnitSelected = false;
     
     if (isTeachingLocationSelected) {
       nextBtn.classList.remove('disabled');
@@ -147,6 +149,8 @@ function checkTeachingLocationSelected() {
         }
       }
     });
+    
+    isRuntimeSelected = false;
     
     if (isUnitSelected) {
       nextBtn.classList.remove('disabled');
