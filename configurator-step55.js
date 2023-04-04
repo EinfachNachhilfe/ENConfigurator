@@ -245,6 +245,8 @@ function checkTeachingLocationSelected() {
       }
     });
     
+          isRuntimeSelected = false;
+    
     if (isRuntimeSelected) {
       nextBtn.classList.remove('disabled');
     } else {
