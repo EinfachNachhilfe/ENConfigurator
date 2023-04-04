@@ -194,25 +194,26 @@ nextBtn.addEventListener('click', function() {
       step1.style.display = 'none';
       step2.style.display = 'block';
       backBtn.style.display = 'block';
-      checkCheckboxSelected2();
+      checkCheckboxSelected1();
     } else if (isAnyCheckboxSelected2 && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step2.style.display = 'none';
       step3.style.display = 'block';
-      checkTeachingLocationSelected();
+      checkCheckboxSelected2();
     } else if (isTeachingLocationSelected && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step3.style.display = 'none';
       step4.style.display = 'block';
       nextBtn.classList.add('disabled');
-      checkUnitSelected();
+      checkTeachingLocationSelected();
     } else if (isUnitSelected && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step4.style.display = 'none';
       step5.style.display = 'block';
       nextBtn.classList.add('disabled');
-      checkRuntimeSelected1();
+      checkUnitSelected();
     } else if (isRuntimeSelected && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step5.style.display = 'none';
       step6.style.display = 'block';
       nextBtn.classList.add('disabled');
+      checkRuntimeSelected1();
     } else if (step6.style.display === 'block') {
       step6.style.display = 'none';
       step7.style.display = 'block';
