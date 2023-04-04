@@ -345,6 +345,7 @@ nextBtn.addEventListener('click', function() {
       step7.style.display = 'none';
       step8.style.display = 'block';
       nextBtn.style.display = 'none';
+      checkRuntimeSelected();
       
     }
   });
