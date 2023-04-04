@@ -82,8 +82,6 @@ function checkCheckboxSelected3() {
       isAnyCheckboxSelected3 = true;
     }
   });
-
-  isAnyCheckboxSelected4 = false;
   
   if (isAnyCheckboxSelected3) {
     nextBtn.classList.remove('disabled');
