@@ -317,31 +317,31 @@ nextBtn.addEventListener('click', function() {
       step2.style.display = 'block';
       backBtn.style.display = 'block';
       checkCheckboxSelected2();
-    } else if (isAnyCheckboxSelected2 && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
+    } else if (isAnyCheckboxSelected2 && step1.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step2.style.display = 'none';
       step3.style.display = 'block';
       checkUnitSelected();
-    } else if (isTeachingLocationSelected && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
+    } else if (isTeachingLocationSelected && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step3.style.display = 'none';
       step4.style.display = 'block';
       nextBtn.classList.add('disabled');
       checkUnitSelected();
-    } else if (isUnitSelected && step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
+    } else if (isUnitSelected && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' step5.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step4.style.display = 'none';
       step5.style.display = 'block';
       nextBtn.classList.add('disabled');
       checkRuntimeSelected();
-    } else if (isRuntimeSelected && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
+    } else if (isRuntimeSelected && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step6.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step5.style.display = 'none';
       step6.style.display = 'block';
       nextBtn.classList.add('disabled');
       checkCheckboxSelected3()
-    } else if (isAnyCheckboxSelected3 && step7.style.display == 'none' && step8.style.display == 'none') {
+    } else if (isAnyCheckboxSelected3 && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step6.style.display = 'none';
       step7.style.display = 'block';
       checkCheckboxSelected4()
       nextBtn.classList.add('disabled');
-    } else if (isAnyCheckboxSelected4 && step8.style.display == 'none') {
+    } else if (isAnyCheckboxSelected4 && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step6.style.display == 'none' && step8.style.display == 'none') {
       step7.style.display = 'none';
       step8.style.display = 'block';
       nextBtn.style.display = 'none';
