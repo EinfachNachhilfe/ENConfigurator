@@ -168,23 +168,23 @@ function checkTeachingLocationSelected() {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
+              lesson1.style.display = 'block';
+              lesson2.style.display = 'none';
+              lesson3.style.display = 'none';
           } else if (radio.value === '2') {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
+              lesson1.style.display = 'block';
+              lesson2.style.display = 'none';
+              lesson3.style.display = 'none';
           } else if (radio.value === '3') {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-              tutor1.style.display = 'block';
-              tutor2.style.display = 'none';
-              tutor3.style.display = 'none';
+              lesson1.style.display = 'block';
+              lesson2.style.display = 'none';
+              lesson3.style.display = 'none';
           }
 
           
@@ -201,16 +201,16 @@ function checkTeachingLocationSelected() {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
+             lesson1.style.display = 'none';
+             lesson2.style.display = 'block';
+             lesson3.style.display = 'none';
           } else if (radio.value === '3') {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'block';
-             tutor3.style.display = 'none';
+             lesson1.style.display = 'none';
+             lesson2.style.display = 'block';
+             lesson3.style.display = 'none';
           }
           
                  isRuntimeSelected = true;
@@ -226,16 +226,16 @@ function checkTeachingLocationSelected() {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
+             lesson1.style.display = 'none';
+             lesson2.style.display = 'none';
+             lesson3.style.display = 'block';
           } else if (radio.value === '3') {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
-             tutor1.style.display = 'none';
-             tutor2.style.display = 'none';
-             tutor3.style.display = 'block';
+             lesson1.style.display = 'none';
+             lesson2.style.display = 'none';
+             lesson3.style.display = 'block';
          
          }
         // Der letzte else if BLock ist ohne Funktion, wird benutzt damit die anderen richtig funktionieren
