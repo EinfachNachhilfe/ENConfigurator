@@ -124,7 +124,7 @@ function checkTeachingLocationSelected() {
   function checkRuntimeSelected() {
     runtimeRadios.forEach(function(radio) {
       if (radio.checked) {
-        if (radio.name === 'runtime-1Unit') {
+        if (radio.name === 'runtime-3Unit') {
           isRuntimeSelected = true;
           if (radio.value === '1') { 
               tutor1.style.display = 'block';
@@ -139,9 +139,25 @@ function checkTeachingLocationSelected() {
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
           }
+
           
           isRuntimeSelected = true;
-        } else if (radio.name === 'runtime-3Unit') {
+        } else if (radio.name === 'runtime-2Unit') {
+          if (radio.value === '1') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
+          } else if (radio.value === '2') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
+          } else if (radio.value === '3') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
+          }
+          isRuntimeSelected = true;
+        } else if (radio.name === 'runtime-1Unit') {
           if (radio.value === '1') {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
