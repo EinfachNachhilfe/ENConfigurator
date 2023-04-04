@@ -355,7 +355,7 @@ backBtn.addEventListener('click', function() {
     step2.style.display = 'none';
     step1.style.display = 'block';
     backBtn.style.display = 'none';
-    checkCheckboxSelected1();
+    checkTeachingLocationSelected();
   } else if (step3.style.display === 'block') {
     step3.style.display = 'none';
     step2.style.display = 'block';
@@ -363,7 +363,7 @@ backBtn.addEventListener('click', function() {
   } else if (step4.style.display === 'block') {
     step4.style.display = 'none';
     step3.style.display = 'block';
-    checkTeachingLocationSelected();
+
   } else if (step5.style.display === 'block') {
     step5.style.display = 'none';
     step4.style.display = 'block';
