@@ -15,16 +15,22 @@ var runtime3 = document.getElementById('step-item_runtime-3');
 var tutor1 = document.getElementById('step-item_addOn-tutor-1');
 var tutor2 = document.getElementById('step-item_addOn-tutor-2');
 var tutor3 = document.getElementById('step-item_addOn-tutor-3');
+var lesson1 = document.getElementById('step-item_addOn-lesson-1');
+var lesson2 = document.getElementById('step-item_addOn-lesson-2');
+var lesson3 = document.getElementById('step-item_addOn-lesson-3');
 var backBtn = document.getElementById('back-btn');
 var nextBtn = document.getElementById('next-btn');
 var checkboxes1 = step1.querySelectorAll('input[type="checkbox"]');
 var checkboxes2 = step2.querySelectorAll('input[type="checkbox"]');
+var checkboxes3 = step6.querySelectorAll('input[type="checkbox"]');
+var checkboxes4 = step7.querySelectorAll('input[type="checkbox"]');
 var teachingLocationRadios = step3.querySelectorAll('input[type="radio"]');
 var unitRadios = step4.querySelectorAll('input[type="radio"]');
 var runtimeRadios = step5.querySelectorAll('input[type="radio"]');
-var checkboxes3 = step6.querySelectorAll('input[type="checkbox"]');
 var isAnyCheckboxSelected1 = false;
 var isAnyCheckboxSelected2 = false;
+var isAnyCheckboxSelected3 = false;
+var isAnyCheckboxSelected4 = false;
 var isTeachingLocationSelected = false;
 var isUnitSelected = false;
 var isRuntimeSelected = false;
@@ -64,6 +70,34 @@ function checkCheckboxSelected2() {
   });
   
   if (isAnyCheckboxSelected2) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  }
+}
+
+function checkCheckboxSelected3() {
+  checkboxes3.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      isAnyCheckboxSelected3 = true;
+    }
+  });
+  
+  if (isAnyCheckboxSelected3) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  }
+}
+
+function checkCheckboxSelected4() {
+  checkboxes4.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      isAnyCheckboxSelected4 = true;
+    }
+  });
+  
+  if (isAnyCheckboxSelected4) {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
@@ -134,11 +168,20 @@ function checkTeachingLocationSelected() {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
+              tutor1.style.display = 'block';
+              tutor2.style.display = 'none';
+              tutor3.style.display = 'none';
           } else if (radio.value === '2') {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
+              tutor1.style.display = 'block';
+              tutor2.style.display = 'none';
+              tutor3.style.display = 'none';
           } else if (radio.value === '3') {
+              tutor1.style.display = 'block';
+              tutor2.style.display = 'none';
+              tutor3.style.display = 'none';
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
@@ -151,11 +194,20 @@ function checkTeachingLocationSelected() {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
           } else if (radio.value === '2') {
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
           } else if (radio.value === '3') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'block';
+             tutor3.style.display = 'none';
              tutor1.style.display = 'none';
              tutor2.style.display = 'block';
              tutor3.style.display = 'none';
@@ -167,11 +219,20 @@ function checkTeachingLocationSelected() {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'none';
+             tutor3.style.display = 'block';
           } else if (radio.value === '2') {
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'none';
+             tutor3.style.display = 'block';
           } else if (radio.value === '3') {
+             tutor1.style.display = 'none';
+             tutor2.style.display = 'none';
+             tutor3.style.display = 'block';
              tutor1.style.display = 'none';
              tutor2.style.display = 'none';
              tutor3.style.display = 'block';
@@ -207,6 +268,24 @@ checkboxes2.forEach(function(checkbox) {
   });
 }); 
 
+// Binden Sie das 'change'-Ereignis an alle Checkboxen im 'ste6'
+checkboxes3.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function() {
+    isAnyCheckboxSelected3 = false;
+    checkCheckboxSelected3();
+  });
+}); 
+
+// Binden Sie das 'change'-Ereignis an alle Checkboxen im 'ste6'
+checkboxes4.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function() {
+    isAnyCheckboxSelected4 = false;
+    checkCheckboxSelected4();
+  });
+}); 
+
+
+
 // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
 teachingLocationRadios.forEach(function(radio) {
     radio.addEventListener('change', function() {
@@ -215,7 +294,7 @@ teachingLocationRadios.forEach(function(radio) {
     });
   });
 
-  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
+  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step4'
   unitRadios.forEach(function(radio) {
   radio.addEventListener('change', function() {
     isUnitSelected = false;
@@ -223,7 +302,7 @@ teachingLocationRadios.forEach(function(radio) {
   });
 });
 
-  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step3'
+  // Binden Sie das 'change'-Ereignis an alle Radiobuttons im 'step5'
   runtimeRadios.forEach(function(radio) {
     radio.addEventListener('change', function() {
       isRuntimeSelected = false;
@@ -256,14 +335,17 @@ nextBtn.addEventListener('click', function() {
       step5.style.display = 'none';
       step6.style.display = 'block';
       nextBtn.classList.add('disabled');
-    } else if (step6.style.display === 'block') {
+      checkCheckboxSelected3()
+    } else if (isAnyCheckboxSelected3 && step7.style.display == 'none' && step8.style.display == 'none') {
       step6.style.display = 'none';
       step7.style.display = 'block';
+      checkCheckboxSelected4()
       nextBtn.classList.add('disabled');
-    } else if (step7.style.display === 'block') {
+    } else if (isAnyCheckboxSelected4 && step8.style.display == 'none') {
       step7.style.display = 'none';
       step8.style.display = 'block';
-      nextBtn.classList.add('disabled');
+      nextBtn.style.display = 'none';
+      
     }
   });
 
@@ -293,8 +375,11 @@ backBtn.addEventListener('click', function() {
   } else if (step7.style.display === 'block') {
     step7.style.display = 'none';
     step6.style.display = 'block';
+    checkCheckboxSelected3();
   } else if (step8.style.display === 'block') {
     step8.style.display = 'none';
     step7.style.display = 'block';
+    nextBtn.style.display = 'block';
+    checkCheckboxSelected4();
   }
 });
