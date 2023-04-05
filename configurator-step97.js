@@ -392,15 +392,16 @@ backBtn.addEventListener('click', function() {
   }
 
 // Selektiere alle erforderlichen Felder
-var requiredFields = $('#class_student, #number_contact-person, #email_contact-person, #second-name_contact-person, #first-name_contact-person');
+var requiredFields = $('#step-item_form-1 [required]');
 
 // Selektiere den Submit-Button
 var submitBtn = $('#submit-btn');
 
-// Funktion, um zu prüfen, ob alle erforderlichen Felder ausgefüllt sind
 function checkRequiredFields() {
+  // Iteriere über alle erforderlichen Felder
   for (var i = 0; i < requiredFields.length; i++) {
-    if (!$(requiredFields[i]).prop('checked')) {
+    // Überprüfe, ob das Feld ausgefüllt wurde
+    if (!$(requiredFields[i]).val()) {
       return false;
     }
   }
@@ -417,5 +418,4 @@ requiredFields.on('change', function() {
     submitBtn.addClass('disabled');
   }
 });
-
 });
