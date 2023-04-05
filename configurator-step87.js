@@ -392,22 +392,25 @@ backBtn.addEventListener('click', function() {
     checkCheckboxSelected4();
   }
 
-  function checkRequiredFields() {
-    var isAllFilled = true;
-    requiredFields.forEach(function(field) {
-      if (!field.value) {
-        isAllFilled = false;
+
+var requiredFields = step8.querySelectorAll('[required]');
+var submitBtn = document.getElementById('submit-btn');
+
+requiredFields.forEach(function(field) {
+  field.addEventListener('change', function() {
+    var isFormValid = true;
+    requiredFields.forEach(function(f) {
+      if (!f.value) {
+        isFormValid = false;
       }
     });
-    if (isAllFilled) {
+    if (isFormValid) {
       submitBtn.classList.remove('disabled');
     } else {
       submitBtn.classList.add('disabled');
     }
-  }
-  
-  requiredFields.forEach(function(field) {
-    field.addEventListener('input', checkRequiredFields);
   });
+});
+
 
 });
