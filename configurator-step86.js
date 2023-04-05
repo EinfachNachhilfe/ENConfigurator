@@ -34,6 +34,9 @@ var isAnyCheckboxSelected4 = false;
 var isTeachingLocationSelected = false;
 var isUnitSelected = false;
 var isRuntimeSelected = false;
+var requiredFields = step8.querySelectorAll('[required]');
+var submitBtn = document.getElementById('submit-btn');
+
 
 
 // Hide all form steps except the first one
@@ -388,4 +391,23 @@ backBtn.addEventListener('click', function() {
     nextBtn.style.display = 'block';
     checkCheckboxSelected4();
   }
+
+  function checkRequiredFields() {
+    var isAllFilled = true;
+    requiredFields.forEach(function(field) {
+      if (!field.value) {
+        isAllFilled = false;
+      }
+    });
+    if (isAllFilled) {
+      submitBtn.classList.remove('disabled');
+    } else {
+      submitBtn.classList.add('disabled');
+    }
+  }
+  
+  requiredFields.forEach(function(field) {
+    field.addEventListener('input', checkRequiredFields);
+  });
+
 });
