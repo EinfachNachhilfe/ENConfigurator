@@ -171,7 +171,7 @@ function checkTeachingLocationSelected() {
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
               lesson1.style.display = 'none';
-              lesson2.style.display = 'none';
+              lesson2.style.display = 'block';
               lesson3.style.display = 'none';
           } else if (radio.value === '2') {
               tutor1.style.display = 'block';
