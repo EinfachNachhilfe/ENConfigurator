@@ -391,11 +391,13 @@ backBtn.addEventListener('click', function() {
     checkCheckboxSelected4();
   }
 
-
-// Diese Funktion überprüft, ob alle erforderlichen Felder ausgefüllt sind
+var requiredFields = step8.querySelectorAll('[required]');
+var submitBtn = document.getElementById('submit-btn');
+  
+  // Diese Funktion überprüft, ob alle erforderlichen Felder ausgefüllt sind
 function checkRequiredFields() {
   for (var i = 0; i < requiredFields.length; i++) {
-    if (!requiredFields[i].value) {
+    if (!requiredFields[i].checked) { // Prüfe, ob das Feld angekreuzt ist
       return false;
     }
   }
@@ -414,6 +416,5 @@ for (var i = 0; i < requiredFields.length; i++) {
     }
   });
 }
-
 
 });
