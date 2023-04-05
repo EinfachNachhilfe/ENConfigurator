@@ -391,37 +391,27 @@ backBtn.addEventListener('click', function() {
     checkCheckboxSelected4();
   }
 
-// Selektiere alle erforderlichen Felder
-var requiredFields = $('#step-item_form-1 [required]');
+  $(document).ready(function() {
+  var requiredFields = $('#step-item_form-1 [required]'); // Selektiere alle erforderlichen Felder
+  var submitBtn = $('#submit-btn'); // Selektiere den Submit-Button
 
-// Selektiere den Submit-Button
-var submitBtn = $('#submit-btn');
-
-function checkRequiredFields() {
-  // Iteriere über alle erforderlichen Felder
-  for (var i = 0; i < requiredFields.length; i++) {
-    // Überprüfe, ob das Feld ausgefüllt wurde
-    if (!$(requiredFields[i]).val()) {
-      return false;
+  // Funktion, um zu prüfen, ob alle erforderlichen Felder ausgefüllt sind
+  function checkRequiredFields() {
+    var allFilled = true;
+    requiredFields.each(function() {
+      if ($(this).val().trim() === '') { // Prüfe, ob das Feld ausgefüllt ist
+        allFilled = false;
+      }
+    });
+    return allFilled;
+  }
+ // Füge für jedes erforderliche Feld einen Event-Listener hinzu, der prüft, ob alle erforderlichen Felder ausgefüllt sind
+  requiredFields.on('input', function() {
+    if (checkRequiredFields()) {
+      submitBtn.prop('disabled', false);
+    } else {
+      submitBtn.prop('disabled', true);
     }
-  }
-  return true;
-}
-
-// Füge für jedes erforderliche Feld einen Event-Listener hinzu, der prüft, ob alle erforderlichen Felder ausgefüllt sind
-requiredFields.on('change', function() {
-  if (checkRequiredFields()) {
-    // Entferne die "disabled"-Klasse vom Submit-Button, wenn alle erforderlichen Felder ausgefüllt sind
-    submitBtn.removeClass('disabled');
-  } else {
-    // Füge die "disabled"-Klasse zum Submit-Button hinzu, wenn nicht alle erforderlichen Felder ausgefüllt sind
-    submitBtn.addClass('disabled');
-  }
-});
-
-// Überprüfe zu Beginn, ob alle Felder ausgefüllt sind und entferne die "disabled"-Klasse, falls erforderlich
-if (checkRequiredFields()) {
-  submitBtn.removeClass('disabled');
-}
+  });
 
 });
