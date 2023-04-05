@@ -391,13 +391,16 @@ backBtn.addEventListener('click', function() {
     checkCheckboxSelected4();
   }
 
-var requiredFields = step8.querySelectorAll('[required]');
-var submitBtn = document.getElementById('submit-btn');
-  
-  // Diese Funktion überprüft, ob alle erforderlichen Felder ausgefüllt sind
+// Selektiere alle erforderlichen Felder
+var requiredFields = $('#class_student, #number_contact-person, #email_contact-person, #second-name_contact-person, #first-name_contact-person');
+
+// Selektiere den Submit-Button
+var submitBtn = $('#submit-btn');
+
+// Funktion, um zu prüfen, ob alle erforderlichen Felder ausgefüllt sind
 function checkRequiredFields() {
   for (var i = 0; i < requiredFields.length; i++) {
-    if (!requiredFields[i].checked) { // Prüfe, ob das Feld angekreuzt ist
+    if ($(requiredFields[i]).val() === '') {
       return false;
     }
   }
@@ -405,16 +408,14 @@ function checkRequiredFields() {
 }
 
 // Füge für jedes erforderliche Feld einen Event-Listener hinzu, der prüft, ob alle erforderlichen Felder ausgefüllt sind
-for (var i = 0; i < requiredFields.length; i++) {
-  requiredFields[i].addEventListener('change', function() {
-    if (checkRequiredFields()) {
-      // Entferne die "disabled"-Klasse vom Submit-Button, wenn alle erforderlichen Felder ausgefüllt sind
-      submitBtn.classList.remove('disabled');
-    } else {
-      // Füge die "disabled"-Klasse zum Submit-Button hinzu, wenn nicht alle erforderlichen Felder ausgefüllt sind
-      submitBtn.classList.add('disabled');
-    }
-  });
-}
+requiredFields.on('change', function() {
+  if (checkRequiredFields()) {
+    // Entferne die "disabled"-Klasse vom Submit-Button, wenn alle erforderlichen Felder ausgefüllt sind
+    submitBtn.removeClass('disabled');
+  } else {
+    // Füge die "disabled"-Klasse zum Submit-Button hinzu, wenn nicht alle erforderlichen Felder ausgefüllt sind
+    submitBtn.addClass('disabled');
+  }
+});
 
 });
