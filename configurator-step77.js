@@ -170,7 +170,7 @@ function checkTeachingLocationSelected() {
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-              lesson1.style.display = 'block';
+              lesson1.style.display = 'none';
               lesson2.style.display = 'none';
               lesson3.style.display = 'none';
           } else if (radio.value === '2') {
