@@ -34,7 +34,8 @@ var isAnyCheckboxSelected4 = false;
 var isTeachingLocationSelected = false;
 var isUnitSelected = false;
 var isRuntimeSelected = false;
-
+var requiredFields = step8.querySelectorAll('[required]');
+var submitBtn = document.getElementById('submit-btn');
 
 
 
@@ -391,27 +392,47 @@ backBtn.addEventListener('click', function() {
     checkCheckboxSelected4();
   }
 
-  $(document).ready(function() {
-  var requiredFields = $('#step-item_form-1 [required]'); // Selektiere alle erforderlichen Felder
-  var submitBtn = $('#submit-btn'); // Selektiere den Submit-Button
-
-  // Funktion, um zu prüfen, ob alle erforderlichen Felder ausgefüllt sind
   function checkRequiredFields() {
-    var allFilled = true;
-    requiredFields.each(function() {
-      if ($(this).val().trim() === '') { // Prüfe, ob das Feld ausgefüllt ist
-        allFilled = false;
+    var isAllFilled = true;
+    requiredFields.forEach(function(field) {
+      if (!field.value) {
+        isAllFilled = false;
       }
     });
-    return allFilled;
-  }
- // Füge für jedes erforderliche Feld einen Event-Listener hinzu, der prüft, ob alle erforderlichen Felder ausgefüllt sind
-  requiredFields.on('input', function() {
-    if (checkRequiredFields()) {
-      submitBtn.prop('disabled', false);
+    if (isAllFilled) {
+      submitBtn.classList.remove('disabled');
     } else {
-      submitBtn.prop('disabled', true);
+      submitBtn.classList.add('disabled');
     }
+  }
+  
+  requiredFields.forEach(function(field) {
+    field.addEventListener('input', checkRequiredFields);
+  });
+
+  $(document).ready(function() {
+    var requiredFields = $('#step-item_form-1 [required]'); // Selektiere alle erforderlichen Felder
+    var submitBtn = $('#submit-btn'); // Selektiere den Submit-Button
+  
+   
+    function checkRequiredFields() {
+      var allFilled = true;
+      requiredFields.each(function() {
+        if ($(this).val().trim() === '') { 
+          allFilled = false;
+        }
+      });
+      return allFilled;
+    }
+  
+
+    requiredFields.on('input', function() {
+      if (checkRequiredFields()) {
+        submitBtn.prop('disabled', false);
+      } else {
+        submitBtn.prop('disabled', true);
+      }
+    });
   });
 
 });
