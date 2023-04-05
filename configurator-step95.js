@@ -400,7 +400,7 @@ var submitBtn = $('#submit-btn');
 // Funktion, um zu prüfen, ob alle erforderlichen Felder ausgefüllt sind
 function checkRequiredFields() {
   for (var i = 0; i < requiredFields.length; i++) {
-    if ($(requiredFields[i]).val() === '') {
+    if (!$(requiredFields[i]).prop('checked')) {
       return false;
     }
   }
