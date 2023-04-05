@@ -152,7 +152,7 @@ function checkTeachingLocationSelected() {
       }
     });
     
-  
+    isRuntimeSelected = false;
     
     if (isUnitSelected) {
       nextBtn.classList.remove('disabled');
@@ -164,13 +164,12 @@ function checkTeachingLocationSelected() {
   function checkRuntimeSelected() {
     runtimeRadios.forEach(function(radio) {
       if (radio.checked) {
-         isRuntimeSelected = true;
         if (radio.name === 'runtime-1Unit') {
           if (radio.value === '1') { 
               tutor1.style.display = 'block';
               tutor2.style.display = 'none';
               tutor3.style.display = 'none';
-              lesson1.style.display = 'none';
+              lesson1.style.display = 'block';
               lesson2.style.display = 'none';
               lesson3.style.display = 'none';
           } else if (radio.value === '2') {
@@ -341,7 +340,6 @@ nextBtn.addEventListener('click', function() {
       step5.style.display = 'none';
       step6.style.display = 'block';
       nextBtn.classList.add('disabled');
-      checkRuntimeSelected();
       checkCheckboxSelected3()
     } else if (isAnyCheckboxSelected3 && step1.style.display == 'none' && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none' && step7.style.display == 'none' && step8.style.display == 'none') {
       step6.style.display = 'none';
@@ -382,7 +380,6 @@ backBtn.addEventListener('click', function() {
   } else if (step7.style.display === 'block') {
     step7.style.display = 'none';
     step6.style.display = 'block';
-    checkRuntimeSelected();
     checkCheckboxSelected3();
   } else if (step8.style.display === 'block') {
     step8.style.display = 'none';
