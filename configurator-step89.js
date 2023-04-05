@@ -34,8 +34,7 @@ var isAnyCheckboxSelected4 = false;
 var isTeachingLocationSelected = false;
 var isUnitSelected = false;
 var isRuntimeSelected = false;
-var requiredFields = step8.querySelectorAll('[required]');
-var submitBtn = document.getElementById('submit-btn');
+
 
 
 
@@ -393,33 +392,28 @@ backBtn.addEventListener('click', function() {
   }
 
 
-var requiredFields = step8.querySelectorAll('[required]');
-var submitBtn = document.getElementById('submitBtn');
-
+// Diese Funktion überprüft, ob alle erforderlichen Felder ausgefüllt sind
 function checkRequiredFields() {
-  var allFieldsFilled = true;
-  requiredFields.forEach(function(field) {
-    if (!field.value) {
-      allFieldsFilled = false;
+  for (var i = 0; i < requiredFields.length; i++) {
+    if (!requiredFields[i].value) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Füge für jedes erforderliche Feld einen Event-Listener hinzu, der prüft, ob alle erforderlichen Felder ausgefüllt sind
+for (var i = 0; i < requiredFields.length; i++) {
+  requiredFields[i].addEventListener('change', function() {
+    if (checkRequiredFields()) {
+      // Entferne die "disabled"-Klasse vom Submit-Button, wenn alle erforderlichen Felder ausgefüllt sind
+      submitBtn.classList.remove('disabled');
+    } else {
+      // Füge die "disabled"-Klasse zum Submit-Button hinzu, wenn nicht alle erforderlichen Felder ausgefüllt sind
+      submitBtn.classList.add('disabled');
     }
   });
-  
-  if (allFieldsFilled) {
-    submitBtn.classList.remove('disabled');
-    submitBtn.removeEventListener('click', checkRequiredFields);
-    submitBtn.addEventListener('click', submitForm);
-  } else {
-    submitBtn.classList.add('disabled');
-    submitBtn.removeEventListener('click', submitForm);
-    submitBtn.addEventListener('click', checkRequiredFields);
-  }
 }
-
-function submitForm() {
-  // submit the form
-}
-
-submitBtn.addEventListener('click', checkRequiredFields);
 
 
 });
