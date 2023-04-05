@@ -394,23 +394,32 @@ backBtn.addEventListener('click', function() {
 
 
 var requiredFields = step8.querySelectorAll('[required]');
-var submitBtn = document.getElementById('submit-btn');
+var submitBtn = document.getElementById('submitBtn');
 
-requiredFields.forEach(function(field) {
-  field.addEventListener('change', function() {
-    var isFormValid = true;
-    requiredFields.forEach(function(f) {
-      if (!f.value) {
-        isFormValid = false;
-      }
-    });
-    if (isFormValid) {
-      submitBtn.classList.remove('disabled');
-    } else {
-      submitBtn.classList.add('disabled');
+function checkRequiredFields() {
+  var allFieldsFilled = true;
+  requiredFields.forEach(function(field) {
+    if (!field.value) {
+      allFieldsFilled = false;
     }
   });
-});
+  
+  if (allFieldsFilled) {
+    submitBtn.classList.remove('disabled');
+    submitBtn.removeEventListener('click', checkRequiredFields);
+    submitBtn.addEventListener('click', submitForm);
+  } else {
+    submitBtn.classList.add('disabled');
+    submitBtn.removeEventListener('click', submitForm);
+    submitBtn.addEventListener('click', checkRequiredFields);
+  }
+}
+
+function submitForm() {
+  // submit the form
+}
+
+submitBtn.addEventListener('click', checkRequiredFields);
 
 
 });
