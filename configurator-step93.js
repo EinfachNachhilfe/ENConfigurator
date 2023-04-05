@@ -416,6 +416,12 @@ requiredFields.on('change', function() {
     // Füge die "disabled"-Klasse zum Submit-Button hinzu, wenn nicht alle erforderlichen Felder ausgefüllt sind
     submitBtn.addClass('disabled');
   }
+  
+  if (checkRequiredFields()) {
+  submitBtn.removeAttr('disabled');
+} else {
+  submitBtn.attr('disabled', true);
+}
 });
 
 });
