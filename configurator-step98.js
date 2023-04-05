@@ -418,4 +418,10 @@ requiredFields.on('change', function() {
     submitBtn.addClass('disabled');
   }
 });
+
+// Überprüfe zu Beginn, ob alle Felder ausgefüllt sind und entferne die "disabled"-Klasse, falls erforderlich
+if (checkRequiredFields()) {
+  submitBtn.removeClass('disabled');
+}
+
 });
