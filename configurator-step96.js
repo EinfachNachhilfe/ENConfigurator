@@ -395,7 +395,7 @@ backBtn.addEventListener('click', function() {
 var requiredFields = $('#class_student, #number_contact-person, #email_contact-person, #second-name_contact-person, #first-name_contact-person');
 
 // Selektiere den Submit-Button
-var submitBtn = $('#submit-btn');
+var submitBtn = $('#back-btn');
 
 // Funktion, um zu prüfen, ob alle erforderlichen Felder ausgefüllt sind
 function checkRequiredFields() {
