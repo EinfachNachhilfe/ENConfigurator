@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			} else if (isCondition2Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 4) + "IA" + codegenerator.substr(6);
 			} else if (isCondition3Met(codegenerator)) {
-				codegenerator = codegenerator.substr(0, 5) + "IA" + codegenerator.substr(8);
+				codegenerator = codegenerator.substr(0, 6) + "IA" + codegenerator.substr(8);
 			}
 		}
 
