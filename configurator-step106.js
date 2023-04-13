@@ -395,3 +395,25 @@ backBtn.addEventListener('click', function() {
     checkCheckboxSelected4();
   }
 });
+
+
+
+$(document).ready(function() {
+  $('#first-name_contact-person, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').on('change', function() {
+      // Check if all fields have values
+      var allFieldsFilled = true;
+      $('#first-name_contact-person, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').each(function() {
+          if ($(this).val().length === 0) {
+              allFieldsFilled = false;
+          }
+      });
+
+      if (allFieldsFilled) {
+          $('#submit-btn').removeClass('disabled');
+      } else {
+          $('#submit-btn').addClass('disabled');
+      }
+  });
+});
+
+
