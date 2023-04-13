@@ -394,30 +394,4 @@ backBtn.addEventListener('click', function() {
     submitBtn.style.display = 'none';
     checkCheckboxSelected4();
   }
-
-  $(document).ready(function() {
-    var requiredFields = $('#step-item_form-1 [required]'); // Selektiere alle erforderlichen Felder
-    var submitBtn = $('#submit-btn'); // Selektiere den Submit-Button
-  
-   
-    function checkRequiredFields() {
-      var allFilled = true;
-      requiredFields.each(function() {
-        if ($(this).val().trim() === '') { 
-          allFilled = false;
-        }
-      });
-      return allFilled;
-    }
-  
-
-    requiredFields.on('input', function() {
-      if (checkRequiredFields()) {
-        submitBtn.prop('disabled', false);
-      } else {
-        submitBtn.prop('disabled', true);
-      }
-    });
-  });
-
 });
