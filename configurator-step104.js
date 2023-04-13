@@ -50,6 +50,7 @@ step8.style.display = 'none';
 unit45.style.display = "none";
 unit90.style.display = "none";
 backBtn.style.display = 'none';
+submitBtn.style.display = 'none';
 
 function checkCheckboxSelected1() {
   checkboxes1.forEach(function(checkbox) {
@@ -354,6 +355,7 @@ nextBtn.addEventListener('click', function() {
       step7.style.display = 'none';
       step8.style.display = 'block';
       nextBtn.style.display = 'none';
+      submitBtn.style.display = 'block';
       
     }
   });
@@ -389,6 +391,7 @@ backBtn.addEventListener('click', function() {
     step8.style.display = 'none';
     step7.style.display = 'block';
     nextBtn.style.display = 'block';
+    submitBtn.style.display = 'none';
     checkCheckboxSelected4();
   }
 
