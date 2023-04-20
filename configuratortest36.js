@@ -173,6 +173,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	function calculation() {
 		var totalBudget = 16.49;
 		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
+		var lifetimeValue;
+		var totalBudget1 = totalBudget;
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -1552,13 +1554,81 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		}
 
+		mycustomradiobox2.forEach(function(radio) {
+			if (radio.checked) {
+				if (radio.value == '1') {
+					lifetimeValue = totalBudget1 * 1 * 4.33;
+				} else if (radio.value == '2') {
+					lifetimeValue = totalBudget1 * 2 * 4.33;
+				} else if (radio.value == '3') {
+					lifetimeValue = totalBudget1 * 3 * 4.33;
+				}
+			}
+		});
+		
+		mycustomradiobox3.forEach(function(radio) {
+			if (radio.checked) {
+				if (radio.value == '1') {
+					lifetimeValue = totalBudget1 * 1 * 4.33;
+				} else if (radio.value == '2') {
+					lifetimeValue = totalBudget1 * 2 * 4.33;
+				} else if (radio.value == '3') {
+					lifetimeValue = totalBudget1 * 3 * 4.33;
+				}
+			}
+		});
+		
+		mycustomradiobox4.forEach(function(radio) {
+			if (radio.checked) {
+				if (radio.value == '1') {
+					lifetimeValue = totalBudget1 * 1;
+				} else if (radio.value == '2') {
+					lifetimeValue = totalBudget1 * 12;
+				} else if (radio.value == '3') {
+					lifetimeValue = totalBudget1 * 24;
+				}
+			}
+		});
+		
+		mycustomradiobox5.forEach(function(radio) {
+			if (radio.checked) {
+				if (radio.value == '1') {
+					lifetimeValue = totalBudget1 * 1;
+				} else if (radio.value == '2') {
+					lifetimeValue = totalBudget1 * 12;
+				} else if (radio.value == '3') {
+					lifetimeValue = totalBudget1 * 24;
+				}
+			}
+		});
+		
+		mycustomradiobox6.forEach(function(radio) {
+			if (radio.checked) {
+				if (radio.value == '1') {
+					lifetimeValue = totalBudget1 * 1;
+				} else if (radio.value == '2') {
+					lifetimeValue = totalBudget1 * 12;
+				} else if (radio.value == '3') {
+					lifetimeValue = totalBudget1 * 24;
+				}
+			}
+		});
+
+
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
-		$("[bloc=budget]").text(totalBudget);
+		$("[bloc=budget]").text(lifetimeValue);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-vertragscode').val(codegenerator);
-		$('.send-preisPro45Min').val(totalBudget);
+		$('.send-preisPro45Min').val(lifetimeValue);
 	}
 
+
+
+
+
+
+
+	
 	mycustomcheckbox1[0].addEventListener("change", function() {
 		calculation();
 	});
