@@ -170,84 +170,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		return codegenerator.substr(40, 2) === "0A";
 	}
 
-
-
-	var lifetimeValue;
-	var totalBudget1 = totalBudget;
-
-	mycustomradiobox2.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1 * 4.33;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 2 * 4.33;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 3 * 4.33;
-			}
-		}
-	});
-	
-	mycustomradiobox3.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1 * 4.33;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 2 * 4.33;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 3 * 4.33;
-			}
-		}
-	});
-	
-	mycustomradiobox4.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 12;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 24;
-			}
-		}
-	});
-	
-	mycustomradiobox5.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 12;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 24;
-			}
-		}
-	});
-	
-	mycustomradiobox6.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 12;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 24;
-			}
-		}
-	});
-
-
-	$('.send-preisPro45Min').val(totalBudget1);
-	$("[bloc=budget1]").text(totalBudget1);
-
-
-
-
-
-
 	function calculation() {
 		var totalBudget = 16.49;
 		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
-
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -1631,7 +1556,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-vertragscode').val(codegenerator);
-
+		$('.send-preisPro45Min').val(totalBudget);
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
