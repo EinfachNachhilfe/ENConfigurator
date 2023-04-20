@@ -1559,77 +1559,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		$('.send-vertragscode').val(codegenerator);
 
 	}
-
-	var lifetimeValue;
-	var totalBudget1 = totalBudget;
-
-	mycustomradiobox2.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1 * 4.33;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 2 * 4.33;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 3 * 4.33;
-			}
-		}
-	});
-	
-	mycustomradiobox3.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1 * 4.33;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 2 * 4.33;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 3 * 4.33;
-			}
-		}
-	});
-	
-	mycustomradiobox4.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 12;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 24;
-			}
-		}
-	});
-	
-	mycustomradiobox5.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 12;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 24;
-			}
-		}
-	});
-	
-	mycustomradiobox6.forEach(function(radio) {
-		if (radio.checked) {
-			if (radio.value == '1') {
-				lifetimeValue = totalBudget1 * 1;
-			} else if (radio.value == '2') {
-				lifetimeValue = totalBudget1 * 12;
-			} else if (radio.value == '3') {
-				lifetimeValue = totalBudget1 * 24;
-			}
-		}
-	});
-
-
-	$('.send-preisPro45Min').val(totalBudget1);
-	$("[bloc=budget1]").text(totalBudget1);
-
-
-
-	
+		
 	mycustomcheckbox1[0].addEventListener("change", function() {
 		calculation();
 	});
