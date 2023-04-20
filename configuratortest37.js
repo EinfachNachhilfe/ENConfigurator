@@ -1616,10 +1616,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
-		$("[bloc=budget]").text(lifetimeValue);
+		$("[bloc=budget]").text(totalBudget);
+		$("[bloc=budget]").text(totalBudget1);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-vertragscode').val(codegenerator);
-		$('.send-preisPro45Min').val(lifetimeValue);
+		$('.send-preisPro45Min').val(totalBudget1);
 	}
 
 
