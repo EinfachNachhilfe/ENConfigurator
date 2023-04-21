@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	var mycustomradiobox4 = document.querySelectorAll('input[name="runtime-1Unit"]');
 	var mycustomradiobox5 = document.querySelectorAll('input[name="runtime-2Unit"]');
 	var mycustomradiobox6 = document.querySelectorAll('input[name="runtime-3Unit"]');
-
+	
+var totalBudget = 20;
   function updateLifetimeValue() {
-    var totalBudget1 = 10;
+    	
+var totalBudget1 = totalBudget;
     mycustomradiobox2.forEach(function(radio) {
       if (radio.checked) {
         if (radio.value == '1') {
