@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     
         $('.send-lifetimeValue').val(lifetimeValue);
-        $("[bloc=budget1]").text(totalBudget1);
+        $("[bloc=budget1]").text(lifetimeValue);
     }
 
 	
