@@ -1,25 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
     var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
 
-    var totalBudget = 10;
-    var lifetimeValue = 0;
-    var totalBudget1 = totalBudget;
+    var totalBudget1 = 10;
 
     function updateLifetimeValue() {
         mycustomradiobox2.forEach(function(radio) {
             if (radio.checked) {
                 if (radio.value == '1') {
-                    lifetimeValue = totalBudget1 * 1 * 4.33;
+                    totalBudget1 * 1 * 4.33;
                 } else if (radio.value == '2') {
-                    lifetimeValue = totalBudget1 * 2 * 4.33;
+                    totalBudget1 * 2 * 4.33;
                 } else if (radio.value == '3') {
-                    lifetimeValue = totalBudget1 * 3 * 4.33;
+                    totalBudget1 * 3 * 4.33;
                 }
             }
         });
 
-        $('.send-lifetimeValue').val(lifetimeValue);
-        $("[bloc=lifetimeValue]").text(lifetimeValue);
+        $('.send-lifetimeValue').val(totalBudget1);
+        $("[bloc=lifetimeValue]").text(totalBudget1);
     }
 
     updateLifetimeValue();
