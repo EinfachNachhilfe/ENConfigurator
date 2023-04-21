@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
         mycustomradiobox4.forEach(function(radio) {
       if (radio.checked) {
         if (radio.value == '1') {
-          totalBudget1 = totalBudget1 * 1;
+          totalBudget1 = totalBudget1 * 4;
         } else if (radio.value == '2') {
           totalBudget1 = totalBudget1 * 12;
         } else if (radio.value == '3') {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         mycustomradiobox5.forEach(function(radio) {
       if (radio.checked) {
         if (radio.value == '1') {
-          totalBudget1 = totalBudget1 * 1;
+          totalBudget1 = totalBudget1 * 4;
         } else if (radio.value == '2') {
           totalBudget1 = totalBudget1 * 12;
         } else if (radio.value == '3') {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         mycustomradiobox6.forEach(function(radio) {
       if (radio.checked) {
         if (radio.value == '1') {
-          totalBudget1 = totalBudget1 * 1;
+          totalBudget1 = totalBudget1 * 4;
         } else if (radio.value == '2') {
           totalBudget1 = totalBudget1 * 12;
         } else if (radio.value == '3') {
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
     });
-
+    totalBudget1 = totalBudget1.toFixed(2).replace(".", ",");
     $('.send-lifetimeValue').val(totalBudget1);
     $("[bloc=lifetimeValue]").text(totalBudget1);
   }
