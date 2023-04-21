@@ -1,5 +1,12 @@
-    var lifetimeValue;
-    var totalBudget = 10;
+document.addEventListener("DOMContentLoaded", function() {
+	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
+	var mycustomradiobox3 = document.querySelectorAll('input[name="unit90"]');
+	var mycustomradiobox4 = document.querySelectorAll('input[name="runtime-1Unit"]');
+	var mycustomradiobox5 = document.querySelectorAll('input[name="runtime-2Unit"]');
+	var mycustomradiobox6 = document.querySelectorAll('input[name="runtime-3Unit"]');
+
+	var totalBudget = 10;
+	var lifetimeValue;
     var totalBudget1 = totalBudget;
     
     function updateLifetimeValue() {
@@ -74,3 +81,5 @@
         totalBudget1 = totalBudget;
         updateLifetimeValue();
     });
+
+	
