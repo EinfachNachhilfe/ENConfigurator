@@ -1554,7 +1554,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 
-        var totalslary = 11.25;
+        var salary = 11.25;
         mycustomradiobox1.forEach(function(radio) {
             if (radio.checked) {
                 if (radio.value == '1') {
@@ -1612,9 +1612,70 @@ document.addEventListener("DOMContentLoaded", function() {
         if (mycustomcheckbox18[0].checked) {
             totalBudget += 0.75;
         }
+
+        var totalsalary = salary;
+        mycustomradiobox2.forEach(function(radio) {
+             if (radio.checked) {
+               if (radio.value == '1') {
+                totalsalary = totalsalary * 2 * 4.33333333;
+               } else if (radio.value == '2') {
+                totalsalary = totalsalary * 4 * 4.33333333;
+               } else if (radio.value == '3') {
+                totalsalary = totalsalary * 6 * 4.33333333;
+               }
+             }
+           });
+
+           mycustomradiobox3.forEach(function(radio) {
+            if (radio.checked) {
+              if (radio.value == '1') {
+               totalsalary = totalsalary * 2 * 4.33333333;
+              } else if (radio.value == '2') {
+               totalsalary = totalsalary * 4 * 4.33333333;
+              } else if (radio.value == '3') {
+               totalsalary = totalsalary * 6 * 4.33333333;
+              }
+            }
+          });
+
+          mycustomradiobox4.forEach(function(radio) {
+            if (radio.checked) {
+              if (radio.value == '1') {
+                totalsalary = totalsalary * 4;
+              } else if (radio.value == '2') {
+                totalsalary = totalsalary * 12;
+              } else if (radio.value == '3') {
+                totalsalary = totalsalary * 24;
+              }
+            }
+          });
+
+          mycustomradiobox5.forEach(function(radio) {
+            if (radio.checked) {
+              if (radio.value == '1') {
+                totalsalary = totalsalary * 4;
+              } else if (radio.value == '2') {
+                totalsalary = totalsalary * 12;
+              } else if (radio.value == '3') {
+                totalsalary = totalsalary * 24;
+              }
+            }
+          });
+
+          mycustomradiobox6.forEach(function(radio) {
+            if (radio.checked) {
+              if (radio.value == '1') {
+                totalsalary = totalsalary * 4;
+              } else if (radio.value == '2') {
+                totalsalary = totalsalary * 12;
+              } else if (radio.value == '3') {
+                totalsalary = totalsalary * 24;
+              }
+            }
+          });
         
               
-       var totalBudget1 = totalBudget-totalslary;   
+       var totalBudget1 = totalBudget-totalsalary;   
              mycustomradiobox2.forEach(function(radio) {
                   if (radio.checked) {
                     if (radio.value == '1') {
