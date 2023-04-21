@@ -76,6 +76,30 @@ document.addEventListener("DOMContentLoaded", function() {
       updateLifetimeValue();
     });
   });
+	
+	  mycustomradiobox3.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      updateLifetimeValue();
+    });
+  });
+	
+	  mycustomradiobox4.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      updateLifetimeValue();
+    });
+  });
+	
+	  mycustomradiobox5.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      updateLifetimeValue();
+    });
+  });
+	
+	  mycustomradiobox6.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      updateLifetimeValue();
+    });
+  });
 
   updateLifetimeValue();
 });
