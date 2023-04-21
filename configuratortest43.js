@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	function calculation() {
 		var totalBudget = 16.49;
 		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
+       
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -1552,11 +1553,140 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		}
 
+
+        var totalsalary = 12;
+        mycustomradiobox1.forEach(function(radio) {
+            if (radio.checked) {
+                if (radio.value == '1') {
+                    totalsalary += 1.50;
+                } else if (radio.value == '2') {
+                    totalsalary += 0.75;
+                } else if (radio.value == '3') {
+                    totalsalary += 0;
+                }
+            }
+        });
+
+        if (mycustomcheckbox28[0].checked) {
+            totalsalary += 1.35;
+        }
+
+        if (mycustomcheckbox29[0].checked) {
+            totalsalary += 0.67;
+        }
+
+        if (mycustomcheckbox30[0].checked) {
+            totalsalary += 0.45;
+        }
+        if (mycustomcheckbox31[0].checked) {
+            totalsalary += 3.75;
+        }
+
+        if (mycustomcheckbox32[0].checked) {
+            totalsalary += 3.75;
+        }
+
+        if (mycustomcheckbox33[0].checked) {
+            totalsalary += 3.75;
+        }
+        if (mycustomcheckbox13[0].checked) {
+            totalsalary += 0.45;
+        }
+
+        if (mycustomcheckbox14[0].checked) {
+            totalsalary += 0.45;
+        }
+
+        if (mycustomcheckbox15[0].checked) {
+            totalsalary += 0.45;
+        }
+
+        if (mycustomcheckbox16[0].checked) {
+            totalsalary += 0.75;
+        }
+
+        if (mycustomcheckbox17[0].checked) {
+            totalsalary += 0.75;
+        }
+
+        if (mycustomcheckbox18[0].checked) {
+            totalsalary += 0.75;
+        }
+            
+       var totalBudget1 = totalBudget - totalsalary;   
+             mycustomradiobox2.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 2 * 4.33333333;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 4 * 4.33333333;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 6 * 4.33333333;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox3.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 2 * 4.33333333;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 4 * 4.33333333;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 6 * 4.33333333;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox4.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 4;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 12;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 24;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox5.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 4;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 12;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 24;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox6.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 4;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 12;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 24;
+                    }
+                  }
+                });
+               
+           
+              
+
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-vertragscode').val(codegenerator);
 		$('.send-preisPro45Min').val(totalBudget);
+
+        totalBudget1 = totalBudget1.toFixed(2).replace(".", ",");
+        $("[bloc=lifetimeValue]").text(totalBudget1);
+        $('.send-lifetimeValue').val(totalBudget1);
+
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
@@ -1843,6 +1973,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// Aufruf der Funktion calculation() beim Laden der Seite
 	calculation();
+      
+        mycustomradiobox2.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            calculation();
+          });
+        });
+          
+            mycustomradiobox3.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            calculation();
+          });
+        });
+          
+            mycustomradiobox4.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            calculation();
+          });
+        });
+          
+            mycustomradiobox5.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            calculation();
+          });
+        });
+          
+            mycustomradiobox6.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            calculation();
+          });
+        });
+      
+        calculation();
+      
 
 	for (var i = 0; i < mycustomradiobox1.length; i++) {
 		mycustomradiobox1[i].addEventListener('change', function() {
