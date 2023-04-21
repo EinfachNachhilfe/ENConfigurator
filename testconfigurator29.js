@@ -1687,6 +1687,9 @@ document.addEventListener("DOMContentLoaded", function() {
         $("[bloc=lifetimeValue]").text(totalBudget1);
         $('.send-lifetimeValue').val(totalBudget1);
 
+        totalsalary = totalsalary.toFixed(2).replace(".", ",");
+        $("[bloc=totalsalary]").text(totalsalary);
+
 
 	}
 
