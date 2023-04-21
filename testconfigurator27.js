@@ -1675,7 +1675,7 @@ document.addEventListener("DOMContentLoaded", function() {
           });
         
               
-       var totalBudget1 = totalBudget-totalsalary;   
+       var totalBudget1 = totalBudget - totalsalary;   
              mycustomradiobox2.forEach(function(radio) {
                   if (radio.checked) {
                     if (radio.value == '1') {
