@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	function calculation() {
 		var totalBudget = 16.49;
 		var codegenerator = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
+       
 
 		// zuerst alle Pop-up-Elemente ausblenden
 		popupAnswer1.style.display = "none";
@@ -1557,6 +1558,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-vertragscode').val(codegenerator);
 		$('.send-preisPro45Min').val(totalBudget);
+
+
+        return totalBudget;
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
@@ -1847,7 +1851,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         function updateLifetimeValue() {
               
-      var totalBudget1 = totalBudget;   
+      var totalBudget1 = calculation();   
           mycustomradiobox2.forEach(function(radio) {
             if (radio.checked) {
               if (radio.value == '1') {
