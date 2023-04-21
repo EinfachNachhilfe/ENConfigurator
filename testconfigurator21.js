@@ -1553,14 +1553,85 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		}
 
+
+
+        
+              
+       var totalBudget1 = totalBudget;   
+             mycustomradiobox2.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 2 * 4.33;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 4 * 4.33;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 6 * 4.33;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox3.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 2 * 4.33;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 4 * 4.33;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 6 * 4.33;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox4.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 4;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 12;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 24;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox5.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 4;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 12;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 24;
+                    }
+                  }
+                });
+                
+                    mycustomradiobox6.forEach(function(radio) {
+                  if (radio.checked) {
+                    if (radio.value == '1') {
+                      totalBudget1 = totalBudget1 * 4;
+                    } else if (radio.value == '2') {
+                      totalBudget1 = totalBudget1 * 12;
+                    } else if (radio.value == '3') {
+                      totalBudget1 = totalBudget1 * 24;
+                    }
+                  }
+                });
+               
+           
+              
+
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
 		$('.send-vertragscode').val(codegenerator);
 		$('.send-preisPro45Min').val(totalBudget);
 
+        totalBudget1 = totalBudget1.toFixed(2).replace(".", ",");
+        $("[bloc=lifetimeValue]").text(totalBudget1);
+        $('.send-lifetimeValue').val(totalBudget1);
 
-        return totalBudget;
+
 	}
 
 	mycustomcheckbox1[0].addEventListener("change", function() {
@@ -1847,106 +1918,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// Aufruf der Funktion calculation() beim Laden der Seite
 	calculation();
-        
-    
-        function updateLifetimeValue() {
-              
-      var totalBudget1 = calculation();   
-          mycustomradiobox2.forEach(function(radio) {
-            if (radio.checked) {
-              if (radio.value == '1') {
-                totalBudget1 = totalBudget1 * 2 * 4.33;
-              } else if (radio.value == '2') {
-                totalBudget1 = totalBudget1 * 4 * 4.33;
-              } else if (radio.value == '3') {
-                totalBudget1 = totalBudget1 * 6 * 4.33;
-              }
-            }
-          });
-          
-              mycustomradiobox3.forEach(function(radio) {
-            if (radio.checked) {
-              if (radio.value == '1') {
-                totalBudget1 = totalBudget1 * 2 * 4.33;
-              } else if (radio.value == '2') {
-                totalBudget1 = totalBudget1 * 4 * 4.33;
-              } else if (radio.value == '3') {
-                totalBudget1 = totalBudget1 * 6 * 4.33;
-              }
-            }
-          });
-          
-              mycustomradiobox4.forEach(function(radio) {
-            if (radio.checked) {
-              if (radio.value == '1') {
-                totalBudget1 = totalBudget1 * 4;
-              } else if (radio.value == '2') {
-                totalBudget1 = totalBudget1 * 12;
-              } else if (radio.value == '3') {
-                totalBudget1 = totalBudget1 * 24;
-              }
-            }
-          });
-          
-              mycustomradiobox5.forEach(function(radio) {
-            if (radio.checked) {
-              if (radio.value == '1') {
-                totalBudget1 = totalBudget1 * 4;
-              } else if (radio.value == '2') {
-                totalBudget1 = totalBudget1 * 12;
-              } else if (radio.value == '3') {
-                totalBudget1 = totalBudget1 * 24;
-              }
-            }
-          });
-          
-              mycustomradiobox6.forEach(function(radio) {
-            if (radio.checked) {
-              if (radio.value == '1') {
-                totalBudget1 = totalBudget1 * 4;
-              } else if (radio.value == '2') {
-                totalBudget1 = totalBudget1 * 12;
-              } else if (radio.value == '3') {
-                totalBudget1 = totalBudget1 * 24;
-              }
-            }
-          });
-          totalBudget1 = totalBudget1.toFixed(2).replace(".", ",");
-          $('.send-lifetimeValue').val(totalBudget1);
-          $("[bloc=lifetimeValue]").text(totalBudget1);
-        }
       
         mycustomradiobox2.forEach(function(radio) {
           radio.addEventListener('change', function() {
-            updateLifetimeValue();
+            calculation();
           });
         });
           
             mycustomradiobox3.forEach(function(radio) {
           radio.addEventListener('change', function() {
-            updateLifetimeValue();
+            calculation();
           });
         });
           
             mycustomradiobox4.forEach(function(radio) {
           radio.addEventListener('change', function() {
-            updateLifetimeValue();
+            calculation();
           });
         });
           
             mycustomradiobox5.forEach(function(radio) {
           radio.addEventListener('change', function() {
-            updateLifetimeValue();
+            calculation();
           });
         });
           
             mycustomradiobox6.forEach(function(radio) {
           radio.addEventListener('change', function() {
-            updateLifetimeValue();
+            calculation();
           });
         });
       
-        updateLifetimeValue();
+        calculation();
       
 
 	for (var i = 0; i < mycustomradiobox1.length; i++) {
