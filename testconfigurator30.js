@@ -1554,7 +1554,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 
-        var totalsalary = 11.25;
+        var totalsalary = 12;
         mycustomradiobox1.forEach(function(radio) {
             if (radio.checked) {
                 if (radio.value == '1') {
