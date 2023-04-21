@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-	var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
+    var mycustomradiobox2 = document.querySelectorAll('input[name="unit45"]');
 
-	var totalBudget = 10;
-	var lifetimeValue;
-        var totalBudget1 = totalBudget;
-    
+    var totalBudget = 10;
+    var lifetimeValue = 0;
+    var totalBudget1 = totalBudget;
+
     function updateLifetimeValue() {
         mycustomradiobox2.forEach(function(radio) {
             if (radio.checked) {
@@ -17,9 +17,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         });
-    
+
         $('.send-lifetimeValue').val(lifetimeValue);
-        $("[bloc=budget1]").text(lifetimeValue);
+        $("[bloc=lifetimeValue]").text(lifetimeValue);
     }
 
+    updateLifetimeValue();
 });
