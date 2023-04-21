@@ -22,4 +22,4 @@ document.addEventListener("DOMContentLoaded", function() {
         $("[bloc=budget1]").text(lifetimeValue);
     }
 
-	
+});
