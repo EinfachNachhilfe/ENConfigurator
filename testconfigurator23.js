@@ -1545,70 +1545,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        var totalslary = 11.25;
-        mycustomradiobox1.forEach(function(radio) {
-            if (radio.checked) {
-                if (radio.value == '1') {
-                    totalslary += 1.50;
-                } else if (radio.value == '2') {
-                    totalslary += 0.75;
-                } else if (radio.value == '3') {
-                    totalslary += 0;
-                }
-            }
-        });
 
-        if (mycustomcheckbox28[0].checked) {
-            totalBudget += 1.35;
-        }
-
-        if (mycustomcheckbox29[0].checked) {
-            totalBudget += 0.67;
-        }
-
-        if (mycustomcheckbox30[0].checked) {
-            totalBudget += 0.45;
-        }
-        if (mycustomcheckbox31[0].checked) {
-            totalBudget += 3.75;
-        }
-
-        if (mycustomcheckbox32[0].checked) {
-            totalBudget += 3.75;
-        }
-
-        if (mycustomcheckbox33[0].checked) {
-            totalBudget += 3.75;
-        }
-        if (mycustomcheckbox13[0].checked) {
-            totalBudget += 0.45;
-        }
-
-        if (mycustomcheckbox14[0].checked) {
-            totalBudget += 0.45;
-        }
-
-        if (mycustomcheckbox15[0].checked) {
-            totalBudget += 0.45;
-        }
-
-        if (mycustomcheckbox16[0].checked) {
-            totalBudget += 0.75;
-        }
-
-        if (mycustomcheckbox17[0].checked) {
-            totalBudget += 0.75;
-        }
-
-        if (mycustomcheckbox18[0].checked) {
-            totalBudget += 0.75;
-        }
 
 
 
 
         var totalBudget1 = totalBudget - totalsalary;
-        
+
         mycustomradiobox2.forEach(function(radio) {
             if (radio.checked) {
                 if (radio.value == '1') {
