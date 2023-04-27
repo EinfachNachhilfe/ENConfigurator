@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#drop-down, #drop-down_overlay').hide();
+    $('#drop-down-desktop, #drop-down-mobile, #drop-down_overlay').hide();
 
     $('#trigger_drop-down-desktop').click(function() {
         if ($('#drop-down-desktop').is(':hidden') && $('#drop-down_overlay').is(':hidden')) {
