@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var closeExperience4 = document.querySelector("#close-experience-4");
     var closeExperience5 = document.querySelector("#close-experience-5");
     var closeExperience6 = document.querySelector("#close-experience-6");
-    var subject1 = document.querySelector("#subject-1");
+
    
   
     hideExperience2.style.display = "none";
@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", function() {
     hideExperience5.style.display = "none";
     hideExperience6.style.display = "none";
 
-    
     subject1.addEventListener("change", function() {
-    if (subject1.selectedIndex === 1) {
-      hideExperience1.style.display = "none";
-    } else {
-      hideExperience1.style.display = "block";
-    }
-  });
+  if (document.querySelector("#experience-1").selectedIndex === 1) {
+    hideExperience1.style.display = "none";
+  } else {
+    hideExperience1.style.display = "block";
+  }
+});
+
   
     addExperience.addEventListener("click", function() {
       if (hideExperience2.style.display === "none") {
