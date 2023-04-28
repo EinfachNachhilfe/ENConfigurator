@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     subject1.addEventListener("change", function() {
-        if (this.value === "1") {
-            hideExperience1.style.display = "none";
-          } else {
-            hideExperience1.style.display = "block";
-          }
-        });
+    if (subject1.selectedIndex === 1) {
+      hideExperience1.style.display = "none";
+    } else {
+      hideExperience1.style.display = "block";
+    }
+  });
   
     addExperience.addEventListener("click", function() {
       if (hideExperience2.style.display === "none") {
