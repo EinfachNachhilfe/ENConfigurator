@@ -27,18 +27,23 @@ document.addEventListener("DOMContentLoaded", function() {
     addExperience.addEventListener("click", function() {
       if (hideExperience2.style.display === "none") {
         hideExperience2.style.display = "block";
+          document.querySelector("#close-experience-2").style.display = "block";
       } else if (hideExperience2.style.display === "block" && hideExperience3.style.display === "none") {
         hideExperience3.style.display = "block";
         document.querySelector("#close-experience-2").style.display = "none";
+          document.querySelector("#close-experience-3").style.display = "block";
       } else if (hideExperience3.style.display === "block" && hideExperience4.style.display === "none") {
         hideExperience4.style.display = "block";
         document.querySelector("#close-experience-3").style.display = "none";
+          document.querySelector("#close-experience-4").style.display = "block";
       } else if (hideExperience4.style.display === "block" && hideExperience5.style.display === "none") {
         hideExperience5.style.display = "block";
         document.querySelector("#close-experience-4").style.display = "none";
+          document.querySelector("#close-experience-5").style.display = "block";
       } else if (hideExperience5.style.display === "block" && hideExperience6.style.display === "none") {
         hideExperience6.style.display = "block";
         document.querySelector("#close-experience-5").style.display = "none";
+          document.querySelector("#close-experience-6").style.display = "block";
         addExperience.style.display = "none";
       }
     });
