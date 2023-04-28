@@ -1,62 +1,62 @@
 $(document).ready(function() {
-    $('#div-subject2, #div-subject3, #div-subject4, #div-subject5, #div-subject6').hide();
+    $('#hide-experience-2, #hide-experience-3, #hide-experience-4, #hide-experience-5, #hide-experience-6').hide();
 
-    $('#div-add-subject').click(function() {
-        if ($('#div-subject2').is(':hidden')) {
-            $('#div-subject2').show();
-        } else if ($('#div-subject2').is(':visible') && $('#div-subject3').is(':hidden')) {
-            $('#div-subject3').show();
-            $('#image-subject2').hide();
-        } else if ($('#div-subject3').is(':visible') && $('#div-subject4').is(':hidden')) {
-            $('#div-subject4').show();
-            $('#image-subject3').hide();
-        } else if ($('#div-subject4').is(':visible') && $('#div-subject5').is(':hidden')) {
-            $('#div-subject5').show();
-            $('#image-subject4').hide();
-        } else if ($('#div-subject5').is(':visible') && $('#div-subject6').is(':hidden')) {
-            $('#div-subject6').show();
-            $('#image-subject5').hide();
-            $('#div-add-subject').hide();
+    $('#add-experience').click(function() {
+        if ($('#hide-experience-2').is(':hidden')) {
+            $('#hide-experience-2').show();
+        } else if ($('#hide-experience-2').is(':visible') && $('#hide-experience-3').is(':hidden')) {
+            $('#hide-experience-3').show();
+            $('#close-experience-2').hide();
+        } else if ($('#hide-experience-3').is(':visible') && $('#hide-experience-4').is(':hidden')) {
+            $('#hide-experience-3').show();
+            $('#close-experience-3').hide();
+        } else if ($('#hide-experience-4').is(':visible') && $('#hide-experience-5').is(':hidden')) {
+            $('#hide-experience-5').show();
+            $('#close-experience-4').hide();
+        } else if ($('#hide-experience-5').is(':visible') && $('#hide-experience-6').is(':hidden')) {
+            $('#hide-experience-6').show();
+            $('#close-experience-5').hide();
+            $('#add-experience').hide();
         }
     });
 
-    $('#image-subject2').click(function() {
-        $('#subject-2').prop('selectedIndex', 0);
-        $('#classTo-2').prop('selectedIndex', 0);
-        $('#classFrom-2').prop('selectedIndex', 0);
-        $('#div-subject2').hide();
+    $('#close-experience-2').click(function() {
+        $('#experience-2').prop('selectedIndex', 0);
+        $('#duration-2').prop('selectedIndex', 0);
+        $('#when-2').prop('selectedIndex', 0);
+        $('#hide-experience-2').hide();
     });
 
-    $('#image-subject3').click(function() {
-        $('#subject-3').prop('selectedIndex', 0);
-        $('#classTo-3').prop('selectedIndex', 0);
-        $('#classFrom-3').prop('selectedIndex', 0);
-        $('#div-subject3').hide();
-        $('#image-subject2').show();
+    $('#close-experience-3').click(function() {
+        $('#experience-3').prop('selectedIndex', 0);
+        $('#duration-3').prop('selectedIndex', 0);
+        $('#when-3').prop('selectedIndex', 0);
+        $('#hide-experience-3').hide();
+        $('close-experience-2').show();
     });
 
-    $('#image-subject4').click(function() {
-        $('#subject-4').prop('selectedIndex', 0);
-        $('#classTo-4').prop('selectedIndex', 0);
-        $('#classFrom-4').prop('selectedIndex', 0);
-        $('#div-subject4').hide();
-        $('#image-subject3').show();
+    $('#close-experience-4').click(function() {
+        $('#experience-4').prop('selectedIndex', 0);
+        $('#duration-4').prop('selectedIndex', 0);
+        $('#when-4').prop('selectedIndex', 0);
+        $('#hide-experience-4').hide();
+        $('close-experience-3').show();
     });
 
-    $('#image-subject5').click(function() {
-        $('#subject-5').prop('selectedIndex', 0);
-        $('#classTo-5').prop('selectedIndex', 0);
-        $('#classFrom-5').prop('selectedIndex', 0);
-        $('#div-subject5').hide();
-        $('#image-subject4').show();
+    $('#close-experience-5').click(function() {
+        $('#experience-5').prop('selectedIndex', 0);
+        $('#duration-5').prop('selectedIndex', 0);
+        $('#when-5').prop('selectedIndex', 0);
+        $('#hide-experience-5').hide();
+        $('close-experience-4').show();
     });
 
-    $('#image-subject6').click(function() {
-        $('#subject-6').prop('selectedIndex', 0);
-        $('#classTo-6').prop('selectedIndex', 0);
-        $('#classFrom-6').prop('selectedIndex', 0);
-        $('#div-subject6').hide();
-        $('#image-subject5').show();
-        $('#div-add-subject').show();
+    $('#close-experience-6').click(function() {
+        $('#experience-6').prop('selectedIndex', 0);
+        $('#duration-6').prop('selectedIndex', 0);
+        $('#when-6').prop('selectedIndex', 0);
+        $('#hide-experience-6').hide();
+        $('close-experience-5').show();
+        $('#add-experience').show();
     });
 });
