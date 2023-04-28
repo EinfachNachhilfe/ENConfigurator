@@ -86,6 +86,9 @@ document.addEventListener("DOMContentLoaded", function() {
 experience1.addEventListener("change", function() {
   if (experience1.selectedIndex === 1) {
     hideExperience1.style.display = "none";
+      document.querySelector("#experience-1").selectedIndex = 0;
+      document.querySelector("#duration-1").selectedIndex = 0;
+      document.querySelector("#when-1").selectedIndex = 0;
       document.querySelector("#experience-2").selectedIndex = 0;
       document.querySelector("#duration-2").selectedIndex = 0;
       document.querySelector("#when-2").selectedIndex = 0;
