@@ -32,7 +32,7 @@ $(document).ready(function() {
         $('#duration-3').prop('selectedIndex', 0);
         $('#when-3').prop('selectedIndex', 0);
         $('#hide-experience-3').hide();
-        $('close-experience-2').show();
+        $('#close-experience-2').show();
     });
 
     $('#close-experience-4').click(function() {
@@ -40,7 +40,7 @@ $(document).ready(function() {
         $('#duration-4').prop('selectedIndex', 0);
         $('#when-4').prop('selectedIndex', 0);
         $('#hide-experience-4').hide();
-        $('close-experience-3').show();
+        $('#close-experience-3').show();
     });
 
     $('#close-experience-5').click(function() {
@@ -48,7 +48,7 @@ $(document).ready(function() {
         $('#duration-5').prop('selectedIndex', 0);
         $('#when-5').prop('selectedIndex', 0);
         $('#hide-experience-5').hide();
-        $('close-experience-4').show();
+        $('#close-experience-4').show();
     });
 
     $('#close-experience-6').click(function() {
@@ -56,7 +56,7 @@ $(document).ready(function() {
         $('#duration-6').prop('selectedIndex', 0);
         $('#when-6').prop('selectedIndex', 0);
         $('#hide-experience-6').hide();
-        $('close-experience-5').show();
+        $('#close-experience-5').show();
         $('#add-experience').show();
     });
 });
