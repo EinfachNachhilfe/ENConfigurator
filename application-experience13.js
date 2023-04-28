@@ -87,7 +87,7 @@ experience1.addEventListener("change", function() {
   if (experience1.selectedIndex === 1) {
     hideExperience1.style.display = "none";
   } else {
-    hideExperience1.style.display = "display";
+    hideExperience1.style.display = "flex";
   }
 });
 
