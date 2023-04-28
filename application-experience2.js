@@ -8,7 +8,7 @@ $(document).ready(function() {
             $('#hide-experience-3').show();
             $('#close-experience-2').hide();
         } else if ($('#hide-experience-3').is(':visible') && $('#hide-experience-4').is(':hidden')) {
-            $('#hide-experience-3').show();
+            $('#hide-experience-4').show();
             $('#close-experience-3').hide();
         } else if ($('#hide-experience-4').is(':visible') && $('#hide-experience-5').is(':hidden')) {
             $('#hide-experience-5').show();
