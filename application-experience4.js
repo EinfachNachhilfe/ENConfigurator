@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("#when-6").selectedIndex = 0;
         hideExperience6.style.display = "none";
         document.querySelector("#close-experience-5").style.display = "block";
-        addExperience.style.display = "block";
+        addExperience.style.display = "flex";
       });
     });      
     
