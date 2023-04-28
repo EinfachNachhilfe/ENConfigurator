@@ -21,6 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
     hideExperience4.style.display = "none";
     hideExperience5.style.display = "none";
     hideExperience6.style.display = "none";
+
+    
+    subject1.addEventListener("change", function() {
+        if (this.value === "1") {
+            hideExperience1.style.display = "none";
+          } else {
+            hideExperience1.style.display = "block";
+          }
+        });
   
     addExperience.addEventListener("click", function() {
       if (hideExperience2.style.display === "none") {
@@ -80,16 +89,5 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("#close-experience-5").style.display = "block";
         addExperience.style.display = "flex";
       });
-
-      subject1.addEventListener("change", function() {
-        if (subject1.value === "1") {
-          hideExperience1.style.display = "none";
-        } else {
-          hideExperience1.style.display = "block";
-        }
-      });
-
-
-
     });      
     
