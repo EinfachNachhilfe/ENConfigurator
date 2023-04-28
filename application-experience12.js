@@ -23,14 +23,6 @@ document.addEventListener("DOMContentLoaded", function() {
     hideExperience5.style.display = "none";
     hideExperience6.style.display = "none";
 
-    experience1.addEventListener("change", function() {
-  if (document.querySelector("#experience-1").selectedIndex === 1) {
-    hideExperience1.style.display = "none";
-  } else {
-    hideExperience1.style.display = "block";
-  }
-});
-
   
     addExperience.addEventListener("click", function() {
       if (hideExperience2.style.display === "none") {
@@ -90,5 +82,15 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("#close-experience-5").style.display = "block";
         addExperience.style.display = "flex";
       });
+    
+experience1.addEventListener("change", function() {
+  if (experience1.selectedIndex === 1) {
+    hideExperience1.style.display = "none";
+  } else {
+    hideExperience1.style.display = "display";
+  }
+});
+
+    
     });      
     
