@@ -86,6 +86,27 @@ document.addEventListener("DOMContentLoaded", function() {
 experience1.addEventListener("change", function() {
   if (experience1.selectedIndex === 1) {
     hideExperience1.style.display = "none";
+      document.querySelector("#experience-2").selectedIndex = 0;
+      document.querySelector("#duration-2").selectedIndex = 0;
+      document.querySelector("#when-2").selectedIndex = 0;
+       document.querySelector("#experience-3").selectedIndex = 0;
+      document.querySelector("#duration-3").selectedIndex = 0;
+      document.querySelector("#when-3").selectedIndex = 0;
+      document.querySelector("#experience-4").selectedIndex = 0;
+      document.querySelector("#duration-4").selectedIndex = 0;
+      document.querySelector("#when-4").selectedIndex = 0;
+      document.querySelector("#experience-5").selectedIndex = 0;
+        document.querySelector("#duration-5").selectedIndex = 0;
+        document.querySelector("#when-5").selectedIndex = 0;
+      document.querySelector("#experience-6").selectedIndex = 0;
+        document.querySelector("#duration-6").selectedIndex = 0;
+        document.querySelector("#when-6").selectedIndex = 0;
+       hideExperience2.style.display = "none";
+    hideExperience3.style.display = "none";
+    hideExperience4.style.display = "none";
+    hideExperience5.style.display = "none";
+    hideExperience6.style.display = "none";
+       addExperience.style.display = "none";
   } else {
     hideExperience1.style.display = "grid";
   }
