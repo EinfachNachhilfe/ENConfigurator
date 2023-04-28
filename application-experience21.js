@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     hideExperience5.style.display = "none";
     hideExperience6.style.display = "none";
 
-    function updateExperienceDisplay() {
+
     addExperience.addEventListener("click", function() {
       if (hideExperience2.style.display === "none") {
         hideExperience2.style.display = "block";
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addExperience.style.display = "none";
       }
     });
-}
+
   
     closeExperience2.addEventListener("click", function() {
       document.querySelector("#experience-2").selectedIndex = 0;
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("#close-experience-5").style.display = "block";
         addExperience.style.display = "flex";
       });
-    
+   
 experience1.addEventListener("change", function() {
   if (experience1.selectedIndex === 1) {
     hideExperience1.style.display = "none";
@@ -111,12 +111,17 @@ experience1.addEventListener("change", function() {
     hideExperience5.style.display = "none";
     hideExperience6.style.display = "none";
        addExperience.style.display = "none";
+       document.querySelector("#close-experience-2").style.display = "none";
+       document.querySelector("#close-experience-3").style.display = "none";
+       document.querySelector("#close-experience-4").style.display = "none";
+       document.querySelector("#close-experience-5").style.display = "none";
   } else {
     hideExperience1.style.display = "grid";
       addExperience.style.display = "flex";
-      updateExperienceDisplay()
+    
   }
 });
+      
 
     
     });      
