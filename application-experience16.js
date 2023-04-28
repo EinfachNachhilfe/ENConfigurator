@@ -109,6 +109,7 @@ experience1.addEventListener("change", function() {
        addExperience.style.display = "none";
   } else {
     hideExperience1.style.display = "grid";
+      addExperience.style.display = "flex";
   }
 });
 
