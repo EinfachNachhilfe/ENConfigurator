@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-  
+    var hideExperience1 = document.querySelector("#hide-experience-1");
     var hideExperience2 = document.querySelector("#hide-experience-2");
     var hideExperience3 = document.querySelector("#hide-experience-3");
     var hideExperience4 = document.querySelector("#hide-experience-4");
@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var closeExperience4 = document.querySelector("#close-experience-4");
     var closeExperience5 = document.querySelector("#close-experience-5");
     var closeExperience6 = document.querySelector("#close-experience-6");
+    var subject1 = document.querySelector("#subject-1");
+   
   
     hideExperience2.style.display = "none";
     hideExperience3.style.display = "none";
@@ -78,5 +80,16 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("#close-experience-5").style.display = "block";
         addExperience.style.display = "flex";
       });
+
+      subject1.addEventListener("change", function() {
+        if (subject1.value === "1") {
+          hideExperience1.style.display = "none";
+        } else {
+          hideExperience1.style.display = "block";
+        }
+      });
+
+
+
     });      
     
