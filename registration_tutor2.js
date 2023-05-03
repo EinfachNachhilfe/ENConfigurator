@@ -28,7 +28,9 @@ step4.style.display = 'none';
 backBtn.style.display = 'none';
 submitBtn.style.display = 'none';
 showStepNumber.textContent = "Schritt 1 von 5";
-  
+});
+
+
   
 function checkAllFieldsFilled1() {
   var filledFields1 = 0;
@@ -191,6 +193,6 @@ backBtn.addEventListener('click', function() {
     submitBtn.style.display = 'none';
     showStepNumber.textContent = "Schritt 3 von 4";
     checkAllFieldsFilled3();
-  }
+}
 
 });
