@@ -35,6 +35,8 @@ step5.style.display = 'none';
 backBtn.style.display = 'none';
 submitBtn.style.display = 'none';
 showStepNumber.textContent = "Schritt 1 von 5";
+  
+  
 firstNameInput.addEventListener('input', function() {
   showFirstNames.forEach(function(element) {
     element.textContent = firstNameInput.value;
