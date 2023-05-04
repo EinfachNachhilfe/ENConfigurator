@@ -93,20 +93,18 @@ requiredFields2.forEach(function(input) {
 
 
 
-// Validierungsfunktion für alle benötigten Felder
+
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
-    if (field.type === 'file' && field.files.length === 0) {
-      // das Upload-Feld ist leer, also zählt es nicht als ausgefüllt
-    } else if (field.value) {
-      // das Feld hat einen Wert (oder eine hochgeladene Datei), also ist es ausgefüllt
+    if (field.value) {
       filledFields3++;
     }
   });
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
+  
   }
 
   if (isAllFieldsFilled3) {
