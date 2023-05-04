@@ -122,6 +122,14 @@ requiredFields3.forEach(function(input) {
   });
 });
 
+var deleteIcons = document.querySelectorAll('.delete-upload-file');
+
+deleteIcons.forEach(function(deleteIcon) {
+  deleteIcon.addEventListener('click', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+  });
+});
 
 
 function checkAllFieldsFilled4() {
