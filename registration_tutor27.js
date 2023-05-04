@@ -122,16 +122,6 @@ requiredFields3.forEach(function(input) {
   });
 });
 
-// Hinzufügen von Ereignislistenern für Lösch-Icons von Upload-Feldern
-var deleteIcons = document.querySelectorAll('.delete-upload-file');
-
-deleteIcons.forEach(function(deleteIcon) {
-  deleteIcon.addEventListener('click', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  });
-});
-
 
 
 function checkAllFieldsFilled4() {
