@@ -123,7 +123,7 @@ requiredFields3.forEach(function(input) {
 
 
 function checkAllFieldsFilled4() {
-    var isAnyCheckboxSelected1 = true;
+    let isAnyCheckboxSelected1 = true;
 checkboxes1.forEach(function(checkbox) {
     if (!checkbox.checked) {
       isAnyCheckboxSelected1 = false;
