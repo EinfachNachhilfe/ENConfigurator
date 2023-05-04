@@ -13,6 +13,7 @@ var isAllFieldsFilled1 = false;
 var isAllFieldsFilled2 = false;
 var isAllFieldsFilled3 = false;
 var isAllFieldsFilled4 = false;
+var isAnyCheckboxSelected1 = false;
 var checkboxes1 = step4.querySelectorAll('input[type="checkbox"]');
 var showStepNumber = document.getElementById('show-step_number');
 
@@ -123,10 +124,9 @@ requiredFields3.forEach(function(input) {
 
 
 function checkAllFieldsFilled4() {
-    let isAnyCheckboxSelected1 = true;
 checkboxes1.forEach(function(checkbox) {
-    if (!checkbox.checked) {
-      isAnyCheckboxSelected1 = false;
+    if (checkbox.checked) {
+      isAnyCheckboxSelected1 = true;
     }
   });
   
