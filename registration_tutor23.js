@@ -121,7 +121,7 @@ requiredFields3.forEach(function(input) {
     checkAllFieldsFilled3();
   });
 
-  input.addEventListener('input', function() {
+  input.addEventListener('blur', function() {
     checkAllFieldsFilled3();
   });
 });
