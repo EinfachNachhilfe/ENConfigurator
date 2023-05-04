@@ -96,14 +96,16 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
-    if (field.value) {
+    if (field.type === 'file' && field.files.length === 0) {
+      // das Upload-Feld ist leer, also zählt es nicht als ausgefüllt
+    } else if (field.value) {
+      // das Feld hat einen Wert (oder eine hochgeladene Datei), also ist es ausgefüllt
       filledFields3++;
     }
   });
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
-  
   }
 
   if (isAllFieldsFilled3) {
@@ -114,8 +116,9 @@ function checkAllFieldsFilled3() {
 }
 
 
-requiredFields3.forEach(function(change) {
-  change.addEventListener('change', function() {
+
+requiredFields3.forEach(function(input) {
+  input.addEventListener('change', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
