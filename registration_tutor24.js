@@ -93,6 +93,7 @@ requiredFields2.forEach(function(input) {
 
 
 
+// Validierungsfunktion für alle benötigten Felder
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
@@ -115,16 +116,23 @@ function checkAllFieldsFilled3() {
   } 
 }
 
+// Überwachung aller benötigten Felder auf Änderungen und Überprüfung bei Bedarf
 requiredFields3.forEach(function(input) {
   input.addEventListener('change', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
+});
 
-  input.addEventListener('blur', function() {
+// Hinzufügen von Ereignislistenern für Lösch-Icons von Upload-Feldern
+var deleteIcons = document.querySelectorAll('.delete-upload-file');
+
+deleteIcons.forEach(function(deleteIcon) {
+  deleteIcon.addEventListener('click', function() {
     checkAllFieldsFilled3();
   });
 });
+
 
 
 function checkAllFieldsFilled4() {
