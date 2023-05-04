@@ -114,14 +114,8 @@ function checkAllFieldsFilled3() {
 }
 
 
-requiredFields3.forEach(function(input) {
-  input.addEventListener('change', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  });
-});
-
-  input.addEventListener('change', function() {
+requiredFields3.forEach(function(change) {
+  change.addEventListener('change', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
