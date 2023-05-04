@@ -13,7 +13,6 @@ var isAllFieldsFilled1 = false;
 var isAllFieldsFilled2 = false;
 var isAllFieldsFilled3 = false;
 var isAllFieldsFilled4 = false;
-var isAnyCheckboxSelected1 = false;
 var checkboxes1 = step4.querySelectorAll('input[type="checkbox"]');
 var showStepNumber = document.getElementById('show-step_number');
 
@@ -124,26 +123,26 @@ requiredFields3.forEach(function(input) {
 
 
 function checkAllFieldsFilled4() {
-checkboxes1.forEach(function(checkbox) {
-    if (checkbox.checked) {
-      isAnyCheckboxSelected1 = true;
+    if (selectedCheckboxes === 2) {
+      submitBtn.classList.remove('disabled');
+    } else {
+      submitBtn.classList.add('disabled');
     }
+  }
+  
+  let selectedCheckboxes = 0;
+  
+  checkboxes1.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      if (checkbox.checked) {
+        selectedCheckboxes++;
+      } else {
+        selectedCheckboxes--;
+      }
+      checkAllFieldsFilled4();
+    });
   });
   
-  if (isAnyCheckboxSelected1) {
-    submitBtn.classList.remove('disabled');
-  } else {
-    submitBtn.classList.add('disabled');
-  }
-}
-
-checkboxes1.forEach(function(checkbox) {
-  checkbox.addEventListener('change', function() {
-    isAnyCheckboxSelected1 = false;
-    checkAllFieldsFilled4()();
-  });
-});
-
 
   
 
