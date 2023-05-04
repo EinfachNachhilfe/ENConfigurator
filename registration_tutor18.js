@@ -121,15 +121,6 @@ requiredFields3.forEach(function(input) {
   });
 });
 
-var uploadInputs = document.querySelectorAll('.is-upload-input-change');
-uploadInputs.forEach(function(input) {
-  input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  });
-});
-
-
 function checkAllFieldsFilled4() {
     if (selectedCheckboxes === 2) {
       submitBtn.classList.remove('disabled');
