@@ -140,7 +140,7 @@ checkboxes1.forEach(function(checkbox) {
 checkboxes1.forEach(function(checkbox) {
   checkbox.addEventListener('change', function() {
     isAnyCheckboxSelected1 = false;
-    checkCheckboxSelected1();
+    checkCheckboxSelected4();
   });
 });
 
