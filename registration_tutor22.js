@@ -115,14 +115,17 @@ function checkAllFieldsFilled3() {
   } 
 }
 
-
-
 requiredFields3.forEach(function(input) {
   input.addEventListener('change', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
+
+  input.addEventListener('input', function() {
+    checkAllFieldsFilled3();
+  });
 });
+
 
 function checkAllFieldsFilled4() {
     if (selectedCheckboxes === 2) {
