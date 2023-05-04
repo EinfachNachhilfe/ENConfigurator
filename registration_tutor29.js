@@ -114,13 +114,7 @@ function checkAllFieldsFilled3() {
   } 
 }
 
-// Überwachung aller benötigten Felder auf Änderungen und Überprüfung bei Bedarf
-requiredFields3.forEach(function(input) {
-  input.addEventListener('change', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  });
-});
+
 
 var deleteIcons = document.querySelectorAll('.delete-upload-file');
 
