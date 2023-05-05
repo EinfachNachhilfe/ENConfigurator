@@ -116,16 +116,25 @@ function checkAllFieldsFilled3() {
 }
 
 requiredFields3.forEach(function(input) {
-  input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  });
-
   input.addEventListener('change', function() {
-    if (!input.value) {
-      filledFields3--;
+    var filledFields3 = 0;
+    requiredFields3.forEach(function(field) {
+      if (field.value) {
+        filledFields3++;
+      }
+    });
+
+    if (filledFields3 === requiredFields3.length) {
+      isAllFieldsFilled3 = true;
+    } else {
+      isAllFieldsFilled3 = false;
     }
-    checkAllFieldsFilled3();
+
+    if (isAllFieldsFilled3) {
+      nextBtn.classList.remove('disabled');
+    } else {
+      nextBtn.classList.add('disabled');
+    }
   });
 });
 
