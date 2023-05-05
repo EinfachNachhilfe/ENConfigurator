@@ -97,7 +97,7 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
-    if (field.value) {
+    if (field.value || field.files.length > 0) {
       filledFields3++;
     }
   });
@@ -116,27 +116,12 @@ function checkAllFieldsFilled3() {
 }
 
 requiredFields3.forEach(function(input) {
-  input.addEventListener('change', function() {
-    var filledFields3 = 0;
-    requiredFields3.forEach(function(field) {
-      if (field.value) {
-        filledFields3++;
-      }
-    });
-
-    if (filledFields3 === requiredFields3.length) {
-      isAllFieldsFilled3 = true;
-    } else {
-      isAllFieldsFilled3 = false;
-    }
-
-    if (isAllFieldsFilled3) {
-      nextBtn.classList.remove('disabled');
-    } else {
-      nextBtn.classList.add('disabled');
-    }
+  input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
   });
 });
+
 
 
 
