@@ -94,7 +94,6 @@ requiredFields2.forEach(function(input) {
 
 
 
-
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
@@ -105,29 +104,31 @@ function checkAllFieldsFilled3() {
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
+  } else {
+    isAllFieldsFilled3 = false;
   }
 
   if (isAllFieldsFilled3) {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
-  } 
+  }
 }
 
 isUploadInputChangeV1.addEventListener('click', function() {
   certificateOfEnrollmentTutor.value = '';
-  isAllFieldsFilled3 = false;
+  checkAllFieldsFilled3();
+});
+
+certificateOfEnrollmentTutor.addEventListener('change', function() {
   checkAllFieldsFilled3();
 });
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
 });
-
-
 
 
 
