@@ -118,17 +118,16 @@ requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
-   
+  });
+  
+  input.addEventListener('change', function() {
+    checkAllFieldsFilled3();
   });
 });
 
-// Interval erstellen
-var checkInterval = setInterval(function() {
-  // Überprüfen, ob step3 sichtbar ist
-  if (step3.style.display !== 'none') {
-    checkAllFieldsFilled3();
-  }
-}, 500);
+
+
+
 
 
 function checkAllFieldsFilled4() {
