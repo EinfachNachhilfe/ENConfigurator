@@ -92,8 +92,6 @@ requiredFields2.forEach(function(input) {
 
 
 
-
-
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
@@ -120,11 +118,10 @@ requiredFields3.forEach(function(input) {
     checkAllFieldsFilled3();
   });
   
-  input.addEventListener('change', function() {
+  input.addEventListener('input', function() {
     checkAllFieldsFilled3();
   });
 });
-
 
 
 
