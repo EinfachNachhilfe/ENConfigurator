@@ -122,17 +122,7 @@ requiredFields3.forEach(function(input) {
   });
 });
 
-// Event-Listener für das Entfernen der Datei hinzufügen
-var fileInput = document.getElementById('file-input');
-fileInput.addEventListener('change', function() {
-  if (!fileInput.files || fileInput.files.length == 0) {
-    // Datei entfernt, Eingabefeld zurücksetzen und Funktion aufrufen
-    fileInput.value = '';
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  }
-});
-
+checkAllFieldsFilled3();
 
 
 function checkAllFieldsFilled4() {
