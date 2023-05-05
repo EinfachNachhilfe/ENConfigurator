@@ -130,7 +130,6 @@ function checkAllFieldsFilled3() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   }
-})
 
 
 
