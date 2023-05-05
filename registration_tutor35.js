@@ -122,7 +122,9 @@ requiredFields3.forEach(function(input) {
   });
 });
 
-checkAllFieldsFilled3();
+var checkInterval = setInterval(function() {
+  checkAllFieldsFilled3();
+}, 500); 
 
 
 function checkAllFieldsFilled4() {
