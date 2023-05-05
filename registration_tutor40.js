@@ -15,6 +15,8 @@ var isAllFieldsFilled3 = false;
 var isAllFieldsFilled4 = false;
 var checkboxes1 = step4.querySelectorAll('input[type="checkbox"]');
 var showStepNumber = document.getElementById('show-step_number');
+var certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
+var isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1');
 
 
 
@@ -118,15 +120,12 @@ requiredFields3.forEach(function(input) {
     checkAllFieldsFilled3();
   });
 
-  input.addEventListener('change', function() {
-    checkAllFieldsFilled3();
-  });
 
-  input.addEventListener('focusout', function() {
-    checkAllFieldsFilled3();
-  });
+
+isUploadInputChangeV1.addEventListener('click', function() {
+  certificateOfEnrollmentTutor.value = '';
+   checkAllFieldsFilled3();
 });
-
 
 
 
