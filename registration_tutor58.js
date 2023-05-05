@@ -13,7 +13,6 @@ var isAllFieldsFilled1 = false;
 var isAllFieldsFilled2 = false;
 var isAllFieldsFilled3 = false;
 var isAllFieldsFilled4 = false;
- var fieldsChanged = false;
 var checkboxes1 = step4.querySelectorAll('input[type="checkbox"]');
 var showStepNumber = document.getElementById('show-step_number');
 var certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
@@ -118,13 +117,15 @@ function checkAllFieldsFilled3() {
 
 
  
-  requiredFields3.forEach(function(input) {
-    if (input.hasChanged || input.value !== input.lastValue) {
-      fieldsChanged = true;
-      input.hasChanged = false;
-      input.lastValue = input.value;
-    }
-  });
+
+    var fieldsChanged = false;
+    requiredFields3.forEach(function(input) {
+      if (input.hasChanged || input.value !== input.lastValue) {
+        fieldsChanged = true;
+        input.hasChanged = false;
+        input.lastValue = input.value;
+      }
+    });
 
   if (fieldsChanged) {
     isAllFieldsFilled3 = false;
