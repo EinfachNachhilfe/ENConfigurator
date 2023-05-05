@@ -130,12 +130,6 @@ var intervalTimer = setInterval(function() {
     checkAllFieldsFilled3();
   }
 })
-
-requiredFields3.forEach(function(input) {
-  input.addEventListener('input', function() {
-    input.hasChanged = true;
-  });
-
 });
 
 
