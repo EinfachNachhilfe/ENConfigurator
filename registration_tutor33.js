@@ -97,16 +97,14 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
-    if (field.type === 'file' && field.files.length === 0) {
-      // Das Upload-Feld ist leer, also wird es nicht als ausgefüllt gezählt
-    } else if (field.value) {
-      // Das Feld hat einen Wert (oder eine hochgeladene Datei), also ist es ausgefüllt
+    if (field.value) {
       filledFields3++;
     }
   });
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
+  
   }
 
   if (isAllFieldsFilled3) {
@@ -116,25 +114,25 @@ function checkAllFieldsFilled3() {
   } 
 }
 
-// Überwachung aller benötigten Felder auf Änderungen und Überprüfung bei Bedarf
 requiredFields3.forEach(function(input) {
-  input.addEventListener('change', function() {
+  input.addEventListener('input', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
+   
   });
 });
 
-// Überprüfen, ob ein Delete-Icon für ein Upload-Feld geklickt wurde
-var deleteIcons = document.querySelectorAll('.delete-upload-file');
-deleteIcons.forEach(function(deleteIcon) {
-  deleteIcon.addEventListener('click', function() {
-    // Überprüfen, ob das Upload-Feld leer ist und die Anzahl der ausgefüllten Felder aktualisieren
-    if (this.previousElementSibling.files.length === 0) {
-      isAllFieldsFilled3 = false;
-      checkAllFieldsFilled3();
-    }
-  });
+// Event-Listener für das Entfernen der Datei hinzufügen
+var fileInput = document.getElementById('file-input');
+fileInput.addEventListener('change', function() {
+  if (!fileInput.files || fileInput.files.length == 0) {
+    // Datei entfernt, Eingabefeld zurücksetzen und Funktion aufrufen
+    fileInput.value = '';
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+  }
 });
+
 
 
 function checkAllFieldsFilled4() {
