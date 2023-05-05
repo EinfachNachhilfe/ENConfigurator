@@ -94,10 +94,6 @@ requiredFields2.forEach(function(input) {
 
 
 
-const certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
-const isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1');
-
-
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
