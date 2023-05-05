@@ -131,7 +131,8 @@ function checkAllFieldsUploaded() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   }
-});
+}
+
 
 
 
