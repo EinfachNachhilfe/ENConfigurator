@@ -117,11 +117,16 @@ requiredFields3.forEach(function(input) {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
-  
-  input.addEventListener('input', function() {
+
+  input.addEventListener('change', function() {
+    checkAllFieldsFilled3();
+  });
+
+  input.addEventListener('focusout', function() {
     checkAllFieldsFilled3();
   });
 });
+
 
 
 
