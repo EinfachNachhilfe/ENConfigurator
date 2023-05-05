@@ -136,12 +136,6 @@ requiredFields3.forEach(function(input) {
     input.hasChanged = true;
   });
 
-  input.addEventListener('change', function() {
-    input.hasChanged = true;
-  });
-});
-
-
 
 
 
