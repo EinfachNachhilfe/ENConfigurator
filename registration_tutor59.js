@@ -117,7 +117,7 @@ function checkAllFieldsFilled3() {
 
 
  
-
+function checkAllFieldsUploaded() {
     var fieldsChanged = false;
     requiredFields3.forEach(function(input) {
       if (input.hasChanged || input.value !== input.lastValue) {
@@ -131,7 +131,7 @@ function checkAllFieldsFilled3() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   }
-
+});
 
 
 
