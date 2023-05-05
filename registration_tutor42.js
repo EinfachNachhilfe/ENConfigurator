@@ -94,6 +94,11 @@ requiredFields2.forEach(function(input) {
 
 
 
+const certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
+const isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1');
+
+
+
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
@@ -104,7 +109,6 @@ function checkAllFieldsFilled3() {
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
-  
   }
 
   if (isAllFieldsFilled3) {
@@ -114,17 +118,17 @@ function checkAllFieldsFilled3() {
   } 
 }
 
+isUploadInputChangeV1.addEventListener('click', function() {
+  certificateOfEnrollmentTutor.value = '';
+  isAllFieldsFilled3 = false;
+  checkAllFieldsFilled3();
+});
+
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
-
-
-
-isUploadInputChangeV1.addEventListener('click', function() {
-  certificateOfEnrollmentTutor.value = '';
-   checkAllFieldsFilled3();
 });
 
 
@@ -200,5 +204,4 @@ backBtn.addEventListener('click', function() {
     checkAllFieldsFilled3();
 }
 
-});
 });
