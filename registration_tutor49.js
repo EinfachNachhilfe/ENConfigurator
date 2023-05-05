@@ -116,7 +116,7 @@ function checkAllFieldsFilled3() {
 }
 
 requiredFields3.forEach(function(input) {
-  input.addEventListener('input', function() {
+  input.addEventListener('change', function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
