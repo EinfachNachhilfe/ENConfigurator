@@ -129,7 +129,7 @@ var intervalTimer = setInterval(function() {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   }
-}, 500);
+})
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
@@ -140,6 +140,7 @@ requiredFields3.forEach(function(input) {
     input.hasChanged = true;
   });
 });
+
 
 
 
