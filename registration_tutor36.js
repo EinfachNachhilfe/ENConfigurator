@@ -122,9 +122,13 @@ requiredFields3.forEach(function(input) {
   });
 });
 
+// Interval erstellen
 var checkInterval = setInterval(function() {
-  checkAllFieldsFilled3();
-}, 500); 
+  // Überprüfen, ob step3 sichtbar ist
+  if (step3.style.display !== 'none') {
+    checkAllFieldsFilled3();
+  }
+}, 500);
 
 
 function checkAllFieldsFilled4() {
