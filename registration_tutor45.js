@@ -117,15 +117,18 @@ function checkAllFieldsFilled3() {
 
 isUploadInputChangeV1.addEventListener('click', function() {
   certificateOfEnrollmentTutor.value = '';
+    isAllFieldsFilled3 = false;
   checkAllFieldsFilled3();
 });
 
 certificateOfEnrollmentTutor.addEventListener('change', function() {
+    isAllFieldsFilled3 = false;
   checkAllFieldsFilled3();
 });
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
+      isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
 });
