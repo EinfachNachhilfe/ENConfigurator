@@ -130,7 +130,6 @@ var intervalTimer = setInterval(function() {
     checkAllFieldsFilled3();
   }
 })
-});
 
 
 
