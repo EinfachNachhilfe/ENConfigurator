@@ -115,12 +115,32 @@ function checkAllFieldsFilled3() {
   }
 }
 
-requiredFields3.forEach(function(input) {
-  input.addEventListener('change', function() {
+var intervalTimer = setInterval(function() {
+  var fieldsChanged = false;
+  requiredFields3.forEach(function(input) {
+    if (input.hasChanged || input.value !== input.lastValue) {
+      fieldsChanged = true;
+      input.hasChanged = false;
+      input.lastValue = input.value;
+    }
+  });
+
+  if (fieldsChanged) {
     isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
+  }
+}, 500);
+
+requiredFields3.forEach(function(input) {
+  input.addEventListener('input', function() {
+    input.hasChanged = true;
+  });
+
+  input.addEventListener('change', function() {
+    input.hasChanged = true;
   });
 });
+
 
 
 
