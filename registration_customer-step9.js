@@ -283,3 +283,14 @@ function billingAdress() {
     });
   });
 }
+
+const streetNameInput = document.getElementById('streetNamePayable');
+const houseNumberInput = document.getElementById('houseNumberPayable');
+const ZIPCodeInput = document.getElementById('ZIPCodePayable');
+const cityNameInput = document.getElementById('cityNamePayable');
+
+// Weisen Sie das "required"-Attribut zu
+streetNameInput.required = true;
+houseNumberInput.required = true;
+ZIPCodeInput.required = true;
+cityNameInput.required = true;
