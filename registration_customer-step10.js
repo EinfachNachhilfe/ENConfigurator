@@ -151,6 +151,29 @@ function checkAllFieldsFilled3() {
   } else {
     nextBtn.classList.add('disabled');
   } 
+
+  billingAddressPayable.forEach(function(input) {
+    input.addEventListener("change", function() {
+      if (input.value === "1") {
+        divBillingAddress.style.display = "none";
+        streetNamePayable.value = "";
+        houseNumberPayable.value = "";
+        ZIPCodePayable.value = "";
+        cityNamePayable.value = "";
+        streetNamePayable.required = false;
+        houseNumberPayable.required = false;
+        ZIPCodePayable.required = false;
+        cityNamePayable.required = false;
+      } else if (input.value === "2") {
+        divBillingAddress.style.display = "block";
+        streetNamePayable.required = true;
+        houseNumberPayable.required = true;
+        ZIPCodePayable.required = true;
+        cityNamePayable.required = true;
+      }
+    });
+  });
+
 }
 
 requiredFields3.forEach(function(input) {
@@ -171,6 +194,12 @@ requiredFields3.forEach(function(input) {
       genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
     isAnyGenderRadioSelected3 = false;
+    checkAllFieldsFilled3();
+  });
+});
+
+billingAddressPayable.forEach(function(radio) {
+  radio.addEventListener('change', function() {
     checkAllFieldsFilled3();
   });
 });
@@ -259,38 +288,6 @@ backBtn.addEventListener('click', function() {
   
   
   
-function billingAdress() {
-  billingAddressPayable.forEach(function(input) {
-    input.addEventListener("change", function() {
-      if (input.value === "1") {
-        divBillingAddress.style.display = "none";
-        streetNamePayable.value = "";
-        houseNumberPayable.value = "";
-        ZIPCodePayable.value = "";
-        cityNamePayable.value = "";
-        streetNamePayable.required = false;
-        houseNumberPayable.required = false;
-        ZIPCodePayable.required = false;
-        cityNamePayable.required = false;
-      } else if (input.value === "2") {
-        divBillingAddress.style.display = "block";
-        streetNamePayable.required = true;
-        houseNumberPayable.required = true;
-        ZIPCodePayable.required = true;
-        cityNamePayable.required = true;
-      }
-      checkAllFieldsFilled3();
-    });
-  });
-}
 
-const streetNameInput = document.getElementById('streetNamePayable');
-const houseNumberInput = document.getElementById('houseNumberPayable');
-const ZIPCodeInput = document.getElementById('ZIPCodePayable');
-const cityNameInput = document.getElementById('cityNamePayable');
 
-// Weisen Sie das "required"-Attribut zu
-streetNameInput.required = true;
-houseNumberInput.required = true;
-ZIPCodeInput.required = true;
-cityNameInput.required = true;
+
