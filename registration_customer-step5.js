@@ -164,22 +164,29 @@ requiredFields3.forEach(function(input) {
   });
 });
 
-
-function checkCheckboxSelected1() {
-  checkboxes1.forEach(function(checkbox) {
-    if (checkbox.checked) {
-      isAnyCheckboxSelected1 = true;
+  
+  function checkCheckboxSelected1() {
+    if (selectedCheckboxes === 2) {
+      submitBtn.classList.remove('disabled');
+    } else {
+      submitBtn.classList.add('disabled');
     }
+  }
+  
+  let selectedCheckboxes = 0;
+  
+  checkboxes1.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      if (checkbox.checked) {
+        selectedCheckboxes++;
+      } else {
+        selectedCheckboxes--;
+      }
+      checkCheckboxSelected1();
+    });
   });
   
-  if (isAnyCheckboxSelected1) {
-    submitBtn.classList.remove('disabled');
-  } else {
-    submitBtn.classList.add('disabled');
-  }
-}
-
-checkboxes1.forEach(function(checkbox) {
+  checkboxes1.forEach(function(checkbox) {
   checkbox.addEventListener('change', function() {
     isAnyCheckboxSelected1 = false;
     checkCheckboxSelected1();
