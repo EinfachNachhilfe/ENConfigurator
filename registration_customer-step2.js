@@ -48,12 +48,6 @@ function checkAllFieldsFilled1() {
   
   }
 
-  genderRadios1.forEach(function(radio) {
-    if (radio.checked) {
-      isAnyGenderRadioSelected1 = true;
-    }
-  });
-
   if (isAllFieldsFilled1) {
     nextBtn.classList.remove('disabled');
   } else {
