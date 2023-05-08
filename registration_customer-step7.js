@@ -101,7 +101,7 @@ function checkAllFieldsFilled2() {
     nextBtn.classList.add('disabled');
   } 
 
-  billingAdress()
+  
 }
 requiredFields2.forEach(function(input) {
   input.addEventListener('input', function() {
@@ -151,6 +151,7 @@ function checkAllFieldsFilled3() {
   } else {
     nextBtn.classList.add('disabled');
   } 
+  billingAdress();
 }
 
 requiredFields3.forEach(function(input) {
