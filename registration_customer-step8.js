@@ -151,7 +151,6 @@ function checkAllFieldsFilled3() {
   } else {
     nextBtn.classList.add('disabled');
   } 
-  billingAdress();
 }
 
 requiredFields3.forEach(function(input) {
@@ -280,6 +279,7 @@ function billingAdress() {
         ZIPCodePayable.required = true;
         cityNamePayable.required = true;
       }
+      checkAllFieldsFilled3();
     });
   });
 }
