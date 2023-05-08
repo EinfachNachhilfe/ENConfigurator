@@ -123,15 +123,28 @@ requiredFields2.forEach(function(input) {
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
+  var billingAddressFieldsFilled = 0;
+
   requiredFields3.forEach(function(field) {
     if (field.value) {
       filledFields3++;
     }
   });
 
-  if (filledFields3 === requiredFields3.length) {
+  if (billingAddressPayable.value === "2") {
+    [streetNamePayable, houseNumberPayable, ZIPCodePayable, cityNamePayable].forEach(function(field) {
+      if (field.value) {
+        billingAddressFieldsFilled++;
+      }
+    });
+  } else {
+    billingAddressFieldsFilled = 4;
+  }
+
+  if (filledFields3 === requiredFields3.length && billingAddressFieldsFilled === 4) {
     isAllFieldsFilled3 = true;
-  
+  } else {
+    isAllFieldsFilled3 = false;
   }
   
       genderRadios2.forEach(function(radio) {
