@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const divBillingAddress = document.getElementById("div_billing-address");
-  const billingAddressPayable = document.getElementsByName("billing-address_payable");
-  const streetNamePayable = document.getElementById("street-name_payable");
-  const houseNumberPayable = document.getElementById("house-number_payable");
-  const ZIPCodePayable = document.getElementById("ZIP-code_payable");
-  const cityNamePayable = document.getElementById("city-name_payable");
+  const divBillingAddress = document.getElementById("content_billing-address");
+  const billingAddressPayable = document.getElementsByName("trigger_billing-address");
+  const streetNamePayable = document.getElementById("street-name_billing-address");
+  const houseNumberPayable = document.getElementById("house-number_billing-address");
+  const ZIPCodePayable = document.getElementById("zip-code_billing-address");
+  const cityNamePayable = document.getElementById("city-name_billing-address");
   
   divBillingAddress.style.display = "none";
 
