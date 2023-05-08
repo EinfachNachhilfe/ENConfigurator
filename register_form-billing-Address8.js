@@ -16,16 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
         houseNumberPayable.value = "";
         ZIPCodePayable.value = "";
         cityNamePayable.value = "";
-        streetNamePayable.required = false;
-        houseNumberPayable.required = false;
-        ZIPCodePayable.required = false;
-        cityNamePayable.required = false;
       } else if (input.value === "2") {
         divBillingAddress.style.display = "block";
-        streetNamePayable.required = true;
-        houseNumberPayable.required = true;
-        ZIPCodePayable.required = true;
-        cityNamePayable.required = true;
       }
     });
   });
