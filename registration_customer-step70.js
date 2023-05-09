@@ -114,6 +114,51 @@ requiredFields1.forEach(function(input) {
 
 
 
+function checkAllFieldsFilled2() {
+  var filledFields2 = 0;
+  requiredFields2.forEach(function(field) {
+    if (field.value && field.checkValidity()) {
+      filledFields2++;
+    }
+  });
+
+  if (filledFields2 === requiredFields2.length) {
+    isAllFieldsFilled2 = true;
+  
+  }
+  
+    genderRadios1.forEach(function(radio) {
+    if (radio.checked) {
+      isAnyGenderRadioSelected1 = true;
+    }
+  });
+
+  if (isAllFieldsFilled2 && isAnyGenderRadioSelected1) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  } 
+
+  
+}
+requiredFields2.forEach(function(input) {
+  input.addEventListener('input', function() {
+    isAllFieldsFilled2 = false;
+    checkAllFieldsFilled2();
+   
+  });
+});
+
+  genderRadios1.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected1 = false;
+    checkAllFieldsFilled2();
+  });
+});
+
+
+
+
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
@@ -152,39 +197,6 @@ function checkAllFieldsFilled3() {
     isAllFieldsFilled3 = true;
   } else {
     isAllFieldsFilled3 = false;
-  }
-
-  
-}
-requiredFields2.forEach(function(input) {
-  input.addEventListener('input', function() {
-    isAllFieldsFilled2 = false;
-    checkAllFieldsFilled2();
-   
-  });
-});
-
-  genderRadios1.forEach(function(radio) {
-  radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected1 = false;
-    checkAllFieldsFilled2();
-  });
-});
-
-
-
-
-function checkAllFieldsFilled3() {
-  var filledFields3 = 0;
-  requiredFields3.forEach(function(field) {
-    if (field.value && field.checkValidity()) {
-      filledFields3++;
-    }
-  });
-
-  if (filledFields3 === requiredFields3.length) {
-    isAllFieldsFilled3 = true;
-  
   }
   
       genderRadios2.forEach(function(radio) {
