@@ -37,7 +37,7 @@ var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teach
 
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
 function applyInvalidBorderStyle(input) {
-  input.style.borderColor = 'red';
+  input.style.borderColor = '#9d367a';
   input.style.borderWidth = '1px';
 }
 var inputElement = document.getElementById('zip-code_teaching-location');
