@@ -32,6 +32,9 @@ const ZIPCodePayable = document.getElementById("zip-code_billing-address");
 const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
+//start input-field
+const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+//end input-field
 
 
 document.addEventListener("DOMContentLoaded", function() {
