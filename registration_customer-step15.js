@@ -123,37 +123,23 @@ requiredFields2.forEach(function(input) {
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
-  var billingAddressFieldsFilled = 0;
-
   requiredFields3.forEach(function(field) {
-    if (field.value) {
+    if (field.value && field.checkValidity()) {
       filledFields3++;
     }
   });
 
-  if (billingAddressPayable.value === "2") {
-    [streetNamePayable, houseNumberPayable, ZIPCodePayable, cityNamePayable].forEach(function(field) {
-      if (field.value) {
-        billingAddressFieldsFilled++;
-      }
-    });
-  } else {
-    billingAddressFieldsFilled = 4;
-  }
-
-  if (filledFields3 === requiredFields3.length && billingAddressFieldsFilled === 4) {
+  if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
-  } else {
-    isAllFieldsFilled3 = false;
   }
   
-      genderRadios2.forEach(function(radio) {
+  genderRadios2.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
     }
   });
-  
-        genderRadios3.forEach(function(radio) {
+
+  genderRadios3.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected3 = true;
     }
@@ -166,25 +152,23 @@ function checkAllFieldsFilled3() {
   } 
 
   billingAddressPayable.forEach(function(input) {
-    input.addEventListener("change", function() {
-      if (input.value === "1") {
-        divBillingAddress.style.display = "none";
-        streetNamePayable.value = "";
-        houseNumberPayable.value = "";
-        ZIPCodePayable.value = "";
-        cityNamePayable.value = "";
-        streetNamePayable.required = false;
-        houseNumberPayable.required = false;
-        ZIPCodePayable.required = false;
-        cityNamePayable.required = false;
-      } else if (input.value === "2") {
-        divBillingAddress.style.display = "block";
-        streetNamePayable.required = true;
-        houseNumberPayable.required = true;
-        ZIPCodePayable.required = true;
-        cityNamePayable.required = true;
-      }
-    });
+    if (input.value === "1") {
+      divBillingAddress.style.display = "none";
+      streetNamePayable.value = "";
+      houseNumberPayable.value = "";
+      ZIPCodePayable.value = "";
+      cityNamePayable.value = "";
+      streetNamePayable.required = false;
+      houseNumberPayable.required = false;
+      ZIPCodePayable.required = false;
+      cityNamePayable.required = false;
+    } else if (input.value === "2") {
+      divBillingAddress.style.display = "block";
+      streetNamePayable.required = true;
+      houseNumberPayable.required = true;
+      ZIPCodePayable.required = true;
+      cityNamePayable.required = true;
+    }
   });
 
 }
@@ -213,7 +197,6 @@ requiredFields3.forEach(function(input) {
 
 billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-      isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
 });
