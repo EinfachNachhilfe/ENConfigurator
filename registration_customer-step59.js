@@ -23,11 +23,6 @@ var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
 
-streetNamePayable.required = true;
-houseNumberPayable.required = true;
-ZIPCodePayable.required = true;
-cityNamePayable.required = true;
-
 
 const divBillingAddress = document.getElementById("content_billing-address");
 const billingAddressPayable = document.getElementsByName("trigger_billing-address");
@@ -38,26 +33,19 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 //start input-field
-var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
 //end input-field
 
-//start trigger input validation
-var inputElement = zipCodeTeachingLocation;
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-});
-//end trigger input validation
 
 
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
   input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
+
 inputElement.addEventListener('input', function() {
   if (inputElement.checkValidity()) {
     inputElement.style.borderColor = '';
@@ -65,16 +53,27 @@ inputElement.addEventListener('input', function() {
   }
 });
 
-
 function shakeOnInvalid(input) {
   var originalPosition = input.getBoundingClientRect().left;
+
   input.style.transition = 'transform 0.1s ease-in-out';
   input.style.transform = 'translateX(3px)';
+
   setTimeout(function() {
     input.style.transform = '';
   }, 100);
 }
 //end function input validation
+
+//start trigger input validation
+var inputElement = document.getElementById('input-field');
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+//end trigger input validation
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -115,6 +114,7 @@ requiredFields1.forEach(function(input) {
    
   });
 });
+
 
 
 
@@ -171,25 +171,6 @@ function checkAllFieldsFilled3() {
     }
   });
 
-  billingAddressPayable.forEach(function(input) {
-    input.addEventListener("change", function() {
-      if (input.value === "1") {
-        divBillingAddress.style.display = "none";
-        streetNamePayable.value = "";
-        houseNumberPayable.value = "";
-        ZIPCodePayable.value = "";
-        cityNamePayable.value = "";
-        streetNamePayable.required = false;
-        houseNumberPayable.required = false;
-        ZIPCodePayable.required = false;
-        cityNamePayable.required = false;
-      } else if (input.value === "2") {
-        divBillingAddress.style.display = "block";
-        
-      }
-    });
-  });
-
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
   
@@ -212,6 +193,28 @@ function checkAllFieldsFilled3() {
   } else {
     nextBtn.classList.add('disabled');
   } 
+
+  billingAddressPayable.forEach(function(input) {
+    input.addEventListener("change", function() {
+      if (input.value === "1") {
+        divBillingAddress.style.display = "none";
+        streetNamePayable.value = "";
+        houseNumberPayable.value = "";
+        ZIPCodePayable.value = "";
+        cityNamePayable.value = "";
+        streetNamePayable.required = false;
+        houseNumberPayable.required = false;
+        ZIPCodePayable.required = false;
+        cityNamePayable.required = false;
+      } else if (input.value === "2") {
+        divBillingAddress.style.display = "block";
+        streetNamePayable.required = true;
+        houseNumberPayable.required = true;
+        ZIPCodePayable.required = true;
+        cityNamePayable.required = true;
+      }
+    });
+  });
 
 }
 
@@ -328,3 +331,5 @@ backBtn.addEventListener('click', function() {
   
   
   
+
+
