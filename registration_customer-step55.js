@@ -233,6 +233,7 @@ genderRadios3.forEach(function(radio) {
 
 billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
+     isAllFieldsFilled2 = false;
     checkAllFieldsFilled3();
   });
 });
