@@ -36,6 +36,13 @@ divBillingAddress.style.display = "none";
 const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 //end input-field
 
+//start trigger input validation
+zipCodeTeachingLocation.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+//end trigger input validation
+
 
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
