@@ -161,42 +161,15 @@ requiredFields2.forEach(function(input) {
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
-  var isBillingAddressRequired = false;
-  var filledBillingFields = 0;
-  var billingAddressFields = [
-    streetNamePayable,
-    houseNumberPayable,
-    ZIPCodePayable,
-    cityNamePayable
-  ];
-
   requiredFields3.forEach(function(field) {
     if (field.value && field.checkValidity()) {
       filledFields3++;
     }
   });
 
-  billingAddressPayable.forEach(function(input) {
-    if (input.checked && input.value === "2") {
-      isBillingAddressRequired = true;
-    }
-  });
-
-  if (isBillingAddressRequired) {
-    billingAddressFields.forEach(function(field) {
-      if (field.value && field.checkValidity()) {
-        filledBillingFields++;
-      }
-    });
-  }
-
-  if (
-    filledFields3 === requiredFields3.length &&
-    (!isBillingAddressRequired || filledBillingFields === billingAddressFields.length)
-  ) {
+  if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
-  } else {
-    isAllFieldsFilled3 = false;
+  
   }
   
       genderRadios2.forEach(function(radio) {
@@ -256,9 +229,9 @@ requiredFields3.forEach(function(input) {
   });
 });
   
-genderRadios3.forEach(function(radio) {
-radio.addEventListener('change', function() {
-isAnyGenderRadioSelected3 = false;
+      genderRadios3.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
@@ -269,15 +242,6 @@ billingAddressPayable.forEach(function(radio) {
     checkAllFieldsFilled3();
   });
 });
-
-billingAddressFields.forEach(function(radio) {
-  radio.addEventListener('change', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-  });
-});
-
-
 
   
   function checkCheckboxSelected1() {
