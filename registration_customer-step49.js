@@ -48,20 +48,6 @@ dateInput.addEventListener('input', function() {
   }
 });
 
-//end input-field
-
-//start trigger input validation
-var inputElement = zipCodeTeachingLocation;
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-});
-
-//end trigger input validation
-
-
-//start function input validation
-
 function isValidDate(dateString) {
 
   var dateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
@@ -80,6 +66,26 @@ function isValidDate(dateString) {
   return true;
 }
 
+//end input-field
+
+//start trigger input validation
+var inputElement = zipCodeTeachingLocation;
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+
+var inputElement = birthdayStudent;
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+
+
+//end trigger input validation
+
+
+//start function input validation
 
 function applyInvalidBorderStyle(input) {
   input.style.borderColor = '#9d367a';
