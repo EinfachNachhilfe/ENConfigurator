@@ -36,11 +36,22 @@ var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teach
 
 
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
-zipCodeTeachingLocation.addEventListener('invalid', function() {
-  genderRadios.forEach(function(radio) {
-    radio.style.borderColor = 'red';
-  });
+function applyInvalidBorderStyle(input) {
+  input.style.borderColor = 'red';
+  input.style.borderWidth = '2px';
+}
+var inputElement = document.getElementById('zip-code_teaching-location');
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
 });
+
+inputElement.addEventListener('input', function() {
+  if (inputElement.checkValidity()) {
+    inputElement.style.borderColor = '';
+    inputElement.style.borderWidth = '';
+  }
+});
+
 
 
 
