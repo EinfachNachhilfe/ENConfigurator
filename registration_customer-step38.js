@@ -40,10 +40,14 @@ function applyInvalidBorderStyle(input) {
   input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
+
 var inputElement = document.getElementById('zip-code_teaching-location');
 inputElement.addEventListener('invalid', function() {
+zipCodeTeachingLocation.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
 });
+  
 inputElement.addEventListener('input', function() {
   if (inputElement.checkValidity()) {
     inputElement.style.borderColor = '';
