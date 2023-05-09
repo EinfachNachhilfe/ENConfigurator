@@ -33,40 +33,12 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 //start input-field
-const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
 //end input-field
 
-
-
-//start function input validation
-
-function applyInvalidBorderStyle(input) {
-  input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '1.5px';
-}
-
-inputElement.addEventListener('input', function() {
-  if (inputElement.checkValidity()) {
-    inputElement.style.borderColor = '';
-    inputElement.style.borderWidth = '';
-  }
-});
-
-function shakeOnInvalid(input) {
-  var originalPosition = input.getBoundingClientRect().left;
-
-  input.style.transition = 'transform 0.1s ease-in-out';
-  input.style.transform = 'translateX(3px)';
-
-  setTimeout(function() {
-    input.style.transform = '';
-  }, 100);
-}
-//end function input validation
-
 //start trigger input validation
-var inputElement = document.getElementById('input-field');
+var inputElement = zipCodeTeachingLocation;
 inputElement.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
@@ -74,6 +46,30 @@ inputElement.addEventListener('invalid', function() {
 //end trigger input validation
 
 
+//start function input validation
+
+function applyInvalidBorderStyle(input) {
+  input.style.borderColor = '#9d367a';
+  input.style.borderWidth = '2px';
+  input.style.borderWidth = '1.5px';
+}
+inputElement.addEventListener('input', function() {
+  if (inputElement.checkValidity()) {
+    inputElement.style.borderColor = '';
+    inputElement.style.borderWidth = '';
+  }
+});
+
+
+function shakeOnInvalid(input) {
+  var originalPosition = input.getBoundingClientRect().left;
+  input.style.transition = 'transform 0.1s ease-in-out';
+  input.style.transform = 'translateX(3px)';
+  setTimeout(function() {
+    input.style.transform = '';
+  }, 100);
+}
+//end function input validation
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -331,5 +327,3 @@ backBtn.addEventListener('click', function() {
   
   
   
-
-
