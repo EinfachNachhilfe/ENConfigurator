@@ -65,8 +65,7 @@ function shakeOnInvalid(input) {
 //end function input validation
 
 //start trigger input validation
-var inputElement = zipCodeTeachingLocation;
-inputElement.addEventListener('invalid', function() {
+zipCodeTeachingLocation.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
 });
