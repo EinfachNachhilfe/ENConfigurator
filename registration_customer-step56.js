@@ -167,26 +167,6 @@ function checkAllFieldsFilled3() {
     }
   });
 
-  isAllFieldsFilled3 = filledFields3 === requiredFields3.length;
-
-  genderRadios2.forEach(function(radio) {
-    if (radio.checked) {
-      isAnyGenderRadioSelected2 = true;
-    }
-  });
-
-  genderRadios3.forEach(function(radio) {
-    if (radio.checked) {
-      isAnyGenderRadioSelected3 = true;
-    }
-  });
-
-  if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3) {
-    nextBtn.classList.remove('disabled');
-  } else {
-    nextBtn.classList.add('disabled');
-  }
-
   billingAddressPayable.forEach(function(input) {
     input.addEventListener("change", function() {
       if (input.value === "1") {
@@ -206,38 +186,62 @@ function checkAllFieldsFilled3() {
         ZIPCodePayable.required = true;
         cityNamePayable.required = true;
       }
-      // Force checkAllFieldsFilled3 to update isAllFieldsFilled3 status after changing billing address option
-      checkAllFieldsFilled3();
     });
   });
+
+  if (filledFields3 === requiredFields3.length) {
+    isAllFieldsFilled3 = true;
+  
+  }
+  
+      genderRadios2.forEach(function(radio) {
+    if (radio.checked) {
+      isAnyGenderRadioSelected2 = true;
+    }
+  });
+  
+        genderRadios3.forEach(function(radio) {
+    if (radio.checked) {
+      isAnyGenderRadioSelected3 = true;
+    }
+  });
+
+  if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  } 
 
 }
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+   
+  });
+});
+  
+    genderRadios2.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected2 = false;
     checkAllFieldsFilled3();
   });
 });
-
-genderRadios2.forEach(function(radio) {
+  
+      genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    checkAllFieldsFilled3();
-  });
-});
-
-genderRadios3.forEach(function(radio) {
-  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
 
 billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-     isAllFieldsFilled2 = false;
+    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
 });
-
 
   
   function checkCheckboxSelected1() {
