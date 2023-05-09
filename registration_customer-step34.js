@@ -36,6 +36,8 @@ divBillingAddress.style.display = "none";
 const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 //end input-field
 
+
+
 //start function input validation
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
 function applyInvalidBorderStyle(input) {
@@ -63,7 +65,8 @@ function shakeOnInvalid(input) {
 //end function input validation
 
 //start trigger input validation
-zipCodeTeachingLocation.addEventListener('invalid', function() {
+var inputElement = document.getElementById('zip-code_teaching-location');
+inputElement.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
 });
