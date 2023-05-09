@@ -213,6 +213,7 @@ requiredFields3.forEach(function(input) {
 
 billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
+      isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
   });
 });
