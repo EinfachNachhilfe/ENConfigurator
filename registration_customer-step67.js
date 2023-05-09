@@ -242,28 +242,42 @@ function checkAllFieldsFilled3() {
 }
 
 requiredFields3.forEach(function(input) {
-  input.addEventListener('input', checkAllFieldsFilled3);
+  input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+   
+  });
 });
-
-genderRadios2.forEach(function(input) {
-  input.addEventListener('input', checkAllFieldsFilled3);
+  
+    genderRadios2.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected2 = false;
+    checkAllFieldsFilled3();
+  });
 });
-
   
 genderRadios3.forEach(function(radio) {
-  radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected3 = false;
+radio.addEventListener('change', function() {
+isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
 
-billingAddressFields.forEach(function(input) {
-  input.addEventListener('input', checkAllFieldsFilled3);
+billingAddressPayable.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+  });
 });
 
-billingAddressPayable.forEach(function(radio) {
-  radio.addEventListener('change', checkAllFieldsFilled3);
+billingAddressFields.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+  });
 });
+
+
 
   
   function checkCheckboxSelected1() {
