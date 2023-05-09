@@ -33,7 +33,14 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+
+
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
+zipCodeTeachingLocation.addEventListener('invalid', function() {
+  genderRadios.forEach(function(radio) {
+    radio.style.borderColor = 'red';
+  });
+});
 
 
 
