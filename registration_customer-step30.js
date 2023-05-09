@@ -33,47 +33,6 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 
-const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
-
-
-
-
-
-zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
-function applyInvalidBorderStyle(input) {
-  input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '1.5px';
-}
-
-inputElement.addEventListener('input', function() {
-  if (inputElement.checkValidity()) {
-    inputElement.style.borderColor = '';
-    inputElement.style.borderWidth = '';
-  }
-});
-
-function shakeOnInvalid(input) {
-  var originalPosition = input.getBoundingClientRect().left;
-
-  input.style.transition = 'transform 0.1s ease-in-out';
-  input.style.transform = 'translateX(3px)';
-
-  setTimeout(function() {
-    input.style.transform = '';
-  }, 100);
-}
-
-
-//start trigger input validation
-var inputElement = document.getElementById('zip-code_teaching-location');
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-});
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
@@ -88,7 +47,7 @@ showStepNumber.textContent = "Schritt 1 von 5";
 function checkAllFieldsFilled1() {
   var filledFields1 = 0;
   requiredFields1.forEach(function(field) {
-    if (field.value && field.checkValidity()) {
+    if (field.value) {
       filledFields1++;
     }
   });
@@ -120,7 +79,7 @@ requiredFields1.forEach(function(input) {
 function checkAllFieldsFilled2() {
   var filledFields2 = 0;
   requiredFields2.forEach(function(field) {
-    if (field.value && field.checkValidity()) {
+    if (field.value) {
       filledFields2++;
     }
   });
@@ -165,7 +124,7 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
-    if (field.value && field.checkValidity()) {
+    if (field.value) {
       filledFields3++;
     }
   });
@@ -330,5 +289,6 @@ backBtn.addEventListener('click', function() {
   
   
   
+
 
 
