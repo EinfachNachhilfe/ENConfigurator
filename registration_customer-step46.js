@@ -37,7 +37,7 @@ var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teach
 //end input-field
 
 //start trigger input validation
-var inputElement = document.getElementById('zip-code_teaching-location');
+var inputElement = zipCodeTeachingLocation;
 inputElement.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
