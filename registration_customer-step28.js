@@ -65,7 +65,8 @@ function shakeOnInvalid(input) {
 //end function input validation
 
 //start trigger input validation
-zipCodeTeachingLocation.addEventListener('invalid', function() {
+var inputElement = document.getElementById('zip-code_teaching-location');
+inputElement.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
 });
@@ -329,6 +330,5 @@ backBtn.addEventListener('click', function() {
   
   
   
-
 
 
