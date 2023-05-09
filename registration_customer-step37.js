@@ -40,8 +40,8 @@ function applyInvalidBorderStyle(input) {
   input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
-zipCodeTeachingLocation.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
+var inputElement = document.getElementById('zip-code_teaching-location');
+inputElement.addEventListener('invalid', function() {
     shakeOnInvalid(inputElement);
 });
 inputElement.addEventListener('input', function() {
