@@ -44,6 +44,14 @@ function applyInvalidBorderStyle(input) {
   input.style.borderWidth = '1.5px';
 }
 
+//start trigger input validation
+var inputElement = document.getElementById('zip-code_teaching-location');
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+//end trigger input validation
+
 inputElement.addEventListener('input', function() {
   if (inputElement.checkValidity()) {
     inputElement.style.borderColor = '';
@@ -60,13 +68,6 @@ function shakeOnInvalid(input) {
 }
 //end function input validation
 
-//start trigger input validation
-var inputElement = document.getElementById('zip-code_teaching-location');
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-});
-//end trigger input validation
 
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
