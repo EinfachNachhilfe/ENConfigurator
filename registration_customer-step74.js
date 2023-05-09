@@ -170,6 +170,9 @@ function checkAllFieldsFilled3() {
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
   
+  }
+  
+  
       genderRadios2.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
