@@ -36,6 +36,32 @@ divBillingAddress.style.display = "none";
 const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 //end input-field
 
+//start function input validation
+zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
+function applyInvalidBorderStyle(input) {
+  input.style.borderColor = '#9d367a';
+  input.style.borderWidth = '1.5px';
+}
+
+inputElement.addEventListener('input', function() {
+  if (inputElement.checkValidity()) {
+    inputElement.style.borderColor = '';
+    inputElement.style.borderWidth = '';
+  }
+});
+
+function shakeOnInvalid(input) {
+  var originalPosition = input.getBoundingClientRect().left;
+
+  input.style.transition = 'transform 0.1s ease-in-out';
+  input.style.transform = 'translateX(3px)';
+
+  setTimeout(function() {
+    input.style.transform = '';
+  }, 100);
+}
+//end function input validation
+
 //start trigger input validation
 zipCodeTeachingLocation.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
