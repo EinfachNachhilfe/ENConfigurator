@@ -161,50 +161,24 @@ requiredFields2.forEach(function(input) {
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
-  var isBillingAddressRequired = false;
-
-  billingAddressPayable.forEach(function(input) {
-    if (input.checked && input.value === "2") {
-      isBillingAddressRequired = true;
-    }
-  });
-
   requiredFields3.forEach(function(field) {
     if (field.value && field.checkValidity()) {
       filledFields3++;
     }
   });
 
-  // Check if billing address fields are required and filled
-  if (isBillingAddressRequired) {
-    var billingAddressFields = [
-      streetNamePayable,
-      houseNumberPayable,
-      ZIPCodePayable,
-      cityNamePayable
-    ];
-    var filledBillingFields = 0;
-
-    billingAddressFields.forEach(function(field) {
-      if (field.value && field.checkValidity()) {
-        filledBillingFields++;
-      }
-    });
-
-    if (filledBillingFields === billingAddressFields.length) {
-      filledFields3 += filledBillingFields;
-    }
+  if (filledFields3 === requiredFields3.length) {
+    isAllFieldsFilled3 = true;
+  
   }
-
-  isAllFieldsFilled3 = filledFields3 === requiredFields3.length + (isBillingAddressRequired ? 4 : 0);
-
-  genderRadios2.forEach(function(radio) {
+  
+      genderRadios2.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
     }
   });
-
-  genderRadios3.forEach(function(radio) {
+  
+        genderRadios3.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected3 = true;
     }
@@ -214,8 +188,7 @@ function checkAllFieldsFilled3() {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
-  }
-}
+  } 
 
   billingAddressPayable.forEach(function(input) {
     input.addEventListener("change", function() {
