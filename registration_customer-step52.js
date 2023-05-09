@@ -33,26 +33,19 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 //start input-field
-var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+const zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
 //end input-field
 
-//start trigger input validation
-var inputElement = zipCodeTeachingLocation;
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-});
-//end trigger input validation
 
 
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
   input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
+
 inputElement.addEventListener('input', function() {
   if (inputElement.checkValidity()) {
     inputElement.style.borderColor = '';
@@ -60,16 +53,27 @@ inputElement.addEventListener('input', function() {
   }
 });
 
-
 function shakeOnInvalid(input) {
   var originalPosition = input.getBoundingClientRect().left;
+
   input.style.transition = 'transform 0.1s ease-in-out';
   input.style.transform = 'translateX(3px)';
+
   setTimeout(function() {
     input.style.transform = '';
   }, 100);
 }
 //end function input validation
+
+//start trigger input validation
+var inputElement = document.getElementById('input-field');
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+//end trigger input validation
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -85,7 +89,7 @@ showStepNumber.textContent = "Schritt 1 von 5";
 function checkAllFieldsFilled1() {
   var filledFields1 = 0;
   requiredFields1.forEach(function(field) {
-    if (field.value) {
+    if (field.value && field.checkValidity()) {
       filledFields1++;
     }
   });
@@ -117,7 +121,7 @@ requiredFields1.forEach(function(input) {
 function checkAllFieldsFilled2() {
   var filledFields2 = 0;
   requiredFields2.forEach(function(field) {
-    if (field.value) {
+    if (field.value && field.checkValidity()) {
       filledFields2++;
     }
   });
@@ -162,7 +166,7 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   requiredFields3.forEach(function(field) {
-    if (field.value) {
+    if (field.value && field.checkValidity()) {
       filledFields3++;
     }
   });
@@ -327,3 +331,5 @@ backBtn.addEventListener('click', function() {
   
   
   
+
+
