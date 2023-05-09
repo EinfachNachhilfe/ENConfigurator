@@ -157,7 +157,10 @@ requiredFields2.forEach(function(input) {
 });
 
 
-
+        streetNamePayable.required = true;
+        houseNumberPayable.required = true;
+        ZIPCodePayable.required = true;
+        cityNamePayable.required = true;
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
@@ -204,10 +207,6 @@ function checkAllFieldsFilled3() {
         cityNamePayable.required = false;
       } else if (input.value === "2") {
         divBillingAddress.style.display = "block";
-        streetNamePayable.required = true;
-        houseNumberPayable.required = true;
-        ZIPCodePayable.required = true;
-        cityNamePayable.required = true;
       }
     });
   });
