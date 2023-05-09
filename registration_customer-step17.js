@@ -47,7 +47,7 @@ showStepNumber.textContent = "Schritt 1 von 5";
 function checkAllFieldsFilled1() {
   var filledFields1 = 0;
   requiredFields1.forEach(function(field) {
-    if (field.value) {
+    if (field.value && field.checkValidity()) {
       filledFields1++;
     }
   });
@@ -79,7 +79,7 @@ requiredFields1.forEach(function(input) {
 function checkAllFieldsFilled2() {
   var filledFields2 = 0;
   requiredFields2.forEach(function(field) {
-    if (field.value) {
+    if (field.value && field.checkValidity()) {
       filledFields2++;
     }
   });
