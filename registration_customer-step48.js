@@ -35,6 +35,19 @@ divBillingAddress.style.display = "none";
 //start input-field
 var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
+
+var birthdayStudent = document.querySelector('input[name="birthday_student"]');
+var dateInput = birthdayStudent;
+dateInput.addEventListener('input', function() {
+  if (!isValidDate(dateInput.value)) {
+    // Date true
+    dateInput.classList.add('invalid');
+  } else {
+    // Date false
+    dateInput.classList.remove('invalid');
+  }
+});
+
 //end input-field
 
 //start trigger input validation
@@ -43,10 +56,31 @@ inputElement.addEventListener('invalid', function() {
   applyInvalidBorderStyle(inputElement);
     shakeOnInvalid(inputElement);
 });
+
 //end trigger input validation
 
 
 //start function input validation
+
+function isValidDate(dateString) {
+
+  var dateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
+  if (!dateRegex.test(dateString)) {
+    return false;
+  }
+  
+  var parts = dateString.split('.');
+  var day = parseInt(parts[0], 10);
+  var month = parseInt(parts[1], 10);
+  var year = parseInt(parts[2], 10);
+  var date = new Date(year, month - 1, day);
+  if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
+    return false;
+  }
+  return true;
+}
+
+
 function applyInvalidBorderStyle(input) {
   input.style.borderColor = '#9d367a';
   input.style.borderWidth = '2px';
@@ -326,4 +360,3 @@ backBtn.addEventListener('click', function() {
   
   
   
-
