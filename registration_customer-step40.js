@@ -32,19 +32,18 @@ const ZIPCodePayable = document.getElementById("zip-code_billing-address");
 const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
+//start input-field
 var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+//end input-field
 
+//start function input validation
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
 function applyInvalidBorderStyle(input) {
   input.style.borderColor = '#9d367a';
   input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
-var inputElement = document.getElementById('zip-code_teaching-location');
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-});
+
 inputElement.addEventListener('input', function() {
   if (inputElement.checkValidity()) {
     inputElement.style.borderColor = '';
@@ -59,7 +58,15 @@ function shakeOnInvalid(input) {
     input.style.transform = '';
   }, 100);
 }
+//end function input validation
 
+//start trigger input validation
+var inputElement = document.getElementById('zip-code_teaching-location');
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+//end trigger input validation
 
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
