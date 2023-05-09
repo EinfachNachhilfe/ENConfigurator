@@ -163,13 +163,8 @@ function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
-  var billingAddressFields = [
-    streetNamePayable,
-    houseNumberPayable,
-    ZIPCodePayable,
-    cityNamePayable
-  ];
-
+  var billingAddressFields = [streetNamePayable, houseNumberPayable, ZIPCodePayable, cityNamePayable];
+    
   requiredFields3.forEach(function(field) {
     if (field.value && field.checkValidity()) {
       filledFields3++;
@@ -269,6 +264,15 @@ billingAddressPayable.forEach(function(radio) {
     checkAllFieldsFilled3();
   });
 });
+  
+billingAddressFields.forEach(function(input) {
+  input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+   
+  });
+});
+  
 
   
   function checkCheckboxSelected1() {
