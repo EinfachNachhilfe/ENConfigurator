@@ -23,7 +23,12 @@ var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
 var isBillingAddressRequired = false;
-var billingAddressFields = [ { streetNamePayable: { required: true } },{ houseNumberPayable: { required: true } }, { ZIPCodePayable: { required: true } }, { cityNamePayable: { required: true } }];
+ var billingAddressFields = [
+  streetNamePayable,
+  houseNumberPayable,
+  ZIPCodePayable,
+  cityNamePayable
+];
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
@@ -164,6 +169,7 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var filledBillingFields = 0;
+ 
 
 
   requiredFields3.forEach(function (field) {
@@ -192,10 +198,10 @@ function checkAllFieldsFilled3() {
     });
   }
 
-    if (filledBillingFields ===  billingAddressFields.length) {
-     isAllFieldsbillingAddress = true;
-  
-  }
+ if (filledBillingFields === billingAddressFields.length) {
+  isAllFieldsBillingAddress = true;
+}
+
 
       genderRadios2.forEach(function(radio) {
     if (radio.checked) {
