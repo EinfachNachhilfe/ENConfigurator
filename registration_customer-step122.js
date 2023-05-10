@@ -23,8 +23,7 @@ var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
 
-const inputField = document.getElementById("registration_customer");
-inputField.removeAttribute("required");
+
 
 const divBillingAddress = document.getElementById("content_billing-address");
 const billingAddressPayable = document.getElementsByName("trigger_billing-address");
