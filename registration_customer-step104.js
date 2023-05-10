@@ -104,6 +104,8 @@ requiredFields1.forEach(function(input) {
   input.addEventListener('input', function() {
     checkAllFieldsFilled1();
    
+    return isAllFieldsFilled1;
+    
   });
 });
 
