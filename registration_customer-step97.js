@@ -244,15 +244,7 @@ requiredFields3.forEach(function(input) {
    
   });
 });
-  
-  billingAddressFields.forEach(function(input) {
-  input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-   
-  });
-});
-  
+ 
     genderRadios2.forEach(function(radio) {
   radio.addEventListener('change', function() {
     isAnyGenderRadioSelected2 = false;
@@ -269,7 +261,7 @@ requiredFields3.forEach(function(input) {
   
         billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected3 = false;
+    isBillingAddressRequired = false;
     checkAllFieldsFilled3();
   });
 });
