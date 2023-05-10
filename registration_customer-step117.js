@@ -211,7 +211,7 @@ genderRadios3.forEach(function (input) {
     }
   });
 
-if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true))) {
+if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired &&  isAllFieldsbillingAddress))) {
   nextBtn.classList.remove('disabled');
 } else {
   nextBtn.classList.add('disabled');
