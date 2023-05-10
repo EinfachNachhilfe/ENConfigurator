@@ -257,7 +257,6 @@ requiredFields3.forEach(function(input) {
   
         billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isBillingAddressRequired = false;
     checkAllFieldsFilled3();
   });
 });
