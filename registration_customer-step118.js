@@ -179,9 +179,9 @@ function checkAllFieldsFilled3() {
 
 genderRadios3.forEach(function (input) {
   if (input.value === "1") {
-    isBillingAddressRequired = true;
-  } else if (input.value === "2") {
     isBillingAddressRequired = false;
+  } else if (input.value === "2") {
+    isBillingAddressRequired = true;
   }
 });
 
