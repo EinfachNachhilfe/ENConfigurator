@@ -197,7 +197,7 @@ var billingAddressFields = [
   }
 
     if (filledBillingFields ===  billingAddressFields.length) {
-     isAllFieldsbillingAddress = true;
+     isAllFieldsbillingAddress = false;
   
   }
 
