@@ -23,12 +23,8 @@ var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
 var isBillingAddressRequired = false;
-var billingAddressFields = [
-  streetNamePayable,
-  houseNumberPayable,
-  ZIPCodePayable,
-  cityNamePayable
-];
+var billingAddressFields = [ { streetNamePayable: { required: true } },{ houseNumberPayable: { required: true } }, { ZIPCodePayable: { required: true } }, { cityNamePayable: { required: true } }];
+
 
 const divBillingAddress = document.getElementById("content_billing-address");
 const billingAddressPayable = document.getElementsByName("trigger_billing-address");
