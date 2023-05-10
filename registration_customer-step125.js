@@ -72,6 +72,22 @@ function shakeOnInvalid(input) {
 }
 //end function input validation
 
+document.addEventListener("DOMContentLoaded", function() {
+  const inputField = document.getElementById("first-name_payable");
+
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === "attributes" && mutation.attributeName === "required") {
+        inputField.removeAttribute("required");
+      }
+    });
+  });
+
+  observer.observe(inputField, { attributes: true });
+});
+
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
@@ -81,8 +97,6 @@ step4.style.display = 'none';
 backBtn.style.display = 'none';
 submitBtn.style.display = 'none';
 showStepNumber.textContent = "Schritt 1 von 5";
-const inputField = document.getElementById("first-name_payable");
-inputField.removeAttribute("required");
 
   
   
