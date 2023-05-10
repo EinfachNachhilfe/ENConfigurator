@@ -191,8 +191,8 @@ function checkAllFieldsFilled3() {
     });
   }
 
-    if ( filledBillingFields ===  billingAddressPayable.length) {
-     billingAddressPayable = true;
+    if (filledBillingFields ===  billingAddressFields.length) {
+     isAllFieldsbillingAddress = true;
   
   }
 
@@ -208,7 +208,7 @@ function checkAllFieldsFilled3() {
     }
   });
 
-if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || (isBillingAddressRequired === true && billingAddressPayable === true))) {
+if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true))) {
   nextBtn.classList.remove('disabled');
 } else {
   nextBtn.classList.add('disabled');
