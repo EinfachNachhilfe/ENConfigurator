@@ -79,8 +79,8 @@ showStepNumber.textContent = "Schritt 1 von 5";
   
   
 function checkAllFieldsFilled1() {
-  var isAllFieldsFilled1 = false;
-  var filledFields1 = 0;
+  const isAllFieldsFilled1 = false;
+  const filledFields1 = 0;
   requiredFields1.forEach(function(field) {
     if (field.value && field.checkValidity()) {
       filledFields1++;
@@ -295,7 +295,7 @@ requiredFields3.forEach(function(input) {
 
 
 nextBtn.addEventListener('click', function() {
-  if (isAllFieldsFilled1) {
+  if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none') {
     step1.style.display = 'none';
     step2.style.display = 'block';
     backBtn.style.display = 'flex';
