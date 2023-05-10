@@ -295,7 +295,7 @@ requiredFields3.forEach(function(input) {
 
 
 nextBtn.addEventListener('click', function() {
-  if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none') {
+  if (isAllFieldsFilled1) {
     step1.style.display = 'none';
     step2.style.display = 'block';
     backBtn.style.display = 'flex';
