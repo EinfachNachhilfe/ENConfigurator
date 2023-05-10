@@ -22,6 +22,7 @@ var genderRadios3 = document.querySelectorAll('input[name="trigger_billing-addre
 var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
+var isBillingAddressRequired = false;
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
