@@ -245,14 +245,6 @@ requiredFields3.forEach(function(input) {
   });
 });
   
-  billingAddressFields.forEach(function(input) {
-  input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
-    checkAllFieldsFilled3();
-   
-  });
-});
-  
     genderRadios2.forEach(function(radio) {
   radio.addEventListener('change', function() {
     isAnyGenderRadioSelected2 = false;
