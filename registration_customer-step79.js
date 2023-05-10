@@ -179,6 +179,7 @@ function checkAllFieldsFilled3() {
   billingAddressPayable.forEach(function (input) {
     if (input.checked && input.value === "2") {
       isBillingAddressRequired = true;
+        isAllFieldsFilled3 = false;
     }
   });
 
