@@ -19,9 +19,7 @@ var showStepNumber = document.getElementById('show-step_number');
 var genderRadios1 = document.querySelectorAll('input[name="gender_student"]');
 var genderRadios2 = document.querySelectorAll('input[name="gender_payable"]');
 var genderRadios3 = document.querySelectorAll('input[name="trigger_billing-address"]');
-var isAnyGenderRadioSelected1 = false;
-var isAnyGenderRadioSelected2 = false;
-var isAnyGenderRadioSelected3 = false;
+
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
@@ -160,6 +158,9 @@ requiredFields2.forEach(function(input) {
 
 
 function checkAllFieldsFilled3() {
+ var isAnyGenderRadioSelected1 = false;
+ var isAnyGenderRadioSelected2 = false;
+ var isAnyGenderRadioSelected3 = false;
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
