@@ -11,7 +11,7 @@ var requiredFields3 = document.querySelectorAll('#form-item_payable [required]')
 var requiredFields4 = document.querySelectorAll('#form-item_closing [required]');
 var isAllFieldsFilled1 = false;
 var isAllFieldsFilled2 = false;
-var isAllFieldsFilled3 = false;
+
 var isAllFieldsFilled4 = false;
 var isAnyCheckboxSelected1 = false;
 var checkboxes1 = step4.querySelectorAll('input[type="checkbox"]');
@@ -158,9 +158,10 @@ requiredFields2.forEach(function(input) {
 
 
 function checkAllFieldsFilled3() {
- var isAnyGenderRadioSelected1 = false;
- var isAnyGenderRadioSelected2 = false;
- var isAnyGenderRadioSelected3 = false;
+ let isAllFieldsFilled3 = false;
+ let isAnyGenderRadioSelected1 = false;
+ let isAnyGenderRadioSelected2 = false;
+ let isAnyGenderRadioSelected3 = false;
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
