@@ -177,12 +177,14 @@ function checkAllFieldsFilled3() {
   
   }
 
-  billingAddressPayable.forEach(function (input) {
-    if (input.value === "2") {
-      isBillingAddressRequired = true;
-       
-    }
-  });
+genderRadios3.forEach(function (input) {
+  if (input.value === "1") {
+    isBillingAddressRequired = true;
+  } else if (input.value === "2") {
+    isBillingAddressRequired = false;
+  }
+});
+
 
   if (isBillingAddressRequired) {
     billingAddressFields.forEach(function (field) {
@@ -255,13 +257,6 @@ requiredFields3.forEach(function(input) {
   });
 });
   
-        billingAddressPayable.forEach(function(radio) {
-  radio.addEventListener('change', function() {
-     isBillingAddressRequired = false;
-    checkAllFieldsFilled3();
-  });
-});
-
 
 
   
