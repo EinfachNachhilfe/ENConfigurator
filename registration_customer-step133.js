@@ -203,10 +203,7 @@ function checkAllFieldsFilled3() {
   });
 
   if (
-    isAllFieldsFilled3 &&
-    isAnyGenderRadioSelected2 &&
-    isAnyGenderRadioSelected3 &&
-    (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
+    isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
   ) {
     nextBtn.classList.remove('disabled');
   } else {
