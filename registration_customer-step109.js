@@ -177,8 +177,8 @@ function checkAllFieldsFilled3() {
   
   }
 
-  billingAddressPayable.forEach(function (input) {
-    if (input.checked && input.value === "2") {
+  genderRadios3.forEach(function (input) {
+    if (input.value === "2") {
       isBillingAddressRequired = true;
        
     }
@@ -251,18 +251,10 @@ requiredFields3.forEach(function(input) {
       genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
     isAnyGenderRadioSelected3 = false;
+    isBillingAddressRequired = false;
     checkAllFieldsFilled3();
   });
 });
-  
-        billingAddressPayable.forEach(function(radio) {
-  radio.addEventListener('change', function() {
-    checkAllFieldsFilled3();
-  });
-});
-
-
-
   
   function checkCheckboxSelected1() {
     if (selectedCheckboxes === 2) {
