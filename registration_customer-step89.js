@@ -207,11 +207,7 @@ var billingAddressFields = [
     }
   });
   
-        genderRadios3.forEach(function(radio) {
-    if (radio.checked) {
-      isAnyGenderRadioSelected3 = true;
-    }
-  });
+
 
 if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true))) {
   nextBtn.classList.remove('disabled');
@@ -261,7 +257,7 @@ requiredFields3.forEach(function(input) {
   
         billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected3 = false;
+     isBillingAddressRequired = false;
     checkAllFieldsFilled3();
   });
 });
