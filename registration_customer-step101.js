@@ -9,11 +9,9 @@ var requiredFields1 = document.querySelectorAll('#form-item_adress [required]');
 var requiredFields2 = document.querySelectorAll('#form-item_student [required]');
 var requiredFields3 = document.querySelectorAll('#form-item_payable [required]');
 var requiredFields4 = document.querySelectorAll('#form-item_closing [required]');
-var isAllFieldsFilled1 = false;
-var isAllFieldsFilled2 = false;
 
-var isAllFieldsFilled4 = false;
-var isAnyCheckboxSelected1 = false;
+
+
 var checkboxes1 = step4.querySelectorAll('input[type="checkbox"]');
 var showStepNumber = document.getElementById('show-step_number');
 var genderRadios1 = document.querySelectorAll('input[name="gender_student"]');
@@ -81,6 +79,7 @@ showStepNumber.textContent = "Schritt 1 von 5";
   
   
 function checkAllFieldsFilled1() {
+  var isAllFieldsFilled1 = false;
   var filledFields1 = 0;
   requiredFields1.forEach(function(field) {
     if (field.value && field.checkValidity()) {
@@ -103,7 +102,6 @@ function checkAllFieldsFilled1() {
 }
 requiredFields1.forEach(function(input) {
   input.addEventListener('input', function() {
-    isAllFieldsFilled1 = false;
     checkAllFieldsFilled1();
    
   });
@@ -113,6 +111,8 @@ requiredFields1.forEach(function(input) {
 
 
 function checkAllFieldsFilled2() {
+  let isAllFieldsFilled2 = false;
+  let isAnyGenderRadioSelected1 = false;
   var filledFields2 = 0;
   requiredFields2.forEach(function(field) {
     if (field.value && field.checkValidity()) {
@@ -141,7 +141,6 @@ function checkAllFieldsFilled2() {
 }
 requiredFields2.forEach(function(input) {
   input.addEventListener('input', function() {
-    isAllFieldsFilled2 = false;
     checkAllFieldsFilled2();
    
   });
@@ -149,7 +148,6 @@ requiredFields2.forEach(function(input) {
 
   genderRadios1.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected1 = false;
     checkAllFieldsFilled2();
   });
 });
@@ -159,13 +157,12 @@ requiredFields2.forEach(function(input) {
 
 function checkAllFieldsFilled3() {
  let isAllFieldsFilled3 = false;
- let isAnyGenderRadioSelected1 = false;
  let isAnyGenderRadioSelected2 = false;
  let isAnyGenderRadioSelected3 = false;
-  var filledFields3 = 0;
-  var isBillingAddressRequired = false;
-  var filledBillingFields = 0;
-var billingAddressFields = [
+ let filledFields3 = 0;
+ let isBillingAddressRequired = false;
+ let filledBillingFields = 0;
+ let billingAddressFields = [
   { streetNamePayable: { required: true } },
   { houseNumberPayable: { required: true } },
   { ZIPCodePayable: { required: true } },
@@ -248,21 +245,18 @@ requiredFields3.forEach(function(input) {
  
     genderRadios2.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected2 = false;
     checkAllFieldsFilled3();
   });
 });
   
       genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
   
         billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isBillingAddressRequired = false;
     checkAllFieldsFilled3();
   });
 });
@@ -271,6 +265,8 @@ requiredFields3.forEach(function(input) {
 
   
   function checkCheckboxSelected1() {
+    var isAnyCheckboxSelected1 = false;
+    
     if (selectedCheckboxes === 2) {
       submitBtn.classList.remove('disabled');
     } else {
@@ -293,7 +289,6 @@ requiredFields3.forEach(function(input) {
   
   checkboxes1.forEach(function(checkbox) {
   checkbox.addEventListener('change', function() {
-    isAnyCheckboxSelected1 = false;
     checkCheckboxSelected1();
   });
 });
