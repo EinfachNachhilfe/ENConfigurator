@@ -24,9 +24,139 @@ var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
 
 
-
 const divBillingAddress = document.getElementById("content_billing-address");
-@@ -160,6 +158,9 @@ requiredFields2.forEach(function(input) {
+const billingAddressPayable = document.getElementsByName("trigger_billing-address");
+const streetNamePayable = document.getElementById("street-name_billing-address");
+const houseNumberPayable = document.getElementById("house-number_billing-address");
+const ZIPCodePayable = document.getElementById("zip-code_billing-address");
+const cityNamePayable = document.getElementById("city-name_billing-address");
+divBillingAddress.style.display = "none";
+
+//start input-field
+var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
+zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
+//end input-field
+
+//start trigger input validation
+var inputElement = zipCodeTeachingLocation;
+inputElement.addEventListener('invalid', function() {
+  applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+});
+//end trigger input validation
+
+
+//start function input validation
+
+function applyInvalidBorderStyle(input) {
+  input.style.borderColor = '#9d367a';
+  input.style.borderWidth = '2px';
+  input.style.borderWidth = '1.5px';
+}
+inputElement.addEventListener('input', function() {
+  if (inputElement.checkValidity()) {
+    inputElement.style.borderColor = '';
+    inputElement.style.borderWidth = '';
+  }
+});
+
+
+function shakeOnInvalid(input) {
+  var originalPosition = input.getBoundingClientRect().left;
+  input.style.transition = 'transform 0.1s ease-in-out';
+  input.style.transform = 'translateX(3px)';
+  setTimeout(function() {
+    input.style.transform = '';
+  }, 100);
+}
+//end function input validation
+
+
+document.addEventListener("DOMContentLoaded", function() {
+checkAllFieldsFilled1();
+step2.style.display = 'none';
+step3.style.display = 'none';
+step4.style.display = 'none';
+backBtn.style.display = 'none';
+submitBtn.style.display = 'none';
+showStepNumber.textContent = "Schritt 1 von 5";
+  
+  
+function checkAllFieldsFilled1() {
+  var filledFields1 = 0;
+  requiredFields1.forEach(function(field) {
+    if (field.value && field.checkValidity()) {
+      filledFields1++;
+    }
+  });
+
+  if (filledFields1 === requiredFields1.length) {
+    isAllFieldsFilled1 = true;
+  
+  }
+
+  if (isAllFieldsFilled1) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  }
+
+  
+}
+requiredFields1.forEach(function(input) {
+  input.addEventListener('input', function() {
+    isAllFieldsFilled1 = false;
+    checkAllFieldsFilled1();
+   
+  });
+});
+
+
+
+
+function checkAllFieldsFilled2() {
+  var filledFields2 = 0;
+  requiredFields2.forEach(function(field) {
+    if (field.value && field.checkValidity()) {
+      filledFields2++;
+    }
+  });
+
+  if (filledFields2 === requiredFields2.length) {
+    isAllFieldsFilled2 = true;
+  
+  }
+  
+    genderRadios1.forEach(function(radio) {
+    if (radio.checked) {
+      isAnyGenderRadioSelected1 = true;
+    }
+  });
+
+  if (isAllFieldsFilled2 && isAnyGenderRadioSelected1) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  } 
+
+  
+}
+requiredFields2.forEach(function(input) {
+  input.addEventListener('input', function() {
+    isAllFieldsFilled2 = false;
+    checkAllFieldsFilled2();
+   
+  });
+});
+
+  genderRadios1.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected1 = false;
+    checkAllFieldsFilled2();
+  });
+});
+
+
 
 
 function checkAllFieldsFilled3() {
@@ -39,21 +169,25 @@ var billingAddressFields = [
   { ZIPCodePayable: { required: true } },
   { cityNamePayable: { required: true } }
 ];
+
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
       filledFields3++;
     }
   });
+
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
   
   }
+
   billingAddressPayable.forEach(function (input) {
     if (input.checked && input.value === "2") {
       isBillingAddressRequired = true;
        
     }
   });
+
   if (isBillingAddressRequired) {
     billingAddressFields.forEach(function (field) {
       if (field.value && field.checkValidity()) {
@@ -61,10 +195,12 @@ var billingAddressFields = [
       }
     });
   }
+
     if (filledBillingFields ===  billingAddressFields.length) {
      isAllFieldsbillingAddress = true;
   
   }
+
       genderRadios2.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
@@ -76,11 +212,14 @@ var billingAddressFields = [
       isAnyGenderRadioSelected3 = true;
     }
   });
+
 if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true))) {
   nextBtn.classList.remove('disabled');
 } else {
   nextBtn.classList.add('disabled');
 }
+
+
   billingAddressPayable.forEach(function(input) {
     input.addEventListener("change", function() {
       if (input.value === "1") {
@@ -95,9 +234,12 @@ if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3
       }
     });
   });
+
 }
+
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
    
   });
@@ -123,6 +265,9 @@ requiredFields3.forEach(function(input) {
     checkAllFieldsFilled3();
   });
 });
+
+
+
   
   function checkCheckboxSelected1() {
     if (selectedCheckboxes === 2) {
@@ -151,6 +296,8 @@ requiredFields3.forEach(function(input) {
     checkCheckboxSelected1();
   });
 });
+
+
 nextBtn.addEventListener('click', function() {
   if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none') {
     step1.style.display = 'none';
@@ -174,7 +321,9 @@ nextBtn.addEventListener('click', function() {
     showStepNumber.textContent = "Schritt 4 von 4";
     checkCheckboxSelected1()
   }
+
 });
+
 backBtn.addEventListener('click', function() {
   if (step2.style.display === 'block') {
     step2.style.display = 'none';
@@ -195,5 +344,11 @@ backBtn.addEventListener('click', function() {
     showStepNumber.textContent = "Schritt 3 von 4";
     checkAllFieldsFilled3();
   }
+
 });
 });
+
+
+  
+  
+  
