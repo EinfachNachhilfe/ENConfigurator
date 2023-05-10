@@ -22,6 +22,8 @@ var genderRadios3 = document.querySelectorAll('input[name="trigger_billing-addre
 var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
+var isBillingAddressRequired = false;
+var billingAddressFields = [ { streetNamePayable: { required: true } },{ houseNumberPayable: { required: true } }, { ZIPCodePayable: { required: true } }, { cityNamePayable: { required: true } }];
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
@@ -161,14 +163,8 @@ requiredFields2.forEach(function(input) {
 
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
-  var isBillingAddressRequired = false;
   var filledBillingFields = 0;
-var billingAddressFields = [
-  { streetNamePayable: { required: true } },
-  { houseNumberPayable: { required: true } },
-  { ZIPCodePayable: { required: true } },
-  { cityNamePayable: { required: true } }
-];
+
 
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
