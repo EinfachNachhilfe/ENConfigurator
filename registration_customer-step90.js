@@ -235,7 +235,6 @@ if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
    
   });
@@ -243,21 +242,18 @@ requiredFields3.forEach(function(input) {
   
     genderRadios2.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected2 = false;
     checkAllFieldsFilled3();
   });
 });
   
       genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
   
         billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
-     isBillingAddressRequired = false;
     checkAllFieldsFilled3();
   });
 });
