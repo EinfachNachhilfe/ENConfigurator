@@ -239,7 +239,6 @@ if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
    
   });
