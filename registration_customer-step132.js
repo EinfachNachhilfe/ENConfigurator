@@ -177,7 +177,6 @@ function checkAllFieldsFilled3() {
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
-  
   }
 
   genderRadios2.forEach(function (radio) {
@@ -186,19 +185,34 @@ function checkAllFieldsFilled3() {
     }
   });
 
-
   genderRadios3.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected3 = true;
+      if (radio.value === "2") {
+        isBillingAddressRequired = true;
+        if (
+          streetNamePayable.value && streetNamePayable.checkValidity() &&
+          houseNumberPayable.value && houseNumberPayable.checkValidity() &&
+          ZIPCodePayable.value && ZIPCodePayable.checkValidity() &&
+          cityNamePayable.value && cityNamePayable.checkValidity()
+        ) {
+          filledBillingFields = 4;
+        }
+      }
     }
   });
 
-
-  if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3) {
+  if (
+    isAllFieldsFilled3 &&
+    isAnyGenderRadioSelected2 &&
+    isAnyGenderRadioSelected3 &&
+    (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
+  ) {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
-  } 
+  }
+}
 
   billingAddressPayable.forEach(function(input) {
     input.addEventListener("change", function() {
