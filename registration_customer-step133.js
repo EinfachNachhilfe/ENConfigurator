@@ -212,8 +212,7 @@ function checkAllFieldsFilled3() {
   } else {
     nextBtn.classList.add('disabled');
   }
-}
-
+  
   billingAddressPayable.forEach(function(input) {
     input.addEventListener("change", function() {
       if (input.value === "1") {
@@ -228,8 +227,10 @@ function checkAllFieldsFilled3() {
       }
     });
   });
-
 }
+
+
+
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
