@@ -22,7 +22,6 @@ var genderRadios3 = document.querySelectorAll('input[name="trigger_billing-addre
 var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
 var isAnyGenderRadioSelected3 = false;
-var isBillingAddressRequired = false;
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
@@ -164,15 +163,12 @@ function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
-  var isAllFieldsFilled3 = false;
-  var isAllFieldsBillingAddress = false;
-
-  var billingAddressFields = [
-    { streetNamePayable: { required: true } },
-    { houseNumberPayable: { required: true } },
-    { ZIPCodePayable: { required: true } },
-    { cityNamePayable: { required: true } }
-  ];
+var billingAddressFields = [
+  { streetNamePayable: { required: true } },
+  { houseNumberPayable: { required: true } },
+  { ZIPCodePayable: { required: true } },
+  { cityNamePayable: { required: true } }
+];
 
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
@@ -182,11 +178,13 @@ function checkAllFieldsFilled3() {
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
+  
   }
 
   billingAddressPayable.forEach(function (input) {
     if (input.checked && input.value === "2") {
       isBillingAddressRequired = true;
+       
     }
   });
 
@@ -198,23 +196,28 @@ function checkAllFieldsFilled3() {
     });
   }
 
-  if (filledBillingFields === billingAddressFields.length) {
-    isAllFieldsBillingAddress = true;
+    if (filledBillingFields ===  billingAddressFields.length) {
+     isAllFieldsbillingAddress = true;
+  
   }
 
-  genderRadios2.forEach(function(radio) {
+      genderRadios2.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
     }
   });
+  
+        genderRadios3.forEach(function(radio) {
+    if (radio.checked) {
+      isAnyGenderRadioSelected3 = true;
+    }
+  });
 
-  if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && isAllFieldsBillingAddress))) {
-    nextBtn.classList.remove('disabled');
-  } else {
-    nextBtn.classList.add('disabled');
-  }
+if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true))) {
+  nextBtn.classList.remove('disabled');
+} else {
+  nextBtn.classList.add('disabled');
 }
-
 
 
   billingAddressPayable.forEach(function(input) {
@@ -236,6 +239,15 @@ function checkAllFieldsFilled3() {
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
+    checkAllFieldsFilled3();
+   
+  });
+});
+  
+  billingAddressFields.forEach(function(input) {
+  input.addEventListener('input', function() {
+    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
    
   });
@@ -243,18 +255,21 @@ requiredFields3.forEach(function(input) {
   
     genderRadios2.forEach(function(radio) {
   radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected2 = false;
     checkAllFieldsFilled3();
   });
 });
   
       genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
   
         billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
