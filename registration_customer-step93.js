@@ -210,7 +210,7 @@ var billingAddressFields = [
   
 
 
-if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true) {
+if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true)) {
   nextBtn.classList.remove('disabled');
 } else {
   nextBtn.classList.add('disabled');
