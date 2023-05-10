@@ -258,14 +258,15 @@ requiredFields3.forEach(function(input) {
     checkAllFieldsFilled3();
   });
 });
-
-billingAddressPayable.forEach(function(input) {
-  input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
+  
+        billingAddressPayable.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
-   
   });
 });
+
+
 
   
   function checkCheckboxSelected1() {
