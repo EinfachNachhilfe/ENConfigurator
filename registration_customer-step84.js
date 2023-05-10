@@ -163,9 +163,12 @@ function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
-  var billingAddressFields = [
-  { streetNamePayable: { required: true } },{ houseNumberPayable: { required: true } },{ ZIPCodePayable: { required: true } },{ cityNamePayable: { required: true }];
-
+var billingAddressFields = [
+  { streetNamePayable: { required: true } },
+  { houseNumberPayable: { required: true } },
+  { ZIPCodePayable: { required: true } },
+  { cityNamePayable: { required: true } }
+];
 
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
