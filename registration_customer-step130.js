@@ -88,9 +88,9 @@ showStepNumber.textContent = "Schritt 1 von 5";
   
 
 
-  var inputElement = document.getElementById('first-name_payable');
-  if (inputElement) {
-    inputElement.removeAttribute('required');
+  var inputElement1 = document.getElementById('first-name_payable');
+  if (inputElement1) {
+    inputElement1.removeAttribute('required');
 
   }
   
