@@ -86,13 +86,6 @@ backBtn.style.display = 'none';
 submitBtn.style.display = 'none';
 showStepNumber.textContent = "Schritt 1 von 5";
   
-
-
-  var inputElement1 = document.getElementById('first-name_payable');
-  if (inputElement1) {
-    inputElement1.removeAttribute('required');
-
-  }
   
 function checkAllFieldsFilled1() {
   var filledFields1 = 0;
