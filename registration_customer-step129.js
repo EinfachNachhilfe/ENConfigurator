@@ -86,12 +86,13 @@ backBtn.style.display = 'none';
 submitBtn.style.display = 'none';
 showStepNumber.textContent = "Schritt 1 von 5";
   
-document.addEventListener('DOMContentLoaded', function() {
-    var inputElement = document.getElementById('first-name_payable');
-    if (inputElement) {
-      inputElement.removeAttribute('required');
-    }
-  });
+
+
+  var inputElement = document.getElementById('first-name_payable');
+  if (inputElement) {
+    inputElement.removeAttribute('required');
+
+  }
   
 function checkAllFieldsFilled1() {
   var filledFields1 = 0;
