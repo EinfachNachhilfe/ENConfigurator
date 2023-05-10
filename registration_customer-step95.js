@@ -164,12 +164,15 @@ function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
-var billingAddressFields = [
-  { streetNamePayable: { required: true } },
-  { houseNumberPayable: { required: true } },
-  { ZIPCodePayable: { required: true } },
-  { cityNamePayable: { required: true } }
-];
+  var isAllFieldsFilled3 = false;
+  var isAllFieldsBillingAddress = false;
+
+  var billingAddressFields = [
+    { streetNamePayable: { required: true } },
+    { houseNumberPayable: { required: true } },
+    { ZIPCodePayable: { required: true } },
+    { cityNamePayable: { required: true } }
+  ];
 
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
@@ -179,13 +182,11 @@ var billingAddressFields = [
 
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
-  
   }
 
   billingAddressPayable.forEach(function (input) {
     if (input.checked && input.value === "2") {
       isBillingAddressRequired = true;
-       
     }
   });
 
@@ -197,24 +198,23 @@ var billingAddressFields = [
     });
   }
 
-    if (filledBillingFields ===  billingAddressFields.length) {
-     isAllFieldsbillingAddress = false;
-  
+  if (filledBillingFields === billingAddressFields.length) {
+    isAllFieldsBillingAddress = true;
   }
 
-      genderRadios2.forEach(function(radio) {
+  genderRadios2.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
     }
   });
-  
 
-
-if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (isBillingAddressRequired === false || isBillingAddressRequired === true &&  isAllFieldsbillingAddress === true))) {
-  nextBtn.classList.remove('disabled');
-} else {
-  nextBtn.classList.add('disabled');
+  if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && isAllFieldsBillingAddress))) {
+    nextBtn.classList.remove('disabled');
+  } else {
+    nextBtn.classList.add('disabled');
+  }
 }
+
 
 
   billingAddressPayable.forEach(function(input) {
