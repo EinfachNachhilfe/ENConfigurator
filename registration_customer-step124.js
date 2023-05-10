@@ -33,14 +33,6 @@ const ZIPCodePayable = document.getElementById("zip-code_billing-address");
 const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
-
-const inputField = document.getElementById("first-name_payable");
-inputField.removeAttribute("required");
-
-
-
-
-
 //start input-field
 var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
@@ -89,6 +81,9 @@ step4.style.display = 'none';
 backBtn.style.display = 'none';
 submitBtn.style.display = 'none';
 showStepNumber.textContent = "Schritt 1 von 5";
+const inputField = document.getElementById("first-name_payable");
+inputField.removeAttribute("required");
+
   
   
 function checkAllFieldsFilled1() {
