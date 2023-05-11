@@ -152,7 +152,7 @@ function applyValidation3(inputElement3) {
       inputElement3.style.borderWidth = '';
     }
   }); 
-}
+
 
 applyValidation3(ValidationInputFieldIban1);
 
