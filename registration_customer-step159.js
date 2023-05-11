@@ -106,39 +106,35 @@ applyValidation2(ValidationInputFieldLetter8);
 //end Validation only letter
 
 
-//start Validation only letter
 var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
 
-
 function applyValidation3(inputElement3) {
-inputElement3.setAttribute('pattern', '^[0-9]+$');
-inputElement3.setAttribute('minlength', '22');
-inputElement3.setAttribute('maxlength', '22');
+  inputElement3.setAttribute('pattern', '^[0-9]+$');
+  inputElement3.setAttribute('minlength', '22');
+  inputElement3.setAttribute('maxlength', '22');
 
-
-  
- 
-inputElement3.addEventListener('change', function() {
-  if (inputElement3.checkValidity()) {
-    // Das Input-Feld enthält gültige Daten
-    applyValidBorderStyle(inputElement3);
-  } else {
-    // Das Input-Feld enthält ungültige Daten
-    applyInvalidBorderStyle(inputElement3);
-    shakeOnInvalid(inputElement3);
-  }
-});
-
+  inputElement3.addEventListener('change', function() {
+    var iban = inputElement3.value.trim();
+    if (iban.substr(0, 2) === 'DE' && inputElement3.checkValidity()) {
+      // Das Input-Feld enthält eine gültige deutsche IBAN
+      applyValidBorderStyle(inputElement3);
+    } else {
+      // Das Input-Feld enthält eine ungültige IBAN
+      applyInvalidBorderStyle(inputElement3);
+      shakeOnInvalid(inputElement3);
+    }
+  });
 
   inputElement3.addEventListener('input', function() {
     if (inputElement3.checkValidity()) {
       inputElement3.style.borderColor = '';
       inputElement3.style.borderWidth = '';
     }
-  }); 
+  });
 }
 
 applyValidation3(ValidationInputFieldIban1);
+
 
   
 
