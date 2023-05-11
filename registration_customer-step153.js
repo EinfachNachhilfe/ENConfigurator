@@ -106,6 +106,59 @@ applyValidation2(ValidationInputFieldLetter8);
 //end Validation only letter
 
 
+
+
+var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
+
+// Funktion zum Überprüfen der Gültigkeit einer deutschen IBAN
+function applyValidation3(inputElement3) {
+  // Entfernen von Leerzeichen und Sonderzeichen aus der IBAN
+  inputElement3 = inputElement3.replace(/[\s\-]+/g, '');
+
+  // Prüfen der Länge der IBAN (22 Zeichen für deutsche IBANs)
+  if (inputElement3.length !== 22) {
+    return false;
+  }
+
+  // Prüfen, ob die IBAN aus Buchstaben und Ziffern besteht
+  if (!/^[0-9A-Za-z]+$/.test(inputElement3)) {
+    return false;
+  }
+
+  // Prüfen der Prüfziffer mithilfe des Modulo-Verfahrens
+  var remainder = inputElement3.slice(4) + inputElement3.slice(0, 4);
+  var num = '';
+  for (var i = 0; i < remainder.length; i++) {
+    var char = remainder.charAt(i);
+    if (char >= 'A' && char <= 'Z') {
+      num += (char.charCodeAt(0) - 55).toString();
+    } else {
+      num += char;
+    }
+  }
+
+  var checksum = parseInt(num) % 97;
+  return checksum === 1;
+}
+
+  inputElement3.addEventListener('invalid', function() {
+    applyInvalidBorderStyle(inputElement3);
+      shakeOnInvalid(inputElement3);
+  });
+
+  inputElement3.addEventListener('input', function() {
+    if (inputElement3.checkValidity()) {
+      inputElement3.style.borderColor = '';
+      inputElement3.style.borderWidth = '';
+    }
+  }); 
+}
+
+applyValidation3(ValidationInputFieldIban1);
+
+
+
+
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
