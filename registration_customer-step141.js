@@ -21,6 +21,9 @@ var genderRadios2 = document.querySelectorAll('input[name="gender_payable"]');
 var genderRadios3 = document.querySelectorAll('input[name="trigger_billing-address"]');
 var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
+var filledBillingFields = 0;
+var isBillingAddressRequired = false;
+var isAnyGenderRadioSelected3 = false;
 
 
 
@@ -162,12 +165,11 @@ requiredFields2.forEach(function(input) {
 
 
 
-
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
-  var filledBillingFields = 0;
-  var isAnyGenderRadioSelected3 = false;
-  var isBillingAddressRequired = false;
+  filledBillingFields = 0;
+  
+  
 
   
   requiredFields3.forEach(function (field) {
@@ -226,9 +228,6 @@ function checkAllFieldsFilled3() {
       }
     });
   });
-
-
-
 
 
 requiredFields3.forEach(function(input) {
