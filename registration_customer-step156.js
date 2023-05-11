@@ -106,57 +106,33 @@ applyValidation2(ValidationInputFieldLetter8);
 //end Validation only letter
 
 
+//start Validation only letter
+var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
+
+function applyValidation3(inputElement3) {
+inputElement3.setAttribute('pattern', '^[0-9]+$');
+inputElement3.setAttribute('minlength', '22');
+inputElement3.setAttribute('maxlength', '22');
 
 
-// Funktion zum Überprüfen der Gültigkeit einer deutschen IBAN
-function isValidGermanIBAN(iban) {
-    iban = iban.replace(/[\s\-]+/g, '');
   
-    if (iban.length !== 22) {
-      return false;
-    }
-  
-    if (!/^[0-9A-Za-z]+$/.test(iban)) {
-      return false;
-    }
-  
-    var remainder = iban.slice(4) + iban.slice(0, 4);
-    var num = '';
-    for (var i = 0; i < remainder.length; i++) {
-      var char = remainder.charAt(i);
-      if (char >= 'A' && char <= 'Z') {
-        num += (char.charCodeAt(0) - 55).toString();
-      } else {
-        num += char;
-      }
-    }
-  
-    var checksum = parseInt(num) % 97;
-    return checksum === 1;
-  }
-  
-  // Funktion zum Anwenden der Validierung auf das Input-Feld
-  function applyValidation(inputElement) {
-    inputElement.addEventListener('invalid', function() {
-      applyInvalidBorderStyle(inputElement);
-      shakeOnInvalid(inputElement);
-    });
-  
-    inputElement.addEventListener('input', function() {
-      if (isValidGermanIBAN(inputElement.value)) {
-        applyValidBorderStyle(inputElement);
-      } else {
-        applyInvalidBorderStyle(inputElement);
-        shakeOnInvalid(inputElement);
-      }
-    });
-  }
-  
-  // Input-Feld auswählen und Validierung anwenden
-  var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
-  applyValidation(ValidationInputFieldIban1);
-  
+ 
+  inputElement3.addEventListener('invalid', function() {
+    applyInvalidBorderStyle(inputElement3);
+      shakeOnInvalid(inputElement3);
+  });
 
+  inputElement3.addEventListener('input', function() {
+    if (inputElement3.checkValidity()) {
+      inputElement3.style.borderColor = '';
+      inputElement3.style.borderWidth = '';
+    }
+  }); 
+}
+
+applyValidation3(ValidationInputFieldIban1);
+
+  
 
 
 
