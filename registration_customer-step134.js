@@ -168,7 +168,7 @@ function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var isBillingAddressRequired = false;
   var filledBillingFields = 0;
-  
+
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
       filledFields3++;
@@ -185,30 +185,39 @@ function checkAllFieldsFilled3() {
     }
   });
 
-  genderRadios3.forEach(function(radio) {
+  genderRadios3.forEach(function (radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected3 = true;
       if (radio.value === "2") {
         isBillingAddressRequired = true;
-        if (
-          streetNamePayable.value && streetNamePayable.checkValidity() &&
-          houseNumberPayable.value && houseNumberPayable.checkValidity() &&
-          ZIPCodePayable.value && ZIPCodePayable.checkValidity() &&
-          cityNamePayable.value && cityNamePayable.checkValidity()
-        ) {
-          filledBillingFields = 4;
-        }
       }
     }
   });
 
+  if (isBillingAddressRequired) {
+    if (
+      streetNamePayable.value && streetNamePayable.checkValidity() &&
+      houseNumberPayable.value && houseNumberPayable.checkValidity() &&
+      ZIPCodePayable.value && ZIPCodePayable.checkValidity() &&
+      cityNamePayable.value && cityNamePayable.checkValidity()
+    ) {
+      filledBillingFields = 4;
+    }
+  } else {
+    filledBillingFields = 4;
+  }
+
   if (
-    isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
+    isAllFieldsFilled3 &&
+    isAnyGenderRadioSelected2 &&
+    isAnyGenderRadioSelected3 &&
+    filledBillingFields === 4
   ) {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
   }
+}
   
   billingAddressPayable.forEach(function(input) {
     input.addEventListener("change", function() {
