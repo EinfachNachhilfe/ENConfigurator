@@ -233,7 +233,7 @@ function checkAllFieldsFilled3() {
       }
     });
   });
-}
+
 
 
 
