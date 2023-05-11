@@ -109,6 +109,13 @@ applyValidation2(ValidationInputFieldLetter8);
 //start Validation only letter
 var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
 
+
+ValidationInputFieldIban1.addEventListener('input', function() {
+  var inputValue = ValidationInputFieldIban1.value;
+  var sanitizedValue = inputValue.replace(/[^0-9]/g, '');
+ ValidationInputFieldIban1.value = sanitizedValue;
+});
+
 function applyValidation3(inputElement3) {
 inputElement3.setAttribute('pattern', '^[0-9]+$');
 inputElement3.setAttribute('minlength', '22');
