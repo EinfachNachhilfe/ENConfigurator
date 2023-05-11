@@ -203,10 +203,7 @@ function checkAllFieldsFilled3() {
   });
 
   if (
-    isAllFieldsFilled3 &&
-    isAnyGenderRadioSelected2 &&
-    isAnyGenderRadioSelected3 &&
-    (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
+    isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
   ) {
     nextBtn.classList.remove('disabled');
   } else {
@@ -311,7 +308,7 @@ nextBtn.addEventListener('click', function() {
     nextBtn.classList.add('disabled');
     showStepNumber.textContent = "Schritt 3 von 4";
     checkAllFieldsFilled3()
-  } else if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none') {
+  } else if (isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4)) && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none') {
     step3.style.display = 'none';
     step4.style.display = 'block';
     nextBtn.classList.add('disabled');
