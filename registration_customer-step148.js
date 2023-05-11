@@ -36,6 +36,8 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 //start input-field
+var animationValidationInputField1 = document.querySelector('input[name="zip-code_teaching-location"]');
+var animationValidationInputField2 = document.querySelector('input[name="zip-code_billing-address"]');
 
 function applyValidation(inputElement) {
   inputElement.setAttribute('pattern', '\\d+');
@@ -52,14 +54,8 @@ function applyValidation(inputElement) {
       inputElement.style.borderColor = '';
       inputElement.style.borderWidth = '';
     }
-  });
-  
-
+  }); 
 }
-
-
-var animationValidationInputField1 = document.querySelector('input[name="zip-code_teaching-location"]');
-var animationValidationInputField2 = document.querySelector('input[name="second-name_teaching-location"]');
 
 applyValidation(animationValidationInputField1);
 applyValidation(animationValidationInputField2);
