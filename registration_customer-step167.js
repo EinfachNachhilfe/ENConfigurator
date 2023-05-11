@@ -138,7 +138,7 @@ function applyValidation3(inputElement3) {
       applyInvalidBorderStyle(inputElement3);
       shakeOnInvalid(inputElement3);
     }
-  });
+  
 
   inputElement3.addEventListener('change', function() {
     if (inputElement3.checkValidity()) {
