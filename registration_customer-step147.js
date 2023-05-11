@@ -41,16 +41,10 @@ function applyValidation(inputElement) {
   inputElement.setAttribute('pattern', '\\d+');
   inputElement.setAttribute('maxlength', '5');
   
+ 
   inputElement.addEventListener('invalid', function() {
     applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
-  });
-
-  
-  inputElement.addEventListener('input', function() {
-    if (inputElement.checkValidity()) {
-      applyValidBorderStyle(inputElement);
-    }
+      shakeOnInvalid(inputElement);
   });
 }
 
