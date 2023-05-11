@@ -36,22 +36,30 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 //start input-field
-var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
-zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
-zipCodeTeachingLocation.setAttribute('maxlength', '5');
 
-//end input-field
+function applyValidation(inputElement) {
+  inputElement.setAttribute('pattern', '\\d+');
+  inputElement.setAttribute('maxlength', '5');
+  
+  inputElement.addEventListener('invalid', function() {
+    applyInvalidBorderStyle(inputElement);
+    shakeOnInvalid(inputElement);
+  });
 
-//start trigger input validation
+  
+  inputElement.addEventListener('input', function() {
+    if (inputElement.checkValidity()) {
+      applyValidBorderStyle(inputElement);
+    }
+  });
+}
 
-zipCodeTeachingLocation.addEventListener('input', function() {
-  if (zipCodeTeachingLocation.checkValidity()) {
-    applyValidBorderStyle();
-  } else {
-    applyInvalidBorderStyle();
-    shakeOnInvalid();
-  }
-});
+
+var animationValidationInputField1 = document.querySelector('input[name="zip-code_teaching-location"]');
+var animationValidationInputField2 = document.querySelector('input[name="second-name_teaching-location"]');
+
+applyValidation(animationValidationInputField1);
+applyValidation(animationValidationInputField2);
 
 //end trigger input validation
 
@@ -63,12 +71,6 @@ function applyInvalidBorderStyle(input) {
   input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
-function applyValidBorderStyle(input) {
-    input.style.borderColor = '';
-    input.style.borderWidth = '';
-  
-}
-
 
 function shakeOnInvalid(input) {
   var originalPosition = input.getBoundingClientRect().left;
@@ -78,7 +80,7 @@ function shakeOnInvalid(input) {
     input.style.transform = '';
   }, 100);
 }
-//end function inpu
+//end function input validation
 
 
 
