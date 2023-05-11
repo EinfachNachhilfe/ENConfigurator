@@ -266,6 +266,12 @@ billingAddressPayable.forEach(function(radio) {
   });
 });
 
+  [streetNamePayable, houseNumberPayable, ZIPCodePayable, cityNamePayable].forEach(function(input) {
+  input.addEventListener('input', function() {
+    checkAllFieldsFilled3();
+  });
+});
+
   
   function checkCheckboxSelected1() {
     if (selectedCheckboxes === 2) {
