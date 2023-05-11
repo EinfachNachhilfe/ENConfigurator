@@ -106,15 +106,17 @@ applyValidation2(ValidationInputFieldLetter8);
 //end Validation only letter
 
 
-  document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', (event) => {
     const input = document.getElementById('iban_payable');
     input.value = 'DE';
+    input.addEventListener('input', checkInput);
   });
 
   function checkInput() {
     const input = document.getElementById('iban_payable');
     if (input.value.substring(0, 2) !== 'DE') {
-      input.value = 'DE' + input.value;
+      input.value = 'DE';
+      input.setSelectionRange(2,2);
     }
   }
 
