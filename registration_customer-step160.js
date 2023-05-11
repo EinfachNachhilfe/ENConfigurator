@@ -106,6 +106,18 @@ applyValidation2(ValidationInputFieldLetter8);
 //end Validation only letter
 
 
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const input = document.getElementById('iban_payable');
+    input.value = 'DE';
+  });
+
+  function checkInput() {
+    const input = document.getElementById('iban_payable');
+    if (input.value.substring(0, 2) !== 'DE') {
+      input.value = 'DE' + input.value;
+    }
+  }
+
 var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
 
 function applyValidation3(inputElement3) {
