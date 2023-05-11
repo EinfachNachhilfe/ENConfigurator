@@ -74,7 +74,7 @@ var ValidationInputFieldLetter6 = document.querySelector('input[name="street-nam
 var ValidationInputFieldLetter7 = document.querySelector('input[name="city-name_billing-address"]');
 
 function applyValidation2(inputElement2) {
- inputElement2.setAttribute('pattern', '^[A-Za-z]+$');
+ inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
 
 
   
