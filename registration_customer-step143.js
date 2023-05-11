@@ -171,7 +171,9 @@ function checkAllFieldsFilled3() {
   filledBillingFields = 0;
   isBillingAddressRequired = false;
   isAnyGenderRadioSelected3 = false;
-  
+   isAnyGenderRadioSelected3 = false;
+   isAnyGenderRadioSelected2 = false;
+   isAllFieldsFilled3 = false;
 
   
   requiredFields3.forEach(function (field) {
@@ -234,7 +236,6 @@ function checkAllFieldsFilled3() {
 
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
-    isAllFieldsFilled3 = false;
     checkAllFieldsFilled3();
    
   });
@@ -242,14 +243,12 @@ requiredFields3.forEach(function(input) {
   
     genderRadios2.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected2 = false;
     checkAllFieldsFilled3();
   });
 });
   
       genderRadios3.forEach(function(radio) {
   radio.addEventListener('change', function() {
-    isAnyGenderRadioSelected3 = false;
     checkAllFieldsFilled3();
   });
 });
