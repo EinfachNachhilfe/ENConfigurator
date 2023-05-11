@@ -66,12 +66,12 @@ applyValidation1(ValidationInputFieldNumber2);
 //start Validation only letter
 var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_teaching-location"]');
 var ValidationInputFieldLetter2 = document.querySelector('input[name="location_teaching-location"]');
-var ValidationInputFieldLetter2 = document.querySelector('input[name="first-name_student"]');
-var ValidationInputFieldLetter3 = document.querySelector('input[name="second-name_student"]');
-var ValidationInputFieldLetter4 = document.querySelector('input[name="first-name_payable"]');
-var ValidationInputFieldLetter5 = document.querySelector('input[name="second-name_payable"]');
-var ValidationInputFieldLetter6 = document.querySelector('input[name="street-name_billing-address"]');
-var ValidationInputFieldLetter7 = document.querySelector('input[name="city-name_billing-address"]');
+var ValidationInputFieldLetter3 = document.querySelector('input[name="first-name_student"]');
+var ValidationInputFieldLetter4 = document.querySelector('input[name="second-name_student"]');
+var ValidationInputFieldLetter5 = document.querySelector('input[name="first-name_payable"]');
+var ValidationInputFieldLetter6 = document.querySelector('input[name="second-name_payable"]');
+var ValidationInputFieldLetter7 = document.querySelector('input[name="street-name_billing-address"]');
+var ValidationInputFieldLetter8 = document.querySelector('input[name="city-name_billing-address"]');
 
 function applyValidation2(inputElement2) {
  inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
@@ -99,6 +99,7 @@ applyValidation2(ValidationInputFieldLetter4);
 applyValidation2(ValidationInputFieldLetter5);
 applyValidation2(ValidationInputFieldLetter6);
 applyValidation2(ValidationInputFieldLetter7);
+applyValidation2(ValidationInputFieldLetter8);
 
 
 
