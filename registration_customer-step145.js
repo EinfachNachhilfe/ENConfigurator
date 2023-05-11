@@ -43,11 +43,16 @@ zipCodeTeachingLocation.setAttribute('maxlength', '5');
 //end input-field
 
 //start trigger input validation
-var inputElement = zipCodeTeachingLocation;
-inputElement.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement);
-    shakeOnInvalid(inputElement);
+
+zipCodeTeachingLocation.addEventListener('input', function() {
+  if (zipCodeTeachingLocation.checkValidity()) {
+    applyValidBorderStyle();
+  } else {
+    applyInvalidBorderStyle();
+    shakeOnInvalid();
+  }
 });
+
 //end trigger input validation
 
 
@@ -58,12 +63,11 @@ function applyInvalidBorderStyle(input) {
   input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
-inputElement.addEventListener('input', function() {
-  if (inputElement.checkValidity()) {
-    inputElement.style.borderColor = '';
-    inputElement.style.borderWidth = '';
-  }
-});
+function applyValidBorderStyle(input) {
+    input.style.borderColor = '';
+    input.style.borderWidth = '';
+  
+}
 
 
 function shakeOnInvalid(input) {
@@ -74,7 +78,7 @@ function shakeOnInvalid(input) {
     input.style.transform = '';
   }, 100);
 }
-//end function input validation
+//end function inpu
 
 
 
