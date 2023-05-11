@@ -46,6 +46,15 @@ function applyValidation(inputElement) {
     applyInvalidBorderStyle(inputElement);
       shakeOnInvalid(inputElement);
   });
+
+  inputElement.addEventListener('input', function() {
+    if (inputElement.checkValidity()) {
+      inputElement.style.borderColor = '';
+      inputElement.style.borderWidth = '';
+    }
+  });
+  
+
 }
 
 
