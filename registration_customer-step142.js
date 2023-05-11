@@ -168,7 +168,9 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   filledBillingFields = 0;
-  
+  filledBillingFields = 0;
+  isBillingAddressRequired = false;
+  isAnyGenderRadioSelected3 = false;
   
 
   
