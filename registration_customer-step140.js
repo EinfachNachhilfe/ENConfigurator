@@ -21,8 +21,6 @@ var genderRadios2 = document.querySelectorAll('input[name="gender_payable"]');
 var genderRadios3 = document.querySelectorAll('input[name="trigger_billing-address"]');
 var isAnyGenderRadioSelected1 = false;
 var isAnyGenderRadioSelected2 = false;
-var isAnyGenderRadioSelected3 = false;
-var isBillingAddressRequired = false;
 
 
 
@@ -168,6 +166,9 @@ requiredFields2.forEach(function(input) {
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   var filledBillingFields = 0;
+  var isAnyGenderRadioSelected3 = false;
+  var isBillingAddressRequired = false;
+
   
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
