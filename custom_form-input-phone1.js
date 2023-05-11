@@ -17,5 +17,8 @@ document.getElementById("custom_form-input").addEventListener("input", function(
   }
 });
 
+document.getElementById('custom_form-input-is-select-input').disabled = true;
+
+
 // Aufrufen der Funktion beim Laden der Seite
 window.onload = updateInputValue;
