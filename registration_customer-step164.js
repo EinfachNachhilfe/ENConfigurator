@@ -129,22 +129,34 @@ function applyValidation3(inputElement3) {
   inputElement3.setAttribute('minlength', '22');
   inputElement3.setAttribute('maxlength', '22');
 
-  inputElement3.addEventListener('change', function() {
-  if (inputElement3.checkValidity()) {
-    // Das Input-Feld enthält gültige Daten
-    applyValidBorderStyle(inputElement3);
-  } else {
-    // Das Input-Feld enthält ungültige Daten
-    applyInvalidBorderStyle(inputElement3);
-    shakeOnInvalid(inputElement3);
-  }
-});
-
-
   inputElement3.addEventListener('input', function() {
+    var inputValue = inputElement3.value;
+    if (inputValue.length < 22) {
+      // Eingabe hat weniger als 22 Zeichen, zurücksetzen auf "DE" und den Rest abschneiden
+      inputElement3.value = "DE" + inputValue.substring(2, 22);
+    } else if (inputValue.length > 22) {
+      // Eingabe hat mehr als 22 Zeichen, abschneiden auf die ersten 22 Zeichen
+      inputElement3.value = inputValue.substring(0, 22);
+    }
+
     if (inputElement3.checkValidity()) {
-      inputElement3.style.borderColor = '';
-      inputElement3.style.borderWidth = '';
+      // Das Input-Feld enthält gültige Daten
+      applyValidBorderStyle(inputElement3);
+    } else {
+      // Das Input-Feld enthält ungültige Daten
+      applyInvalidBorderStyle(inputElement3);
+      shakeOnInvalid(inputElement3);
+    }
+  });
+
+  inputElement3.addEventListener('change', function() {
+    if (inputElement3.checkValidity()) {
+      // Das Input-Feld enthält gültige Daten
+      applyValidBorderStyle(inputElement3);
+    } else {
+      // Das Input-Feld enthält ungültige Daten
+      applyInvalidBorderStyle(inputElement3);
+      shakeOnInvalid(inputElement3);
     }
   });
 }
