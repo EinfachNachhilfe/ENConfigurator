@@ -38,6 +38,8 @@ divBillingAddress.style.display = "none";
 //start input-field
 var zipCodeTeachingLocation = document.querySelector('input[name="zip-code_teaching-location"]');
 zipCodeTeachingLocation.setAttribute('pattern', '\\d+');
+zipCodeTeachingLocation.setAttribute('maxlength', '5');
+
 //end input-field
 
 //start trigger input validation
