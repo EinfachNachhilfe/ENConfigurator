@@ -13,8 +13,16 @@ document.getElementById("custom_form-input-is-select-input").addEventListener("c
 document.getElementById("phone-number_payable").addEventListener("input", function() {
   if (this.value.length < selectedOption.length) {
     this.value = selectedOption;
-  } else {
-    selectedOption = this.value.substring(0, selectedOption.length);
+  }
+});
+
+// Verhindern, dass der ausgewählte Wert durch Einfügen gelöscht wird
+document.getElementById("phone-number_payable").addEventListener("paste", function(e) {
+  // Wert einfügen und ausgewählten Wert hinzufügen, wenn er nicht vorhanden ist
+  var pastedValue = e.clipboardData.getData('text');
+  if (pastedValue.indexOf(selectedOption) === -1) {
+    this.value = selectedOption + pastedValue;
+    e.preventDefault();
   }
 });
 
