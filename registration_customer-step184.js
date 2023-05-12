@@ -156,20 +156,16 @@ applyValidation3(ValidationInputFieldIban1);
 var ValidationInputFieldPhone1 = document.querySelector('input[name="phone-number_payable"]');
 
 function applyValidation4(inputElement4) {
-
-
-  inputElement4.addEventListener('change', function() {
-    if (inputElement4.checkValidity()) {
-      // Das Input-Feld enthält gültige Daten
-      applyValidBorderStyle(inputElement4);
-    } else {
-      // Das Input-Feld enthält ungültige Daten
-      applyInvalidBorderStyle(inputElement4);
-      shakeOnInvalid(inputElement4);
-    }
-  });
+  inputElement4.setAttribute('pattern', '\\d+');
+  inputElement4.setAttribute('maxlength', '5');
   
-   inputElement4.addEventListener('input', function() {
+ 
+  inputElement4.addEventListener('invalid', function() {
+    applyInvalidBorderStyle(inputElement4);
+      shakeOnInvalid(inputElement4);
+  });
+
+  inputElement4.addEventListener('input', function() {
     if (inputElement4.checkValidity()) {
       inputElement4.style.borderColor = '';
       inputElement4.style.borderWidth = '';
