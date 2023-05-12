@@ -167,9 +167,7 @@ function checkInput2() {
 
     function applyValidation4(inputElement4) {
       inputElement4.setAttribute('pattern', '^.{8,}$');
-      inputElement4.setAttribute('pattern', '^[0-9+]+$');
-
-
+      
      inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
