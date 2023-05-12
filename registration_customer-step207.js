@@ -166,17 +166,10 @@ function checkInput2() {
   const numericValue2 = inputValue2.substring(0, plusIndex2 + 1) + inputValue2.substring(plusIndex2 + 1).replace(/\D/g, '');
   inputElement4.value = numericValue2;
 
-  if (inputValue2.length < 6) {
-    inputElement4.setCustomValidity('Das Eingabefeld muss mindestens 6 Zeichen lang sein.');
-  } else {
-    inputElement4.setCustomValidity('');
-  }
-}
-
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
 function applyValidation4(inputElement4) {
-  inputElement4.addEventListener('change', function() {
+  inputElement4.addEventListener('input', function() {
     if (inputElement4.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
       applyValidBorderStyle(inputElement4);
