@@ -36,12 +36,16 @@ const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
 //start stepchange with enter
-document.getElementById("input1").addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
-    document.getElementById("nextBtn").click();
-    event.preventDefault(); // Verhindert das Absenden
+    // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
+    if (!nextBtn.classList.contains('disabled')) {
+      nextBtn.click();
+      event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
+    }
   }
 });
+
 //end stepchange with enter
 
 //start Validation only number max length 5
