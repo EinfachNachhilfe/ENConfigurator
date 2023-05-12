@@ -199,7 +199,6 @@ applyValidation3(ValidationInputFieldIban1);
 
 function applyInvalidBorderStyle(input) {
   input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '2px';
   input.style.borderWidth = '1.5px';
 }
 
