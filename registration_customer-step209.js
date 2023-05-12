@@ -152,50 +152,43 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
+   document.addEventListener('DOMContentLoaded', (event) => {
+      const inputElement4 = document.getElementById('phone-number_payable');
+      inputElement4.addEventListener('input', checkInput2);
+    });
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  const inputElement4 = document.getElementById('phone-number_payable');
-  inputElement4.addEventListener('input', checkInput2);
-});
-
-function checkInput2() {
-  const inputElement4 = document.getElementById('phone-number_payable');
-  // Remove any non-numeric characters after '+'
-  const inputValue2 = inputElement4.value;
-  const plusIndex2 = inputValue2.indexOf('+');
-  const numericValue2 = inputValue2.substring(0, plusIndex2 + 1) + inputValue2.substring(plusIndex2 + 1).replace(/\D/g, '');
-  inputElement4.value = numericValue2;
-
-var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-
-function applyValidation4(inputElement4) {
-  inputElement4.addEventListener('change', function() {
-    if (inputElement4.checkValidity()) {
-      // Das Input-Feld enthält gültige Daten
-      applyValidBorderStyle(inputElement4);
-    } else {
-      // Das Input-Feld enthält ungültige Daten
-      applyInvalidBorderStyle(inputElement4);
-      shakeOnInvalid(inputElement4);
+    function checkInput2() {
+      const inputElement4 = document.getElementById('phone-number_payable');
+      // Remove any non-numeric characters after '+'
+      const inputValue2 = inputElement4.value;
+      const plusIndex2 = inputValue2.indexOf('+');
+      const numericValue2 = inputValue2.substring(0, plusIndex2 + 1) + inputValue2.substring(plusIndex2 + 1).replace(/\D/g, '');
+      inputElement4.value = numericValue2;
     }
-  });
 
-  inputElement4.addEventListener('input', function() {
-    if (inputElement4.checkValidity()) {
-      inputElement4.style.borderColor = '';
-      inputElement4.style.borderWidth = '';
+    var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
+
+    function applyValidation4(inputElement4) {
+      inputElement4.addEventListener('change', function() {
+        if (inputElement4.checkValidity()) {
+          // Das Input-Feld enthält gültige Daten
+          applyValidBorderStyle(inputElement4);
+        } else {
+          // Das Input-Feld enthält ungültige Daten
+          applyInvalidBorderStyle(inputElement4);
+          shakeOnInvalid(inputElement4);
+        }
+      });
+
+      inputElement4.addEventListener('input', function() {
+        if (inputElement4.checkValidity()) {
+          inputElement4.style.borderColor = '';
+          inputElement4.style.borderWidth = '';
+        }
+      });
     }
-  });
-}
 
-applyValidation4(ValidationInputFieldPhone1);
-
-
-
-
-
-
-
+    applyValidation4(ValidationInputFieldPhone1);
 
 //end Validation Phone
 
