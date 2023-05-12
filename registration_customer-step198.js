@@ -154,22 +154,22 @@ applyValidation3(ValidationInputFieldIban1);
 //start Validation Phone
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  const input = document.getElementById('phone-number_payable');
-  input.addEventListener('input', checkInput);
+  const inputElement = document.getElementById('phone-number_payable');
+  inputElement.addEventListener('input', checkInput);
 });
 
-function checkInput2() {
-  const input = document.getElementById('phone-number_payable');
+function checkInput() {
+  const inputElement = document.getElementById('phone-number_payable');
   // Remove any non-numeric characters after '+'
-  const inputValue = input.value;
+  const inputValue = inputElement.value;
   const plusIndex = inputValue.indexOf('+');
   const numericValue = inputValue.substring(0, plusIndex + 1) + inputValue.substring(plusIndex + 1).replace(/\D/g, '');
-  input.value = numericValue;
+  inputElement.value = numericValue;
 }
-
 
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
+function applyValidation4(inputElement4) {
   inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
@@ -190,6 +190,7 @@ var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable')
 }
 
 applyValidation4(ValidationInputFieldPhone1);
+
 
 
 
