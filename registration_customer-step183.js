@@ -153,7 +153,6 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
-User
 var ValidationInputFieldPhone1 = document.querySelector('input[name="phone-number_payable"]');
 
 function applyValidation4(inputElement4) {
