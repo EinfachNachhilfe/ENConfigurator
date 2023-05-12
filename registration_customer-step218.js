@@ -157,14 +157,26 @@ applyValidation3(ValidationInputFieldIban1);
       inputElement4.addEventListener('input', checkInput2);
     });
 
+let pasteDetected = false;
+
 function checkInput2() {
   const input2 = document.getElementById('phone-number_payable');
   
-  if (input2.value[0] === '+') {
+  if (pasteDetected && input2.value[0] === '+') {
     // Remove any non-numeric characters after '+'
     input2.value = '+' + input2.value.substring(1).replace(/\D/g, '');
+    pasteDetected = false; // Reset the flag
   }
 }
+
+// Attach the function to the input event of the text field
+document.getElementById('phone-number_payable').addEventListener('input', checkInput2);
+
+// Detect paste event
+document.getElementById('phone-number_payable').addEventListener('paste', function() {
+  pasteDetected = true;
+});
+
 
 // Attach the function to the input event of the text field
 document.getElementById('phone-number_payable').addEventListener('input', checkInput2);
