@@ -152,19 +152,13 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
-document.addEventListener('DOMContentLoaded', (event) => {
-  const input2 = document.getElementById('phone-number_payable');
-  input2.value = '+';
-  input2.addEventListener('input', checkInput);
-});
-
-function checkInput() {
+function checkInput2() {
   const input2 = document.getElementById('phone-number_payable');
   if (input2.value.substring(0, 1) !== '+') {
     input2.value = '+';
     input2.setSelectionRange(1,1);
   } else {
-    // Remove any non-numeric characters after 'DE'
+    // Remove any non-numeric characters after '+'
     input2.value = '+' + input2.value.substring(1).replace(/\D/g, '');
   }
 }
@@ -173,6 +167,8 @@ function checkInput() {
 
     function applyValidation4(inputElement4) {
       inputElement4.setAttribute('pattern', '^.{8,}$');
+      inputElement4.setAttribute('pattern', '^[0-9+]+$');
+
 
      inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
