@@ -153,7 +153,7 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
-var ValidationInputFieldPhone1 = document.querySelector('input[name="phone-number_payable"]');
+var ValidationInputFieldPhone1 = document.querySelector('input[name="house-number_billing-address"]');
 
 function applyValidation4(inputElement4) {
   inputElement4.setAttribute('pattern', '\\d+');
