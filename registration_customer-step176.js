@@ -158,15 +158,11 @@ var ValidationInputFieldPhone1 = document.querySelector('input[name="phone-numbe
 function applyValidation4(inputElement4) {
   inputElement4.setAttribute('pattern', '^[0-9]+$');
   inputElement4.setAttribute('minlength', '6');
-  
-   inputElement4.addEventListener('input', function() {
+
+  inputElement4.addEventListener('input', function() {
     var inputValue = inputElement4.value;
     var numericValue = inputValue.replace(/\D/g, '');
     inputElement4.value = numericValue;
-
-  });
-  
-
 
   inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
@@ -178,8 +174,8 @@ function applyValidation4(inputElement4) {
       shakeOnInvalid(inputElement4);
     }
   });
-  
-   inputElement4.addEventListener('input', function() {
+    
+       inputElement4.addEventListener('input', function() {
     if (inputElement4.checkValidity()) {
       inputElement4.style.borderColor = '';
       inputElement4.style.borderWidth = '';
@@ -188,6 +184,7 @@ function applyValidation4(inputElement4) {
 }
 
 applyValidation4(ValidationInputFieldPhone1);
+
 //end Validation Phone
 
   
