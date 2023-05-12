@@ -35,6 +35,15 @@ const ZIPCodePayable = document.getElementById("zip-code_billing-address");
 const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
+//start stepchange with enter
+document.getElementById("input1").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    document.getElementById("nextBtn").click();
+    event.preventDefault(); // Verhindert das Absenden
+  }
+});
+//end stepchange with enter
+
 //start Validation only number max length 5
 var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_teaching-location"]');
 var ValidationInputFieldNumber2 = document.querySelector('input[name="zip-code_billing-address"]');
