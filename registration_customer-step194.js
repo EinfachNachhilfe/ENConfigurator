@@ -155,7 +155,7 @@ var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable')
 
 function applyValidation4(inputElement4) {
   inputElement4.setAttribute('minlength', '6');
-  
+
   function extractNumbers(inputString) {
     var numberRegex = /[0-9]/g;
     var numbersOnly = inputString.match(numberRegex);
@@ -191,6 +191,7 @@ function applyValidation4(inputElement4) {
 }
 
 applyValidation4(ValidationInputFieldPhone1);
+
 
 
 
