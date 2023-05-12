@@ -153,11 +153,11 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
+User
 var ValidationInputFieldPhone1 = document.querySelector('input[name="phone-number_payable"]');
 
 function applyValidation4(inputElement4) {
-  inputElement4.setAttribute('pattern', '^[0-9]+$');
-  inputElement4.setAttribute('minlength', '6');
+
 
   inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
@@ -169,10 +169,13 @@ function applyValidation4(inputElement4) {
       shakeOnInvalid(inputElement4);
     }
   });
-
-  inputElement4.addEventListener('input', function() {
-    inputElement4.setCustomValidity('');
-  });
+  
+   inputElement4.addEventListener('input', function() {
+    if (inputElement4.checkValidity()) {
+      inputElement4.style.borderColor = '';
+      inputElement4.style.borderWidth = '';
+    }
+  }); 
 }
 
 applyValidation4(ValidationInputFieldPhone1);
