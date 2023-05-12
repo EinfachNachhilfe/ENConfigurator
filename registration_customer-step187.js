@@ -149,41 +149,6 @@ function applyValidation3(inputElement3) {
 applyValidation3(ValidationInputFieldIban1);
 //end Validation IBAN
 
-
-
-
-//start Validation Phone
-document.addEventListener('DOMContentLoaded', function() {
-  var webflowEmbed = document.getElementById('webflow-embed-phone'); 
-  webflowEmbed.addEventListener('load', function() {
-  var  ValidationInputFieldPhone1 = webflowEmbed.contentDocument.getElementById('phone-number_payable');
-
-function applyValidation4(inputElement4) {
-  inputElement4.setAttribute('pattern', '\\d+');
-  inputElement4.setAttribute('maxlength', '5');
-  
- 
-  inputElement4.addEventListener('invalid', function() {
-    applyInvalidBorderStyle(inputElement4);
-      shakeOnInvalid(inputElement4);
-  });
-
-  inputElement4.addEventListener('input', function() {
-    if (inputElement4.checkValidity()) {
-      inputElement4.style.borderColor = '';
-      inputElement4.style.borderWidth = '';
-    }
-  }); 
-}
-
-applyValidation4(ValidationInputFieldPhone1);
-
-//end Validation Phone
-
-  
-
-
-
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
