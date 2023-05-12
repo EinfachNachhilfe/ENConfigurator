@@ -154,17 +154,17 @@ applyValidation3(ValidationInputFieldIban1);
 //start Validation Phone
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  const inputElement = document.getElementById('phone-number_payable');
-  inputElement.addEventListener('input', checkInput);
+  const inputElement4 = document.getElementById('phone-number_payable');
+  inputElement4.addEventListener('input', checkInput);
 });
 
-function checkInput() {
-  const inputElement = document.getElementById('phone-number_payable');
+function checkInput2() {
+  const inputElement4 = document.getElementById('phone-number_payable');
   // Remove any non-numeric characters after '+'
-  const inputValue = inputElement.value;
-  const plusIndex = inputValue.indexOf('+');
-  const numericValue = inputValue.substring(0, plusIndex + 1) + inputValue.substring(plusIndex + 1).replace(/\D/g, '');
-  inputElement.value = numericValue;
+  const inputValue2 = inputElement.value;
+  const plusIndex2 = inputValue.indexOf('+');
+  const numericValue2 = inputValue.substring(0, plusIndex + 1) + inputValue.substring(plusIndex + 1).replace(/\D/g, '');
+  inputElement4.value = numericValue;
 }
 
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
