@@ -182,7 +182,7 @@ applyValidation3(ValidationInputFieldIban1);
     }
   });
   
-   inputElement4.addEventListener('input', function() {
+   inputElement4.addEventListener('blur', function() {
     if (inputElement4.checkValidity()) {
       inputElement4.style.borderColor = '';
       inputElement4.style.borderWidth = '';
