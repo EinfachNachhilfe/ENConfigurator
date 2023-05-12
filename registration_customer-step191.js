@@ -154,9 +154,14 @@ applyValidation3(ValidationInputFieldIban1);
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
 function applyValidation4(inputElement4) {
-  inputElement4.setAttribute('pattern', '^[0-9]+$');
   inputElement4.setAttribute('minlength', '6');
 
+  inputElement4.addEventListener('input', function() {
+    var inputValue = inputElement4.value;
+    var numericValue = inputValue.replace(/\D/g, '');
+    inputElement4.value = numericValue;
+  });
+  
   inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
