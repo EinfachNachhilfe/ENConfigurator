@@ -164,6 +164,10 @@ function applyValidation4(inputElement4) {
     var numericValue = inputValue.replace(/\D/g, '');
     inputElement4.value = numericValue;
 
+  });
+  
+
+
   inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
