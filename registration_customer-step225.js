@@ -152,16 +152,42 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
-function checkInput2() {
+var selectedOption = "";
+
+function updateInputValue() {
+  var selectElement = document.getElementById("custom_form-input-is-select-input");
+  selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  document.getElementById("phone-number_payable").value = selectedOption;
+}
+
+document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
+  updateInputValue();
+});
+
+document.getElementById("phone-number_payable").addEventListener("input", function() {
+  if (this.value.length < selectedOption.length) {
+    this.value = selectedOption;
+  }
+});
+
+function checkInput() {
   const input2 = document.getElementById('phone-number_payable');
-  if (input2.value.substring(0, 1) !== '+') {
-    input2.value = '+';
-    input2.setSelectionRange(1,1);
+  if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
+    input2.value = selectedOption;
+    input2.setSelectionRange(selectedOption.length, selectedOption.length);
   } else {
-    // Remove any non-numeric characters after '+'
-    input2.value = '+' + input2.value.substring(1).replace(/\D/g, '');
+    // Remove any non-numeric characters after 'selectedOption'
+    input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
   }
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const input2 = document.getElementById('phone-number_payable');
+  input2.value = selectedOption;
+  input2.addEventListener('input', checkInput);
+  updateInputValue();
+});
+
 
     var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
