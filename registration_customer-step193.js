@@ -154,10 +154,20 @@ applyValidation3(ValidationInputFieldIban1);
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
 function applyValidation4(inputElement4) {
-  inputElement4.setAttribute('pattern', '^[+][0-9]+$');
   inputElement4.setAttribute('minlength', '6');
   
+  function extractNumbers(inputString) {
+    var numberRegex = /[0-9]/g;
+    var numbersOnly = inputString.match(numberRegex);
+    var result = numbersOnly ? numbersOnly.join('') : '';
+    return result;
+  }
+
   inputElement4.addEventListener('change', function() {
+    var inputValue = inputElement4.value;
+    var numericValue = extractNumbers(inputValue);
+    inputElement4.value = numericValue;
+
     if (inputElement4.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
       applyValidBorderStyle(inputElement4);
@@ -169,6 +179,10 @@ function applyValidation4(inputElement4) {
   });
 
   inputElement4.addEventListener('input', function() {
+    var inputValue = inputElement4.value;
+    var numericValue = extractNumbers(inputValue);
+    inputElement4.value = numericValue;
+
     if (inputElement4.checkValidity()) {
       inputElement4.style.borderColor = '';
       inputElement4.style.borderWidth = '';
@@ -177,6 +191,7 @@ function applyValidation4(inputElement4) {
 }
 
 applyValidation4(ValidationInputFieldPhone1);
+
 
 
 //end Validation Phone
