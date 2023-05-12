@@ -218,6 +218,39 @@ document.addEventListener('DOMContentLoaded', (event) => {
 //end Validation Phone
 
 
+//start Validation Mail
+
+    var ValidationInputFieldMail1 = document.getElementById('email_payable');
+
+    function applyValidation5(inputElement5) {
+
+      
+     inputElement5.addEventListener('change', function() {
+    if (inputElement5.checkValidity()) {
+      // Das Input-Feld enthält gültige Daten
+      applyValidBorderStyle(inputElement5);
+    } else {
+      // Das Input-Feld enthält ungültige Daten
+      applyInvalidBorderStyle(inputElement5);
+      shakeOnInvalid(inputElement5);
+    }
+  });
+  
+   inputElement5.addEventListener('input', function() {
+    if (inputElement5.checkValidity()) {
+      inputElement5.style.borderColor = '';
+      inputElement5.style.borderWidth = '';
+    }
+  }); 
+}
+
+    applyValidation5(ValidationInputFieldMail1);
+
+//end Validation Mail
+
+
+
+
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
