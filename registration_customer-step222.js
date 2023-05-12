@@ -169,15 +169,6 @@ function checkInput() {
   }
 }
 
-// Attach the function to the input event of the text field
-document.getElementById('phone-number_payable').addEventListener('input', checkInput2);
-
-
-// Attach the function to the input event of the text field
-document.getElementById('phone-number_payable').addEventListener('input', checkInput2);
-
-
-
     var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
     function applyValidation4(inputElement4) {
