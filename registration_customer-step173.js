@@ -35,7 +35,7 @@ const ZIPCodePayable = document.getElementById("zip-code_billing-address");
 const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
 
-//start Validation only number
+//start Validation only number max length 5
 var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_teaching-location"]');
 var ValidationInputFieldNumber2 = document.querySelector('input[name="zip-code_billing-address"]');
 
@@ -59,8 +59,7 @@ function applyValidation1(inputElement1) {
 
 applyValidation1(ValidationInputFieldNumber1);
 applyValidation1(ValidationInputFieldNumber2);
-
-//end Validation only number
+//end Validation only number max length 5
 
 
 //start Validation only letter
@@ -100,12 +99,11 @@ applyValidation2(ValidationInputFieldLetter5);
 applyValidation2(ValidationInputFieldLetter6);
 applyValidation2(ValidationInputFieldLetter7);
 applyValidation2(ValidationInputFieldLetter8);
-
-
-
 //end Validation only letter
 
 
+
+//start Validation IBAN
   document.addEventListener('DOMContentLoaded', (event) => {
   const input = document.getElementById('iban_payable');
   input.value = 'DE';
@@ -149,9 +147,39 @@ function applyValidation3(inputElement3) {
 }
 
 applyValidation3(ValidationInputFieldIban1);
+//end Validation IBAN
 
 
 
+
+//start Validation Phone
+var ValidationInputFieldPhone1 = document.querySelector('input[name="phone-number_payable"]');
+
+function applyValidation4(inputElement4) {
+  inputElement4.setAttribute('pattern', '^[0-9]+$');
+  inputElement4.setAttribute('minlength', '6');
+
+  inputElement4.addEventListener('change', function() {
+    if (inputElement4.checkValidity()) {
+      // Das Input-Feld enthält gültige Daten
+      applyValidBorderStyle(inputElement4);
+    } else {
+      // Das Input-Feld enthält ungültige Daten
+      applyInvalidBorderStyle(inputElement4);
+      shakeOnInvalid(inputElement4);
+    }
+  });
+  
+   inputElement4.addEventListener('input', function() {
+    if (inputElement4.checkValidity()) {
+      inputElement4.style.borderColor = '';
+      inputElement4.style.borderWidth = '';
+    }
+  }); 
+}
+
+applyValidation4(ValidationInputFieldPhone1);
+//end Validation Phone
 
   
 
