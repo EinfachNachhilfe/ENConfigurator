@@ -150,7 +150,24 @@ applyValidation3(ValidationInputFieldIban1);
 //end Validation IBAN
 
 
+
 //start Validation Phone
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const input = document.getElementById('phone-number_payable');
+  input.addEventListener('input', checkInput);
+});
+
+function checkInput2() {
+  const input = document.getElementById('phone-number_payable');
+  // Remove any non-numeric characters after '+'
+  const inputValue = input.value;
+  const plusIndex = inputValue.indexOf('+');
+  const numericValue = inputValue.substring(0, plusIndex + 1) + inputValue.substring(plusIndex + 1).replace(/\D/g, '');
+  input.value = numericValue;
+}
+
+
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
 function applyValidation4(inputElement4) {
