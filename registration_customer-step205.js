@@ -168,7 +168,7 @@ function checkInput2() {
 }
 
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-ValidationInputFieldPhone1.setAttribute('minlength', 6);
+inputElement4.setAttribute('minlength', '6');
 
 
 function applyValidation4(inputElement4) {
