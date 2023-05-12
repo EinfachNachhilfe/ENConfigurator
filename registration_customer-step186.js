@@ -153,7 +153,10 @@ applyValidation3(ValidationInputFieldIban1);
 
 
 //start Validation Phone
-var ValidationInputFieldPhone1 = document.querySelector('input[name="house-number_billing-address"]');
+document.addEventListener('DOMContentLoaded', function() {
+  var webflowEmbed = document.getElementById('webflow-embed-phone'); 
+  webflowEmbed.addEventListener('load', function() {
+  var  ValidationInputFieldPhone1 = webflowEmbed.contentDocument.getElementById('phone-number_payable');
 
 function applyValidation4(inputElement4) {
   inputElement4.setAttribute('pattern', '\\d+');
