@@ -110,7 +110,7 @@ applyValidation2(ValidationInputFieldLetter8);
   input.addEventListener('input', checkInput);
 });
 
-function checkInput() {
+function checkInputIban() {
   const input = document.getElementById('iban_payable');
   if (input.value.substring(0, 2) !== 'DE') {
     input.value = 'DE';
@@ -170,7 +170,7 @@ document.getElementById("phone-number_payable").addEventListener("input", functi
   }
 });
 
-function checkInput2() {
+function checkInput() {
   const input2 = document.getElementById('phone-number_payable');
   if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
     input2.value = selectedOption;
