@@ -126,7 +126,7 @@ function checkInput() {
 var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
 
 function applyValidation3(inputElement3) {
-  inputElement3.setAttribute('pattern', '^DE[0-9]{20}$');
+  inputElement3.setAttribute('pattern', '^DE[0-9]{22}$');
   inputElement3.setAttribute('maxlength', '24');
 
   inputElement3.addEventListener('change', function() {
@@ -137,14 +137,6 @@ function applyValidation3(inputElement3) {
       // Das Input-Feld enthält ungültige Daten
       applyInvalidBorderStyle(inputElement3);
       shakeOnInvalid(inputElement3);
-    }
-  });
-
-  inputElement3.addEventListener('input', function() {
-    var inputValue = inputElement3.value;
-    if (inputValue.length > 24) {
-      // Eingabe hat mehr als 24 Zeichen, abschneiden auf die ersten 24 Zeichen
-      inputElement3.value = inputValue.substring(0, 24);
     }
   });
 }
