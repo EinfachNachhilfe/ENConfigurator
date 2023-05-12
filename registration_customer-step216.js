@@ -157,19 +157,20 @@ applyValidation3(ValidationInputFieldIban1);
       inputElement4.addEventListener('input', checkInput2);
     });
 
-    function checkInput2() {
-      const inputElement4 = document.getElementById('phone-number_payable');
-      // Remove any non-numeric characters after '+'
-      const inputValue2 = inputElement4.value;
-      const plusIndex2 = inputValue2.indexOf('+');
-      const numericValue2 = inputValue2.substring(0, plusIndex2 + 1) + inputValue2.substring(plusIndex2 + 1).replace(/\D/g, '');
-      inputElement4.value = numericValue2;
-    }
+function checkInput2() {
+  const input2 = document.getElementById('phone-number_payable');
+  
+  if (input2.value[0] === '+') {
+    // Remove any non-numeric characters after '+'
+    input2.value = '+' + input2.value.substring(1).replace(/\D/g, '');
+  }
+}
+
 
     var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
 
     function applyValidation4(inputElement4) {
-      inputElement4.setAttribute('pattern', '^.{6,}$');
+      inputElement4.setAttribute('pattern', '^.{8,}$');
 
      inputElement4.addEventListener('change', function() {
     if (inputElement4.checkValidity()) {
