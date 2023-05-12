@@ -165,11 +165,15 @@ function checkInput2() {
   const plusIndex2 = inputValue2.indexOf('+');
   const numericValue2 = inputValue2.substring(0, plusIndex2 + 1) + inputValue2.substring(plusIndex2 + 1).replace(/\D/g, '');
   inputElement4.value = numericValue2;
+
+  if (inputValue2.length < 6) {
+    inputElement4.setCustomValidity('Das Eingabefeld muss mindestens 6 Zeichen lang sein.');
+  } else {
+    inputElement4.setCustomValidity('');
+  }
 }
 
 var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-inputElement4.setAttribute('minlength', '6');
-
 
 function applyValidation4(inputElement4) {
   inputElement4.addEventListener('change', function() {
@@ -192,6 +196,7 @@ function applyValidation4(inputElement4) {
 }
 
 applyValidation4(ValidationInputFieldPhone1);
+
 
 
 
