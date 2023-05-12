@@ -1,4 +1,3 @@
-
 var selectedOption = "";
 
 function updateInputValue() {
@@ -14,6 +13,8 @@ document.getElementById("custom_form-input-is-select-input").addEventListener("c
 document.getElementById("phone-number_payable").addEventListener("input", function() {
   if (this.value.length < selectedOption.length) {
     this.value = selectedOption;
+  } else {
+    selectedOption = this.value;
   }
 });
 
