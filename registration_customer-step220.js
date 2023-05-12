@@ -154,12 +154,18 @@ applyValidation3(ValidationInputFieldIban1);
 //start Validation Phone
 function checkInput2() {
   const input2 = document.getElementById('phone-number_payable');
-  
-  if (input2.value[0] === '+') {
+  if (input2.value.substring(0, 1) !== '+') {
+    input2.value = '+';
+    input2.setSelectionRange(1,1);
+  } else {
     // Remove any non-numeric characters after '+'
     input2.value = '+' + input2.value.substring(1).replace(/\D/g, '');
   }
 }
+
+// Attach the function to the input event of the text field
+document.getElementById('phone-number_payable').addEventListener('input', checkInput2);
+
 
 // Attach the function to the input event of the text field
 document.getElementById('phone-number_payable').addEventListener('input', checkInput2);
