@@ -107,44 +107,27 @@ applyValidation2(ValidationInputFieldLetter8);
 
 
   document.addEventListener('DOMContentLoaded', (event) => {
-    const input = document.getElementById('iban_payable');
-    input.value = 'DE';
-    input.addEventListener('input', checkInput);
-  });
+  const input = document.getElementById('iban_payable');
+  input.value = 'DE';
+  input.addEventListener('input', checkInput);
+});
 
-  function checkInput() {
-    const input = document.getElementById('iban_payable');
-    if (input.value.substring(0, 2) !== 'DE') {
-      input.value = 'DE';
-      input.setSelectionRange(2,2);
-    } else {
-      // Remove any non-numeric characters after 'DE'
-      input.value = 'DE' + input.value.substring(2).replace(/\D/g, '');
-    }
+function checkInput() {
+  const input = document.getElementById('iban_payable');
+  if (input.value.substring(0, 2) !== 'DE') {
+    input.value = 'DE';
+    input.setSelectionRange(2,2);
+  } else {
+    // Remove any non-numeric characters after 'DE'
+    input.value = 'DE' + input.value.substring(2).replace(/\D/g, '');
   }
+}
 
 var ValidationInputFieldIban1 = document.querySelector('input[name="iban_payable"]');
 
 function applyValidation3(inputElement3) {
   inputElement3.setAttribute('pattern', '^DE[0-9]{20}$');
   inputElement3.setAttribute('maxlength', '24');
-
-  inputElement3.addEventListener('input', function() {
-    var inputValue = inputElement3.value;
-    if (inputValue.length > 24) {
-      // Eingabe hat mehr als 22 Zeichen, abschneiden auf die ersten 22 Zeichen
-      inputElement3.value = inputValue.substring(0, 24);
-    }
-
-    if (inputElement3.checkValidity()) {
-      // Das Input-Feld enthält gültige Daten
-      applyValidBorderStyle(inputElement3);
-    } else {
-      // Das Input-Feld enthält ungültige Daten
-      applyInvalidBorderStyle(inputElement3);
-      shakeOnInvalid(inputElement3);
-    }
-  });
 
   inputElement3.addEventListener('change', function() {
     if (inputElement3.checkValidity()) {
@@ -156,9 +139,18 @@ function applyValidation3(inputElement3) {
       shakeOnInvalid(inputElement3);
     }
   });
+
+  inputElement3.addEventListener('input', function() {
+    var inputValue = inputElement3.value;
+    if (inputValue.length > 24) {
+      // Eingabe hat mehr als 24 Zeichen, abschneiden auf die ersten 24 Zeichen
+      inputElement3.value = inputValue.substring(0, 24);
+    }
+  });
 }
 
 applyValidation3(ValidationInputFieldIban1);
+
 
 
 
