@@ -139,6 +139,13 @@ function applyValidation3(inputElement3) {
       shakeOnInvalid(inputElement3);
     }
   });
+  
+   inputElement3.addEventListener('input', function() {
+    if (inputElement3.checkValidity()) {
+      inputElement3.style.borderColor = '';
+      inputElement3.style.borderWidth = '';
+    }
+  }); 
 }
 
 applyValidation3(ValidationInputFieldIban1);
