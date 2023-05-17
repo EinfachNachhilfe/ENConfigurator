@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-  const componentExperience1Tutor = document.querySelector("#component-experience-1_tutor");
-  const componentExperience2Tutor = document.querySelector("#component-experience-2_tutor");
+  const componentExperience1Tutor = document.getElementById("#component-experience-1_tutor");
+  const componentExperience2Tutor = document.getElementById("#component-experience-2_tutor");
   const componentExperience3Tutor = document.querySelector("#component-experience-3_tutor");
   const componentExperience4Tutor = document.querySelector("#component-experience-4_tutor");
   const componentExperience5Tutor = document.querySelector("#component-experience-5_tutor");
