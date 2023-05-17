@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
       triggerOpenExperienceTutor.style.display = "flex";
   });
 
-  componentExperience1Tutor.addEventListener("change", function() {
+  experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
