@@ -2,43 +2,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const componentExperience1Tutor = document.getElementById("component-experience-1_tutor");
   const componentExperience2Tutor = document.getElementById("component-experience-2_tutor");
-  const componentExperience3Tutor = document.querySelector("#component-experience-3_tutor");
-  const componentExperience4Tutor = document.querySelector("#component-experience-4_tutor");
-  const componentExperience5Tutor = document.querySelector("#component-experience-5_tutor");
-  const componentExperience6Tutor = document.querySelector("#component-experience-6_tutor");
+  const componentExperience3Tutor = document.getElementById("component-experience-3_tutor");
+  const componentExperience4Tutor = document.getElementById("component-experience-4_tutor");
+  const componentExperience5Tutor = document.getElementById("component-experience-5_tutor");
+  const componentExperience6Tutor = document.getElementById("component-experience-6_tutor");
   
 
-  const triggerOpenExperienceTutor = document.querySelector("#trigger-open-experience_tutor");
+  const triggerOpenExperienceTutor = document.getElementById("trigger-open-experience_tutor");
 
-  const triggerCloseExperience2Tutor = document.querySelector("#trigger-close-experience-2_tutor");
-  const triggerCloseExperience3Tutor = document.querySelector("#trigger-close-experience-3_tutor");
-  const triggerCloseExperience4Tutor = document.querySelector("#trigger-close-experience-4_tutor");
-  const triggerCloseExperience5Tutor = document.querySelector("#trigger-close-experience-5_tutor");
-  const triggerCloseExperience6Tutor = document.querySelector("#trigger-close-experience-6_tutor");
+  const triggerCloseExperience2Tutor = document.getElementById("trigger-close-experience-2_tutor");
+  const triggerCloseExperience3Tutor = document.getElementById("trigger-close-experience-3_tutor");
+  const triggerCloseExperience4Tutor = document.getElementById("trigger-close-experience-4_tutor");
+  const triggerCloseExperience5Tutor = document.getElementById("trigger-close-experience-5_tutor");
+  const triggerCloseExperience6Tutor = document.getElementById("trigger-close-experience-6_tutor");
  
-  const experience1Tutor = document.querySelector("#experience-1_tutor");
-  const duration1Tutor = document.querySelector("#duration-1_tutor");
-  const when1Tutor = document.querySelector("#when-1_tutor");
+  const experience1Tutor = document.getElementById("experience-1_tutor");
+  const duration1Tutor = document.getElementById("duration-1_tutor");
+  const when1Tutor = document.getElementById("when-1_tutor");
 
-  const experience2Tutor = document.querySelector("#experience-2_tutor");
-  const duration2Tutor = document.querySelector("#duration-2_tutor");
-  const when2Tutor = document.querySelector("#when-2_tutor");
+  const experience2Tutor = document.getElementById("experience-2_tutor");
+  const duration2Tutor = document.getElementById("duration-2_tutor");
+  const when2Tutor = document.getElementById("when-2_tutor");
 
-  const experience3Tutor = document.querySelector("#experience-3_tutor");
-  const duration3Tutor = document.querySelector("#duration-3_tutor");
-  const when3Tutor = document.querySelector("#when-3_tutor");
+  const experience3Tutor = document.getElementById("experience-3_tutor");
+  const duration3Tutor = document.getElementById("duration-3_tutor");
+  const when3Tutor = document.getElementById("when-3_tutor");
 
-  const experience4Tutor = document.querySelector("#experience-4_tutor");
-  const duration4Tutor = document.querySelector("#duration-4_tutor");
-  const when4Tutor = document.querySelector("#when-4_tutor");
+  const experience4Tutor = document.getElementById("experience-4_tutor");
+  const duration4Tutor = document.getElementById("duration-4_tutor");
+  const when4Tutor = document.getElementById("when-4_tutor");
 
-  const experience5Tutor = document.querySelector("#experience-5_tutor");
-  const duration5Tutor = document.querySelector("#duration-5_tutor");
-  const when5Tutor = document.querySelector("#when-5_tutor");
+  const experience5Tutor = document.getElementById("experience-5_tutor");
+  const duration5Tutor = document.getElementById("duration-5_tutor");
+  const when5Tutor = document.getElementById("when-5_tutor");
 
-  const experience6Tutor = document.querySelector("#experience-6_tutor");
-  const duration6Tutor = document.querySelector("#duration-6_tutor");
-  const when6Tutor = document.querySelector("#when-6_tutor");
+  const experience6Tutor = document.getElementById("experience-6_tutor");
+  const duration6Tutor = document.getElementById("duration-6_tutor");
+  const when6Tutor = document.getElementById("when-6_tutor");
 
   componentExperience2Tutor.style.display = "none";
   componentExperience3Tutor.style.display = "none";
