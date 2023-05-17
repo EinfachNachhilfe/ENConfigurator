@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   componentExperience1Tutor.addEventListener("change", function() {
-      if (componentExperience1Tutor.selectedIndex === 1) {
+      if (experience1Tutor.selectedIndex === 1) {
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
