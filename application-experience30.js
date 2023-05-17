@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
     when3Tutor.selectedIndex = 0;
       componentExperience3Tutor.style.display = "none";
       componentExperience2Tutor.style.display = "block";
-      triggerCloseExperience2Tutor ="block";
+      triggerCloseExperience2Tutor.style.display ="block";
   });
 
   triggerCloseExperience4Tutor.addEventListener("click", function() {
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
     when4Tutor.selectedIndex = 0;
       componentExperience4Tutor.style.display = "none";
       componentExperience3Tutor.style.display = "block";
-      triggerCloseExperience3Tutor ="block";
+      triggerCloseExperience3Tutor.style.display ="block";
   });
 
   triggerCloseExperience5Tutor.addEventListener("click", function() {
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
     when5Tutor.selectedIndex = 0;
       componentExperience5Tutor.style.display = "none";
       componentExperience4Tutor.style.display = "block";
-      triggerCloseExperience4Tutor ="block";
+      triggerCloseExperience4Tutor.style.display ="block";
   });
 
   triggerCloseExperience6Tutor.addEventListener("click", function() {
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
     when6Tutor.selectedIndex = 0;
       componentExperience6Tutor.style.display = "none";
       componentExperience5Tutor.style.display = "block";
-      triggerCloseExperience5Tutor ="block";
+      triggerCloseExperience5Tutor.style.display ="block";
       triggerOpenExperienceTutor.style.display = "flex";
   });
 
