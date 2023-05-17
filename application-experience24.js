@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
       } else if (componentExperience3Tutor.style.display === "block" && componentExperience4Tutor.style.display === "none") {
           componentExperience4Tutor.style.display = "block";
           triggerCloseExperience3Tutor.style.display = "none";
-          triggerCloseExperience2Tutor.style.display = "block";
+          triggerCloseExperience4Tutor.style.display = "block";
       } else if (componentExperience4Tutor.style.display === "block" && componentExperience5Tutor.style.display === "none") {
           componentExperience5Tutor.style.display = "block";
           triggerCloseExperience4Tutor.style.display = "none";
