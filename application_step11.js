@@ -282,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const showFirstNames = document.querySelectorAll('.show_first-name');
       const genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
       const componentSubject2Tutor = document.getElementById("component-subject-2_tutor");
+      const componentSubject3Tutor = document.getElementById("component-subject-3_tutor");
 
 
       var isAllFieldsFilled1 = false;
@@ -292,7 +293,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var isAnyGenderRadioSelected1 = false;
       var componentSubject2TutorVisible = false;
       var isTrueComponentSubject2Tutor = false;
-
+      var componentSubject3TutorVisible = false;
+      var isTrueComponentSubject3Tutor = false;
 
       checkAllFieldsFilled1();
       step2.style.display = 'none';
@@ -359,29 +361,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-      // Create a new mutation observer
-let observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    // Check if the mutation is for 'style' attribute
-    if (mutation.attributeName === "style") {
-      // Check the 'display' status and call 'checkAllFieldsFilled2'
-      checkAllFieldsFilled2();
-    }
-  });
-});
-
-// Start observing
-observer.observe(componentSubject2Tutor, {
-  attributes: true
-});
+      function observeStyleChanges(element, callback) {
+        let observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === "style") {
+              callback();
+            }
+          });
+        });
+      
+        observer.observe(element, { attributes: true });
+      }
+      
+      // Beobachte componentSubject2Tutor
+      observeStyleChanges(componentSubject2Tutor, checkAllFieldsFilled2);
+      
+      // Beobachte componentSubject3Tutor
+      observeStyleChanges(componentSubject3Tutor, checkAllFieldsFilled2);
+      
 
 
       function checkAllFieldsFilled2() {     
           componentSubject2TutorVisible = false;
           isTrueComponentSubject2Tutor = false;
           isAllFieldsFilled2 = false;
-          
+          componentSubject3TutorVisible = false;
+          isTrueComponentSubject3Tutor = false;
           var filledFields2 = 0;
+
           requiredFields2.forEach(function(field) {
               if (field.value) {
                   filledFields2++;
@@ -403,7 +410,18 @@ observer.observe(componentSubject2Tutor, {
             }
           } 
 
-          if (isAllFieldsFilled2 && (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor))) {
+          if (getComputedStyle(componentSubject3Tutor).display == "block") {
+            componentSubject3TutorVisible = true;
+            if (
+              subject3Tutor.value && subject3Tutor.checkValidity() &&
+              classFrom3Tutor.value && classFrom3Tutor.checkValidity() &&
+              classTo3Tutor.value && classTo3Tutor.checkValidity()
+            ) {
+              isTrueComponentSubject3Tutor = true;
+            }
+          } 
+
+          if (isAllFieldsFilled2 && (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor) && (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)))) {
             nextBtn.classList.remove('disabled');
           } else {
             nextBtn.classList.add('disabled');
