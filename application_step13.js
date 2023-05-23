@@ -283,6 +283,10 @@ document.addEventListener("DOMContentLoaded", function() {
       const genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
       const componentSubject2Tutor = document.getElementById("component-subject-2_tutor");
       const componentSubject3Tutor = document.getElementById("component-subject-3_tutor");
+      const componentSubject4Tutor = document.getElementById("component-subject-4_tutor");
+      const componentSubject5Tutor = document.getElementById("component-subject-5_tutor");
+      const componentSubject6Tutor = document.getElementById("component-subject-6_tutor");
+
 
 
       var isAllFieldsFilled1 = false;
@@ -295,6 +299,12 @@ document.addEventListener("DOMContentLoaded", function() {
       var isTrueComponentSubject2Tutor = false;
       var componentSubject3TutorVisible = false;
       var isTrueComponentSubject3Tutor = false;
+      var componentSubject4TutorVisible = false;
+      var isTrueComponentSubject4Tutor = false;
+      var componentSubject5TutorVisible = false;
+      var isTrueComponentSubject5Tutor = false;
+      var componentSubject6TutorVisible = false;
+      var isTrueComponentSubject6Tutor = false;
 
       checkAllFieldsFilled1();
       step2.style.display = 'none';
@@ -379,15 +389,31 @@ document.addEventListener("DOMContentLoaded", function() {
       // Beobachte componentSubject3Tutor
       observeStyleChanges(componentSubject3Tutor, checkAllFieldsFilled2);
       
+         // Beobachte componentSubject4Tutor
+         observeStyleChanges(componentSubject4Tutor, checkAllFieldsFilled2);
+
+            // Beobachte componentSubject5Tutor
+      observeStyleChanges(componentSubject5Tutor, checkAllFieldsFilled2);
+
+         // Beobachte componentSubject6Tutor
+         observeStyleChanges(componentSubject6Tutor, checkAllFieldsFilled2);
 
 
-      function checkAllFieldsFilled2() {     
+      function checkAllFieldsFilled2() {   
+        isAllFieldsFilled2 = false;  
+        var filledFields2 = 0;
+
           componentSubject2TutorVisible = false;
           isTrueComponentSubject2Tutor = false;
-          isAllFieldsFilled2 = false;
           componentSubject3TutorVisible = false;
           isTrueComponentSubject3Tutor = false;
-          var filledFields2 = 0;
+          componentSubject4TutorVisible = false;
+          isTrueComponentSubject4Tutor = false;
+          componentSubject5TutorVisible = false;
+          isTrueComponentSubject5Tutor = false;
+          componentSubject6TutorVisible = false;
+          isTrueComponentSubject6Tutor = false;
+
 
           requiredFields2.forEach(function(field) {
               if (field.value) {
@@ -421,7 +447,45 @@ document.addEventListener("DOMContentLoaded", function() {
             }
           } 
 
-          if (isAllFieldsFilled2 && (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor) && (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)))) {
+          if (getComputedStyle(componentSubject4Tutor).display == "block") {
+            componentSubject4TutorVisible = true;
+            if (
+              subject4Tutor.value && subject4Tutor.checkValidity() &&
+              classFrom4Tutor.value && classFrom4Tutor.checkValidity() &&
+              classTo4Tutor.value && classTo4Tutor.checkValidity()
+            ) {
+              isTrueComponentSubject4Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentSubject5Tutor).display == "block") {
+            componentSubject5TutorVisible = true;
+            if (
+              subject5Tutor.value && subject5Tutor.checkValidity() &&
+              classFrom5Tutor.value && classFrom5Tutor.checkValidity() &&
+              classTo5Tutor.value && classTo5Tutor.checkValidity()
+            ) {
+              isTrueComponentSubject5Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentSubject6Tutor).display == "block") {
+            componentSubject6TutorVisible = true;
+            if (
+              subject6Tutor.value && subject6Tutor.checkValidity() &&
+              classFrom6Tutor.value && classFrom6Tutor.checkValidity() &&
+              classTo6Tutor.value && classTo6Tutor.checkValidity()
+            ) {
+              isTrueComponentSubject6Tutor = true;
+            }
+          } 
+
+          if (isAllFieldsFilled2 && 
+            (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor)&& 
+            (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)&& 
+            (!componentSubject4TutorVisible || (componentSubject4TutorVisible && isTrueComponentSubject4Tutor)&& 
+            (!componentSubject5TutorVisible || (componentSubject5TutorVisible && isTrueComponentSubject5Tutor)&& 
+            (!componentSubject6TutorVisible || (componentSubject6TutorVisible && isTrueComponentSubject6Tutor))))))) {
             nextBtn.classList.remove('disabled');
           } else {
             nextBtn.classList.add('disabled');
@@ -448,6 +512,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
+      [subject4Tutor, classFrom4Tutor, classTo4Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled2();
+        });
+      });
+
+      [subject5Tutor, classFrom5Tutor, classTo5Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled2();
+        });
+      });
+
+      [subject6Tutor, classFrom6Tutor, classTo6Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled2();
+        });
+      });
 
       function checkAllFieldsFilled3() {
           var filledFields3 = 0;
