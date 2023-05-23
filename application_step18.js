@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const triggerClosesubject5Tutor = document.getElementById("trigger-close-subject-5_tutor");
   const triggerClosesubject6Tutor = document.getElementById("trigger-close-subject-6_tutor");
  
-  const subject1Tutor = document.getElementById("subject-1_tutor");
+  
   const classFrom1Tutor = document.getElementById("class-from-1_tutor");
   const classTo1Tutor = document.getElementById("class-to-1_tutor");
 
