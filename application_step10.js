@@ -357,6 +357,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+      // Create a new mutation observer
+let observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    // Check if the mutation is for 'style' attribute
+    if (mutation.attributeName === "style") {
+      // Check the 'display' status and call 'checkAllFieldsFilled2'
+      checkAllFieldsFilled2();
+    }
+  });
+});
+
+// Start observing
+observer.observe(componentSubject2Tutor, {
+  attributes: true
+});
+
+
       function checkAllFieldsFilled2() {     
           componentSubject2TutorVisible = false;
           isTrueComponentSubject2Tutor = false;
