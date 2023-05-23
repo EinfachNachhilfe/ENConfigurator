@@ -442,6 +442,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
+      [subject3Tutor, classFrom3Tutor, classTo3Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled2();
+        });
+      });
+
 
       function checkAllFieldsFilled3() {
           var filledFields3 = 0;
