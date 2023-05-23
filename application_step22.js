@@ -1,32 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-
-
-  const classFromSelect = document.getElementById("class-from-1_tutor");
-  const classToSelect = document.getElementById("class-to-1_tutor");
-
-  classFromSelect.addEventListener("change", function() {
-    const selectedValue = parseInt(classFromSelect.value);
-
-    for (let i = 0; i < classToSelect.options.length; i++) {
-      const optionValue = parseInt(classToSelect.options[i].value);
-
-      if (optionValue <= selectedValue) {
-        classToSelect.options[i].style.display = "none";
-      } else {
-        classToSelect.options[i].style.display = "block";
-      }
-    }
-
-    // Zurücksetzen des Werts in 'class-to-1_tutor', wenn 'class-from-1_tutor' keinen Wert hat
-    if (selectedValue === 0) {
-      classToSelect.value = '';
-      classToSelect.disabled = true;
-    } else {
-      classToSelect.disabled = false;
-    }
-  });
-
-
   
 
   const componentsubject2Tutor = document.getElementById("component-subject-2_tutor");
@@ -707,4 +679,36 @@ document.addEventListener("DOMContentLoaded", function() {
           }
 
       });
+
+
+
+      classFrom1Tutor.addEventListener("change", function() {
+        const selectedValue = parseInt(classFrom1Tutor.value);
+    
+        for (let i = 0; i < classTo1Tutor.options.length; i++) {
+          const optionValue = parseInt(classTo1Tutor.options[i].value);
+    
+          if (optionValue <= selectedValue) {
+            classTo1Tutor.options[i].style.display = "none";
+          } else {
+            classTo1Tutor.options[i].style.display = "block";
+          }
+        }
+        classTo1Tutor.value = '';
+      });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
