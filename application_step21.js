@@ -17,8 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
-    // Zurücksetzen des Werts in 'class-to-1_tutor'
-    classToSelect.value = '';
+    // Zurücksetzen des Werts in 'class-to-1_tutor', wenn 'class-from-1_tutor' keinen Wert hat
+    if (selectedValue === 0) {
+      classToSelect.value = '';
+      classToSelect.disabled = true;
+    } else {
+      classToSelect.disabled = false;
+    }
   });
 
 
