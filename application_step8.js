@@ -276,17 +276,19 @@ document.addEventListener("DOMContentLoaded", function() {
       const requiredFields2 = document.querySelectorAll('#form-item_subjects [required]');
       const requiredFields3 = document.querySelectorAll('#form-item_experience [required]');
       const requiredFields4 = document.querySelectorAll('#form-item_personal [required]');
-      const isAllFieldsFilled1 = false;
-      const isAllFieldsFilled2 = false;
-      const isAllFieldsFilled3 = false;
-      const isAllFieldsFilled4 = false;
-      const isAnyCheckboxSelected1 = false;
+      var isAllFieldsFilled1 = false;
+      var isAllFieldsFilled2 = false;
+      var isAllFieldsFilled3 = false;
+      var isAllFieldsFilled4 = false;
+      var isAnyCheckboxSelected1 = false;
       const checkboxes1 = step5.querySelectorAll('input[type="checkbox"]');
       const showStepNumber = document.getElementById('show-step_number');
       const firstNameInput = document.getElementById('first-name_tutor');
       const showFirstNames = document.querySelectorAll('.show_first-name');
       const genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
-      const isAnyGenderRadioSelected1 = false;
+      var isAnyGenderRadioSelected1 = false;
+      var componentSubject2TutorVisible = false;
+      var isTrueComponentSubject2Tutor = false;
 
 
       checkAllFieldsFilled1();
@@ -353,8 +355,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
       function checkAllFieldsFilled2() {     
-          let componentSubject2TutorVisible = false;
-          let isTrueComponentSubject2Tutor = false;
+          componentSubject2TutorVisible = false;
+          isTrueComponentSubject2Tutor = false;
           var filledFields2 = 0;
           requiredFields2.forEach(function(field) {
               if (field.value) {
