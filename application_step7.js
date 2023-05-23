@@ -264,32 +264,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
       //step
-      var step1 = document.getElementById('form-item_name');
-      var step2 = document.getElementById('form-item_subjects');
-      var step3 = document.getElementById('form-item_experience');
-      var step4 = document.getElementById('form-item_personal');
-      var step5 = document.getElementById('form-item_closing');
-      var submitBtn = document.getElementById('submit-btn');
-      var backBtn = document.getElementById('back-btn');
-      var nextBtn = document.getElementById('next-btn');
-      var requiredFields1 = document.querySelectorAll('#form-item_name [required]');
-      var requiredFields2 = document.querySelectorAll('#form-item_subjects [required]');
-      var requiredFields3 = document.querySelectorAll('#form-item_experience [required]');
-      var requiredFields4 = document.querySelectorAll('#form-item_personal [required]');
-      var requiredFields5 = document.querySelectorAll('#form-item_closing [required]');
-      var isAllFieldsFilled1 = false;
-      var isAllFieldsFilled2 = false;
-      var isAllFieldsFilled3 = false;
-      var isAllFieldsFilled4 = false;
-      var isAnyCheckboxSelected1 = false;
-      var checkboxes1 = step5.querySelectorAll('input[type="checkbox"]');
-      var showStepNumber = document.getElementById('show-step_number');
-      var firstNameInput = document.getElementById('first-name_tutor');
-      var showFirstNames = document.querySelectorAll('.show_first-name');
-      var genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
-      var isAnyGenderRadioSelected1 = false;
-
-
+      const step1 = document.getElementById('form-item_name');
+      const step2 = document.getElementById('form-item_subjects');
+      const step3 = document.getElementById('form-item_experience');
+      const step4 = document.getElementById('form-item_personal');
+      const step5 = document.getElementById('form-item_closing');
+      const submitBtn = document.getElementById('submit-btn');
+      const backBtn = document.getElementById('back-btn');
+      const nextBtn = document.getElementById('next-btn');
+      const requiredFields1 = document.querySelectorAll('#form-item_name [required]');
+      const requiredFields2 = document.querySelectorAll('#form-item_subjects [required]');
+      const requiredFields3 = document.querySelectorAll('#form-item_experience [required]');
+      const requiredFields4 = document.querySelectorAll('#form-item_personal [required]');
+      const isAllFieldsFilled1 = false;
+      const isAllFieldsFilled2 = false;
+      const isAllFieldsFilled3 = false;
+      const isAllFieldsFilled4 = false;
+      const isAnyCheckboxSelected1 = false;
+      const checkboxes1 = step5.querySelectorAll('input[type="checkbox"]');
+      const showStepNumber = document.getElementById('show-step_number');
+      const firstNameInput = document.getElementById('first-name_tutor');
+      const showFirstNames = document.querySelectorAll('.show_first-name');
+      const genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
+      const isAnyGenderRadioSelected1 = false;
 
 
       checkAllFieldsFilled1();
@@ -355,7 +352,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-      function checkAllFieldsFilled2() {
+      function checkAllFieldsFilled2() {     
+          let componentSubject2TutorVisible = false;
+          let isTrueComponentSubject2Tutor = false;
           var filledFields2 = 0;
           requiredFields2.forEach(function(field) {
               if (field.value) {
@@ -365,15 +364,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
           if (filledFields2 === requiredFields2.length) {
               isAllFieldsFilled2 = true;
-
           }
 
-          if (isAllFieldsFilled2) {
-              nextBtn.classList.remove('disabled');
+          if (getComputedStyle(componentSubject2Tutor).display == "block") {
+            componentSubject2TutorVisible = true;
+            if (
+              subject2Tutor.value && subject2Tutor.checkValidity() &&
+              classFrom2Tutor.value && classFrom2Tutor.checkValidity() &&
+              classTo2Tutor.value && classTo2Tutor.checkValidity()
+            ) {
+              isTrueComponentSubject2Tutor = true;
+            }
+          } 
+
+          if (isAllFieldsFilled2 && (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor))) {
+            nextBtn.classList.remove('disabled');
           } else {
-              nextBtn.classList.add('disabled');
+            nextBtn.classList.add('disabled');
           }
-      }
+        } 
+        
       requiredFields2.forEach(function(input) {
           input.addEventListener('input', function() {
               isAllFieldsFilled2 = false;
@@ -382,7 +392,11 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
 
-
+      [subject2Tutor, classFrom2Tutor, classTo2Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled2();
+        });
+      });
 
 
       function checkAllFieldsFilled3() {
