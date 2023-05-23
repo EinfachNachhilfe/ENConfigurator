@@ -1,5 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+
+  const classFromSelect = document.getElementById("class-from-1_tutor");
+  const classToSelect = document.getElementById("class-to-1_tutor");
+  classFromSelect.addEventListener("change", function() {
+    const selectedValue = parseInt(classFromSelect.value);
+
+    // Optionen im 'class-to-1_tutor'-Select-Feld ausblenden oder einblenden
+    for (let i = 0; i < classToSelect.options.length; i++) {
+      const optionValue = parseInt(classToSelect.options[i].value);
+
+      if (optionValue <= selectedValue) {
+        classToSelect.options[i].style.display = "none";
+      } else {
+        classToSelect.options[i].style.display = "block";
+      }
+    }
+  });
+
   const componentsubject2Tutor = document.getElementById("component-subject-2_tutor");
   const componentsubject3Tutor = document.getElementById("component-subject-3_tutor");
   const componentsubject4Tutor = document.getElementById("component-subject-4_tutor");
