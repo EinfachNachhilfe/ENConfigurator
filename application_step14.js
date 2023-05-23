@@ -618,7 +618,12 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 2 von 5";
               checkAllFieldsFilled2();
-          } else if (isAllFieldsFilled2 && step1.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
+          } else if (isAllFieldsFilled2 && 
+            (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor)&& 
+            (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)&& 
+            (!componentSubject4TutorVisible || (componentSubject4TutorVisible && isTrueComponentSubject4Tutor)&& 
+            (!componentSubject5TutorVisible || (componentSubject5TutorVisible && isTrueComponentSubject5Tutor)&& 
+            (!componentSubject6TutorVisible || (componentSubject6TutorVisible && isTrueComponentSubject6Tutor)))))) && step1.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
               step2.style.display = 'none';
               step3.style.display = 'block';
               nextBtn.classList.add('disabled');
