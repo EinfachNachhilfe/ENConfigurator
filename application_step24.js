@@ -761,7 +761,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       
       classFrom6Tutor.addEventListener("change", function() {
-        const selectedValue = parseInt(classFrom5Tutor.value);
+        const selectedValue = parseInt(classFrom6Tutor.value);
       
         for (let i = 0; i < classTo6Tutor.options.length; i++) {
           const optionValue = parseInt(classTo6Tutor.options[i].value);
