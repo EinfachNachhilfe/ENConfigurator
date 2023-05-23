@@ -4,11 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const classFromSelect = document.getElementById("class-from-1_tutor");
   const classToSelect = document.getElementById("class-to-1_tutor");
 
-  // Event Listener für das 'change'-Ereignis hinzufügen
   classFromSelect.addEventListener("change", function() {
     const selectedValue = parseInt(classFromSelect.value);
 
-    // Optionen im 'class-to-1_tutor'-Select-Feld ausblenden oder einblenden
     for (let i = 0; i < classToSelect.options.length; i++) {
       const optionValue = parseInt(classToSelect.options[i].value);
 
@@ -18,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
         classToSelect.options[i].style.display = "block";
       }
     }
+
+    // Zurücksetzen des Werts in 'class-to-1_tutor'
+    classToSelect.value = '';
   });
 
 
