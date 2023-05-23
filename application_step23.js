@@ -697,7 +697,83 @@ document.addEventListener("DOMContentLoaded", function() {
         classTo1Tutor.value = '';
       });
     
-
+      classFrom2Tutor.addEventListener("change", function() {
+        const selectedValue = parseInt(classFrom2Tutor.value);
+      
+        for (let i = 0; i < classTo2Tutor.options.length; i++) {
+          const optionValue = parseInt(classTo2Tutor.options[i].value);
+      
+          if (optionValue <= selectedValue) {
+            classTo2Tutor.options[i].style.display = "none";
+          } else {
+            classTo2Tutor.options[i].style.display = "block";
+          }
+        }
+        classTo2Tutor.value = '';
+      });
+      
+     
+      classFrom3Tutor.addEventListener("change", function() {
+        const selectedValue = parseInt(classFrom3Tutor.value);
+      
+        for (let i = 0; i < classTo3Tutor.options.length; i++) {
+          const optionValue = parseInt(classTo3Tutor.options[i].value);
+      
+          if (optionValue <= selectedValue) {
+            classTo3Tutor.options[i].style.display = "none";
+          } else {
+            classTo3Tutor.options[i].style.display = "block";
+          }
+        }
+        classTo3Tutor.value = '';
+      });
+      
+      
+      classFrom4Tutor.addEventListener("change", function() {
+        const selectedValue = parseInt(classFrom4Tutor.value);
+      
+        for (let i = 0; i < classTo4Tutor.options.length; i++) {
+          const optionValue = parseInt(classTo4Tutor.options[i].value);
+      
+          if (optionValue <= selectedValue) {
+            classTo4Tutor.options[i].style.display = "none";
+          } else {
+            classTo4Tutor.options[i].style.display = "block";
+          }
+        }
+        classTo4Tutor.value = '';
+      });
+      
+      
+      classFrom5Tutor.addEventListener("change", function() {
+        const selectedValue = parseInt(classFrom5Tutor.value);
+      
+        for (let i = 0; i < classTo5Tutor.options.length; i++) {
+          const optionValue = parseInt(classTo5Tutor.options[i].value);
+      
+          if (optionValue <= selectedValue) {
+            classTo5Tutor.options[i].style.display = "none";
+          } else {
+            classTo5Tutor.options[i].style.display = "block";
+          }
+        }
+        classTo5Tutor.value = '';
+      });
+      
+      classFrom6Tutor.addEventListener("change", function() {
+        const selectedValue = parseInt(classFrom5Tutor.value);
+      
+        for (let i = 0; i < classTo6Tutor.options.length; i++) {
+          const optionValue = parseInt(classTo6Tutor.options[i].value);
+      
+          if (optionValue <= selectedValue) {
+            classTo6Tutor.options[i].style.display = "none";
+          } else {
+            classTo6Tutor.options[i].style.display = "block";
+          }
+        }
+        classTo6Tutor.value = '';
+      });
 
 
 
