@@ -1,32 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 
-  const classFromSelect = document.getElementById("class-from-1_tutor");
-  const classToSelect = document.getElementById("class-to-1_tutor");
+  classFrom1Tutor.addEventListener("change", function() {
+  const selectedValue = parseInt(classFrom1Tutor.value);
 
-  classFromSelect.addEventListener("change", function() {
-    const selectedFromValue = parseInt(classFromSelect.value);
-    const selectedToValue = parseInt(classToSelect.value);
+    
+    for (let i = 0; i < classTo1Tutor.options.length; i++) {
+      const optionValue = parseInt(classTo1Tutor.options[i].value);
 
-    for (let i = 0; i < classToSelect.options.length; i++) {
-      const optionValue = parseInt(classToSelect.options[i].value);
-
-      if (optionValue <= selectedFromValue) {
-        classToSelect.options[i].style.display = "none";
+      if (optionValue <= selectedValue) {
+        classTo1Tutor.options[i].style.display = "none";
       } else {
-        classToSelect.options[i].style.display = "block";
+        classTo1Tutor.options[i].style.display = "block";
       }
     }
   });
 
-  classToSelect.addEventListener("change", function() {
-    const selectedFromValue = parseInt(classFromSelect.value);
-    const selectedToValue = parseInt(classToSelect.value);
-
-    if (selectedFromValue > selectedToValue) {
-      classFromSelect.value = selectedToValue.toString();
-    }
-  });
 
   
 
@@ -45,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const triggerClosesubject5Tutor = document.getElementById("trigger-close-subject-5_tutor");
   const triggerClosesubject6Tutor = document.getElementById("trigger-close-subject-6_tutor");
  
+  const subject1Tutor = document.getElementById("subject-1_tutor");
+  const classFrom1Tutor = document.getElementById("class-from-1_tutor");
+  const classTo1Tutor = document.getElementById("class-to-1_tutor");
+
   const subject2Tutor = document.getElementById("subject-2_tutor");
   const classFrom2Tutor = document.getElementById("class-from-2_tutor");
   const classTo2Tutor = document.getElementById("class-to-2_tutor");
