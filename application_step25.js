@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
   
 
-  const componentsubject2Tutor = document.getElementById("component-subject-2_tutor");
-  const componentsubject3Tutor = document.getElementById("component-subject-3_tutor");
-  const componentsubject4Tutor = document.getElementById("component-subject-4_tutor");
-  const componentsubject5Tutor = document.getElementById("component-subject-5_tutor");
-  const componentsubject6Tutor = document.getElementById("component-subject-6_tutor");
+  const componentSubject2Tutor = document.getElementById("component-subject-2_tutor");
+  const componentSubject3Tutor = document.getElementById("component-subject-3_tutor");
+  const componentSubject4Tutor = document.getElementById("component-subject-4_tutor");
+  const componentSubject5Tutor = document.getElementById("component-subject-5_tutor");
+  const componentSubject6Tutor = document.getElementById("component-subject-6_tutor");
   
 
   const triggerOpenSubjectTutor = document.getElementById("trigger-open-subject_tutor");
@@ -40,31 +40,31 @@ document.addEventListener("DOMContentLoaded", function() {
   const classFrom6Tutor = document.getElementById("class-from-6_tutor");
   const classTo6Tutor = document.getElementById("class-to-6_tutor");
 
-  componentsubject2Tutor.style.display = "none";
-  componentsubject3Tutor.style.display = "none";
-  componentsubject4Tutor.style.display = "none";
-  componentsubject5Tutor.style.display = "none";
-  componentsubject6Tutor.style.display = "none";
+  componentSubject2Tutor.style.display = "none";
+  componentSubject3Tutor.style.display = "none";
+  componentSubject4Tutor.style.display = "none";
+  componentSubject5Tutor.style.display = "none";
+  componentSubject6Tutor.style.display = "none";
 
 
   triggerOpenSubjectTutor.addEventListener("click", function() {
-      if (componentsubject2Tutor.style.display === "none") {
-          componentsubject2Tutor.style.display = "block";
+      if (componentSubject2Tutor.style.display === "none") {
+          componentSubject2Tutor.style.display = "block";
           triggerClosesubject2Tutor.style.display = "block";
-      } else if (componentsubject2Tutor.style.display === "block" && componentsubject3Tutor.style.display === "none") {
-          componentsubject3Tutor.style.display = "block";
+      } else if (componentSubject2Tutor.style.display === "block" && componentSubject3Tutor.style.display === "none") {
+          componentSubject3Tutor.style.display = "block";
           triggerClosesubject2Tutor.style.display = "none";
           triggerClosesubject3Tutor.style.display = "block";
-      } else if (componentsubject3Tutor.style.display === "block" && componentsubject4Tutor.style.display === "none") {
-          componentsubject4Tutor.style.display = "block";
+      } else if (componentSubject3Tutor.style.display === "block" && componentSubject4Tutor.style.display === "none") {
+          componentSubject4Tutor.style.display = "block";
           triggerClosesubject3Tutor.style.display = "none";
           triggerClosesubject4Tutor.style.display = "block";
-      } else if (componentsubject4Tutor.style.display === "block" && componentsubject5Tutor.style.display === "none") {
-          componentsubject5Tutor.style.display = "block";
+      } else if (componentSubject4Tutor.style.display === "block" && componentSubject5Tutor.style.display === "none") {
+          componentSubject5Tutor.style.display = "block";
           triggerClosesubject4Tutor.style.display = "none";
           triggerClosesubject5Tutor.style.display = "block";
-      } else if (componentsubject5Tutor.style.display === "block" && componentsubject6Tutor.style.display === "none") {
-          componentsubject6Tutor.style.display = "block";
+      } else if (componentSubject5Tutor.style.display === "block" && componentSubject6Tutor.style.display === "none") {
+          componentSubject6Tutor.style.display = "block";
           triggerClosesubject5Tutor.style.display = "none";
           triggerClosesubject6Tutor.style.display = "block";
           triggerOpenSubjectTutor.style.display = "none";
@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", function() {
       subject2Tutor.selectedIndex = 0;
       classFrom2Tutor.selectedIndex = 0;
       classTo2Tutor.selectedIndex = 0;
-      componentsubject2Tutor.style.display = "none";
+      componentSubject2Tutor.style.display = "none";
   });
 
   triggerClosesubject3Tutor.addEventListener("click", function() {
     subject3Tutor.selectedIndex = 0;
     classFrom3Tutor.selectedIndex = 0;
     classTo3Tutor.selectedIndex = 0;
-      componentsubject3Tutor.style.display = "none";
-      componentsubject2Tutor.style.display = "block";
+      componentSubject3Tutor.style.display = "none";
+      componentSubject2Tutor.style.display = "block";
       triggerClosesubject2Tutor.style.display ="block";
   });
 
@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function() {
     subject4Tutor.selectedIndex = 0;
     classFrom4Tutor.selectedIndex = 0;
     classTo4Tutor.selectedIndex = 0;
-      componentsubject4Tutor.style.display = "none";
-      componentsubject3Tutor.style.display = "block";
+      componentSubject4Tutor.style.display = "none";
+      componentSubject3Tutor.style.display = "block";
       triggerClosesubject3Tutor.style.display ="block";
   });
 
@@ -101,8 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
     subject5Tutor.selectedIndex = 0;
     classFrom5Tutor.selectedIndex = 0;
     classTo5Tutor.selectedIndex = 0;
-      componentsubject5Tutor.style.display = "none";
-      componentsubject4Tutor.style.display = "block";
+      componentSubject5Tutor.style.display = "none";
+      componentSubject4Tutor.style.display = "block";
       triggerClosesubject4Tutor.style.display ="block";
   });
 
@@ -110,8 +110,8 @@ document.addEventListener("DOMContentLoaded", function() {
     subject6Tutor.selectedIndex = 0;
     classFrom6Tutor.selectedIndex = 0;
     classTo6Tutor.selectedIndex = 0;
-      componentsubject6Tutor.style.display = "none";
-      componentsubject5Tutor.style.display = "block";
+      componentSubject6Tutor.style.display = "none";
+      componentSubject5Tutor.style.display = "block";
       triggerClosesubject5Tutor.style.display ="block";
       triggerOpenSubjectTutor.style.display = "flex";
   });
@@ -286,11 +286,8 @@ document.addEventListener("DOMContentLoaded", function() {
       const firstNameInput = document.getElementById('first-name_tutor');
       const showFirstNames = document.querySelectorAll('.show_first-name');
       const genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
-      const componentSubject2Tutor = document.getElementById("component-subject-2_tutor");
-      const componentSubject3Tutor = document.getElementById("component-subject-3_tutor");
-      const componentSubject4Tutor = document.getElementById("component-subject-4_tutor");
-      const componentSubject5Tutor = document.getElementById("component-subject-5_tutor");
-      const componentSubject6Tutor = document.getElementById("component-subject-6_tutor");
+  
+
 
 
 
@@ -310,6 +307,19 @@ document.addEventListener("DOMContentLoaded", function() {
       var isTrueComponentSubject5Tutor = false;
       var componentSubject6TutorVisible = false;
       var isTrueComponentSubject6Tutor = false;
+
+      var componentExperience1TutorVisible = false;
+      var isTrueComponentExperience1Tutor = false;
+      var componentExperience2TutorVisible = false;
+      var isTrueComponentExperience2Tutor = false;
+      var componentExperience3TutorVisible = false;
+      var isTrueComponentExperience3Tutor = false;
+      var componentExperience4TutorVisible = false;
+      var isTrueComponentExperience4Tutor = false;
+      var componentExperience5TutorVisible = false;
+      var isTrueComponentExperience5Tutor = false;
+      var componentExperience6TutorVisible = false;
+      var isTrueComponentExperience6Tutor = false;
 
       checkAllFieldsFilled1();
       step2.style.display = 'none';
@@ -388,19 +398,19 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(element, { attributes: true });
       }
       
-      // Beobachte componentSubject2Tutor
+  
       observeStyleChanges(componentSubject2Tutor, checkAllFieldsFilled2);
       
-      // Beobachte componentSubject3Tutor
+
       observeStyleChanges(componentSubject3Tutor, checkAllFieldsFilled2);
       
-         // Beobachte componentSubject4Tutor
+
          observeStyleChanges(componentSubject4Tutor, checkAllFieldsFilled2);
 
-            // Beobachte componentSubject5Tutor
+
       observeStyleChanges(componentSubject5Tutor, checkAllFieldsFilled2);
 
-         // Beobachte componentSubject6Tutor
+
          observeStyleChanges(componentSubject6Tutor, checkAllFieldsFilled2);
 
 
@@ -535,8 +545,31 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
+
+      observeStyleChanges(componentExperience1Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience2Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience3Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience4Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience5Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience6Tutor, checkAllFieldsFilled3);
+     
+
       function checkAllFieldsFilled3() {
+        isAllFieldsFilled3 = false;
           var filledFields3 = 0;
+          componentExperience1TutorVisible = false;
+          isTrueComponentExperience1Tutor = false;
+          componentExperience2TutorVisible = false;
+          isTrueComponentExperience2Tutor = false;
+          componentExperience3TutorVisible = false;
+          isTrueComponentExperience3Tutor = false;
+          componentExperience4TutorVisible = false;
+          isTrueComponentExperience4Tutor = false;
+          componentExperience5TutorVisible = false;
+          isTrueComponentExperience5Tutor = false;
+          componentExperience6TutorVisible = false;
+          isTrueComponentExperience6Tutor = false;
+
           requiredFields3.forEach(function(field) {
               if (field.value) {
                   filledFields3++;
@@ -545,10 +578,85 @@ document.addEventListener("DOMContentLoaded", function() {
 
           if (filledFields3 === requiredFields3.length) {
               isAllFieldsFilled3 = true;
-
           }
 
-          if (isAllFieldsFilled3) {
+          if (getComputedStyle(componentExperience1Tutor).display == "block") {
+            componentExperience1TutorVisible = true;
+            if (
+              duration1Tutor.value && duration1Tutor.checkValidity() &&
+              when1Tutor.value && when1Tutor.checkValidity()
+            ) {
+              isTrueComponentExperience1Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentExperience2Tutor).display == "block") {
+            componentExperience2TutorVisible = true;
+            if (
+              experience2Tutor.value && experience2Tutor.checkValidity() &&
+              duration2Tutor.value && duration2Tutor.checkValidity() &&
+              when2Tutor.value && when2Tutor.checkValidity()
+            ) {
+              isTrueComponentExperience2Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentExperience3Tutor).display == "block") {
+            componentExperience3TutorVisible = true;
+            if (
+              experience3Tutor.value && experience3Tutor.checkValidity() &&
+              duration3Tutor.value && duration3Tutor.checkValidity() &&
+              when3Tutor.value && when3Tutor.checkValidity()
+            ) {
+              isTrueComponentExperience3Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentExperience4Tutor).display == "block") {
+            componentExperience4TutorVisible = true;
+            if (
+              experience4Tutor.value && experience4Tutor.checkValidity() &&
+              duration4Tutor.value && duration4Tutor.checkValidity() &&
+              when4Tutor.value && when4Tutor.checkValidity()
+            ) {
+              isTrueComponentExperience4Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentExperience5Tutor).display == "block") {
+            componentExperience5TutorVisible = true;
+            if (
+              experience5Tutor.value && experience5Tutor.checkValidity() &&
+              duration5Tutor.value && duration5Tutor.checkValidity() &&
+              when5Tutor.value && when5Tutor.checkValidity()
+            ) {
+              isTrueComponentExperience5Tutor = true;
+            }
+          } 
+
+          if (getComputedStyle(componentExperience6Tutor).display == "block") {
+            componentExperience6TutorVisible = true;
+            if (
+              experience6Tutor.value && experience6Tutor.checkValidity() &&
+              duration6Tutor.value && duration6Tutor.checkValidity() &&
+              when6Tutor.value && when6Tutor.checkValidity()
+            ) {
+              isTrueComponentExperience6Tutor = true;
+            }
+          } 
+
+
+          
+
+
+
+          if (isAllFieldsFilled3 &&  
+            (!componentExperience1TutorVisible || (componentExperience1TutorVisible && isTrueComponentExperience1Tutor)&&
+            (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
+            (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
+            (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
+            (!componentExperience5TutorVisible || (componentExperience5TutorVisible && isTrueComponentExperience5Tutor)&&
+            (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor)))))))) {     
               nextBtn.classList.remove('disabled');
           } else {
               nextBtn.classList.add('disabled');
@@ -561,6 +669,42 @@ document.addEventListener("DOMContentLoaded", function() {
               checkAllFieldsFilled3();
 
           });
+      });
+
+      [when1Tutor, duration1Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
+      });
+
+      [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
+      });
+
+      [experience3Tutor, when3Tutor, duration3Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
+      });
+
+      [experience4Tutor, when4Tutor, duration4Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
+      });
+
+      [experience5Tutor, when5Tutor, duration5Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
+      });
+
+      [experience6Tutor, when6Tutor, duration6Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
       });
 
 
