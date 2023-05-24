@@ -386,32 +386,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-      function observeStyleChanges(element, callback) {
-        let observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.attributeName === "style") {
-              callback();
-            }
+      function observeStyleChanges(elements, callback) {
+        elements.forEach(function(element) {
+          let observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+              if (mutation.attributeName === "style") {
+                callback();
+              }
+            });
           });
-        });
       
-        observer.observe(element, { attributes: true });
+          observer.observe(element, { attributes: true });
+        });
       }
       
-  
-      observeStyleChanges(componentSubject2Tutor, checkAllFieldsFilled2);
+      const componentsToObserve = [
+        componentSubject2Tutor,
+        componentSubject3Tutor,
+        componentSubject4Tutor,
+        componentSubject5Tutor,
+        componentSubject6Tutor,
+        componentExperience1Tutor,
+        componentExperience2Tutor,
+        componentExperience3Tutor,
+        componentExperience4Tutor,
+        componentExperience5Tutor,
+        componentExperience6Tutor
+      ];
       
-
-      observeStyleChanges(componentSubject3Tutor, checkAllFieldsFilled2);
+      observeStyleChanges(componentsToObserve, checkAllFieldsFilled2);
+      observeStyleChanges(componentsToObserve, checkAllFieldsFilled3);
       
-
-         observeStyleChanges(componentSubject4Tutor, checkAllFieldsFilled2);
-
-
-      observeStyleChanges(componentSubject5Tutor, checkAllFieldsFilled2);
-
-
-         observeStyleChanges(componentSubject6Tutor, checkAllFieldsFilled2);
 
 
       function checkAllFieldsFilled2() {   
@@ -546,13 +551,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 
 
-      observeStyleChanges(componentExperience1Tutor, checkAllFieldsFilled3);
-      observeStyleChanges(componentExperience2Tutor, checkAllFieldsFilled3);
-      observeStyleChanges(componentExperience3Tutor, checkAllFieldsFilled3);
-      observeStyleChanges(componentExperience4Tutor, checkAllFieldsFilled3);
-      observeStyleChanges(componentExperience5Tutor, checkAllFieldsFilled3);
-      observeStyleChanges(componentExperience6Tutor, checkAllFieldsFilled3);
-     
 
       function checkAllFieldsFilled3() {
         isAllFieldsFilled3 = false;
