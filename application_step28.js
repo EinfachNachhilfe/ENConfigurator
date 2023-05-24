@@ -403,6 +403,12 @@ document.addEventListener("DOMContentLoaded", function() {
       observeStyleChanges(componentSubject4Tutor, checkAllFieldsFilled2);
       observeStyleChanges(componentSubject5Tutor, checkAllFieldsFilled2);
       observeStyleChanges(componentSubject6Tutor, checkAllFieldsFilled2);
+      observeStyleChanges(componentExperience1Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience2Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience3Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience4Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience5Tutor, checkAllFieldsFilled3);
+      observeStyleChanges(componentExperience6Tutor, checkAllFieldsFilled3);
 
 
       function checkAllFieldsFilled2() {   
@@ -536,25 +542,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
-
-
-      function observeStyleChanges2(element, callback) {
-        let observer2 = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.attributeName === "style") {
-              callback();
-            }
-          });
-        });
-      
-        observer2.observe(element, { attributes: true });
-      }
-      observeStyleChanges2(componentExperience1Tutor, checkAllFieldsFilled3);
-      observeStyleChanges2(componentExperience2Tutor, checkAllFieldsFilled3);
-      observeStyleChanges2(componentExperience3Tutor, checkAllFieldsFilled3);
-      observeStyleChanges2(componentExperience4Tutor, checkAllFieldsFilled3);
-      observeStyleChanges2(componentExperience5Tutor, checkAllFieldsFilled3);
-      observeStyleChanges2(componentExperience6Tutor, checkAllFieldsFilled3);
      
 
       function checkAllFieldsFilled3() {
