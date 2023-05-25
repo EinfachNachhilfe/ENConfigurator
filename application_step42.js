@@ -237,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
+
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
@@ -417,8 +418,6 @@ document.addEventListener("DOMContentLoaded", function() {
         isAllFieldsFilled2 = false;  
         var filledFields2 = 0;
 
-          isTrueComponentNoExperience1Tutor = false;
-          isTrueComponentExperience1Tutor = false;
           componentSubject2TutorVisible = false;
           isTrueComponentSubject2Tutor = false;
           componentSubject3TutorVisible = false;
@@ -431,22 +430,15 @@ document.addEventListener("DOMContentLoaded", function() {
           isTrueComponentSubject6Tutor = false;
 
 
-          if (experience1Tutor.selectedIndex !== 1) {
-            if (
-                experience1Tutor.value && experience1Tutor.checkValidity() &&
-                duration1Tutor.value && duration1Tutor.checkValidity() &&
-                when1Tutor.value && when1Tutor.checkValidity()
-            ) {
-                isTrueComponentExperience1Tutor = true;
-            }
-        } else if (
-            duration1Tutor.value && duration1Tutor.checkValidity() &&
-            when1Tutor.value && when1Tutor.checkValidity()
-        ) {
-            isTrueComponentNoExperience1Tutor = true;
-        }
-        
+          requiredFields2.forEach(function(field) {
+              if (field.value) {
+                  filledFields2++;
+              }
+          });
 
+          if (filledFields2 === requiredFields2.length) {
+              isAllFieldsFilled2 = true;
+          }
 
           if (getComputedStyle(componentSubject2Tutor).display == "block") {
             componentSubject2TutorVisible = true;
@@ -558,7 +550,9 @@ document.addEventListener("DOMContentLoaded", function() {
       function checkAllFieldsFilled3() {
         isAllFieldsFilled3 = false;
           var filledFields3 = 0;
-          
+
+          isTrueComponentNoExperience1Tutor = false;
+          isTrueComponentExperience1Tutor = false;
           componentExperience2TutorVisible = false;
           isTrueComponentExperience2Tutor = false;
           componentExperience3TutorVisible = false;
@@ -570,15 +564,22 @@ document.addEventListener("DOMContentLoaded", function() {
           componentExperience6TutorVisible = false;
           isTrueComponentExperience6Tutor = false;
 
-          requiredFields3.forEach(function(field) {
-              if (field.value) {
-                  filledFields3++;
-              }
-          });
 
-          if (filledFields3 === requiredFields3.length) {
-              isAllFieldsFilled3 = true;
-          }
+          if (experience1Tutor.selectedIndex !== 1) {
+            if (
+                experience1Tutor.value && experience1Tutor.checkValidity() &&
+                duration1Tutor.value && duration1Tutor.checkValidity() &&
+                when1Tutor.value && when1Tutor.checkValidity()
+            ) {
+                isTrueComponentExperience1Tutor = true;
+            }
+        } else if (
+            duration1Tutor.value && duration1Tutor.checkValidity() &&
+            when1Tutor.value && when1Tutor.checkValidity()
+        ) {
+            isTrueComponentNoExperience1Tutor = true;
+        }
+        
 
  
 
@@ -642,7 +643,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-          if (isAllFieldsFilled3 &&  
+          if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor &&  
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
             (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
@@ -754,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 2 von 5";
               checkAllFieldsFilled2();
-          } else if (isAllFieldsFilled2 && 
+          } else if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor && 
             (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor)&& 
             (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)&& 
             (!componentSubject4TutorVisible || (componentSubject4TutorVisible && isTrueComponentSubject4Tutor)&& 
