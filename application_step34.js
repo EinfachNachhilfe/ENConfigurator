@@ -649,7 +649,12 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
 
-
+      [experience1Tutor, when1Tutor, duration1Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled2();
+          checkAllFieldsFilled3();
+        });
+      });
 
       [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
         input.addEventListener('input', function() {
