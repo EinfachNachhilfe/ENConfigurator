@@ -571,8 +571,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 isTrueComponentExperience1Tutor = true;
             }
         } else if (
-            duration1Tutor.value && duration1Tutor.checkValidity() &&
-            when1Tutor.value && when1Tutor.checkValidity()
+          experience1Tutor.value && experience1Tutor.checkValidity()
         ) {
             isTrueComponentNoExperience1Tutor = true;
         }
