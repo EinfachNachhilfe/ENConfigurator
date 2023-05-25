@@ -547,8 +547,7 @@ document.addEventListener("DOMContentLoaded", function() {
       function checkAllFieldsFilled3() {
         isAllFieldsFilled3 = false;
           var filledFields3 = 0;
-          componentExperience1TutorVisible = false;
-          isTrueComponentExperience1Tutor = false;
+          
           componentExperience2TutorVisible = false;
           isTrueComponentExperience2Tutor = false;
           componentExperience3TutorVisible = false;
@@ -570,15 +569,7 @@ document.addEventListener("DOMContentLoaded", function() {
               isAllFieldsFilled3 = true;
           }
 
-          if (getComputedStyle(componentExperience1Tutor).display == "block") {
-            componentExperience1TutorVisible = true;
-            if (
-              duration1Tutor.value && duration1Tutor.checkValidity() &&
-              when1Tutor.value && when1Tutor.checkValidity()
-            ) {
-              isTrueComponentExperience1Tutor = true;
-            }
-          } 
+ 
 
           if (getComputedStyle(componentExperience2Tutor).display == "block") {
             componentExperience2TutorVisible = true;
@@ -641,12 +632,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
           if (isAllFieldsFilled3 &&  
-            (!componentExperience1TutorVisible || (componentExperience1TutorVisible && isTrueComponentExperience1Tutor)&&
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
             (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
             (!componentExperience5TutorVisible || (componentExperience5TutorVisible && isTrueComponentExperience5Tutor)&&
-            (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor)))))))) {     
+            (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor))))))) {     
               nextBtn.classList.remove('disabled');
           } else {
               nextBtn.classList.add('disabled');
@@ -661,11 +651,7 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
 
-      [when1Tutor, duration1Tutor].forEach(function(input) {
-        input.addEventListener('input', function() {
-          checkAllFieldsFilled3();
-        });
-      });
+
 
       [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
         input.addEventListener('input', function() {
@@ -768,13 +754,12 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 3 von 5";
               checkAllFieldsFilled3()
-          } else if (isAllFieldsFilled3 &&  
-              (!componentExperience1TutorVisible || (componentExperience1TutorVisible && isTrueComponentExperience1Tutor)&&
+          } else if (isAllFieldsFilled3 && 
               (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
               (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
               (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
               (!componentExperience5TutorVisible || (componentExperience5TutorVisible && isTrueComponentExperience5Tutor)&&
-              (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor)))))))
+              (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor))))))
              && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
               step3.style.display = 'none';
               step4.style.display = 'block';
