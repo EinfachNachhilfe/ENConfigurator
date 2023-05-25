@@ -561,7 +561,6 @@ document.addEventListener("DOMContentLoaded", function() {
           isTrueComponentExperience6Tutor = false;
 
 
-
           if (getComputedStyle(componentExperience1Tutor).display == "block") {
             if (
                 experience1Tutor.value && experience1Tutor.checkValidity() &&
@@ -573,6 +572,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (experience1Tutor.value && experience1Tutor.checkValidity()) {
             isTrueComponentNoExperience1Tutor = true;
         }
+        
         
         
  
