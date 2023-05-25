@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", function() {
       observeStyleChanges(componentSubject4Tutor, checkAllFieldsFilled2);
       observeStyleChanges(componentSubject5Tutor, checkAllFieldsFilled2);
       observeStyleChanges(componentSubject6Tutor, checkAllFieldsFilled2);
-      observeStyleChanges(componentExperience1Tutor, checkAllFieldsFilled3);
+
       observeStyleChanges(componentExperience2Tutor, checkAllFieldsFilled3);
       observeStyleChanges(componentExperience3Tutor, checkAllFieldsFilled3);
       observeStyleChanges(componentExperience4Tutor, checkAllFieldsFilled3);
