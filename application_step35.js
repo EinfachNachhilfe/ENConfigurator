@@ -237,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
+          checkAllFieldsFilled3();
           componentExperience1TutorVisible = true;
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
@@ -266,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         componentExperience1Tutor.style.display = "grid";
         triggerOpenExperienceTutor.style.display = "flex";
+        checkAllFieldsFilled3();
         componentExperience1TutorVisible = false;
 
       }
@@ -649,9 +651,8 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
 
-      [experience1Tutor, when1Tutor, duration1Tutor].forEach(function(input) {
+      [when1Tutor, duration1Tutor].forEach(function(input) {
         input.addEventListener('input', function() {
-          checkAllFieldsFilled2();
           checkAllFieldsFilled3();
         });
       });
