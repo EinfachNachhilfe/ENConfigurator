@@ -640,7 +640,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-          if (isAllFieldsFilled3 &&  
+          if (
             (!componentExperience1TutorVisible || (componentExperience1TutorVisible && isTrueComponentExperience1Tutor)&&
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
