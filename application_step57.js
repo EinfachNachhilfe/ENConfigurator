@@ -569,8 +569,11 @@ document.addEventListener("DOMContentLoaded", function() {
             ) {
                 isTrueComponentExperience1Tutor = true;
             }
-        } else if (experience1Tutor.value && experience1Tutor.checkValidity()) {
-            isTrueComponentNoExperience1Tutor = true;
+        } else if (
+            getComputedStyle(componentExperience1Tutor).display != "block" &&
+            experience1Tutor.value && 
+            experience1Tutor.checkValidity()) {
+                isTrueComponentNoExperience1Tutor = true;
         }
         
         
