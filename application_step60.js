@@ -309,7 +309,6 @@ document.addEventListener("DOMContentLoaded", function() {
       var componentSubject6TutorVisible = false;
       var isTrueComponentSubject6Tutor = false;
 
-      var componentExperience1TutorVisible = true;
       var isTrueComponentExperience1Tutor = false;
       var isTrueComponentNoExperience1Tutor = false;
       var componentExperience2TutorVisible = false;
@@ -548,7 +547,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       function checkAllFieldsFilled3() {
 
-          componentExperience1TutorVisible = true;
           isTrueComponentExperience1Tutor = false;
           isTrueComponentNoExperience1Tutor = false;
           componentExperience2TutorVisible = false;
@@ -564,9 +562,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-        
           if (getComputedStyle(componentExperience1Tutor).display == "block") {
-            componentExperience1TutorVisible = true;
             if (
                 experience1Tutor.value && experience1Tutor.checkValidity() &&
                 duration1Tutor.value && duration1Tutor.checkValidity() &&
@@ -574,11 +570,8 @@ document.addEventListener("DOMContentLoaded", function() {
             ) {
                 isTrueComponentExperience1Tutor = true;
             }
-        } else {
-            componentExperience1TutorVisible = false;
-            if (experience1Tutor.value && experience1Tutor.checkValidity()) {
-                isTrueComponentNoExperience1Tutor = true;
-            }
+        } else if (experience1Tutor.value && experience1Tutor.checkValidity()) {
+            isTrueComponentNoExperience1Tutor = true;
         }
         
         
@@ -640,7 +633,7 @@ document.addEventListener("DOMContentLoaded", function() {
           } 
 
 
-          if (((componentExperience1TutorVisible && isTrueComponentExperience1Tutor) || (!componentExperience1TutorVisible && isTrueComponentNoExperience1Tutor))&&
+          if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor &&  
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
             (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
