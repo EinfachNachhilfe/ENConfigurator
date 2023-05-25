@@ -562,25 +562,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-            if (getComputedStyle(componentExperience1Tutor).display == "block") {
-                if (
-                    experience1Tutor.value && experience1Tutor.checkValidity() &&
-                    duration1Tutor.value && duration1Tutor.checkValidity() &&
-                    when1Tutor.value && when1Tutor.checkValidity()
-                ) {
-                    isTrueComponentExperience1Tutor = true;
-                }
+          if (getComputedStyle(componentExperience1Tutor).display == "block") {
+            if (
+                experience1Tutor.value && experience1Tutor.checkValidity() &&
+                duration1Tutor.value && duration1Tutor.checkValidity() &&
+                when1Tutor.value && when1Tutor.checkValidity()
+            ) {
+                isTrueComponentExperience1Tutor = true;
             }
+        } else if (experience1Tutor.value && experience1Tutor.checkValidity()) {
+            isTrueComponentNoExperience1Tutor = true;
+        }
         
-            if (getComputedStyle(componentExperience1Tutor).display == "none") {
-                if (
-                    experience1Tutor.value && experience1Tutor.checkValidity()
-                ) {
-                    isTrueComponentNoExperience1Tutor = true;
-                }
-            }
-        
-   
         
  
 
