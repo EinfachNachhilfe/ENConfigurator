@@ -639,10 +639,6 @@ document.addEventListener("DOMContentLoaded", function() {
           } 
 
 
-          
-
-
-
           if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor &&  
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
@@ -755,7 +751,7 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 2 von 5";
               checkAllFieldsFilled2();
-          } else if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor && 
+          } else if (isAllFieldsFilled2 && 
             (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor)&& 
             (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)&& 
             (!componentSubject4TutorVisible || (componentSubject4TutorVisible && isTrueComponentSubject4Tutor)&& 
@@ -766,7 +762,7 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 3 von 5";
               checkAllFieldsFilled3()
-          } else if (isAllFieldsFilled3 && 
+          } else if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor && 
               (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
               (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
               (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
