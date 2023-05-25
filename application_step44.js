@@ -237,7 +237,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
-
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
@@ -548,8 +547,6 @@ document.addEventListener("DOMContentLoaded", function() {
      
 
       function checkAllFieldsFilled3() {
-        isAllFieldsFilled3 = false;
-          var filledFields3 = 0;
 
           isTrueComponentNoExperience1Tutor = false;
           isTrueComponentExperience1Tutor = false;
@@ -651,15 +648,11 @@ document.addEventListener("DOMContentLoaded", function() {
           }
       }
 
-      requiredFields3.forEach(function(input) {
-          input.addEventListener('input', function() {
-              isAllFieldsFilled3 = false;
-              checkAllFieldsFilled3();
-
-          });
+      [experience1Tutor, when1Tutor, duration1Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
       });
-
-
 
       [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
         input.addEventListener('input', function() {
