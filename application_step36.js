@@ -651,11 +651,6 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
 
-      [when1Tutor, duration1Tutor].forEach(function(input) {
-        input.addEventListener('input', function() {
-          checkAllFieldsFilled3();
-        });
-      });
 
       [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
         input.addEventListener('input', function() {
