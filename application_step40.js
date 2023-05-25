@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
-          componentExperience1TutorVisible = true;
+
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
@@ -266,7 +266,6 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         componentExperience1Tutor.style.display = "grid";
         triggerOpenExperienceTutor.style.display = "flex";
-        componentExperience1TutorVisible = false;
 
       }
   });
@@ -313,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var isTrueComponentSubject6Tutor = false;
 
       var componentExperience1TutorVisible = false;
+      var isTrueComponentExperience1Tutor = false;
       var componentExperience2TutorVisible = false;
       var isTrueComponentExperience2Tutor = false;
       var componentExperience3TutorVisible = false;
@@ -629,12 +629,17 @@ document.addEventListener("DOMContentLoaded", function() {
             }
           } 
 
-          if (isAllFieldsFilled3 || componentExperience1TutorVisible &&  
+
+          
+
+
+
+          if (isAllFieldsFilled3 &&  
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
             (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
             (!componentExperience5TutorVisible || (componentExperience5TutorVisible && isTrueComponentExperience5Tutor)&&
-            (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor))))))){     
+            (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor))))))) {     
               nextBtn.classList.remove('disabled');
           } else {
               nextBtn.classList.add('disabled');
@@ -648,6 +653,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           });
       });
+
 
 
       [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
@@ -751,7 +757,7 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 3 von 5";
               checkAllFieldsFilled3()
-          } else if (isAllFieldsFilled3 || componentExperience1TutorVisible && 
+          } else if (isAllFieldsFilled3 && 
               (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
               (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
               (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
