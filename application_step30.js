@@ -640,7 +640,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-          if (
+          if (isAllFieldsFilled3 &&  
             (!componentExperience1TutorVisible || (componentExperience1TutorVisible && isTrueComponentExperience1Tutor)&&
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
@@ -768,7 +768,14 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 3 von 5";
               checkAllFieldsFilled3()
-          } else if (isAllFieldsFilled3 && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
+          } else if (isAllFieldsFilled3 &&  
+              (!componentExperience1TutorVisible || (componentExperience1TutorVisible && isTrueComponentExperience1Tutor)&&
+              (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
+              (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
+              (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
+              (!componentExperience5TutorVisible || (componentExperience5TutorVisible && isTrueComponentExperience5Tutor)&&
+              (!componentExperience6TutorVisible || (componentExperience6TutorVisible && isTrueComponentExperience6Tutor)))))))
+             && step1.style.display == 'none' && step2.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
               step3.style.display = 'none';
               step4.style.display = 'block';
               nextBtn.classList.add('disabled');
