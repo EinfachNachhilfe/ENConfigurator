@@ -267,7 +267,6 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         componentExperience1Tutor.style.display = "grid";
         triggerOpenExperienceTutor.style.display = "flex";
-        checkAllFieldsFilled3();
         componentExperience1TutorVisible = false;
 
       }
