@@ -237,7 +237,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
-
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
@@ -311,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var componentSubject6TutorVisible = false;
       var isTrueComponentSubject6Tutor = false;
 
-      var componentExperience1TutorVisible = false;
+      var isTrueComponentNoExperience1Tutor = false;
       var isTrueComponentExperience1Tutor = false;
       var componentExperience2TutorVisible = false;
       var isTrueComponentExperience2Tutor = false;
@@ -418,6 +417,8 @@ document.addEventListener("DOMContentLoaded", function() {
         isAllFieldsFilled2 = false;  
         var filledFields2 = 0;
 
+          isTrueComponentNoExperience1Tutor = false;
+          isTrueComponentExperience1Tutor = false;
           componentSubject2TutorVisible = false;
           isTrueComponentSubject2Tutor = false;
           componentSubject3TutorVisible = false;
@@ -430,15 +431,22 @@ document.addEventListener("DOMContentLoaded", function() {
           isTrueComponentSubject6Tutor = false;
 
 
-          requiredFields2.forEach(function(field) {
-              if (field.value) {
-                  filledFields2++;
-              }
-          });
+          if (experience1Tutor.selectedIndex !== 1) {
+            if (
+                experience1Tutor.value && experience1Tutor.checkValidity() &&
+                duration1Tutor.value && duration1Tutor.checkValidity() &&
+                when1Tutor.value && when1Tutor.checkValidity()
+            ) {
+                isTrueComponentExperience1Tutor = true;
+            }
+        } else if (
+            duration1Tutor.value && duration1Tutor.checkValidity() &&
+            when1Tutor.value && when1Tutor.checkValidity()
+        ) {
+            isTrueComponentNoExperience1Tutor = true;
+        }
+        
 
-          if (filledFields2 === requiredFields2.length) {
-              isAllFieldsFilled2 = true;
-          }
 
           if (getComputedStyle(componentSubject2Tutor).display == "block") {
             componentSubject2TutorVisible = true;
