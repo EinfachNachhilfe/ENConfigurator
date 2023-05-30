@@ -447,6 +447,13 @@ requiredFields4.forEach(function(input) {
 
 checkboxes1.forEach(function(checkbox) {
   checkbox.addEventListener('change', function() {
+    checkboxagreement();
+  });
+});
+
+
+checkboxes1.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function() {
       checkCheckboxSelected1();
   });
 });
