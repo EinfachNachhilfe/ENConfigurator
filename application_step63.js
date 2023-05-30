@@ -237,7 +237,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
-
           componentExperience1Tutor.style.display = "none";
           experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
@@ -296,7 +295,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       var isAllFieldsFilled1 = false;
       var isAllFieldsFilled2 = false;
-      var isAllFieldsFilled3 = false;
       var isAllFieldsFilled4 = false;
       var isAnyCheckboxSelected1 = false;
       var isAnyGenderRadioSelected1 = false;
@@ -311,8 +309,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var componentSubject6TutorVisible = false;
       var isTrueComponentSubject6Tutor = false;
 
-      var componentExperience1TutorVisible = false;
       var isTrueComponentExperience1Tutor = false;
+      var isTrueComponentNoExperience1Tutor = false;
       var componentExperience2TutorVisible = false;
       var isTrueComponentExperience2Tutor = false;
       var componentExperience3TutorVisible = false;
@@ -406,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function() {
       observeStyleChanges(componentSubject4Tutor, checkAllFieldsFilled2);
       observeStyleChanges(componentSubject5Tutor, checkAllFieldsFilled2);
       observeStyleChanges(componentSubject6Tutor, checkAllFieldsFilled2);
-
+      observeStyleChanges(componentExperience1Tutor, checkAllFieldsFilled3);
       observeStyleChanges(componentExperience2Tutor, checkAllFieldsFilled3);
       observeStyleChanges(componentExperience3Tutor, checkAllFieldsFilled3);
       observeStyleChanges(componentExperience4Tutor, checkAllFieldsFilled3);
@@ -548,9 +546,9 @@ document.addEventListener("DOMContentLoaded", function() {
      
 
       function checkAllFieldsFilled3() {
-        isAllFieldsFilled3 = false;
-          var filledFields3 = 0;
-          
+
+          isTrueComponentExperience1Tutor = true;
+          isTrueComponentNoExperience1Tutor = true;
           componentExperience2TutorVisible = false;
           isTrueComponentExperience2Tutor = false;
           componentExperience3TutorVisible = false;
@@ -562,16 +560,22 @@ document.addEventListener("DOMContentLoaded", function() {
           componentExperience6TutorVisible = false;
           isTrueComponentExperience6Tutor = false;
 
-          requiredFields3.forEach(function(field) {
-              if (field.value) {
-                  filledFields3++;
-              }
-          });
 
-          if (filledFields3 === requiredFields3.length) {
-              isAllFieldsFilled3 = true;
-          }
 
+          if (getComputedStyle(componentExperience1Tutor).display == "block") {
+            if (
+                experience1Tutor.value && experience1Tutor.checkValidity() &&
+                duration1Tutor.value && duration1Tutor.checkValidity() &&
+                when1Tutor.value && when1Tutor.checkValidity()
+            ) {
+                isTrueComponentExperience1Tutor = true;
+            }
+        } else if (
+          experience1Tutor.value && experience1Tutor.checkValidity()
+        ) {
+            isTrueComponentNoExperience1Tutor = true;
+        }
+        
  
 
           if (getComputedStyle(componentExperience2Tutor).display == "block") {
@@ -630,11 +634,7 @@ document.addEventListener("DOMContentLoaded", function() {
           } 
 
 
-          
-
-
-
-          if (isAllFieldsFilled3 &&  
+          if ((isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor) &&  
             (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
             (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
             (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
@@ -646,15 +646,11 @@ document.addEventListener("DOMContentLoaded", function() {
           }
       }
 
-      requiredFields3.forEach(function(input) {
-          input.addEventListener('input', function() {
-              isAllFieldsFilled3 = false;
-              checkAllFieldsFilled3();
-
-          });
+      [experience1Tutor, when1Tutor, duration1Tutor].forEach(function(input) {
+        input.addEventListener('input', function() {
+          checkAllFieldsFilled3();
+        });
       });
-
-
 
       [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
         input.addEventListener('input', function() {
@@ -757,7 +753,7 @@ document.addEventListener("DOMContentLoaded", function() {
               nextBtn.classList.add('disabled');
               showStepNumber.textContent = "Schritt 3 von 5";
               checkAllFieldsFilled3()
-          } else if (isAllFieldsFilled3 && 
+          } else if (isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor && 
               (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
               (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
               (!componentExperience4TutorVisible || (componentExperience4TutorVisible && isTrueComponentExperience4Tutor)&&
