@@ -18,6 +18,80 @@ var showStepNumber = document.getElementById('show-step_number');
 var certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
 var isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1');
 
+//start Validation only letter
+var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_tutor"]');
+var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_tutor"]');
+
+
+function applyValidation2(inputElement2) {
+ inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
+
+
+  
+ 
+  inputElement2.addEventListener('invalid', function() {
+    applyInvalidBorderStyle(inputElement2);
+      shakeOnInvalid(inputElement2);
+  });
+
+  inputElement2.addEventListener('input', function() {
+    if (inputElement2.checkValidity()) {
+      inputElement2.style.borderColor = '';
+      inputElement2.style.borderWidth = '';
+    }
+  }); 
+}
+
+applyValidation2(ValidationInputFieldLetter1);
+applyValidation2(ValidationInputFieldLetter2);
+
+//end Validation only letter
+
+//start Validation IBAN
+document.addEventListener('DOMContentLoaded', (event) => {
+  const input = document.getElementById('iban_tutor');
+  input.value = 'DE';
+  input.addEventListener('input', checkInput);
+});
+
+function checkInput() {
+  const input = document.getElementById('iban_tutor');
+  if (input.value.substring(0, 2) !== 'DE') {
+    input.value = 'DE';
+    input.setSelectionRange(2,2);
+  } else {
+    // Remove any non-numeric characters after 'DE'
+    input.value = 'DE' + input.value.substring(2).replace(/\D/g, '');
+  }
+}
+
+var ValidationInputFieldIban1 = document.querySelector('input[name="iban_tutor"]');
+
+function applyValidation3(inputElement3) {
+  inputElement3.setAttribute('pattern', '^DE[0-9]{22}$');
+  inputElement3.setAttribute('maxlength', '24');
+
+  inputElement3.addEventListener('change', function() {
+    if (inputElement3.checkValidity()) {
+      // Das Input-Feld enthält gültige Daten
+      applyValidBorderStyle(inputElement3);
+    } else {
+      // Das Input-Feld enthält ungültige Daten
+      applyInvalidBorderStyle(inputElement3);
+      shakeOnInvalid(inputElement3);
+    }
+  });
+  
+   inputElement3.addEventListener('input', function() {
+    if (inputElement3.checkValidity()) {
+      inputElement3.style.borderColor = '';
+      inputElement3.style.borderWidth = '';
+    }
+  }); 
+}
+
+applyValidation3(ValidationInputFieldIban1);
+//end Validation IBAN
 
 
 
