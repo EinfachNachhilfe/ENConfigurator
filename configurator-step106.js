@@ -398,66 +398,23 @@ backBtn.addEventListener('click', function() {
 
 
 
-const checkboxes1 = step8.querySelectorAll('input[type="checkbox"]');
-var requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]');
+$(document).ready(function() {
+  $('#first-name_contact-person, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').on('change', function() {
+      // Check if all fields have values
+      var allFieldsFilled = true;
+      $('#first-name_contact-person, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').each(function() {
+          if ($(this).val().length === 0) {
+              allFieldsFilled = false;
+          }
+      });
 
-
-function checkboxagreement() {
-  var isAllCheckboxagreement = false;
-  var requiredFieldsFilled = 0;
-
-  requiredFields4.forEach(function(field) {
-      if (field.value) {
-          requiredFieldsFilled++;
-      }
-  });
-
-  if (requiredFieldsFilled === requiredFields4.length) {
-      isAllCheckboxagreement = true;
-
-  }
-
-  let selectedCheckboxes = 0;
-
-  checkboxes1.forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-      if (checkbox.checked) {
-        selectedCheckboxes++;
+      if (allFieldsFilled) {
+          $('#submit-btn').removeClass('disabled');
       } else {
-        selectedCheckboxes--;
+          $('#submit-btn').addClass('disabled');
       }
-      checkCheckboxSelected1();
-    });
-  });
-
-  if (selectedCheckboxes === 2 && isAllCheckboxagreement) {
-      submitBtn.classList.remove('disabled');
-  } else {
-      submitBtn.classList.add('disabled');
-  }
-}
-
-requiredFields4.forEach(function(input) {
-  input.addEventListener('input', function() {
-      checkboxagreement();
-
   });
 });
-
-
-checkboxes1.forEach(function(checkbox) {
-  checkbox.addEventListener('change', function() {
-    checkboxagreement();
-  });
-});
-
-
-checkboxes1.forEach(function(checkbox) {
-  checkbox.addEventListener('change', function() {
-      checkCheckboxSelected1();
-  });
-});
-
 
 
 
