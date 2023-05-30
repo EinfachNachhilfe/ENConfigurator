@@ -238,7 +238,6 @@ document.addEventListener("DOMContentLoaded", function() {
   experience1Tutor.addEventListener("change", function() {
       if (experience1Tutor.selectedIndex === 1) {
           componentExperience1Tutor.style.display = "none";
-          experience1Tutor.selectedIndex = 0;
           duration1Tutor.selectedIndex = 0;
           when1Tutor.selectedIndex = 0;
           experience2Tutor.selectedIndex = 0;
