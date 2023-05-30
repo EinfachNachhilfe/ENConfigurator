@@ -399,10 +399,10 @@ backBtn.addEventListener('click', function() {
 
 
 $(document).ready(function() {
-  $('#first-name_contact-person, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student, #agreement-Datenschutz_contact-person').on('change', function() {
+  $('#first-name_contact-person, #zip-code_teaching-location, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student, #agreement-Datenschutz_contact-person').on('change', function() {
 
     var allFieldsFilled = true;
-    $('#first-name_contact-person, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').each(function() {
+    $('#first-name_contact-person, #zip-code_teaching-location, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').each(function() {
       if ($(this).val().length === 0) {
         allFieldsFilled = false;
       }
