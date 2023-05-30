@@ -280,7 +280,6 @@ document.addEventListener("DOMContentLoaded", function() {
       const nextBtn = document.getElementById('next-btn');
       const requiredFields1 = document.querySelectorAll('#form-item_name [required]');
       const requiredFields2 = document.querySelectorAll('#form-item_subjects [required]');
-      const requiredFields3 = document.querySelectorAll('#form-item_experience [required]');
       const requiredFields4 = document.querySelectorAll('#form-item_personal [required]');
       const checkboxes1 = step5.querySelectorAll('input[type="checkbox"]');
       const showStepNumber = document.getElementById('show-step_number');
@@ -342,6 +341,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
       function checkAllFieldsFilled1() {
           var filledFields1 = 0;
+          isAllFieldsFilled1 = false;
+          isAnyGenderRadioSelected1 = false;
+
+
           requiredFields1.forEach(function(field) {
               if (field.value) {
                   filledFields1++;
@@ -369,7 +372,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       requiredFields1.forEach(function(input) {
           input.addEventListener('input', function() {
-              isAllFieldsFilled1 = false;
               checkAllFieldsFilled1();
 
           });
@@ -377,7 +379,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       genderRadios1.forEach(function(radio) {
           radio.addEventListener('change', function() {
-              isAnyGenderRadioSelected1 = false;
               checkAllFieldsFilled1();
           });
       });
@@ -506,7 +507,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
       requiredFields2.forEach(function(input) {
           input.addEventListener('input', function() {
-              isAllFieldsFilled2 = false;
               checkAllFieldsFilled2();
 
           });
