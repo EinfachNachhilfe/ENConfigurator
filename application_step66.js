@@ -571,6 +571,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 isTrueComponentExperience1Tutor = true;
             }
    
+        }
         
  
 
