@@ -686,7 +686,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
       function checkAllFieldsFilled4() {
+          isAllFieldsFilled4 = false;
           var filledFields4 = 0;
+          
           requiredFields4.forEach(function(field) {
               if (field.value) {
                   filledFields4++;
