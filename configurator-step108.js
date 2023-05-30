@@ -399,7 +399,7 @@ backBtn.addEventListener('click', function() {
 
 
 const checkboxes1 = step8.querySelectorAll('input[type="checkbox"]');
-var requiredFields4 = document.querySelectorAll('#form-item_closing [required]');
+var requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]');
 
 
 function checkboxagreement() {
