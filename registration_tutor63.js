@@ -93,6 +93,22 @@ function applyValidation3(inputElement3) {
 applyValidation3(ValidationInputFieldIban1);
 //end Validation IBAN
 
+//start function input validation
+
+function applyInvalidBorderStyle(input) {
+  input.style.borderColor = '#9d367a';
+  input.style.borderWidth = '1.5px';
+}
+
+function shakeOnInvalid(input) {
+  var originalPosition = input.getBoundingClientRect().left;
+  input.style.transition = 'transform 0.1s ease-in-out';
+  input.style.transform = 'translateX(3px)';
+  setTimeout(function() {
+    input.style.transform = '';
+  }, 100);
+}
+//end function input validation
 
 
 document.addEventListener("DOMContentLoaded", function() {
