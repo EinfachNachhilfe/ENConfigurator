@@ -20,6 +20,8 @@ document.getElementById("phone-number_payable").addEventListener("input", functi
   }
 });
 
+updateInputValue();
+
 function checkInput2() {
   const input2 = document.getElementById('phone-number_payable');
   if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
