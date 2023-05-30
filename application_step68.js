@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const duration6Tutor = document.getElementById("duration-6_tutor");
   const when6Tutor = document.getElementById("when-6_tutor");
 
-  checkAllFieldsFilled3()
+
 
   componentExperience2Tutor.style.display = "none";
   componentExperience3Tutor.style.display = "none";
@@ -562,7 +562,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-          if (getComputedStyle(componentExperience1Tutor).display == "block") {
+          if (experience1Tutor.selectedIndex === 1) {
+
+            if (experience1Tutor.value && experience1Tutor.checkValidity()) {
+                isTrueComponentExperience1Tutor = true;
+            }
+        } else {
+
             if (
                 experience1Tutor.value && experience1Tutor.checkValidity() &&
                 duration1Tutor.value && duration1Tutor.checkValidity() &&
@@ -570,11 +576,8 @@ document.addEventListener("DOMContentLoaded", function() {
             ) {
                 isTrueComponentExperience1Tutor = true;
             }
-        } else if (
-          experience1Tutor.value && experience1Tutor.checkValidity()
-        ) {
-            isTrueComponentNoExperience1Tutor = true;
         }
+        
         
  
 
