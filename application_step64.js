@@ -547,8 +547,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       function checkAllFieldsFilled3() {
 
-          isTrueComponentExperience1Tutor = true;
-          isTrueComponentNoExperience1Tutor = true;
+          isTrueComponentExperience1Tutor = false;
+          isTrueComponentNoExperience1Tutor = false;
           componentExperience2TutorVisible = false;
           isTrueComponentExperience2Tutor = false;
           componentExperience3TutorVisible = false;
