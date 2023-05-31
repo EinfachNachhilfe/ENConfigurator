@@ -38,6 +38,191 @@ var requiredFields = step8.querySelectorAll('[required]');
 var submitBtn = document.getElementById('submit-btn');
 
 
+ //start stepchange with enter
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
+      if (!nextBtn.classList.contains('disabled')) {
+        nextBtn.click();
+        event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
+      }
+    }
+  });
+  
+  //end stepchange with enter
+
+
+  //start Validation Phone
+  var selectedOption = "";
+  
+  function updateInputValue() {
+    var selectElement = document.getElementById("custom_form-input-is-select-input");
+    selectedOption = selectElement.options[selectElement.selectedIndex].value;
+    document.getElementById("phone-number_payable").value = selectedOption;
+  }
+  
+  document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
+    updateInputValue();
+  });
+  
+  document.getElementById("phone-number_payable").addEventListener("input", function() {
+    if (this.value.length < selectedOption.length) {
+      this.value = selectedOption;
+    }
+  });
+  
+  updateInputValue();
+  
+  function checkInput2() {
+    const input2 = document.getElementById('phone-number_payable');
+    if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
+      input2.value = selectedOption;
+      input2.setSelectionRange(selectedOption.length, selectedOption.length);
+    } else {
+      // Remove any non-numeric characters after 'selectedOption'
+      input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const input2 = document.getElementById('phone-number_payable');
+    input2.value = selectedOption;
+    input2.addEventListener('input', checkInput2);
+    updateInputValue();
+  });
+  
+  
+      var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
+  
+      function applyValidation4(inputElement4) {
+        inputElement4.setAttribute('pattern', '^.{8,}$');
+        
+       inputElement4.addEventListener('change', function() {
+      if (inputElement4.checkValidity()) {
+        
+        applyValidBorderStyle(inputElement4);
+      } else {
+       
+        applyInvalidBorderStyle(inputElement4);
+        shakeOnInvalid(inputElement4);
+      }
+    });
+    
+     inputElement4.addEventListener('input', function() {
+      if (inputElement4.checkValidity()) {
+        inputElement4.style.borderColor = '';
+        inputElement4.style.borderWidth = '';
+      }
+    }); 
+  }
+  
+      applyValidation4(ValidationInputFieldPhone1);
+  
+  //end Validation Phone
+
+  //start Validation only number max length 5
+  var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_teaching-location"]');
+  
+  
+  function applyValidation1(inputElement1) {
+    inputElement1.setAttribute('pattern', '\\d+');
+    inputElement1.setAttribute('maxlength', '5');
+    
+   
+    inputElement1.addEventListener('invalid', function() {
+      applyInvalidBorderStyle(inputElement1);
+        shakeOnInvalid(inputElement1);
+    });
+  
+    inputElement1.addEventListener('input', function() {
+      if (inputElement1.checkValidity()) {
+        inputElement1.style.borderColor = '';
+        inputElement1.style.borderWidth = '';
+      }
+    }); 
+  }
+  
+  applyValidation1(ValidationInputFieldNumber1);
+  
+  //end Validation only number max length 5
+
+ //start Validation only letter
+  var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_contact-person"]');
+  var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_contact-person"]');
+
+  
+  function applyValidation2(inputElement2) {
+   inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
+  
+  
+    
+   
+    inputElement2.addEventListener('invalid', function() {
+      applyInvalidBorderStyle(inputElement2);
+        shakeOnInvalid(inputElement2);
+    });
+  
+    inputElement2.addEventListener('input', function() {
+      if (inputElement2.checkValidity()) {
+        inputElement2.style.borderColor = '';
+        inputElement2.style.borderWidth = '';
+      }
+    }); 
+  }
+  
+  applyValidation2(ValidationInputFieldLetter1);
+  applyValidation2(ValidationInputFieldLetter2);
+
+  //end Validation only letter
+  
+
+ //start Validation Mail
+  
+  var ValidationInputFieldMail1 = document.getElementById('email_contact-person');
+  
+  function applyValidation5(inputElement5) {
+  
+    
+   inputElement5.addEventListener('change', function() {
+  if (inputElement5.checkValidity()) {
+    // Das Input-Feld enthält gültige Daten
+    applyValidBorderStyle(inputElement5);
+  } else {
+    // Das Input-Feld enthält ungültige Daten
+    applyInvalidBorderStyle(inputElement5);
+    shakeOnInvalid(inputElement5);
+  }
+  });
+  
+  inputElement5.addEventListener('input', function() {
+  if (inputElement5.checkValidity()) {
+    inputElement5.style.borderColor = '';
+    inputElement5.style.borderWidth = '';
+  }
+  }); 
+  }
+  
+  applyValidation5(ValidationInputFieldMail1);
+  
+  //end Validation Mail
+
+//start function input validation
+  
+  function applyInvalidBorderStyle(input) {
+    input.style.borderColor = '#9d367a';
+    input.style.borderWidth = '1.5px';
+  }
+  
+  function shakeOnInvalid(input) {
+    var originalPosition = input.getBoundingClientRect().left;
+    input.style.transition = 'transform 0.1s ease-in-out';
+    input.style.transform = 'translateX(3px)';
+    setTimeout(function() {
+      input.style.transform = '';
+    }, 100);
+  }
+  //end function input validation
+
 
 // Hide all form steps except the first one
 step2.style.display = 'none';
@@ -420,7 +605,7 @@ var isAllFieldsFilled4 = false;
             var filledFields4 = 0;
   
             requiredFields4.forEach(function(field) {
-                if (field.value) {
+                if (field.value && field.checkValidity()) {
                     filledFields4++;
                 }
             });
