@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-  
 //start Validation Phone
   var selectedOption = "";
   
@@ -69,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
   //end Validation Phone
 
 
-
-
+document.addEventListener("DOMContentLoaded", function() {
+  
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
