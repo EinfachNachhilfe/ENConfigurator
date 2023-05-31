@@ -397,30 +397,37 @@ backBtn.addEventListener('click', function() {
 });
 
 
+const requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]');
+ var isAllFieldsFilled4 = false; 
 
-$(document).ready(function() {
-  $('#first-name_contact-person, #zip-code_teaching-location, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student, #agreement-Datenschutz_contact-person').on('change', function() {
-
-    var allFieldsFilled = true;
-    $('#first-name_contact-person, #zip-code_teaching-location, #second-name_contact-person, #email_contact-person, #number_contact-person, #class_student').each(function() {
-      if ($(this).val().length === 0) {
-        allFieldsFilled = false;
-      }
-    });
-
-
-    if (!$('#agreement-Datenschutz_contact-person').prop('checked')) {
-      allFieldsFilled = false;
-    }
-
-
-    if (allFieldsFilled) {
-      $('#submit-btn').removeClass('disabled');
-    } else {
-      $('#submit-btn').addClass('disabled');
-    }
-  });
-});
+        function checkAllFieldsFilled4() {
+            isAllFieldsFilled4 = false;
+            var filledFields4 = 0;
+  
+            requiredFields4.forEach(function(field) {
+                if (field.value) {
+                    filledFields4++;
+                }
+            });
+  
+            if (filledFields4 === requiredFields4.length) {
+                isAllFieldsFilled4 = true;
+  
+            }
+  
+            if (isAllFieldsFilled4) {
+                nextBtn.classList.remove('disabled');
+            } else {
+                nextBtn.classList.add('disabled');
+            }
+        }
+  
+        requiredFields4.forEach(function(input) {
+            input.addEventListener('input', function() {
+                checkAllFieldsFilled4();
+  
+            });
+        });
 
 
 
