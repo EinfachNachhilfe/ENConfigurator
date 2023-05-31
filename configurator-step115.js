@@ -416,9 +416,9 @@ const requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]'
             }
   
             if (isAllFieldsFilled4) {
-                nextBtn.classList.remove('disabled');
+                submitBtn.classList.remove('disabled');
             } else {
-                nextBtn.classList.add('disabled');
+                submitBtn.classList.add('disabled');
             }
         }
   
