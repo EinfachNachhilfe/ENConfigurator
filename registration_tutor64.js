@@ -18,6 +18,20 @@ var showStepNumber = document.getElementById('show-step_number');
 var certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
 var isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1');
 
+//start stepchange with enter
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
+    if (!nextBtn.classList.contains('disabled')) {
+      nextBtn.click();
+      event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
+    }
+  }
+});
+
+//end stepchange with enter
+
+
 //start Validation only letter
 var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_tutor"]');
 var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_tutor"]');
