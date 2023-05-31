@@ -413,8 +413,7 @@ backBtn.addEventListener('click', function() {
 
 const requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]');
 var isAllFieldsFilled4 = false; 
-const checkboxes1 = step8.querySelectorAll('input[type="checkbox"]');
-var isAnyCheckboxSelected1 = false;
+
 
         function checkAllFieldsFilled4() {
             isAllFieldsFilled4 = false;
@@ -431,13 +430,9 @@ var isAnyCheckboxSelected1 = false;
   
             }
           
-           checkboxes1.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    isAnyCheckboxSelected1 = true;
-                }
-            });
+
   
-            if (isAllFieldsFilled4 && isAnyCheckboxSelected1 ) {
+            if (isAllFieldsFilled4) {
                 submitBtn.classList.remove('disabled');
             } else {
                 submitBtn.classList.add('disabled');
@@ -448,13 +443,6 @@ var isAnyCheckboxSelected1 = false;
             input.addEventListener('input', function() {
                 checkAllFieldsFilled4();
   
-            });
-        });
-
-       checkboxes1.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                isAnyCheckboxSelected1 = false;
-                checkAllFieldsFilled4();
             });
         });
 
