@@ -420,7 +420,7 @@ var isAllFieldsFilled4 = false;
             var filledFields4 = 0;
   
             requiredFields4.forEach(function(field) {
-                if (field.value && field.checkValidity()) {
+                if (field.value) {
                     filledFields4++;
                 }
             });
