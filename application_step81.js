@@ -1,73 +1,73 @@
 document.addEventListener("DOMContentLoaded", function() {
   
-
 //start Validation Phone
-var selectedOption = "";
-
-function updateInputValue() {
-  var selectElement = document.getElementById("custom_form-input-is-select-input");
-  selectedOption = selectElement.options[selectElement.selectedIndex].value;
-  document.getElementById("phone-number_payable").value = selectedOption;
-}
-
-document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
-  updateInputValue();
-});
-
-document.getElementById("phone-number_payable").addEventListener("input", function() {
-  if (this.value.length < selectedOption.length) {
-    this.value = selectedOption;
+  var selectedOption = "";
+  
+  function updateInputValue() {
+    var selectElement = document.getElementById("custom_form-input-is-select-input");
+    selectedOption = selectElement.options[selectElement.selectedIndex].value;
+    document.getElementById("phone-number_payable").value = selectedOption;
   }
-});
-
-updateInputValue();
-
-function checkInput2() {
-  const input2 = document.getElementById('phone-number_payable');
-  if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
-    input2.value = selectedOption;
-    input2.setSelectionRange(selectedOption.length, selectedOption.length);
-  } else {
-    // Remove any non-numeric characters after 'selectedOption'
-    input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
-  }
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  const input2 = document.getElementById('phone-number_payable');
-  input2.value = selectedOption;
-  input2.addEventListener('input', checkInput2);
-  updateInputValue();
-});
-
-
-    var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-
-    function applyValidation4(inputElement4) {
-      inputElement4.setAttribute('pattern', '^.{8,}$');
-      
-     inputElement4.addEventListener('change', function() {
-    if (inputElement4.checkValidity()) {
-      
-      applyValidBorderStyle(inputElement4);
-    } else {
-     
-      applyInvalidBorderStyle(inputElement4);
-      shakeOnInvalid(inputElement4);
+  
+  document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
+    updateInputValue();
+  });
+  
+  document.getElementById("phone-number_payable").addEventListener("input", function() {
+    if (this.value.length < selectedOption.length) {
+      this.value = selectedOption;
     }
   });
   
-   inputElement4.addEventListener('input', function() {
-    if (inputElement4.checkValidity()) {
-      inputElement4.style.borderColor = '';
-      inputElement4.style.borderWidth = '';
+  updateInputValue();
+  
+  function checkInput2() {
+    const input2 = document.getElementById('phone-number_payable');
+    if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
+      input2.value = selectedOption;
+      input2.setSelectionRange(selectedOption.length, selectedOption.length);
+    } else {
+      // Remove any non-numeric characters after 'selectedOption'
+      input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
     }
-  }); 
-}
+  }
+  
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const input2 = document.getElementById('phone-number_payable');
+    input2.value = selectedOption;
+    input2.addEventListener('input', checkInput2);
+    updateInputValue();
+  });
+  
+  
+      var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
+  
+      function applyValidation4(inputElement4) {
+        inputElement4.setAttribute('pattern', '^.{8,}$');
+        
+       inputElement4.addEventListener('change', function() {
+      if (inputElement4.checkValidity()) {
+        
+        applyValidBorderStyle(inputElement4);
+      } else {
+       
+        applyInvalidBorderStyle(inputElement4);
+        shakeOnInvalid(inputElement4);
+      }
+    });
+    
+     inputElement4.addEventListener('input', function() {
+      if (inputElement4.checkValidity()) {
+        inputElement4.style.borderColor = '';
+        inputElement4.style.borderWidth = '';
+      }
+    }); 
+  }
+  
+      applyValidation4(ValidationInputFieldPhone1);
+  
+  //end Validation Phone
 
-    applyValidation4(ValidationInputFieldPhone1);
-
-//end Validation Phone
 
 
 
