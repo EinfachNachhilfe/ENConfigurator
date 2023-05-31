@@ -397,15 +397,31 @@ backBtn.addEventListener('click', function() {
 });
 
 
+ //start stepchange with enter
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
+      if (!nextBtn.classList.contains('disabled')) {
+        nextBtn.click();
+        event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
+      }
+    }
+  });
+  
+  //end stepchange with enter
+
+
 const requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]');
- var isAllFieldsFilled4 = false; 
+var isAllFieldsFilled4 = false; 
+const checkboxes1 = step8.querySelectorAll('input[type="checkbox"]');
+var isAnyCheckboxSelected1 = false;
 
         function checkAllFieldsFilled4() {
             isAllFieldsFilled4 = false;
             var filledFields4 = 0;
   
             requiredFields4.forEach(function(field) {
-                if (field.value) {
+                if (field.value && field.checkValidity()) {
                     filledFields4++;
                 }
             });
@@ -414,8 +430,14 @@ const requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]'
                 isAllFieldsFilled4 = true;
   
             }
+          
+           checkboxes1.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    isAnyCheckboxSelected1 = true;
+                }
+            });
   
-            if (isAllFieldsFilled4) {
+            if (isAllFieldsFilled4 && isAnyCheckboxSelected1 ) {
                 submitBtn.classList.remove('disabled');
             } else {
                 submitBtn.classList.add('disabled');
@@ -426,6 +448,13 @@ const requiredFields4 = document.querySelectorAll('#step-item_form-1 [required]'
             input.addEventListener('input', function() {
                 checkAllFieldsFilled4();
   
+            });
+        });
+
+       checkboxes1.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                isAnyCheckboxSelected1 = false;
+                checkCheckboxSelected1();
             });
         });
 
