@@ -549,7 +549,7 @@ function shakeOnInvalid(input) {
 
 
           requiredFields1.forEach(function(field) {
-              if (field.value) {
+              if (field.value && field.checkValidity()) {
                   filledFields1++;
               }
           });
@@ -632,7 +632,7 @@ function shakeOnInvalid(input) {
 
 
           requiredFields2.forEach(function(field) {
-              if (field.value) {
+              if (field.value && field.checkValidity()) {
                   filledFields2++;
               }
           });
@@ -893,7 +893,7 @@ function shakeOnInvalid(input) {
           var filledFields4 = 0;
 
           requiredFields4.forEach(function(field) {
-              if (field.value) {
+              if (field.value && field.checkValidity()) {
                   filledFields4++;
               }
           });
