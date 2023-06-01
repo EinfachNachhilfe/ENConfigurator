@@ -82,7 +82,7 @@ function checkInput() {
 var ValidationInputFieldIban1 = document.querySelector('input[name="iban_tutor"]');
 
 function applyValidation3(inputElement3) {
-  inputElement3.setAttribute('pattern', '^DE[0-9]{22}$');
+  inputElement3.setAttribute('pattern', '^DE[0-9]{20}$');
   inputElement3.setAttribute('maxlength', '22');
 
   inputElement3.addEventListener('change', function() {
