@@ -632,13 +632,17 @@ var isAllFieldsFilled4 = false;
         });
 
 function checkCoupon() {
-            var input = document.getElementById("coupon-code").value;
-            if (input.toLowerCase() === "lernen2023") {
-                alert("Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!");
-            } else {
-                alert("Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.");
-            }
-        }
+    var input = document.getElementById("coupon-code").value;
+    var pattern = /lernen2023/i; // i-Flag für case-insensitive (Groß-/Kleinschreibung ignorieren)
+
+    if (pattern.test(input)) {
+        alert("Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!");
+    } else {
+        alert("Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.");
+    }
+}
+
+
 
 
 
