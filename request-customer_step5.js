@@ -631,16 +631,19 @@ var isAllFieldsFilled4 = false;
             });
         });
 
-document.getElementById("coupon-code").oninput = function() {
-    var input = this.value;  // 'this' bezieht sich auf das Eingabefeld selbst
+document.getElementById("coupon-code").onchange = function() {
+    var input = this.value;  // 'this' refers to the input field itself
     var pattern = /lernen2023/i;
 
     if (pattern.test(input)) {
         this.style.borderColor = "green";
+        alert("Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!");
     } else {
         this.style.borderColor = "initial";
+        alert("Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.");
     }
 };
+
 
 
 
