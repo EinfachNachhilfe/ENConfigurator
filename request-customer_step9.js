@@ -631,7 +631,7 @@ var isAllFieldsFilled4 = false;
             });
         });
 
-document.getElementById("coupon-code").onchange = function() {
+document.getElementById("coupon-code").oninput = function() {
     var input = this.value;
     var pattern = /lernen2023/i;
     var messageElement = document.getElementById("message_coupon-code");
