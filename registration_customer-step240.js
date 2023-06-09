@@ -139,6 +139,8 @@ function applyValidation3(inputElement3) {
   errorMessageElement.style.color = '#9d367a';
   errorMessageElement.style.display = 'none';
   errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
+  errorMessageElement.style.fontSize = '0.9rem'; // Set the font size
   inputElement3.parentNode.insertBefore(errorMessageElement, inputElement3.nextSibling);
 
   inputElement3.addEventListener('change', function() {
