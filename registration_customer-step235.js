@@ -76,7 +76,6 @@ applyValidation1(ValidationInputFieldNumber2);
 
 
 //start Validation only letter
-var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_teaching-location"]');
 var ValidationInputFieldLetter3 = document.querySelector('input[name="first-name_student"]');
 var ValidationInputFieldLetter4 = document.querySelector('input[name="second-name_student"]');
 var ValidationInputFieldLetter5 = document.querySelector('input[name="first-name_payable"]');
@@ -102,7 +101,7 @@ function applyValidation2(inputElement2) {
   }); 
 }
 
-applyValidation2(ValidationInputFieldLetter1);
+
 applyValidation2(ValidationInputFieldLetter3);
 applyValidation2(ValidationInputFieldLetter4);
 applyValidation2(ValidationInputFieldLetter5);
