@@ -150,7 +150,7 @@ function applyValidation3(inputElement3) {
       // Das Input-Feld enthält ungültige Daten
       applyInvalidBorderStyle(inputElement3);
       shakeOnInvalid(inputElement3);
-      errorMessageElement.innerHTML = 'Mindestens 22 Zeichen';
+      errorMessageElement.innerHTML = 'Ungültige IBAN. Sie muss 22 Stellen enthalten.';
       errorMessageElement.style.display = 'block';
     }
   });
