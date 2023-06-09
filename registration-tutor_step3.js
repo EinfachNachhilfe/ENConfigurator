@@ -84,22 +84,35 @@ var ValidationInputFieldIban1 = document.querySelector('input[name="iban_tutor"]
 function applyValidation3(inputElement3) {
   inputElement3.setAttribute('pattern', '^DE[0-9]{20}$');
   inputElement3.setAttribute('maxlength', '22');
+  
+  var errorMessageElement = document.createElement('span');
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
+  errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
+  inputElement3.parentNode.insertBefore(errorMessageElement, inputElement3.nextSibling);
 
   inputElement3.addEventListener('change', function() {
     if (inputElement3.checkValidity()) {
       // Das Input-Feld enthält gültige Daten
       applyValidBorderStyle(inputElement3);
+      errorMessageElement.style.display = 'none';
     } else {
       // Das Input-Feld enthält ungültige Daten
       applyInvalidBorderStyle(inputElement3);
       shakeOnInvalid(inputElement3);
+      errorMessageElement.innerHTML = 'Ungültige IBAN. Sie muss 22 Stellen enthalten.';
+      errorMessageElement.style.display = 'block';
     }
   });
-  
-   inputElement3.addEventListener('input', function() {
+
+  inputElement3.addEventListener('input', function() {
     if (inputElement3.checkValidity()) {
       inputElement3.style.borderColor = '';
       inputElement3.style.borderWidth = '';
+      errorMessageElement.style.display = 'none';
     }
   }); 
 }
