@@ -114,7 +114,7 @@ applyValidation1(ValidationInputFieldNumber1);
 //start Validation only letter
 var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_tutor"]');
 var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_tutor"]');
-var ValidationInputFieldLetter3 = document.querySelector('input[name="city-name_tutor"]');
+
 
 function applyValidation2(inputElement2) {
  inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
@@ -137,7 +137,6 @@ function applyValidation2(inputElement2) {
 
 applyValidation2(ValidationInputFieldLetter1);
 applyValidation2(ValidationInputFieldLetter2);
-applyValidation2(ValidationInputFieldLetter3);
 //end Validation only letter
 
 
