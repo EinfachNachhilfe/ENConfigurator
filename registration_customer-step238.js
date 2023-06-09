@@ -136,7 +136,7 @@ function applyValidation3(inputElement3) {
   
   var errorMessageElement = document.createElement('span');
   errorMessageElement.id = 'error_message';
-  errorMessageElement.style.color = 'red';
+  errorMessageElement.style.color = '#9d367a';
   errorMessageElement.style.display = 'none';
   errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
   inputElement3.parentNode.insertBefore(errorMessageElement, inputElement3.nextSibling);
