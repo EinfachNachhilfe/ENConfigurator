@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox34[0].checked) {
 			totalBudget += 0.6;
-			popupAnswer1.style.display = "block";
+			popupAnswer1.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "CA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		if (mycustomcheckbox35[0].checked) {
-			popupAnswer2.style.display = "block";
+			popupAnswer2.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "AA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		}
 		if (mycustomcheckbox36[0].checked) {
-			popupAnswer3.style.display = "block";
+			popupAnswer3.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "BA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox37[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer4.style.display = "block";
+			popupAnswer4.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "DA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox38[0].checked) {
 			totalBudget += 1.4;
-			popupAnswer5.style.display = "block";
+			popupAnswer5.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "EA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox39[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer6.style.display = "block";
+			popupAnswer6.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "GA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox40[0].checked) {
 			totalBudget += 0.8;
-			popupAnswer7.style.display = "block";
+			popupAnswer7.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "FA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox41[0].checked) {
 			totalBudget += 1.20;
-			popupAnswer8.style.display = "block";
+			popupAnswer8.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "HA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox42[0].checked) {
 			totalBudget += 1.40;
-			popupAnswer9.style.display = "block";
+			popupAnswer9.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "IA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox43[0].checked) {
 			totalBudget += 0.8;
-			popupAnswer10.style.display = "block";
+			popupAnswer10.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "JA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox44[0].checked) {
 			totalBudget += 0.2;
-			popupAnswer11.style.display = "block";
+			popupAnswer11.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "KA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox45[0].checked) {
 			totalBudget += 0.2;
-			popupAnswer12.style.display = "block";
+			popupAnswer12.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "LA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox46[0].checked) {
 			totalBudget += 0.2;
-			popupAnswer13.style.display = "block";
+			popupAnswer13.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "MA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -378,7 +378,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox47[0].checked) {
 			totalBudget += 1.6;
-			popupAnswer14.style.display = "block";
+			popupAnswer14.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "NA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -390,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox48[0].checked) {
 			totalBudget += 0.8;
-			popupAnswer15.style.display = "block";
+			popupAnswer15.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "OA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox49[0].checked) {
 			totalBudget += 1.4;
-			popupAnswer16.style.display = "block";
+			popupAnswer16.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "PA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -413,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 		if (mycustomcheckbox50[0].checked) {
 			totalBudget += 2.20;
-			popupAnswer17.style.display = "block";
+			popupAnswer17.style.display = "flex";
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "QA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
@@ -462,14 +462,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.value == '1') {
 					totalBudget += 4.2;
 					codegenerator = codegenerator.substr(0, 9) + "CA" + codegenerator.substr(11);
-					popupAnswer23.style.display = "block";
+					popupAnswer23.style.display = "flex";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
 					codegenerator = codegenerator.substr(0, 9) + "BA" + codegenerator.substr(11);
-					popupAnswer24.style.display = "block";
+					popupAnswer24.style.display = "flex";
 				} else if (radio.value == '3') {
 					codegenerator = codegenerator.substr(0, 9) + "AA" + codegenerator.substr(11);
-					popupAnswer25.style.display = "block";
+					popupAnswer25.style.display = "flex";
 				}
 			}
 		});
@@ -479,14 +479,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.value == '1') {
 					totalBudget += 6.0;
 					codegenerator = codegenerator.substr(0, 15) + "EA" + codegenerator.substr(17);
-					popupAnswer26.style.display = "block";
+					popupAnswer26.style.display = "flex";
 				} else if (radio.value == '2') {
 					totalBudget += 2.6;
 					codegenerator = codegenerator.substr(0, 15) + "CA" + codegenerator.substr(17);
-					popupAnswer27.style.display = "block";
+					popupAnswer27.style.display = "flex";
 				} else if (radio.value == '3') {
 					codegenerator = codegenerator.substr(0, 15) + "AA" + codegenerator.substr(17);
-					popupAnswer28.style.display = "block";
+					popupAnswer28.style.display = "flex";
 				}
 			}
 		});
@@ -496,14 +496,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.value == '1') {
 					totalBudget += 6.0;
 					codegenerator = codegenerator.substr(0, 15) + "FA" + codegenerator.substr(17);
-					popupAnswer26.style.display = "block";
+					popupAnswer26.style.display = "flex";
 				} else if (radio.value == '2') {
 					totalBudget += 2.6;
 					codegenerator = codegenerator.substr(0, 15) + "DA" + codegenerator.substr(17);
-					popupAnswer27.style.display = "block";
+					popupAnswer27.style.display = "flex";
 				} else if (radio.value == '3') {
 					codegenerator = codegenerator.substr(0, 15) + "BA" + codegenerator.substr(17);
-					popupAnswer28.style.display = "block";
+					popupAnswer28.style.display = "flex";
 				}
 			}
 		});
@@ -513,14 +513,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.value == '1') {
 					totalBudget += 6.8;
 					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
-					popupAnswer29.style.display = "block";
+					popupAnswer29.style.display = "flex";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
 					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
-					popupAnswer30.style.display = "block";
+					popupAnswer30.style.display = "flex";
 				} else if (radio.value == '3') {
 					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
-					popupAnswer31.style.display = "block";
+					popupAnswer31.style.display = "flex";
 				}
 			}
 		});
@@ -530,14 +530,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.value == '1') {
 					totalBudget += 6.8;
 					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
-					popupAnswer29.style.display = "block";
+					popupAnswer29.style.display = "flex";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
 					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
-					popupAnswer30.style.display = "block";
+					popupAnswer30.style.display = "flex";
 				} else if (radio.value == '3') {
 					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
-					popupAnswer31.style.display = "block";
+					popupAnswer31.style.display = "flex";
 				}
 			}
 		});
@@ -547,21 +547,21 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (radio.value == '1') {
 					totalBudget += 6.8;
 					codegenerator = codegenerator.substr(0, 12) + "CA" + codegenerator.substr(14);
-					popupAnswer29.style.display = "block";
+					popupAnswer29.style.display = "flex";
 				} else if (radio.value == '2') {
 					totalBudget += 2.0;
 					codegenerator = codegenerator.substr(0, 12) + "BA" + codegenerator.substr(14);
-					popupAnswer30.style.display = "block";
+					popupAnswer30.style.display = "flex";
 				} else if (radio.value == '3') {
 					codegenerator = codegenerator.substr(0, 12) + "AA" + codegenerator.substr(14);
-					popupAnswer31.style.display = "block";
+					popupAnswer31.style.display = "flex";
 				}
 			}
 		});
 
 		if (mycustomcheckbox1[0].checked) {
 			totalBudget += 0.4;
-			popupAnswer33.style.display = "block";
+			popupAnswer33.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "CA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -591,7 +591,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox2[0].checked) {
 			totalBudget += 0.4;
-			popupAnswer33.style.display = "block";
+			popupAnswer33.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "CA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -621,7 +621,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox3[0].checked) {
 			totalBudget += 0.4;
-			popupAnswer33.style.display = "block";
+			popupAnswer33.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "CA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -651,7 +651,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox4[0].checked) {
 			totalBudget += 0.4;
-			popupAnswer32.style.display = "block";
+			popupAnswer32.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "BA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -681,7 +681,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox5[0].checked) {
 			totalBudget += 0.4;
-			popupAnswer32.style.display = "block";
+			popupAnswer32.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "BA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -711,7 +711,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox6[0].checked) {
 			totalBudget += 0.4;
-			popupAnswer32.style.display = "block";
+			popupAnswer32.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "BA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -741,7 +741,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox7[0].checked) {
 			totalBudget += 0.6;
-			popupAnswer34.style.display = "block";
+			popupAnswer34.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "DA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -771,7 +771,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox8[0].checked) {
 			totalBudget += 0.6;
-			popupAnswer34.style.display = "block";
+			popupAnswer34.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "DA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -801,7 +801,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox9[0].checked) {
 			totalBudget += 0.6;
-			popupAnswer34.style.display = "block";
+			popupAnswer34.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "DA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -831,7 +831,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox10[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer35.style.display = "block";
+			popupAnswer35.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "GA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -861,7 +861,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox11[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer35.style.display = "block";
+			popupAnswer35.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "GA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -891,7 +891,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox12[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer35.style.display = "block";
+			popupAnswer35.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "GA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -922,7 +922,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox13[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer36.style.display = "block";
+			popupAnswer36.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "QA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -952,7 +952,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox14[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer36.style.display = "block";
+			popupAnswer36.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "QA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -982,7 +982,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox15[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer36.style.display = "block";
+			popupAnswer36.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "QA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1013,7 +1013,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox16[0].checked) {
 			totalBudget += 2.6;
-			popupAnswer37.style.display = "block";
+			popupAnswer37.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "MA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1043,7 +1043,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox17[0].checked) {
 			totalBudget += 2.6;
-			popupAnswer37.style.display = "block";
+			popupAnswer37.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "MA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1073,7 +1073,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox18[0].checked) {
 			totalBudget += 2.6;
-			popupAnswer37.style.display = "block";
+			popupAnswer37.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "MA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1103,7 +1103,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox19[0].checked) {
 			totalBudget += 0.2;
-			popupAnswer38.style.display = "block";
+			popupAnswer38.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "EA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1133,7 +1133,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox20[0].checked) {
 			totalBudget += 0.2;
-			popupAnswer38.style.display = "block";
+			popupAnswer38.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "EA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1163,7 +1163,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox21[0].checked) {
 			totalBudget += 0.2;
-			popupAnswer38.style.display = "block";
+			popupAnswer38.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "EA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1193,7 +1193,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox22[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer39.style.display = "block";
+			popupAnswer39.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "HA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1223,7 +1223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox23[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer39.style.display = "block";
+			popupAnswer39.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "HA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1253,7 +1253,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox24[0].checked) {
 			totalBudget += 1.2;
-			popupAnswer39.style.display = "block";
+			popupAnswer39.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "HA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1283,7 +1283,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox25[0].checked) {
 			totalBudget += 5.4;
-			popupAnswer40.style.display = "block";
+			popupAnswer40.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "OA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1313,7 +1313,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox26[0].checked) {
 			totalBudget += 3.6;
-			popupAnswer40.style.display = "block";
+			popupAnswer40.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "LA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1343,7 +1343,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox27[0].checked) {
 			totalBudget += 1.8;
-			popupAnswer40.style.display = "block";
+			popupAnswer40.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "JA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1373,7 +1373,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox28[0].checked) {
 			totalBudget += 3.2;
-			popupAnswer41.style.display = "block";
+			popupAnswer41.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "NA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1404,7 +1404,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox29[0].checked) {
 			totalBudget += 1.8;
-			popupAnswer41.style.display = "block";
+			popupAnswer41.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "KA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1435,7 +1435,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox30[0].checked) {
 			totalBudget += 1.4;
-			popupAnswer41.style.display = "block";
+			popupAnswer41.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "IA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1465,7 +1465,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox31[0].checked) {
 			totalBudget += 5.0;
-			popupAnswer42.style.display = "block";
+			popupAnswer42.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "PA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1495,7 +1495,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox32[0].checked) {
 			totalBudget += 5.0;
-			popupAnswer42.style.display = "block";
+			popupAnswer42.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "PA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
@@ -1525,7 +1525,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox33[0].checked) {
 			totalBudget += 5.0;
-			popupAnswer42.style.display = "block";
+			popupAnswer42.style.display = "flex";
 			if (isCondition4Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 18) + "PA" + codegenerator.substr(20);
 			} else if (isCondition5Met(codegenerator)) {
