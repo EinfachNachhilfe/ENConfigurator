@@ -424,19 +424,19 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		if (mycustomcheckbox51[0].checked) {
-			popupAnswer18.style.display = "block";
+			popupAnswer18.style.display = "flex";
 		}
 
 		if (mycustomcheckbox52[0].checked) {
-			popupAnswer19.style.display = "block";
+			popupAnswer19.style.display = "flex";
 		}
 
 		if (mycustomcheckbox54[0].checked) {
-			popupAnswer21.style.display = "block";
+			popupAnswer21.style.display = "flex";
 		}
 
 		if (mycustomcheckbox55[0].checked) {
-			popupAnswer22.style.display = "block";
+			popupAnswer22.style.display = "flex";
 		}
 
 		if (mycustomcheckbox56[0].checked) {	
