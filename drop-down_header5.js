@@ -55,3 +55,14 @@ $(document).ready(function() {
     });
 
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var triggerMobile = document.getElementById('trigger_drop-down-mobile');
+
+    triggerMobile.addEventListener('click', function() {
+        this.classList.toggle('x');
+        // toggleDropDownMobile();  // call this function to open/close the dropdown menu
+    });
+});
+
