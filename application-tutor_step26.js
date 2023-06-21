@@ -108,11 +108,13 @@ inputElement1.addEventListener('change', function() {
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'block';
       inValidImage.style.display = 'none';
+      errorMessageElement.style.display = 'none';
   } else {
       inputElement1.style.borderColor = '#9e367a'; // Set border color to red
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
+      errorMessageElement.style.display = 'block';
       shakeOnInvalid(inputElement1);
   }
 });
