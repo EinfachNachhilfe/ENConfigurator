@@ -97,7 +97,7 @@ inputElement1.addEventListener('invalid', function() {
     shakeOnInvalid(inputElement1);
 });
 
-inputElement1.addEventListener('input', function() {
+inputElement1.addEventListener('change', function() {
   if (inputElement1.checkValidity()) {
       inputElement1.style.borderColor = 'green'; // Set border color to green
       inputElement1.style.borderWidth = '3px'; // Set border width to 3px
