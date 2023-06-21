@@ -917,9 +917,9 @@ experience1Tutor.addEventListener("change", function() {
       }
 
       if (isAllFieldsFilled5) {
-          nextBtn.classList.remove('disabled');
+          submitBtn.classList.remove('disabled');
       } else {
-          nextBtn.classList.add('disabled');
+          submitBtn.classList.add('disabled');
       }
   }
 
