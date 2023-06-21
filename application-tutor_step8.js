@@ -102,7 +102,7 @@ inputElement1.addEventListener('invalid', function() {
 inputElement1.addEventListener('change', function() {
   if (inputElement1.checkValidity()) {
       inputElement1.style.borderColor = '#599b1f'; // Set border color to green
-      inputElement1.style.borderWidth = '1px'; // Set border width to 3px
+      inputElement1.style.borderWidth = '2px'; // Set border width to 3px
       validImage.style.display = 'block';
   }
 }); 
