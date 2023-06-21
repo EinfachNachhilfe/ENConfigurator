@@ -88,6 +88,14 @@ var validImage = document.querySelector('.form_input-valid-image');
 var inValidImage = document.querySelector('.form_input-invalid-image');
 var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_tutor"]');
   
+var errorMessageElement = document.createElement('span');
+errorMessageElement.id = 'error_message';
+errorMessageElement.style.color = '#9d367a';
+errorMessageElement.style.display = 'none';
+errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
+errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
+errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
+inputElement3.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
 
 
 function applyValidation1(inputElement1) {
@@ -101,12 +109,15 @@ inputElement1.addEventListener('change', function() {
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'block';
       inValidImage.style.display = 'none';
+      errorMessageElement.style.display = 'none';
   } else {
       inputElement1.style.borderColor = '#9e367a'; // Set border color to red
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
       shakeOnInvalid(inputElement1);
+      errorMessageElement.innerHTML = 'Ungültige IBAN. Sie muss 22 Stellen enthalten.';
+      errorMessageElement.style.display = 'block';
   }
 });
 
