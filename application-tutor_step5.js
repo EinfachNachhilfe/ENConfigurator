@@ -83,13 +83,13 @@ if (event.key === "Enter") {
 //end stepchange with enter
 
 
-//start Validation only number max length 5
+//start Validation only number
 var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_tutor"]');
 
 
 function applyValidation1(inputElement1) {
 inputElement1.setAttribute('pattern', '\\d+');
-inputElement1.setAttribute('maxlength', '5');
+
 
 
 inputElement1.addEventListener('invalid', function() {
@@ -99,15 +99,15 @@ inputElement1.addEventListener('invalid', function() {
 
 inputElement1.addEventListener('input', function() {
   if (inputElement1.checkValidity()) {
-    inputElement1.style.borderColor = '';
-    inputElement1.style.borderWidth = '';
+      inputElement1.style.borderColor = 'green'; // Set border color to green
+      inputElement1.style.borderWidth = '3px'; // Set border width to 3px
   }
 }); 
 }
 
 applyValidation1(ValidationInputFieldNumber1);
 
-//end Validation only number max length 5
+//end Validation only number
 
 
 
@@ -1097,17 +1097,4 @@ experience1Tutor.addEventListener("change", function() {
       }
       classTo6Tutor.value = '';
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
