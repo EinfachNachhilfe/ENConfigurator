@@ -101,7 +101,7 @@ inputElement1.addEventListener('invalid', function() {
 
 inputElement1.addEventListener('change', function() {
   if (inputElement1.checkValidity()) {
-      inputElement1.style.borderColor = '#83FF40'; // Set border color to green
+      inputElement1.style.borderColor = '#589b32'; // Set border color to green
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 3px
       validImage.style.display = 'block';
   }
@@ -180,7 +180,7 @@ applyValidation5(ValidationInputFieldMail1);
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
-input.style.borderColor = '#FF414C';
+input.style.borderColor = '#993333';
 input.style.borderWidth = '1.5px';
 }
 
