@@ -95,7 +95,7 @@ inputElement1.setAttribute('pattern', '\\d+');
 
 
 
-inputElement1.addEventListener('input', function() {
+inputElement1.addEventListener('change', function() {
   if (inputElement1.checkValidity()) {
       inputElement1.style.borderColor = '#589b32'; // Set border color to green
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
