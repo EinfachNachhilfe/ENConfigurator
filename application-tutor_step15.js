@@ -85,7 +85,9 @@ if (event.key === "Enter") {
 
 //start Validation only number
 var validImage = document.querySelector('.form_input-valid-image');
+var inValidImage = document.querySelector('.form_input-invalid-image');
 var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_tutor"]');
+  
 
 
 function applyValidation1(inputElement1) {
@@ -94,9 +96,11 @@ inputElement1.setAttribute('pattern', '\\d+');
 
 
 inputElement1.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement1);
     shakeOnInvalid(inputElement1);
     validImage.style.display = 'none';
+    input.style.borderColor = '#9e367a';
+    input.style.borderWidth = '1.5px';
+    inValidImage.style.display = 'block';
 });
 
 inputElement1.addEventListener('change', function() {
@@ -104,6 +108,7 @@ inputElement1.addEventListener('change', function() {
       inputElement1.style.borderColor = '#589b32'; // Set border color to green
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 3px
       validImage.style.display = 'block';
+      inValidImage.style.display = 'none';
   }
 }); 
 }
