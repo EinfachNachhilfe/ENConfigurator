@@ -100,7 +100,7 @@ var errorMessageElement = document.createElement('span');
   errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
   errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
   errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
-  errorMessageElement.innerHTML = 'Ungültige IBAN. Sie muss 22 Stellen enthalten.';
+  errorMessageElement.innerHTML = 'Ungültige Eingabe.';
   inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
 
 inputElement1.addEventListener('change', function() {
