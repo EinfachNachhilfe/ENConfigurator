@@ -542,8 +542,7 @@ function shakeOnInvalid(input) {
       function checkAllFieldsFilled1() {
           var filledFields1 = 0;
           isAllFieldsFilled1 = false;
-          isAnyGenderRadioSelected1 = false;
-
+ 
 
           requiredFields1.forEach(function(field) {
               if (field.value && field.checkValidity()) {
@@ -556,13 +555,9 @@ function shakeOnInvalid(input) {
 
           }
 
-          genderRadios1.forEach(function(radio) {
-              if (radio.checked) {
-                  isAnyGenderRadioSelected1 = true;
-              }
-          });
+    
 
-          if (isAllFieldsFilled1 && isAnyGenderRadioSelected1) {
+          if (isAllFieldsFilled1) {
               nextBtn.classList.remove('disabled');
           } else {
               nextBtn.classList.add('disabled');
@@ -576,14 +571,6 @@ function shakeOnInvalid(input) {
 
           });
       });
-
-      genderRadios1.forEach(function(radio) {
-          radio.addEventListener('change', function() {
-              checkAllFieldsFilled1();
-          });
-      });
-
-
 
 
 
@@ -938,7 +925,7 @@ function shakeOnInvalid(input) {
 
 
       nextBtn.addEventListener('click', function() {
-          if (isAllFieldsFilled1 && isAnyGenderRadioSelected1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
+          if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
               step1.style.display = 'none';
               step2.style.display = 'block';
               backBtn.style.display = 'flex';
