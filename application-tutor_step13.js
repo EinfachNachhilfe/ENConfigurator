@@ -180,7 +180,7 @@ applyValidation5(ValidationInputFieldMail1);
 //start function input validation
 
 function applyInvalidBorderStyle(input) {
-input.style.borderColor = '#993333';
+input.style.borderColor = '#9e367a';
 input.style.borderWidth = '1.5px';
 }
 
