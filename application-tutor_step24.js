@@ -93,7 +93,14 @@ var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_t
 function applyValidation1(inputElement1) {
 inputElement1.setAttribute('pattern', '\\d+');
 
-
+var errorMessageElement = document.createElement('span');
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
+  errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
+  inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
 
 inputElement1.addEventListener('change', function() {
   if (inputElement1.checkValidity()) {
