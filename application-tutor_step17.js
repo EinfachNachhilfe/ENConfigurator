@@ -95,10 +95,6 @@ inputElement1.setAttribute('pattern', '\\d+');
 
 
 
-inputElement1.addEventListener('invalid', function() {
-    shakeOnInvalid(inputElement1);
-});
-
 inputElement1.addEventListener('input', function() {
   if (inputElement1.checkValidity()) {
       inputElement1.style.borderColor = '#589b32'; // Set border color to green
@@ -110,6 +106,7 @@ inputElement1.addEventListener('input', function() {
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement1);
   }
 });
 
