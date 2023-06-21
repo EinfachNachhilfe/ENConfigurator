@@ -82,61 +82,6 @@ if (event.key === "Enter") {
 
 //end stepchange with enter
 
-// Hinzufügen der Fehlermeldung am Ende der Input-Feld-Validierung
-function displayErrorMessage(inputElement, messageElement) {
-  // Überprüfen Sie die Gültigkeit und ob das Feld nicht leer ist
-  if (!inputElement.checkValidity() || inputElement.value === '') {
-    // Fehlermeldung anzeigen
-    messageElement.style.display = 'block';
-    
-    // Überprüfen Sie, ob das Feld leer ist und setzen Sie die entsprechende Nachricht
-    if (inputElement.value === '') {
-      messageElement.textContent = 'Dieses Feld muss ausgefüllt werden';
-    } else {
-      messageElement.textContent = 'Die Eingabe ist ungültig';
-    }
-  } else {
-    // Verstecken Sie die Fehlermeldung, wenn das Eingabefeld gültig ist
-    messageElement.style.display = 'none';
-  }
-}
-
-// Anwendung der Validierung und Anzeige der Fehlermeldung auf das Eingabefeld
-function applyValidation(inputElement, messageElement) {
-  inputElement.setAttribute('pattern', '\\d+');
-  
-  inputElement.addEventListener('change', function() {
-    if (inputElement.checkValidity()) {
-        inputElement.style.borderColor = '#589b32'; // Set border color to green
-        inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-        validImage.style.display = 'block';
-        inValidImage.style.display = 'none';
-    } else {
-        inputElement.style.borderColor = '#9e367a'; // Set border color to red
-        inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(inputElement);
-    }
-    // Anruf der displayErrorMessage Funktion innerhalb des eventListeners
-    displayErrorMessage(inputElement, messageElement);
-  });
-}
-
-// Erstellung der Fehlermeldung
-var errorMessageElement = document.createElement('span');
-errorMessageElement.id = 'error_message';
-errorMessageElement.style.color = '#9d367a';
-errorMessageElement.style.display = 'none';
-errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
-errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
-errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
-
-// Hinzufügen der Fehlermeldung nach dem Eingabefeld
-ValidationInputFieldNumber1.parentNode.insertBefore(errorMessageElement, ValidationInputFieldNumber1.nextSibling);
-
-// Anwendung der Validierung und Fehlermeldung auf das Eingabefeld
-applyValidation(ValidationInputFieldNumber1, errorMessageElement);
 
 //start Validation only number
 var validImage = document.querySelector('.form_input-valid-image');
