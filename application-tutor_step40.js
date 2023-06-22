@@ -129,6 +129,22 @@ function applyValidation1(inputElement1) {
       shakeOnInvalid(inputElement1);
     }
   });
+
+
+  inputElement1.addEventListener('blur', function() {
+    if (inputElement1.value.trim() === '') {
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement.style.display = 'block';
+      inputElement1.style.borderColor = '#9e367a'; // Set border color to red
+      inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement1);
+    }
+  });
+
+
+  
 }
 
 applyValidation1(ValidationInputFieldNumber1);
