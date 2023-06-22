@@ -85,6 +85,10 @@ if (event.key === "Enter") {
 
 //start Validation only number
 
+var validImage = document.querySelector('.form_input-valid-image');
+var inValidImage = document.querySelector('.form_input-invalid-image');
+var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_tutor"]');
+
 function applyValidation1(inputElement1) {
   inputElement1.setAttribute('pattern', '\\d+');
 
