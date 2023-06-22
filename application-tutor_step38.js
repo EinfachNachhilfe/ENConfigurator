@@ -1,11 +1,3 @@
-nextBtn.addEventListener('click', function() {
-  if (step4.style.display === "block") {
-  applyValidation1(ValidationInputFieldNumber1);
-  }
-});
-
-
-
 //start Validation Phone
 var selectedOption = "";
   
@@ -965,6 +957,11 @@ experience1Tutor.addEventListener("change", function() {
       });
   });
 
+nextBtn.addEventListener('click', function() {
+  if (step4.style.display === "block") {
+  applyValidation1(ValidationInputFieldNumber1);
+  }
+});
 
 
     nextBtn.addEventListener('click', function() {
