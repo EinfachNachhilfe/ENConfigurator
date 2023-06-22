@@ -907,16 +907,16 @@ experience1Tutor.addEventListener("change", function() {
   });
 
   nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step4, null).display === "block" && inputValidationFirstNameTutor.value.trim() === '') {
+  if (window.getComputedStyle(step4, null).display === "block" && inputValidationZipCodeTutor.value.trim() === '') {
     var errorMessageElement = document.querySelector('#error_message');
     
     errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
     errorMessageElement.style.display = 'block';
-    inputValidationFirstNameTutor.style.borderColor = '#9e367a'; // Set border color to red
-    inputValidationFirstNameTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
+    inputValidationZipCodeTutor.style.borderColor = '#9e367a'; // Set border color to red
+    inputValidationZipCodeTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
     validImage.style.display = 'none';
     inValidImage.style.display = 'block';
-    shakeOnInvalid(inputValidationFirstNameTutor);
+    shakeOnInvalid(inputValidationZipCodeTutor);
   }
 });
 
