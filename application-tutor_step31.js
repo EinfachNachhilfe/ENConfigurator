@@ -83,13 +83,6 @@ if (event.key === "Enter") {
 //end stepchange with enter
 
 
-//start Validation only number
-var validImage = document.querySelector('.form_input-valid-image');
-var inValidImage = document.querySelector('.form_input-invalid-image');
-var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_tutor"]');
-  
-
-
 function applyValidation1(inputElement1) {
 inputElement1.setAttribute('pattern', '\\d+');
 
@@ -104,13 +97,25 @@ var errorMessageElement = document.createElement('span');
   inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
 
 inputElement1.addEventListener('change', function() {
-  if (inputElement1.checkValidity()) {
+  if (inputElement1.value.trim() === '') {
+      // Handle case when input is empty
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      inputElement1.style.borderColor = '#9e367a'; // Set border color to red
+      inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      errorMessageElement.style.display = 'block';
+      shakeOnInvalid(inputElement1);
+  } else if (inputElement1.checkValidity()) {
+      // Handle case when input is valid
       inputElement1.style.borderColor = '#589b32'; // Set border color to green
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'block';
       inValidImage.style.display = 'none';
       errorMessageElement.style.display = 'none';
   } else {
+      // Handle case when input is invalid
+      errorMessageElement.innerHTML = 'Ungültige Eingabe.';
       inputElement1.style.borderColor = '#9e367a'; // Set border color to red
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
@@ -125,6 +130,7 @@ inputElement1.addEventListener('change', function() {
 applyValidation1(ValidationInputFieldNumber1);
 
 //end Validation only number
+
 
 
 
