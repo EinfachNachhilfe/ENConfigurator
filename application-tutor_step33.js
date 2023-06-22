@@ -86,60 +86,49 @@ if (event.key === "Enter") {
 //start Validation only number
 
 function applyValidation1(inputElement1) {
-inputElement1.setAttribute('pattern', '\\d+');
+  inputElement1.setAttribute('pattern', '\\d+');
 
-var errorMessageElement = document.createElement('span');
+  var errorMessageElement = document.createElement('span');
   errorMessageElement.id = 'error_message';
   errorMessageElement.style.color = '#9d367a';
   errorMessageElement.style.display = 'none';
-  errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
-  errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
-  errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
-  errorMessageElement.innerHTML = 'Ungültige Eingabe.';
+  errorMessageElement.style.marginTop = '-0.625rem';
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  errorMessageElement.style.fontSize = '0.8rem';
   inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
 
-  var errorMessageElement1 = document.createElement('span');
-  errorMessageElement1.id = 'error_message1';
-  errorMessageElement1.style.color = '#9d367a';
-  errorMessageElement1.style.display = 'none';
-  errorMessageElement1.style.marginTop = '-0.625rem'; // Adjust this value as needed
-  errorMessageElement1.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
-  errorMessageElement1.style.fontSize = '0.8rem'; // Set the font size
-  errorMessageElement1.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-  inputElement1.parentNode.insertBefore(errorMessageElement1, inputElement1.nextSibling);
-
-inputElement1.addEventListener('change', function() {
-  if (inputElement1.value.trim() === '') {
+  inputElement1.addEventListener('change', function() {
+    if (inputElement1.value.trim() === '') {
       // Handle case when input is empty
-      errorMessageElement1.style.display = 'block';
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement.style.display = 'block';
       inputElement1.style.borderColor = '#9e367a'; // Set border color to red
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
-      errorMessageElement.style.display = 'block';
       shakeOnInvalid(inputElement1);
-  } else if (inputElement1.checkValidity()) {
+    } else if (inputElement1.checkValidity()) {
       // Handle case when input is valid
       inputElement1.style.borderColor = '#589b32'; // Set border color to green
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'block';
       inValidImage.style.display = 'none';
       errorMessageElement.style.display = 'none';
-  } else {
+    } else {
       // Handle case when input is invalid
       errorMessageElement.innerHTML = 'Ungültige Eingabe.';
+      errorMessageElement.style.display = 'block';
       inputElement1.style.borderColor = '#9e367a'; // Set border color to red
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
-      errorMessageElement.style.display = 'block';
       shakeOnInvalid(inputElement1);
-  }
-});
-
+    }
+  });
 }
 
 applyValidation1(ValidationInputFieldNumber1);
+
 
 //end Validation only number
 
