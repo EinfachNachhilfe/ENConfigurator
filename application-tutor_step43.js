@@ -1,6 +1,9 @@
 var validImage = document.querySelector('.form_input-valid-image');
 var inValidImage = document.querySelector('.form_input-invalid-image');
 var inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
+var inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
+var inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
+
 
 
 //start Validation Phone
@@ -142,42 +145,12 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
 
 // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
 applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFirstNameTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
 
 //end Validation only number
-
-
-
-//start Validation only letter
-var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_tutor"]');
-var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_tutor"]');
-
-
-function applyValidation2(inputElement2) {
-inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
-
-
-
-
-inputElement2.addEventListener('invalid', function() {
-  applyInvalidBorderStyle(inputElement2);
-    shakeOnInvalid(inputElement2);
-});
-
-inputElement2.addEventListener('input', function() {
-  if (inputElement2.checkValidity()) {
-    inputElement2.style.borderColor = '';
-    inputElement2.style.borderWidth = '';
-  }
-}); 
-}
-
-applyValidation2(ValidationInputFieldLetter1);
-applyValidation2(ValidationInputFieldLetter2);
-//end Validation only letter
-
-
 
 
 //start Validation Mail
