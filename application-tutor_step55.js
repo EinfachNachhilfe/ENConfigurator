@@ -4,7 +4,6 @@ const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code
 const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
 const inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
 const inputValidationEmailTutor = document.getElementById('email_tutor');
-
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
 if (event.key === "Enter") {
@@ -16,8 +15,6 @@ if (event.key === "Enter") {
 }
 });
 //end stepchange with enter
-
-
 //start Validation Phone
 var selectedOption = "";
   
@@ -26,19 +23,15 @@ function updateInputValue() {
   selectedOption = selectElement.options[selectElement.selectedIndex].value;
   document.getElementById("phone-number_payable").value = selectedOption;
 }
-
 document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
   updateInputValue();
 });
-
 document.getElementById("phone-number_payable").addEventListener("input", function() {
   if (this.value.length < selectedOption.length) {
     this.value = selectedOption;
   }
 });
-
 updateInputValue();
-
 function checkInput2() {
   const input2 = document.getElementById('phone-number_payable');
   if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
@@ -49,17 +42,13 @@ function checkInput2() {
     input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
   }
 }
-
 document.addEventListener('DOMContentLoaded', (event) => {
   const input2 = document.getElementById('phone-number_payable');
   input2.value = selectedOption;
   input2.addEventListener('input', checkInput2);
   updateInputValue();
 });
-
-
     var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-
     function applyValidation4(inputElement4) {
       inputElement4.setAttribute('pattern', '^.{8,}$');
       
@@ -81,17 +70,65 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   }); 
 }
-
     applyValidation4(ValidationInputFieldPhone1);
-
 //end Validation Phone
-
-
-
-
-
-
-
+document.addEventListener("DOMContentLoaded", function() {
+//start inputfield validation
+function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
+  inputElement.setAttribute('pattern', pattern);
+  var errorMessageElement = document.createElement('span');
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem';
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  errorMessageElement.style.fontSize = '0.8rem';
+  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+   var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  inputElement.addEventListener('change', function() {
+    if (inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    } else if (inputElement.checkValidity()) {
+      inputElement.style.borderColor = '#589b32';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'block';
+      inValidImage.style.display = 'none';
+      errorMessageElement.style.display = 'none';
+    } else {
+      errorMessageElement.innerHTML = invalidErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+  inputElement.addEventListener('blur', function() {
+    if (inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+}
+// Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
+applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+//end inputfield validation
 //start function shake
 function shakeOnInvalid(input) {
 var originalPosition = input.getBoundingClientRect().left;
@@ -102,63 +139,40 @@ setTimeout(function() {
 }, 100);
 }
 //end function shake
-
-
-
-
-
-
-
-
-
-
-
 const componentSubject2Tutor = document.getElementById("component-subject-2_tutor");
 const componentSubject3Tutor = document.getElementById("component-subject-3_tutor");
 const componentSubject4Tutor = document.getElementById("component-subject-4_tutor");
 const componentSubject5Tutor = document.getElementById("component-subject-5_tutor");
 const componentSubject6Tutor = document.getElementById("component-subject-6_tutor");
-
-
 const triggerOpenSubjectTutor = document.getElementById("trigger-open-subject_tutor");
-
 const triggerClosesubject2Tutor = document.getElementById("trigger-close-subject-2_tutor");
 const triggerClosesubject3Tutor = document.getElementById("trigger-close-subject-3_tutor");
 const triggerClosesubject4Tutor = document.getElementById("trigger-close-subject-4_tutor");
 const triggerClosesubject5Tutor = document.getElementById("trigger-close-subject-5_tutor");
 const triggerClosesubject6Tutor = document.getElementById("trigger-close-subject-6_tutor");
-
 const subject1Tutor = document.getElementById("subject-1_tutor");
 const classFrom1Tutor = document.getElementById("class-from-1_tutor");
 const classTo1Tutor = document.getElementById("class-to-1_tutor");
-
 const subject2Tutor = document.getElementById("subject-2_tutor");
 const classFrom2Tutor = document.getElementById("class-from-2_tutor");
 const classTo2Tutor = document.getElementById("class-to-2_tutor");
-
 const subject3Tutor = document.getElementById("subject-3_tutor");
 const classFrom3Tutor = document.getElementById("class-from-3_tutor");
 const classTo3Tutor = document.getElementById("class-to-3_tutor");
-
 const subject4Tutor = document.getElementById("subject-4_tutor");
 const classFrom4Tutor = document.getElementById("class-from-4_tutor");
 const classTo4Tutor = document.getElementById("class-to-4_tutor");
-
 const subject5Tutor = document.getElementById("subject-5_tutor");
 const classFrom5Tutor = document.getElementById("class-from-5_tutor");
 const classTo5Tutor = document.getElementById("class-to-5_tutor");
-
 const subject6Tutor = document.getElementById("subject-6_tutor");
 const classFrom6Tutor = document.getElementById("class-from-6_tutor");
 const classTo6Tutor = document.getElementById("class-to-6_tutor");
-
 componentSubject2Tutor.style.display = "none";
 componentSubject3Tutor.style.display = "none";
 componentSubject4Tutor.style.display = "none";
 componentSubject5Tutor.style.display = "none";
 componentSubject6Tutor.style.display = "none";
-
-
 triggerOpenSubjectTutor.addEventListener("click", function() {
     if (componentSubject2Tutor.style.display === "none") {
         componentSubject2Tutor.style.display = "block";
@@ -182,15 +196,12 @@ triggerOpenSubjectTutor.addEventListener("click", function() {
         triggerOpenSubjectTutor.style.display = "none";
     }
 });
-
-
 triggerClosesubject2Tutor.addEventListener("click", function() {
     subject2Tutor.selectedIndex = 0;
     classFrom2Tutor.selectedIndex = 0;
     classTo2Tutor.selectedIndex = 0;
     componentSubject2Tutor.style.display = "none";
 });
-
 triggerClosesubject3Tutor.addEventListener("click", function() {
   subject3Tutor.selectedIndex = 0;
   classFrom3Tutor.selectedIndex = 0;
@@ -199,7 +210,6 @@ triggerClosesubject3Tutor.addEventListener("click", function() {
     componentSubject2Tutor.style.display = "block";
     triggerClosesubject2Tutor.style.display ="block";
 });
-
 triggerClosesubject4Tutor.addEventListener("click", function() {
   subject4Tutor.selectedIndex = 0;
   classFrom4Tutor.selectedIndex = 0;
@@ -208,7 +218,6 @@ triggerClosesubject4Tutor.addEventListener("click", function() {
     componentSubject3Tutor.style.display = "block";
     triggerClosesubject3Tutor.style.display ="block";
 });
-
 triggerClosesubject5Tutor.addEventListener("click", function() {
   subject5Tutor.selectedIndex = 0;
   classFrom5Tutor.selectedIndex = 0;
@@ -217,7 +226,6 @@ triggerClosesubject5Tutor.addEventListener("click", function() {
     componentSubject4Tutor.style.display = "block";
     triggerClosesubject4Tutor.style.display ="block";
 });
-
 triggerClosesubject6Tutor.addEventListener("click", function() {
   subject6Tutor.selectedIndex = 0;
   classFrom6Tutor.selectedIndex = 0;
@@ -227,57 +235,41 @@ triggerClosesubject6Tutor.addEventListener("click", function() {
     triggerClosesubject5Tutor.style.display ="block";
     triggerOpenSubjectTutor.style.display = "flex";
 });
-
-
 const componentExperience1Tutor = document.getElementById("component-experience-1_tutor");
 const componentExperience2Tutor = document.getElementById("component-experience-2_tutor");
 const componentExperience3Tutor = document.getElementById("component-experience-3_tutor");
 const componentExperience4Tutor = document.getElementById("component-experience-4_tutor");
 const componentExperience5Tutor = document.getElementById("component-experience-5_tutor");
 const componentExperience6Tutor = document.getElementById("component-experience-6_tutor");
-
-
 const triggerOpenExperienceTutor = document.getElementById("trigger-open-experience_tutor");
-
 const triggerCloseExperience2Tutor = document.getElementById("trigger-close-experience-2_tutor");
 const triggerCloseExperience3Tutor = document.getElementById("trigger-close-experience-3_tutor");
 const triggerCloseExperience4Tutor = document.getElementById("trigger-close-experience-4_tutor");
 const triggerCloseExperience5Tutor = document.getElementById("trigger-close-experience-5_tutor");
 const triggerCloseExperience6Tutor = document.getElementById("trigger-close-experience-6_tutor");
-
 const experience1Tutor = document.getElementById("experience-1_tutor");
 const duration1Tutor = document.getElementById("duration-1_tutor");
 const when1Tutor = document.getElementById("when-1_tutor");
-
 const experience2Tutor = document.getElementById("experience-2_tutor");
 const duration2Tutor = document.getElementById("duration-2_tutor");
 const when2Tutor = document.getElementById("when-2_tutor");
-
 const experience3Tutor = document.getElementById("experience-3_tutor");
 const duration3Tutor = document.getElementById("duration-3_tutor");
 const when3Tutor = document.getElementById("when-3_tutor");
-
 const experience4Tutor = document.getElementById("experience-4_tutor");
 const duration4Tutor = document.getElementById("duration-4_tutor");
 const when4Tutor = document.getElementById("when-4_tutor");
-
 const experience5Tutor = document.getElementById("experience-5_tutor");
 const duration5Tutor = document.getElementById("duration-5_tutor");
 const when5Tutor = document.getElementById("when-5_tutor");
-
 const experience6Tutor = document.getElementById("experience-6_tutor");
 const duration6Tutor = document.getElementById("duration-6_tutor");
 const when6Tutor = document.getElementById("when-6_tutor");
-
-
-
 componentExperience2Tutor.style.display = "none";
 componentExperience3Tutor.style.display = "none";
 componentExperience4Tutor.style.display = "none";
 componentExperience5Tutor.style.display = "none";
 componentExperience6Tutor.style.display = "none";
-
-
 triggerOpenExperienceTutor.addEventListener("click", function() {
     if (componentExperience2Tutor.style.display === "none") {
         componentExperience2Tutor.style.display = "block";
@@ -301,15 +293,12 @@ triggerOpenExperienceTutor.addEventListener("click", function() {
         triggerOpenExperienceTutor.style.display = "none";
     }
 });
-
-
 triggerCloseExperience2Tutor.addEventListener("click", function() {
     experience2Tutor.selectedIndex = 0;
     duration2Tutor.selectedIndex = 0;
     when2Tutor.selectedIndex = 0;
     componentExperience2Tutor.style.display = "none";
 });
-
 triggerCloseExperience3Tutor.addEventListener("click", function() {
   experience3Tutor.selectedIndex = 0;
   duration3Tutor.selectedIndex = 0;
@@ -318,7 +307,6 @@ triggerCloseExperience3Tutor.addEventListener("click", function() {
     componentExperience2Tutor.style.display = "block";
     triggerCloseExperience2Tutor.style.display ="block";
 });
-
 triggerCloseExperience4Tutor.addEventListener("click", function() {
   experience4Tutor.selectedIndex = 0;
   duration4Tutor.selectedIndex = 0;
@@ -327,7 +315,6 @@ triggerCloseExperience4Tutor.addEventListener("click", function() {
     componentExperience3Tutor.style.display = "block";
     triggerCloseExperience3Tutor.style.display ="block";
 });
-
 triggerCloseExperience5Tutor.addEventListener("click", function() {
   experience5Tutor.selectedIndex = 0;
   duration5Tutor.selectedIndex = 0;
@@ -336,7 +323,6 @@ triggerCloseExperience5Tutor.addEventListener("click", function() {
     componentExperience4Tutor.style.display = "block";
     triggerCloseExperience4Tutor.style.display ="block";
 });
-
 triggerCloseExperience6Tutor.addEventListener("click", function() {
   experience6Tutor.selectedIndex = 0;
   duration6Tutor.selectedIndex = 0;
@@ -346,7 +332,6 @@ triggerCloseExperience6Tutor.addEventListener("click", function() {
     triggerCloseExperience5Tutor.style.display ="block";
     triggerOpenExperienceTutor.style.display = "flex";
 });
-
 experience1Tutor.addEventListener("change", function() {
     if (experience1Tutor.selectedIndex === 1) {
         componentExperience1Tutor.style.display = "none";
@@ -376,11 +361,8 @@ experience1Tutor.addEventListener("change", function() {
     } else {
       componentExperience1Tutor.style.display = "grid";
       triggerOpenExperienceTutor.style.display = "flex";
-
     }
 });
-
-
     //step
     const step1 = document.getElementById('form-item_name');
     const step2 = document.getElementById('form-item_subjects');
@@ -398,11 +380,6 @@ experience1Tutor.addEventListener("change", function() {
     const firstNameInput = document.getElementById('first-name_tutor');
     const showFirstNames = document.querySelectorAll('.show_first-name');
     const genderRadios1 = document.querySelectorAll('input[name="gender_tutor"]');
-
-
-
-
-
     var isAllFieldsFilled1 = false;
     var isAllFieldsFilled2 = false;
     var isAllFieldsFilled4 = false;
@@ -418,7 +395,6 @@ experience1Tutor.addEventListener("change", function() {
     var isTrueComponentSubject5Tutor = false;
     var componentSubject6TutorVisible = false;
     var isTrueComponentSubject6Tutor = false;
-
     var isTrueComponentExperience1Tutor = false;
     var isTrueComponentNoExperience1Tutor = false;
     var componentExperience2TutorVisible = false;
@@ -431,7 +407,6 @@ experience1Tutor.addEventListener("change", function() {
     var isTrueComponentExperience5Tutor = false;
     var componentExperience6TutorVisible = false;
     var isTrueComponentExperience6Tutor = false;
-
     checkAllFieldsFilled1();
     step2.style.display = 'none';
     step3.style.display = 'none';
@@ -440,52 +415,34 @@ experience1Tutor.addEventListener("change", function() {
     backBtn.style.display = 'none';
     submitBtn.style.display = 'none';
     showStepNumber.textContent = "Schritt 1 von 5";
-
-
     firstNameInput.addEventListener('input', function() {
         showFirstNames.forEach(function(element) {
             element.textContent = firstNameInput.value;
         });
     });
-
-
-
-
     function checkAllFieldsFilled1() {
         var filledFields1 = 0;
         isAllFieldsFilled1 = false;
-
-
         requiredFields1.forEach(function(field) {
             if (field.value && field.checkValidity()) {
                 filledFields1++;
             }
         });
-
         if (filledFields1 === requiredFields1.length) {
             isAllFieldsFilled1 = true;
-
         }
-
   
-
         if (isAllFieldsFilled1) {
             nextBtn.classList.remove('disabled');
         } else {
             nextBtn.classList.add('disabled');
         }
-
-
     }
     requiredFields1.forEach(function(input) {
         input.addEventListener('input', function() {
             checkAllFieldsFilled1();
-
         });
     });
-
-
-
     function observeStyleChanges(element, callback) {
       let observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
@@ -509,12 +466,9 @@ experience1Tutor.addEventListener("change", function() {
     observeStyleChanges(componentExperience4Tutor, checkAllFieldsFilled3);
     observeStyleChanges(componentExperience5Tutor, checkAllFieldsFilled3);
     observeStyleChanges(componentExperience6Tutor, checkAllFieldsFilled3);
-
-
     function checkAllFieldsFilled2() {   
       isAllFieldsFilled2 = false;  
       var filledFields2 = 0;
-
         componentSubject2TutorVisible = false;
         isTrueComponentSubject2Tutor = false;
         componentSubject3TutorVisible = false;
@@ -525,18 +479,14 @@ experience1Tutor.addEventListener("change", function() {
         isTrueComponentSubject5Tutor = false;
         componentSubject6TutorVisible = false;
         isTrueComponentSubject6Tutor = false;
-
-
         requiredFields2.forEach(function(field) {
             if (field.value && field.checkValidity()) {
                 filledFields2++;
             }
         });
-
         if (filledFields2 === requiredFields2.length) {
             isAllFieldsFilled2 = true;
         }
-
         if (getComputedStyle(componentSubject2Tutor).display == "block") {
           componentSubject2TutorVisible = true;
           if (
@@ -547,7 +497,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentSubject2Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentSubject3Tutor).display == "block") {
           componentSubject3TutorVisible = true;
           if (
@@ -558,7 +507,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentSubject3Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentSubject4Tutor).display == "block") {
           componentSubject4TutorVisible = true;
           if (
@@ -569,7 +517,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentSubject4Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentSubject5Tutor).display == "block") {
           componentSubject5TutorVisible = true;
           if (
@@ -580,7 +527,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentSubject5Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentSubject6Tutor).display == "block") {
           componentSubject6TutorVisible = true;
           if (
@@ -591,7 +537,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentSubject6Tutor = true;
           }
         } 
-
         if (isAllFieldsFilled2 && 
           (!componentSubject2TutorVisible || (componentSubject2TutorVisible && isTrueComponentSubject2Tutor)&& 
           (!componentSubject3TutorVisible || (componentSubject3TutorVisible && isTrueComponentSubject3Tutor)&& 
@@ -607,44 +552,35 @@ experience1Tutor.addEventListener("change", function() {
     requiredFields2.forEach(function(input) {
         input.addEventListener('input', function() {
             checkAllFieldsFilled2();
-
         });
     });
-
     [subject2Tutor, classFrom2Tutor, classTo2Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled2();
       });
     });
-
     [subject3Tutor, classFrom3Tutor, classTo3Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled2();
       });
     });
-
     [subject4Tutor, classFrom4Tutor, classTo4Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled2();
       });
     });
-
     [subject5Tutor, classFrom5Tutor, classTo5Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled2();
       });
     });
-
     [subject6Tutor, classFrom6Tutor, classTo6Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled2();
       });
     });
-
    
-
     function checkAllFieldsFilled3() {
-
         isTrueComponentExperience1Tutor = false;
         isTrueComponentNoExperience1Tutor = false;
         componentExperience2TutorVisible = false;
@@ -657,16 +593,11 @@ experience1Tutor.addEventListener("change", function() {
         isTrueComponentExperience5Tutor = false;
         componentExperience6TutorVisible = false;
         isTrueComponentExperience6Tutor = false;
-
-
-
         if (experience1Tutor.selectedIndex === 1) {
-
           if (experience1Tutor.value && experience1Tutor.checkValidity()) {
               isTrueComponentExperience1Tutor = true;
           }
       } else {
-
           if (
               experience1Tutor.value && experience1Tutor.checkValidity() &&
               duration1Tutor.value && duration1Tutor.checkValidity() &&
@@ -677,8 +608,6 @@ experience1Tutor.addEventListener("change", function() {
       }
       
       
-
-
         if (getComputedStyle(componentExperience2Tutor).display == "block") {
           componentExperience2TutorVisible = true;
           if (
@@ -689,7 +618,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentExperience2Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentExperience3Tutor).display == "block") {
           componentExperience3TutorVisible = true;
           if (
@@ -700,7 +628,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentExperience3Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentExperience4Tutor).display == "block") {
           componentExperience4TutorVisible = true;
           if (
@@ -711,7 +638,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentExperience4Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentExperience5Tutor).display == "block") {
           componentExperience5TutorVisible = true;
           if (
@@ -722,7 +648,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentExperience5Tutor = true;
           }
         } 
-
         if (getComputedStyle(componentExperience6Tutor).display == "block") {
           componentExperience6TutorVisible = true;
           if (
@@ -733,8 +658,6 @@ experience1Tutor.addEventListener("change", function() {
             isTrueComponentExperience6Tutor = true;
           }
         } 
-
-
         if ((isTrueComponentExperience1Tutor || isTrueComponentNoExperience1Tutor) &&  
           (!componentExperience2TutorVisible || (componentExperience2TutorVisible && isTrueComponentExperience2Tutor)&&
           (!componentExperience3TutorVisible || (componentExperience3TutorVisible && isTrueComponentExperience3Tutor)&&
@@ -746,188 +669,96 @@ experience1Tutor.addEventListener("change", function() {
             nextBtn.classList.add('disabled');
         }
     }
-
     [experience1Tutor, when1Tutor, duration1Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled3();
       });
     });
-
     [experience2Tutor, when2Tutor, duration2Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled3();
       });
     });
-
     [experience3Tutor, when3Tutor, duration3Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled3();
       });
     });
-
     [experience4Tutor, when4Tutor, duration4Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled3();
       });
     });
-
     [experience5Tutor, when5Tutor, duration5Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled3();
       });
     });
-
     [experience6Tutor, when6Tutor, duration6Tutor].forEach(function(input) {
       input.addEventListener('input', function() {
         checkAllFieldsFilled3();
       });
     });
-
-
     function checkAllFieldsFilled4() {
         isAllFieldsFilled4 = false;
         var filledFields4 = 0;
-
         requiredFields4.forEach(function(field) {
             if (field.value && field.checkValidity()) {
                 filledFields4++;
             }
         });
-
         if (filledFields4 === requiredFields4.length) {
             isAllFieldsFilled4 = true;
-
         }
-
         if (isAllFieldsFilled4) {
             nextBtn.classList.remove('disabled');
         } else {
             nextBtn.classList.add('disabled');
         }
     }
-
     requiredFields4.forEach(function(input) {
         input.addEventListener('input', function() {
             checkAllFieldsFilled4();
-
         });
     });
-
     function checkAllFieldsFilled5() {
       isAllFieldsFilled5 = false;
       var filledFields5 = 0;
-
       requiredFields5.forEach(function(field) {
           if (field.value && field.checkValidity()) {
               filledFields5++;
           }
       });
-
       if (filledFields5 === requiredFields5.length) {
           isAllFieldsFilled5 = true;
-
       }
-
       if (isAllFieldsFilled5) {
           submitBtn.classList.remove('disabled');
       } else {
           submitBtn.classList.add('disabled');
       }
   }
-
   requiredFields5.forEach(function(input) {
       input.addEventListener('input', function() {
           checkAllFieldsFilled5();
-
       });
   });
 
-
-
-//start inputfield validation
-
-
-function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
-  inputElement.setAttribute('pattern', pattern);
-
-  var errorMessageElement = document.createElement('span');
-  errorMessageElement.id = 'error_message';
-  errorMessageElement.style.color = '#9d367a';
-  errorMessageElement.style.display = 'none';
-  errorMessageElement.style.marginTop = '-0.625rem';
-  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-  errorMessageElement.style.fontSize = '0.8rem';
-  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-
-  var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-  var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-
-  
-    nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step4, null).display === "block" && inputValidationZipCodeTutor.value.trim() === '') {
+  nextBtn.addEventListener('click', function() {
+  if (window.getComputedStyle(step4, null).display === "block" && inputValidationFirstNameTutor.value.trim() === '') {
     var errorMessageElement = document.querySelector('#error_message');
-    
+
     errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
     errorMessageElement.style.display = 'block';
-    inputValidationZipCodeTutor.style.borderColor = '#9e367a'; // Set border color to red
-    inputValidationZipCodeTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
+    inputValidationFirstNameTutor.style.borderColor = '#9e367a'; // Set border color to red
+    inputValidationFirstNameTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
     validImage.style.display = 'none';
     inValidImage.style.display = 'block';
-    shakeOnInvalid(inputValidationZipCodeTutor);
+    shakeOnInvalid(inputValidationFirstNameTutor);
   }
 });
 
-  inputElement.addEventListener('change', function() {
-    if (inputElement.value.trim() === '') {
-      errorMessageElement.innerHTML = emptyErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    } else if (inputElement.checkValidity()) {
-      inputElement.style.borderColor = '#589b32';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'block';
-      inValidImage.style.display = 'none';
-      errorMessageElement.style.display = 'none';
-    } else {
-      errorMessageElement.innerHTML = invalidErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    }
-  });
 
-  inputElement.addEventListener('blur', function() {
-    if (inputElement.value.trim() === '') {
-      errorMessageElement.innerHTML = emptyErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    }
-  });
-}
-
-// Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
-applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-//end inputfield validation
-
-
-
-
-
-  
     nextBtn.addEventListener('click', function() {
         if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
             step1.style.display = 'none';
@@ -968,9 +799,7 @@ applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld mu
             showStepNumber.textContent = "Schritt 5 von 5";
             checkAllFieldsFilled5()
         }
-
     });
-
     backBtn.addEventListener('click', function() {
         if (step2.style.display === 'block') {
             step2.style.display = 'none';
@@ -996,11 +825,7 @@ applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld mu
             showStepNumber.textContent = "Schritt 4 von 5";
             checkAllFieldsFilled4();
         }
-
     });
-
-
-
     classFrom1Tutor.addEventListener("change", function() {
       const selectedValue = parseInt(classFrom1Tutor.value);
   
