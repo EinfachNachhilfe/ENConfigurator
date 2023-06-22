@@ -93,22 +93,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //start inputfield validation
+    const step4 = document.getElementById('form-item_personal');
+   const nextBtn = document.getElementById('next-btn');
+
 function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
   inputElement.setAttribute('pattern', pattern);
 
-    nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step4, null).display === "block" && inputValidationZipCodeTutor.value.trim() === '') {
-    var errorMessageElement = document.querySelector('#error_message');
-    
-    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-    errorMessageElement.style.display = 'block';
-    inputValidationZipCodeTutor.style.borderColor = '#9e367a'; // Set border color to red
-    inputValidationZipCodeTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
-    validImage.style.display = 'none';
-    inValidImage.style.display = 'block';
-    shakeOnInvalid(inputValidationZipCodeTutor);
-  }
-});
 
 
   var errorMessageElement = document.createElement('span');
@@ -122,6 +112,21 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
 
    var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
   var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
+  
+    nextBtn.addEventListener('click', function() {
+  if (window.getComputedStyle(step4, null).display === "block" && inputValidationZipCodeTutor.value.trim() === '') {
+    var errorMessageElement = document.querySelector('#error_message');
+    
+    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+    errorMessageElement.style.display = 'block';
+    inputValidationZipCodeTutor.style.borderColor = '#9e367a'; // Set border color to red
+    inputValidationZipCodeTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
+    validImage.style.display = 'none';
+    inValidImage.style.display = 'block';
+    shakeOnInvalid(inputValidationZipCodeTutor);
+  }
+});
 
   inputElement.addEventListener('change', function() {
     if (inputElement.value.trim() === '') {
