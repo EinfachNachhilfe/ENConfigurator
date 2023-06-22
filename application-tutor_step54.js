@@ -87,92 +87,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 //end Validation Phone
 
 
-document.addEventListener("DOMContentLoaded", function() {
 
 
-
-
-//start inputfield validation
-    const step4 = document.getElementById('form-item_personal');
-   const nextBtn = document.getElementById('next-btn');
-
-function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
-  inputElement.setAttribute('pattern', pattern);
-
-
-
-  var errorMessageElement = document.createElement('span');
-  errorMessageElement.id = 'error_message';
-  errorMessageElement.style.color = '#9d367a';
-  errorMessageElement.style.display = 'none';
-  errorMessageElement.style.marginTop = '-0.625rem';
-  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-  errorMessageElement.style.fontSize = '0.8rem';
-  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-
-   var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-  var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-
-  
-    nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step4, null).display === "block" && inputValidationZipCodeTutor.value.trim() === '') {
-    var errorMessageElement = document.querySelector('#error_message');
-    
-    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-    errorMessageElement.style.display = 'block';
-    inputValidationZipCodeTutor.style.borderColor = '#9e367a'; // Set border color to red
-    inputValidationZipCodeTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
-    validImage.style.display = 'none';
-    inValidImage.style.display = 'block';
-    shakeOnInvalid(inputValidationZipCodeTutor);
-  }
-});
-
-  inputElement.addEventListener('change', function() {
-    if (inputElement.value.trim() === '') {
-      errorMessageElement.innerHTML = emptyErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    } else if (inputElement.checkValidity()) {
-      inputElement.style.borderColor = '#589b32';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'block';
-      inValidImage.style.display = 'none';
-      errorMessageElement.style.display = 'none';
-    } else {
-      errorMessageElement.innerHTML = invalidErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    }
-  });
-
-  inputElement.addEventListener('blur', function() {
-    if (inputElement.value.trim() === '') {
-      errorMessageElement.innerHTML = emptyErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    }
-  });
-}
-
-// Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
-applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-//end inputfield validation
 
 
 
@@ -925,6 +841,90 @@ experience1Tutor.addEventListener("change", function() {
 
       });
   });
+
+
+
+//start inputfield validation
+
+
+function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
+  inputElement.setAttribute('pattern', pattern);
+
+  var errorMessageElement = document.createElement('span');
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem';
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  errorMessageElement.style.fontSize = '0.8rem';
+  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+
+  var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
+  
+    nextBtn.addEventListener('click', function() {
+  if (window.getComputedStyle(step4, null).display === "block" && inputValidationZipCodeTutor.value.trim() === '') {
+    var errorMessageElement = document.querySelector('#error_message');
+    
+    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+    errorMessageElement.style.display = 'block';
+    inputValidationZipCodeTutor.style.borderColor = '#9e367a'; // Set border color to red
+    inputValidationZipCodeTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
+    validImage.style.display = 'none';
+    inValidImage.style.display = 'block';
+    shakeOnInvalid(inputValidationZipCodeTutor);
+  }
+});
+
+  inputElement.addEventListener('change', function() {
+    if (inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    } else if (inputElement.checkValidity()) {
+      inputElement.style.borderColor = '#589b32';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'block';
+      inValidImage.style.display = 'none';
+      errorMessageElement.style.display = 'none';
+    } else {
+      errorMessageElement.innerHTML = invalidErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+
+  inputElement.addEventListener('blur', function() {
+    if (inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+}
+
+// Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
+applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+//end inputfield validation
+
+
+
 
 
   
