@@ -1,6 +1,6 @@
 nextBtn.addEventListener('click', function() {
   if (step4.style.display === "block") {
-    validateInput(ValidationInputFieldNumber1);
+  applyValidation1(ValidationInputFieldNumber1);
   }
 });
 
