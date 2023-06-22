@@ -1,10 +1,21 @@
-var validImage = document.querySelector('.form_input-valid-image');
-var inValidImage = document.querySelector('.form_input-invalid-image');
-var inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
-var inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
-var inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
+const validImage = document.querySelector('.form_input-valid-image');
+const inValidImage = document.querySelector('.form_input-invalid-image');
+const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
+const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
+const inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
+const inputValidationEmailTutor = document.getElementById('email_tutor');
 
-
+//start stepchange with enter
+document.addEventListener("keydown", function(event) {
+if (event.key === "Enter") {
+  // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
+  if (!nextBtn.classList.contains('disabled')) {
+    nextBtn.click();
+    event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
+  }
+}
+});
+//end stepchange with enter
 
 //start Validation Phone
 var selectedOption = "";
@@ -77,21 +88,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-//start stepchange with enter
-document.addEventListener("keydown", function(event) {
-if (event.key === "Enter") {
-  // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
-  if (!nextBtn.classList.contains('disabled')) {
-    nextBtn.click();
-    event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
-  }
-}
-});
-
-//end stepchange with enter
 
 
-//start Validation only number
+
+//start inputfield validation
 function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
   inputElement.setAttribute('pattern', pattern);
 
@@ -150,51 +150,12 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
 applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationEmailTutor, '', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+//end inputfield validation
 
 
 
-//end Validation only number
-
-
-//start Validation Mail
-
-var ValidationInputFieldMail1 = document.getElementById('email_tutor');
-
-function applyValidation5(inputElement5) {
-
-
-inputElement5.addEventListener('change', function() {
-if (inputElement5.checkValidity()) {
-// Das Input-Feld enthält gültige Daten
-applyValidBorderStyle(inputElement5);
-} else {
-// Das Input-Feld enthält ungültige Daten
-applyInvalidBorderStyle(inputElement5);
-shakeOnInvalid(inputElement5);
-}
-});
-
-inputElement5.addEventListener('input', function() {
-if (inputElement5.checkValidity()) {
-inputElement5.style.borderColor = '';
-inputElement5.style.borderWidth = '';
-}
-}); 
-}
-
-applyValidation5(ValidationInputFieldMail1);
-
-//end Validation Mail
-
-
-
-//start function input validation
-
-function applyInvalidBorderStyle(input) {
-input.style.borderColor = '#9e367a';
-input.style.borderWidth = '1.5px';
-}
-
+//start function shake
 function shakeOnInvalid(input) {
 var originalPosition = input.getBoundingClientRect().left;
 input.style.transition = 'transform 0.1s ease-in-out';
@@ -203,7 +164,7 @@ setTimeout(function() {
   input.style.transform = '';
 }, 100);
 }
-//end function input validation
+//end function shake
 
 
 
