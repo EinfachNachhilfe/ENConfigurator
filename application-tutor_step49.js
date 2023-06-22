@@ -17,35 +17,6 @@ if (event.key === "Enter") {
 });
 //end stepchange with enter
 
-function emptyInputField(inputElement) {
-  inputElement.addEventListener('change', function() {
-    if (inputElement.value.trim() === '') {
-      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden';
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    }
-  });
-}
-
-function emptyInputFieldStep1NextBtn(inputElement) {
-  nextBtn.addEventListener('click', function() {
-    if (inputElement.value.trim() === '' && step2.style.display === 'block') {
-      emptyInputField(inputElement);
-    }
-  });
-}
-
-// Call your functions
-emptyInputFieldStep1NextBtn(inputValidationFirstNameTutor);
-emptyInputFieldStep1NextBtn(inputValidationSecondNameTutor);
-
-
-
-
 
 //start Validation Phone
 var selectedOption = "";
