@@ -1,3 +1,8 @@
+var validImage = document.querySelector('.form_input-valid-image');
+var inValidImage = document.querySelector('.form_input-invalid-image');
+var inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
+
+
 //start Validation Phone
 var selectedOption = "";
   
@@ -84,13 +89,8 @@ if (event.key === "Enter") {
 
 
 //start Validation only number
-
-var validImage = document.querySelector('.form_input-valid-image');
-var inValidImage = document.querySelector('.form_input-invalid-image');
-var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_tutor"]');
-
-function applyValidation1(inputElement1) {
-  inputElement1.setAttribute('pattern', '\\d+');
+function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
+  inputElement.setAttribute('pattern', pattern);
 
   var errorMessageElement = document.createElement('span');
   errorMessageElement.id = 'error_message';
@@ -99,55 +99,50 @@ function applyValidation1(inputElement1) {
   errorMessageElement.style.marginTop = '-0.625rem';
   errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
   errorMessageElement.style.fontSize = '0.8rem';
-  inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
+  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
-  inputElement1.addEventListener('change', function() {
-    if (inputElement1.value.trim() === '') {
-      // Handle case when input is empty
-      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+  inputElement.addEventListener('change', function() {
+    if (inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
       errorMessageElement.style.display = 'block';
-      inputElement1.style.borderColor = '#9e367a'; // Set border color to red
-      inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement1);
-    } else if (inputElement1.checkValidity()) {
-      // Handle case when input is valid
-      inputElement1.style.borderColor = '#589b32'; // Set border color to green
-      inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      shakeOnInvalid(inputElement);
+    } else if (inputElement.checkValidity()) {
+      inputElement.style.borderColor = '#589b32';
+      inputElement.style.borderWidth = '1.5px';
       validImage.style.display = 'block';
       inValidImage.style.display = 'none';
       errorMessageElement.style.display = 'none';
     } else {
-      // Handle case when input is invalid
-      errorMessageElement.innerHTML = 'Ungültige Eingabe.';
+      errorMessageElement.innerHTML = invalidErrorMsg;
       errorMessageElement.style.display = 'block';
-      inputElement1.style.borderColor = '#9e367a'; // Set border color to red
-      inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement1);
+      shakeOnInvalid(inputElement);
     }
   });
 
-
-  inputElement1.addEventListener('blur', function() {
-    if (inputElement1.value.trim() === '') {
-      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+  inputElement.addEventListener('blur', function() {
+    if (inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
       errorMessageElement.style.display = 'block';
-      inputElement1.style.borderColor = '#9e367a'; // Set border color to red
-      inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement1);
+      shakeOnInvalid(inputElement);
     }
   });
-
-
-  
 }
 
-applyValidation1(ValidationInputFieldNumber1);
+// Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
+applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 
 
 //end Validation only number
@@ -972,21 +967,6 @@ experience1Tutor.addEventListener("change", function() {
 
       });
   });
-
-  nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step4, null).display === "block" && ValidationInputFieldNumber1.value.trim() === '') {
-    var errorMessageElement = document.querySelector('#error_message');
-    
-    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-    errorMessageElement.style.display = 'block';
-    ValidationInputFieldNumber1.style.borderColor = '#9e367a'; // Set border color to red
-    ValidationInputFieldNumber1.style.borderWidth = '1.5px'; // Set border width to 1.5px
-    validImage.style.display = 'none';
-    inValidImage.style.display = 'block';
-    shakeOnInvalid(ValidationInputFieldNumber1);
-  }
-});
-
 
 
     nextBtn.addEventListener('click', function() {
