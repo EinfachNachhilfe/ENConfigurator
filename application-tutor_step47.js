@@ -150,7 +150,7 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
 applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationEmailTutor, '', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 //end inputfield validation
 
 
