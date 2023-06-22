@@ -145,7 +145,7 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
 
 // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
 applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationFirstNameTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
