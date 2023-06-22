@@ -973,6 +973,20 @@ experience1Tutor.addEventListener("change", function() {
       });
   });
 
+  nextBtn.addEventListener('click', function() {
+  if (window.getComputedStyle(step4, null).display === "block" && ValidationInputFieldNumber1.value.trim() === '') {
+    var errorMessageElement = document.querySelector('#error_message');
+    
+    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+    errorMessageElement.style.display = 'block';
+    ValidationInputFieldNumber1.style.borderColor = '#9e367a'; // Set border color to red
+    ValidationInputFieldNumber1.style.borderWidth = '1.5px'; // Set border width to 1.5px
+    validImage.style.display = 'none';
+    inValidImage.style.display = 'block';
+    shakeOnInvalid(ValidationInputFieldNumber1);
+  }
+});
+
 
 
     nextBtn.addEventListener('click', function() {
