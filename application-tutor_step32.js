@@ -83,6 +83,8 @@ if (event.key === "Enter") {
 //end stepchange with enter
 
 
+//start Validation only number
+
 function applyValidation1(inputElement1) {
 inputElement1.setAttribute('pattern', '\\d+');
 
@@ -96,10 +98,20 @@ var errorMessageElement = document.createElement('span');
   errorMessageElement.innerHTML = 'Ungültige Eingabe.';
   inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
 
+  var errorMessageElement1 = document.createElement('span');
+  errorMessageElement1.id = 'error_message1';
+  errorMessageElement1.style.color = '#9d367a';
+  errorMessageElement1.style.display = 'none';
+  errorMessageElement1.style.marginTop = '-0.625rem'; // Adjust this value as needed
+  errorMessageElement1.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
+  errorMessageElement1.style.fontSize = '0.8rem'; // Set the font size
+  errorMessageElement1.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+  inputElement1.parentNode.insertBefore(errorMessageElement1, inputElement1.nextSibling);
+
 inputElement1.addEventListener('change', function() {
   if (inputElement1.value.trim() === '') {
       // Handle case when input is empty
-      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement1.style.display = 'block';
       inputElement1.style.borderColor = '#9e367a'; // Set border color to red
       inputElement1.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
@@ -130,7 +142,6 @@ inputElement1.addEventListener('change', function() {
 applyValidation1(ValidationInputFieldNumber1);
 
 //end Validation only number
-
 
 
 
