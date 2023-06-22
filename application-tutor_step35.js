@@ -1,3 +1,11 @@
+nextButton.addEventListener('click', function() {
+  if (step4.style.display === "block") {
+    validateInput(ValidationInputFieldNumber1);
+  }
+});
+
+
+
 //start Validation Phone
 var selectedOption = "";
   
