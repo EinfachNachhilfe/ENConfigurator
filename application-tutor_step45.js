@@ -104,6 +104,9 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
   errorMessageElement.style.fontSize = '0.8rem';
   inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
+   var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
   inputElement.addEventListener('change', function() {
     if (inputElement.value.trim() === '') {
       errorMessageElement.innerHTML = emptyErrorMsg;
