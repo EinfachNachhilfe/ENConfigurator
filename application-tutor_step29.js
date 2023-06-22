@@ -101,7 +101,7 @@ var errorMessageElement = document.createElement('span');
   errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
   errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
   errorMessageElement.innerHTML = 'Ungültige Eingabe.';
-  inputElement1.parentNode.insertBefore(errorMessageElement, inputElement1.nextSibling);
+inputElement1.parentNode.appendChild(errorMessageElement);
 
 inputElement1.addEventListener('change', function() {
   if (inputElement1.checkValidity()) {
