@@ -1,4 +1,4 @@
-nextButton.addEventListener('click', function() {
+nextBtn.addEventListener('click', function() {
   if (step4.style.display === "block") {
     validateInput(ValidationInputFieldNumber1);
   }
