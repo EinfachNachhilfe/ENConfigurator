@@ -783,6 +783,8 @@ function validateOnButtonClick(inputElement, step, isRadio = false) {
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
       shakeOnInvalid(inputElement);
+    } else if (errorMessageElement) {
+      errorMessageElement.style.display = 'none'; // Hide the error message if input is valid
     }
   });
 }
@@ -791,7 +793,8 @@ function validateOnButtonClick(inputElement, step, isRadio = false) {
 validateOnButtonClick(inputValidationFirstNameTutor, step1);
 validateOnButtonClick(inputValidationSecondNameTutor, step1);
 // Radio-Button-Gruppe validieren:
-validateOnButtonClick(inputValidationGenderTutor, step1, true);
+validateOnButtonClick(document.getElementsByName("gender_tutor")[0], step1, true);
+
 
     
     
