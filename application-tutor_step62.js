@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
 //start inputfield validation
 function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
-const validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-const inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
 const errorMessageElement = document.createElement('span');
   inputElement.setAttribute('pattern', pattern);
   errorMessageElement.id = 'error_message';
@@ -752,19 +752,27 @@ experience1Tutor.addEventListener("change", function() {
       });
   });
 
+function validateOnButtonClick(inputElement, step) {
   nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step1, null).display === "block" && inputValidationFirstNameTutor.value.trim() === '') {
-    var errorMessageElement = document.querySelector('#error_message');
+    if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+      const errorMessageElement = document.querySelector('#error_message');
+      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
 
-    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-    errorMessageElement.style.display = 'block';
-    inputValidationFirstNameTutor.style.borderColor = '#9e367a'; // Set border color to red
-    inputValidationFirstNameTutor.style.borderWidth = '1.5px'; // Set border width to 1.5px
-    validImage.style.display = 'none';
-    inValidImage.style.display = 'block';
-    shakeOnInvalid(inputValidationFirstNameTutor);
-  }
-});
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement.style.display = 'block';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+}
+
+// Anwenden der Funktion auf mehrere Eingabefelder:
+validateOnButtonClick(inputValidationFirstNameTutor, step1);
+validateOnButtonClick(inputValidationSecondNameTutor, step1);
+
+
 
 
     nextBtn.addEventListener('click', function() {
