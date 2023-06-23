@@ -794,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // Anwenden der Funktion auf mehrere Eingabefelder:
-    validateOnButtonClick(inputValidationFirstNameTutor, step1);
+    validateOnButtonClick(inputValidationGenderTutor, step1);
     
     
     
