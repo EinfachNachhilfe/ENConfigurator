@@ -1,9 +1,14 @@
+document.addEventListener("DOMContentLoaded", function() {
+
 const validImage = document.querySelector('.form_input-valid-image');
 const inValidImage = document.querySelector('.form_input-invalid-image');
 const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
 const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
 const inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
 const inputValidationEmailTutor = document.getElementById('email_tutor');  
+const validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+const inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+const errorMessageElement = document.createElement('span');
 
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
@@ -79,10 +84,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 //start inputfield validation
 function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
   inputElement.setAttribute('pattern', pattern);
-  const validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-  const inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-  const errorMessageElement = document.createElement('span');
-  
   errorMessageElement.id = 'error_message';
   errorMessageElement.style.color = '#9d367a';
   errorMessageElement.style.display = 'none';
