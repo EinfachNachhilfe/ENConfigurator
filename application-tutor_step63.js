@@ -761,6 +761,8 @@ function validateOnButtonClick(inputElement, step) {
 
       errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
       errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a'; // Set border color to red
+      inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
       shakeOnInvalid(inputElement);
