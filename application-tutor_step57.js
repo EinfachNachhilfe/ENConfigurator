@@ -3,7 +3,10 @@ const inValidImage = document.querySelector('.form_input-invalid-image');
 const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
 const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
 const inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
-const inputValidationEmailTutor = document.getElementById('email_tutor');
+const inputValidationEmailTutor = document.getElementById('email_tutor');  
+const validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+const inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
 if (event.key === "Enter") {
@@ -72,7 +75,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 }
     applyValidation4(ValidationInputFieldPhone1);
 //end Validation Phone
-document.addEventListener("DOMContentLoaded", function() {
+
+
+  
 //start inputfield validation
 function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
   inputElement.setAttribute('pattern', pattern);
@@ -84,8 +89,9 @@ function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) 
   errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
   errorMessageElement.style.fontSize = '0.8rem';
   inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-   var validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-  var inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
+
+  
   inputElement.addEventListener('change', function() {
     if (inputElement.value.trim() === '') {
       errorMessageElement.innerHTML = emptyErrorMsg;
