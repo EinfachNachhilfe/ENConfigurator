@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-const validImage = document.querySelector('.form_input-valid-image');
-const inValidImage = document.querySelector('.form_input-invalid-image');
+
 const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
 const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
 const inputValidationSecondNameTutor = document.querySelector('input[name="second-name_tutor"]');
