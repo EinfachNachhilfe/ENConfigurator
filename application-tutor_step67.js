@@ -775,26 +775,32 @@ document.addEventListener("DOMContentLoaded", function() {
     validateOnButtonClick(inputValidationSecondNameTutor, step1);
     
     
-    function validateOnButtonClick(inputElement, step) {
-      nextBtn.addEventListener('click', function() {
-        if (window.getComputedStyle(step, null).display === "block" && !inputElement.checkValidity()) {
-          let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-          let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-          let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-    
-          errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-          errorMessageElement.style.display = 'block';
-          inputElement.style.borderColor = '#9e367a'; // Set border color to red
-          inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-          validImage.style.display = 'none';
-          inValidImage.style.display = 'block';
-          shakeOnInvalid(inputElement);
-        }
+function validateOnButtonClick(inputName, step) {
+  nextBtn.addEventListener('click', function() {
+    let radioButtons = document.getElementsByName(inputName);
+    let isChecked = Array.prototype.slice.call(radioButtons).some(x => x.checked);
+
+    if (window.getComputedStyle(step, null).display === "block" && !isChecked) {
+      let errorMessageElement = radioButtons[0].parentNode.querySelector('#error_message');
+      let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
+
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement.style.display = 'block';
+      radioButtons.forEach(rb => {
+        rb.style.borderColor = '#9e367a'; // Set border color to red
+        rb.style.borderWidth = '1.5px'; // Set border width to 1.5px
       });
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(radioButtons[0]); // shake first radio button or all, if you like
     }
-    
-    // Anwenden der Funktion auf mehrere Eingabefelder:
-    validateOnButtonClick(inputValidationGenderTutor, step1);
+  });
+}
+
+// Anwenden der Funktion auf mehrere Eingabefelder:
+validateOnButtonClick('inputValidationGenderTutor', step1);
+
     
     
     
