@@ -752,27 +752,47 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
     
-    function validateOnButtonClick(inputElement, step) {
-      nextBtn.addEventListener('click', function() {
-        if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-          let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-          let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-          let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-    
-          errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-          errorMessageElement.style.display = 'block';
-          inputElement.style.borderColor = '#9e367a'; // Set border color to red
-          inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-          validImage.style.display = 'none';
-          inValidImage.style.display = 'block';
-          shakeOnInvalid(inputElement);
-        }
-      });
+function isRadioGroupChecked(radioGroupName) {
+  let radioGroup = document.getElementsByName(radioGroupName);
+  for (let i = 0; i < radioGroup.length; i++) {
+    if (radioGroup[i].checked) {
+      return true;
     }
-    
-    // Anwenden der Funktion auf mehrere Eingabefelder:
-    validateOnButtonClick(inputValidationFirstNameTutor, step1);
-    validateOnButtonClick(inputValidationSecondNameTutor, step1);
+  }
+  return false;
+}
+
+function validateOnButtonClick(inputElement, step, isRadio = false) {
+  nextBtn.addEventListener('click', function() {
+    let isValid;
+    if (isRadio) {
+      isValid = isRadioGroupChecked(inputElement.name);
+    } else {
+      isValid = inputElement.value.trim() !== '';
+    }
+
+    if (window.getComputedStyle(step, null).display === "block" && !isValid) {
+      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a'; // Set border color to red
+      inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+}
+
+// Anwenden der Funktion auf mehrere Eingabefelder:
+validateOnButtonClick(inputValidationFirstNameTutor, step1);
+validateOnButtonClick(inputValidationSecondNameTutor, step1);
+// Radio-Button-Gruppe validieren:
+validateOnButtonClick(inputValidationGenderTutor, step1, true);
+
     
     
 
