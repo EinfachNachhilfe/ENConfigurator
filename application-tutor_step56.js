@@ -745,7 +745,7 @@ experience1Tutor.addEventListener("change", function() {
   });
 
   nextBtn.addEventListener('click', function() {
-  if (window.getComputedStyle(step4, null).display === "block" && inputValidationFirstNameTutor.value.trim() === '') {
+  if (window.getComputedStyle(step1, null).display === "block" && inputValidationFirstNameTutor.value.trim() === '') {
     var errorMessageElement = document.querySelector('#error_message');
 
     errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
