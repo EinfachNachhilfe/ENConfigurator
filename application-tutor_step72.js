@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationEmailTutor = document.getElementById('email_tutor');
   const inputValidationStreetNameTutor = document.getElementById('street-name_tutor'); 
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
-  const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
   const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
   const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
   const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
