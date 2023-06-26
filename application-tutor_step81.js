@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
   const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
   const test123radio = document.getElementById('test123');
-  const isAnyGenderRadioSelected1 = false;
+
   
   
   //start stepchange with enter
@@ -792,7 +792,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function validateOnButtonClickradio(inputElement, step) {
     nextBtn.addEventListener('click', function() {
-
+        let isAnyGenderRadioSelected1 = false;
+      
         inputElement.forEach(function(radio) {
             if (window.getComputedStyle(step, null).display === "block" && radio.checked) {
                 isAnyGenderRadioSelected1 = true;
