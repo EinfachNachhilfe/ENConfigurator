@@ -810,7 +810,7 @@ function validateRadioOnButtonClick(radioName, step) {
       let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
       let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
       
-      radioButtons[0].parentNode.insertBefore(errorMessageElement, radioButtons[0].nextSibling);
+     radioButtons[0].parentNode.appendChild(errorMessageElement);
       
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
