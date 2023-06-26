@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
+  const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
 
   
   
@@ -787,7 +788,37 @@ document.addEventListener("DOMContentLoaded", function() {
   // Anwenden der Funktion auf mehrere Eingabefelder:
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
-  
+
+
+  function validateOnButtonClick(inputElement, step) {
+  nextBtn.addEventListener('click', function() {
+    if (window.getComputedStyle(step, null).display === "block") {
+      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+      
+      // Überprüfen, ob mindestens eine Option ausgewählt ist
+      let options = inputElement.querySelectorAll('input[type="radio"]');
+      let isChecked = Array.from(options).some(option => option.checked);
+      
+      if (!isChecked) {
+        errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
+        errorMessageElement.style.display = 'block';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+      } else {
+        errorMessageElement.style.display = 'none';
+        validImage.style.display = 'block';
+        inValidImage.style.display = 'none';
+      }
+    }
+  });
+}
+
+// Anwenden der Funktion auf eine Radiobox
+validateOnButtonClick(inputValidationGenderTutor, step1);
+
   
 
   
