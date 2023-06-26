@@ -796,8 +796,13 @@ document.addEventListener("DOMContentLoaded", function() {
   nextBtn.addEventListener('click', function() {
     if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === -1) {
       let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
-
-
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.display = 'none';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      selectElement.parentNode.insertBefore(errorMessageElement, selectElement.nextSibling);
       errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
       errorMessageElement.style.display = 'block';
       selectElement.style.borderColor = '#9e367a'; // Set border color to red
@@ -834,14 +839,7 @@ function validateRadioOnButtonClick(radioName, step) {
       errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
       errorMessageElement.style.fontSize = '0.8rem';
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
-
-      let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
-      
       errorMessageContainer.appendChild(errorMessageElement);
-      
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
     }
   });
 
