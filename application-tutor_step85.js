@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
   const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
-  const test123radio = document.getElementById('test123');
+
 
   
   
@@ -790,33 +790,29 @@ document.addEventListener("DOMContentLoaded", function() {
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
 
-function validateOnButtonClickradio(inputElement, step) {
-    nextBtn.addEventListener('click', function() {
-        let isAnyGenderRadioSelected1 = false;
-      
-        inputElement.forEach(function(radio) {
-            if (radio.checked) {
-                isAnyGenderRadioSelected1 = true;
-            }
-        });
+function validateRadioOnButtonClick(radioName, step) {
+  nextBtn.addEventListener('click', function() {
+    // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
+    let radioButtons = Array.from(document.getElementsByName(radioName));
 
-        if (!isAnyGenderRadioSelected1) {
-            test123radio.style.display = 'block';
-        } else {
-            test123radio.style.display = 'none';
-        }
-    });
+    // Wir überprüfen, ob einer von ihnen ausgewählt ist
+    let isSelected = radioButtons.some(button => button.checked);
 
-    // Event Listener für Änderungen an den Radiobuttons hinzufügen
-    inputElement.forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            // Wenn eine Änderung vorgenommen wird, das test123radio Element ausblenden
-            test123radio.style.display = 'none';
-        });
-    });
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected) {
+      let errorMessageElement = radioButtons[0].parentNode.querySelector('#error_message');
+      let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
+
+      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
+      errorMessageElement.style.display = 'block';
+
+    }
+  });
 }
 
-  validateOnButtonClickradio(inputValidationGenderTutor, step1);
+validateRadioOnButtonClick(inputValidationGenderTutor, step1);
+
+  
   
       nextBtn.addEventListener('click', function() {
           if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
