@@ -792,7 +792,7 @@ document.addEventListener("DOMContentLoaded", function() {
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
 
-  function validateSelectOnButtonClick(selectElement, step) {
+  function validateSelectOnSelectElement(selectElement, step) {
   nextBtn.addEventListener('click', function() {
     if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === -1) {
       let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
@@ -813,8 +813,7 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 // Anwenden der Funktion auf das select-Feld:
-const inputValidationClassSelect = document.querySelector('select[name="class_select"]');
-validateSelectOnButtonClick(inputValidationClassSelect, step2);
+validateSelectOnSelectElement(inputValidationSubject1Tutor, step2);
 
 
 
