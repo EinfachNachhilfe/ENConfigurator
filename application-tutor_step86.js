@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
-  const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
+
 
 
   
@@ -800,17 +800,15 @@ function validateRadioOnButtonClick(radioName, step) {
 
     if (window.getComputedStyle(step, null).display === "block" && !isSelected) {
       let errorMessageElement = radioButtons[0].parentNode.querySelector('#error_message');
-      let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
 
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
       errorMessageElement.style.display = 'block';
-
     }
   });
 }
 
-validateRadioOnButtonClick(inputValidationGenderTutor, step1);
+const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
+validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
 
   
   
