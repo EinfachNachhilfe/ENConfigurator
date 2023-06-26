@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
-  const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
+
 
   
   
@@ -767,17 +767,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
   
-function validateOnButtonClick(inputElement, step) {
-  nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-
-      if (window.getComputedStyle(step, null).display === "block" && (inputElement.type === 'radio' && !inputElement.checkValidity())) {
-        errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
-        errorMessageElement.style.display = 'block';
-      } else if (inputElement.value.trim() === '') {
+  function validateOnButtonClick(inputElement, step) {
+    nextBtn.addEventListener('click', function() {
+      if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+        let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+        let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+        let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  
         errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
         errorMessageElement.style.display = 'block';
         inputElement.style.borderColor = '#9e367a'; // Set border color to red
@@ -786,14 +782,12 @@ function validateOnButtonClick(inputElement, step) {
         inValidImage.style.display = 'block';
         shakeOnInvalid(inputElement);
       }
-    }
-  });
-}
-
-// Anwenden der Funktion auf mehrere Eingabefelder:
-validateOnButtonClick(inputValidationFirstNameTutor, step1);
-validateOnButtonClick(inputValidationSecondNameTutor, step1);
-validateOnButtonClick(inputValidationGenderTutor, step1);
+    });
+  }
+  
+  // Anwenden der Funktion auf mehrere Eingabefelder:
+  validateOnButtonClick(inputValidationFirstNameTutor, step1);
+  validateOnButtonClick(inputValidationSecondNameTutor, step1);
 
 
   
