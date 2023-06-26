@@ -792,24 +792,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function validateOnButtonClick(inputElement, step) {
   nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && !inputElement.checkValidity()) {
+    if (window.getComputedStyle(step, null).display === "block") {
       let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
       let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
       let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-  
-      errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a'; // Set border color to red
-      inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
+      
+      // Überprüfen, ob mindestens eine Option ausgewählt ist
+      let isChecked = Array.from(inputElement.querySelectorAll('input[type="radio"]')).some(option => option.checked);
+      
+      if (!isChecked) {
+        errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
+        errorMessageElement.style.display = 'block';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+      } else {
+        errorMessageElement.style.display = 'none';
+        validImage.style.display = 'block';
+        inValidImage.style.display = 'none';
+      }
     }
   });
 }
 
 // Anwenden der Funktion auf eine Radiobox
 validateOnButtonClick(inputValidationGenderTutor, step1);
+
 
 
   
