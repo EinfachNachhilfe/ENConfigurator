@@ -810,6 +810,12 @@ document.addEventListener("DOMContentLoaded", function() {
 }
   validateOnButtonClickradio(inputValidationGenderTutor, step1);
 
+    inputValidationGenderTutor.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      isAnyGenderRadioSelected1 = false;
+      validateOnButtonClickradio();
+    });
+  });
 
   
   
