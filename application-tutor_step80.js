@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
   const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
-
+  const test123radio = document.getElementById('test123');
   const isAnyGenderRadioSelected1 = false;
   
   
@@ -800,10 +800,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         if (!isAnyGenderRadioSelected1) {
-            errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
-            errorMessageElement.style.display = 'block';
+
+            test123radio.style.display = 'block';
         } else {
-            errorMessageElement.style.display = 'none';
+            test123radio.style.display = 'none';
         }
     });
 }
