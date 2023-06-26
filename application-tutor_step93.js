@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
-
+  const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
+  const inputValidationclassFrom1Tutor = document.getElementById('class-from-1_tutor');
+  const inputValidationclassTo1Tutor = document.getElementById('class-to-1_tutor');
 
 
   
@@ -789,6 +791,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // Anwenden der Funktion auf mehrere Eingabefelder:
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
+  validateOnButtonClick(inputValidationclassTo1Tutor, step2);
+  validateOnButtonClick(inputValidationclassFrom1Tutor, step2);
+  validateOnButtonClick(inputValidationSubject1Tutor, step2);
+
+  
 
 function validateRadioOnButtonClick(radioName, step) {
   nextBtn.addEventListener('click', function() {
