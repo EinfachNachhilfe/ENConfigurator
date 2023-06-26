@@ -767,13 +767,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
   
-  function validateOnButtonClick(inputElement, step) {
-    nextBtn.addEventListener('click', function() {
-      if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-        let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-        let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-        let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-  
+function validateOnButtonClick(inputElement, step) {
+  nextBtn.addEventListener('click', function() {
+    if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
+      if (window.getComputedStyle(step, null).display === "block" && (inputElement.type === 'radio' && !inputElement.checkValidity())) {
+        errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
+        errorMessageElement.style.display = 'block';
+      } else if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
         errorMessageElement.style.display = 'block';
         inputElement.style.borderColor = '#9e367a'; // Set border color to red
@@ -782,45 +786,16 @@ document.addEventListener("DOMContentLoaded", function() {
         inValidImage.style.display = 'block';
         shakeOnInvalid(inputElement);
       }
-    });
-  }
-  
-  // Anwenden der Funktion auf mehrere Eingabefelder:
-  validateOnButtonClick(inputValidationFirstNameTutor, step1);
-  validateOnButtonClick(inputValidationSecondNameTutor, step1);
-
-
-function validateOnButtonClick(inputElement, step) {
-  nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && inputElement.checked) {
-      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-      
-      if (!isChecked) {
-        errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
-        errorMessageElement.style.display = 'block';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(inputElement);
-      } else {
-        errorMessageElement.style.display = 'none';
-        validImage.style.display = 'block';
-        inValidImage.style.display = 'none';
-      }
     }
   });
 }
 
-// Anwenden der Funktion auf eine Radiobox
+// Anwenden der Funktion auf mehrere Eingabefelder:
+validateOnButtonClick(inputValidationFirstNameTutor, step1);
+validateOnButtonClick(inputValidationSecondNameTutor, step1);
 validateOnButtonClick(inputValidationGenderTutor, step1);
 
 
-
-  
-
-  
-  
   
   
       nextBtn.addEventListener('click', function() {
