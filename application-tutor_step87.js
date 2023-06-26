@@ -799,10 +799,21 @@ function validateRadioOnButtonClick(radioName, step) {
     let isSelected = radioButtons.some(button => button.checked);
 
     if (window.getComputedStyle(step, null).display === "block" && !isSelected) {
-      let errorMessageElement = radioButtons[0].parentNode.querySelector('#error_message');
-
+      let errorMessageElement = document.createElement('span');
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
-      errorMessageElement.style.display = 'block';
+
+      let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
+      
+      radioButtons[0].parentNode.insertBefore(errorMessageElement, radioButtons[0].nextSibling);
+      
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
     }
   });
 }
