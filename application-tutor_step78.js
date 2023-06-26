@@ -13,8 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
+  const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
 
-
+  const isAnyGenderRadioSelected1 = false;
   
   
   //start stepchange with enter
