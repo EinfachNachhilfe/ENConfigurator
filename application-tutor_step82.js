@@ -795,7 +795,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let isAnyGenderRadioSelected1 = false;
       
         inputElement.forEach(function(radio) {
-            if (window.getComputedStyle(step, null).display === "block" && radio.checked) {
+            if (radio.checked) {
                 isAnyGenderRadioSelected1 = true;
             }
         });
