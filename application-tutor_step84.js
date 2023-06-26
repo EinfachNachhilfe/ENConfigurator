@@ -790,7 +790,7 @@ document.addEventListener("DOMContentLoaded", function() {
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
 
-  function validateOnButtonClickradio(inputElement, step) {
+function validateOnButtonClickradio(inputElement, step) {
     nextBtn.addEventListener('click', function() {
         let isAnyGenderRadioSelected1 = false;
       
@@ -801,23 +801,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         if (!isAnyGenderRadioSelected1) {
-
             test123radio.style.display = 'block';
         } else {
             test123radio.style.display = 'none';
         }
     });
-}
-  validateOnButtonClickradio(inputValidationGenderTutor, step1);
 
-    inputValidationGenderTutor.forEach(function(radio) {
-    radio.addEventListener('change', function() {
-      isAnyGenderRadioSelected1 = false;
-      validateOnButtonClickradio();
+    // Event Listener für Änderungen an den Radiobuttons hinzufügen
+    inputElement.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            // Wenn eine Änderung vorgenommen wird, das test123radio Element ausblenden
+            test123radio.style.display = 'none';
+        });
     });
-  });
+}
 
-  
+  validateOnButtonClickradio(inputValidationGenderTutor, step1);
   
       nextBtn.addEventListener('click', function() {
           if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
