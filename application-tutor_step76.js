@@ -792,13 +792,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function validateOnButtonClick(inputElement, step) {
   nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block") {
+    if (window.getComputedStyle(step, null).display === "block" && inputElement.checked) {
       let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
       let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
       let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-      
-      // Überprüfen, ob mindestens eine Option ausgewählt ist
-      let isChecked = Array.from(inputElement.querySelectorAll('input[type="radio"]')).some(option => option.checked);
       
       if (!isChecked) {
         errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
