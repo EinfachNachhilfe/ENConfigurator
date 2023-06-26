@@ -790,6 +790,25 @@ document.addEventListener("DOMContentLoaded", function() {
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
 
+  function validateOnButtonClickradio(inputElement, step) {
+    nextBtn.addEventListener('click', function() {
+
+        inputElement.forEach(function(radio) {
+            if (window.getComputedStyle(step, null).display === "block" && radio.checked) {
+                isAnyGenderRadioSelected1 = true;
+            }
+        });
+
+        if (!isAnyGenderRadioSelected1) {
+            errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
+            errorMessageElement.style.display = 'block';
+        } else {
+            errorMessageElement.style.display = 'none';
+        }
+    });
+}
+  validateOnButtonClickradio(inputValidationGenderTutor, step1);
+
 
   
   
