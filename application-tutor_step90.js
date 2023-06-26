@@ -798,7 +798,10 @@ function validateRadioOnButtonClick(radioName, step) {
     // Wir überprüfen, ob einer von ihnen ausgewählt ist
     let isSelected = radioButtons.some(button => button.checked);
 
-    if (window.getComputedStyle(step, null).display === "block" && !isSelected) {
+    let errorMessageContainer = radioButtons[0].parentNode;
+    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
       let errorMessageElement = document.createElement('span');
       errorMessageElement.id = 'error_message';
       errorMessageElement.style.color = '#9d367a';
@@ -810,18 +813,26 @@ function validateRadioOnButtonClick(radioName, step) {
       let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
       let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
       
-      let errorMessageContainer = document.querySelector('#error_message_container');
       errorMessageContainer.appendChild(errorMessageElement);
       
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
     }
   });
+
+  // Add event listeners to each radio button
+  Array.from(document.getElementsByName(radioName)).forEach(button => {
+    button.addEventListener('change', () => {
+      let errorMessage = document.querySelector('#error_message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    });
+  });
 }
 
 const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
 validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
-
   
   
       nextBtn.addEventListener('click', function() {
