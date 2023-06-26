@@ -810,13 +810,9 @@ function validateRadioOnButtonClick(radioName, step) {
       errorMessageElement.style.fontSize = '0.8rem';
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
 
-      let validImage = radioButtons[0].parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = radioButtons[0].parentNode.querySelector('.form_input-invalid-image');
       
+      let errorMessageContainer = document.querySelector('#error_message_container');
       errorMessageContainer.appendChild(errorMessageElement);
-      
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
     }
   });
 
