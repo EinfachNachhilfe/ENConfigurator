@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
   applyValidation(inputValidationCourseOfStudyTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationSemesterTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\+\\d{5,}$'
