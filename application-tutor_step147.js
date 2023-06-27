@@ -90,8 +90,8 @@ document.addEventListener("DOMContentLoaded", function() {
       inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
     
-    if (inputElement === inputValidationPhoneNumberTutor) {
-      targetElement = inputElement.parentNode.getElementById('error_message_container'); 
+   if (inputElement === inputValidationPhoneNumberTutor) {
+      targetElement = document.getElementById('error_message_container');
     } else {
       targetElement = inputElement.nextSibling;
     }
