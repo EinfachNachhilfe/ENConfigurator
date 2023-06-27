@@ -793,6 +793,36 @@ document.addEventListener("DOMContentLoaded", function() {
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
 
 
+function validateSelectOnButtonClick(selectElement, step) {
+  nextBtn.addEventListener('click', function() {
+    let isSelected = selectElement.selectedIndex !== -1; // Check if an option is selected
+
+    let errorMessageContainer = document.querySelector('#error_message_container');
+    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
+      let errorMessageElement = document.createElement('span');
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
+      errorMessageContainer.appendChild(errorMessageElement);
+    }
+  });
+
+  // Add event listener to the select element
+  selectElement.addEventListener('change', () => {
+    let errorMessage = document.querySelector('#error_message');
+    if (errorMessage) {
+      errorMessage.style.display = 'none';
+    }
+  });
+}
+
+// Anwenden der Funktion auf ein <select> Element:
+validateSelectOnButtonClick(inputValidationSubject1Tutor, step2);
 
 
 
