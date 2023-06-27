@@ -800,14 +800,19 @@ function validateSelectOnButtonClick(selectElement, step) {
       let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
       let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
       let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
-
+      let errorMessageElement = document.createElement('span');
+      
       errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
       errorMessageElement.style.display = 'block';
       selectElement.style.borderColor = '#9e367a'; // Set border color to red
       selectElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(selectElement);
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
+      selectElement.appendChild(errorMessageElement);
     }
   });
 }
