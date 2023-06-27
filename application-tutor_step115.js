@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
   const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
-  const inputValidationEmailTutor = document.getElementById('second-name_tutor');
+  const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
   const inputValidationEmailTutor = document.getElementById('email_tutor');
   const inputValidationStreetNameTutor = document.getElementById('street-name_tutor'); 
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
