@@ -794,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function validateOnButtonClick(inputElement, step) {
+function validateselectOnButtonClick(inputElement, step) {
   nextBtn.addEventListener('click', function() {
     if (window.getComputedStyle(step, null).display === "block" && (!inputElement.checkValidity())) {
       let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
@@ -813,7 +813,7 @@ function validateOnButtonClick(inputElement, step) {
 }
 
 // Anwenden der Funktion auf ein <select> Element:
-validateOnButtonClick(inputValidationSubject1Tutor, step2);
+validateselectOnButtonClick(inputValidationSubject1Tutor, step2);
 
 
 
