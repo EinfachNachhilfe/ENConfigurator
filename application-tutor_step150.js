@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
     let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
     const errorMessageElement = document.createElement('span');        
-    let targetElement;
 
     if (pattern !== null) {
       inputElement.setAttribute('pattern', pattern);
@@ -90,14 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
       inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
     
-   if (inputElement === inputValidationPhoneNumberTutor) {
-      targetElement = document.querySelector('#error_message_container-phone');
-    } else {
-      targetElement = inputElement.nextSibling;
-    }
-        
-console.log(targetElement); // Zeigt das targetElement in der Konsole an
-    inputElement.parentNode.insertBefore(errorMessageElement, targetElement);
 
       inputElement.addEventListener("change", function() {
         if (inputElement.value.trim() === '') {
