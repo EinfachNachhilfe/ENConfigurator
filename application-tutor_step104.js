@@ -796,7 +796,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function validateOnButtonClick(inputElement, step) {
   nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && (!inputElement.value || !inputElement.checkValidity())) {
+    if (window.getComputedStyle(step, null).display === "block" && (!inputElement.checkValidity())) {
       let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
       let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
       let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
@@ -814,7 +814,6 @@ function validateOnButtonClick(inputElement, step) {
 
 // Anwenden der Funktion auf ein <select> Element:
 validateOnButtonClick(inputValidationSubject1Tutor, step2);
-
 
 
 
