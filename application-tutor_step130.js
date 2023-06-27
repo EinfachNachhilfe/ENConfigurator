@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 
-  const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
+
   const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
   const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
   
