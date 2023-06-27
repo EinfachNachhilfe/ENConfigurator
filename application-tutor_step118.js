@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
   const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
   const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
+  const inputValidationSecondNameTutor2 = document.getElementById('second-name_tutor-2');
+  
   const inputValidationEmailTutor = document.getElementById('email_tutor');
   const inputValidationStreetNameTutor = document.getElementById('street-name_tutor'); 
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
@@ -149,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function() {
   applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationStreetNameTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
 
@@ -790,13 +791,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Anwenden der Funktion auf mehrere Eingabefelder:
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
-  validateOnButtonClick(inputValidationStreetNameTutor, step1);
-  validateOnButtonClick(inputValidationHouseNumberTutor, step4);
-  validateOnButtonClick(inputValidationCityNameTutor, step4);
-  validateOnButtonClick(inputValidationInstitutionTutor, step4);
-  validateOnButtonClick(inputValidationCourseOfStudyTutor, step4);
-  validateOnButtonClick(inputValidationMobilityTutor, step4);
-  validateOnButtonClick(inputValidationAvailabilityTutor, step4);
+  validateOnButtonClick(inputValidationSecondNameTutor2, step1);
+   
 
 
 function validateRadioOnButtonClick(radioName, step) {
