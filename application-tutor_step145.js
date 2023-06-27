@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
       inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
     
     
-      ['change', 'input', 'blur'].forEach(event => {
-      inputElement.addEventListener(event, function() {
+
+      inputElement.addEventListener("change", function() {
         if (inputElement.value.trim() === '') {
           errorMessageElement.innerHTML = emptyErrorMsg;
           errorMessageElement.style.display = 'block';
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
           shakeOnInvalid(inputElement);
         }
       });
-     });
+
     }
     // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
   applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
