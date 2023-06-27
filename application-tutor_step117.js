@@ -149,8 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
   applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-
-
+  applyValidation(inputValidationStreetNameTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
 
