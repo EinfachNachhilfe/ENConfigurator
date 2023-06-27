@@ -4,8 +4,18 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
   const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
   const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
+  
+
+  const inputValidationStreetNameTutor = document.getElementById('street-name_tutor'); 
+  const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
+  const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
+  const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
   const inputValidationEmailTutor = document.getElementById('email_tutor');
- 
+  const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
+  const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
+  const inputValidationSemesterTutor = document.getElementById('semester_tutor');
+  const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
+  const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
 
 
   
@@ -82,11 +92,14 @@ document.addEventListener("DOMContentLoaded", function() {
   
     
   //start inputfield validation
-  function applyValidation(inputElement, pattern, emptyErrorMsg, invalidErrorMsg) {
+  function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   const errorMessageElement = document.createElement('span');
+    
+  if (pattern !== null) {
     inputElement.setAttribute('pattern', pattern);
+  }
     errorMessageElement.id = 'error_message';
     errorMessageElement.style.color = '#9d367a';
     errorMessageElement.style.display = 'none';
@@ -135,14 +148,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
   // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
-  applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationZipCodeTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+applyValidation(inputValidationEmailTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
 
-
+applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     
   //end inputfield validation
+
+  
   //start function shake
   function shakeOnInvalid(input) {
   var originalPosition = input.getBoundingClientRect().left;
@@ -153,6 +168,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 100);
   }
   //end function shake
+
+  
   const componentSubject2Tutor = document.getElementById("component-subject-2_tutor");
   const componentSubject3Tutor = document.getElementById("component-subject-3_tutor");
   const componentSubject4Tutor = document.getElementById("component-subject-4_tutor");
