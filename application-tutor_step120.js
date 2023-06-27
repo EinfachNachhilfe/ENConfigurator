@@ -7,17 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSecondNameTutor2 = document.getElementById('second-name_tutor-2');
   
   const inputValidationEmailTutor = document.getElementById('email_tutor');
-  const inputValidationStreetNameTutor = document.getElementById('street-name_tutor'); 
-  const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
-  const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
-  const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
-  const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
-  const inputValidationSemesterTutor = document.getElementById('semester_tutor');
-  const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
-  const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
-  const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
-  const inputValidationclassFrom1Tutor = document.getElementById('class-from-1_tutor');
-  const inputValidationclassTo1Tutor = document.getElementById('class-to-1_tutor');
+ 
 
 
   
