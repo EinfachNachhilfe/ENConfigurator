@@ -789,7 +789,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   // Anwenden der Funktion auf mehrere Eingabefelder:
- 
+  validateOnButtonClick(inputValidationFirstNameTutor, step1);
+  validateOnButtonClick(inputValidationSecondNameTutor, step1);
   validateOnButtonClick(inputValidationStreetNameTutor, step4);
   validateOnButtonClick(inputValidationHouseNumberTutor, step4);
   validateOnButtonClick(inputValidationCityNameTutor, step4);
@@ -802,43 +803,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function validateRadioOnButtonClick(radioName, step) {
-  nextBtn.addEventListener('click', function() {
-    // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
-    let radioButtons = Array.from(document.getElementsByName(radioName));
 
-    // Wir überprüfen, ob einer von ihnen ausgewählt ist
-    let isSelected = radioButtons.some(button => button.checked);
-
-    let errorMessageContainer = document.querySelector('#error_message_container');
-    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
-
-    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
-      let errorMessageElement = document.createElement('span');
-      errorMessageElement.id = 'error_message';
-      errorMessageElement.style.color = '#9d367a';
-      errorMessageElement.style.marginTop = '-0.625rem';
-      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-      errorMessageElement.style.fontSize = '0.8rem';
-      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
-      errorMessageContainer.appendChild(errorMessageElement);
-    }
-  });
-
-  // Add event listeners to each radio button
-  Array.from(document.getElementsByName(radioName)).forEach(button => {
-    button.addEventListener('change', () => {
-      let errorMessage = document.querySelector('#error_message');
-      if (errorMessage) {
-        errorMessage.style.display = 'none';
-      }
-    });
-  });
-}
-
-const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
-validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
-  
   
       nextBtn.addEventListener('click', function() {
           if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none' && step5.style.display == 'none') {
