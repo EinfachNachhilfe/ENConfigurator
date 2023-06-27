@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
     const inputValidationCustomFormInputIsSelectInput = document.getElementById('custom_form-input-is-select-input');
     const inputValidationEmailTutor = document.getElementById('email_tutor');
-    const inputValidationPhoneNumberTutor = document.getElementById('phone-number_payable');
+    const inputValidationPhoneNumberTutor = document.getElementById('custom_form-input-is-select-input');
     const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
     const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
     const inputValidationSemesterTutor = document.getElementById('semester_tutor');
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     });
     //end stepchange with enter
+    
     //start Validation Phone
     var selectedOption = "";
       
@@ -66,29 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
       input2.addEventListener('input', checkInput2);
       updateInputValue();
     });
-        var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-        function applyValidation4(inputElement4) {
-          inputElement4.setAttribute('pattern', '^.{8,}$');
-          
-         inputElement4.addEventListener('change', function() {
-        if (inputElement4.checkValidity()) {
-          
-          applyValidBorderStyle(inputElement4);
-        } else {
-         
-          applyInvalidBorderStyle(inputElement4);
-          shakeOnInvalid(inputElement4);
-        }
-      });
-      
-       inputElement4.addEventListener('input', function() {
-        if (inputElement4.checkValidity()) {
-          inputElement4.style.borderColor = '';
-          inputElement4.style.borderWidth = '';
-        }
-      }); 
-    }
-        applyValidation4(ValidationInputFieldPhone1);
     //end Validation Phone
     
     
