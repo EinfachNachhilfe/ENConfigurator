@@ -75,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
     let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
     let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-    const errorMessageElement = document.createElement('span');
+    const errorMessageElement = document.createElement('span');        
+    let targetElement;
       
     if (pattern !== null) {
       inputElement.setAttribute('pattern', pattern);
@@ -87,8 +88,15 @@ document.addEventListener("DOMContentLoaded", function() {
       errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
       errorMessageElement.style.fontSize = '0.8rem';
       inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+
     
-    
+    if (inputElement === inputValidationPhoneNumberTutor) {
+      targetElement = inputElement.parentNode.getElementById('error_message_container'); 
+    } else {
+      targetElement = inputElement.nextSibling;
+    }
+
+    inputElement.parentNode.insertBefore(errorMessageElement, targetElement);
 
       inputElement.addEventListener("change", function() {
         if (inputElement.value.trim() === '') {
