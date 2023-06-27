@@ -148,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
         shakeOnInvalid(inputElement);
       }
     });
+   });
   }
   // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
 applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
