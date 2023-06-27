@@ -794,26 +794,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function validateSelectOnButtonClick(selectElement, step) {
+function validateOnButtonClick(inputElement, step) {
   nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === -1) {
-      let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
-      let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
+    if (window.getComputedStyle(step, null).display === "block" && (!inputElement.value || !inputElement.checkValidity())) {
+      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
 
       errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
       errorMessageElement.style.display = 'block';
-      selectElement.style.borderColor = '#9e367a'; // Set border color to red
-      selectElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      inputElement.style.borderColor = '#9e367a'; // Set border color to red
+      inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
       validImage.style.display = 'none';
       inValidImage.style.display = 'block';
-      shakeOnInvalid(selectElement);
+      shakeOnInvalid(inputElement);
     }
   });
 }
 
 // Anwenden der Funktion auf ein <select> Element:
-validateSelectOnButtonClick(inputValidationSubject1Tutor, step2);
+validateOnButtonClick(inputValidationSubject1Tutor, step2);
+
 
 
 
