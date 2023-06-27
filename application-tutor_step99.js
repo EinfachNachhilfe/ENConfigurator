@@ -794,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function validateSelectOnSelectElement(selectElement, step) {
   nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === 0) {
+    if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === -1) {
       let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
       if (!errorMessageElement) { // Erstellen Sie das Element nur, wenn es noch nicht existiert
         errorMessageElement = document.createElement('span');
