@@ -794,34 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function validateSelectOnButtonClick(selectElement, step) {
-  nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === 1) {
-      let errorMessageElement = document.createElement('span');
-      
-      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
-      errorMessageElement.style.display = 'block';
-      selectElement.style.borderColor = '#9e367a'; // Set border color to red
-      selectElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-      errorMessageElement.id = 'error_message';
-      errorMessageElement.style.color = '#9d367a';
-      errorMessageElement.style.marginTop = '-0.625rem';
-      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-      errorMessageElement.style.fontSize = '0.8rem';
-      
-      selectElement.parentNode.appendChild(errorMessageElement);
-    }
-  });
-}
 
-// Anwenden der Funktion auf ein <select> Element:
-validateSelectOnButtonClick(inputValidationSubject1Tutor, step2);
-
-
-
-
-
-  
 
 function validateRadioOnButtonClick(radioName, step) {
   nextBtn.addEventListener('click', function() {
