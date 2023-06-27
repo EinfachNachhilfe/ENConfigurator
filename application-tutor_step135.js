@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
   const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
   const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
+  const inputValidationCustomFormInputIsSelectInput = document.getElementById('custom_form-input-is-select-input');
   const inputValidationEmailTutor = document.getElementById('email_tutor');
+  const inputValidationCustomFormInputPhone = document.getElementById('custom_form-input-phone');
   const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
   const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
@@ -162,6 +164,8 @@ applyValidation(inputValidationSemesterTutor, 'Dieses Feld muss ausgefüllt werd
 applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationCustomFormInputIsSelectInput, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationCustomFormInputPhone, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   //end inputfield validation
 
   
@@ -814,6 +818,8 @@ applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt 
   validateOnButtonClick(inputValidationSemesterTutor, step4);
   validateOnButtonClick(inputValidationMobilityTutor, step4);
   validateOnButtonClick(inputValidationAvailabilityTutor, step4);
+  validateOnButtonClick(inputValidationCustomFormInputIsSelectInput, step4);
+  validateOnButtonClick(inputValidationCustomFormInputPhone, step4);
 
 
 function validateRadioOnButtonClick(radioName, step) {
