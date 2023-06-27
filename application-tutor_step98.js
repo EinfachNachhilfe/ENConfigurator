@@ -794,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function validateSelectOnSelectElement(selectElement, step) {
   nextBtn.addEventListener('click', function() {
-    if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === -1) {
+    if (window.getComputedStyle(step, null).display === "block" && selectElement.selectedIndex === 0) {
       let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
       errorMessageElement.id = 'error_message';
       errorMessageElement.style.color = '#9d367a';
