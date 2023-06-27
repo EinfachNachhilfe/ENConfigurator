@@ -111,8 +111,8 @@ document.addEventListener("DOMContentLoaded", function() {
     inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
   
   
-    
-    inputElement.addEventListener('change', function() {
+    ['change', 'input', 'blur'].forEach(event => {
+    inputElement.addEventListener(event, function() {
       if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
