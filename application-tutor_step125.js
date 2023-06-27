@@ -781,7 +781,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Anwenden der Funktion auf mehrere Eingabefelder:
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
-  validateOnButtonClick(inputValidationSecondNameTutortest, step1);
+  validateOnButtonClick(inputValidationSecondNameTutortest, step4);
 
 
 function validateRadioOnButtonClick(radioName, step) {
