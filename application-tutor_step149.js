@@ -95,7 +95,8 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       targetElement = inputElement.nextSibling;
     }
-
+        
+console.log(targetElement); // Zeigt das targetElement in der Konsole an
     inputElement.parentNode.insertBefore(errorMessageElement, targetElement);
 
       inputElement.addEventListener("change", function() {
