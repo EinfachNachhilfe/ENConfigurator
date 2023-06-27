@@ -796,6 +796,9 @@ applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt we
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
   validateOnButtonClick(inputValidationEmailTutor, step4);
+  validateOnButtonClick(inputValidationStreetNameTutor, step4);
+
+
 
 
 function validateRadioOnButtonClick(radioName, step) {
