@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationZipCodeTutor = document.querySelector('input[name="zip-code_tutor"]');
   const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
   const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
-  const inputValidationSecondNameTutor2 = document.getElementById('second-name_tutor-2');
+  const inputValidationSecondNameTutortest = document.getElementById('second-name_tutor-2');
   
   const inputValidationEmailTutor = document.getElementById('email_tutor');
  
@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
   applyValidation(inputValidationZipCodeTutor, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationSecondNameTutortest, '\\d+', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationFirstNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationSecondNameTutor, '^[A-Za-z ]+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationEmailTutor, '^\\S+@\\S+\\.\\S+$', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
