@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
     const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
     const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
-    const inputValidationCustomFormInputIsSelectInput = document.getElementById('custom_form-input-is-select-input');
+    const inputValidationBdayTutor = document.getElementById('bday-tutor');
     const inputValidationEmailTutor = document.getElementById('email_tutor');
-    const inputValidationPhoneNumberTutor = document.getElementById('phone-number_payable');
+    const inputValidationPhoneNumberTutor = document.getElementById('phone-number_tutor');
     const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
     const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
     const inputValidationSemesterTutor = document.getElementById('semester_tutor');
@@ -143,8 +143,8 @@ document.addEventListener("DOMContentLoaded", function() {
   applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationCustomFormInputIsSelectInput, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\d{5,10}$' );
     //end inputfield validation
   
     
@@ -797,7 +797,7 @@ document.addEventListener("DOMContentLoaded", function() {
     validateOnButtonClick(inputValidationSemesterTutor, step4);
     validateOnButtonClick(inputValidationMobilityTutor, step4);
     validateOnButtonClick(inputValidationAvailabilityTutor, step4);
-    validateOnButtonClick(inputValidationCustomFormInputIsSelectInput, step4);
+    validateOnButtonClick(inputValidationBdayTutor, step4);
     validateOnButtonClick(inputValidationPhoneNumberTutor, step4);
   
   
