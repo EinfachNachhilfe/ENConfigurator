@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
     const errorMessageElement = document.createElement('span');        
     let targetElement;
-      
+
     if (pattern !== null) {
       inputElement.setAttribute('pattern', pattern);
     }
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
    if (inputElement === inputValidationPhoneNumberTutor) {
-      targetElement = document.getElementById('error_message_container');
+      targetElement = document.querySelector('#error_message_container-phone');
     } else {
       targetElement = inputElement.nextSibling;
     }
