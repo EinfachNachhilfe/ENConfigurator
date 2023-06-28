@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-
-
-
+  
   const inputValidationFirstNameTutor = document.querySelector('input[name="first-name_tutor"]');
   const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
   
-
   const inputValidationStreetNameTutor = document.getElementById('street-name_tutor'); 
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
   const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
@@ -19,6 +16,19 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
 
+  
+  //start stepchange with enter
+  document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
+    if (!nextBtn.classList.contains('disabled')) {
+      nextBtn.click();
+      event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
+    }
+  }
+  });
+  //end stepchange with enter
+  
 
   //start bday validation
 inputValidationBdayTutor.addEventListener('input', function(e) {
@@ -35,11 +45,10 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
 });
 //end bday validation
 
-// Fügt +49 beim Laden der Seite zum Telefonfeld hinzu
+  
+//start phone validation
 window.addEventListener('DOMContentLoaded', (event) => {
     var value = inputValidationPhoneNumberTutor.value;
-
-    // Stellen Sie sicher, dass der Wert mit +49 beginnt
     if (!value.startsWith('+49')) {
         value = '+49' + value;
     }
@@ -47,50 +56,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
     inputValidationPhoneNumberTutor.value = value;
 });
 
-// Telefonnummernvalidierung
+
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     var value = e.target.value;
-
-    // Cursorposition speichern
     var start = e.target.selectionStart;
     var end = e.target.selectionEnd;
-
-    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
+  
     value = value.replace(/[^0-9+]/g, '');
-
-    // Stelle sicher, dass "+49" nicht gelöscht werden kann
     if (value.length < 3) {
         value = '+49';
     }
-
-    // Verhindere, dass eine '0' direkt nach '+49' eingegeben wird
     if (value === '+490') {
         value = '+49';
     }
-
-    // Wert und Cursorposition setzen
     e.target.value = value;
     e.target.setSelectionRange(start, end);
 });
+//end phone validation
 
 
-
-
-  
-  
-  //start stepchange with enter
-  document.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    // Überprüfen, ob der nextBtn die Klasse 'disabled' nicht hat
-    if (!nextBtn.classList.contains('disabled')) {
-      nextBtn.click();
-      event.preventDefault(); // Verhindert das Absenden des Formulars oder andere Standardaktionen
-    }
-  }
-  });
-  //end stepchange with enter
-  
-  
   //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
