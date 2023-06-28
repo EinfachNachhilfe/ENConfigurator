@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
     const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
     const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
-
+    const inputValidationPhoneNumberTutor = document.getElementById('phone-number_tutor');
     const inputValidationEmailTutor = document.getElementById('email_tutor');
     const inputValidationBdayTutor = document.getElementById('bday-tutor');
     const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
   applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
- 
+  applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     //end inputfield validation
   
     
@@ -797,6 +797,7 @@ document.addEventListener("DOMContentLoaded", function() {
     validateOnButtonClick(inputValidationMobilityTutor, step4);
     validateOnButtonClick(inputValidationAvailabilityTutor, step4);
     validateOnButtonClick(inputValidationBdayTutor, step4);
+    validateOnButtonClick(inputValidationPhoneNumberTutor, step4);
 
   
   
