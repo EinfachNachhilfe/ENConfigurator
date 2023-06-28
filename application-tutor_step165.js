@@ -20,6 +20,20 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
 
 
+
+inputValidationBdayTutor.addEventListener('input', function(e) {
+    var value = e.target.value;
+    
+    // remove all non-digit characters
+    value = value.replace(/\D/g, '');
+
+    // add dots after day and month
+    if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
+    if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
+
+    e.target.value = value;
+});
+
   
   
   //start stepchange with enter
