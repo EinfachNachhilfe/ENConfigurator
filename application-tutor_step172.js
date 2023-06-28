@@ -51,19 +51,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     var value = e.target.value;
 
-    // Wenn das Feld vollständig gelöscht wurde, setze es zurück auf "+49"
-    if (value === '') {
+    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
+    value = value.replace(/[^0-9+]/g, '');
+
+    // Stelle sicher, dass "+49" nicht gelöscht werden kann
+    if (value.length < 3) {
         value = '+49';
-    } else if (value.slice(0, 3) !== '+49') {
-        // Wenn die ersten Zeichen nicht "+49" sind, setze sie auf "+49" und füge den restlichen Eingabewert hinzu (ohne Nicht-Ziffer-Zeichen)
-        value = '+49' + value.replace(/\D/g, '');
-    } else {
-        // Wenn die ersten Zeichen "+49" sind, lässt sie unverändert und entfernt alle Nicht-Ziffer-Zeichen von den restlichen Zeichen
-        value = '+49' + value.slice(3).replace(/\D/g, '');
+    }
+    // Verhindere die automatische Hinzufügung der '4', wenn "+49" gelöscht wird
+    else if (value === '+494') {
+        value = '+49';
     }
 
     e.target.value = value;
 });
+
 
 
   
