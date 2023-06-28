@@ -53,6 +53,10 @@ inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
         value = '+49';
     }
 
+   if (value === '+490') {
+        value = '+49';
+    }
+
     // Erlaube nur Zahlen nach der 9
     if (value.length > 3 && value[3] !== '9') {
         value = value.slice(0, 3) + '9' + value.slice(3);
