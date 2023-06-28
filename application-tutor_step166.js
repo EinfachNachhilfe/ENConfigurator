@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
   const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
   const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
-  const inputValidationPhoneNumberTutor = document.getElementById('phone-number_tutor');
+  const inputValidationPhoneNumberTutor = document.getElementById('testphone');
   const inputValidationEmailTutor = document.getElementById('email_tutor');
   const inputValidationBdayTutor = document.getElementById('testbday');
   const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
 
 
-
+  //start bday validation
 inputValidationBdayTutor.addEventListener('input', function(e) {
     var value = e.target.value;
     
@@ -33,7 +33,7 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
 
     e.target.value = value;
 });
-
+//end bday validation
   
   
   //start stepchange with enter
@@ -145,7 +145,7 @@ applyValidation(inputValidationSemesterTutor, 'Dieses Feld muss ausgefüllt werd
 applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.' , '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+\\d{5,}$');
+applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+\\d{5,}$', '^\\+\\d{1,3}\\s?\\d{1,14}$');
   //end inputfield validation
 
   
