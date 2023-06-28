@@ -47,44 +47,44 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
 
   
 //start phone validation
-inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
-    var value = e.target.value;
+// Fügt +49 beim Laden der Seite zum Telefonfeld hinzu
+window.addEventListener('DOMContentLoaded', (event) => {
+    var value = inputValidationPhoneNumberTutor.value;
+
+    // Stellen Sie sicher, dass der Wert mit +49 beginnt
     if (!value.startsWith('+49')) {
         value = '+49' + value;
     }
 
-    e.target.value = value;
+    inputValidationPhoneNumberTutor.value = value;
 });
 
+// Setzt den Cursor immer nach der +49 Position
+inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
+    var value = e.target.value;
 
+    // Wenn der Wert +49 enthält, setzen Sie den Cursor nach der +49 Position
+    if (value.includes('+49')) {
+        var index = value.indexOf('+49') + '+49'.length;
+        e.target.setSelectionRange(index, index);
+    }
+});
+
+// Telefonnummernvalidierung
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     var value = e.target.value;
-    var start = e.target.selectionStart;
-    var end = e.target.selectionEnd;
-  
+
+    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
     value = value.replace(/[^0-9+]/g, '');
-    if (value.length < 3) {
-        value = '+49';
+
+    // Stelle sicher, dass "+49" nicht gelöscht werden kann
+    if (!value.startsWith('+49')) {
+        value = '+49' + value.slice(3);
     }
-    if (value === '+490') {
-        value = '+49';
-    }
+
     e.target.value = value;
-    e.target.setSelectionRange(start, end);
 });
 
-inputValidationPhoneNumberTutor.addEventListener('keydown', function(e) {
-    var keyCode = e.keyCode || e.which;
-    var start = e.target.selectionStart;
-    var end = e.target.selectionEnd;
-
-    // Prevent moving the cursor behind the 9
-    if ((keyCode === 37 && start <= 3) || (keyCode === 8 && start <= 3 && start !== end)) {
-        e.preventDefault();
-    }
-});
-  
-  
 //end phone validation
 
 
