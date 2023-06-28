@@ -40,22 +40,28 @@ inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
     e.target.value = value;
 });
 
-
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     var value = e.target.value;
     var start = e.target.selectionStart;
     var end = e.target.selectionEnd;
-  
+
+    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
     value = value.replace(/[^0-9+]/g, '');
-    if (value.length < 3) {
+
+    // Stelle sicher, dass "+49" nicht geändert werden kann
+    if (!value.startsWith('+49')) {
         value = '+49';
     }
-    if (value === '+490') {
-        value = '+49';
+
+    // Erlaube nur Zahlen nach der 9
+    if (value.length > 3 && value[3] !== '9') {
+        value = value.slice(0, 3) + '9' + value.slice(3);
     }
+
     e.target.value = value;
     e.target.setSelectionRange(start, end);
 });
+
 //end phone validation
 
 
