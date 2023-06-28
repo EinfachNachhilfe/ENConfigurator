@@ -46,33 +46,7 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
 //end bday validation
 
   
-//start phone validation
-window.addEventListener('DOMContentLoaded', (event) => {
-    var value = inputValidationPhoneNumberTutor.value;
-    if (!value.startsWith('+49')) {
-        value = '+49' + value;
-    }
 
-    inputValidationPhoneNumberTutor.value = value;
-});
-
-
-inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
-    var value = e.target.value;
-    var start = e.target.selectionStart;
-    var end = e.target.selectionEnd;
-  
-    value = value.replace(/[^0-9+]/g, '');
-    if (value.length < 3) {
-        value = '+49';
-    }
-    if (value === '+490') {
-        value = '+49';
-    }
-    e.target.value = value;
-    e.target.setSelectionRange(start, end);
-});
-//end phone validation
 
 
   //start inputfield validation
