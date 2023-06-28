@@ -111,7 +111,7 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
 
   
 
-    inputElement.addEventListener("change", function() {
+    inputElement.addEventListener("input", function() {
       if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
