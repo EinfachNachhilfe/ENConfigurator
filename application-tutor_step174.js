@@ -48,7 +48,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 // Telefonnummernvalidierung
-// Telefonnummernvalidierung
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     var value = e.target.value;
 
@@ -61,6 +60,11 @@ inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
 
     // Stelle sicher, dass "+49" nicht gelöscht werden kann
     if (value.length < 3) {
+        value = '+49';
+    }
+
+    // Verhindere, dass eine '0' direkt nach '+49' eingegeben wird
+    if (value === '+490') {
         value = '+49';
     }
 
