@@ -48,13 +48,14 @@ inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
     value = value.replace(/[^0-9+]/g, '');
 
-    // Stelle sicher, dass "+49" nicht geändert werden kann
+    // Stelle sicher, dass "+49" nicht geändert oder gelöscht werden kann
     if (!value.startsWith('+49')) {
         value = '+49';
     }
 
-   if (value === '+490') {
-        value = '+49';
+    // Entferne führende Nullen nach "+49"
+    if (value.startsWith('+49') && value.length > 3) {
+        value = '+49' + value.slice(3).replace(/^0+/, '');
     }
 
     // Erlaube nur Zahlen nach der 9
@@ -65,6 +66,7 @@ inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     e.target.value = value;
     e.target.setSelectionRange(start, end);
 });
+
 
 //end phone validation
 
