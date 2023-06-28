@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
 
   //start bday validation
-inputValidationBdayTutor.addEventListener('input', function(e) {
+inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
     var value = e.target.value;
     
     // remove all non-digit characters
