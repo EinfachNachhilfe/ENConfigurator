@@ -48,8 +48,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 // Telefonnummernvalidierung
+// Telefonnummernvalidierung
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     var value = e.target.value;
+
+    // Cursorposition speichern
+    var start = e.target.selectionStart;
+    var end = e.target.selectionEnd;
 
     // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
     value = value.replace(/[^0-9+]/g, '');
@@ -58,13 +63,12 @@ inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     if (value.length < 3) {
         value = '+49';
     }
-    // Verhindere die automatische Hinzufügung der '4', wenn "+49" gelöscht wird
-    else if (value === '+494') {
-        value = '+49';
-    }
 
+    // Wert und Cursorposition setzen
     e.target.value = value;
+    e.target.setSelectionRange(start, end);
 });
+
 
 
 
