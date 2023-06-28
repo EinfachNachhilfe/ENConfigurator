@@ -115,18 +115,6 @@ document.addEventListener("DOMContentLoaded", function() {
           shakeOnInvalid(inputElement);
         }
       });
-      inputElement.addEventListener('blur', function() {
-        if (inputElement.value.trim() === '') {
-          errorMessageElement.innerHTML = emptyErrorMsg;
-          errorMessageElement.style.display = 'block';
-          inputElement.style.borderColor = '#9e367a';
-          inputElement.style.borderWidth = '1.5px';
-          validImage.style.display = 'none';
-          inValidImage.style.display = 'block';
-          shakeOnInvalid(inputElement);
-        }
-      });
-
     }
     // Beispiel für die Verwendung der Funktion mit verschiedenen Parametern:
   applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
