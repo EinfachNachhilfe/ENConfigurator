@@ -7,18 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationHouseNumberTutor = document.getElementById('house-number_tutor');
   const inputValidationZipCodeTutor = document.getElementById('zip-code_tutor');
   const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
-  const inputValidationPhoneNumberTutor = document.getElementById('testphone');
+  const inputValidationPhoneNumberTutor = document.getElementById('phone-number_tutor');
   const inputValidationEmailTutor = document.getElementById('email_tutor');
-  const inputValidationBdayTutor = document.getElementById('testbday');
+  const inputValidationBdayTutor = document.getElementById('bday_tutor');
   const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
   const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
   const inputValidationSemesterTutor = document.getElementById('semester_tutor');
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
 
-  const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
-  const inputValidationClassTo1Tutor = document.getElementById('class-to-1_tutor');
-  const inputValidationClassFrom1Tutor = document.getElementById('class-from-1_tutor');
   
   //start stepchange with enter
   document.addEventListener("keydown", function(event) {
@@ -154,9 +151,6 @@ applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt 
 applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.' , '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
 applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
   
-applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationClassTo1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationClassFrom1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   //end inputfield validation
 
   
@@ -812,10 +806,6 @@ applyValidation(inputValidationClassFrom1Tutor, 'Dieses Feld muss ausgefüllt we
   validateOnButtonClick(inputValidationBdayTutor, step4);
   validateOnButtonClick(inputValidationPhoneNumberTutor, step4);
   
-  validateOnButtonClick(inputValidationSubject1Tutor, step2);
-  validateOnButtonClick(inputValidationClassTo1Tutor, step2);
-  validateOnButtonClick(inputValidationClassFrom1Tutor, step2);
-
 
 function validateRadioOnButtonClick(radioName, step) {
   nextBtn.addEventListener('click', function() {
