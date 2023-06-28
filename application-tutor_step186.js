@@ -32,41 +32,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //start phone validation
 inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
-    var value = e.target.value;
-    if (!value.startsWith('+49')) {
-        value = '+49' + value;
-    }
+  var value = e.target.value;
+  if (!value.startsWith('+49')) {
+      value = '+49' + value;
+  }
 
-    e.target.value = value;
+  e.target.value = value;
 });
 
 inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
-    var value = e.target.value;
-    var start = e.target.selectionStart;
-    var end = e.target.selectionEnd;
+  var value = e.target.value;
+  var start = e.target.selectionStart;
+  var end = e.target.selectionEnd;
 
-    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
-    value = value.replace(/[^0-9+]/g, '');
+  // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
+  value = value.replace(/[^0-9+]/g, '');
 
-    // Stelle sicher, dass "+49" nicht geändert oder gelöscht werden kann
-    if (!value.startsWith('+49')) {
-        value = '+49';
-    }
+  // Stelle sicher, dass "+49" nicht geändert oder gelöscht werden kann
+  if (!value.startsWith('+49')) {
+      value = '+49';
+  }
 
-    // Entferne führende Nullen nach "+49"
-    if (value.startsWith('+49') && value.length > 3) {
-        value = '+49' + value.slice(3).replace(/^0+/, '');
-    }
-
-    // Erlaube nur Zahlen nach der 9
-    if (value.length > 3 && value[3] !== '9') {
-        value = value.slice(0, 3) + '9' + value.slice(3);
-    }
-
-    e.target.value = value;
-    e.target.setSelectionRange(start, end);
+  // Entferne führende Nullen nach "+49"
+  if (value.startsWith('+49') && value.length > 3) {
+      value = '+49' + value.slice(3).replace(/^0+/, '');
+  }
+  e.target.value = value;
+  e.target.setSelectionRange(start, end);
 });
 
+inputValidationPhoneNumberTutor.addEventListener('focus', setCursorPosition);
+
+function setCursorPosition(e) {
+  const input = e.target;
+  // Setze die Cursorposition nach '+49'
+  input.setSelectionRange(3, 3);
+}
 
 //end phone validation
 
