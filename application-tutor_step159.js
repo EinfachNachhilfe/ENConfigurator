@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationCityNameTutor = document.getElementById('city-name_tutor');
     const inputValidationPhoneNumberTutor = document.getElementById('phone-number_tutor');
     const inputValidationEmailTutor = document.getElementById('email_tutor');
-    const inputValidationBdayTutor = document.getElementById('bday-tutor');
+    const inputValidationBdayTutor = document.querySelector('#bday-tutor');
     const inputValidationInstitutionTutor = document.getElementById('institution_tutor');
     const inputValidationCourseOfStudyTutor = document.getElementById('course-of-study_tutor');
     const inputValidationSemesterTutor = document.getElementById('semester_tutor');
