@@ -34,6 +34,24 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
     e.target.value = value;
 });
 //end bday validation
+
+  //start phone validation
+inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
+    var value = e.target.value;
+
+    // remove all non-digit characters except for the first character
+    // (to allow for the initial + symbol)
+    value = value.replace(/(?!^)\D/g, '');
+
+    // Ensure the value starts with +49
+    if (!value.startsWith('+49')) {
+        value = '+49' + value;
+    }
+
+    e.target.value = value;
+});
+//end phone validation
+
   
   
   //start stepchange with enter
