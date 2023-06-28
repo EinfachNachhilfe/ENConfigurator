@@ -72,6 +72,19 @@ inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
     e.target.value = value;
     e.target.setSelectionRange(start, end);
 });
+
+inputValidationPhoneNumberTutor.addEventListener('keydown', function(e) {
+    var keyCode = e.keyCode || e.which;
+    var start = e.target.selectionStart;
+    var end = e.target.selectionEnd;
+
+    // Prevent moving the cursor behind the 9
+    if ((keyCode === 37 && start <= 3) || (keyCode === 8 && start <= 3 && start !== end)) {
+        e.preventDefault();
+    }
+});
+  
+  
 //end phone validation
 
 
