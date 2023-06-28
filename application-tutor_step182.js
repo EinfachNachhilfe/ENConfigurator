@@ -30,61 +30,32 @@ document.addEventListener("DOMContentLoaded", function() {
   //end stepchange with enter
   
 
-  //start bday validation
+//start phone validation
 inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
     var value = e.target.value;
-    
-    // remove all non-digit characters
-    value = value.replace(/\D/g, '');
-
-    // add dots after day and month
-    if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
-    if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
-
-    e.target.value = value;
-});
-//end bday validation
-
-  
-//start phone validation
-// Fügt +49 beim Laden der Seite zum Telefonfeld hinzu
-window.addEventListener('DOMContentLoaded', (event) => {
-    var value = inputValidationPhoneNumberTutor.value;
-
-    // Stellen Sie sicher, dass der Wert mit +49 beginnt
     if (!value.startsWith('+49')) {
         value = '+49' + value;
     }
 
-    inputValidationPhoneNumberTutor.value = value;
-});
-
-// Setzt den Cursor immer nach der +49 Position
-inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
-    var value = e.target.value;
-
-    // Wenn der Wert +49 enthält, setzen Sie den Cursor nach der +49 Position
-    if (value.includes('+49')) {
-        var index = value.indexOf('+49') + '+49'.length;
-        e.target.setSelectionRange(index, index);
-    }
-});
-
-// Telefonnummernvalidierung
-inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
-    var value = e.target.value;
-
-    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
-    value = value.replace(/[^0-9+]/g, '');
-
-    // Stelle sicher, dass "+49" nicht gelöscht werden kann
-    if (!value.startsWith('+49')) {
-        value = '+49' + value.slice(3);
-    }
-
     e.target.value = value;
 });
 
+
+inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
+    var value = e.target.value;
+    var start = e.target.selectionStart;
+    var end = e.target.selectionEnd;
+  
+    value = value.replace(/[^0-9+]/g, '');
+    if (value.length < 3) {
+        value = '+49';
+    }
+    if (value === '+490') {
+        value = '+49';
+    }
+    e.target.value = value;
+    e.target.setSelectionRange(start, end);
+});
 //end phone validation
 
 
