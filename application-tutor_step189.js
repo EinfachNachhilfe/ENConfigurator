@@ -807,7 +807,7 @@ applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werd
   validateOnButtonClick(inputValidationAvailabilityTutor, step4);
   validateOnButtonClick(inputValidationBdayTutor, step4);
   validateOnButtonClick(inputValidationPhoneNumberTutor, step4);
-  validateOnButtonClick(inputValidationSubject1Tutor, step4);
+  validateOnButtonClick(inputValidationSubject1Tutor, step2);
 
 
 
