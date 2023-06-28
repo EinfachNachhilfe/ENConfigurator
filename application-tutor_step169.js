@@ -35,22 +35,27 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
 });
 //end bday validation
 
-  //start phone validation
-inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
-    var value = e.target.value;
+// Fügt +49 beim Laden der Seite zum Telefonfeld hinzu
+window.addEventListener('DOMContentLoaded', (event) => {
+    var value = inputValidationPhoneNumberTutor.value;
 
-    // remove all non-digit characters except for the first character
-    // (to allow for the initial + symbol)
-    value = value.replace(/(?!^)\D/g, '');
-
-    // Ensure the value starts with +49
+    // Stellen Sie sicher, dass der Wert mit +49 beginnt
     if (!value.startsWith('+49')) {
         value = '+49' + value;
     }
 
+    inputValidationPhoneNumberTutor.value = value;
+});
+
+// Telefonnummernvalidierung
+inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
+    var value = e.target.value;
+    
+    // Entfernt alle Nicht-Ziffer-Zeichen, mit Ausnahme des ersten Zeichens (falls es ein "+" ist)
+    value = value[0] + value.slice(1).replace(/\D/g, '');
+
     e.target.value = value;
 });
-//end phone validation
 
   
   
