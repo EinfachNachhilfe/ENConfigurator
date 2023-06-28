@@ -48,43 +48,7 @@ inputValidationBdayTutor.addEventListener('input', function(e) {
   });
   //end stepchange with enter
   
-  //start Validation Phone
-  var selectedOption = "";
-    
-  function updateInputValue() {
-    var selectElement = document.getElementById("custom_form-input-is-select-input");
-    selectedOption = selectElement.options[selectElement.selectedIndex].value;
-    document.getElementById("phone-number_tutor").value = selectedOption;
-  }
-  document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
-    updateInputValue();
-  });
-  document.getElementById("phone-number_tutor").addEventListener("input", function() {
-    if (this.value.length < selectedOption.length) {
-      this.value = selectedOption;
-    }
-  });
-  updateInputValue();
-  function checkInput2() {
-    const input2 = document.getElementById('phone-number_tutor');
-    if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
-      input2.value = selectedOption;
-      input2.setSelectionRange(selectedOption.length, selectedOption.length);
-    } else {
-      // Remove any non-numeric characters after 'selectedOption'
-      input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
-    }
-  }
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const input2 = document.getElementById('phone-number_tutor');
-    input2.value = selectedOption;
-    input2.addEventListener('input', checkInput2);
-    updateInputValue();
-  });
-  //end Validation Phone
   
-  
-    
   //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
