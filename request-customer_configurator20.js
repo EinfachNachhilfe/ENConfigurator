@@ -1691,9 +1691,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Erstellen Sie die URL mit der angehängten Variable
-var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
-window.location.href = url;
+function formSubmit() {
+
+    var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
+
+    window.location.href = url;
+}
+
 
 
 
