@@ -1687,7 +1687,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 $('.customer-referenz').val(referenz);
 
-		var successUrl = "https://einfach-nachhilfe.webflow.io/nachhilfe-anfragen-danke?referenz=" + encodeURIComponent(referenz);
+		var successUrl = "https://einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=" + encodeURIComponent(referenz);
                 $('#request_customer').attr('action', successUrl);
 
               
