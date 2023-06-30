@@ -1691,8 +1691,15 @@ document.addEventListener("DOMContentLoaded", function() {
 		// verborgenes Feld hinzufügen
 
 		
-		var successUrl = "https://einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=" + encodeURIComponent(referenz);
-                $('#request_customer').attr('action', successUrl);
+
+
+$('<input>').attr({
+    type: 'hidden',
+    id: 'referenz',
+    name: 'referenz',
+    value: referenz
+}).appendTo('#request_customer');
+
 
               
 
