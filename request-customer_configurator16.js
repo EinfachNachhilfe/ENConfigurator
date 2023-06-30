@@ -1683,36 +1683,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 var seconds = now.getSeconds().toString().padStart(2, '0');
                 
                 var currentDateTime = year + month + day + hours + minutes + seconds;
-                var referenz = codegenerator + currentDateTime;
-                
+               
                 $('.customer-referenz').val(referenz);
 
-$('#request_customer').on('submit', function(e) {
-    e.preventDefault();
 
-    // Speichern Sie die originale 'action'-URL, falls wir sie zurücksetzen müssen
-    var originalActionUrl = $(this).attr('action');
-    
-    // Senden Sie das Formular an Webflow
-    $.ajax({
-        type: 'POST',
-        url: originalActionUrl,
-        data: $(this).serialize(),
-        success: function() {
-            // Wenn die Anforderung erfolgreich ist, leiten Sie zur Bestätigungsseite weiter
-            var referenz = ... // Erzeugen oder holen Sie Ihre Referenz hier
-            var successUrl = "https://einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=" + encodeURIComponent(referenz);
-            window.location.href = successUrl;
-        },
-        error: function() {
-            // Setzen Sie die 'action'-URL zurück und lassen Sie das Formular erneut absenden
-            $('#request_customer').attr('action', originalActionUrl);
-            $('#request_customer').submit();
-        }
-    });
-});
 
-		
+// Erstellen Sie die URL mit der angehängten Variable
+var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
+
+// Umleitung zur neuen URL
+window.location.href = url;
+
+
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
 		$("[bloc=codegenerator]").text(codegenerator);
