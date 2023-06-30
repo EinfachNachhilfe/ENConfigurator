@@ -1686,6 +1686,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 var referenz = codegenerator + currentDateTime;
                 
                 $('.customer-referenz').val(referenz);
+
+		var successUrl = "https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=" + encodeURIComponent(referenz);
+                $('#request_customer').attr('action', successUrl);
+
               
 
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
