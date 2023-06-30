@@ -1683,7 +1683,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 var seconds = now.getSeconds().toString().padStart(2, '0');
                 
                 var currentDateTime = year + month + day + hours + minutes + seconds;
-               
+
+                var referenz = codegenerator + currentDateTime;
+
+		
                 $('.customer-referenz').val(referenz);
 
 
