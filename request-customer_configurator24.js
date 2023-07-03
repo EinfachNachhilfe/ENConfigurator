@@ -1693,11 +1693,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function formSubmit() {
 
-    var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
-    window.location.href = url;
+   	var successUrl = "https://einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=" + encodeURIComponent(referenz);
+        $('#request_customer').attr('action', successUrl);
 }
 
 
+                
 
 
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
