@@ -1691,11 +1691,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Erstellen Sie die URL mit der angehängten Variable
-var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
+  $('#submit-btn').click(function(event) {
+    // Überprüfen, ob die Klasse "disabled" nicht aktiv ist
+    if (!$('#submit-btn').hasClass('disabled')) {
+      // Wert der Variable "referenz" hier definieren
+      var referenz = "example_referenz";
 
-// Umleitung zur neuen URL
-window.location.href = url;
+      // Erstellen der Erfolgs-URL mit dem Parameter "referenz"
+      var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
+
+      // Umleitung zur neuen URL
+      window.location.href = url;
+    }
+  });
 
                 
 
