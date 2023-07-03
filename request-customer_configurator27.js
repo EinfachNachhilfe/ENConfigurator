@@ -1695,7 +1695,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Überprüfen, ob die Klasse "disabled" nicht aktiv ist
     if (!$('#submit-btn').hasClass('disabled')) {
       // Wert der Variable "referenz" hier definieren
-      var referenz = "example_referenz";
+   
 
       // Erstellen der Erfolgs-URL mit dem Parameter "referenz"
       var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
