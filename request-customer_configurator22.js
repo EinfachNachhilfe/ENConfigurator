@@ -1694,7 +1694,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function formSubmit() {
 
     var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
-
+    window.location.href = successUrl;
 
 }
 
