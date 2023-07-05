@@ -176,7 +176,8 @@ function applyValidationSelect(selectElement, emptyErrorMsg) {
       inValidImage.style.display = 'block';
       shakeOnInvalid(selectElement);
     } else {
-     
+     errorMessageElement.innerHTML = ''; // Clears the error message
+      errorMessageElement.style.marginBottom = '0.75rem';
       selectElement.style.borderColor = '#589b32';
       selectElement.style.borderWidth = '1.5px';
       validImage.style.display = 'block';
