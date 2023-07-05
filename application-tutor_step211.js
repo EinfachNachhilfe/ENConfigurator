@@ -858,8 +858,8 @@ function validateSelectOnButtonClick(selectElement, step) {
   nextBtn.addEventListener('click', function() {
     if (window.getComputedStyle(step, null).display === "block" && selectElement.value.trim() === '') {
       let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
-      let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
+      let validImage = selectElement.parentNode.querySelector('.form_input-valid-image-select');
+      let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image-select');
 
       errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
       errorMessageElement.style.display = 'block';
