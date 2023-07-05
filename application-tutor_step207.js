@@ -177,8 +177,7 @@ function applyValidationSelect(selectElement, emptyErrorMsg) {
       shakeOnInvalid(selectElement);
     } else {
       errorMessageElement.innerHTML = ''; // Clears the error message
-      errorMessageElement.style.fontSize = '0.1rem'; // Set the font size
-      errorMessageElement.innerHTML = '&nbsp;'; // Insert a non-breaking space
+   
       selectElement.style.borderColor = '#589b32';
       selectElement.style.borderWidth = '1.5px';
       validImage.style.display = 'block';
