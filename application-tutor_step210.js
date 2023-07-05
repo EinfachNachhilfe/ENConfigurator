@@ -154,8 +154,8 @@ applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt w
   //end inputfield validation
 
 function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg) {
-  let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
-  let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
+  let validImage = selectElement.parentNode.querySelector('.form_input-valid-image-select');
+  let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image-select');
   const errorMessageElement = document.createElement('span');
 
   errorMessageElement.id = 'error_message';
