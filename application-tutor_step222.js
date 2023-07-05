@@ -951,6 +951,8 @@ validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
           }
         }
         classTo1Tutor.value = '';
+          applyValidation()
+          validateOnButtonClick()
       });
     
       classFrom2Tutor.addEventListener("change", function() {
