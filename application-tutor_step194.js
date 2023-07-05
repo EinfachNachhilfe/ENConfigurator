@@ -153,6 +153,52 @@ applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt w
   
   //end inputfield validation
 
+function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+  let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
+  let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
+  const errorMessageElement = document.createElement('span');
+
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem';
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  errorMessageElement.style.fontSize = '0.8rem';
+  selectElement.parentNode.insertBefore(errorMessageElement, selectElement.nextSibling);
+
+  selectElement.addEventListener("change", function() {
+    if (selectElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      selectElement.style.borderColor = '#9e367a';
+      selectElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(selectElement);
+    } else {
+      selectElement.style.borderColor = '#589b32';
+      selectElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'block';
+      inValidImage.style.display = 'none';
+      errorMessageElement.style.display = 'none';
+    }
+  });
+}
+
+// Beispiel für die Anwendung auf ein <select>-Element:
+ const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
+ applyValidationSelect(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
+
+
+
+
+
+
+
+
+
+  
   
   //start function shake
   function shakeOnInvalid(input) {
@@ -805,6 +851,28 @@ applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt w
   validateOnButtonClick(inputValidationAvailabilityTutor, step4);
   validateOnButtonClick(inputValidationBdayTutor, step4);
   validateOnButtonClick(inputValidationPhoneNumberTutor, step4);
+
+function validateSelectOnButtonClick(selectElement, step) {
+  nextBtn.addEventListener('click', function() {
+    if (window.getComputedStyle(step, null).display === "block" && selectElement.value.trim() === '') {
+      let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
+      let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
+
+      errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
+      errorMessageElement.style.display = 'block';
+      selectElement.style.borderColor = '#9e367a'; // Set border color to red
+      selectElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(selectElement);
+    }
+  });
+}
+
+// Beispiel für die Anwendung auf ein <select>-Element:
+validateSelectOnButtonClick(inputValidationSubject1Tutor, step2);
+
   
 
 function validateRadioOnButtonClick(radioName, step) {
