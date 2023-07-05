@@ -169,7 +169,7 @@ function applyValidationSelect(selectElement, emptyErrorMsg) {
   selectElement.addEventListener("change", function() {
     if (selectElement.value.trim() === '') {
       errorMessageElement.innerHTML = emptyErrorMsg;
-      errorMessageElement.style.display = 'block';
+      errorMessageElement.style.display = 'block'; 
       selectElement.style.borderColor = '#9e367a';
       selectElement.style.borderWidth = '1.5px';
       validImage.style.display = 'none';
@@ -177,7 +177,7 @@ function applyValidationSelect(selectElement, emptyErrorMsg) {
       shakeOnInvalid(selectElement);
     } else {
       errorMessageElement.innerHTML = ''; // Clears the error message
-      selectElement.style.marginBottom = '0.75rem'; // Set the bottom margin
+      errorMessageElement.innerHTML = '&nbsp;'; // Insert a non-breaking space
       selectElement.style.borderColor = '#589b32';
       selectElement.style.borderWidth = '1.5px';
       validImage.style.display = 'block';
