@@ -153,7 +153,7 @@ applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt w
   
   //end inputfield validation
 
-function applyValidationSelect(selectElement, emptyErrorMsg,invalidErrorMsg) {
+function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg) {
   let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
   let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
   const errorMessageElement = document.createElement('span');
@@ -166,32 +166,25 @@ function applyValidationSelect(selectElement, emptyErrorMsg,invalidErrorMsg) {
   errorMessageElement.style.fontSize = '0.8rem';
   selectElement.parentNode.insertBefore(errorMessageElement, selectElement.nextSibling);
 
-    selectElement.addEventListener("change", function() {
-      if (selectElement.value.trim() === '') {
-        errorMessageElement.innerHTML = emptyErrorMsg;
-        errorMessageElement.style.display = 'block';
-       selectElement.style.borderColor = '#9e367a';
-        selectElement.style.borderWidth = '1.5px';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(selectElement);
-      } else if (inputElement.checkValidity()) {
-        selectElement.style.borderColor = '#589b32';
-       selectElement.style.borderWidth = '1.5px';
-        validImage.style.display = 'block';
-        inValidImage.style.display = 'none';
-        errorMessageElement.style.display = 'none';
-      } else {
-        errorMessageElement.innerHTML = invalidErrorMsg;
-        errorMessageElement.style.display = 'block';
-        selectElement.style.borderColor = '#9e367a';
-        selectElement.style.borderWidth = '1.5px';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(selectElement);
-      }
-    });
-  }
+  selectElement.addEventListener("change", function() {
+    if (selectElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      selectElement.style.borderColor = '#9e367a';
+      selectElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(selectElement);
+    } else {
+      errorMessageElement.innerHTML = '&nbsp;'; // Clear the error message
+      selectElement.style.borderColor = '#589b32';
+      selectElement.style.borderWidth = '1.5px';
+      validImage.style.display = 'block';
+      inValidImage.style.display = 'none';
+      errorMessageElement.style.display = 'none';
+    }
+  });
+}
 
 
 // Beispiel für die Anwendung auf ein <select>-Element:
