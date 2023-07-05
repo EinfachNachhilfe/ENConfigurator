@@ -153,7 +153,7 @@ applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt w
   
   //end inputfield validation
 
-function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+function applyValidation(selectElement, emptyErrorMsg) {
   let validImage = selectElement.parentNode.querySelector('.form_input-valid-image');
   let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image');
   const errorMessageElement = document.createElement('span');
@@ -176,6 +176,7 @@ function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg, pa
       inValidImage.style.display = 'block';
       shakeOnInvalid(selectElement);
     } else {
+      errorMessageElement.innerHTML = ''; // Clears the error message
       selectElement.style.borderColor = '#589b32';
       selectElement.style.borderWidth = '1.5px';
       validImage.style.display = 'block';
@@ -187,7 +188,7 @@ function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg, pa
 
 // Beispiel für die Anwendung auf ein <select>-Element:
  const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
- applyValidationSelect(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+ applyValidationSelect(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.');
 
 
 
