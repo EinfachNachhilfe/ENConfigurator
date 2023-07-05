@@ -153,9 +153,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
     //end inputfield validation
   
-  function applyValidationSelect(selectElement, emptyErrorMsg, invalidErrorMsg) {
-    let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-    let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  function applyValidationSelect(selectElement, emptyErrorMsg) {
+    let validImage = selectElement.parentNode.querySelector('.form_input-valid-image-select');
+    let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image-select');
     const errorMessageElement = document.createElement('span');
   
     errorMessageElement.id = 'error_message';
@@ -858,8 +858,8 @@ document.addEventListener("DOMContentLoaded", function() {
     nextBtn.addEventListener('click', function() {
       if (window.getComputedStyle(step, null).display === "block" && selectElement.value.trim() === '') {
         let errorMessageElement = selectElement.parentNode.querySelector('#error_message');
-    let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-    let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+        let validImage = selectElement.parentNode.querySelector('.form_input-valid-image-select');
+        let inValidImage = selectElement.parentNode.querySelector('.form_input-invalid-image-select');
   
         errorMessageElement.innerHTML = 'Bitte wählen Sie eine Option.';
         errorMessageElement.style.display = 'block';
