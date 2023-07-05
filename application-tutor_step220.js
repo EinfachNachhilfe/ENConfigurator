@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationMobilityTutor = document.getElementById('mobility_tutor');
   const inputValidationAvailabilityTutor = document.getElementById('availability_tutor');
   const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
+  const inputValidationClassFrom1Tutor = document.getElementById('class-from-1_tutor');
+  const inputValidationSubject1Tutor = document.getElementById('subject-1_tutor');
   
   //start stepchange with enter
   document.addEventListener("keydown", function(event) {
@@ -150,7 +152,10 @@ applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werd
 applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.' , '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
 applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
+
 applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+  applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+  applyValidation(inputValidationClassFrom1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
   //end inputfield validation
 
 
@@ -819,6 +824,8 @@ applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werd
   validateOnButtonClick(inputValidationBdayTutor, step4);
   validateOnButtonClick(inputValidationPhoneNumberTutor, step4);
   validateOnButtonClick(inputValidationSubject1Tutor, step2);
+    validateOnButtonClick(inputValidationSubject1Tutor, step2);
+    validateOnButtonClick(inputValidationClassFrom1Tutor, step2);
 
 
   
