@@ -176,12 +176,13 @@ function applyValidationSelect(selectElement, emptyErrorMsg) {
       inValidImage.style.display = 'block';
       shakeOnInvalid(selectElement);
     } else {
-     errorMessageElement.innerHTML = ''; // Clears the error message
+      errorMessageElement.innerHTML = ''; // Clears the error message
       selectElement.style.borderColor = '#589b32';
       selectElement.style.borderWidth = '1.5px';
       validImage.style.display = 'block';
       inValidImage.style.display = 'none';
       errorMessageElement.style.display = 'none';
+      shakeOnInvalid(selectElement);
     }
   });
 }
