@@ -33,6 +33,24 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputValidationSubject6Tutor = document.getElementById('subject-6_tutor');
   const inputValidationClassFrom6Tutor = document.getElementById('class-from-6_tutor');
   const inputValidationClassTo6Tutor = document.getElementById('class-to-6_tutor');
+  const inputValidationExperience1Tutor = document.getElementById('experience-1_tutor');
+  const inputValidationDuration1Tutor = document.getElementById('duration-1_tutor');
+  const inputValidationWhen1Tutor = document.getElementById('when-1_tutor');
+  const inputValidationExperience2Tutor = document.getElementById('experience-2_tutor');
+  const inputValidationDuration2Tutor = document.getElementById('duration-2_tutor');
+  const inputValidationWhen2Tutor = document.getElementById('when-2_tutor');
+  const inputValidationExperience3Tutor = document.getElementById('experience-3_tutor');
+  const inputValidationDuration3Tutor = document.getElementById('duration-3_tutor');
+  const inputValidationWhen3Tutor = document.getElementById('when-3_tutor');
+  const inputValidationExperience4Tutor = document.getElementById('experience-4_tutor');
+  const inputValidationDuration4Tutor = document.getElementById('duration-4_tutor');
+  const inputValidationWhen4Tutor = document.getElementById('when-4_tutor');
+  const inputValidationExperience5Tutor = document.getElementById('experience-5_tutor');
+  const inputValidationDuration5Tutor = document.getElementById('duration-5_tutor');
+  const inputValidationWhen5Tutor = document.getElementById('when-5_tutor');
+  const inputValidationExperience6Tutor = document.getElementById('experience-6_tutor');
+  const inputValidationDuration6Tutor = document.getElementById('duration-6_tutor');
+  const inputValidationWhen6Tutor = document.getElementById('when-6_tutor');
   
   //start stepchange with enter
   document.addEventListener("keydown", function(event) {
@@ -186,6 +204,25 @@ applyValidation(inputValidationClassFrom5Tutor, 'Dieses Feld muss ausgefüllt we
 applyValidation(inputValidationSubject6Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
 applyValidation(inputValidationClassTo6Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
 applyValidation(inputValidationClassFrom6Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+
+applyValidation( inputValidationWhen1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationDuration1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationExperience1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation( inputValidationWhen2Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationDuration2Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationExperience2Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation( inputValidationWhen3Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationDuration3Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationExperience3Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation( inputValidationWhen4Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationDuration4Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationExperience4Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation( inputValidationWhen5Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationDuration5Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationExperience5Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation( inputValidationWhen6Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationDuration6Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationExperience6Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
   //end inputfield validation
 
 
@@ -871,6 +908,25 @@ applyValidation(inputValidationClassFrom6Tutor, 'Dieses Feld muss ausgefüllt we
   validateOnButtonClick(inputValidationSubject6Tutor, step2);
   validateOnButtonClick(inputValidationClassTo6Tutor, step2);
   validateOnButtonClick(inputValidationClassFrom6Tutor, step2);
+  
+  validateOnButtonClick(inputValidationWhen1Tutor, step3);
+  validateOnButtonClick(inputValidationDuration1Tutor, step3);
+  validateOnButtonClick(inputValidationExperience1Tutor, step3);
+  validateOnButtonClick(inputValidationWhen2Tutor, step3);
+  validateOnButtonClick(inputValidationDuration2Tutor, step3);
+  validateOnButtonClick(inputValidationExperience2Tutor, step3);
+  validateOnButtonClick(inputValidationWhen3Tutor, step3);
+  validateOnButtonClick(inputValidationDuration3Tutor, step3);
+  validateOnButtonClick(inputValidationExperience3Tutor, step3);
+  validateOnButtonClick(inputValidationWhen4Tutor, step3);
+  validateOnButtonClick(inputValidationDuration4Tutor, step3);
+  validateOnButtonClick(inputValidationExperience4Tutor, step3);
+  validateOnButtonClick(inputValidationWhen5Tutor, step3);
+  validateOnButtonClick(inputValidationDuration5Tutor, step3);
+  validateOnButtonClick(inputValidationExperience5Tutor, step3);
+  validateOnButtonClick(inputValidationWhen6Tutor, step3);
+  validateOnButtonClick(inputValidationDuration6Tutor, step3);
+  validateOnButtonClick(inputValidationExperience6Tutor, step3);
 
 
   
