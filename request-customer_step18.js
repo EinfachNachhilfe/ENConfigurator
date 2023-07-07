@@ -156,6 +156,47 @@ var submitBtn = document.getElementById('submit-btn');
   applyValidation(inputValidationClassStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
  
 
+function applyValidationCouponCode(inputElement) {
+  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  let errorMessageElement = document.createElement('span');   
+  let pattern = /lernen2023/i;
+
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem';
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  errorMessageElement.style.fontSize = '0.8rem';
+  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+
+  inputElement.addEventListener("change", function() {
+      if (pattern.test(inputElement.value)) {
+          inputElement.style.borderColor = '#589b32';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'block';
+          inValidImage.style.display = 'none';
+          errorMessageElement.style.display = 'none';
+      } else {
+          inputElement.style.borderColor = '#9e367a';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'none';
+          inValidImage.style.display = 'block';
+          errorMessageElement.innerHTML = 'Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.';
+          errorMessageElement.style.display = 'block';
+      }
+  });
+}
+
+// Verwenden Sie die Funktion wie folgt:
+applyValidationCouponCode(inputValidationCouponCode);
+
+
+
+
+
+
+
     //end inputfield validation
 
 
