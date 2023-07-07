@@ -154,7 +154,7 @@ var submitBtn = document.getElementById('submit-btn');
   applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
   applyValidation(inputValidationZipCodeTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
   applyValidation(inputValidationClassStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
-  applyValidation(inputValidationCouponCode, '', 'Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!','/^lernen2023$/i'); 
+  applyValidation(inputValidationCouponCode, 'Test', 'Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!','/^lernen2023$/i'); 
 
     //end inputfield validation
 
