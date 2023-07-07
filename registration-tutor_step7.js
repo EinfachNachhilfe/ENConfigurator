@@ -40,18 +40,24 @@ document.addEventListener("keydown", function(event) {
 
 
 //start Validation IBAN
+document.addEventListener('DOMContentLoaded', (event) => {
+  const input = inputValidationIbanTutor;
+  input.addEventListener('input', checkInput);
+});
+
 function checkInput() {
   const input = inputValidationIbanTutor;
-  if (input.value.substring(0, 2) !== 'DE') {
-    input.value = 'DE';
-    input.setSelectionRange(2,2);
+  if (input.value.length > 0 && input.value.substring(0, 2) !== 'DE') {
+    input.value = 'DE' + input.value;
+    input.setSelectionRange(input.value.length,input.value.length);
   } else {
     // Remove any non-numeric characters after 'DE'
     input.value = 'DE' + input.value.substring(2).replace(/\D/g, '');
   }
 }
-
 //end Validation IBAN
+
+
 
   //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
