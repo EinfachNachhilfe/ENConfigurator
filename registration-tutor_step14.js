@@ -47,7 +47,7 @@ document.addEventListener("keydown", function(event) {
   });
 
   inputValidationIbanTutor.addEventListener('input', () => checkInput(inputValidationIbanTutor));
-});
+
 
 function checkInput(inputValidationIbanTutor) {
   if (inputValidationIbanTutor.value.substring(0, 2) !== 'DE') {
@@ -59,6 +59,7 @@ function checkInput(inputValidationIbanTutor) {
   }
 }
 //end Validation IBAN
+
 
 
 
