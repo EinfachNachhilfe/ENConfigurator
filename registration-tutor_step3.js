@@ -32,34 +32,7 @@ document.addEventListener("keydown", function(event) {
 //end stepchange with enter
 
 
-//start Validation only letter
-var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_tutor"]');
-var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_tutor"]');
 
-
-function applyValidation2(inputElement2) {
- inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
-
-
-  
- 
-  inputElement2.addEventListener('invalid', function() {
-    applyInvalidBorderStyle(inputElement2);
-      shakeOnInvalid(inputElement2);
-  });
-
-  inputElement2.addEventListener('input', function() {
-    if (inputElement2.checkValidity()) {
-      inputElement2.style.borderColor = '';
-      inputElement2.style.borderWidth = '';
-    }
-  }); 
-}
-
-applyValidation2(ValidationInputFieldLetter1);
-applyValidation2(ValidationInputFieldLetter2);
-
-//end Validation only letter
 
 //start Validation IBAN
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -78,47 +51,6 @@ function checkInput() {
     input.value = 'DE' + input.value.substring(2).replace(/\D/g, '');
   }
 }
-
-var ValidationInputFieldIban1 = document.querySelector('input[name="iban_tutor"]');
-
-function applyValidation3(inputElement3) {
-  inputElement3.setAttribute('pattern', '^DE[0-9]{20}$');
-  inputElement3.setAttribute('maxlength', '22');
-  
-  var errorMessageElement = document.createElement('span');
-  errorMessageElement.id = 'error_message';
-  errorMessageElement.style.color = '#9d367a';
-  errorMessageElement.style.display = 'none';
-  errorMessageElement.style.marginTop = '-0.625rem'; // Adjust this value as needed
-  errorMessageElement.style.fontFamily = 'Roboto, sans-serif'; // Set the font to Roboto
-  errorMessageElement.style.fontSize = '0.8rem'; // Set the font size
-  inputElement3.parentNode.insertBefore(errorMessageElement, inputElement3.nextSibling);
-
-  inputElement3.addEventListener('change', function() {
-    if (inputElement3.checkValidity()) {
-      // Das Input-Feld enthält gültige Daten
-      applyValidBorderStyle(inputElement3);
-      errorMessageElement.style.display = 'none';
-    } else {
-      // Das Input-Feld enthält ungültige Daten
-      applyInvalidBorderStyle(inputElement3);
-      shakeOnInvalid(inputElement3);
-      errorMessageElement.innerHTML = 'Ungültige IBAN. Sie muss 22 Stellen enthalten.';
-      errorMessageElement.style.display = 'block';
-    }
-  });
-
-  inputElement3.addEventListener('input', function() {
-    if (inputElement3.checkValidity()) {
-      inputElement3.style.borderColor = '';
-      inputElement3.style.borderWidth = '';
-      errorMessageElement.style.display = 'none';
-    }
-  }); 
-}
-
-applyValidation3(ValidationInputFieldIban1);
-//end Validation IBAN
 
 //start function input validation
 
