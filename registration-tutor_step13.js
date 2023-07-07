@@ -40,16 +40,22 @@ document.addEventListener("keydown", function(event) {
 
 
 //start Validation IBAN
+ inputValidationIbanTutor.addEventListener('focus', () => {
+    if(inputValidationIbanTutor.value === '') {
+      inputValidationIbanTutor.value = 'DE';
+    }
+  });
 
+  inputValidationIbanTutor.addEventListener('input', () => checkInput(inputValidationIbanTutor));
+});
 
-function checkInput() {
-  const input = document.getElementById('iban_tutor');
-  if (input.value.substring(0, 2) !== 'DE') {
-    input.value = 'DE';
-    input.setSelectionRange(2,2);
+function checkInput(inputValidationIbanTutor) {
+  if (inputValidationIbanTutor.value.substring(0, 2) !== 'DE') {
+    inputValidationIbanTutor.value = 'DE';
+    inputValidationIbanTutor.setSelectionRange(2,2);
   } else {
     // Remove any non-numeric characters after 'DE'
-    input.value = 'DE' + input.value.substring(2).replace(/\D/g, '');
+    inputValidationIbanTutor.value = 'DE' + inputValidationIbanTutor.value.substring(2).replace(/\D/g, '');
   }
 }
 //end Validation IBAN
