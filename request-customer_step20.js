@@ -157,7 +157,7 @@ var submitBtn = document.getElementById('submit-btn');
  
 
 function applyValidationCouponCode(inputElement) {
-  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image-coupon');
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   let errorMessageElement = document.createElement('span');   
   let successMessageElement = document.createElement('span'); 
