@@ -157,7 +157,7 @@ var submitBtn = document.getElementById('submit-btn');
  
 
 function applyValidationCouponCode(inputElement) {
-  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image-coupon');
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   let errorMessageElement = document.createElement('span');   
   let successMessageElement = document.createElement('span'); 
@@ -178,7 +178,7 @@ function applyValidationCouponCode(inputElement) {
   successMessageElement.style.fontSize = '0.8rem';
 
   inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-  inputElement.parentNode.insertBefore(successMessageElement, errorMessageElement.nextSibling);
+  inputElement.parentNode.insertBefore(successMessageElement, inputElement.nextSibling);
 
   inputElement.addEventListener("change", function() {
       if (pattern.test(inputElement.value)) {
@@ -187,7 +187,7 @@ function applyValidationCouponCode(inputElement) {
           validImage.style.display = 'block';
           inValidImage.style.display = 'none';
           errorMessageElement.style.display = 'none';
-          successMessageElement.innerHTML = 'Gültiger Gutscheincode. Vielen Dank!';
+          successMessageElement.innerHTML = 'Gültiger Gutscheincode. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!';
           successMessageElement.style.display = 'block';
       } else {
           inputElement.style.borderColor = '#9e367a';
@@ -203,7 +203,6 @@ function applyValidationCouponCode(inputElement) {
 
 // Verwenden Sie die Funktion wie folgt:
 applyValidationCouponCode(inputValidationCouponCode);
-
 
 
 
