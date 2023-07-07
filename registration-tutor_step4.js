@@ -52,22 +52,18 @@ function checkInput() {
   }
 }
 
-//start function input validation
-
-function applyInvalidBorderStyle(input) {
-  input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '1.5px';
-}
-
-function shakeOnInvalid(input) {
+  //start function shake
+  function shakeOnInvalid(input) {
   var originalPosition = input.getBoundingClientRect().left;
   input.style.transition = 'transform 0.1s ease-in-out';
   input.style.transform = 'translateX(3px)';
   setTimeout(function() {
     input.style.transform = '';
   }, 100);
-}
-//end function input validation
+  }
+  //end function shake
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
