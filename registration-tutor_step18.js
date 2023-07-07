@@ -63,7 +63,7 @@ function checkInput(inputValidationIbanTutor) {
 }
 //end Validation IBAN
 
-function applyValidation(inputElement, uploadelement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+function applyValidationtest(inputElement, uploadelement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   const errorMessageElement = document.createElement('span');        
@@ -108,7 +108,7 @@ function applyValidation(inputElement, uploadelement, emptyErrorMsg, invalidErro
     });
   }
 
-applyValidation(inputValidationFile, inputValidationTestTest, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidationtest(inputValidationFile, inputValidationTestTest, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
 
