@@ -40,6 +40,11 @@ document.addEventListener("keydown", function(event) {
 
 
 //start Validation IBAN
+document.addEventListener('DOMContentLoaded', (event) => {
+  const input = document.getElementById('iban_tutor');
+  input.addEventListener('input', checkInput);
+});
+
 function checkInput() {
   const input = document.getElementById('iban_tutor');
   if (input.value.length > 0 && input.value.substring(0, 2) !== 'DE') {
@@ -51,6 +56,7 @@ function checkInput() {
   }
 }
 //end Validation IBAN
+
 
 
 
