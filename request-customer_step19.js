@@ -160,6 +160,7 @@ function applyValidationCouponCode(inputElement) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   let errorMessageElement = document.createElement('span');   
+  let successMessageElement = document.createElement('span'); 
   let pattern = /lernen2023/i;
 
   errorMessageElement.id = 'error_message';
@@ -168,7 +169,16 @@ function applyValidationCouponCode(inputElement) {
   errorMessageElement.style.marginTop = '-0.625rem';
   errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
   errorMessageElement.style.fontSize = '0.8rem';
+
+  successMessageElement.id = 'success_message';
+  successMessageElement.style.color = '#589b32';
+  successMessageElement.style.display = 'none';
+  successMessageElement.style.marginTop = '-0.625rem';
+  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  successMessageElement.style.fontSize = '0.8rem';
+
   inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+  inputElement.parentNode.insertBefore(successMessageElement, inputElement.nextSibling);
 
   inputElement.addEventListener("change", function() {
       if (pattern.test(inputElement.value)) {
@@ -177,6 +187,8 @@ function applyValidationCouponCode(inputElement) {
           validImage.style.display = 'block';
           inValidImage.style.display = 'none';
           errorMessageElement.style.display = 'none';
+          successMessageElement.innerHTML = 'Gültiger Gutscheincode. Vielen Dank!';
+          successMessageElement.style.display = 'block';
       } else {
           inputElement.style.borderColor = '#9e367a';
           inputElement.style.borderWidth = '1.5px';
@@ -184,6 +196,7 @@ function applyValidationCouponCode(inputElement) {
           inValidImage.style.display = 'block';
           errorMessageElement.innerHTML = 'Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.';
           errorMessageElement.style.display = 'block';
+          successMessageElement.style.display = 'none';
       }
   });
 }
@@ -197,11 +210,12 @@ applyValidationCouponCode(inputValidationCouponCode);
 
 
 
+
     //end inputfield validation
 
 
     function validateOnButtonClick(inputElement, step) {
-      nextBtn.addEventListener('click', function() {
+      submitBtn.addEventListener('click', function() {
         if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
           let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
           let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
