@@ -64,8 +64,8 @@ function checkInput(inputValidationIbanTutor) {
 //end Validation IBAN
 
 function applyValidationtest(inputElement, uploadelement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-  let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  let validImage = uploadelement.parentNode.querySelector('.form_input-valid-image');
+  let inValidImage = uploadelement.parentNode.querySelector('.form_input-invalid-image');
   const errorMessageElement = document.createElement('span');        
 
   if (pattern !== null) {
