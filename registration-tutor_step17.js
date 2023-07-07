@@ -108,7 +108,7 @@ function applyValidation(inputElement, uploadelement, emptyErrorMsg, invalidErro
     });
   }
 
-applyValidation(inputValidationFirstNameTutor, inputValidationTestTest, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFile, inputValidationTestTest, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
 
