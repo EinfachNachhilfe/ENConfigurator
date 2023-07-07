@@ -242,7 +242,16 @@ applyValidationCouponCode(inputValidationCouponCode);
  
 
 
-
+  //start function shake
+  function shakeOnInvalid(input) {
+  var originalPosition = input.getBoundingClientRect().left;
+  input.style.transition = 'transform 0.1s ease-in-out';
+  input.style.transform = 'translateX(3px)';
+  setTimeout(function() {
+    input.style.transform = '';
+  }, 100);
+  }
+  //end function shake
 
 
 
