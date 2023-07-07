@@ -52,176 +52,159 @@ var submitBtn = document.getElementById('submit-btn');
   //end stepchange with enter
 
 
-  //start Validation Phone
-  var selectedOption = "";
-  
-  function updateInputValue() {
-    var selectElement = document.getElementById("custom_form-input-is-select-input");
-    selectedOption = selectElement.options[selectElement.selectedIndex].value;
-    document.getElementById("phone-number_payable").value = selectedOption;
-  }
-  
-  document.getElementById("custom_form-input-is-select-input").addEventListener("change", function() {
-    updateInputValue();
-  });
-  
-  document.getElementById("phone-number_payable").addEventListener("input", function() {
-    if (this.value.length < selectedOption.length) {
-      this.value = selectedOption;
+
+ //start phone validation
+  inputValidationPhoneNumberContactPerson.addEventListener('focus', function(e) {
+    var value = e.target.value;
+    if (!value.startsWith('+49')) {
+        value = '+49' + value;
     }
+  
+    e.target.value = value;
   });
   
-  updateInputValue();
+  inputValidationPhoneNumberContactPerson.addEventListener('input', function(e) {
+    var value = e.target.value;
+    var start = e.target.selectionStart;
+    var end = e.target.selectionEnd;
   
-  function checkInput2() {
-    const input2 = document.getElementById('phone-number_payable');
-    if (input2.value.substring(0, selectedOption.length) !== selectedOption) {
-      input2.value = selectedOption;
-      input2.setSelectionRange(selectedOption.length, selectedOption.length);
-    } else {
-      // Remove any non-numeric characters after 'selectedOption'
-      input2.value = selectedOption + input2.value.substring(selectedOption.length).replace(/\D/g, '');
+    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
+    value = value.replace(/[^0-9+]/g, '');
+  
+    // Stelle sicher, dass "+49" nicht geändert oder gelöscht werden kann
+    if (!value.startsWith('+49')) {
+        value = '+49';
     }
-  }
   
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const input2 = document.getElementById('phone-number_payable');
-    input2.value = selectedOption;
-    input2.addEventListener('input', checkInput2);
-    updateInputValue();
+    // Entferne führende Nullen nach "+49"
+    if (value.startsWith('+49') && value.length > 3) {
+        value = '+49' + value.slice(3).replace(/^0+/, '');
+    }
+    e.target.value = value;
+    e.target.setSelectionRange(start, end);
   });
   
+  inputValidationPhoneNumberContactPerson.addEventListener('focus', setCursorPosition);
   
-      var ValidationInputFieldPhone1 = document.getElementById('phone-number_payable');
-  
-      function applyValidation4(inputElement4) {
-        inputElement4.setAttribute('pattern', '^.{8,}$');
-        
-       inputElement4.addEventListener('change', function() {
-      if (inputElement4.checkValidity()) {
-        
-        applyValidBorderStyle(inputElement4);
-      } else {
-       
-        applyInvalidBorderStyle(inputElement4);
-        shakeOnInvalid(inputElement4);
-      }
-    });
-    
-     inputElement4.addEventListener('input', function() {
-      if (inputElement4.checkValidity()) {
-        inputElement4.style.borderColor = '';
-        inputElement4.style.borderWidth = '';
-      }
-    }); 
+  function setCursorPosition(e) {
+    const input = e.target;
+    // Setze die Cursorposition nach '+49'
+    input.setSelectionRange(3, 3);
   }
   
-      applyValidation4(ValidationInputFieldPhone1);
-  
-  //end Validation Phone
+  //end phone validation
 
-  //start Validation only number max length 5
-  var ValidationInputFieldNumber1 = document.querySelector('input[name="zip-code_teaching-location"]');
-  
-  
-  function applyValidation1(inputElement1) {
-    inputElement1.setAttribute('pattern', '\\d+');
-    inputElement1.setAttribute('maxlength', '5');
-    
-   
-    inputElement1.addEventListener('invalid', function() {
-      applyInvalidBorderStyle(inputElement1);
-        shakeOnInvalid(inputElement1);
-    });
-  
-    inputElement1.addEventListener('input', function() {
-      if (inputElement1.checkValidity()) {
-        inputElement1.style.borderColor = '';
-        inputElement1.style.borderWidth = '';
-      }
-    }); 
-  }
-  
-  applyValidation1(ValidationInputFieldNumber1);
-  
-  //end Validation only number max length 5
 
- //start Validation only letter
-  var ValidationInputFieldLetter1 = document.querySelector('input[name="first-name_contact-person"]');
-  var ValidationInputFieldLetter2 = document.querySelector('input[name="second-name_contact-person"]');
 
+ //start inputfield validation
+    function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+    let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+    let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+    const errorMessageElement = document.createElement('span');        
   
-  function applyValidation2(inputElement2) {
-   inputElement2.setAttribute('pattern', '^[A-Za-z ]+$');
-  
+    if (pattern !== null) {
+      inputElement.setAttribute('pattern', pattern);
+    }
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.display = 'none';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
   
     
-   
-    inputElement2.addEventListener('invalid', function() {
-      applyInvalidBorderStyle(inputElement2);
-        shakeOnInvalid(inputElement2);
-    });
   
-    inputElement2.addEventListener('input', function() {
-      if (inputElement2.checkValidity()) {
-        inputElement2.style.borderColor = '';
-        inputElement2.style.borderWidth = '';
-      }
-    }); 
-  }
+      inputElement.addEventListener("change", function() {
+        if (inputElement.value.trim() === '') {
+          errorMessageElement.innerHTML = emptyErrorMsg;
+          errorMessageElement.style.display = 'block';
+          inputElement.style.borderColor = '#9e367a';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'none';
+          inValidImage.style.display = 'block';
+          shakeOnInvalid(inputElement);
+        } else if (inputElement.checkValidity()) {
+          inputElement.style.borderColor = '#589b32';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'block';
+          inValidImage.style.display = 'none';
+          errorMessageElement.style.display = 'none';
+        } else {
+          errorMessageElement.innerHTML = invalidErrorMsg;
+          errorMessageElement.style.display = 'block';
+          inputElement.style.borderColor = '#9e367a';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'none';
+          inValidImage.style.display = 'block';
+          shakeOnInvalid(inputElement);
+        }
+      });
+    }
   
-  applyValidation2(ValidationInputFieldLetter1);
-  applyValidation2(ValidationInputFieldLetter2);
+  applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+  applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+  
+  applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationHouseNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationZipCodeTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+  applyValidation(inputValidationCityNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationEmailTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
+  applyValidation(inputValidationInstitutionTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationCourseOfStudyTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationSemesterTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+  applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.' , '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+  applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
+  
+  applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+    applyValidation(inputValidationClassTo1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+    applyValidation(inputValidationClassFrom1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+    //end inputfield validation
 
-  //end Validation only letter
-  
 
- //start Validation Mail
-  
-  var ValidationInputFieldMail1 = document.getElementById('email_contact-person');
-  
-  function applyValidation5(inputElement5) {
-  
+    function validateOnButtonClick(inputElement, step) {
+      nextBtn.addEventListener('click', function() {
+        if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+          let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+          let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+          let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
     
-   inputElement5.addEventListener('change', function() {
-  if (inputElement5.checkValidity()) {
-    // Das Input-Feld enthält gültige Daten
-    applyValidBorderStyle(inputElement5);
-  } else {
-    // Das Input-Feld enthält ungültige Daten
-    applyInvalidBorderStyle(inputElement5);
-    shakeOnInvalid(inputElement5);
-  }
-  });
-  
-  inputElement5.addEventListener('input', function() {
-  if (inputElement5.checkValidity()) {
-    inputElement5.style.borderColor = '';
-    inputElement5.style.borderWidth = '';
-  }
-  }); 
-  }
-  
-  applyValidation5(ValidationInputFieldMail1);
-  
-  //end Validation Mail
+          errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+          errorMessageElement.style.display = 'block';
+          inputElement.style.borderColor = '#9e367a'; // Set border color to red
+          inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+          validImage.style.display = 'none';
+          inValidImage.style.display = 'block';
+          shakeOnInvalid(inputElement);
+        }
+      });
+    }
+    
+    // Anwenden der Funktion auf mehrere Eingabefelder:
+    validateOnButtonClick(inputValidationFirstNameTutor, step1);
+    validateOnButtonClick(inputValidationSecondNameTutor, step1);
+    
+    validateOnButtonClick(inputValidationStreetNameTutor, step4);
+    validateOnButtonClick(inputValidationHouseNumberTutor, step4);
+    validateOnButtonClick(inputValidationZipCodeTutor, step4);
+    validateOnButtonClick(inputValidationZipCodeTutor, step4);
+    validateOnButtonClick(inputValidationCityNameTutor, step4);
+    validateOnButtonClick(inputValidationEmailTutor, step4);
+    validateOnButtonClick(inputValidationInstitutionTutor, step4);
+    validateOnButtonClick(inputValidationCourseOfStudyTutor, step4);
+    validateOnButtonClick(inputValidationSemesterTutor, step4);
+    validateOnButtonClick(inputValidationMobilityTutor, step4);
+    validateOnButtonClick(inputValidationAvailabilityTutor, step4);
+    validateOnButtonClick(inputValidationBdayTutor, step4);
+    validateOnButtonClick(inputValidationPhoneNumberContactPerson, step4);
+    validateOnButtonClick(inputValidationSubject1Tutor, step2);
+      validateOnButtonClick(inputValidationClassTo1Tutor, step2);
+      validateOnButtonClick(inputValidationClassFrom1Tutor, step2);
 
-//start function input validation
-  
-  function applyInvalidBorderStyle(input) {
-    input.style.borderColor = '#9d367a';
-    input.style.borderWidth = '1.5px';
-  }
-  
-  function shakeOnInvalid(input) {
-    var originalPosition = input.getBoundingClientRect().left;
-    input.style.transition = 'transform 0.1s ease-in-out';
-    input.style.transform = 'translateX(3px)';
-    setTimeout(function() {
-      input.style.transform = '';
-    }, 100);
-  }
-  //end function input validation
+
+
 
 
 // Hide all form steps except the first one
