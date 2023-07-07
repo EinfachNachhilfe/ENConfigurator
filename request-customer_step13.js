@@ -184,6 +184,7 @@ var submitBtn = document.getElementById('submit-btn');
     validateOnButtonClick(inputValidationEmailContactPerson, step8);
     validateOnButtonClick(inputValidationClassStudent, step8);
     validateOnButtonClick(inputValidationZipCodeTeachingLocation, step8);
+    validateOnButtonClick(inputValidationCouponCode, step8);
  
 
 
