@@ -24,6 +24,8 @@ var isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1')
   const inputValidationIbanTutor = document.getElementById('iban_tutor');
   const inputValidationNameBankTutor = document.getElementById('name-bank_tutor');
   const inputValidationFile = document.getElementById('File');
+  const inputValidationTestTest = document.getElementById('testtest');
+
 
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
@@ -61,7 +63,52 @@ function checkInput(inputValidationIbanTutor) {
 }
 //end Validation IBAN
 
+function applyValidation(inputElement, uploadelement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  const errorMessageElement = document.createElement('span');        
 
+  if (pattern !== null) {
+    inputElement.setAttribute('pattern', pattern);
+  }
+    errorMessageElement.id = 'error_message';
+    errorMessageElement.style.color = '#9d367a';
+    errorMessageElement.style.display = 'none';
+    errorMessageElement.style.marginTop = '-0.625rem';
+    errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+    errorMessageElement.style.fontSize = '0.8rem';
+    uploadelement.parentNode.insertBefore(uploadelement, uploadelement.nextSibling);
+
+  
+
+    inputElement.addEventListener("change", function() {
+      if (inputElement.value.trim() === '') {
+        errorMessageElement.innerHTML = emptyErrorMsg;
+        errorMessageElement.style.display = 'block';
+        uploadelement.style.borderColor = '#9e367a';
+        uploadelement.style.borderWidth = '1.5px';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(uploadelement);
+      } else if (inputElement.checkValidity()) {
+        uploadelement.style.borderColor = '#589b32';
+        uploadelement.style.borderWidth = '1.5px';
+        validImage.style.display = 'block';
+        inValidImage.style.display = 'none';
+        errorMessageElement.style.display = 'none';
+      } else {
+        errorMessageElement.innerHTML = invalidErrorMsg;
+        errorMessageElement.style.display = 'block';
+        uploadelement.style.borderColor = '#9e367a';
+        uploadelement.style.borderWidth = '1.5px';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(uploadelement);
+      }
+    });
+  }
+
+applyValidation(inputValidationFirstNameTutor, inputValidationTestTest, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
 
@@ -116,7 +163,7 @@ applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt we
 applyValidation(inputValidationAttentiveTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationIbanTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^DE[0-9]{20}$');
 applyValidation(inputValidationNameBankTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationFile, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 
   function validateOnButtonClick(inputElement, step) {
     nextBtn.addEventListener('click', function() {
@@ -144,7 +191,7 @@ applyValidation(inputValidationFile, 'Dieses Feld muss ausgefüllt werden.', 'Un
   validateOnButtonClick(inputValidationNameBankTutor, step2);
   validateOnButtonClick(inputValidationIbanTutor, step2);
 
-  validateOnButtonClick(inputValidationFile, step3);
+
 
 
 
