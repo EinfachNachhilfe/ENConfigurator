@@ -63,54 +63,6 @@ function checkInput(inputValidationIbanTutor) {
 }
 //end Validation IBAN
 
-function applyValidationtest(inputElement, uploadelement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-  let validImage = uploadelement.parentNode.querySelector('.form_input-valid-image');
-  let inValidImage = uploadelement.parentNode.querySelector('.form_input-invalid-image');
-  const errorMessageElement = document.createElement('span');        
-
-  if (pattern !== null) {
-    inputElement.setAttribute('pattern', pattern);
-  }
-    errorMessageElement.id = 'error_message';
-    errorMessageElement.style.color = '#9d367a';
-    errorMessageElement.style.display = 'none';
-    errorMessageElement.style.marginTop = '-0.625rem';
-    errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-    errorMessageElement.style.fontSize = '0.8rem';
-    uploadelement.parentNode.insertBefore(uploadelement, uploadelement.nextSibling);
-
-  
-
-    inputElement.addEventListener("change", function() {
-      if (inputElement.value.trim() === '') {
-        errorMessageElement.innerHTML = emptyErrorMsg;
-        errorMessageElement.style.display = 'block';
-        uploadelement.style.borderColor = '#9e367a';
-        uploadelement.style.borderWidth = '1.5px';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(uploadelement);
-      } else if (inputElement.checkValidity()) {
-        uploadelement.style.borderColor = '#589b32';
-        uploadelement.style.borderWidth = '1.5px';
-        validImage.style.display = 'block';
-        inValidImage.style.display = 'none';
-        errorMessageElement.style.display = 'none';
-      } else {
-        errorMessageElement.innerHTML = invalidErrorMsg;
-        errorMessageElement.style.display = 'block';
-        uploadelement.style.borderColor = '#9e367a';
-        uploadelement.style.borderWidth = '1.5px';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(uploadelement);
-      }
-    });
-  }
-
-applyValidationtest(inputValidationFile, inputValidationTestTest, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-
-
 
   //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
