@@ -18,6 +18,12 @@ var showStepNumber = document.getElementById('show-step_number');
 var certificateOfEnrollmentTutor = document.getElementById('certificate-of-enrollment_tutor');
 var isUploadInputChangeV1 = document.getElementById('is-upload-input-change-v1');
 
+  const inputValidationFirstNameTutor = document.getElementById('first-name_tutor');
+  const inputValidationSecondNameTutor = document.getElementById('second-name_tutor');
+  const inputValidationAttentiveTutor = document.getElementById('attentive_tutor');
+  const inputValidationIbanTutor = document.getElementById('iban_tutor');
+  const inputValidationNameBankTutor = document.getElementById('name-bank_tutor');
+
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
@@ -99,11 +105,12 @@ function checkInput() {
     });
   }
 
-applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationAttentiveTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationIbanTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^DE[0-9]{20}$');
+applyValidation(inputValidationNameBankTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
-applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationHouseNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
   function validateOnButtonClick(inputElement, step) {
     nextBtn.addEventListener('click', function() {
@@ -126,6 +133,11 @@ applyValidation(inputValidationHouseNumberTutor, 'Dieses Feld muss ausgefüllt w
   // Anwenden der Funktion auf mehrere Eingabefelder:
   validateOnButtonClick(inputValidationFirstNameTutor, step1);
   validateOnButtonClick(inputValidationSecondNameTutor, step1);
+  validateOnButtonClick(inputValidationAttentiveTutor, step1);
+
+  validateOnButtonClick(inputValidationNameBankTutor, step2);
+  validateOnButtonClick(inputValidationIbanTutor, step2);
+
 
 
   //start function shake
