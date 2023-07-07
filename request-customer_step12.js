@@ -150,13 +150,12 @@ var submitBtn = document.getElementById('submit-btn');
   
   applyValidation(inputValidationFirstNameContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
   applyValidation(inputValidationSecondNameContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-  applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
   applyValidation(inputValidationEmailContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
   applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
-  
-  applyValidation(inputValidationSubject1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
-  applyValidation(inputValidationClassTo1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
-  applyValidation(inputValidationClassFrom1Tutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+  applyValidation(inputValidationZipCodeTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+  applyValidation(inputValidationClassStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+  applyValidation(inputValidationCouponCode, '', 'Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!','/^lernen2023$/i'); 
+
     //end inputfield validation
 
 
@@ -179,25 +178,14 @@ var submitBtn = document.getElementById('submit-btn');
     }
     
     // Anwenden der Funktion auf mehrere Eingabefelder:
-    validateOnButtonClick(inputValidationFirstNameTutor, step1);
-    validateOnButtonClick(inputValidationSecondNameTutor, step1);
-    
-    validateOnButtonClick(inputValidationStreetNameTutor, step4);
-    validateOnButtonClick(inputValidationHouseNumberTutor, step4);
-    validateOnButtonClick(inputValidationZipCodeTutor, step4);
-    validateOnButtonClick(inputValidationZipCodeTutor, step4);
-    validateOnButtonClick(inputValidationCityNameTutor, step4);
-    validateOnButtonClick(inputValidationEmailTutor, step4);
-    validateOnButtonClick(inputValidationInstitutionTutor, step4);
-    validateOnButtonClick(inputValidationCourseOfStudyTutor, step4);
-    validateOnButtonClick(inputValidationSemesterTutor, step4);
-    validateOnButtonClick(inputValidationMobilityTutor, step4);
-    validateOnButtonClick(inputValidationAvailabilityTutor, step4);
-    validateOnButtonClick(inputValidationBdayTutor, step4);
-    validateOnButtonClick(inputValidationPhoneNumberContactPerson, step4);
-    validateOnButtonClick(inputValidationSubject1Tutor, step2);
-      validateOnButtonClick(inputValidationClassTo1Tutor, step2);
-      validateOnButtonClick(inputValidationClassFrom1Tutor, step2);
+    validateOnButtonClick(inputValidationFirstNameContactPerson, step8);
+    validateOnButtonClick(inputValidationSecondNameContactPerson, step8);
+    validateOnButtonClick(inputValidationPhoneNumberContactPerson, step8);
+    validateOnButtonClick(inputValidationEmailContactPerson, step8);
+    validateOnButtonClick(inputValidationClassStudent, step8);
+    validateOnButtonClick(inputValidationZipCodeTeachingLocation, step8);
+ 
+
 
 
 
