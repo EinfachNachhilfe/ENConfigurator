@@ -200,14 +200,6 @@ function applyValidationCouponCode(inputElement) {
       }
   });
 
-  inputElement.addEventListener("focus", function() {
-    if (pattern.test(inputElement.value)) {
-        inputElement.style.borderColor = '#589b32';
-    } else {
-        inputElement.style.borderColor = '#9e367a';
-    }
-  });
-}
 
 // Verwenden Sie die Funktion wie folgt:
 applyValidationCouponCode(inputValidationCouponCode);
