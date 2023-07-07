@@ -37,6 +37,14 @@ var isRuntimeSelected = false;
 var requiredFields = step8.querySelectorAll('[required]');
 var submitBtn = document.getElementById('submit-btn');
 
+ const inputValidationFirstNameContactPerson = document.getElementById('first-name_contact-person');
+ const inputValidationSecondNameContactPerson = document.getElementById('second-name_contact-person');
+ const inputValidationEmailContactPerson = document.getElementById('email_contact-person');
+ const inputValidationPhoneNumberContactPerson = document.getElementById('phone-number_contact-person');
+ const inputValidationZipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
+ const inputValidationClassStudent = document.getElementById('class_student');
+ const inputValidationCouponCode = document.getElementById('coupon-code');
+
 
  //start stepchange with enter
   document.addEventListener("keydown", function(event) {
@@ -48,7 +56,6 @@ var submitBtn = document.getElementById('submit-btn');
       }
     }
   });
-  
   //end stepchange with enter
 
 
@@ -90,8 +97,7 @@ var submitBtn = document.getElementById('submit-btn');
     const input = e.target;
     // Setze die Cursorposition nach '+49'
     input.setSelectionRange(3, 3);
-  }
-  
+  } 
   //end phone validation
 
 
@@ -142,14 +148,11 @@ var submitBtn = document.getElementById('submit-btn');
       });
     }
   
-  applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-  applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+  applyValidation(inputValidationFirstNameContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+  applyValidation(inputValidationSecondNameContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
   
-  applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationHouseNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationZipCodeTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
-  applyValidation(inputValidationCityNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-  applyValidation(inputValidationEmailTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
+  
+  applyValidation(inputValidationEmailContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
   applyValidation(inputValidationInstitutionTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationCourseOfStudyTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   applyValidation(inputValidationSemesterTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
