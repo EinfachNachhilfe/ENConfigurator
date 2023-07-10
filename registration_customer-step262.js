@@ -44,9 +44,7 @@ const inputValidationStreetNameBillingAddress = document.getElementById('street-
 const inputValidationHouseNumberBillingAddress = document.getElementById('house-number_billing-address'); 
 const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
 const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address'); 
-const inputValidationGenderStudent = document.querySelector('input[name="gender_student"]');
-const inputValidationGenderPayable = document.querySelector('input[name="gender_payable"]');
-const inputValidationTriggerBillingAddress = document.querySelector('input[name="trigger_billing-address"]');
+
 
 
 
@@ -219,14 +217,19 @@ validateOnButtonClick(inputValidationStreetNameBillingAddress, step3);
 validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
+
+
 function validateRadioOnButtonClick(radioName, step) {
   nextBtn.addEventListener('click', function() {
     // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
     let radioButtons = Array.from(document.getElementsByName(radioName));
+
     // Wir überprüfen, ob einer von ihnen ausgewählt ist
     let isSelected = radioButtons.some(button => button.checked);
-    let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
+
+    let errorMessageContainer = document.querySelector('#error_message_container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+
     if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
       let errorMessageElement = document.createElement('span');
       errorMessageElement.id = 'error_message';
@@ -238,6 +241,7 @@ function validateRadioOnButtonClick(radioName, step) {
       errorMessageContainer.appendChild(errorMessageElement);
     }
   });
+
   // Add event listeners to each radio button
   Array.from(document.getElementsByName(radioName)).forEach(button => {
     button.addEventListener('change', () => {
@@ -249,11 +253,9 @@ function validateRadioOnButtonClick(radioName, step) {
   });
 }
 
-
-validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
-validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
-validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
-
+const inputValidationGenderTutor = document.querySelector('input[name="gender_student"]');
+validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
+  
 
 
   //start function shake
