@@ -249,6 +249,9 @@ function validateRadioOnButtonClick(radioName, step) {
       errorMessageElement.style.fontSize = '0.8rem';
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
       errorMessageContainer.appendChild(errorMessageElement);
+    } else if (isStepVisible(step) && isSelected && existingErrorMessage) {
+      // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde
+      errorMessageContainer.removeChild(existingErrorMessage);
     }
   });
 
@@ -256,12 +259,14 @@ function validateRadioOnButtonClick(radioName, step) {
   Array.from(document.getElementsByName(radioName)).forEach(button => {
     button.addEventListener('change', () => {
       let errorMessage = document.querySelector('#error_message');
-      if (errorMessage) {
-        errorMessage.style.display = 'none';
+      if (errorMessage && isStepVisible(step)) {
+        // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde
+        errorMessage.parentNode.removeChild(errorMessage);
       }
     });
   });
 }
+
 // Beispielaufruf für Step 1 (bereits vorhanden)
 validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
 
