@@ -46,6 +46,9 @@ const inputValidationStreetNameBillingAddress = document.getElementById('street-
 const inputValidationHouseNumberBillingAddress = document.getElementById('house-number_billing-address'); 
 const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
 const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address'); 
+const inputValidationGenderStudent = document.querySelector('input[name="gender_student"]');
+const inputValidationGenderPayable = document.querySelector('input[name="gender_payable"]');
+const inputValidationTriggerBillingAddress = document.querySelector('input[name="trigger_billing-address"]');
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
@@ -191,7 +194,7 @@ applyValidation(inputValidationBdayStudent, 'Dieses Feld muss ausgefüllt werden
 applyValidation(inputValidationFirstNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
 applyValidation(inputValidationSecondNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
 applyValidation(inputValidationEmailPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
-applyValidation(inputValidationPhoneNumberPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{3,}$');
+applyValidation(inputValidationPhoneNumberPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
 applyValidation(inputValidationIbanPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^DE[0-9]{20}$');
 applyValidation(inputValidationBankNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
@@ -242,9 +245,44 @@ validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
 
 
+function validateRadioOnButtonClick(radioName, step) {
+  nextBtn.addEventListener('click', function() {
+    // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
+    let radioButtons = Array.from(document.getElementsByName(radioName));
+
+    // Wir überprüfen, ob einer von ihnen ausgewählt ist
+    let isSelected = radioButtons.some(button => button.checked);
+
+    let errorMessageContainer = document.querySelector('#error_message_container');
+    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
+      let errorMessageElement = document.createElement('span');
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
+      errorMessageContainer.appendChild(errorMessageElement);
+    }
+  });
+
+  // Add event listeners to each radio button
+  Array.from(document.getElementsByName(radioName)).forEach(button => {
+    button.addEventListener('change', () => {
+      let errorMessage = document.querySelector('#error_message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    });
+  });
+}
 
 
-
+validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
+validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
+validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
 
   //start function shake
   function shakeOnInvalid(input) {
