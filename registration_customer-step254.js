@@ -279,8 +279,10 @@ function validateRadioOnButtonClick(radioName, step) {
   });
 }
 
-const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
-validateRadioOnButtonClick(inputValidationGenderTutor.name, step2);
+
+validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
+validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
+validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
   
 
   //start function shake
