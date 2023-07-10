@@ -253,7 +253,7 @@ function validateRadioOnButtonClick(radioName, step) {
     // Wir überprüfen, ob einer von ihnen ausgewählt ist
     let isSelected = radioButtons.some(button => button.checked);
 
-    let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
+    let errorMessageContainer = document.querySelector('#error_message_container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
 
     if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
@@ -279,10 +279,9 @@ function validateRadioOnButtonClick(radioName, step) {
   });
 }
 
-
-validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
-validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
-validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
+const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
+validateRadioOnButtonClick(inputValidationGenderTutor.name, step2);
+  
 
   //start function shake
   function shakeOnInvalid(input) {
