@@ -262,16 +262,6 @@ function showStep3() {
   validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
 }
 
-function changeStep() {
-  if (someCondition) {
-    showStep2();
-  } else if (anotherCondition) {
-    showStep3();
-  }
-}
-
-// Und Sie würden changeStep() aufrufen, wenn Sie bereit sind, den Schritt zu ändern.
-changeStep();
 
   
 
