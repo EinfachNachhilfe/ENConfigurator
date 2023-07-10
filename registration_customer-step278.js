@@ -120,6 +120,8 @@ function checkInputIban(inputValidationIbanPayable) {
   }
 }
 //end Validation IBAN
+
+
  //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
@@ -278,7 +280,7 @@ validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
   //end function shake
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
-step2.style.display = 'none';
+
 step3.style.display = 'none';
 step4.style.display = 'none';
 backBtn.style.display = 'none';
