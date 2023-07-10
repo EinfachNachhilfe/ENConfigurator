@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var step1 = document.getElementById('form-item_adress');
+var step1 = document.getElementById('form-item_adress');
 var step2 = document.getElementById('form-item_student');
 var step3 = document.getElementById('form-item_payable');
 var step4 = document.getElementById('form-item_closing');
@@ -25,8 +24,6 @@ var isAnyGenderRadioSelected2 = false;
 var filledBillingFields = 0;
 var isBillingAddressRequired = false;
 var isAnyGenderRadioSelected3 = false;
-
-
 const inputValidationStreetNameTeachingLocation = document.getElementById('street-name_teaching-location'); 
 const inputValidationHouseNumberTeachingLocation = document.getElementById('house-number_teaching-location'); 
 const inputValidationZipCodeTeachingLocation = document.getElementById('zip-code_teaching-location'); 
@@ -48,6 +45,8 @@ const inputValidationHouseNumberBillingAddress = document.getElementById('house-
 const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
 const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address'); 
 const inputValidationGenderStudent = document.querySelector('input[name="gender_student"]');
+const inputValidationGenderPayable = document.querySelector('input[name="gender_payable"]');
+const inputValidationTriggerBillingAddress = document.querySelector('input[name="trigger_billing-address"]');
 
 
 
@@ -58,7 +57,6 @@ const houseNumberPayable = document.getElementById("house-number_billing-address
 const ZIPCodePayable = document.getElementById("zip-code_billing-address");
 const cityNamePayable = document.getElementById("city-name_billing-address");
 divBillingAddress.style.display = "none";
-
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
@@ -69,34 +67,26 @@ document.addEventListener("keydown", function(event) {
     }
   }
 });
-
 //end stepchange with enter
-
-
 //start bday validation
 inputValidationBdayStudent.addEventListener('input', function(e) {
     var value = e.target.value;
     
     // remove all non-digit characters
     value = value.replace(/\D/g, '');
-
     // add dots after day and month
     if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
     if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
-
     e.target.value = value;
 });
 //end bday validation
-
 //start Validation Phone Number
 inputValidationPhoneNumberPayable.addEventListener('focus', () => {
   if(inputValidationPhoneNumberPayable.value === '') {
     inputValidationPhoneNumberPayable.value = '+49';
   }
 });
-
 inputValidationPhoneNumberPayable.addEventListener('input', () => checkInputPhone(inputValidationPhoneNumberPayable));
-
 function checkInputPhone(inputValidationPhoneNumberPayable) {
   if (inputValidationPhoneNumberPayable.value.substring(0, 3) !== '+49') {
     inputValidationPhoneNumberPayable.value = '+49';
@@ -111,17 +101,13 @@ function checkInputPhone(inputValidationPhoneNumberPayable) {
   }
 }
 //end Validation Phone Number
-
-
 //start Validation IBAN
 inputValidationIbanPayable.addEventListener('focus', () => {
   if(inputValidationIbanPayable.value === '') {
     inputValidationIbanPayable.value = 'DE';
   }
 });
-
 inputValidationIbanPayable.addEventListener('input', () => checkInputIban(inputValidationIbanPayable));
-
 function checkInputIban(inputValidationIbanPayable) {
   if (inputValidationIbanPayable.value.substring(0, 2) !== 'DE') {
     inputValidationIbanPayable.value = 'DE';
@@ -132,15 +118,11 @@ function checkInputIban(inputValidationIbanPayable) {
   }
 }
 //end Validation IBAN
-
-
-
  //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   const errorMessageElement = document.createElement('span');        
-
   if (pattern !== null) {
     inputElement.setAttribute('pattern', pattern);
   }
@@ -151,9 +133,7 @@ function checkInputIban(inputValidationIbanPayable) {
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
     inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-
   
-
     inputElement.addEventListener("change", function() {
       if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
@@ -180,7 +160,6 @@ function checkInputIban(inputValidationIbanPayable) {
       }
     });
   }
-
 applyValidation(inputValidationStreetNameTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationHouseNumberTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationZipCodeTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
@@ -201,8 +180,6 @@ applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausge
 applyValidation(inputValidationHouseNumberBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationZipCodeBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationCityNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-
-
  function validateOnButtonClick(inputElement, step) {
     nextBtn.addEventListener('click', function() {
       if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
@@ -242,11 +219,42 @@ validateOnButtonClick(inputValidationStreetNameBillingAddress, step3);
 validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
+function validateRadioOnButtonClick(radioName, step) {
+  nextBtn.addEventListener('click', function() {
+    // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
+    let radioButtons = Array.from(document.getElementsByName(radioName));
+    // Wir überprüfen, ob einer von ihnen ausgewählt ist
+    let isSelected = radioButtons.some(button => button.checked);
+    let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
+    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
+      let errorMessageElement = document.createElement('span');
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
+      errorMessageContainer.appendChild(errorMessageElement);
+    }
+  });
+  // Add event listeners to each radio button
+  Array.from(document.getElementsByName(radioName)).forEach(button => {
+    button.addEventListener('change', () => {
+      let errorMessage = document.querySelector('#error_message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    });
+  });
+}
 
 
+validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
+validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
+validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
 
 
-  
 
   //start function shake
   function shakeOnInvalid(input) {
@@ -258,10 +266,6 @@ validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
   }, 100);
   }
   //end function shake
-
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
 step2.style.display = 'none';
@@ -279,18 +283,15 @@ function checkAllFieldsFilled1() {
       filledFields1++;
     }
   });
-
   if (filledFields1 === requiredFields1.length) {
     isAllFieldsFilled1 = true;
   
   }
-
   if (isAllFieldsFilled1) {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
   }
-
   
 }
 requiredFields1.forEach(function(input) {
@@ -300,10 +301,6 @@ requiredFields1.forEach(function(input) {
    
   });
 });
-
-
-
-
 function checkAllFieldsFilled2() {
   var filledFields2 = 0;
   requiredFields2.forEach(function(field) {
@@ -311,7 +308,6 @@ function checkAllFieldsFilled2() {
       filledFields2++;
     }
   });
-
   if (filledFields2 === requiredFields2.length) {
     isAllFieldsFilled2 = true;
   
@@ -322,13 +318,11 @@ function checkAllFieldsFilled2() {
       isAnyGenderRadioSelected1 = true;
     }
   });
-
   if (isAllFieldsFilled2 && isAnyGenderRadioSelected1) {
     nextBtn.classList.remove('disabled');
   } else {
     nextBtn.classList.add('disabled');
   } 
-
   
 }
 requiredFields2.forEach(function(input) {
@@ -338,16 +332,12 @@ requiredFields2.forEach(function(input) {
    
   });
 });
-
   genderRadios1.forEach(function(radio) {
   radio.addEventListener('change', function() {
     isAnyGenderRadioSelected1 = false;
     checkAllFieldsFilled2();
   });
 });
-
-
-
 function checkAllFieldsFilled3() {
   var filledFields3 = 0;
   filledBillingFields = 0;
@@ -357,24 +347,20 @@ function checkAllFieldsFilled3() {
    isAnyGenderRadioSelected3 = false;
    isAnyGenderRadioSelected2 = false;
    isAllFieldsFilled3 = false;
-
   
   requiredFields3.forEach(function (field) {
     if (field.value && field.checkValidity()) {
       filledFields3++;
     }
   });
-
   if (filledFields3 === requiredFields3.length) {
     isAllFieldsFilled3 = true;
   }
-
   genderRadios2.forEach(function (radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected2 = true;
     }
   });
-
   genderRadios3.forEach(function(radio) {
     if (radio.checked) {
       isAnyGenderRadioSelected3 = true;
@@ -391,7 +377,6 @@ function checkAllFieldsFilled3() {
       }
     }
   });
-
   if (
     isAllFieldsFilled3 && isAnyGenderRadioSelected2 && isAnyGenderRadioSelected3 && (!isBillingAddressRequired || (isBillingAddressRequired && filledBillingFields === 4))
   ) {
@@ -415,8 +400,6 @@ function checkAllFieldsFilled3() {
       }
     });
   });
-
-
 requiredFields3.forEach(function(input) {
   input.addEventListener('input', function() {
     checkAllFieldsFilled3();
@@ -435,19 +418,16 @@ requiredFields3.forEach(function(input) {
     checkAllFieldsFilled3();
   });
 });
-
 billingAddressPayable.forEach(function(radio) {
   radio.addEventListener('change', function() {
     checkAllFieldsFilled3();
   });
 });
-
   [streetNamePayable, houseNumberPayable, ZIPCodePayable, cityNamePayable].forEach(function(input) {
   input.addEventListener('input', function() {
     checkAllFieldsFilled3();
   });
 });
-
   
   function checkCheckboxSelected1() {
     if (selectedCheckboxes === 2) {
@@ -476,8 +456,6 @@ billingAddressPayable.forEach(function(radio) {
     checkCheckboxSelected1();
   });
 });
-
-
 nextBtn.addEventListener('click', function() {
   if (isAllFieldsFilled1 && step2.style.display == 'none' && step3.style.display == 'none' && step4.style.display == 'none') {
     step1.style.display = 'none';
@@ -501,9 +479,7 @@ nextBtn.addEventListener('click', function() {
     showStepNumber.textContent = "Schritt 4 von 4";
     checkCheckboxSelected1()
   }
-
 });
-
 backBtn.addEventListener('click', function() {
   if (step2.style.display === 'block') {
     step2.style.display = 'none';
@@ -524,14 +500,5 @@ backBtn.addEventListener('click', function() {
     showStepNumber.textContent = "Schritt 3 von 4";
     checkAllFieldsFilled3();
   }
-
 });
 });
-
-
-  
-  
-  
-
-  });
-  
