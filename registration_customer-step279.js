@@ -280,7 +280,7 @@ validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
   //end function shake
 document.addEventListener("DOMContentLoaded", function() {
 checkAllFieldsFilled1();
-
+step2.style.display = 'none';
 step3.style.display = 'none';
 step4.style.display = 'none';
 backBtn.style.display = 'none';
