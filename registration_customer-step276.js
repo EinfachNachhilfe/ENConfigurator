@@ -249,9 +249,9 @@ function validateRadioOnButtonClick(radioName, step) {
       errorMessageElement.style.fontSize = '0.8rem';
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
       errorMessageContainer.appendChild(errorMessageElement);
-    } else if ((isStepVisible(step) && isSelected) && existingErrorMessage) {
+    } else if (isStepVisible(step) && isSelected && existingErrorMessage) {
       // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde
-      existingErrorMessage.parentNode.removeChild(existingErrorMessage);
+      errorMessageContainer.removeChild(existingErrorMessage);
     }
   });
 
@@ -259,13 +259,14 @@ function validateRadioOnButtonClick(radioName, step) {
   Array.from(document.getElementsByName(radioName)).forEach(button => {
     button.addEventListener('change', () => {
       let errorMessage = document.querySelector('#error_message');
-      if (errorMessage && isStepVisible(step) && errorMessage.parentNode === document.querySelector('.form_item-input-bottom-error-message-container')) {
-        // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde
+      if (errorMessage && errorMessage.parentNode === document.querySelector('.form_item-input-bottom-error-message-container') && !isStepVisible(step)) {
+        // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde, aber der Schritt nicht mehr sichtbar ist
         errorMessage.parentNode.removeChild(errorMessage);
       }
     });
   });
 }
+
 
 
 
