@@ -105,6 +105,27 @@ inputValidationBdayStudent.addEventListener('input', function(e) {
 });
 //end bday validation
 
+//start Validation IBAN
+ inputValidationIbanPayable.addEventListener('focus', () => {
+    if(inputValidationIbanPayable.value === '') {
+      inputValidationIbanPayable.value = 'DE';
+    }
+  });
+
+  inputValidationIbanPayable.addEventListener('input', () => checkInput(inputValidationIbanPayable));
+
+
+function checkInput(inputValidationIbanTutor) {
+  if (inputValidationIbanPayable.value.substring(0, 2) !== 'DE') {
+    inputValidationIbanPayable.value = 'DE';
+    inputValidationIbanPayable.setSelectionRange(2,2);
+  } else {
+    // Remove any non-numeric characters after 'DE'
+    inputValidationIbanPayable.value = 'DE' + inputValidationIbanPayable.value.substring(2).replace(/\D/g, '');
+  }
+}
+//end Validation IBAN
+
 
  //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
