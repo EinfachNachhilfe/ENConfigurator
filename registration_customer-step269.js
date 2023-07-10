@@ -182,23 +182,36 @@ applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausge
 applyValidation(inputValidationHouseNumberBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationZipCodeBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationCityNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
- function validateOnButtonClick(inputElement, step) {
-    nextBtn.addEventListener('click', function() {
-      if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-        let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-        let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-        let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-  
-        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-        errorMessageElement.style.display = 'block';
-        inputElement.style.borderColor = '#9e367a'; // Set border color to red
-        inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(inputElement);
-      }
-    });
-  }
+
+
+function validateOnButtonClick(inputElement, step, isRadioButton = false) {
+  nextBtn.addEventListener('click', function() {
+    // Prüfen, ob das Element ein Radiobutton ist oder nicht
+    let isInvalid;
+    if (isRadioButton) {
+      // Suchen Sie alle Radiobuttons mit demselben Namen und prüfen Sie, ob einer von ihnen ausgewählt ist
+      let radioButtons = Array.from(document.getElementsByName(inputElement.name));
+      isInvalid = !radioButtons.some(button => button.checked);
+    } else {
+      isInvalid = inputElement.value.trim() === '';
+    }
+
+    if (window.getComputedStyle(step, null).display === "block" && isInvalid) {
+      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+
+      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a'; // Set border color to red
+      inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+      validImage.style.display = 'none';
+      inValidImage.style.display = 'block';
+      shakeOnInvalid(inputElement);
+    }
+  });
+}
+
   
   // Anwenden der Funktion auf mehrere Eingabefelder:
 validateOnButtonClick(inputValidationStreetNameTeachingLocation, step1);
@@ -222,45 +235,9 @@ validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
-function validateRadioOnButtonClick(radioName, step) {
-  nextBtn.addEventListener('click', function() {
-    let radioButtons = Array.from(document.getElementsByName(radioName));
-    let isSelected = radioButtons.some(button => button.checked);
-    let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
-    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+validateOnButtonClick(inputValidationGenderStudent, step2, true);
 
-    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
-      let errorMessageElement = document.createElement('span');
-      errorMessageElement.id = 'error_message';
-      errorMessageElement.style.color = '#9d367a';
-      errorMessageElement.style.marginTop = '-0.625rem';
-      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-      errorMessageElement.style.fontSize = '0.8rem';
-      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
-      errorMessageContainer.appendChild(errorMessageElement);
-    }
-  });
 
-  Array.from(document.getElementsByName(radioName)).forEach(button => {
-    button.addEventListener('change', () => {
-      let errorMessage = document.querySelector('#error_message');
-      if (errorMessage) {
-        errorMessage.style.display = 'none';
-      }
-    });
-  });
-}
-
-function showStep2() {
-  step2.style.display = 'block';
-  validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
-}
-
-function showStep3() {
-  step3.style.display = 'block';
-  validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
-  validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
-}
 
 
   
