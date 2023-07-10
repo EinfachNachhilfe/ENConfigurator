@@ -43,7 +43,11 @@ const inputValidationBankNamePayable = document.getElementById('bank-name_payabl
 const inputValidationStreetNameBillingAddress = document.getElementById('street-name_billing-address'); 
 const inputValidationHouseNumberBillingAddress = document.getElementById('house-number_billing-address'); 
 const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
-const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address'); 
+const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address');
+
+const inputValidationGenderStudent = document.querySelector('input[name="gender_student"]');
+const inputValidationGenderPayable = document.querySelector('input[name="gender_payable"]');
+const inputValidationTriggerBillingAddress = document.querySelector('input[name="trigger_billing-address"]');
 
 
 
@@ -226,7 +230,7 @@ function validateRadioOnButtonClick(radioName, step) {
     // Wir überprüfen, ob einer von ihnen ausgewählt ist
     let isSelected = radioButtons.some(button => button.checked);
 
-    let errorMessageContainer = document.querySelector('#error_message_container');
+    let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
 
     if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
@@ -252,8 +256,8 @@ function validateRadioOnButtonClick(radioName, step) {
   });
 }
 
-const inputValidationGenderTutor = document.querySelector('input[name="gender_student"]');
-validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
+
+validateRadioOnButtonClick(inputValidationGenderStudent.name, step1);
 
   
 
