@@ -100,10 +100,15 @@ function checkInputPhone(inputValidationPhoneNumberPayable) {
     inputValidationPhoneNumberPayable.setSelectionRange(3,3);
   } else {
     // Remove any non-numeric characters after '+49'
-    inputValidationPhoneNumberPayable.value = '+49' + inputValidationPhoneNumberPayable.value.substring(3).replace(/\D/g, '');
+    let numberPart = inputValidationPhoneNumberPayable.value.substring(3).replace(/\D/g, '');
+    if (numberPart.startsWith('0')) {
+      numberPart = numberPart.substring(1);
+    }
+    inputValidationPhoneNumberPayable.value = '+49' + numberPart;
   }
 }
 //end Validation Phone Number
+
 
 //start Validation IBAN
 inputValidationIbanPayable.addEventListener('focus', () => {
