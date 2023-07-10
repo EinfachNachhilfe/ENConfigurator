@@ -78,7 +78,7 @@ inputValidationPhoneNumberPayable.addEventListener('focus', () => {
 
 inputValidationPhoneNumberPayable.addEventListener('input', () => checkInput(inputValidationPhoneNumberPayable));
 
-function checkInput(inputValidationPhoneNumberTutor) {
+function checkInput(inputValidationPhoneNumberPayable) {
   if (inputValidationPhoneNumberPayable.value.substring(0, 3) !== '+49') {
     inputValidationPhoneNumberPayable.value = '+49';
     inputValidationPhoneNumberPayable.setSelectionRange(3,3);
@@ -115,7 +115,7 @@ inputValidationBdayStudent.addEventListener('input', function(e) {
   inputValidationIbanPayable.addEventListener('input', () => checkInput(inputValidationIbanPayable));
 
 
-function checkInput(inputValidationIbanTutor) {
+function checkInput(inputValidationIbanPayable) {
   if (inputValidationIbanPayable.value.substring(0, 2) !== 'DE') {
     inputValidationIbanPayable.value = 'DE';
     inputValidationIbanPayable.setSelectionRange(2,2);
