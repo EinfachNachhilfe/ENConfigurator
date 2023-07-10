@@ -259,13 +259,14 @@ function validateRadioOnButtonClick(radioName, step) {
   Array.from(document.getElementsByName(radioName)).forEach(button => {
     button.addEventListener('change', () => {
       let errorMessage = document.querySelector('#error_message');
-      if (errorMessage && isStepVisible(step)) {
+      if (errorMessage && isStepVisible(step) && errorMessage.parentNode === document.querySelector('.form_item-input-bottom-error-message-container')) {
         // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde
         errorMessage.parentNode.removeChild(errorMessage);
       }
     });
   });
 }
+
 
 
 // Beispielaufruf für Step 1 (bereits vorhanden)
