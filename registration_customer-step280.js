@@ -262,7 +262,7 @@ function validateRadioOnButtonClick(radioName, step) {
 }
 
 
-validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
+validateRadioOnButtonClick(inputValidationGenderStudent.name, step1);
 
 
 
