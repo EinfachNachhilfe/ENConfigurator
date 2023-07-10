@@ -253,7 +253,7 @@ function validateRadioOnButtonClick(radioName, step) {
     // Wir überprüfen, ob einer von ihnen ausgewählt ist
     let isSelected = radioButtons.some(button => button.checked);
 
-    let errorMessageContainer = document.querySelector('#error_message_container');
+    let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
 
     if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
