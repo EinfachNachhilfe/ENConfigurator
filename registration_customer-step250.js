@@ -191,8 +191,8 @@ applyValidation(inputValidationBdayStudent, 'Dieses Feld muss ausgefüllt werden
 applyValidation(inputValidationFirstNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
 applyValidation(inputValidationSecondNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
 applyValidation(inputValidationEmailPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
-applyValidation(inputValidationPhoneNumberPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
-applyValidation(inputValidationIbanPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationPhoneNumberPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{3,}$');
+applyValidation(inputValidationIbanPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^DE[0-9]{20}$');
 applyValidation(inputValidationBankNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationHouseNumberBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
