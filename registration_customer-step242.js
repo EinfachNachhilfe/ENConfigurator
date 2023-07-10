@@ -69,6 +69,43 @@ document.addEventListener("keydown", function(event) {
 
 //end stepchange with enter
 
+//start Validation Phone Number
+inputValidationPhoneNumberPayable.addEventListener('focus', () => {
+  if(inputValidationPhoneNumberPayable.value === '') {
+    inputValidationPhoneNumberPayable.value = '+49';
+  }
+});
+
+inputValidationPhoneNumberPayable.addEventListener('input', () => checkInput(inputValidationPhoneNumberPayable));
+
+function checkInput(inputValidationPhoneNumberTutor) {
+  if (inputValidationPhoneNumberPayable.value.substring(0, 3) !== '+49') {
+    inputValidationPhoneNumberPayable.value = '+49';
+    inputValidationPhoneNumberPayable.setSelectionRange(3,3);
+  } else {
+    // Remove any non-numeric characters after '+49'
+    inputValidationPhoneNumberPayable.value = '+49' + inputValidationPhoneNumberPayable.value.substring(3).replace(/\D/g, '');
+  }
+}
+//end Validation Phone Number
+
+
+//start bday validation
+inputValidationBdayStudent.addEventListener('input', function(e) {
+    var value = e.target.value;
+    
+    // remove all non-digit characters
+    value = value.replace(/\D/g, '');
+
+    // add dots after day and month
+    if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
+    if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
+
+    e.target.value = value;
+});
+//end bday validation
+
+
  //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
   let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
@@ -183,22 +220,17 @@ validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
 
 
-//start function input validation
-
-function applyInvalidBorderStyle(input) {
-  input.style.borderColor = '#9d367a';
-  input.style.borderWidth = '1.5px';
-}
-
-function shakeOnInvalid(input) {
+  //start function shake
+  function shakeOnInvalid(input) {
   var originalPosition = input.getBoundingClientRect().left;
   input.style.transition = 'transform 0.1s ease-in-out';
   input.style.transform = 'translateX(3px)';
   setTimeout(function() {
     input.style.transform = '';
   }, 100);
-}
-//end function input validation
+  }
+  //end function shake
+
 
 
 
