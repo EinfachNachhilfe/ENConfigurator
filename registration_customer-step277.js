@@ -224,10 +224,6 @@ validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
-function isStepVisible(step) {
-  return window.getComputedStyle(step, null).display === "block";
-}
-
 
 function validateRadioOnButtonClick(radioName, step) {
   nextBtn.addEventListener('click', function() {
@@ -240,7 +236,7 @@ function validateRadioOnButtonClick(radioName, step) {
     let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
 
-    if (isStepVisible(step) && !isSelected && !existingErrorMessage) {
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
       let errorMessageElement = document.createElement('span');
       errorMessageElement.id = 'error_message';
       errorMessageElement.style.color = '#9d367a';
@@ -249,9 +245,6 @@ function validateRadioOnButtonClick(radioName, step) {
       errorMessageElement.style.fontSize = '0.8rem';
       errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
       errorMessageContainer.appendChild(errorMessageElement);
-    } else if (isStepVisible(step) && isSelected && existingErrorMessage) {
-      // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde
-      errorMessageContainer.removeChild(existingErrorMessage);
     }
   });
 
@@ -259,18 +252,14 @@ function validateRadioOnButtonClick(radioName, step) {
   Array.from(document.getElementsByName(radioName)).forEach(button => {
     button.addEventListener('change', () => {
       let errorMessage = document.querySelector('#error_message');
-      if (errorMessage && errorMessage.parentNode === document.querySelector('.form_item-input-bottom-error-message-container') && !isStepVisible(step)) {
-        // Fehlermeldung ausblenden, wenn eine Option ausgewählt wurde, aber der Schritt nicht mehr sichtbar ist
-        errorMessage.parentNode.removeChild(errorMessage);
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
       }
     });
   });
 }
 
 
-
-
-// Beispielaufruf für Step 1 (bereits vorhanden)
 validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
 
 
