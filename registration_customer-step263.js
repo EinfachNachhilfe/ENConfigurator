@@ -254,7 +254,7 @@ function validateRadioOnButtonClick(radioName, step) {
 }
 
 const inputValidationGenderTutor = document.querySelector('input[name="gender_student"]');
-validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
+validateRadioOnButtonClick(inputValidationGenderTutor.name, step2);
   
 
 
