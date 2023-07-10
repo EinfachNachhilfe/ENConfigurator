@@ -184,34 +184,23 @@ applyValidation(inputValidationZipCodeBillingAddress, 'Dieses Feld muss ausgefü
 applyValidation(inputValidationCityNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
 
-function validateOnButtonClick(inputElement, step, isRadioButton = false) {
-  nextBtn.addEventListener('click', function() {
-    // Prüfen, ob das Element ein Radiobutton ist oder nicht
-    let isInvalid;
-    if (isRadioButton) {
-      // Suchen Sie alle Radiobuttons mit demselben Namen und prüfen Sie, ob einer von ihnen ausgewählt ist
-      let radioButtons = Array.from(document.getElementsByName(inputElement.name));
-      isInvalid = !radioButtons.some(button => button.checked);
-    } else {
-      isInvalid = inputElement.value.trim() === '';
-    }
-
-    if (window.getComputedStyle(step, null).display === "block" && isInvalid) {
-      let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-      let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-      let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-
-      errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a'; // Set border color to red
-      inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
-      validImage.style.display = 'none';
-      inValidImage.style.display = 'block';
-      shakeOnInvalid(inputElement);
-    }
-  });
-}
-
+ function validateOnButtonClick(inputElement, step) {
+    nextBtn.addEventListener('click', function() {
+      if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+        let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+        let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+        let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  
+        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a'; // Set border color to red
+        inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+      }
+    });
+  }
   
   // Anwenden der Funktion auf mehrere Eingabefelder:
 validateOnButtonClick(inputValidationStreetNameTeachingLocation, step1);
@@ -234,8 +223,6 @@ validateOnButtonClick(inputValidationStreetNameBillingAddress, step3);
 validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
-
-validateOnButtonClick(inputValidationGenderStudent, step2, true);
 
 
 
