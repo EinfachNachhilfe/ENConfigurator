@@ -69,26 +69,6 @@ document.addEventListener("keydown", function(event) {
 
 //end stepchange with enter
 
-//start Validation Phone Number
-inputValidationPhoneNumberPayable.addEventListener('focus', () => {
-  if(inputValidationPhoneNumberPayable.value === '') {
-    inputValidationPhoneNumberPayable.value = '+49';
-  }
-});
-
-inputValidationPhoneNumberPayable.addEventListener('input', () => checkInput(inputValidationPhoneNumberPayable));
-
-function checkInputPhone(inputValidationPhoneNumberPayable) {
-  if (inputValidationPhoneNumberPayable.value.substring(0, 3) !== '+49') {
-    inputValidationPhoneNumberPayable.value = '+49';
-    inputValidationPhoneNumberPayable.setSelectionRange(3,3);
-  } else {
-    // Remove any non-numeric characters after '+49'
-    inputValidationPhoneNumberPayable.value = '+49' + inputValidationPhoneNumberPayable.value.substring(3).replace(/\D/g, '');
-  }
-}
-//end Validation Phone Number
-
 
 //start bday validation
 inputValidationBdayStudent.addEventListener('input', function(e) {
@@ -105,17 +85,36 @@ inputValidationBdayStudent.addEventListener('input', function(e) {
 });
 //end bday validation
 
+//start Validation Phone Number
+inputValidationPhoneNumberPayable.addEventListener('focus', () => {
+  if(inputValidationPhoneNumberPayable.value === '') {
+    inputValidationPhoneNumberPayable.value = '+49';
+  }
+});
+
+inputValidationPhoneNumberPayable.addEventListener('input', () => checkInputPhone(inputValidationPhoneNumberPayable));
+
+function checkInputPhone(inputValidationPhoneNumberPayable) {
+  if (inputValidationPhoneNumberPayable.value.substring(0, 3) !== '+49') {
+    inputValidationPhoneNumberPayable.value = '+49';
+    inputValidationPhoneNumberPayable.setSelectionRange(3,3);
+  } else {
+    // Remove any non-numeric characters after '+49'
+    inputValidationPhoneNumberPayable.value = '+49' + inputValidationPhoneNumberPayable.value.substring(3).replace(/\D/g, '');
+  }
+}
+//end Validation Phone Number
+
 //start Validation IBAN
- inputValidationIbanPayable.addEventListener('focus', () => {
-    if(inputValidationIbanPayable.value === '') {
-      inputValidationIbanPayable.value = 'DE';
-    }
-  });
+inputValidationIbanPayable.addEventListener('focus', () => {
+  if(inputValidationIbanPayable.value === '') {
+    inputValidationIbanPayable.value = 'DE';
+  }
+});
 
-  inputValidationIbanPayable.addEventListener('input', () => checkInput(inputValidationIbanPayable));
+inputValidationIbanPayable.addEventListener('input', () => checkInputIban(inputValidationIbanPayable));
 
-
-function checkInput(inputValidationIbanPayable) {
+function checkInputIban(inputValidationIbanPayable) {
   if (inputValidationIbanPayable.value.substring(0, 2) !== 'DE') {
     inputValidationIbanPayable.value = 'DE';
     inputValidationIbanPayable.setSelectionRange(2,2);
@@ -125,6 +124,7 @@ function checkInput(inputValidationIbanPayable) {
   }
 }
 //end Validation IBAN
+
 
 
  //start inputfield validation
