@@ -224,6 +224,9 @@ validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
+function isStepVisible(step) {
+  return window.getComputedStyle(step, null).display === "block";
+}
 
 
 function validateRadioOnButtonClick(radioName, step) {
@@ -237,7 +240,7 @@ function validateRadioOnButtonClick(radioName, step) {
     let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
 
-    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
+    if (isStepVisible(step) && !isSelected && !existingErrorMessage) {
       let errorMessageElement = document.createElement('span');
       errorMessageElement.id = 'error_message';
       errorMessageElement.style.color = '#9d367a';
@@ -249,23 +252,21 @@ function validateRadioOnButtonClick(radioName, step) {
     }
   });
 
-  // Add event listeners to each radio button when the step is made visible
-  if (window.getComputedStyle(step, null).display !== "none") {
-    Array.from(document.getElementsByName(radioName)).forEach(button => {
-      button.addEventListener('change', () => {
-        let errorMessage = document.querySelector('#error_message');
-        if (errorMessage) {
-          errorMessage.style.display = 'none';
-        }
-      });
+  // Add event listeners to each radio button
+  Array.from(document.getElementsByName(radioName)).forEach(button => {
+    button.addEventListener('change', () => {
+      let errorMessage = document.querySelector('#error_message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
     });
-  }
+  });
 }
+// Beispielaufruf für Step 1 (bereits vorhanden)
+validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
 
-// Call this function when step2 becomes visible
-function step2BecomesVisible() {
-  validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
-}
+
+
 
 
   //start function shake
