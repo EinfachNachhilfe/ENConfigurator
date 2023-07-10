@@ -249,20 +249,24 @@ function validateRadioOnButtonClick(radioName, step) {
     }
   });
 
-  // Add event listeners to each radio button
-  Array.from(document.getElementsByName(radioName)).forEach(button => {
-    button.addEventListener('change', () => {
-      let errorMessage = document.querySelector('#error_message');
-      if (errorMessage) {
-        errorMessage.style.display = 'none';
-      }
+  // Add event listeners to each radio button when the step is made visible
+  if (window.getComputedStyle(step, null).display !== "none") {
+    Array.from(document.getElementsByName(radioName)).forEach(button => {
+      button.addEventListener('change', () => {
+        let errorMessage = document.querySelector('#error_message');
+        if (errorMessage) {
+          errorMessage.style.display = 'none';
+        }
+      });
     });
-  });
+  }
 }
 
+// Call this function when step2 becomes visible
+function step2BecomesVisible() {
+  validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
+}
 
-validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
-  
 
   //start function shake
   function shakeOnInvalid(input) {
