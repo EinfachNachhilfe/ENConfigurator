@@ -1,4 +1,5 @@
-var step1 = document.getElementById('form-item_adress');
+document.addEventListener("DOMContentLoaded", function() {
+  var step1 = document.getElementById('form-item_adress');
 var step2 = document.getElementById('form-item_student');
 var step3 = document.getElementById('form-item_payable');
 var step4 = document.getElementById('form-item_closing');
@@ -566,4 +567,7 @@ backBtn.addEventListener('click', function() {
 
   
   
+  
+
+  });
   
