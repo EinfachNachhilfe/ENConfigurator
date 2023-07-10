@@ -47,8 +47,7 @@ const inputValidationHouseNumberBillingAddress = document.getElementById('house-
 const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
 const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address'); 
 const inputValidationGenderStudent = document.querySelector('input[name="gender_student"]');
-const inputValidationGenderPayable = document.querySelector('input[name="gender_payable"]');
-const inputValidationTriggerBillingAddress = document.querySelector('input[name="trigger_billing-address"]');
+
 
 
 const divBillingAddress = document.getElementById("content_billing-address");
@@ -281,8 +280,7 @@ function validateRadioOnButtonClick(radioName, step) {
 
 
 validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
-validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
-validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
+
   
 
   //start function shake
