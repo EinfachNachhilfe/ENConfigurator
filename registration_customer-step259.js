@@ -273,7 +273,7 @@ function validateRadioOnButtonClick(radioName, step) {
     button.addEventListener('change', () => {
       let errorMessage = document.querySelector('#error_message');
       if (errorMessage) {
-            errorMessage.remove();
+           errorMessage.style.display = 'none';
       }
     });
   });
