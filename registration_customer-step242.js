@@ -26,6 +26,27 @@ var isBillingAddressRequired = false;
 var isAnyGenderRadioSelected3 = false;
 
 
+const inputValidationStreetNameTeachingLocation = document.getElementById('street-name_teaching-location'); 
+const inputValidationHouseNumberTeachingLocation = document.getElementById('house-number_teaching-location'); 
+const inputValidationZipCodeTeachingLocation = document.getElementById('zip-code_teaching-location'); 
+const inputValidationLocationTeachingLocation = document.getElementById('location_teaching-location'); 
+const inputValidationFirstNameStudent = document.getElementById('first-name_student'); 
+const inputValidationSecondNameStudent = document.getElementById('second-name_student'); 
+const inputValidationSchoolNameStudent = document.getElementById('school-name_student'); 
+const inputValidationSchoolTypeStudent = document.getElementById('school-type_student'); 
+const inputValidationClassStudent = document.getElementById('class_student'); 
+const inputValidationBdayStudent = document.getElementById('bday_student'); 
+const inputValidationFirstNamePayable = document.getElementById('first-name_payable'); 
+const inputValidationSecondNamePayable = document.getElementById('second-name_payable'); 
+const inputValidationEmailPayable = document.getElementById('email_payable'); 
+const inputValidationPhoneNumberPayable = document.getElementById('phone-number_payable'); 
+const inputValidationIbanPayable = document.getElementById('iban_payable'); 
+const inputValidationBankNamePayable = document.getElementById('bank-name_payable'); 
+const inputValidationStreetNameBillingAddress = document.getElementById('street-name_billing-address'); 
+const inputValidationHouseNumberBillingAddress = document.getElementById('house-number_billing-address'); 
+const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
+const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address'); 
+
 
 const divBillingAddress = document.getElementById("content_billing-address");
 const billingAddressPayable = document.getElementsByName("trigger_billing-address");
@@ -94,21 +115,27 @@ document.addEventListener("keydown", function(event) {
     });
   }
 
-applyValidation(inputValidationFirstNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-applyValidation(inputValidationSecondNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+applyValidation(inputValidationStreetNameTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationHouseNumberTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationZipCodeTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationLocationTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFirstNameStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSecondNameStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSchoolNameStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSchoolTypeStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationClassStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationBdayStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationFirstNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationSecondNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationEmailPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationPhoneNumberPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationIbanPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationBankNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationHouseNumberBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationZipCodeBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(inputValidationCityNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
-applyValidation(inputValidationStreetNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationHouseNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationZipCodeTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
-applyValidation(inputValidationCityNameTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationEmailTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
-applyValidation(inputValidationInstitutionTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationCourseOfStudyTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationSemesterTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationMobilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationAvailabilityTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationBdayTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.' , '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
 
  function validateOnButtonClick(inputElement, step) {
     nextBtn.addEventListener('click', function() {
@@ -129,8 +156,26 @@ applyValidation(inputValidationPhoneNumberTutor, 'Dieses Feld muss ausgefüllt w
   }
   
   // Anwenden der Funktion auf mehrere Eingabefelder:
-  validateOnButtonClick(inputValidationFirstNameTutor, step1);
-  validateOnButtonClick(inputValidationSecondNameTutor, step1);
+validateOnButtonClick(inputValidationStreetNameTeachingLocation, step1);
+validateOnButtonClick(inputValidationHouseNumberTeachingLocation, step1);
+validateOnButtonClick(inputValidationZipCodeTeachingLocation, step1);
+validateOnButtonClick(inputValidationLocationTeachingLocation, step1);
+validateOnButtonClick(inputValidationFirstNameStudent, step2);
+validateOnButtonClick(inputValidationSecondNameStudent, step2);
+validateOnButtonClick(inputValidationSchoolNameStudent, step2);
+validateOnButtonClick(inputValidationSchoolTypeStudent, step2);
+validateOnButtonClick(inputValidationClassStudent, step2);
+validateOnButtonClick(inputValidationBdayStudent, step2);
+validateOnButtonClick(inputValidationFirstNamePayable, step3);
+validateOnButtonClick(inputValidationSecondNamePayable, step3);
+validateOnButtonClick(inputValidationEmailPayable, step3);
+validateOnButtonClick(inputValidationPhoneNumberPayable, step3);
+validateOnButtonClick(inputValidationIbanPayable, step3);
+validateOnButtonClick(inputValidationBankNamePayable, step3);
+validateOnButtonClick(inputValidationStreetNameBillingAddress, step3);
+validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
+validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
+validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
 
 
