@@ -65,46 +65,26 @@ document.addEventListener("DOMContentLoaded", function() {
   //end stepchange with enter
   
 
-//start phone validation
-inputValidationPhoneNumberTutor.addEventListener('focus', function(e) {
-  var value = e.target.value;
-  if (!value.startsWith('+49')) {
-      value = '+49' + value;
-  }
 
-  e.target.value = value;
+//start Validation Phone Number
+inputValidationPhoneNumberTutor.addEventListener('focus', () => {
+  if(inputValidationPhoneNumberTutor.value === '') {
+    inputValidationPhoneNumberTutor.value = '+49';
+  }
 });
 
-inputValidationPhoneNumberTutor.addEventListener('input', function(e) {
-  var value = e.target.value;
-  var start = e.target.selectionStart;
-  var end = e.target.selectionEnd;
+inputValidationPhoneNumberTutor.addEventListener('input', () => checkInput(inputValidationPhoneNumberTutor));
 
-  // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
-  value = value.replace(/[^0-9+]/g, '');
-
-  // Stelle sicher, dass "+49" nicht geändert oder gelöscht werden kann
-  if (!value.startsWith('+49')) {
-      value = '+49';
+function checkInput(inputValidationPhoneNumberTutor) {
+  if (inputValidationPhoneNumberTutor.value.substring(0, 3) !== '+49') {
+    inputValidationPhoneNumberTutor.value = '+49';
+    inputValidationPhoneNumberTutor.setSelectionRange(3,3);
+  } else {
+    // Remove any non-numeric characters after '+49'
+    inputValidationPhoneNumberTutor.value = '+49' + inputValidationPhoneNumberTutor.value.substring(3).replace(/\D/g, '');
   }
-
-  // Entferne führende Nullen nach "+49"
-  if (value.startsWith('+49') && value.length > 3) {
-      value = '+49' + value.slice(3).replace(/^0+/, '');
-  }
-  e.target.value = value;
-  e.target.setSelectionRange(start, end);
-});
-
-inputValidationPhoneNumberTutor.addEventListener('focus', setCursorPosition);
-
-function setCursorPosition(e) {
-  const input = e.target;
-  // Setze die Cursorposition nach '+49'
-  input.setSelectionRange(3, 3);
 }
-
-//end phone validation
+//end Validation Phone Number
 
 
 //start bday validation
