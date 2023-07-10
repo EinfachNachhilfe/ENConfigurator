@@ -224,12 +224,8 @@ validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
 function validateRadioOnButtonClick(radioName, step) {
   nextBtn.addEventListener('click', function() {
-    // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
     let radioButtons = Array.from(document.getElementsByName(radioName));
-
-    // Wir überprüfen, ob einer von ihnen ausgewählt ist
     let isSelected = radioButtons.some(button => button.checked);
-
     let errorMessageContainer = document.querySelector('.form_item-input-bottom-error-message-container');
     let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
 
@@ -245,7 +241,6 @@ function validateRadioOnButtonClick(radioName, step) {
     }
   });
 
-  // Add event listeners to each radio button
   Array.from(document.getElementsByName(radioName)).forEach(button => {
     button.addEventListener('change', () => {
       let errorMessage = document.querySelector('#error_message');
@@ -256,8 +251,18 @@ function validateRadioOnButtonClick(radioName, step) {
   });
 }
 
+function showStep2() {
+  step2.style.display = 'block';
+  validateRadioOnButtonClick(inputValidationGenderStudent.name, step2);
+}
 
-validateRadioOnButtonClick(inputValidationGenderStudent.name, step1);
+function showStep3() {
+  step3.style.display = 'block';
+  validateRadioOnButtonClick(inputValidationGenderPayable.name, step3);
+  validateRadioOnButtonClick(inputValidationTriggerBillingAddress.name, step3);
+}
+showStep2();
+showStep3();
 
   
 
