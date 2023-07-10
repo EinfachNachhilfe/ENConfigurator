@@ -78,7 +78,7 @@ inputValidationPhoneNumberPayable.addEventListener('focus', () => {
 
 inputValidationPhoneNumberPayable.addEventListener('input', () => checkInput(inputValidationPhoneNumberPayable));
 
-function checkInput(inputValidationPhoneNumberPayable) {
+function checkInputPhone(inputValidationPhoneNumberPayable) {
   if (inputValidationPhoneNumberPayable.value.substring(0, 3) !== '+49') {
     inputValidationPhoneNumberPayable.value = '+49';
     inputValidationPhoneNumberPayable.setSelectionRange(3,3);
