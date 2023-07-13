@@ -60,45 +60,28 @@ var submitBtn = document.getElementById('submit-btn');
 
 
 
- //start phone validation
-  inputValidationPhoneNumberContactPerson.addEventListener('focus', function(e) {
-    var value = e.target.value;
-    if (!value.startsWith('+49')) {
-        value = '+49' + value;
+//start Validation Phone Number
+inputValidationPhoneNumberContactPerson.addEventListener('focus', () => {
+  if(inputValidationPhoneNumberContactPerson.value === '') {
+    inputValidationPhoneNumberContactPerson.value = '+49';
+  }
+});
+inputValidationPhoneNumberContactPerson.addEventListener('input', () => checkInputPhone(inputValidationPhoneNumberContactPerson));
+function checkInputPhone(inputValidationPhoneNumberContactPerson) {
+  if (inputValidationPhoneNumberContactPerson.value.substring(0, 3) !== '+49') {
+    inputValidationPhoneNumberContactPerson.value = '+49';
+    inputValidationPhoneNumberContactPerson.setSelectionRange(3,3);
+  } else {
+    // Remove any non-numeric characters after '+49'
+    let numberPart = inputValidationPhoneNumberContactPerson.value.substring(3).replace(/\D/g, '');
+    if (numberPart.startsWith('0')) {
+      numberPart = numberPart.substring(1);
     }
-  
-    e.target.value = value;
-  });
-  
-  inputValidationPhoneNumberContactPerson.addEventListener('input', function(e) {
-    var value = e.target.value;
-    var start = e.target.selectionStart;
-    var end = e.target.selectionEnd;
-  
-    // Entferne alle Zeichen, die keine Ziffern oder das Pluszeichen sind
-    value = value.replace(/[^0-9+]/g, '');
-  
-    // Stelle sicher, dass "+49" nicht geändert oder gelöscht werden kann
-    if (!value.startsWith('+49')) {
-        value = '+49';
-    }
-  
-    // Entferne führende Nullen nach "+49"
-    if (value.startsWith('+49') && value.length > 3) {
-        value = '+49' + value.slice(3).replace(/^0+/, '');
-    }
-    e.target.value = value;
-    e.target.setSelectionRange(start, end);
-  });
-  
-  inputValidationPhoneNumberContactPerson.addEventListener('focus', setCursorPosition);
-  
-  function setCursorPosition(e) {
-    const input = e.target;
-    // Setze die Cursorposition nach '+49'
-    input.setSelectionRange(3, 3);
-  } 
-  //end phone validation
+    inputValidationPhoneNumberContactPerson.value = '+49' + numberPart;
+  }
+}
+//end Validation Phone Number
+
 
 
 
