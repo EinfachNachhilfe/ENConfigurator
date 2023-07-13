@@ -65,23 +65,24 @@ document.addEventListener("DOMContentLoaded", function() {
   //end stepchange with enter
   
 
-
 //start Validation Phone Number
 inputValidationPhoneNumberTutor.addEventListener('focus', () => {
   if(inputValidationPhoneNumberTutor.value === '') {
     inputValidationPhoneNumberTutor.value = '+49';
   }
 });
-
-inputValidationPhoneNumberTutor.addEventListener('input', () => checkInput(inputValidationPhoneNumberTutor));
-
-function checkInput(inputValidationPhoneNumberTutor) {
+inputValidationPhoneNumberTutor.addEventListener('input', () => checkInputPhone(inputValidationPhoneNumberTutor));
+function checkInputPhone(inputValidationPhoneNumberTutor) {
   if (inputValidationPhoneNumberTutor.value.substring(0, 3) !== '+49') {
     inputValidationPhoneNumberTutor.value = '+49';
     inputValidationPhoneNumberTutor.setSelectionRange(3,3);
   } else {
     // Remove any non-numeric characters after '+49'
-    inputValidationPhoneNumberTutor.value = '+49' + inputValidationPhoneNumberTutor.value.substring(3).replace(/\D/g, '');
+    let numberPart = inputValidationPhoneNumberTutor.value.substring(3).replace(/\D/g, '');
+    if (numberPart.startsWith('0')) {
+      numberPart = numberPart.substring(1);
+    }
+    inputValidationPhoneNumberTutor.value = '+49' + numberPart;
   }
 }
 //end Validation Phone Number
