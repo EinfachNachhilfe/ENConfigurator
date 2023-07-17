@@ -154,7 +154,7 @@ applyValidation(inputValidationEmailCustomer, 'Dieses Feld muss ausgefüllt werd
 
   
   function validateOnButtonClick(inputElement, step) {
-    nextBtn.addEventListener('click', function() {
+    submitBtn.addEventListener('click', function() {
       if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
         let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
         let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
