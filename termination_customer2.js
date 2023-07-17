@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const step1 = document.getElementById('form-item_customer');
   const submitBtn = document.getElementById('submit-btn');
   const requiredFields1 = document.querySelectorAll('#form-item_customer [required]');
-  let isAllFieldsFilled1 = false;
-  let filledFields1 = 0;
+
      
   
 //start Validation Phone Number
@@ -129,6 +128,10 @@ applyValidation(inputValidationEmailCustomer, 'Dieses Feld muss ausgefüllt werd
 
       //step      
       function checkAllFieldsFilled1() {
+
+           let isAllFieldsFilled1 = false;
+           let filledFields1 = 0;
+         
           requiredFields1.forEach(function(field) {
               if (field.value && field.checkValidity()) {
                   filledFields1++;
