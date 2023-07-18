@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const step1 = document.getElementById('form-item_customer');
   const submitBtn = document.getElementById('submit-btn');
   const requiredFields1 = document.querySelectorAll('#form-item_customer [required]');
+  let isAllFieldsFilled1 = false;
+  let filledFields1 = 0;
 
      
   
@@ -39,7 +41,7 @@ function checkInputPhone(inputValidationPhoneNumberTutor) {
 
 //start bday validation
 inputValidationContractTerminationCustomer.addEventListener('input', function(e) {
-    var value = e.target.value;
+    let value = e.target.value;
     
     // remove all non-digit characters
     value = value.replace(/\D/g, '');
@@ -116,7 +118,7 @@ applyValidation(inputValidationEmailCustomer, 'Dieses Feld muss ausgefüllt werd
   
   //start function shake
   function shakeOnInvalid(input) {
-  var originalPosition = input.getBoundingClientRect().left;
+  let originalPosition = input.getBoundingClientRect().left;
   input.style.transition = 'transform 0.1s ease-in-out';
   input.style.transform = 'translateX(3px)';
   setTimeout(function() {
@@ -129,8 +131,8 @@ applyValidation(inputValidationEmailCustomer, 'Dieses Feld muss ausgefüllt werd
       //step      
       function checkAllFieldsFilled1() {
 
-           let isAllFieldsFilled1 = false;
-           let filledFields1 = 0;
+           isAllFieldsFilled1 = false;
+           filledFields1 = 0;
          
           requiredFields1.forEach(function(field) {
               if (field.value && field.checkValidity()) {
