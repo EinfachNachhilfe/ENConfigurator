@@ -76,7 +76,7 @@ $(document).ready(function() {
             $('.drop-down_wrapper').css('background-color', '');
             $(".drop-down_content-wrapper").eq(index).show();
             $(this).find('.drop-down_image').addClass('rotate');
-            wrapper.css('background-color', '#ebf1fa');
+            wrapper.css('background-color', '#ffffff');
         }
     });  
     // end Dropdown
