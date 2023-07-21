@@ -72,7 +72,7 @@ $(".drop-down_component-wrapper").click(function() {
     else {
         $(".drop-down_content-wrapper").hide();
         $('.drop-down_image').removeClass('rotate');
-        $('.change-text-color').removeClass('textcolor-black');
+        $('.change-text-color').removeClass('change-text-color');
         $('.drop-down_wrapper').css('background-color', '');
         $(".drop-down_content-wrapper").eq(index).show();
         $(this).find('.drop-down_image').addClass('rotate');
@@ -80,7 +80,6 @@ $(".drop-down_component-wrapper").click(function() {
         wrapper.css('background-color', '#ffffff');
     }
 });  
-
     // end Dropdown
     
 });
