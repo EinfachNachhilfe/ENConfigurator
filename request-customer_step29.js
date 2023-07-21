@@ -86,27 +86,25 @@ function checkInputPhone(inputValidationPhoneNumberContactPerson) {
 
 
  //start inputfield validation
-  function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
     let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
     let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-    let validationWrapper = inputElement.parentNode.querySelector('.form_input-validation-image-wrapper');
     const errorMessageElement = document.createElement('span');        
-
+  
     if (pattern !== null) {
       inputElement.setAttribute('pattern', pattern);
     }
-    
-    errorMessageElement.id = 'error_message';
-    errorMessageElement.style.color = '#9d367a';
-    errorMessageElement.style.display = 'none';
-    errorMessageElement.style.marginTop = '-0.625rem';
-    errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-    errorMessageElement.style.fontSize = '0.8rem';
-
-    // Einfügen nach dem validationWrapper-Element
-    validationWrapper.parentNode.insertBefore(errorMessageElement, validationWrapper.nextSibling);
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.display = 'none';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
   
-    inputElement.addEventListener("change", function() {
+    
+  
+      inputElement.addEventListener("change", function() {
         if (inputElement.value.trim() === '') {
           errorMessageElement.innerHTML = emptyErrorMsg;
           errorMessageElement.style.display = 'block';
