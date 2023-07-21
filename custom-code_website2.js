@@ -56,29 +56,31 @@ $(document).ready(function() {
 
 
     // start Dropdown
-    $(".drop-down_content-wrapper").hide();
+$(".drop-down_content-wrapper").hide();
 
-    $(".drop-down_component-wrapper").click(function() {
-     
-        var index = $('.drop-down_component-wrapper').index(this);
-        var wrapper = $(this).closest('.drop-down_wrapper');
+$(".drop-down_component-wrapper").click(function() {
+ 
+    var index = $('.drop-down_component-wrapper').index(this);
+    var wrapper = $(this).closest('.drop-down_wrapper');
 
-      
-        if($(".drop-down_content-wrapper").eq(index).is(":visible")) {
-            $(".drop-down_content-wrapper").eq(index).hide();
-            $(this).find('.drop-down_image').removeClass('rotate');
-            wrapper.css('background-color', ''); 
-        }
-        else {
-            
-            $(".drop-down_content-wrapper").hide();
-            $('.drop-down_image').removeClass('rotate');
-            $('.drop-down_wrapper').css('background-color', '');
-            $(".drop-down_content-wrapper").eq(index).show();
-            $(this).find('.drop-down_image').addClass('rotate');
-            wrapper.css('background-color', '#ffffff');
-        }
-    });  
+    if($(".drop-down_content-wrapper").eq(index).is(":visible")) {
+        $(".drop-down_content-wrapper").eq(index).hide();
+        $(this).find('.drop-down_image').removeClass('rotate');
+        $(this).find('.change-text-color').removeClass('change-text-color');
+        wrapper.css('background-color', ''); 
+    }
+    else {
+        $(".drop-down_content-wrapper").hide();
+        $('.drop-down_image').removeClass('rotate');
+        $('.change-text-color').removeClass('textcolor-black');
+        $('.drop-down_wrapper').css('background-color', '');
+        $(".drop-down_content-wrapper").eq(index).show();
+        $(this).find('.drop-down_image').addClass('rotate');
+        $(this).find('.change-text-color').addClass('change-text-color');
+        wrapper.css('background-color', '#ffffff');
+    }
+});  
+
     // end Dropdown
     
 });
