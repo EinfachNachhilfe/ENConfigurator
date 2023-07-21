@@ -171,14 +171,14 @@ function applyValidationCouponCode(inputElement) {
           validImage.style.display = 'block';
           inValidImage.style.display = 'none';
           errorMessageElement.style.display = 'none';
-          successMessageElement.innerHTML = 'Gültiger Gutscheincode. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!';
+          successMessageElement.innerHTML = 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!';
           successMessageElement.style.display = 'block';
       } else {
           inputElement.style.borderColor = '#9e367a';
           inputElement.style.borderWidth = '1.5px';
           validImage.style.display = 'none';
           inValidImage.style.display = 'block';
-          errorMessageElement.innerHTML = 'Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.';
+          errorMessageElement.innerHTML = 'Ungültiger Gutscheincode.';
           errorMessageElement.style.display = 'block';
           successMessageElement.style.display = 'none';
       }
