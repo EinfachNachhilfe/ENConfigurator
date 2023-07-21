@@ -66,7 +66,7 @@ $(".drop-down_component-wrapper").click(function() {
     if($(".drop-down_content-wrapper").eq(index).is(":visible")) {
         $(".drop-down_content-wrapper").eq(index).hide();
         $(this).find('.drop-down_image').removeClass('rotate');
-        $(this).find('.change-text-color').removeClass('change-text-color');
+        $(this).find('.text-drop-down').removeClass('change-text-color');
         wrapper.css('background-color', ''); 
     }
     else {
@@ -76,7 +76,7 @@ $(".drop-down_component-wrapper").click(function() {
         $('.drop-down_wrapper').css('background-color', '');
         $(".drop-down_content-wrapper").eq(index).show();
         $(this).find('.drop-down_image').addClass('rotate');
-        $(this).find('.change-text-color').addClass('change-text-color');
+        $(this).find('.text-drop-down').addClass('change-text-color');
         wrapper.css('background-color', '#ffffff');
     }
 });  
