@@ -648,10 +648,11 @@ var isAllFieldsFilled4 = false;
 
 document.getElementById("coupon-code").oninput = function() {
     var input = this.value;
-    var pattern = /lernen2023/i;
+    var patternLernen = /lernen2023/i;
+    var patternHerbst = /herbst4/i;
     var messageElement = document.getElementById("message_coupon-code");
 
-    if (pattern.test(input)) {
+    if (patternLernen.test(input) || patternHerbst.test(input)) {
         this.style.borderColor = "green";
         this.style.borderWidth = '1.5px';
         messageElement.textContent = "Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!";
