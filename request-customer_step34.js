@@ -648,10 +648,11 @@ var isAllFieldsFilled4 = false;
 
 document.getElementById("coupon-code").oninput = function() {
     var input = this.value;
-    var pattern = /lernen2023/i;
+    var pattern1 = /lernen2023/i;
+    var pattern2 = /herbst4/i;
     var messageElement = document.getElementById("message_coupon-code");
 
-    if (pattern.test(input)) {
+    if (pattern1.test(input) || pattern2.test(input)) {
         this.style.borderColor = "green";
         this.style.borderWidth = '1.5px';
         messageElement.textContent = "Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!";
@@ -660,23 +661,6 @@ document.getElementById("coupon-code").oninput = function() {
         this.style.borderColor = "initial";
         messageElement.textContent = "Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.";
         messageElement.style.display = "block";  // make the message visible
-    }
-};
-
-document.getElementById("coupon-code").oninput = function() {
-    var input2 = this.value;
-    var pattern2 = /herbst4/i;  // Änderung des Musters zu "herbst4"
-    var messageElement2 = document.getElementById("message_coupon-code");
-
-    if (pattern2.test(input2)) {
-        this.style.borderColor = "green";
-        this.style.borderWidth = '1.5px';
-        messageElement2.textContent = "Gutscheincode akzeptiert. Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!";
-        messageElement2.style.display = "block";  // make the message visible
-    } else {
-        this.style.borderColor = "initial";
-        messageElement2.textContent = "Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.";
-        messageElement2.style.display = "block";  // make the message visible
     }
 };
 
