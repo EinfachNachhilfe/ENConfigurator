@@ -85,16 +85,4 @@ $(".drop-down_component-wrapper").click(function() {
     
 });
 
-//remove empty input
-document.addEventListener('submit', function(e) {
-    var inputs = e.target.querySelectorAll('input, textarea, select');
-    inputs.forEach(function(input) {
-        if (input.type === 'checkbox' && !input.checked) {
-            input.disabled = true;
-        } else if (!input.value) {
-            input.disabled = true;
-        }
-    });
-});
-
 
