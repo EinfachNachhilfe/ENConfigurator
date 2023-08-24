@@ -500,10 +500,7 @@ applyValidation(inputValidationExperience6Tutor, 'Dieses Feld muss ausgefüllt w
       var componentExperience6TutorVisible = false;
       var isTrueComponentExperience6Tutor = false;
       checkAllFieldsFilled1();
-      step2.style.display = 'none';
-      step3.style.display = 'none';
-      step4.style.display = 'none';
-      step5.style.display = 'none';
+     
       backBtn.style.display = 'none';
       submitBtn.style.display = 'none';
       showStepNumber.textContent = "Schritt 1 von 5";
