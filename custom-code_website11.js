@@ -84,5 +84,24 @@ $(".drop-down_component-wrapper").click(function() {
     // end Dropdown
     
 });
+//remove empty input
+document.getElementById('submit-btn').addEventListener('click', function(e) {
+    // Verhindern Sie das sofortige Absenden des Formulars
+    e.preventDefault();
+
+    var form = e.target.closest('form');
+    var inputs = form.querySelectorAll('input, textarea, select');
+    inputs.forEach(function(input) {
+        if (input.type === 'checkbox' && !input.checked) {
+            input.remove();
+        } else if (!input.value) {
+            input.remove();
+        }
+    });
+
+    // Formular absenden, nachdem die leeren Eingabefelder entfernt wurden
+    form.submit();
+});
+
 
 
