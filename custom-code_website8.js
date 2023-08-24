@@ -86,15 +86,3 @@ $(".drop-down_component-wrapper").click(function() {
 });
 
 
-//remove empty input
-document.addEventListener('submit', function(e) {
-    var inputs = e.target.querySelectorAll('input, textarea, select');
-    inputs.forEach(function(input) {
-        if (!input.value) {
-            input.disabled = true;
-        }
-    });
-});
-
-
-
