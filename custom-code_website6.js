@@ -63,27 +63,23 @@ $(".drop-down_component-wrapper").click(function() {
     var index = $('.drop-down_component-wrapper').index(this);
     var wrapper = $(this).closest('.drop-down_wrapper');
 
-    // Schließen Sie alle Dropdowns und setzen Sie die Standardstile zurück
-    $(".drop-down_content-wrapper").hide();
-    $('.drop-down_image').removeClass('rotate');
-    $('.text-drop-down').removeClass('change-text-color');
-    $('.drop-down_wrapper').css('background-color', '');
-
-    // Wenn das angeklickte Dropdown bereits geöffnet war, schließen Sie es nur
     if($(".drop-down_content-wrapper").eq(index).is(":visible")) {
         $(".drop-down_content-wrapper").eq(index).hide();
         $(this).find('.drop-down_image').removeClass('rotate');
         $(this).find('.text-drop-down').removeClass('change-text-color');
         wrapper.css('background-color', ''); 
     }
-    // Andernfalls öffnen Sie das angeklickte Dropdown und setzen Sie die aktiven Stile
     else {
+        $(".drop-down_content-wrapper").hide();
+        $('.drop-down_image').removeClass('rotate');
+        $('.change-text-color').removeClass('change-text-color');
+        $('.drop-down_wrapper').css('background-color', '');
         $(".drop-down_content-wrapper").eq(index).show();
         $(this).find('.drop-down_image').addClass('rotate');
         $(this).find('.text-drop-down').addClass('change-text-color');
         wrapper.css('background-color', '#ffffff');
     }
-});
+}); 
  
     // end Dropdown
     
