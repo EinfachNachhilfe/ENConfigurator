@@ -103,23 +103,6 @@ function checkInputPhone(inputValidationPhoneNumberPayable) {
   }
 }
 //end Validation Phone Number
-//start Validation IBAN
-inputValidationIbanPayable.addEventListener('focus', () => {
-  if(inputValidationIbanPayable.value === '') {
-    inputValidationIbanPayable.value = 'DE';
-  }
-});
-inputValidationIbanPayable.addEventListener('input', () => checkInputIban(inputValidationIbanPayable));
-function checkInputIban(inputValidationIbanPayable) {
-  if (inputValidationIbanPayable.value.substring(0, 2) !== 'DE') {
-    inputValidationIbanPayable.value = 'DE';
-    inputValidationIbanPayable.setSelectionRange(2,2);
-  } else {
-    // Remove any non-numeric characters after 'DE'
-    inputValidationIbanPayable.value = 'DE' + inputValidationIbanPayable.value.substring(2).replace(/\D/g, '');
-  }
-}
-//end Validation IBAN
 
 
  //start inputfield validation
@@ -178,7 +161,7 @@ applyValidation(inputValidationFirstNamePayable, 'Dieses Feld muss ausgefüllt w
 applyValidation(inputValidationSecondNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
 applyValidation(inputValidationEmailPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
 applyValidation(inputValidationPhoneNumberPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
-applyValidation(inputValidationIbanPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^DE[0-9]{20}$');
+applyValidation(inputValidationIbanPayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationBankNamePayable, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationHouseNumberBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
