@@ -80,8 +80,30 @@ $(".drop-down_component-wrapper").click(function() {
         wrapper.css('background-color', '#ffffff');
     }
 }); 
- 
     // end Dropdown
+
+    // start Dropdown header
+$(".drop-down-header_content-wrapper").hide();
+
+$(".drop-down-header_component-wrapper").click(function() {
+ 
+    var index = $('.drop-down-header_component-wrapper').index(this);
+    var wrapper = $(this).closest('.drop-down_wrapper');
+
+    if($(".drop-down-header_content-wrapper").eq(index).is(":visible")) {
+        $(".drop-down-header_content-wrapper").eq(index).hide();
+        $(this).find('.drop-down-header_image').removeClass('rotate');
+    }
+    else {
+        $(".drop-down-header_content-wrapper").hide();
+        $('.drop-down-header_image').removeClass('rotate');
+        $('.drop-down_wrapper').css('background-color', '');
+        $(".drop-down-header_content-wrapper").eq(index).show();
+        $(this).find('.drop-down-header_image').addClass('rotate');
+    }
+}); 
+ 
+// end Dropdown header
     
 });
 
