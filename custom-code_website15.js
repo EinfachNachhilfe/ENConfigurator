@@ -121,6 +121,31 @@ document.addEventListener("DOMContentLoaded", function() {
   let isAllFieldsFilled1 = false;
   let filledFields1 = 0;
 
+
+//start Validation Phone Number
+inputValidationPhoneNumberContactPerson.addEventListener('focus', () => {
+  if(inputValidationPhoneNumberContactPerson.value === '') {
+    inputValidationPhoneNumberContactPerson.value = '+49';
+  }
+});
+inputValidationPhoneNumberContactPerson.addEventListener('input', () => checkInputPhone(inputValidationPhoneNumberContactPerson));
+function checkInputPhone(inputValidationPhoneNumberContactPerson) {
+  if (inputValidationPhoneNumberContactPerson.value.substring(0, 3) !== '+49') {
+    inputValidationPhoneNumberContactPerson.value = '+49';
+    inputValidationPhoneNumberContactPerson.setSelectionRange(3,3);
+  } else {
+    // Remove any non-numeric characters after '+49'
+    let numberPart = inputValidationPhoneNumberContactPerson.value.substring(3).replace(/\D/g, '');
+    if (numberPart.startsWith('0')) {
+      numberPart = numberPart.substring(1);
+    }
+    inputValidationPhoneNumberContactPerson.value = '+49' + numberPart;
+  }
+}
+//end Validation Phone Number
+
+
+    
      
   //start inputfield validation
   function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
@@ -170,9 +195,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 applyValidation(inputValidationFirstNameContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
 applyValidation(inputValidationSecondNameContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-applyValidation(inputValidationEmailContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-applyValidation(inputValidationMessageContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\+49[1-9]\\d{1,}$');
+applyValidation(inputValidationEmailContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
+applyValidation(inputValidationMessageContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
   //end inputfield validation
 
 
