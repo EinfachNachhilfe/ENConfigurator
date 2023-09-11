@@ -1698,7 +1698,7 @@ document.addEventListener("DOMContentLoaded", function() {
    
 
       // Erstellen der Erfolgs-URL mit dem Parameter "referenz"
-      var url = `https://www.einfach-nachhilfe.com/nachhilfe-anfragen-danke?referenz=${encodeURIComponent(referenz)}`;
+      var url = `https://www.einfach-nachhilfe.com/nachhilfe-anpassen-danke?referenz=${encodeURIComponent(referenz)}`;
 
       // Umleitung zur neuen URL
       window.location.href = url;
