@@ -145,9 +145,9 @@ function applyValidationCouponCode(inputElement) {
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   let errorMessageElement = document.createElement('span');   
   let successMessageElement = document.createElement('span'); 
-  let pattern1 = /lernen2023/i;
-  let pattern2 = /herbst4/i;
-  let pattern3 = /schulstart4/i;
+  let pattern1 = /^lernen2023$/i;
+  let pattern2 = /^herbst4$/i;
+  let pattern3 = /^schulstart4$/i;
 
   errorMessageElement.id = 'error_message';
   errorMessageElement.style.color = '#9d367a';
