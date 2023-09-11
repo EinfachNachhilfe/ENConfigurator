@@ -268,7 +268,6 @@ applyValidation(inputValidationMessageContactPerson, 'Dieses Feld muss ausgefül
   validateOnButtonClick(inputValidationFirstNameContactPerson, step1);
   validateOnButtonClick(inputValidationSecondNameContactPerson, step1);
   validateOnButtonClick(inputValidationPhoneNumberContactPerson, step1);
-  validateOnButtonClick(inputValidationEmailContactPerson, step1);
   validateOnButtonClick(inputValidationMessageContactPerson, step1);
   
   });
