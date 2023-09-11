@@ -147,6 +147,7 @@ function applyValidationCouponCode(inputElement) {
   let successMessageElement = document.createElement('span'); 
   let pattern1 = /lernen2023/i;
   let pattern2 = /herbst4/i;
+  let pattern3 = /schulstart4/i;
 
   errorMessageElement.id = 'error_message';
   errorMessageElement.style.color = '#9d367a';
@@ -166,7 +167,7 @@ function applyValidationCouponCode(inputElement) {
   inputElement.parentNode.insertBefore(successMessageElement, inputElement.nextSibling);
 
   inputElement.addEventListener("change", function() {
-      if (pattern1.test(inputElement.value) || pattern2.test(inputElement.value)) {
+      if (pattern1.test(inputElement.value) || pattern2.test(inputElement.value) || pattern3.test(inputElement.value)) {
           inputElement.style.borderColor = '#589b32';
           inputElement.style.borderWidth = '1.5px';
           validImage.style.display = 'block';
