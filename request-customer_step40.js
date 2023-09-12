@@ -145,9 +145,12 @@ function applyValidationCouponCode(inputElement) {
   let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
   let errorMessageElement = document.createElement('span');   
   let successMessageElement = document.createElement('span'); 
-  let pattern1 = /^lernen2023$/i;
-  let pattern2 = /^herbst4$/i;
-  let pattern3 = /^schulstart4$/i;
+  let pattern1 = /^lernen2023$/i; //affiliate marketing
+  let pattern2 = /^herbst4$/i;    //Marketing Action Stand
+  let pattern3 = /^schulstart4$/i; //Meta
+  let pattern4 = /^schulstartg4$/i; //Google
+  let pattern5 = /^schulstartb4$/i; //Briefe
+  let pattern6 = /^schulstartz4$/i; //Zeitung
 
   errorMessageElement.id = 'error_message';
   errorMessageElement.style.color = '#9d367a';
@@ -167,7 +170,7 @@ function applyValidationCouponCode(inputElement) {
   inputElement.parentNode.insertBefore(successMessageElement, inputElement.nextSibling);
 
   inputElement.addEventListener("change", function() {
-      if (pattern1.test(inputElement.value) || pattern2.test(inputElement.value) || pattern3.test(inputElement.value)) {
+      if (pattern1.test(inputElement.value) || pattern2.test(inputElement.value) || pattern3.test(inputElement.value) || pattern4.test(inputElement.value) || pattern5.test(inputElement.value) || pattern6.test(inputElement.value)) {
           inputElement.style.borderColor = '#589b32';
           inputElement.style.borderWidth = '1.5px';
           validImage.style.display = 'block';
