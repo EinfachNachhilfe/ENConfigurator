@@ -149,7 +149,7 @@ function applyValidationCouponCode(inputElement) {
   let pattern2 = /^herbst4$/i;    //Marketing Action Stand
   let pattern3 = /^schulstart4$/i; //Meta
   let pattern4 = /^schulstartg4$/i; //Google
-  let pattern5 = /^schulstartb4$/i; //Briefe
+  let pattern5 = /^schulstart1b4$/i; //Briefe
   let pattern6 = /^schulstartz4$/i; //Zeitung
 
   errorMessageElement.id = 'error_message';
