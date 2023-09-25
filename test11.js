@@ -59,9 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
       e.target.value = value;
     });
   }
-inputValidationContractTerminationCustomer.forEach(input => {
-    applyDateInputFormat(input);
-});
+  applyDateInputFormat(inputValidationContractTerminationCustomer);
   //end bday validation
   
   
