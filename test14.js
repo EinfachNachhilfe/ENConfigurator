@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const inputValidationFirstNames = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student'); 
         const inputValidationSecondNames = document.querySelectorAll('#second-name_customer, #second-name_tutor, #second-name_student');
         const inputValidationPhoneNumbers = document.querySelectorAll('#phone-number_customer');
-        const inputValidationReasonForTerminationCustomer = document.querySelector('#reason-for-termination_customer');
-        const inputValidationContractTerminationCustomer = document.querySelector('#contract-termination_customer');
+        const inputValidationReasonForTerminationCustomer = document.querySelectorAll('#reason-for-termination_customer');
+        const inputValidationContractTerminationCustomer = document.querySelectorAll('#contract-termination_customer');
         const inputValidationEmails = document.querySelectorAll('#email_customer');
         const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing');
         const submitBtn = document.querySelector('#submit-btn');
