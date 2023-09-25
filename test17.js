@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationMessages = document.querySelectorAll('#message_contact-person');
     const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing, #form-item_closing-contact-form');
     const submitBtn = document.querySelector('#submit-btn');
-    const requiredFields1 = document.querySelectorAll('#form-item_closing [required], #form-item_customer [required], #form-item_closing-contact-form [required]'' );
+    const requiredFields1 = document.querySelectorAll('#form-item_closing [required], #form-item_customer [required], #form-item_closing-contact-form [required]');
     let isAllFieldsFilled1 = false;
     let filledFields1 = 0; 
     
