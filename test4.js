@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
    
-    const inputValidationFirstName = document.querySelector('#first-name_customer, #first-name_tutor, #first-name_student' ); 
-    const inputValidationSecondName = document.querySelector('#second-name_customer, #second-name_tutor,#second-name_student');
-    const inputValidationPhoneNumber = document.querySelector('#phone-number_customer');
-    const inputValidationReasonForTerminationCustomer = document.querySelector('#reason-for-termination_customer');
-    const inputValidationContractTerminationCustomer = document.querySelector('#contract-termination_customer');
-    const inputValidationEmail = document.querySelector('#email_customer');
-    const step1 = document.querySelector('#form-item_customer, #form-item_closing');
-    const submitBtn = document.querySelector('#submit-btn');
-    const requiredFields1 = document.querySelector('#form-item_closing [required], #form-item_customer [required]');
+    const inputValidationFirstName = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student' ); 
+    const inputValidationSecondName = document.querySelectorAll('#second-name_customer, #second-name_tutor,#second-name_student');
+    const inputValidationPhoneNumber = document.querySelectorAll('#phone-number_customer');
+    const inputValidationReasonForTerminationCustomer = document.querySelectorAll('#reason-for-termination_customer');
+    const inputValidationContractTerminationCustomer = document.querySelectorAll('#contract-termination_customer');
+    const inputValidationEmail = document.querySelectorAll('#email_customer');
+    const step1 = document.querySelectorAll('#form-item_customer, #form-item_closing');
+    const submitBtn = document.querySelectorAll('#submit-btn');
+    const requiredFields1 = document.querySelectorAll('#form-item_closing [required], #form-item_customer [required]');
     let isAllFieldsFilled1 = false;
     let filledFields1 = 0;
   
