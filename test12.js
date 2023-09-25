@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
    
-    applyValidation(inputValidationReasonForTerminationCustomer, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-    applyValidation(inputValidationContractTerminationCustomer, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+    applyValidation(inputValidationReasonForTerminationCustomer, steps1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    applyValidation(inputValidationContractTerminationCustomer, steps1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
   
    inputValidationEmails.forEach(input => {
         steps1.forEach(step => {
