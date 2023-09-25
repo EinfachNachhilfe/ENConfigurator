@@ -59,7 +59,9 @@ document.addEventListener("DOMContentLoaded", function() {
       e.target.value = value;
     });
   }
-  applyDateInputFormat(inputValidationContractTerminationCustomer);
+inputValidationContractTerminationCustomer.forEach(input => {
+applyDateInputFormat(input);
+});
   //end bday validation
   
   
@@ -138,9 +140,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
    
-    applyValidation(inputValidationReasonForTerminationCustomer, steps1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-    applyValidation(inputValidationContractTerminationCustomer, steps1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-  
+inputValidationReasonForTerminationCustomer.forEach(input => {
+    steps1.forEach(step => {
+        applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    });
+});
+inputValidationContractTerminationCustomer.forEach(input => {
+    steps1.forEach(step => {
+        applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+    });
+});
    inputValidationEmails.forEach(input => {
         steps1.forEach(step => {
             applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
