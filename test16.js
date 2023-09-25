@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationContractTerminationCustomer = document.querySelectorAll('#contract-termination_customer');
     const inputValidationEmails = document.querySelectorAll('#email_customer, #email_contact-person');
     const inputValidationMessages = document.querySelectorAll('#message_contact-person');
-    const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing');
+    const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing, #form-item_closing-contact-form');
     const submitBtn = document.querySelector('#submit-btn');
-    const requiredFields1 = document.querySelectorAll('#form-item_closing [required], #form-item_customer [required]');
+    const requiredFields1 = document.querySelectorAll('#form-item_closing [required], #form-item_customer [required], #form-item_closing-contact-form [required]'' );
     let isAllFieldsFilled1 = false;
     let filledFields1 = 0; 
     
