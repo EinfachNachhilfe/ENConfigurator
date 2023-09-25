@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
    
-    const inputValidationFirstName = document.querySelector('#first-name_customer, #first-name_tutor, #first-name_student' ); 
-    const inputValidationSecondName = document.querySelector('#second-name_customer, #second-name_tutor,#second-name_student');
+    const inputValidationFirstName = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student' ); 
+    const inputValidationSecondName = document.querySelectorAll('#second-name_customer, #second-name_tutor,#second-name_student');
     const inputValidationPhoneNumber = document.querySelector('#phone-number_customer');
     const inputValidationReasonForTerminationCustomer = document.querySelector('#reason-for-termination_customer');
     const inputValidationContractTerminationCustomer = document.querySelector('#contract-termination_customer');
