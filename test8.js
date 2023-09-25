@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
    
-    const inputValidationFirstName = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student' ); 
-    const inputValidationSecondName = document.querySelector('#second-name_customer, #second-name_tutor,#second-name_student');
-    const inputValidationPhoneNumber = document.querySelector('#phone-number_customer');
-    const inputValidationReasonForTerminationCustomer = document.querySelector('#reason-for-termination_customer');
-    const inputValidationContractTerminationCustomer = document.querySelector('#contract-termination_customer');
-    const inputValidationEmail = document.querySelector('#email_customer');
-    const step1 = document.querySelector('#form-item_customer, #form-item_closing');
-    const submitBtn = document.querySelector('#submit-btn');
-    const requiredFields1 = document.querySelector('#form-item_closing [required], #form-item_customer [required]');
-    let isAllFieldsFilled1 = false;
-    let filledFields1 = 0;
-  
+   
+   
+        const inputValidationFirstNames = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student'); 
+        const inputValidationSecondNames = document.querySelectorAll('#second-name_customer, #second-name_tutor, #second-name_student');
+        const inputValidationPhoneNumbers = document.querySelectorAll('#phone-number_customer');
+        const inputValidationReasonForTerminationCustomer = document.querySelectorAll('#reason-for-termination_customer');
+        const inputValidationContractTerminationCustomer = document.querySelectorAll('#contract-termination_customer');
+        const inputValidationEmails = document.querySelectorAll('#email_customer');
+        const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing');
+        const submitBtn = document.querySelector('#submit-btn');
+        const requiredFields1 = document.querySelectorAll('#form-item_closing [required], #form-item_customer [required]');
+        let isAllFieldsFilled1 = false;
+        let filledFields1 = 0; 
         
   //start Validation Phone Number
   function applyPhoneValidation(inputElement) {
@@ -37,7 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   
-  applyPhoneValidation(inputValidationPhoneNumber);
+  inputValidationPhoneNumbers.forEach(input => {
+    applyPhoneValidation(input);
+});
   //end Validation Phone Number
 
   
@@ -124,11 +127,33 @@ document.addEventListener("DOMContentLoaded", function() {
             applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
         });
     });
-    applyValidation(inputValidationSecondName, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-    applyValidation(inputValidationPhoneNumber, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\+49[1-9]\\d{1,}$');
-    applyValidation(inputValidationReasonForTerminationCustomer, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-    applyValidation(inputValidationContractTerminationCustomer, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-    applyValidation(inputValidationEmail, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
+    inputValidationSecondNames.forEach(input => {
+        steps1.forEach(step => {
+            applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+        });
+    });
+    inputValidationPhoneNumbers.forEach(input => {
+        steps1.forEach(step => {
+            applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\+49[1-9]\\d{1,}$');
+        });
+    });
+    inputValidationReasonForTerminationCustomer.forEach(input => {
+        steps1.forEach(step => {
+            applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+        });
+    });
+    inputValidationContractTerminationCustomer.forEach(input => {
+        steps1.forEach(step => {
+            applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+        });
+    });
+    inputValidationEmails.forEach(input => {
+        steps1.forEach(step => {
+            applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
+        });
+    });
+
+
     //end inputfield validation
   
   
