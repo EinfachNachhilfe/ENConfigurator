@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
    
-    const inputValidationFirstName = document.querySelector('#first-name_customer, #first-name_tutor, #first-name_student' ); 
+    const inputValidationFirstName = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student' ); 
     const inputValidationSecondName = document.querySelector('#second-name_customer, #second-name_tutor,#second-name_student');
     const inputValidationPhoneNumber = document.querySelector('#phone-number_customer');
     const inputValidationReasonForTerminationCustomer = document.querySelector('#reason-for-termination_customer');
@@ -119,7 +119,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // Anwenden der kombinierten Funktion auf mehrere Eingabefelder:
-    applyValidation(inputValidationFirstName, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+    inputValidationFirstNames.forEach(input => {
+        steps1.forEach(step => {
+            applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
+        });
+    });
     applyValidation(inputValidationSecondName, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
     applyValidation(inputValidationPhoneNumber, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\+49[1-9]\\d{1,}$');
     applyValidation(inputValidationReasonForTerminationCustomer, step1, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
