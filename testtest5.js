@@ -145,61 +145,72 @@ function fixStepIndicator(n) {
   formItems[n].className += " active";
 }
 
-function shakeOnInvalid(input) {
-    let originalPosition = input.getBoundingClientRect().left;
-    input.style.transition = 'transform 0.1s ease-in-out';
-    input.style.transform = 'translateX(3px)';
-    setTimeout(function() {
-        input.style.transform = '';
-    }, 100);
-}
+function applyValidation(inputElement, step, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+    let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+    let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+    const errorMessageElement = document.createElement('span');
 
-function highlightEmptyFields() {
-    const inputs = formItems[currentTab].getElementsByTagName("input");
-    for (let i = 0; i < inputs.length; i++) {
-        // Entfernen Sie vorhandene Fehlermeldungen
-        const existingError = inputs[i].parentNode.querySelector(".input-error");
-        if (existingError) {
-            existingError.remove();
-        }
+    if (pattern !== null) {
+        inputElement.setAttribute('pattern', pattern);
+    }
+    errorMessageElement.id = 'error_message';
+    errorMessageElement.style.color = '#9d367a';
+    errorMessageElement.style.display = 'none';
+    errorMessageElement.style.marginTop = '-0.625rem';
+    errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+    errorMessageElement.style.fontSize = '0.8rem';
+    inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].style.border = "2px solid red";
-            shakeOnInvalid(inputs[i]);
-            
-            // Fehlermeldung hinzufügen
-            const errorMsg = document.createElement("div");
-            errorMsg.className = "input-error";
-            if (inputs[i].value == "") {
-                errorMsg.textContent = "Dieses Feld ist erforderlich";
-            } else {
-                errorMsg.textContent = "Ungültiger Wert";
-            }
-            errorMsg.style.color = "red";
-            errorMsg.style.fontSize = "12px";
-            errorMsg.style.marginTop = "5px";
-            inputs[i].parentNode.appendChild(errorMsg);
+    inputElement.addEventListener("change", function() {
+        if (inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        } else if (inputElement.checkValidity()) {
+            inputElement.style.borderColor = '#589b32';
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'block';
+            inValidImage.style.display = 'none';
+            errorMessageElement.style.display = 'none';
         } else {
-            inputs[i].style.border = "2px solid green";
+            errorMessageElement.innerHTML = invalidErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
         }
-    }
-}
+    });
 
-// Event-Listener zu jedem Eingabefeld hinzufügen, um den roten Rand zu entfernen, sobald das Feld ausgefüllt wird
-for (let i = 0; i < formItems.length; i++) {
-    const inputs = formItems[i].getElementsByTagName("input");
-    for (let j = 0; j < inputs.length; j++) {
-        inputs[j].addEventListener("input", function() {
-            if (inputs[j].value != "") {
-                inputs[j].style.border = "";
-            }
-        });
-    }
-}
+    nextBtn.addEventListener('click', function() {
+        if (window.getComputedStyle(step, null).display === "block" && inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a'; 
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        }
+    });
 
-// Die Funktion highlightEmptyFields aufrufen, wenn auf die Schaltflächen "Next" oder "Submit" geklickt wird
-nextBtn.addEventListener("click", highlightEmptyFields);
-submitBtn.addEventListener("click", highlightEmptyFields);
+    submitBtn.addEventListener('click', function() {
+        if (window.getComputedStyle(step, null).display === "block" && inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a'; 
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        }
+    });
+}
 
 
 
