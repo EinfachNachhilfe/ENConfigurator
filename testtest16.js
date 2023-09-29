@@ -123,6 +123,7 @@ submitBtn.addEventListener('click', function() {
     }
 });
 
+if (nextBtn) {
     nextBtn.addEventListener('click', function() {
     if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
         if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
