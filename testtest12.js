@@ -183,7 +183,7 @@ steps1.forEach(step => {
     applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 });
 });
-location_teaching-location.forEach(input => {
+inputValidationLocations.forEach(input => {
 steps1.forEach(step => {
     applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 });
