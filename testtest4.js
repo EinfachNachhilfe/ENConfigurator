@@ -163,22 +163,18 @@ function highlightEmptyFields() {
             existingError.remove();
         }
 
-        if (inputs[i].value == "") {
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
             inputs[i].style.border = "2px solid red";
             shakeOnInvalid(inputs[i]);
+            
+            // Fehlermeldung hinzufügen
             const errorMsg = document.createElement("div");
             errorMsg.className = "input-error";
-            errorMsg.textContent = "Dieses Feld ist erforderlich";
-            errorMsg.style.color = "red";
-            errorMsg.style.fontSize = "12px";
-            errorMsg.style.marginTop = "5px";
-            inputs[i].parentNode.appendChild(errorMsg);
-        } else if (!inputs[i].checkValidity()) {
-            inputs[i].style.border = "2px solid red";
-            shakeOnInvalid(inputs[i]);
-            const errorMsg = document.createElement("div");
-            errorMsg.className = "input-error";
-            errorMsg.textContent = "Ungültiger Wert";
+            if (inputs[i].value == "") {
+                errorMsg.textContent = "Dieses Feld ist erforderlich";
+            } else {
+                errorMsg.textContent = "Ungültiger Wert";
+            }
             errorMsg.style.color = "red";
             errorMsg.style.fontSize = "12px";
             errorMsg.style.marginTop = "5px";
@@ -204,7 +200,6 @@ for (let i = 0; i < formItems.length; i++) {
 // Die Funktion highlightEmptyFields aufrufen, wenn auf die Schaltflächen "Next" oder "Submit" geklickt wird
 nextBtn.addEventListener("click", highlightEmptyFields);
 submitBtn.addEventListener("click", highlightEmptyFields);
-
 
 
 
