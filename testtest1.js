@@ -233,7 +233,7 @@ function showTab(n) {
   // Event-Listener für jedes Eingabeelement hinzufügen
   const inputs = formItems[n].querySelectorAll("input, select");
   for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("change", validateForm);
+    inputs[i].addEventListener("input", validateForm);
   }
   
   validateForm();
