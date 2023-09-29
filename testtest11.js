@@ -10,7 +10,7 @@ const inputValidationHouseNumbers = document.querySelectorAll('#house-number_tea
 const inputValidationZipCodes = document.querySelectorAll('#zip-code_teaching-location');
 const inputValidationLocations = document.querySelectorAll('#location_teaching-location');
 const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing, #form-item_closing-contact-form, #form-item_adress');
-const submitBtn = document.querySelector('#submit-btn');
+const submitBtn = document.querySelector('#submitBtn');
 const nextBtn = document.querySelector('#nextBtn');
 
 //start Validation Phone Number
