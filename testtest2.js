@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputValidationReasonForTerminationCustomer = document.querySelectorAll('#reason-for-termination_customer');
     const inputValidationContractTerminationCustomer = document.querySelectorAll('#contract-termination_customer');
     const inputValidationEmails = document.querySelectorAll('#email_customer, #email_contact-person');
+    const inputValidationStreets = document.querySelectorAll('#street-name_teaching-location');
+   const inputValidationHouseNumbers = document.querySelectorAll('#house-number_teaching-location');
+   const inputValidationZipCodes = document.querySelectorAll('#zip-code_teaching-location');
+   const inputValidationLocations = document.querySelectorAll('#location_teaching-location');
+   
     const inputValidationMessages = document.querySelectorAll('#message_contact-person');
     const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing, #form-item_closing-contact-form');
     const submitBtn = document.querySelector('#submit-btn');
@@ -162,6 +167,26 @@ inputValidationEmails.forEach(input => {
     });
 });
 inputValidationMessages.forEach(input => {
+    steps1.forEach(step => {
+        applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    });
+});
+   inputValidationStreets.forEach(input => {
+    steps1.forEach(step => {
+        applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    });
+});
+   inputValidationHouseNumbers.forEach(input => {
+    steps1.forEach(step => {
+        applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    });
+});
+   inputValidationZipCodes.forEach(input => {
+    steps1.forEach(step => {
+        applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\d+$');
+    });
+});
+   inputValidationLocations.forEach(input => {
     steps1.forEach(step => {
         applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     });
