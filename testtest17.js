@@ -125,18 +125,20 @@ submitBtn.addEventListener('click', function() {
 
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-    if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
-        if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a'; 
-            inputElement.style.borderWidth = '1.5px';
-            validImage.style.display = 'none';
-            inValidImage.style.display = 'block';
-            shakeOnInvalid(inputElement);
+        if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
+            if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = '#9e367a'; 
+                inputElement.style.borderWidth = '1.5px';
+                validImage.style.display = 'none';
+                inValidImage.style.display = 'block';
+                shakeOnInvalid(inputElement);
+            }
         }
-    }
-});
+    });
+}
+
 
 
 
