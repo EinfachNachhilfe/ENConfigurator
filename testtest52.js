@@ -146,53 +146,63 @@ let currentTab = 0;
 showTab(currentTab);
 
 function showTab(n) {
-formItems[n].style.display = "block";
+    formItems[n].style.display = "block";
 
-// Event-Listener für jedes Eingabeelement hinzufügen
-const inputs = formItems[n].querySelectorAll("input, select");
-for (let i = 0; i < inputs.length; i++) {
-inputs[i].addEventListener("input", validateForm);
-}
+    // Event-Listener für jedes Eingabeelement hinzufügen
+    const inputs = formItems[n].querySelectorAll("input, select");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("input", validateForm);
+    }
 
-validateForm();
+    validateForm();
 
-if (n === 0) {
-prevBtn.style.display = "none";
-} else {
-prevBtn.style.display = "flex";
-}
-if (n === (formItems.length - 1)) {
-submitBtn.style.display = "block";
-nextBtn.style.display = "none";
-} else {
-nextBtn.style.display = "flex";
-submitBtn.style.display = "none";
-}
+    if (n === 0) {
+        prevBtn.style.display = "none";
+    } else {
+        prevBtn.style.display = "flex";
+    }
+    if (n === (formItems.length - 1)) {
+        submitBtn.style.display = "block";
+        nextBtn.style.display = "none";
+    } else {
+        nextBtn.style.display = "flex";
+        submitBtn.style.display = "none";
+    }
 
-// Aktualisieren Sie den Schrittindikator
-currentStepElem.textContent = n + 1; // +1, weil n bei 0 beginnt
-totalStepsElem.textContent = formItems.length;
-
-fixStepIndicator(n);
+    // Aktualisieren Sie den Schrittindikator
+    currentStepElem.textContent = n + 1; // +1, weil n bei 0 beginnt
+    totalStepsElem.textContent = formItems.length;
 }
 
 function nextPrev(n) {
-if (n == 1 && !validateForm()) {
-nextBtn.classList.add("disabled");
-return false;
-} else {
-nextBtn.classList.remove("disabled");
+    if (n == 1 && !validateForm()) {
+        highlightInvalidFields();
+        return false;
+    }
+
+    formItems[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= formItems.length) {
+        regForm.submit();
+        return false;
+    }
+    showTab(currentTab);
 }
 
-formItems[currentTab].style.display = "none";
-currentTab = currentTab + n;
-if (currentTab >= formItems.length) {
-regForm.submit();
-return false;
-}
-showTab(currentTab);
-}
+function validateForm() {
+    let valid = true;
+    const inputs = formItems[currentTab].getElementsByTagName("input");
 
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
+            valid = false;
+        }
+    }
+
+    // ... (Rest des Codes bleibt unverändert)
+
+    return valid;
+}
 
 function highlightInvalidFields() {
     const inputs = formItems[currentTab].getElementsByTagName("input");
@@ -201,8 +211,8 @@ function highlightInvalidFields() {
             inputs[i].style.borderColor = '#9e367a';
             inputs[i].style.borderWidth = '1.5px';
         } else {
-            inputs[i].style.borderColor = '#589b32'; // Setzen Sie die ursprüngliche Farbe zurück, wenn das Feld gültig ist
-            inputs[i].style.borderWidth = '1.5px';
+            inputs[i].style.borderColor = '';
+            inputs[i].style.borderWidth = '';
         }
     }
 }
