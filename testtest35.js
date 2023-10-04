@@ -163,14 +163,14 @@ submitBtn.addEventListener('click', function() {
         }
     }
 });
-
+  
+let currentTabIndex = 0;
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
         // Get the current step
-        const currentStep = document.querySelector('.form_item-input-wrapper-tab[data-step="1"]'); // Change this to get the current step dynamically
-
+      const currentStep = formItems[currentTabIndex];
         // Get all input fields of the current step
-       const inputFields = currentStep.querySelectorAll('input');
+ const inputFields = currentStep.querySelectorAll('input');
 
        
 
@@ -191,6 +191,7 @@ if (nextBtn) {
                 }
             }
         });
+       currentTabIndex++;
     });
 }
 
