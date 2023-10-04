@@ -171,10 +171,11 @@ submitBtn.addEventListener('click', function() {
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
         // Get the current step
-        const currentStep = document.querySelector('.step[data-step="1"]'); // Change this to get the current step dynamically
+        const currentStep = document.querySelector('.form_item-input-wrapper-tab[data-step="1"]'); // Change this to get the current step dynamically
 
         // Get all input fields of the current step
-        const inputFields = currentStep.getElementsByTagName("input");
+       const inputFields = currentStep.querySelectorAll('input');
+
        
 
 
