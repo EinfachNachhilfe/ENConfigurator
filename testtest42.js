@@ -160,9 +160,28 @@ inputElement.addEventListener("change", function() {
 
 
 submitBtn.addEventListener('click', function() {
-   if (!isElementVisible(step)) return;
-    if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
-        if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+    if (window.getComputedStyle(step, null).display !== "block" || submitBtn.classList.contains('disabled')) {
+        return; // Überprüfen Sie, ob step sichtbar ist und der Button nicht die Klasse "disabled" hat
+    }
+
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a'; 
+        inputElement.style.borderWidth = '1.5px';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+    }
+});
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+        if (window.getComputedStyle(step, null).display !== "block" || nextBtn.classList.contains('disabled')) {
+            return; // Überprüfen Sie, ob step sichtbar ist und der Button nicht die Klasse "disabled" hat
+        }
+
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = '#9e367a'; 
@@ -171,25 +190,7 @@ submitBtn.addEventListener('click', function() {
             inValidImage.style.display = 'block';
             shakeOnInvalid(inputElement);
         }
-    }
-});
-
-  if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-           if (!isElementVisible(step)) return;
-           if (inputElement.hasAttribute('required')) {
-                if (inputElement.value.trim() === '') {
-                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                    errorMessageElement.style.display = 'block';
-                    inputElement.style.borderColor = '#9e367a'; 
-                    inputElement.style.borderWidth = '1.5px';
-                    validImage.style.display = 'none';
-                    inValidImage.style.display = 'block';
-                    shakeOnInvalid(inputElement);
-                }
-            }
-        });
-    }
+    });
 }
 
 
