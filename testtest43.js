@@ -192,7 +192,7 @@ if (nextBtn) {
         }
     });
 }
-
+}
 
 //start const registration 3 or better
 applyValidation(streetNameTeachingLocationRt3ob, step1Rt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
