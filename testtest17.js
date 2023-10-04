@@ -1,17 +1,31 @@
-const inputValidationFirstNames = document.querySelectorAll('#first-name_customer, #first-name_tutor, #first-name_student, #first-name_contact-person'); 
-const inputValidationSecondNames = document.querySelectorAll('#second-name_customer, #second-name_tutor, #second-name_student, #second-name_contact-person');
-const inputValidationPhoneNumbers = document.querySelectorAll('#phone-number_customer, #phone-number_contact-person');
-const inputValidationReasonForTerminationCustomer = document.querySelectorAll('#reason-for-termination_customer');
-const inputValidationContractTerminationCustomer = document.querySelectorAll('#contract-termination_customer');
-const inputValidationEmails = document.querySelectorAll('#email_customer, #email_contact-person');
-const inputValidationMessages = document.querySelectorAll('#message_contact-person');
-const inputValidationStreets = document.querySelectorAll('#street-name_teaching-location');
-const inputValidationHouseNumbers = document.querySelectorAll('#house-number_teaching-location');
-const inputValidationZipCodes = document.querySelectorAll('#zip-code_teaching-location');
-const inputValidationLocations = document.querySelectorAll('#location_teaching-location');
 const steps1 = document.querySelectorAll('#form-item_customer, #form-item_closing, #form-item_closing-contact-form, #form-item_adress');
 const submitBtn = document.querySelector('#submitBtn');
 const nextBtn = document.querySelector('#nextBtn');
+
+//start const registration 3 or better
+  const inputValidationFirstNameTutor = document.getElementById('street-name_teaching-location-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('house-number_teaching-location-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('zip-code_teaching-location-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('location_teaching-location-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('first-name_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('second-name_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('school-name_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('school-type_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('class_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('bday_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('subject_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('grade_student-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('first-name_payable-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('second-name_payable-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('email_payable-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('phone-number_payable-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('iban_payable-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('bank-name_payable-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('become-attentive_customer-rt3ob');
+  const inputValidationFirstNameTutor = document.getElementById('message_customer-rt3ob');
+//end const registration 3 or better
+
+
 
 //start Validation Phone Number
 function applyPhoneValidation(inputElement) {
@@ -37,9 +51,7 @@ inputElement.value = '+49' + numberPart;
 }
 }
 
-inputValidationPhoneNumbers.forEach(input => {
-applyPhoneValidation(input);
-});
+
 //end Validation Phone Number
 
 
@@ -58,9 +70,7 @@ if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
 e.target.value = value;
 });
 }
-inputValidationContractTerminationCustomer.forEach(input => {
-applyDateInputFormat(input);
-});
+
 //end bday validation
 
 
