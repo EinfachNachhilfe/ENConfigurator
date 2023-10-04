@@ -174,7 +174,9 @@ if (nextBtn) {
         const currentStep = document.querySelector('.step[data-step="1"]'); // Change this to get the current step dynamically
 
         // Get all input fields of the current step
-        const inputFields = currentStep.querySelectorAll('input');
+        const inputFields = currentStep.getElementsByTagName("input");
+       
+
 
         inputFields.forEach(function(inputElement) {
             if (inputElement.hasAttribute('required')) {
