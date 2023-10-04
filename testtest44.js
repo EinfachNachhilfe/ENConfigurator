@@ -213,7 +213,45 @@ applyValidation(becomeAttentiveCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausge
 applyValidation(messageCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 //end const registration 3 or better
 
-
+function validateOnButtonClick(inputElement, step) {
+    nextBtn.addEventListener('click', function() {
+      if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+        let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+        let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+        let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  
+        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a'; // Set border color to red
+        inputElement.style.borderWidth = '1.5px'; // Set border width to 1.5px
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+      }
+    });
+  }
+  
+  // Anwenden der Funktion auf mehrere Eingabefelder:
+validateOnButtonClick(inputValidationStreetNameTeachingLocation, step1);
+validateOnButtonClick(inputValidationHouseNumberTeachingLocation, step1);
+validateOnButtonClick(inputValidationZipCodeTeachingLocation, step1);
+validateOnButtonClick(inputValidationLocationTeachingLocation, step1);
+validateOnButtonClick(inputValidationFirstNameStudent, step2);
+validateOnButtonClick(inputValidationSecondNameStudent, step2);
+validateOnButtonClick(inputValidationSchoolNameStudent, step2);
+validateOnButtonClick(inputValidationSchoolTypeStudent, step2);
+validateOnButtonClick(inputValidationClassStudent, step2);
+validateOnButtonClick(inputValidationBdayStudent, step2);
+validateOnButtonClick(inputValidationFirstNamePayable, step3);
+validateOnButtonClick(inputValidationSecondNamePayable, step3);
+validateOnButtonClick(inputValidationEmailPayable, step3);
+validateOnButtonClick(inputValidationPhoneNumberPayable, step3);
+validateOnButtonClick(inputValidationIbanPayable, step3);
+validateOnButtonClick(inputValidationBankNamePayable, step3);
+validateOnButtonClick(inputValidationStreetNameBillingAddress, step3);
+validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
+validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
+validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
 
 //start function shake
 function shakeOnInvalid(input) {
