@@ -168,22 +168,28 @@ submitBtn.addEventListener('click', function() {
     }
 });
 
-if (nextBtn) {
-    nextBtn.addEventListener('click', function() {
-        if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
-            if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                errorMessageElement.style.display = 'block';
-                inputElement.style.borderColor = '#9e367a'; 
-                inputElement.style.borderWidth = '1.5px';
-                validImage.style.display = 'none';
-                inValidImage.style.display = 'block';
-                shakeOnInvalid(inputElement);
+  if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            // Überprüfen Sie, ob der übergeordnete Tab des Eingabefelds sichtbar ist
+            if (window.getComputedStyle(step, null).display !== "block") {
+                return; // Wenn der Tab nicht sichtbar ist, beenden Sie die Funktion
             }
-        }
-    });
+
+            if (inputElement.hasAttribute('required')) {
+                if (inputElement.value.trim() === '') {
+                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                    errorMessageElement.style.display = 'block';
+                    inputElement.style.borderColor = '#9e367a'; 
+                    inputElement.style.borderWidth = '1.5px';
+                    validImage.style.display = 'none';
+                    inValidImage.style.display = 'block';
+                    shakeOnInvalid(inputElement);
+                }
+            }
+        });
+    }
 }
-}
+
 
 
 
