@@ -169,6 +169,10 @@ if (nextBtn) {
     nextBtn.addEventListener('click', function() {
         // Get the current step
       const currentStep = formItems[currentTabIndex];
+
+              if (currentStep.style.display !== "block") {
+            return; // Exit the event listener if the current step is not visible
+        }
         // Get all input fields of the current step
  const inputFields = currentStep.querySelectorAll('input');
 
