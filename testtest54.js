@@ -138,6 +138,7 @@ errorMessageElement.style.fontSize = '0.8rem';
 inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
 inputElement.addEventListener("change", function() {
+   if (isStepVisible(step)) { 
     if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -294,14 +295,14 @@ showTab(currentTab);
 
 function validateForm() {
 let valid = true;
-const inputs = formItems[currentTab].getElementsByTagName("input");
+    const inputs = formItems[currentTab].querySelectorAll("input[required]"); // Nur die erforderlichen Eingabefelder des aktuellen Tabs auswählen
 
-for (let i = 0; i < inputs.length; i++) {
-if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-  inputs[i].className += " invalid";
-  valid = false;
-}
-}
+    for (let i = 0; i < inputs.length; i++) {
+        if (!inputs[i].checkValidity() || inputs[i].value == "") {
+            inputs[i].className += " invalid";
+            valid = false;
+        }
+    }
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
