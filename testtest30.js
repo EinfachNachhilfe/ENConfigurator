@@ -170,20 +170,31 @@ submitBtn.addEventListener('click', function() {
 
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-        if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
-            if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
-                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                errorMessageElement.style.display = 'block';
-                inputElement.style.borderColor = '#9e367a'; 
-                inputElement.style.borderWidth = '1.5px';
-                validImage.style.display = 'none';
-                inValidImage.style.display = 'block';
-                shakeOnInvalid(inputElement);
+        // Get the current step
+        const currentStep = document.querySelector('.step[data-step="1"]'); // Change this to get the current step dynamically
+
+        // Get all input fields of the current step
+        const inputFields = currentStep.querySelectorAll('input');
+
+        inputFields.forEach(function(inputElement) {
+            if (inputElement.hasAttribute('required')) {
+                if (inputElement.value.trim() === '') {
+                    const errorMessageElement = inputElement.parentNode.querySelector('#error_message');
+                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                    errorMessageElement.style.display = 'block';
+                    inputElement.style.borderColor = '#9e367a'; 
+                    inputElement.style.borderWidth = '1.5px';
+                    const validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+                    const inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+                    validImage.style.display = 'none';
+                    inValidImage.style.display = 'block';
+                    shakeOnInvalid(inputElement);
+                }
             }
-        }
+        });
     });
 }
-}
+
 
 
 
