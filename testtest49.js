@@ -165,7 +165,7 @@ inputElement.addEventListener("change", function() {
 
 
 submitBtn.addEventListener('click', function() {
-if (isStepVisible(step)) {  
+  if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
     if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
         errorMessageElement.style.display = 'block';
@@ -180,7 +180,7 @@ if (isStepVisible(step)) {
 
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-    if (isStepVisible(step)) { 
+    if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
             errorMessageElement.style.display = 'block';
