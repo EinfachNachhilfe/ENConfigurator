@@ -185,7 +185,7 @@ nextBtn.addEventListener('click', function() {
 
 
 
-}
+
 
 
 
