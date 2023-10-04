@@ -162,6 +162,7 @@ inputElement.addEventListener("change", function() {
         inValidImage.style.display = 'block';
         shakeOnInvalid(inputElement);
     }
+}
 });
 
 
