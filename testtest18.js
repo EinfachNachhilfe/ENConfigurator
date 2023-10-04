@@ -3,28 +3,40 @@ const submitBtn = document.querySelector('#submitBtn');
 const nextBtn = document.querySelector('#nextBtn');
 
 //start const registration 3 or better
-  const inputValidationFirstNameTutor = document.getElementById('street-name_teaching-location-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('house-number_teaching-location-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('zip-code_teaching-location-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('location_teaching-location-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('first-name_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('second-name_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('school-name_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('school-type_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('class_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('bday_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('subject_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('grade_student-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('first-name_payable-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('second-name_payable-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('email_payable-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('phone-number_payable-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('iban_payable-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('bank-name_payable-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('become-attentive_customer-rt3ob');
-  const inputValidationFirstNameTutor = document.getElementById('message_customer-rt3ob');
+  const streetNameTeachingLocationRt3ob = document.getElementById('street-name_teaching-location-rt3ob');
+  const houseNumberTeachingLocationRt3ob = document.getElementById('house-number_teaching-location-rt3ob');
+  const zipCodeTeachingLocationRt3ob = document.getElementById('zip-code_teaching-location-rt3ob');
+  const locationTeachingLocationRt3ob = document.getElementById('location_teaching-location-rt3ob');
+  const firstNameStudentRt3ob = document.getElementById('first-name_student-rt3ob');
+  const secondNameStudentRt3ob = document.getElementById('second-name_student-rt3ob');
+  const schoolNameStudentRt3ob = document.getElementById('school-name_student-rt3ob');
+  const schoolTypeStudentRt3ob = document.getElementById('school-type_student-rt3ob');
+  const classStudentRt3ob = document.getElementById('class_student-rt3ob');
+  const bdayStudentRt3ob = document.getElementById('bday_student-rt3ob');
+  const subjectStudentRt3ob = document.getElementById('subject_student-rt3ob');
+  const gradeStudentRt3ob = document.getElementById('grade_student-rt3ob');
+  const firstNamePayableRt3ob = document.getElementById('first-name_payable-rt3ob');
+  const secondNamePayableRt3ob = document.getElementById('second-name_payable-rt3ob');
+  const emailPayableRt3ob = document.getElementById('email_payable-rt3ob');
+  const phoneNumberPayableRt3ob = document.getElementById('phone-number_payable-rt3ob');
+  const ibanPayableRt3ob = document.getElementById('iban_payable-rt3ob');
+  const bankNamePayableRt3ob = document.getElementById('bank-name_payable-rt3ob');
+  const becomeAttentiveCustomerRt3ob = document.getElementById('become-attentive_customer-rt3ob');
+  const messageCustomerRt3ob = document.getElementById('message_customer-rt3ob');
 //end const registration 3 or better
 
+
+//start stepchange with enter
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      if (!nextBtn.classList.contains('disabled')) {
+        nextBtn.click();
+        event.preventDefault();
+      }
+    }
+  });
+  
+  //end stepchange with enter
 
 
 //start Validation Phone Number
@@ -50,7 +62,7 @@ numberPart = numberPart.substring(1);
 inputElement.value = '+49' + numberPart;
 }
 }
-
+applyPhoneValidation(phoneNumberPayableRt3ob);
 
 //end Validation Phone Number
 
@@ -70,10 +82,30 @@ if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
 e.target.value = value;
 });
 }
-
+applyDateInputFormat(bdayStudentRt3ob);
 //end bday validation
 
-
+//start iban validation
+function addIbanValidation(inputElement) {
+    inputElement.addEventListener('input', function() {
+      checkIbanInput(inputElement);
+    });
+  }
+  
+  function checkIbanInput(inputElement) {
+    if (inputElement.value.substring(0, 2) !== 'DE') {
+      inputElement.value = 'DE';
+      inputElement.setSelectionRange(2,2);
+    } else {
+      // Remove any non-numeric characters after 'DE'
+      inputElement.value = 'DE' + inputElement.value.substring(2).replace(/\D/g, '');
+    }
+  }
+  
+//end iban validation
+  
+  
+  
 
 //start inputfield validation
 function applyValidation(inputElement, step, emptyErrorMsg, invalidErrorMsg, pattern = null) {
@@ -158,69 +190,29 @@ if (nextBtn) {
 
 
 
-// Anwenden der kombinierten Funktion auf mehrere Eingabefelder:
-inputValidationFirstNames.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-});
-});
-inputValidationSecondNames.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^[A-Za-z ]+$');
-});
-});
-inputValidationPhoneNumbers.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\+49[1-9]\\d{1,}$');
-});
-});
+//start const registration 3 or better
+applyValidation('streetNameTeachingLocationRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('houseNumberTeachingLocationRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('zipCodeTeachingLocationRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+applyValidation('locationTeachingLocationRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('firstNameStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation('secondNameStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation('schoolNameStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('schoolTypeStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('classStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('bdayStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+applyValidation('subjectStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('gradeStudentRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('firstNamePayableRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation('secondNamePayableRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation('emailPayableRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
+applyValidation('phoneNumberPayableRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
+applyValidation('ibanPayableRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('bankNamePayableRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('becomeAttentiveCustomerRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation('messageCustomerRt3ob', 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 
-inputValidationReasonForTerminationCustomer.forEach(input => {
-steps1.forEach(step => {
-applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-});
-});
-inputValidationContractTerminationCustomer.forEach(input => {
-steps1.forEach(step => {
-applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-});
-});
-inputValidationEmails.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '^\\S+@\\S+\\.\\S+$');
-});
-});
-inputValidationMessages.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-});
-});
-
-inputValidationStreets.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-});
-});
-
-inputValidationHouseNumbers.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-});
-});
-
-inputValidationZipCodes.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-});
-});
-inputValidationLocations.forEach(input => {
-steps1.forEach(step => {
-    applyValidation(input, step, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-});
-});
-
-
-//end inputfield validation
+//end const registration 3 or better
 
 
 
@@ -381,9 +373,9 @@ formItems[n].className += " active";
 
 
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
-const radioLearningDisorderJa = document.querySelector("input[type='radio'][name='trigger_learning-disorder'][value='1']");
-const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder'][value='2']");
-const containerLearningDisorder = document.getElementById("create-learning-disorder_student");
+const radioLearningDisorderJa = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='1']");
+const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='2']");
+const containerLearningDisorder = document.getElementById("create-learning-disorder_student-rt3ob");
 
 radioLearningDisorderNein.addEventListener("change", function() {
 if (radioLearningDisorderNein.checked) {
@@ -396,8 +388,8 @@ removeInputField("infoText", "learning-disorder_student");
 });
 
 // Überwachen Sie den Radio-Button "ja" für Rechnungsadresse
-const radioBillingAddressJa = document.querySelector("input[type='radio'][name='trigger_billing-address'][value='1']");
-const radioBillingAddressNein = document.querySelector("input[type='radio'][name='trigger_billing-address'][value='2']");
+const radioBillingAddressJa = document.querySelector("input[type='radio'][name='trigger_billing-address-rt3ob'][value='1']");
+const radioBillingAddressNein = document.querySelector("input[type='radio'][name='trigger_billing-address-rt3ob'][value='2']");
 
 const billingDetails = [
 { containerId: "create-street-name_billing-address", labelId: "streetNameLabel", labelText: "Straßenname ", inputId: "street-name_billing-address", inputPlaceholder: "Straßenname eingeben" },
