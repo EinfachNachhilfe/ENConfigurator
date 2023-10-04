@@ -376,7 +376,7 @@ formItems[n].className += " active";
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
 const radioLearningDisorderJa = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='1']");
 const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='2']");
-const containerLearningDisorder = document.getElementById("create-learning-disorder_student-rt3ob");
+const containerLearningDisorder = document.getElementById("create-learning-disorder");
 
 radioLearningDisorderNein.addEventListener("change", function() {
 if (radioLearningDisorderNein.checked) {
