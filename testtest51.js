@@ -201,8 +201,8 @@ function highlightInvalidFields() {
             inputs[i].style.borderColor = '#9e367a';
             inputs[i].style.borderWidth = '1.5px';
         } else {
-            inputs[i].style.borderColor = ''; // Setzen Sie die ursprüngliche Farbe zurück, wenn das Feld gültig ist
-            inputs[i].style.borderWidth = '';
+            inputs[i].style.borderColor = '#589b32'; // Setzen Sie die ursprüngliche Farbe zurück, wenn das Feld gültig ist
+            inputs[i].style.borderWidth = '1.5px';
         }
     }
 }
