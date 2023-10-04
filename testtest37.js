@@ -2,6 +2,10 @@ const submitBtn = document.querySelector('#submitBtn');
 const nextBtn = document.querySelector('#nextBtn');
 
 //start const registration 3 or better
+ const step1Rt3ob = document.getElementById('step-1-rt3ob');
+ const step2Rt3ob = document.getElementById('step-2-rt3ob');
+ const step3Rt3ob = document.getElementById('step-3-rt3ob');
+ const step4Rt3ob = document.getElementById('step-4-rt3ob');
   const streetNameTeachingLocationRt3ob = document.getElementById('street-name_teaching-location-rt3ob');
   const houseNumberTeachingLocationRt3ob = document.getElementById('house-number_teaching-location-rt3ob');
   const zipCodeTeachingLocationRt3ob = document.getElementById('zip-code_teaching-location-rt3ob');
@@ -22,6 +26,7 @@ const nextBtn = document.querySelector('#nextBtn');
   const bankNamePayableRt3ob = document.getElementById('bank-name_payable-rt3ob');
   const becomeAttentiveCustomerRt3ob = document.getElementById('become-attentive_customer-rt3ob');
   const messageCustomerRt3ob = document.getElementById('message_customer-rt3ob');
+  const step1Rt3ob = document.getElementById('form-item_adress');
 //end const registration 3 or better
 
 
@@ -163,45 +168,25 @@ submitBtn.addEventListener('click', function() {
         }
     }
 });
-  
-let currentTabIndex = 0;
+
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-        // Get the current step
-      const currentStep = formItems[currentTabIndex];
-
-              if (currentStep.style.display !== "block") {
-            return; // Exit the event listener if the current step is not visible
-        }
-        // Get all input fields of the current step
- const inputFields = currentStep.querySelectorAll('input');
-
-       
-
-
-        inputFields.forEach(function(inputElement) {
-            if (inputElement.hasAttribute('required')) {
-                if (inputElement.value.trim() === '') {
-                    const errorMessageElement = inputElement.parentNode.querySelector('#error_message');
-                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                    errorMessageElement.style.display = 'block';
-                    inputElement.style.borderColor = '#9e367a'; 
-                    inputElement.style.borderWidth = '1.5px';
-                    const validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-                    const inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-                    validImage.style.display = 'none';
-                    inValidImage.style.display = 'block';
-                    shakeOnInvalid(inputElement);
-                }
+        if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
+            if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
+                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = '#9e367a'; 
+                inputElement.style.borderWidth = '1.5px';
+                validImage.style.display = 'none';
+                inValidImage.style.display = 'block';
+                shakeOnInvalid(inputElement);
             }
-        });
-       currentTabIndex++;
+        }
     });
 }
-
-
-
 }
+
+
 
 
 
@@ -211,26 +196,26 @@ if (nextBtn) {
 
 
 //start const registration 3 or better
-applyValidation(streetNameTeachingLocationRt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(houseNumberTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(zipCodeTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
-applyValidation(locationTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(firstNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(secondNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(schoolNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(schoolTypeStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(classStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(bdayStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-applyValidation(subjectStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(gradeStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(firstNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(secondNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(emailPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
-applyValidation(phoneNumberPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
-applyValidation(ibanPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(bankNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(becomeAttentiveCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(messageCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(streetNameTeachingLocationRt3ob, step1Rt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(houseNumberTeachingLocationRt3ob, step1Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(zipCodeTeachingLocationRt3ob, step1Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+applyValidation(locationTeachingLocationRt3ob, step1Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(firstNameStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(secondNameStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(schoolNameStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(schoolTypeStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(classStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(bdayStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+applyValidation(subjectStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(gradeStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(firstNamePayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(secondNamePayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(emailPayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
+applyValidation(phoneNumberPayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
+applyValidation(ibanPayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(bankNamePayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(becomeAttentiveCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(messageCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 //end const registration 3 or better
 
 
