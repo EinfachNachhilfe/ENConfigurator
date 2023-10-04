@@ -26,7 +26,6 @@ const nextBtn = document.querySelector('#nextBtn');
   const bankNamePayableRt3ob = document.getElementById('bank-name_payable-rt3ob');
   const becomeAttentiveCustomerRt3ob = document.getElementById('become-attentive_customer-rt3ob');
   const messageCustomerRt3ob = document.getElementById('message_customer-rt3ob');
-  const step1Rt3ob = document.getElementById('form-item_adress');
 //end const registration 3 or better
 
 
