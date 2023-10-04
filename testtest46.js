@@ -115,25 +115,25 @@ function isElementVisible(element) {
     return !!element.offsetParent;
 }  
 
+
 //start inputfield validation
-function applyValidation(inputElement,emptyErrorMsg, invalidErrorMsg, pattern = null) {
-let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-const errorMessageElement = document.createElement('span');
-
-if (pattern !== null) {
+  function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+  let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  const errorMessageElement = document.createElement('span');        
+  if (pattern !== null) {
     inputElement.setAttribute('pattern', pattern);
-}
-errorMessageElement.id = 'error_message';
-errorMessageElement.style.color = '#9d367a';
-errorMessageElement.style.display = 'none';
-errorMessageElement.style.marginTop = '-0.625rem';
-errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-errorMessageElement.style.fontSize = '0.8rem';
-inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-
-inputElement.addEventListener("change", function() {
-    if (inputElement.value.trim() === '') {
+  }
+    errorMessageElement.id = 'error_message';
+    errorMessageElement.style.color = '#9d367a';
+    errorMessageElement.style.display = 'none';
+    errorMessageElement.style.marginTop = '-0.625rem';
+    errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+    errorMessageElement.style.fontSize = '0.8rem';
+    inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+  
+    inputElement.addEventListener("change", function() {
+      if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
         inputElement.style.borderColor = '#9e367a';
@@ -141,13 +141,13 @@ inputElement.addEventListener("change", function() {
         validImage.style.display = 'none';
         inValidImage.style.display = 'block';
         shakeOnInvalid(inputElement);
-    } else if (inputElement.checkValidity()) {
+      } else if (inputElement.checkValidity()) {
         inputElement.style.borderColor = '#589b32';
         inputElement.style.borderWidth = '1.5px';
         validImage.style.display = 'block';
         inValidImage.style.display = 'none';
         errorMessageElement.style.display = 'none';
-    } else {
+      } else {
         errorMessageElement.innerHTML = invalidErrorMsg;
         errorMessageElement.style.display = 'block';
         inputElement.style.borderColor = '#9e367a';
@@ -155,12 +155,9 @@ inputElement.addEventListener("change", function() {
         validImage.style.display = 'none';
         inValidImage.style.display = 'block';
         shakeOnInvalid(inputElement);
-    }
-});
-}
-
-
-//start const registration 3 or better
+      }
+    });
+  }
 applyValidation(streetNameTeachingLocationRt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(houseNumberTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(zipCodeTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
@@ -181,9 +178,9 @@ applyValidation(ibanPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungül
 applyValidation(bankNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(becomeAttentiveCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(messageCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-//end const registration 3 or better
 
-function validateOnButtonClick(inputElement, step) {
+
+ function validateOnButtonClick(inputElement, step) {
     nextBtn.addEventListener('click', function() {
       if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
         let errorMessageElement = inputElement.parentNode.querySelector('#error_message');
@@ -222,6 +219,7 @@ validateOnButtonClick(ibanPayableRt3ob, step3Rt3ob);
 validateOnButtonClick(bankNamePayableRt3ob, step3Rt3ob);
 validateOnButtonClick(becomeAttentiveCustomerRt3ob, step4Rt3ob);
 validateOnButtonClick(messageCustomerRt3ob, step4Rt3ob);
+
 
 //start function shake
 function shakeOnInvalid(input) {
