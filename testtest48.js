@@ -115,6 +115,11 @@ function isElementVisible(element) {
     return !!element.offsetParent;
 }  
 
+function isStepVisible(step) {
+    return window.getComputedStyle(step, null).display === "block";
+}
+
+
 
 function applyValidation(inputElement, step, emptyErrorMsg, invalidErrorMsg, pattern = null) {
 let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
@@ -160,7 +165,7 @@ inputElement.addEventListener("change", function() {
 
 
 submitBtn.addEventListener('click', function() {
-  if (formItems[currentTab] === step) {
+if (isStepVisible(step)) {  
     if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
         errorMessageElement.style.display = 'block';
@@ -175,7 +180,7 @@ submitBtn.addEventListener('click', function() {
 
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-      if (formItems[currentTab] === step) {
+    if (isStepVisible(step)) { 
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
             errorMessageElement.style.display = 'block';
