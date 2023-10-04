@@ -128,6 +128,9 @@ errorMessageElement.style.fontSize = '0.8rem';
 inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
 inputElement.addEventListener("change", function() {
+  if (window.getComputedStyle(step, null).display !== "block") {
+            return; // Wenn sich der Benutzer nicht in diesem Schritt befindet, kehren Sie sofort zurück
+        }
     if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -155,6 +158,9 @@ inputElement.addEventListener("change", function() {
 
 
 submitBtn.addEventListener('click', function() {
+  if (window.getComputedStyle(step, null).display !== "block") {
+            return; // Wenn sich der Benutzer nicht in diesem Schritt befindet, kehren Sie sofort zurück
+        }
     if (inputElement.hasAttribute('required')) { // Überprüfen Sie, ob das Eingabefeld das Attribut "required" hat
         if (window.getComputedStyle(step, null).display === "block" && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
@@ -170,12 +176,11 @@ submitBtn.addEventListener('click', function() {
 
   if (nextBtn) {
         nextBtn.addEventListener('click', function() {
-            // Überprüfen Sie, ob der übergeordnete Tab des Eingabefelds sichtbar ist
-            if (window.getComputedStyle(step, null).display !== "block") {
-                return; // Wenn der Tab nicht sichtbar ist, beenden Sie die Funktion
-            }
-
-            if (inputElement.hasAttribute('required')) {
+                             if (window.getComputedStyle(step, null).display !== "block") {
+            return; // Wenn sich der Benutzer nicht in diesem Schritt befindet, kehren Sie sofort zurück
+        }     
+ 
+           if (inputElement.hasAttribute('required')) {
                 if (inputElement.value.trim() === '') {
                     errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
                     errorMessageElement.style.display = 'block';
