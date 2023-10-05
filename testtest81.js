@@ -273,7 +273,6 @@ function nextPrev(n) {
 function validateForm() {
     let valid = true;
     const inputs = formItems[currentTab].getElementsByTagName("input");
-    // ... (Rest des Codes bleibt unverändert)
 
     if (valid) {
         document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
@@ -282,63 +281,63 @@ function validateForm() {
         nextBtn.classList.add("disabled");
     }
     return valid; // Rückgabewert hinzugefügt
-} // Schließende Klammer für validateForm hinzugefügt
+} 
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
-let radioGroups = {};
-for (let j = 0; j < radios.length; j++) {
-let name = radios[j].getAttribute("name");
-radioGroups[name] = radioGroups[name] || [];
-radioGroups[name].push(radios[j]);
-}
-for (let groupName in radioGroups) {
-if (radioGroups.hasOwnProperty(groupName)) {
-  let radioChecked = false;
-  for (let k = 0; k < radioGroups[groupName].length; k++) {
-    if (radioGroups[groupName][k].checked) {
-      radioChecked = true;
-      break;
+    let radioGroups = {};
+    for (let j = 0; j < radios.length; j++) {
+        let name = radios[j].getAttribute("name");
+        radioGroups[name] = radioGroups[name] || [];
+        radioGroups[name].push(radios[j]);
     }
-  }
-  if (!radioChecked) {
-    valid = false;
-  }
-}
-}
+    for (let groupName in radioGroups) {
+        if (radioGroups.hasOwnProperty(groupName)) {
+            let radioChecked = false;
+            for (let k = 0; k < radioGroups[groupName].length; k++) {
+                if (radioGroups[groupName][k].checked) {
+                    radioChecked = true;
+                    break;
+                }
+            }
+            if (!radioChecked) {
+                valid = false;
+            }
+        }
+    }
 
-// Validierung für Checkboxen
-const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
-if (checkboxes.length > 0) {
-let checkboxChecked = false;
-for (let l = 0; l < checkboxes.length; l++) {
-  if (checkboxes[l].checked) {
-    checkboxChecked = true;
-    break;
-  }
-}
-if (!checkboxChecked) {
-  valid = false;
-}
-}
+    // Validierung für Checkboxen
+    const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
+    if (checkboxes.length > 0) {
+        let checkboxChecked = false;
+        for (let l = 0; l < checkboxes.length; l++) {
+            if (checkboxes[l].checked) {
+                checkboxChecked = true;
+                break;
+            }
+        }
+        if (!checkboxChecked) {
+            valid = false;
+        }
+    }
 
-// Validierung für <select>-Felder
-const selects = formItems[currentTab].querySelectorAll("select[required]");
-for (let m = 0; m < selects.length; m++) {
-if (!selects[m].value) {
-  selects[m].className += " invalid";
-  valid = false;
-}
-}
+    // Validierung für <select>-Felder
+    const selects = formItems[currentTab].querySelectorAll("select[required]");
+    for (let m = 0; m < selects.length; m++) {
+        if (!selects[m].value) {
+            selects[m].className += " invalid";
+            valid = false;
+        }
+    }
 
+    if (valid) {
+        document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
+        nextBtn.classList.remove("disabled");
+    } else {
+        nextBtn.classList.add("disabled");
+    }
+    return valid;
 
-if (valid) {
-    document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
-    document.getElementById("nextBtn").classList.remove("disabled");
-} else {
-    document.getElementById("nextBtn").classList.add("disabled");
-}
-return valid;
 
 
 
