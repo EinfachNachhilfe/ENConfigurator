@@ -420,3 +420,5 @@ if (vorhandenesInputFeld) {
     vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
 }
 }
+ }
+
