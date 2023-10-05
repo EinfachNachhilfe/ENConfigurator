@@ -2,6 +2,14 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const allInputs = document.querySelectorAll('input, select');
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.getElementById('regForm');
+    form.setAttribute('novalidate', true);
+});
+
+
+
 //start const registration 3 or better
   const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
   const firstNameSecondName = document.getElementById('first-name_student-rt3ob');
