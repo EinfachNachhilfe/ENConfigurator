@@ -104,7 +104,7 @@ function addIbanValidation(inputElement) {
   
 //end iban validation
   
-function applyValidation(inputElement, step, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
 let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
 let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
 const errorMessageElement = document.createElement('span');
