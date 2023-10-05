@@ -1,14 +1,33 @@
-document.getElementById('IhrInputElementID').oninvalid = function(event) {
+// Alle gewünschten Formularelemente auswählen
+const allFormElements = document.querySelectorAll('input, select, input[type="radio"], input[type="checkbox"]');
+
+// Funktion, die bei einem Ungültigkeitsereignis aufgerufen wird
+function handleInvalid(event) {
     event.preventDefault(); // Verhindert das Absenden des Formulars
-    var tooltip = document.createElement('div');
+
+    // Entfernen Sie vorhandene Tooltips, um Duplikate zu vermeiden
+    const existingTooltip = this.parentNode.querySelector('.custom-tooltip');
+    if (existingTooltip) {
+        existingTooltip.remove();
+    }
+
+    // Erstellen Sie einen neuen Tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'custom-tooltip'; // Klasse hinzufügen, um später leichter darauf zugreifen zu können
     tooltip.style.position = 'absolute';
     tooltip.style.backgroundColor = 'red';
     tooltip.style.color = 'white';
     tooltip.style.padding = '5px';
     tooltip.style.borderRadius = '5px';
-    tooltip.innerText = 'Ihre benutzerdefinierte Fehlermeldung hier';
+    tooltip.innerText = 'Ihre benutzerdefinierte Fehlermeldung hier'; // Sie können dies anpassen, um spezifische Nachrichten basierend auf dem Elementtyp oder der ID zu haben
     this.parentNode.appendChild(tooltip);
 }
+
+// Fügen Sie den Event-Listener jedem Formularelement hinzu
+allFormElements.forEach(element => {
+    element.addEventListener('invalid', handleInvalid);
+});
+
 
 
 const nextBtn = document.querySelector('#nextBtn');
