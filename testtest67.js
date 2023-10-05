@@ -220,7 +220,7 @@ input.style.transform = '';
 
 
 document.getElementById("nextBtn").classList.add("disabled");
-document.getElementById("submitBtn").classList.add("disabled");
+
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const prevBtn = document.getElementById("prevBtn");
@@ -248,11 +248,9 @@ prevBtn.style.display = "none";
 prevBtn.style.display = "flex";
 }
 if (n === (formItems.length - 1)) {
-submitBtn.style.display = "block";
-nextBtn.style.display = "none";
+    document.getElementById("nextBtn").innerHTML = "Abschicken";
 } else {
-nextBtn.style.display = "flex";
-submitBtn.style.display = "none";
+ document.getElementById("nextBtn").innerHTML = "Weiter";
 }
 
 // Aktualisieren Sie den Schrittindikator
@@ -342,13 +340,8 @@ if (valid) {
 document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
 document.getElementById("nextBtn").classList.remove("disabled");
 
-// Wenn es der letzte Tab ist, aktiviere den submitBtn
-if (currentTab == document.getElementsByClassName("form_item-input-wrapper-tab").length - 1) {
-  document.getElementById("submitBtn").classList.remove("disabled");
-}
 } else {
 document.getElementById("nextBtn").classList.add("disabled");
-document.getElementById("submitBtn").classList.add("disabled");
 }
 return valid;
 
