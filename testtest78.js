@@ -216,7 +216,6 @@ prevBtn.addEventListener("click", function() {
 
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
-const prevBtn = document.getElementById("prevBtn");
 const currentStepElem = document.getElementById("currentStep");
 const totalStepsElem = document.getElementById("totalSteps");
 const regForm = document.getElementById("regForm");
