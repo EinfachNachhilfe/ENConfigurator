@@ -150,20 +150,6 @@ inputElement.addEventListener("change", function() {
     }
 });
 
-
-nextBtn.addEventListener('click', function() {
-      if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
-          errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-          errorMessageElement.style.display = 'block';
-          inputElement.style.borderColor = '#9e367a'; 
-          inputElement.style.borderWidth = '1.5px';
-          validImage.style.display = 'none';
-          inValidImage.style.display = 'block';
-          shakeOnInvalid(inputElement);
-      
-  }
-  });
-
 }
 
 
@@ -223,7 +209,7 @@ function showTab(n) {
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
-    document.getElementById("prevBtn").style.display = "inline";
+    revBtn.style.display = "flex";
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
