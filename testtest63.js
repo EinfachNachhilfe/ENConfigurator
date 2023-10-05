@@ -216,7 +216,7 @@ input.style.transform = '';
 //end function shake
 
 
-document.getElementById("nextBtn").classList.add("disabled");
+
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const prevBtn = document.getElementById("prevBtn");
@@ -332,13 +332,7 @@ if (!selects[m].value) {
 }
 
 
-if (valid) {
-    nextBtn.classList.remove("disabled");
-} else {
-    nextBtn.classList.add("disabled");
-}
-return valid;
-}
+
 
 
 function fixStepIndicator(n) {
