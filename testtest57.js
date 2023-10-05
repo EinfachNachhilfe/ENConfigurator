@@ -138,7 +138,6 @@ errorMessageElement.style.fontSize = '0.8rem';
 inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
 
 inputElement.addEventListener("change", function() {
-   if (isStepVisible(step)) { 
     if (inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -162,14 +161,39 @@ inputElement.addEventListener("change", function() {
         inValidImage.style.display = 'block';
         shakeOnInvalid(inputElement);
     }
+});
+
+
+submitBtn.addEventListener('click', function() {
+  if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a'; 
+        inputElement.style.borderWidth = '1.5px';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+    }
 }
 });
 
- if (nextBtn) {
-    nextBtn.removeEventListener('click', () => validateCurrentTab(step1Rt3ob)); // Verhindern Sie das mehrfache Anhängen von Event-Listenern
-    nextBtn.addEventListener('click', () => validateCurrentTab(step1Rt3ob));
+if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+    if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a'; 
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        }
+    }
+    });
+
 }
- 
 }
 
 //start const registration 3 or better
@@ -195,21 +219,6 @@ applyValidation(becomeAttentiveCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausge
 applyValidation(messageCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 //end const registration 3 or better
 
-// Entfernen Sie diesen Teil aus der applyValidation-Funktion
-function validateCurrentTab(step) {
-    if (isStepVisible(step)) {
-        const inputs = step.querySelectorAll("input[required]");
-        for (let i = 0; i < inputs.length; i++) {
-            if (inputs[i].value.trim() === '') {
-                // Zeigen Sie Fehlermeldungen an, setzen Sie die Ränder usw.
-                // ... (Ihr vorhandener Code zur Anzeige von Fehlermeldungen)
-            } else if (!inputs[i].checkValidity()) {
-                // Zeigen Sie Fehlermeldungen an, wenn das Eingabefeld ungültig ist
-                // ... (Ihr vorhandener Code zur Anzeige von Fehlermeldungen)
-            }
-        }
-    }
-}
 
 //start function shake
 function shakeOnInvalid(input) {
@@ -223,8 +232,11 @@ input.style.transform = '';
 //end function shake
 
 
-document.getElementById("nextBtn").classList.add("disabled");
+
 document.getElementById("submitBtn").classList.add("disabled");
+document.getElementById("nextBtn").addEventListener("click", function() {
+    nextPrev(1);
+});
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const prevBtn = document.getElementById("prevBtn");
@@ -285,14 +297,14 @@ showTab(currentTab);
 
 function validateForm() {
 let valid = true;
-    const inputs = formItems[currentTab].querySelectorAll("input[required]"); // Nur die erforderlichen Eingabefelder des aktuellen Tabs auswählen
+const inputs = formItems[currentTab].getElementsByTagName("input");
 
-    for (let i = 0; i < inputs.length; i++) {
-        if (!inputs[i].checkValidity() || inputs[i].value == "") {
-            inputs[i].className += " invalid";
-            valid = false;
-        }
-    }
+for (let i = 0; i < inputs.length; i++) {
+if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
+  inputs[i].className += " invalid";
+  valid = false;
+}
+}
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
