@@ -107,20 +107,6 @@ function addIbanValidation(inputElement) {
   
 //end iban validation
   
-function isStepVisible(step) {
-    return window.getComputedStyle(step, null).display === "block";
-}  
-
-function isElementVisible(element) {
-    return !!element.offsetParent;
-}  
-
-function isStepVisible(step) {
-    return window.getComputedStyle(step, null).display === "block";
-}
-
-
-
 function applyValidation(inputElement, step, emptyErrorMsg, invalidErrorMsg, pattern = null) {
 let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
 let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
@@ -248,9 +234,9 @@ prevBtn.style.display = "none";
 prevBtn.style.display = "flex";
 }
 if (n === (formItems.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Abschicken";
+    document.getElementById("nextBtn").innerHTML = "Weiter";
 } else {
- document.getElementById("nextBtn").innerHTML = "Weiter";
+ document.getElementById("nextBtn").innerHTML = "Abschicken";
 }
 
 // Aktualisieren Sie den Schrittindikator
@@ -268,14 +254,6 @@ return false;
 nextBtn.classList.remove("disabled");
 }
 
-formItems[currentTab].style.display = "none";
-currentTab = currentTab + n;
-if (currentTab >= formItems.length) {
-regForm.submit();
-return false;
-}
-showTab(currentTab);
-}
 
 function validateForm() {
 let valid = true;
