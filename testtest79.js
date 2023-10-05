@@ -332,7 +332,14 @@ if (!selects[m].value) {
 }
 
 
-
+if (valid) {
+    document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
+    document.getElementById("nextBtn").classList.remove("disabled");
+} else {
+    document.getElementById("nextBtn").classList.add("disabled");
+}
+return valid;
+}
 
 
 
