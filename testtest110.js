@@ -194,7 +194,7 @@ prevBtn.addEventListener("click", function() {
 
 showTab(currentTab);
 
-function showTab(n) {
+function showTab(n, skipValidation = false) {
     formItems[n].style.display = "block";
 
     const inputs = formItems[n].querySelectorAll("input, select");
