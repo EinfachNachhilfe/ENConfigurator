@@ -225,7 +225,11 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-    if (n == 1 && !validateForm()) {
+    if (n == 1) {
+        if (!validateForm()) {
+            return false; // Verhindert den Tabwechsel
+        }
+    }
         nextBtn.classList.add("disabled");
         return false;
     } else {
@@ -242,14 +246,19 @@ function nextPrev(n) {
 }
 
 function validateForm() {
-    let valid = true;
+   let valid = true;
     const inputs = formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-          inputs[i].className += " invalid";
-          valid = false;
+            inputs[i].className += " invalid";
+            // Zeige die Fehlermeldung für dieses Eingabefeld an
+            const errorMessageElement = inputs[i].parentNode.querySelector('#error_message');
+            if (errorMessageElement) {
+                errorMessageElement.style.display = 'block';
+            }
+            valid = false;
         }
-        }
+    }
         
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
