@@ -135,7 +135,6 @@ inputElement.addEventListener("change", function() {
 
 }
 
-// Iterieren Sie über die gesammelten Elemente
 allInputs.forEach(inputElement => {
     let pattern = null;
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
@@ -145,33 +144,30 @@ allInputs.forEach(inputElement => {
     switch (inputElement.id) {
         case 'firstNameSecondName':
             pattern = '^[A-Za-zäöüÄÖÜß ]+$';
-            invalidErrorMsg = 'Ungültige Eingabe.';
+            invalidErrorMsg = 'Bitte geben Sie einen gültigen Namen ein.';
             break;
         case 'email':
             pattern = '^\\S+@\\S+\\.\\S+$';
-            invalidErrorMsg = 'Ungültige Eingabe.';
+            invalidErrorMsg = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
             break;
-
-            case 'phoneNumber':
-                pattern = '^\\+49[1-9]\\d{4,}$';
-                invalidErrorMsg = 'Ungültige Eingabe.';
-                break;
-
-            case 'bday':
-                pattern = '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$';
-                invalidErrorMsg = 'Ungültige Eingabe.';
-                break;
-
-                case 'zipCode':
-                    pattern = '\\d+';
-                    invalidErrorMsg = 'Ungültige Eingabe.';
-                    break;
-        
-    
-
+        case 'phoneNumber':
+            pattern = '^\\+49[1-9]\\d{4,}$';
+            invalidErrorMsg = 'Bitte geben Sie eine gültige Telefonnummer ein.';
+            break;
+        case 'bday':
+            pattern = '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$';
+            invalidErrorMsg = 'Bitte geben Sie ein gültiges Geburtsdatum ein.';
+            break;
+        case 'zipCode':
+            pattern = '\\d+';
+            invalidErrorMsg = 'Bitte geben Sie eine gültige PLZ ein.';
+            break;
     }
 
-    applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern);
+    if (pattern) {
+        inputElement.setAttribute('pattern', pattern);
+    }
+    applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
 });
 
 
