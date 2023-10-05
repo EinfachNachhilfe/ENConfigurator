@@ -2,38 +2,6 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const allInputs = document.querySelectorAll('input, select');
 
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var formElements = document.querySelectorAll('input, select, textarea');
-
-    formElements.forEach(function(element) {
-        element.oninvalid = function(e) {
-            if (nextBtn.classList.contains('disabled')) {
-                e.target.setCustomValidity("");
-                if (!e.target.validity.valid) {
-                    e.target.setCustomValidity("Hier ist Ihre benutzerdefinierte Nachricht für ein nicht ausgefülltes Feld.");
-                }
-            }
-        };
-        element.oninput = function(e) {
-            e.target.setCustomValidity("");
-        };
-    });
-
-    nextBtn.addEventListener('click', function() {
-        if (nextBtn.classList.contains('disabled')) {
-            formElements.forEach(function(element) {
-                element.reportValidity();
-            });
-        }
-    });
-});
-
-
-
-
-
 //start const registration 3 or better
   const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
   const firstNameSecondName = document.getElementById('first-name_student-rt3ob');
