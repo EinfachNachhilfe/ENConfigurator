@@ -225,11 +225,7 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-    if (n == 1) {
-        if (!validateForm()) {
-            return false; // Verhindert den Tabwechsel
-        }
-    }
+    if (n == 1 && !validateForm()) {
         nextBtn.classList.add("disabled");
         return false;
     } else {
@@ -244,6 +240,7 @@ function nextPrev(n) {
     }
     showTab(currentTab);
 }
+
 
 function validateForm() {
    let valid = true;
