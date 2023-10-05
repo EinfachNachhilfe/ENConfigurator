@@ -236,7 +236,7 @@ function showTab(n) {
 
 function nextPrev(n) {
   // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
+  var x = document.getElementsByClassName("form_item-input-wrapper-tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
   // Hide the current tab:
