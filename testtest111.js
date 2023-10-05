@@ -194,7 +194,7 @@ prevBtn.addEventListener("click", function() {
 
 showTab(currentTab);
 
-function showTab(n, skipValidation = false) {
+function showTab(n) {
     formItems[n].style.display = "block";
 
     const inputs = formItems[n].querySelectorAll("input, select");
@@ -213,10 +213,6 @@ function showTab(n, skipValidation = false) {
      nextBtn.value = "Abschicken";
     } else {
         nextBtn.value = "Weiter"; 
-    }
-
-  if (!skipValidation) {
-        validateForm();
     }
 
     currentStepElem.textContent = n + 1;
@@ -239,7 +235,7 @@ function nextPrev(n) {
         regForm.submit();
         return false;
     }
-    showTab(currentTab, n === 1);
+    showTab(currentTab);
 }
 
 function validateForm() {
@@ -398,50 +394,3 @@ if (vorhandenesInputFeld) {
     vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
 }
 }
-
-
-function showErrorsForEmptyFieldsInCurrentTab() {
-    // Alle Eingabefelder im aktuellen Tab auswählen
-    const inputsInCurrentTab = formItems[currentTab].querySelectorAll("input, select");
-
-    // Durch alle Eingabefelder im aktuellen Tab gehen
-    for (let input of inputsInCurrentTab) {
-        if (input.type === "checkbox" || input.type === "radio") {
-            // Überprüfen, ob mindestens eine Checkbox oder Radiobox ausgewählt ist
-            const name = input.getAttribute("name");
-            const checked = formItems[currentTab].querySelector(`input[name="${name}"]:checked`);
-            if (!checked) {
-                // Fehlermeldung anzeigen, wenn keine Checkbox oder Radiobox ausgewählt ist
-                displayErrorMessage(input, "Bitte wählen Sie eine Option aus.");
-            }
-        } else if (!input.value.trim()) {
-            // Fehlermeldung anzeigen, wenn das Eingabefeld leer ist
-            displayErrorMessage(input, "Dieses Feld muss ausgefüllt werden.");
-        }
-    }
-}
-
-function displayErrorMessage(input, message) {
-    // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
-    let errorMessageElement = input.parentNode.querySelector('#error_message');
-    if (!errorMessageElement) {
-        errorMessageElement = document.createElement('span');
-        errorMessageElement.id = 'error_message';
-        errorMessageElement.style.color = '#9d367a';
-        errorMessageElement.style.display = 'none';
-        errorMessageElement.style.marginTop = '-0.625rem';
-        errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-        errorMessageElement.style.fontSize = '0.8rem';
-        input.parentNode.insertBefore(errorMessageElement, input.nextSibling);
-    }
-    errorMessageElement.innerHTML = message;
-    errorMessageElement.style.display = 'block';
-    input.style.borderColor = '#9e367a';
-    input.style.borderWidth = '1.5px';
-}
-
-// Event-Listener für den "Next"-Button hinzufügen
-nextBtn.addEventListener("click", function() {
-    showErrorsForEmptyFieldsInCurrentTab();
-});
-
