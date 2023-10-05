@@ -1,5 +1,6 @@
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
+const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select');
 
 
@@ -210,9 +211,11 @@ function showTab(n) {
         prevBtn.style.display = "flex";
     }
     if (n === (formItems.length - 1)) {
-     nextBtn.value = "Abschicken";
+ submitBtn.style.display = "block";
+ nextBtn.style.display = "none";
     } else {
-        nextBtn.value = "Weiter"; 
+        nextBtn.style.display = "flex";
+       submitBtn.style.display = "none";
     }
 
     currentStepElem.textContent = n + 1;
@@ -298,8 +301,10 @@ function validateForm() {
     if (valid) {
         formItems[currentTab].className += " finish";
         nextBtn.classList.remove("disabled");
+      submitBtn.classList.remove("disabled");
     } else {
-        nextBtn.classList.add("disabled");
+       nextBtn.classList.add("disabled");
+       submitBtn.classList.add("disabled");
     }
     return valid;
 }
