@@ -250,11 +250,20 @@ fixStepIndicator(n);
 }
 
 function nextPrev(n) {
-if (n == 1 && !validateForm()) {
-nextBtn.classList.add("disabled");
-return false;
-} else {
-nextBtn.classList.remove("disabled");
+    if (n == 1 && !validateForm()) {
+        nextBtn.classList.add("disabled");
+        return false;
+    } else {
+        nextBtn.classList.remove("disabled");
+    }
+
+    formItems[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= formItems.length) {
+        regForm.submit();
+        return false;
+    }
+    showTab(currentTab);
 }
 
 
