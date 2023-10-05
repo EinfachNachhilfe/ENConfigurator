@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var formElements = document.querySelectorAll('input, select, textarea');
+    formElements.forEach(function(element) {
+        element.oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                e.target.setCustomValidity("Hier ist Ihre benutzerdefinierte Nachricht für ein nicht ausgefülltes Feld.");
+            }
+        };
+        element.oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+    });
+});
+
+
+
+
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const allInputs = document.querySelectorAll('input, select');
