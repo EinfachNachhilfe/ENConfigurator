@@ -1,3 +1,15 @@
+document.getElementById('IhrInputElementID').oninvalid = function(event) {
+    event.preventDefault(); // Verhindert das Absenden des Formulars
+    var tooltip = document.createElement('div');
+    tooltip.style.position = 'absolute';
+    tooltip.style.backgroundColor = 'red';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '5px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.innerText = 'Ihre benutzerdefinierte Fehlermeldung hier';
+    this.parentNode.appendChild(tooltip);
+}
+
 
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
