@@ -1,6 +1,10 @@
 const nextBtn = document.querySelector('#nextBtn');
 
 //start const registration 3 or better
+ const step1Rt3ob = document.getElementById('step-1-rt3ob');
+ const step2Rt3ob = document.getElementById('step-2-rt3ob');
+ const step3Rt3ob = document.getElementById('step-3-rt3ob');
+ const step4Rt3ob = document.getElementById('step-4-rt3ob');
   const streetNameTeachingLocationRt3ob = document.getElementById('street-name_teaching-location-rt3ob');
   const houseNumberTeachingLocationRt3ob = document.getElementById('house-number_teaching-location-rt3ob');
   const zipCodeTeachingLocationRt3ob = document.getElementById('zip-code_teaching-location-rt3ob');
@@ -102,6 +106,20 @@ function addIbanValidation(inputElement) {
   
 //end iban validation
   
+function isStepVisible(step) {
+    return window.getComputedStyle(step, null).display === "block";
+}  
+
+function isElementVisible(element) {
+    return !!element.offsetParent;
+}  
+
+function isStepVisible(step) {
+    return window.getComputedStyle(step, null).display === "block";
+}
+
+
+
 function applyValidation(inputElement, step, emptyErrorMsg, invalidErrorMsg, pattern = null) {
 let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
 let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
@@ -143,29 +161,61 @@ inputElement.addEventListener("change", function() {
         shakeOnInvalid(inputElement);
     }
 });
+
+
+submitBtn.addEventListener('click', function() {
+  if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a'; 
+        inputElement.style.borderWidth = '1.5px';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+    }
+}
+});
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+    if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a'; 
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        }
+    }
+    });
+
+}
 }
 
 //start const registration 3 or better
-applyValidation(streetNameTeachingLocationRt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(houseNumberTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(zipCodeTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
-applyValidation(locationTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(firstNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(secondNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(schoolNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(schoolTypeStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(classStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(bdayStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-applyValidation(subjectStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(gradeStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(firstNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(secondNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(emailPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
-applyValidation(phoneNumberPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
-applyValidation(ibanPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(bankNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(becomeAttentiveCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(messageCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(streetNameTeachingLocationRt3ob, step1Rt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(houseNumberTeachingLocationRt3ob, step1Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(zipCodeTeachingLocationRt3ob, step1Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+applyValidation(locationTeachingLocationRt3ob, step1Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(firstNameStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(secondNameStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(schoolNameStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(schoolTypeStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(classStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(bdayStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+applyValidation(subjectStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(gradeStudentRt3ob, step2Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(firstNamePayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(secondNamePayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(emailPayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
+applyValidation(phoneNumberPayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
+applyValidation(ibanPayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(bankNamePayableRt3ob, step3Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(becomeAttentiveCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+applyValidation(messageCustomerRt3ob, step4Rt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 //end const registration 3 or better
 
 
@@ -181,7 +231,7 @@ input.style.transform = '';
 //end function shake
 
 
-
+document.getElementById("nextBtn").classList.add("disabled");
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const prevBtn = document.getElementById("prevBtn");
@@ -192,69 +242,62 @@ let currentTab = 0;
 
 showTab(currentTab);
 
-nextBtn.addEventListener("click", function() {
-    if (currentTab === formItems.length - 1) {
-        regForm.submit();
-    } else {
-        nextPrev(1);
-    }
-});
-
 function showTab(n) {
-    formItems[n].style.display = "block";
+formItems[n].style.display = "block";
 
-    // Event-Listener für jedes Eingabeelement hinzufügen
-    const inputs = formItems[n].querySelectorAll("input, select");
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", validateForm);
-    }
+// Event-Listener für jedes Eingabeelement hinzufügen
+const inputs = formItems[n].querySelectorAll("input, select");
+for (let i = 0; i < inputs.length; i++) {
+inputs[i].addEventListener("input", validateForm);
+}
 
-    validateForm();
+validateForm();
 
-    if (n === 0) {
-        prevBtn.style.display = "none";
-    } else {
-        prevBtn.style.display = "flex";
-    }
-    if (n === (formItems.length - 1)) {
-        nextBtn.innerHTML = "Abschicken";
-    } else {
-        nextBtn.innerHTML = "Weiter";
-    }
+if (n === 0) {
+prevBtn.style.display = "none";
+} else {
+prevBtn.style.display = "flex";
+}
+if (n === (formItems.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+} else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+}
 
-    // Aktualisieren Sie den Schrittindikator
-    currentStepElem.textContent = n + 1; // +1, weil n bei 0 beginnt
-    totalStepsElem.textContent = formItems.length;
+// Aktualisieren Sie den Schrittindikator
+currentStepElem.textContent = n + 1; // +1, weil n bei 0 beginnt
+totalStepsElem.textContent = formItems.length;
 
-    fixStepIndicator(n);
+fixStepIndicator(n);
 }
 
 function nextPrev(n) {
-    if (n == 1 && !validateForm()) {
-        nextBtn.classList.add("disabled");
-        return false;
-    } else {
-        nextBtn.classList.remove("disabled");
-    }
+if (n == 1 && !validateForm()) {
+nextBtn.classList.add("disabled");
+return false;
+} else {
+nextBtn.classList.remove("disabled");
+}
 
-    formItems[currentTab].style.display = "none";
-    currentTab = currentTab + n;
-    if (currentTab >= formItems.length) {
-        return false; // Das Formular wird bereits durch den EventListener des nextBtn abgeschickt
-    }
-    showTab(currentTab);
+formItems[currentTab].style.display = "none";
+currentTab = currentTab + n;
+if (currentTab >= formItems.length) {
+regForm.submit();
+return false;
+}
+showTab(currentTab);
 }
 
 function validateForm() {
-    let valid = true;
-    const inputs = formItems[currentTab].getElementsByTagName("input");
+let valid = true;
+const inputs = formItems[currentTab].getElementsByTagName("input");
 
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].className += " invalid";
-            valid = false;
-        }
-    }
+for (let i = 0; i < inputs.length; i++) {
+if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
+  inputs[i].className += " invalid";
+  valid = false;
+}
+}
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
