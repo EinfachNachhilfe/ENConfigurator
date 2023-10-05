@@ -271,7 +271,7 @@ function validateForm() {
   }
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
+    document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
   }
   return valid; // return the valid status
 }
