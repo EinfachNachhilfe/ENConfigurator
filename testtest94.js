@@ -198,7 +198,7 @@ const regForm = document.getElementById("regForm");
 let currentTab = 0;
 
 nextBtn.classList.add("disabled");
-submitBtn.classList.add("disabled");
+
 
 nextBtn.addEventListener("click", function() {
     nextPrev(1);
