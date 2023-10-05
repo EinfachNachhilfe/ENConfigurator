@@ -337,6 +337,7 @@ const radios = formItems[currentTab].querySelectorAll("input[type='radio'][requi
         nextBtn.classList.add("disabled");
     }
     return valid;
+}
 
 
 
