@@ -336,7 +336,7 @@ document.getElementById("nextBtn").classList.add("disabled");
 }
 return valid;
 
-}
+
 
 
 function fixStepIndicator(n) {
