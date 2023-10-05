@@ -1,4 +1,4 @@
-
+const submitBtn = document.querySelector('#submitBtn');
 const nextBtn = document.querySelector('#nextBtn');
 
 //start const registration 3 or better
@@ -150,6 +150,19 @@ inputElement.addEventListener("change", function() {
 });
 
 
+submitBtn.addEventListener('click', function() {
+  if (isStepVisible(step) && nextBtn.classList.contains('disabled')) { 
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a'; 
+        inputElement.style.borderWidth = '1.5px';
+        validImage.style.display = 'none';
+        inValidImage.style.display = 'block';
+        shakeOnInvalid(inputElement);
+    }
+}
+});
 
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
@@ -206,7 +219,7 @@ input.style.transform = '';
 
 
 document.getElementById("nextBtn").classList.add("disabled");
-
+document.getElementById("submitBtn").classList.add("disabled");
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const prevBtn = document.getElementById("prevBtn");
@@ -234,9 +247,11 @@ prevBtn.style.display = "none";
 prevBtn.style.display = "flex";
 }
 if (n === (formItems.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Weiter";
+submitBtn.style.display = "block";
+nextBtn.style.display = "none";
 } else {
- document.getElementById("nextBtn").innerHTML = "Abschicken";
+nextBtn.style.display = "flex";
+submitBtn.style.display = "none";
 }
 
 // Aktualisieren Sie den Schrittindikator
@@ -254,6 +269,14 @@ return false;
 nextBtn.classList.remove("disabled");
 }
 
+formItems[currentTab].style.display = "none";
+currentTab = currentTab + n;
+if (currentTab >= formItems.length) {
+regForm.submit();
+return false;
+}
+showTab(currentTab);
+}
 
 function validateForm() {
 let valid = true;
@@ -265,7 +288,6 @@ if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[
   valid = false;
 }
 }
- }
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
@@ -319,8 +341,13 @@ if (valid) {
 document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
 document.getElementById("nextBtn").classList.remove("disabled");
 
+// Wenn es der letzte Tab ist, aktiviere den submitBtn
+if (currentTab == document.getElementsByClassName("form_item-input-wrapper-tab").length - 1) {
+  document.getElementById("submitBtn").classList.remove("disabled");
+}
 } else {
 document.getElementById("nextBtn").classList.add("disabled");
+document.getElementById("submitBtn").classList.add("disabled");
 }
 return valid;
 
