@@ -1,28 +1,15 @@
 
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
+const allInputs = document.querySelectorAll('input, select');
+
 
 //start const registration 3 or better
-  const streetNameTeachingLocationRt3ob = document.getElementById('street-name_teaching-location-rt3ob');
-  const houseNumberTeachingLocationRt3ob = document.getElementById('house-number_teaching-location-rt3ob');
-  const zipCodeTeachingLocationRt3ob = document.getElementById('zip-code_teaching-location-rt3ob');
-  const locationTeachingLocationRt3ob = document.getElementById('location_teaching-location-rt3ob');
-  const firstNameStudentRt3ob = document.getElementById('first-name_student-rt3ob');
-  const secondNameStudentRt3ob = document.getElementById('second-name_student-rt3ob');
-  const schoolNameStudentRt3ob = document.getElementById('school-name_student-rt3ob');
-  const schoolTypeStudentRt3ob = document.getElementById('school-type_student-rt3ob');
-  const classStudentRt3ob = document.getElementById('class_student-rt3ob');
-  const bdayStudentRt3ob = document.getElementById('bday_student-rt3ob');
-  const subjectStudentRt3ob = document.getElementById('subject_student-rt3ob');
-  const gradeStudentRt3ob = document.getElementById('grade_student-rt3ob');
-  const firstNamePayableRt3ob = document.getElementById('first-name_payable-rt3ob');
-  const secondNamePayableRt3ob = document.getElementById('second-name_payable-rt3ob');
-  const emailPayableRt3ob = document.getElementById('email_payable-rt3ob');
-  const phoneNumberPayableRt3ob = document.getElementById('phone-number_payable-rt3ob');
-  const ibanPayableRt3ob = document.getElementById('iban_payable-rt3ob');
-  const bankNamePayableRt3ob = document.getElementById('bank-name_payable-rt3ob');
-  const becomeAttentiveCustomerRt3ob = document.getElementById('become-attentive_customer-rt3ob');
-  const messageCustomerRt3ob = document.getElementById('message_customer-rt3ob');
+  const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
+  const firstNameSecondName = document.getElementById('first-name_student-rt3ob');
+  const bday = document.getElementById('bday_student-rt3ob');
+  const email = document.getElementById('email_payable-rt3ob');
+  const phoneNumber = document.getElementById('phone-number_payable-rt3ob');
 //end const registration 3 or better
 
 
@@ -62,7 +49,7 @@ numberPart = numberPart.substring(1);
 inputElement.value = '+49' + numberPart;
 }
 }
-applyPhoneValidation(phoneNumberPayableRt3ob);
+applyPhoneValidation(phoneNumber);
 
 //end Validation Phone Number
 
@@ -82,7 +69,7 @@ if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
 e.target.value = value;
 });
 }
-applyDateInputFormat(bdayStudentRt3ob);
+applyDateInputFormat(bday);
 //end bday validation
 
 //start iban validation
@@ -148,8 +135,6 @@ inputElement.addEventListener("change", function() {
 
 }
 
-// ...
-
 // Iterieren Sie über die gesammelten Elemente
 allInputs.forEach(inputElement => {
     let pattern = null;
@@ -158,40 +143,37 @@ allInputs.forEach(inputElement => {
 
     // Verwenden Sie inputElement.id, um spezifische Muster oder Fehlermeldungen basierend auf der ID festzulegen
     switch (inputElement.id) {
-        case 'emailPayableRt3ob':
+        case 'firstNameSecondName':
+            pattern = '^[A-Za-zäöüÄÖÜß ]+$';
+            invalidErrorMsg = 'Ungültige Eingabe.';
+            break;
+        case 'email':
             pattern = '^\\S+@\\S+\\.\\S+$';
-            invalidErrorMsg = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+            invalidErrorMsg = 'Ungültige Eingabe.';
             break;
-        case 'phoneNumberPayableRt3ob':
-            pattern = '^\\+49[1-9]\\d{4,}$';
-            invalidErrorMsg = 'Bitte geben Sie eine gültige Telefonnummer ein.';
-            break;
-        case 'bdayStudentRt3ob':
-            pattern = '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$';
-            invalidErrorMsg = 'Bitte geben Sie ein gültiges Geburtsdatum im Format DD.MM.JJJJ ein.';
-            break;
-        // ... fügen Sie weitere Bedingungen für andere IDs hinzu
+
+            case 'phoneNumber':
+                pattern = '^\\+49[1-9]\\d{4,}$';
+                invalidErrorMsg = 'Ungültige Eingabe.';
+                break;
+
+            case 'bday':
+                pattern = '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$';
+                invalidErrorMsg = 'Ungültige Eingabe.';
+                break;
+
+                case 'zipCode':
+                    pattern = '\\d+';
+                    invalidErrorMsg = 'Ungültige Eingabe.';
+                    break;
+        
+    
+
     }
 
     applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern);
 });
 
-//start const registration 3 or better
-
-applyValidation(zipCodeTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
-
-applyValidation(firstNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(secondNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-
-applyValidation(bdayStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-
-applyValidation(firstNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(secondNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(emailPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
-applyValidation(phoneNumberPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
-applyValidation(ibanPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-
-//end const registration 3 or better
 
 
 //start function shake
