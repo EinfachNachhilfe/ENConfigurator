@@ -1,5 +1,10 @@
+const nextBtn = document.querySelector('#nextBtn');
+const prevBtn = document.querySelector('#prevBtn');
+const allInputs = document.querySelectorAll('input, select');
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
-    var nextBtn = document.getElementById('nextBtn');
     var formElements = document.querySelectorAll('input, select, textarea');
 
     nextBtn.addEventListener('click', function() {
@@ -22,13 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
-
-
-
-const nextBtn = document.querySelector('#nextBtn');
-const prevBtn = document.querySelector('#prevBtn');
-const allInputs = document.querySelectorAll('input, select');
 
 
 //start const registration 3 or better
