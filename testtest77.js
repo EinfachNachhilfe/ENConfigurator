@@ -1,5 +1,6 @@
 
 const nextBtn = document.querySelector('#nextBtn');
+const prevBtn = document.querySelector('#prevBtn');
 
 //start const registration 3 or better
  const step1Rt3ob = document.getElementById('step-1-rt3ob');
@@ -208,6 +209,9 @@ input.style.transform = '';
 nextBtn.classList.add("disabled");
 nextBtn.addEventListener("click", function() {
     nextPrev(1);
+});
+prevBtn.addEventListener("click", function() {
+    nextPrev(-1);
 });
 
 
