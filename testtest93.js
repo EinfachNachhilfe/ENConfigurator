@@ -189,7 +189,17 @@ input.style.transform = '';
 //end function shake
 
 
+
+const submitBtn = document.getElementById("submitBtn");
+const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
+const currentStepElem = document.getElementById("currentStep");
+const totalStepsElem = document.getElementById("totalSteps");
+const regForm = document.getElementById("regForm");
+let currentTab = 0;
+
 nextBtn.classList.add("disabled");
+submitBtn.classList.add("disabled");
+
 nextBtn.addEventListener("click", function() {
     nextPrev(1);
 });
@@ -197,79 +207,128 @@ prevBtn.addEventListener("click", function() {
     nextPrev(-1);
 });
 
-
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+showTab(currentTab);
 
 function showTab(n) {
-  // This function will display the specified tab of the form ...
-  var x = document.getElementsByClassName("form_item-input-wrapper-tab");
-  x[n].style.display = "block";
-  // ... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    prevBtn.style.display = "flex";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n)
+    formItems[n].style.display = "block";
+
+    const inputs = formItems[n].querySelectorAll("input, select");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("input", validateForm);
+    }
+
+    validateForm();
+
+    if (n === 0) {
+        prevBtn.style.display = "none";
+    } else {
+        prevBtn.style.display = "flex";
+    }
+    if (n === (formItems.length - 1)) {
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "block";
+    } else {
+        nextBtn.style.display = "flex";
+        submitBtn.style.display = "none";
+    }
+
+    currentStepElem.textContent = n + 1;
+    totalStepsElem.textContent = formItems.length;
+
+    fixStepIndicator(n);
 }
 
 function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("form_item-input-wrapper-tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form... :
-  if (currentTab >= x.length) {
-    //...the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
+    if (n == 1 && !validateForm()) {
+        nextBtn.classList.add("disabled");
+        return false;
+    } else {
+        nextBtn.classList.remove("disabled");
+    }
+
+    formItems[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= formItems.length) {
+        regForm.submit();
+        return false;
+    }
+    showTab(currentTab);
 }
 
 function validateForm() {
-  // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("form_item-input-wrapper-tab");
-  y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
-    // If a field is empty...
-    if (y[i].value == "") {
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false:
-      valid = false;
+    let valid = true;
+    const inputs = formItems[currentTab].getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
+          inputs[i].className += " invalid";
+          valid = false;
+        }
+        }
+        
+        // Validierung für Radio-Buttons
+        const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
+        let radioGroups = {};
+        for (let j = 0; j < radios.length; j++) {
+        let name = radios[j].getAttribute("name");
+        radioGroups[name] = radioGroups[name] || [];
+        radioGroups[name].push(radios[j]);
+        }
+        for (let groupName in radioGroups) {
+        if (radioGroups.hasOwnProperty(groupName)) {
+          let radioChecked = false;
+          for (let k = 0; k < radioGroups[groupName].length; k++) {
+            if (radioGroups[groupName][k].checked) {
+              radioChecked = true;
+              break;
+            }
+          }
+          if (!radioChecked) {
+            valid = false;
+          }
+        }
+        }
+        
+        // Validierung für Checkboxen
+        const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
+        if (checkboxes.length > 0) {
+        let checkboxChecked = false;
+        for (let l = 0; l < checkboxes.length; l++) {
+          if (checkboxes[l].checked) {
+            checkboxChecked = true;
+            break;
+          }
+        }
+        if (!checkboxChecked) {
+          valid = false;
+        }
+        }
+        
+        // Validierung für <select>-Felder
+        const selects = formItems[currentTab].querySelectorAll("select[required]");
+        for (let m = 0; m < selects.length; m++) {
+        if (!selects[m].value) {
+          selects[m].className += " invalid";
+          valid = false;
+        }
+        }
+
+    if (valid) {
+        formItems[currentTab].className += " finish";
+        nextBtn.classList.remove("disabled");
+    } else {
+        nextBtn.classList.add("disabled");
+        submitBtn.classList.add("disabled");
     }
-  }
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
-  }
-  return valid; // return the valid status
+    return valid;
 }
 
 function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("form_item-input-wrapper-tab");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class to the current step:
-  x[n].className += " active";
+    for (let i = 0; i < formItems.length; i++) {
+        formItems[i].className = formItems[i].className.replace(" active", "");
+    }
+    formItems[n].className += " active";
 }
+
 
 
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
