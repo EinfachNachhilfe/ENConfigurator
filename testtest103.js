@@ -139,36 +139,14 @@ allInputs.forEach(inputElement => {
     let pattern = null;
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     let invalidErrorMsg = 'Ungültige Eingabe.';
-
-    // Verwenden Sie inputElement.id, um spezifische Muster oder Fehlermeldungen basierend auf der ID festzulegen
-    switch (inputElement.id) {
-        case 'firstNameSecondName':
-            pattern = '^[A-Za-zäöüÄÖÜß ]+$';
-            invalidErrorMsg = 'Bitte geben Sie einen gültigen Namen ein.';
-            break;
-        case 'email':
-            pattern = '^\\S+@\\S+\\.\\S+$';
-            invalidErrorMsg = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-            break;
-        case 'phoneNumber':
-            pattern = '^\\+49[1-9]\\d{4,}$';
-            invalidErrorMsg = 'Bitte geben Sie eine gültige Telefonnummer ein.';
-            break;
-        case 'bday':
-            pattern = '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$';
-            invalidErrorMsg = 'Bitte geben Sie ein gültiges Geburtsdatum ein.';
-            break;
-        case 'zipCode':
-            pattern = '\\d+';
-            invalidErrorMsg = 'Bitte geben Sie eine gültige PLZ ein.';
-            break;
-    }
-
-    if (pattern) {
-        inputElement.setAttribute('pattern', pattern);
-    }
     applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
 });
+
+applyValidation(firstNameSecondName,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
+applyValidation(zipCode,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
+applyValidation(bday,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
+applyValidation(email,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
+applyValidation(phoneNumber,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
 
 
 
