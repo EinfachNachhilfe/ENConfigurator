@@ -215,6 +215,10 @@ function showTab(n) {
         nextBtn.value = "Weiter"; 
     }
 
+  if (!skipValidation) {
+        validateForm();
+    }
+
     currentStepElem.textContent = n + 1;
     totalStepsElem.textContent = formItems.length;
 
@@ -235,7 +239,7 @@ function nextPrev(n) {
         regForm.submit();
         return false;
     }
-    showTab(currentTab);
+    showTab(currentTab, n === 1);
 }
 
 function validateForm() {
