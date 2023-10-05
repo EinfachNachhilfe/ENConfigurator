@@ -205,8 +205,8 @@ input.style.transform = '';
 //end function shake
 
 
-document.getElementById("nextBtn").classList.add("disabled");
-document.getElementById("nextBtn").addEventListener("click", function() {
+nextBtn.classList.add("disabled");
+nextBtn.addEventListener("click", function() {
     nextPrev(1);
 });
 
@@ -268,16 +268,18 @@ function nextPrev(n) {
 
 
 function validateForm() {
-let valid = true;
-const inputs = formItems[currentTab].getElementsByTagName("input");
+    let valid = true;
+    const inputs = formItems[currentTab].getElementsByTagName("input");
+    // ... (Rest des Codes bleibt unverändert)
 
-for (let i = 0; i < inputs.length; i++) {
-if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-  inputs[i].className += " invalid";
-  valid = false;
-}
-}
-}
+    if (valid) {
+        document.getElementsByClassName("form_item-input-wrapper-tab")[currentTab].className += " finish";
+        nextBtn.classList.remove("disabled");
+    } else {
+        nextBtn.classList.add("disabled");
+    }
+    return valid; // Rückgabewert hinzugefügt
+} // Schließende Klammer für validateForm hinzugefügt
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
