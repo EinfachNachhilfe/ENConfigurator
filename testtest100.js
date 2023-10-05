@@ -148,28 +148,49 @@ inputElement.addEventListener("change", function() {
 
 }
 
+// ...
+
+// Iterieren Sie über die gesammelten Elemente
+allInputs.forEach(inputElement => {
+    let pattern = null;
+    let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+    let invalidErrorMsg = 'Ungültige Eingabe.';
+
+    // Verwenden Sie inputElement.id, um spezifische Muster oder Fehlermeldungen basierend auf der ID festzulegen
+    switch (inputElement.id) {
+        case 'emailPayableRt3ob':
+            pattern = '^\\S+@\\S+\\.\\S+$';
+            invalidErrorMsg = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+            break;
+        case 'phoneNumberPayableRt3ob':
+            pattern = '^\\+49[1-9]\\d{4,}$';
+            invalidErrorMsg = 'Bitte geben Sie eine gültige Telefonnummer ein.';
+            break;
+        case 'bdayStudentRt3ob':
+            pattern = '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$';
+            invalidErrorMsg = 'Bitte geben Sie ein gültiges Geburtsdatum im Format DD.MM.JJJJ ein.';
+            break;
+        // ... fügen Sie weitere Bedingungen für andere IDs hinzu
+    }
+
+    applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern);
+});
 
 //start const registration 3 or better
-applyValidation(streetNameTeachingLocationRt3ob, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(houseNumberTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 applyValidation(zipCodeTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
-applyValidation(locationTeachingLocationRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 applyValidation(firstNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
 applyValidation(secondNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
-applyValidation(schoolNameStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(schoolTypeStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(classStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 applyValidation(bdayStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$');
-applyValidation(subjectStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(gradeStudentRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 applyValidation(firstNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
 applyValidation(secondNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^[A-Za-zäöüÄÖÜß ]+$');
 applyValidation(emailPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\S+@\\S+\\.\\S+$');
 applyValidation(phoneNumberPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{4,}$');
 applyValidation(ibanPayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(bankNamePayableRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(becomeAttentiveCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(messageCustomerRt3ob,'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 //end const registration 3 or better
 
 
