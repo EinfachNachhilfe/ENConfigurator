@@ -337,11 +337,13 @@ const containerLearningDisorder = document.getElementById("create-learning-disor
 radioLearningDisorderNein.addEventListener("change", function() {
 if (radioLearningDisorderNein.checked) {
     createInputField(containerLearningDisorder, "infoText", "Welche Lernstörung?", "learning-disorder_student", "Lernstörung eingeben");
+  validateForm();
 }
 });
 
 radioLearningDisorderJa.addEventListener("change", function() {
 removeInputField("infoText", "learning-disorder_student");
+  validateForm();
 });
 
 // Überwachen Sie den Radio-Button "ja" für Rechnungsadresse
@@ -360,6 +362,7 @@ if (radioBillingAddressNein.checked) {
     billingDetails.forEach(detail => {
         createInputField(document.getElementById(detail.containerId), detail.labelId, detail.labelText, detail.inputId, detail.inputPlaceholder);
     });
+  validateForm();
 }
 });
 
@@ -367,6 +370,7 @@ radioBillingAddressJa.addEventListener("change", function() {
 billingDetails.forEach(detail => {
     removeInputField(detail.labelId, detail.inputId);
 });
+  validateForm();
 });
 
 function createInputField(container, labelId, labelText, inputId, inputPlaceholder) {
