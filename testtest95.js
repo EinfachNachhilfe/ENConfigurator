@@ -190,7 +190,8 @@ input.style.transform = '';
 
 
 
-const submitBtn = document.getElementById("submitBtn");
+
+
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const currentStepElem = document.getElementById("currentStep");
 const totalStepsElem = document.getElementById("totalSteps");
@@ -225,11 +226,9 @@ function showTab(n) {
         prevBtn.style.display = "flex";
     }
     if (n === (formItems.length - 1)) {
-        nextBtn.style.display = "none";
-        submitBtn.style.display = "block";
+        nextBtn.style.display = "flex";
     } else {
         nextBtn.style.display = "flex";
-        submitBtn.style.display = "none";
     }
 
     currentStepElem.textContent = n + 1;
@@ -317,7 +316,6 @@ function validateForm() {
         nextBtn.classList.remove("disabled");
     } else {
         nextBtn.classList.add("disabled");
-        submitBtn.classList.add("disabled");
     }
     return valid;
 }
