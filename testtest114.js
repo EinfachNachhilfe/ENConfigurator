@@ -1,20 +1,26 @@
 document.addEventListener("DOMContentLoaded", function() {
+    var nextBtn = document.getElementById('nextBtn');
     var formElements = document.querySelectorAll('input, select, textarea');
-    formElements.forEach(function(element) {
-        element.addEventListener('invalid', function(e) {
-            e.preventDefault();
-            var customTooltip = document.createElement('div');
-            customTooltip.innerText = "Ihre benutzerdefinierte Nachricht";
-            customTooltip.style.position = "absolute";
-            customTooltip.style.backgroundColor = "#f2dede";
-            customTooltip.style.border = "1px solid #ebccd1";
-            customTooltip.style.padding = "5px";
-            customTooltip.style.borderRadius = "5px";
-            customTooltip.style.zIndex = "1000";
-            element.parentNode.appendChild(customTooltip);
-        });
+
+    nextBtn.addEventListener('click', function() {
+        if (!nextBtn.classList.contains('disabled')) {
+            formElements.forEach(function(element) {
+                if (!element.checkValidity()) {
+                    var customTooltip = document.createElement('div');
+                    customTooltip.innerText = "Ihre benutzerdefinierte Nachricht";
+                    customTooltip.style.position = "absolute";
+                    customTooltip.style.backgroundColor = "#f2dede";
+                    customTooltip.style.border = "1px solid #ebccd1";
+                    customTooltip.style.padding = "5px";
+                    customTooltip.style.borderRadius = "5px";
+                    customTooltip.style.zIndex = "1000";
+                    element.parentNode.appendChild(customTooltip);
+                }
+            });
+        }
     });
 });
+
 
 
 
