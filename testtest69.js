@@ -265,6 +265,7 @@ if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[
   valid = false;
 }
 }
+ }
 
 // Validierung für Radio-Buttons
 const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
