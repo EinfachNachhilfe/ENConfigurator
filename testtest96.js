@@ -226,9 +226,9 @@ function showTab(n) {
         prevBtn.style.display = "flex";
     }
     if (n === (formItems.length - 1)) {
-        nextBtn.style.display = "flex";
+    nextBtn.innerHTML = "Abschicken";
     } else {
-        nextBtn.style.display = "flex";
+        nextBtn.innerHTML = "Weiter";
     }
 
     currentStepElem.textContent = n + 1;
