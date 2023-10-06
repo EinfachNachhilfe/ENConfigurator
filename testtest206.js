@@ -189,29 +189,47 @@ if (inputElement.type === 'radio') {
 
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
-        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
-            displayError(inputElement);
-        } else if (inputElement.type === 'radio') {
-            // Überprüfen Sie, ob ein Radio-Button ausgewählt wurde
+        if (inputElement.type === 'radio') {
             let radioGroup = document.querySelectorAll(`input[name="${inputElement.name}"]`);
             let isSelected = Array.from(radioGroup).some(radio => radio.checked);
             if (!isSelected) {
-                displayError(inputElement);
+                let parentDiv = inputElement.closest('.radio-group');
+                if (parentDiv && !parentDiv.classList.contains('error-displayed')) {
+                    displayError(parentDiv.querySelector('.error-message'));
+                    parentDiv.classList.add('error-displayed');
+                }
+            } else {
+                let parentDiv = inputElement.closest('.radio-group');
+                if (parentDiv) {
+                    hideError(parentDiv.querySelector('.error-message'));
+                    parentDiv.classList.remove('error-displayed');
+                }
             }
+        } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+            displayError(inputElement);
         }
     }
 });
 
 function displayError(element) {
-    errorMessageElement.innerHTML = emptyErrorMsg;
-    errorMessageElement.style.display = 'block';
+    element.innerHTML = emptyErrorMsg;
+    element.style.display = 'block';
     element.style.borderColor = '#9e367a';
     element.style.borderWidth = '1.5px';
     validSymbol.style.display = 'none';
-    invalidSymbol.style.display = 'inline'; // Zeigt das X an
+    invalidSymbol.style.display = 'inline';
     shakeOnInvalid(element);
 }
+
+function hideError(element) {
+    element.innerHTML = '';
+    element.style.display = 'none';
+    element.style.borderColor = '';
+    element.style.borderWidth = '';
+    validSymbol.style.display = 'inline';
+    invalidSymbol.style.display = 'none';
+}
+
 
 
 
