@@ -548,29 +548,14 @@ inputFeld.addEventListener("input", validateForm);
     applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
 }
 
-function removeInputFieldAndHideErrors(labelId, inputId, invalidSymbolId, errorMessageElementId) {
-    // Remove label
-    const vorhandenerText = document.getElementById(labelId);
-    if (vorhandenerText) {
-        vorhandenerText.parentNode.removeChild(vorhandenerText);
-    }
-
-    // Remove input field
-    const vorhandenesInputFeld = document.getElementById(inputId);
-    if (vorhandenesInputFeld) {
-        vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
-    }
-
-    // Hide invalid symbol
-    const invalidSymbol = document.getElementById(invalidSymbolId);
-    if (invalidSymbol) {
-        invalidSymbol.style.display = 'none';
-    }
-
-    // Hide error message
-    const errorMessageElement = document.getElementById(errorMessageElementId);
-    if (errorMessageElement) {
-        errorMessageElement.style.display = 'none';
-    }
+function removeInputField(labelId, inputId) {
+const vorhandenerText = document.getElementById(labelId);
+if (vorhandenerText) {
+    vorhandenerText.parentNode.removeChild(vorhandenerText);
 }
 
+const vorhandenesInputFeld = document.getElementById(inputId);
+if (vorhandenesInputFeld) {
+    vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
+}
+}
