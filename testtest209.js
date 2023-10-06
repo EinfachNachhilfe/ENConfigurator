@@ -199,17 +199,22 @@ nextBtn.addEventListener('click', function() {
             invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         } else {
-            let radioButtons = document.querySelectorAll("input[type='radio']"); // Alle Radio-Buttons auswählen
-            let isSelected = Array.from(radioButtons).some(radio => radio.checked); // Überprüfen, ob einer der Radio-Buttons ausgewählt ist
-            if (!isSelected) {
-                errorMessageElement.innerHTML = emptyErrorMsg;
-                errorMessageElement.style.display = 'block'; // Zeige die Fehlermeldung an
-            } else {
-                errorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
-            }
+            let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender"); // Alle Radio-Button-Gruppen mit dem spezifischen Klassennamen auswählen
+            radioGroups.forEach(group => {
+                let radioButtons = group.querySelectorAll("input[type='radio']");
+                let isSelected = Array.from(radioButtons).some(radio => radio.checked); // Überprüfen, ob einer der Radio-Buttons ausgewählt ist
+                let groupErrorMessageElement = group.querySelector('.error-message');
+                if (!isSelected) {
+                    groupErrorMessageElement.innerHTML = emptyErrorMsg;
+                    groupErrorMessageElement.style.display = 'block'; // Zeige die Fehlermeldung an
+                } else {
+                    groupErrorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
+                }
+            });
         }
     }
 });
+
 
 
 
