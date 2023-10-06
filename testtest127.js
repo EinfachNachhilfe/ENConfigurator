@@ -106,7 +106,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
-    const errorMessageWrapper = document.getElementById('error-message_wrapper');
+    const errorMessageWrapper = inputElement.closest('.form_input-error-message-wrapper');
     if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
     }
@@ -137,6 +137,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     });
 }
+
 
 
 
