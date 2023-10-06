@@ -226,7 +226,6 @@ nextBtn.addEventListener('click', function() {
 });
 }
 
-validateOnButtonClick(firstNameSecondName, step1Rt3ob);
 
 
 
