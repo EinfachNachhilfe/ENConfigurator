@@ -203,7 +203,7 @@ nextBtn.addEventListener('click', function() {
         // Überprüfen Sie, ob ein Radiobutton in der Radiogruppe ausgewählt ist
     
         let isSelected = radioButtons.some(button => button.checked);
-
+        let radioButtons = Array.from(document.getElementsByName(radioName));
         if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
