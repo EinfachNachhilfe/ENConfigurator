@@ -2,7 +2,10 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
-
+const step1Rt3ob = document.getElementById('step-1-rt3ob');
+const step2Rt3ob = document.getElementById('step-2-rt3ob');
+const step3Rt3ob = document.getElementById('step-3-rt3ob');
+const step4Rt3ob = document.getElementById('step-4-rt3ob');
 
 //start const registration 3 or better
   const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
@@ -290,8 +293,8 @@ function validateRadioOnButtonClick(radioName, step) {
   });
 }
 
-const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
-validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
+const inputValidationGenderTutor = document.querySelector('input[name="gender_student-rt3ob"]');
+validateRadioOnButtonClick(inputValidationGenderTutor.name, step2Rt3ob);
 
 
 //start function shake
