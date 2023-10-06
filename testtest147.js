@@ -91,7 +91,7 @@ function addIbanValidation(inputElement) {
   
 //end iban validation
 
-function initializeValidation() {
+
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
@@ -189,7 +189,7 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
 
-}
+
 
 
 
@@ -424,7 +424,9 @@ inputFeld.name = inputId;
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
  
-initializeValidation();
+  let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+    let invalidErrorMsg = 'Ungültige Eingabe.';
+    applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
 }
 
 function removeInputField(labelId, inputId) {
