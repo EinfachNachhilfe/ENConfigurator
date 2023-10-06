@@ -178,15 +178,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
-        if (inputElement.type === "radio") {
-            const radioGroup = document.querySelectorAll(`input[name="${inputElement.name}"]`);
-            const isAnyRadioButtonChecked = [...radioGroup].some(radio => radio.checked);
-            if (!isAnyRadioButtonChecked && isElementVisible(inputElement)) {
-                errorMessageElement.innerHTML = emptyErrorMsg;
-                errorMessageElement.style.display = 'block';
-                // Weitere Stile und Aktionen für ungültige Radio-Buttons
-            }
-        } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = '#9e367a';
@@ -200,17 +192,9 @@ nextBtn.addEventListener('click', function() {
 
 
 submitBtn.addEventListener('click', function() {
-    if (nextBtn.classList.contains('disabled')) {
+    if (submitBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
-        if (inputElement.type === "radio") {
-            const radioGroup = document.querySelectorAll(`input[name="${inputElement.name}"]`);
-            const isAnyRadioButtonChecked = [...radioGroup].some(radio => radio.checked);
-            if (!isAnyRadioButtonChecked && isElementVisible(inputElement)) {
-                errorMessageElement.innerHTML = emptyErrorMsg;
-                errorMessageElement.style.display = 'block';
-                // Weitere Stile und Aktionen für ungültige Radio-Buttons
-            }
-        } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = '#9e367a';
@@ -221,7 +205,6 @@ submitBtn.addEventListener('click', function() {
         }
     }
 });
-
 
 
   
