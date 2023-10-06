@@ -549,17 +549,28 @@ inputFeld.addEventListener("input", validateForm);
 }
 
 function removeInputField(labelId, inputId) {
-const vorhandenerText = document.getElementById(labelId);
-if (vorhandenerText) {
-    vorhandenerText.parentNode.removeChild(vorhandenerText);
+    const vorhandenerText = document.getElementById(labelId);
+    if (vorhandenerText) {
+        vorhandenerText.parentNode.removeChild(vorhandenerText);
+    }
+
+    const vorhandenesInputFeld = document.getElementById(inputId);
+    if (vorhandenesInputFeld) {
+        // Selektieren Sie die Elemente basierend auf den hinzugefügten Klassen
+        const invalidSymbol = vorhandenesInputFeld.nextSibling.querySelector('.invalid-symbol');
+        const errorMessageElement = vorhandenesInputFeld.nextSibling.querySelector('.error-message-element');
+        
+        if (invalidSymbol) {
+            invalidSymbol.style.display = 'none';
+        }
+        if (errorMessageElement) {
+            errorMessageElement.style.display = 'none';
+        }
+
+        vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
+    }
+    applyValidation();
 }
 
-const vorhandenesInputFeld = document.getElementById(inputId);
-if (vorhandenesInputFeld) {
-    vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
-     invalidSymbol.style.display = 'none';
-     errorMessageElement.style.display = 'none';
-}
-}
 
 
