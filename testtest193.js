@@ -198,6 +198,21 @@ nextBtn.addEventListener('click', function() {
             invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         }
+
+        // Überprüfen Sie, ob ein Radiobutton in der Radiogruppe ausgewählt ist
+        var radioButtons = document.querySelectorAll('input[name="radioGroupName"]');
+        var isSelected = false;
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                isSelected = true;
+                break;
+            }
+        }
+        if (!isSelected) {
+            // Zeigen Sie hier Ihre Fehlermeldung an
+            radioErrorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
+            radioErrorMessageElement.style.display = 'block';
+        }
     }
 });
 
