@@ -96,6 +96,13 @@ function addIbanValidation(inputElement) {
 //end iban validation
 
 
+function isElementVisible(el) {
+    if (!el || el === document.body) return true; // Wenn wir den Body erreichen, ist das Element sichtbar
+    if (window.getComputedStyle(el, null).display === 'none') return false; // Das Element ist unsichtbar
+    return isElementVisible(el.parentNode); // Überprüfen Sie das übergeordnete Element
+}
+
+
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
@@ -174,8 +181,8 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
-        // Überprüfen Sie, ob das Eingabefeld sichtbar ist
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && window.getComputedStyle(inputElement, null).display !== 'none') {
+        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = '#9e367a';
@@ -186,6 +193,7 @@ nextBtn.addEventListener('click', function() {
         }
     }
 });
+
 
   
 }
