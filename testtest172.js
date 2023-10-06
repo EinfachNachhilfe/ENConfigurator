@@ -201,15 +201,12 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
 
+
+
 function validateOnButtonClick(step) {
-    // Entfernen Sie den vorhandenen Event-Listener, falls vorhanden
-    nextBtn.removeEventListener('click', validateInputs);
-
-    // Fügen Sie den Event-Listener hinzu
-    nextBtn.addEventListener('click', validateInputs);
-
-    function validateInputs() {
-        if (nextBtn.classList.contains('disabled')) {
+    nextBtn.addEventListener('click', function() {
+        // Überprüfen Sie, ob der Schritt sichtbar ist
+        if (nextBtn.classList.contains('disabled') && window.getComputedStyle(step, null).display !== 'none') {
             // Durchlaufen Sie alle sichtbaren Eingabefelder innerhalb des aktuellen Schritts
             const inputFieldsInCurrentStep = step.querySelectorAll('input, select, textarea');
             inputFieldsInCurrentStep.forEach(inputElement => {
@@ -231,7 +228,7 @@ function validateOnButtonClick(step) {
                 }
             });
         }
-    }
+    });
 }
 
 validateOnButtonClick(step1Rt3ob); // Für den ersten Schritt
