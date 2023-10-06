@@ -189,48 +189,28 @@ if (inputElement.type === 'radio') {
 
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
-        if (inputElement.type === 'radio') {
-            let radioGroup = document.querySelectorAll(`input[name="${inputElement.name}"]`);
-            let isSelected = Array.from(radioGroup).some(radio => radio.checked);
-            if (!isSelected) {
-                let parentDiv = inputElement.closest('.radio-group');
-                if (parentDiv && !parentDiv.classList.contains('error-displayed')) {
-                    displayError(parentDiv.querySelector('.error-message'));
-                    parentDiv.classList.add('error-displayed');
-                }
+        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
+            shakeOnInvalid(inputElement);
+        } else {
+            let button = document.querySelector("input:checked");
+            if (button) {
+
+                errorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
             } else {
-                let parentDiv = inputElement.closest('.radio-group');
-                if (parentDiv) {
-                    hideError(parentDiv.querySelector('.error-message'));
-                    parentDiv.classList.remove('error-displayed');
-                }
+                console.log("error");
+                errorMessageElement.innerHTML = emptyErrorMsg;
+                errorMessageElement.style.display = 'block'; // Zeige die Fehlermeldung an
             }
-        } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
-            displayError(inputElement);
         }
     }
 });
-
-function displayError(element) {
-    element.innerHTML = emptyErrorMsg;
-    element.style.display = 'block';
-    element.style.borderColor = '#9e367a';
-    element.style.borderWidth = '1.5px';
-    validSymbol.style.display = 'none';
-    invalidSymbol.style.display = 'inline';
-    shakeOnInvalid(element);
-}
-
-function hideError(element) {
-    element.innerHTML = '';
-    element.style.display = 'none';
-    element.style.borderColor = '';
-    element.style.borderWidth = '';
-    validSymbol.style.display = 'inline';
-    invalidSymbol.style.display = 'none';
-}
-
-
 
 
 
