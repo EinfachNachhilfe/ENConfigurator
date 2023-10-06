@@ -1,7 +1,7 @@
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
-const allInputs = document.querySelectorAll('input, select,');
+const allInputs = document.querySelectorAll('input, select, textarea');
 
 
 //start const registration 3 or better
