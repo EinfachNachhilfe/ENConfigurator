@@ -106,7 +106,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
-    const errorMessageWrapper = inputElement.parentNode.querySelector('.form_input-error-message-wrapper');
+    const errorMessageWrapper = inputElement.closest.querySelector('.form_input-error-message-wrapper');
     if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
     }
