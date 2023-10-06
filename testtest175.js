@@ -172,6 +172,20 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 });
 
+   nextBtn.addEventListener('click', function() {
+        if (nextBtn.classList.contains('disabled')) {
+            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+                errorMessageElement.innerHTML = emptyErrorMsg;
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = '#9e367a';
+                inputElement.style.borderWidth = '1.5px';
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'inline'; // Zeigt das X an
+                shakeOnInvalid(inputElement);
+            }
+        }
+    });
+  
 }
 
 
@@ -200,41 +214,6 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
-
-
-
-function validateOnButtonClick(step) {
-    nextBtn.addEventListener('click', function() {
-       if (nextBtn.classList.contains('disabled') && window.getComputedStyle(step, null).display !== 'none') {
-            const inputFieldsInCurrentStep = step.querySelectorAll('input, select, textarea');
-            inputFieldsInCurrentStep.forEach(inputElement => {
-                if (window.getComputedStyle(inputElement, null).display !== 'none' && !inputElement.disabled) {
-                    const parentElement = inputElement.parentNode && inputElement.parentNode.parentNode;
-                    const errorMessageElement = parentElement ? parentElement.querySelector('.form_input-error-message-wrapper span') : null;
-                    if (errorMessageElement) {
-                        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                        errorMessageElement.style.display = 'block';
-                    }
-                    inputElement.style.borderColor = '#9e367a';
-                    inputElement.style.borderWidth = '1.5px';
-                    const validationWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-                    const invalidSymbol = validationWrapper ? validationWrapper.querySelector('span[style*="#9e367a"]') : null;
-                    if (invalidSymbol) {
-                        invalidSymbol.style.display = 'inline'; // Zeigt das X an
-                    }
-                    shakeOnInvalid(inputElement);
-                }
-            });
-        }
-    });
-}
-
-validateOnButtonClick(step1Rt3ob); // Für den ersten Schritt
-validateOnButtonClick(step2Rt3ob); // Für den zweiten Schritt
-
-
-
-
  
 
 
