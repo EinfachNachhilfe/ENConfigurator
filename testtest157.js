@@ -318,6 +318,7 @@ function nextPrev(n) {
 
 
 function validateForm() {
+     let valid = true;
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
         let radioGroups = {};
