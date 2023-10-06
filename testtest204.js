@@ -199,15 +199,6 @@ nextBtn.addEventListener('click', function() {
             invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         }
-
-        // Überprüfen Sie, ob ein Radiobutton in der Radiogruppe ausgewählt ist
-        let radioButtons = Array.from(document.getElementsByName(radioName));
-        let isSelected = radioButtons.some(button => button.checked);
-        let radioButtons = Array.from(document.getElementsByName(radioName));
-        if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
-            errorMessageElement.innerHTML = emptyErrorMsg;
-            errorMessageElement.style.display = 'block';
-        }
     }
 });
 
