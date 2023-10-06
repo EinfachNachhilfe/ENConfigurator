@@ -125,6 +125,8 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     const errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
     const validationImageWrapper = inputElement.parentNode.querySelector('.form_input-validation-image-wrapper');
+  if (!validationImageWrapper) {
+        console.error('Validation Image Wrapper not found for input:', inputElement);
     if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
     }
