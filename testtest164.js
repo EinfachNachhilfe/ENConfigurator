@@ -2,6 +2,10 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
+const step1Rt3ob = document.getElementById('step-1-rt3ob');
+const step2Rt3ob = document.getElementById('step-2-rt3ob');
+const step3Rt3ob = document.getElementById('step-3-rt3ob');
+const step4Rt3ob = document.getElementById('step-4-rt3ob');
 
 
 //start const registration 3 or better
@@ -197,7 +201,7 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
 
-
+function validateOnButtonClick(inputElement, step) {
 nextBtn.addEventListener('click', function() {
     if (nextbtn.classList.contains('disabled')) {
         // Durchlaufen Sie alle sichtbaren Eingabefelder
@@ -220,6 +224,10 @@ nextBtn.addEventListener('click', function() {
         });
     }
 });
+}
+
+validateOnButtonClick(firstNameSecondName, step1Rt3ob);
+
 
 
 
@@ -257,40 +265,6 @@ prevBtn.addEventListener("click", function() {
 });
 
 showTab(currentTab);
-
-
-function showErrorForEmptyInputs() {
-    // Alle Eingabefelder mit der Klasse "invalid" im aktuellen Tab holen
-    const invalidInputs = formItems[currentTab].querySelectorAll("input.invalid, select.invalid, textarea.invalid");
-    
-    for (let input of invalidInputs) {
-        // Fehlermeldung anzeigen
-        const errorMessageElement = input.parentNode.querySelector('.form_input-error-message-wrapper > span');
-        if (errorMessageElement) {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-            errorMessageElement.style.display = 'block';
-            input.style.borderColor = '#9e367a';
-            input.style.borderWidth = '1.5px';
-            const validSymbol = input.parentNode.querySelector('.form_input-validation-image-wrapper > span:nth-child(1)');
-            const invalidSymbol = input.parentNode.querySelector('.form_input-validation-image-wrapper > span:nth-child(2)');
-            if (validSymbol) validSymbol.style.display = 'none';
-            if (invalidSymbol) invalidSymbol.style.display = 'inline'; // Zeigt das X an
-            shakeOnInvalid(input);
-        }
-    }
-}
-
-// Event-Listener zum nextBtn hinzufügen
-nextBtn.addEventListener("click", function() {
-    if (!validateForm()) {
-        showErrorForEmptyInputs();
-    } else {
-        nextPrev(1);
-    }
-});
-
-
-
 
 
 function showTab(n) {
