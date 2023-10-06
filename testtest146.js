@@ -162,7 +162,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     });
 }
 
-}
+
 
 
 
@@ -189,7 +189,7 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
 
-
+}
 
 
 
