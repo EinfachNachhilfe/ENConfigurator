@@ -318,7 +318,14 @@ function nextPrev(n) {
 
 
 function validateForm() {
-     let valid = true;
+   let valid = true;
+    const inputs = formItems[currentTab].getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
+            inputs[i].className += " invalid";
+            valid = false;
+        }
+    }
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
         let radioGroups = {};
