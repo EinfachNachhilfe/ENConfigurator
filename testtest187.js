@@ -208,11 +208,23 @@ nextBtn.addEventListener('click', function() {
           // Hier können Sie zusätzliche Stile oder Aktionen hinzufügen, um dem Benutzer anzuzeigen, dass eine Auswahl erforderlich ist
           shakeOnInvalid(radioGroup[0]);
         }
-        break; // Beenden Sie die Überprüfung, da bereits eine Fehlermeldung angezeigt wird
+        return; // Beenden Sie die Funktion, da bereits eine Fehlermeldung angezeigt wird
       }
+    }
+
+    // Überprüfen Sie andere Eingabeelemente
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = '#9e367a';
+      inputElement.style.borderWidth = '1.5px';
+      validSymbol.style.display = 'none';
+      invalidSymbol.style.display = 'inline'; // Zeigt das X an
+      shakeOnInvalid(inputElement);
     }
   }
 });
+
 
 
 
