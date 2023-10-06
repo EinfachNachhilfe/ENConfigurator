@@ -186,6 +186,7 @@ if (inputElement.type === 'radio') {
     }
 });
 
+
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
@@ -198,33 +199,8 @@ nextBtn.addEventListener('click', function() {
             invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         }
-
-        // Überprüfen Sie, ob ein Radiobutton in der Radiogruppe ausgewählt ist
-  var radioButtons = document.querySelectorAll('input[name="radioGroupName"]');
-var isSelected = false;
-for (var i = 0; i < radioButtons.length; i++) {
-    if (radioButtons[i].checked) {
-        isSelected = true;
-        break;
-    }
-}
-if (!isSelected) {
-    // Finden Sie den übergeordneten Container des ersten Radiobuttons
-    var radioGroupContainer = radioButtons[0].closest('div');
-    // Erstellen Sie die Fehlermeldung, wenn sie noch nicht existiert
-    var radioErrorMessageElement = radioGroupContainer.querySelector('.radio-error-message');
-    if (!radioErrorMessageElement) {
-        radioErrorMessageElement = document.createElement('span');
-        radioErrorMessageElement.className = 'radio-error-message';
-        radioGroupContainer.appendChild(radioErrorMessageElement);
-    }
-    radioErrorMessageElement.innerHTML = emptyErrorMsg;
-    radioErrorMessageElement.style.display = 'block';
-}
-
     }
 });
-
 
 
 
@@ -277,6 +253,45 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
  
+
+
+
+function validateRadioOnButtonClick(radioName, step) {
+  nextBtn.addEventListener('click', function() {
+    // Wir suchen alle Radio-Buttons mit dem gegebenen Namen
+    let radioButtons = Array.from(document.getElementsByName(radioName));
+
+    // Wir überprüfen, ob einer von ihnen ausgewählt ist
+    let isSelected = radioButtons.some(button => button.checked);
+
+    let errorMessageContainer = document.querySelector('#error_message_container');
+    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
+      let errorMessageElement = document.createElement('span');
+      errorMessageElement.id = 'error_message';
+      errorMessageElement.style.color = '#9d367a';
+      errorMessageElement.style.marginTop = '-0.625rem';
+      errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+      errorMessageElement.style.fontSize = '0.8rem';
+      errorMessageElement.innerHTML = 'Eine Option muss ausgewählt werden.';
+      errorMessageContainer.appendChild(errorMessageElement);
+    }
+  });
+
+  // Add event listeners to each radio button
+  Array.from(document.getElementsByName(radioName)).forEach(button => {
+    button.addEventListener('change', () => {
+      let errorMessage = document.querySelector('#error_message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    });
+  });
+}
+
+const inputValidationGenderTutor = document.querySelector('input[name="gender_tutor"]');
+validateRadioOnButtonClick(inputValidationGenderTutor.name, step1);
 
 
 //start function shake
