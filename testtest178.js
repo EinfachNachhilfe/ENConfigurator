@@ -2,10 +2,6 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
-const step1Rt3ob = document.getElementById('step-1-rt3ob');
-const step2Rt3ob = document.getElementById('step-2-rt3ob');
-const step3Rt3ob = document.getElementById('step-3-rt3ob');
-const step4Rt3ob = document.getElementById('step-4-rt3ob');
 
 
 //start const registration 3 or better
@@ -193,6 +189,22 @@ nextBtn.addEventListener('click', function() {
         }
     }
 });
+
+  submitBtn.addEventListener('click', function() {
+    if (nextBtn.classList.contains('disabled')) {
+        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
+            shakeOnInvalid(inputElement);
+        }
+    }
+});
+
 
 
   
