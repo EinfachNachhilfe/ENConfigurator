@@ -90,7 +90,8 @@ function addIbanValidation(inputElement) {
   }
   
 //end iban validation
-  
+
+function initializeValidation() {
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
@@ -161,7 +162,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     });
 }
 
-
+}
 
 
 
@@ -423,7 +424,7 @@ inputFeld.name = inputId;
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
  
-applyValidation();
+initializeValidation();
 }
 
 function removeInputField(labelId, inputId) {
