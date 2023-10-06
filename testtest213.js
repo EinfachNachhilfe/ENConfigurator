@@ -207,13 +207,22 @@ nextBtn.addEventListener('click', function() {
                 if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper')) {
                     groupErrorMessageElement.innerHTML = emptyErrorMsg;
                     groupErrorMessageElement.style.display = 'block';
+                    groupErrorMessageElement.style.color = '#9e367a'; // Setzt die Farbe des Fehlernachrichtenelements
+                    radioButtons.forEach(radio => {
+                        radio.style.borderColor = '#9e367a'; // Setzt die Farbe des Radio-Buttons
+                    });
                 } else if (groupErrorMessageElement) {
                     groupErrorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
+                    groupErrorMessageElement.style.color = ''; // Setzt die Farbe des Fehlernachrichtenelements zurück
+                    radioButtons.forEach(radio => {
+                        radio.style.borderColor = ''; // Setzt die Farbe des Radio-Buttons zurück
+                    });
                 }
             });
         }
     }
 });
+
 
 
 
