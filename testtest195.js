@@ -200,19 +200,28 @@ nextBtn.addEventListener('click', function() {
         }
 
         // Überprüfen Sie, ob ein Radiobutton in der Radiogruppe ausgewählt ist
-        var radioButtons = document.querySelectorAll('input[name="radioGroupName"]');
-        var isSelected = false;
-        for (var i = 0; i < radioButtons.length; i++) {
-            if (radioButtons[i].checked) {
-                isSelected = true;
-                break;
-            }
-        }
-        if (!isSelected) {
-            // Zeigen Sie hier Ihre Fehlermeldung an
-            errorMessageElement.innerHTML = emptyErrorMsg;
-             errorMessageElement.style.display = 'block';
-        }
+  var radioButtons = document.querySelectorAll('input[name="radioGroupName"]');
+var isSelected = false;
+for (var i = 0; i < radioButtons.length; i++) {
+    if (radioButtons[i].checked) {
+        isSelected = true;
+        break;
+    }
+}
+if (!isSelected) {
+    // Finden Sie den übergeordneten Container des ersten Radiobuttons
+    var radioGroupContainer = radioButtons[0].closest('div');
+    // Erstellen Sie die Fehlermeldung, wenn sie noch nicht existiert
+    var radioErrorMessageElement = radioGroupContainer.querySelector('.radio-error-message');
+    if (!radioErrorMessageElement) {
+        radioErrorMessageElement = document.createElement('span');
+        radioErrorMessageElement.className = 'radio-error-message';
+        radioGroupContainer.appendChild(radioErrorMessageElement);
+    }
+    radioErrorMessageElement.innerHTML = emptyErrorMsg;
+    radioErrorMessageElement.style.display = 'block';
+}
+
     }
 });
 
