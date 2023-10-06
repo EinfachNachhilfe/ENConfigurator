@@ -205,7 +205,7 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
 
 function validateOnButtonClick(step) {
     nextBtn.addEventListener('click', function() {
-        if (window.getComputedStyle(step, null).display !== 'none') {
+       if (nextBtn.classList.contains('disabled') && window.getComputedStyle(step, null).display !== 'none') {
             const inputFieldsInCurrentStep = step.querySelectorAll('input, select, textarea');
             inputFieldsInCurrentStep.forEach(inputElement => {
                 if (window.getComputedStyle(inputElement, null).display !== 'none' && !inputElement.disabled) {
