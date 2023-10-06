@@ -191,16 +191,28 @@ nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
-            errorMessageElement.innerHTML = emptyErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a';
-            inputElement.style.borderWidth = '1.5px';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline'; // Zeigt das X an
-            shakeOnInvalid(inputElement);
+            displayError(inputElement);
+        } else if (inputElement.type === 'radio') {
+            // Überprüfen Sie, ob ein Radio-Button ausgewählt wurde
+            let radioGroup = document.querySelectorAll(`input[name="${inputElement.name}"]`);
+            let isSelected = Array.from(radioGroup).some(radio => radio.checked);
+            if (!isSelected) {
+                displayError(inputElement);
+            }
         }
     }
 });
+
+function displayError(element) {
+    errorMessageElement.innerHTML = emptyErrorMsg;
+    errorMessageElement.style.display = 'block';
+    element.style.borderColor = '#9e367a';
+    element.style.borderWidth = '1.5px';
+    validSymbol.style.display = 'none';
+    invalidSymbol.style.display = 'inline'; // Zeigt das X an
+    shakeOnInvalid(element);
+}
+
 
 
 
