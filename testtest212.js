@@ -203,14 +203,12 @@ nextBtn.addEventListener('click', function() {
             radioGroups.forEach(group => {
                 let radioButtons = group.querySelectorAll("input[type='radio']");
                 let isSelected = Array.from(radioButtons).some(radio => radio.checked); // Überprüfen, ob einer der Radio-Buttons ausgewählt ist
-                let groupErrorMessageElement = group.nextElementSibling; // Zugriff auf das Geschwisterelement
-                if (groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper')) {
-                    if (!isSelected) {
-                        groupErrorMessageElement.innerHTML = emptyErrorMsg;
-                        groupErrorMessageElement.style.display = 'block'; // Zeige die Fehlermeldung an
-                    } else {
-                        groupErrorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
-                    }
+                let groupErrorMessageElement = group.nextElementSibling; // Zugriff auf das Geschwisterelement für die Fehlermeldung
+                if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper')) {
+                    groupErrorMessageElement.innerHTML = emptyErrorMsg;
+                    groupErrorMessageElement.style.display = 'block';
+                } else if (groupErrorMessageElement) {
+                    groupErrorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
                 }
             });
         }
