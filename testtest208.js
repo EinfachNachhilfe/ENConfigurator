@@ -199,18 +199,18 @@ nextBtn.addEventListener('click', function() {
             invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         } else {
-            let button = document.querySelector("input:checked");
-            if (button) {
-
-                errorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
-            } else {
-                console.log("error");
+            let radioButtons = document.querySelectorAll("input[type='radio']"); // Alle Radio-Buttons auswählen
+            let isSelected = Array.from(radioButtons).some(radio => radio.checked); // Überprüfen, ob einer der Radio-Buttons ausgewählt ist
+            if (!isSelected) {
                 errorMessageElement.innerHTML = emptyErrorMsg;
                 errorMessageElement.style.display = 'block'; // Zeige die Fehlermeldung an
+            } else {
+                errorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
             }
         }
     }
 });
+
 
 
 
