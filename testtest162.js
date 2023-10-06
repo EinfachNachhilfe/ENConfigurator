@@ -198,6 +198,30 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
 });
 
 
+nextbtn.addEventListener('click', function() {
+    if (nextbtn.classList.contains('disabled')) {
+        // Durchlaufen Sie alle sichtbaren Eingabefelder
+        allInputs.forEach(inputElement => {
+            if (inputElement.style.display !== 'none' && !inputElement.disabled) {
+                // Setzen Sie die Fehlermeldung für das jeweilige Eingabefeld
+                const errorMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper span');
+                if (errorMessageElement) {
+                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                    errorMessageElement.style.display = 'block';
+                }
+                inputElement.style.borderColor = '#9e367a';
+                inputElement.style.borderWidth = '1.5px';
+                const invalidSymbol = inputElement.closest('.form_input-validation-image-wrapper').querySelector('span[style*="#9e367a"]');
+                if (invalidSymbol) {
+                    invalidSymbol.style.display = 'inline'; // Zeigt das X an
+                }
+                shakeOnInvalid(inputElement);
+            }
+        });
+    }
+});
+
+
 
 
 
