@@ -222,6 +222,42 @@ const totalStepsElem = document.getElementById("totalSteps");
 const regForm = document.getElementById("regForm");
 let currentTab = 0;
 
+
+function validateCurrentTabInputs() {
+    const inputs = formItems[currentTab].querySelectorAll("input, select, textarea");
+    let allValid = true;
+
+    for (let inputElement of inputs) {
+        const errorMessageElement = inputElement.parentNode.querySelector('.form_input-error-message-wrapper span');
+        const validSymbol = inputElement.parentNode.querySelector('.form_input-validation-image-wrapper span:nth-child(1)');
+        const invalidSymbol = inputElement.parentNode.querySelector('.form_input-validation-image-wrapper span:nth-child(2)');
+
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.'; // Sie können dies durch Ihre eigene Fehlermeldung ersetzen
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
+            shakeOnInvalid(inputElement);
+            allValid = false;
+        }
+    }
+
+    return allValid;
+}
+
+nextBtn.addEventListener("click", function() {
+    if (!validateCurrentTabInputs()) {
+        // Wenn die Validierung fehlschlägt, tun Sie nichts weiter
+        return;
+    }
+    // Wenn die Validierung erfolgreich ist, gehen Sie zum nächsten Tab
+    nextPrev(1);
+});
+
+
+
 nextBtn.classList.add("disabled");
 
 
