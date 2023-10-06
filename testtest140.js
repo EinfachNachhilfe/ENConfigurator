@@ -174,14 +174,13 @@ const specificElements = [
 ];
 
 allInputs.forEach(inputElement => {
-    // Überprüfen, ob das aktuelle Element NICHT in der Liste der spezifischen Elemente ist und kein Checkbox ist
-    if (specificElements.every(e => e.element !== inputElement) && inputElement.type !== "checkbox") {
+    // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
+    if (!specificElements.some(e => e.element === inputElement)) {
         let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
         let invalidErrorMsg = 'Ungültige Eingabe.';
         applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
     }
 });
-
 
 // Jetzt wenden Sie die applyValidation-Funktion mit benutzerdefinierten Mustern und Fehlermeldungen auf die spezifischen Elemente an
 specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
