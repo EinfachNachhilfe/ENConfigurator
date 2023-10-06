@@ -198,7 +198,7 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
 });
 
 
-nextbtn.addEventListener('click', function() {
+nextBtn.addEventListener('click', function() {
     if (nextbtn.classList.contains('disabled')) {
         // Durchlaufen Sie alle sichtbaren Eingabefelder
         allInputs.forEach(inputElement => {
