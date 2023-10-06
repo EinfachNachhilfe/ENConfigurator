@@ -192,7 +192,7 @@ function checkRadioErrorStatus(group) {
     let radioButtons = group.querySelectorAll("input[type='radio']");
     let isSelected = Array.from(radioButtons).some(radio => radio.checked);
     let groupErrorMessageElement = group.nextElementSibling;
-    if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper')) {
+    if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper') && isElementVisible(group)) {
         groupErrorMessageElement.innerHTML = emptyErrorMsg;
         groupErrorMessageElement.style.display = 'block';
         groupErrorMessageElement.style.color = '#9e367a';
@@ -235,6 +235,7 @@ allRadioButtons.forEach(radio => {
         checkRadioErrorStatus(group);
     });
 });
+
 
 
 
