@@ -92,9 +92,17 @@ function addIbanValidation(inputElement) {
 //end iban validation
   
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-    let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-    let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
     const errorMessageElement = document.createElement('span');
+    const validSymbol = document.createElement('span');
+    const invalidSymbol = document.createElement('span');
+
+    validSymbol.textContent = '✓';
+    validSymbol.style.color = '#589b32';
+    validSymbol.style.display = 'none'; // Versteckt zu Beginn
+
+    invalidSymbol.textContent = '✗';
+    invalidSymbol.style.color = '#9e367a';
+    invalidSymbol.style.display = 'none'; // Versteckt zu Beginn
 
     if (pattern !== null) {
         inputElement.setAttribute('pattern', pattern);
@@ -108,6 +116,8 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
     if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
+        errorMessageWrapper.appendChild(validSymbol);
+        errorMessageWrapper.appendChild(invalidSymbol);
     }
 
     inputElement.addEventListener("change", function() {
@@ -116,22 +126,22 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = '#9e367a';
             inputElement.style.borderWidth = '1.5px';
-            validImage.style.display = 'none';
-            inValidImage.style.display = 'block';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         } else if (inputElement.checkValidity()) {
             inputElement.style.borderColor = '#589b32';
             inputElement.style.borderWidth = '1.5px';
-            validImage.style.display = 'block';
-            inValidImage.style.display = 'none';
+            validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
+            invalidSymbol.style.display = 'none';
             errorMessageElement.style.display = 'none';
         } else {
             errorMessageElement.innerHTML = invalidErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = '#9e367a';
             inputElement.style.borderWidth = '1.5px';
-            validImage.style.display = 'none';
-            inValidImage.style.display = 'block';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
         }
     });
