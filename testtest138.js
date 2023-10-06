@@ -99,7 +99,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     validSymbol.textContent = '✓';
     validSymbol.style.color = '#589b32';
     validSymbol.style.display = 'none'; // Versteckt zu Beginn
-    validSymbol.style.position = 'absolute';
+  
     validSymbol.style.right = '1.2rem';
     validSymbol.style.top = '50%';
     validSymbol.style.transform = 'translateY(-50%)';
@@ -108,7 +108,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     invalidSymbol.textContent = '✗';
     invalidSymbol.style.color = '#9e367a';
     invalidSymbol.style.display = 'none'; // Versteckt zu Beginn
-    invalidSymbol.style.position = 'absolute';
+ 
     invalidSymbol.style.right = '1.2rem';
     invalidSymbol.style.top = '50%';
     invalidSymbol.style.transform = 'translateY(-50%)';
