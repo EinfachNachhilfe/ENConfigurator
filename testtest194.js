@@ -210,8 +210,8 @@ nextBtn.addEventListener('click', function() {
         }
         if (!isSelected) {
             // Zeigen Sie hier Ihre Fehlermeldung an
-            radioErrorMessageElement.innerHTML = 'Bitte wählen Sie eine Option aus.';
-            radioErrorMessageElement.style.display = 'block';
+            errorMessageElement.innerHTML = emptyErrorMsg;
+             errorMessageElement.style.display = 'block';
         }
     }
 });
