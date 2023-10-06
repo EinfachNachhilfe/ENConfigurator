@@ -92,48 +92,52 @@ function addIbanValidation(inputElement) {
 //end iban validation
   
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
-let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
-const errorMessageElement = document.createElement('span');
+    let validImage = inputElement.parentNode.querySelector('.form_input-valid-image');
+    let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+    const errorMessageElement = document.createElement('span');
 
-if (pattern !== null) {
-    inputElement.setAttribute('pattern', pattern);
-}
-errorMessageElement.id = 'error_message';
-errorMessageElement.style.color = '#9d367a';
-errorMessageElement.style.display = 'none';
-errorMessageElement.style.marginTop = '-0.625rem';
-errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
-errorMessageElement.style.fontSize = '0.8rem';
-inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
-
-inputElement.addEventListener("change", function() {
-    if (inputElement.value.trim() === '') {
-        errorMessageElement.innerHTML = emptyErrorMsg;
-        errorMessageElement.style.display = 'block';
-        inputElement.style.borderColor = '#9e367a';
-        inputElement.style.borderWidth = '1.5px';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(inputElement);
-    } else if (inputElement.checkValidity()) {
-        inputElement.style.borderColor = '#589b32';
-        inputElement.style.borderWidth = '1.5px';
-        validImage.style.display = 'block';
-        inValidImage.style.display = 'none';
-        errorMessageElement.style.display = 'none';
-    } else {
-        errorMessageElement.innerHTML = invalidErrorMsg;
-        errorMessageElement.style.display = 'block';
-        inputElement.style.borderColor = '#9e367a';
-        inputElement.style.borderWidth = '1.5px';
-        validImage.style.display = 'none';
-        inValidImage.style.display = 'block';
-        shakeOnInvalid(inputElement);
+    if (pattern !== null) {
+        inputElement.setAttribute('pattern', pattern);
     }
-});
+    errorMessageElement.id = 'error_message';
+    errorMessageElement.style.color = '#9d367a';
+    errorMessageElement.style.display = 'none';
+    errorMessageElement.style.marginTop = '-0.625rem';
+    errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+    errorMessageElement.style.fontSize = '0.8rem';
 
+    const errorMessageWrapper = document.getElementById('error-message_wrapper');
+    if (errorMessageWrapper) {
+        errorMessageWrapper.appendChild(errorMessageElement);
+    }
+
+    inputElement.addEventListener("change", function() {
+        if (inputElement.value.trim() === '') {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        } else if (inputElement.checkValidity()) {
+            inputElement.style.borderColor = '#589b32';
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'block';
+            inValidImage.style.display = 'none';
+            errorMessageElement.style.display = 'none';
+        } else {
+            errorMessageElement.innerHTML = invalidErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validImage.style.display = 'none';
+            inValidImage.style.display = 'block';
+            shakeOnInvalid(inputElement);
+        }
+    });
 }
+
 
 const specificElements = [
     {element: firstNameSecondName, pattern: '^[A-Za-zäöüÄÖÜß ]+$', invalidErrorMsg: 'Bitte geben Sie einen gültigen Namen ein.'},
