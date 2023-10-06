@@ -136,6 +136,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     inputElement.addEventListener("change", function() {
+       if (inputElement.hasAttribute('required')) {
         if (inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
@@ -144,6 +145,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline'; // Zeigt das X an
             shakeOnInvalid(inputElement);
+        }
         } else if (inputElement.checkValidity()) {
             inputElement.style.borderColor = '#589b32';
             inputElement.style.borderWidth = '1.5px';
