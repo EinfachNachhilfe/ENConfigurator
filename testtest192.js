@@ -187,37 +187,18 @@ if (inputElement.type === 'radio') {
 });
 
 nextBtn.addEventListener('click', function() {
-  if (nextBtn.classList.contains('disabled')) {
-    // Erstellen Sie eine Liste aller Radiobutton-Gruppennamen auf der Seite
-    let radioGroupNames = [...new Set(Array.from(document.querySelectorAll('input[type="radio"]')).map(radio => radio.name))];
-
-    radioGroupNames.forEach(groupName => {
-      let radioGroup = document.getElementsByName(groupName);
-      let isOneChecked = Array.from(radioGroup).some(radio => radio.checked);
-
-      // Überprüfen, ob bereits eine Fehlermeldung für diese Gruppe angezeigt wird
-      const existingErrorMessage = document.querySelector(`.form_input-error-message-wrapper[data-group='${groupName}']`);
-
-      if (!isOneChecked && !existingErrorMessage) {
-        // Keiner der Radiobuttons ist ausgewählt und es gibt noch keine Fehlermeldung für diese Gruppe
-        errorMessageElement.innerHTML = emptyErrorMsg;
-        errorMessageElement.style.display = 'block';
-        errorMessageElement.setAttribute('data-group', groupName); // Setzen Sie das data-group-Attribut
-        shakeOnInvalid(radioGroup[0]); // Schütteln Sie nur den ersten Radiobutton der Gruppe
-      }
-    });
-
-    // Überprüfen Sie andere Eingabeelemente
-    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
-      errorMessageElement.innerHTML = emptyErrorMsg;
-      errorMessageElement.style.display = 'block';
-      inputElement.style.borderColor = '#9e367a';
-      inputElement.style.borderWidth = '1.5px';
-      validSymbol.style.display = 'none';
-      invalidSymbol.style.display = 'inline'; // Zeigt das X an
-      shakeOnInvalid(inputElement);
+    if (nextBtn.classList.contains('disabled')) {
+        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
+            shakeOnInvalid(inputElement);
+        }
     }
-  }
 });
 
 
