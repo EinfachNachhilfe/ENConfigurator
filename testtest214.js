@@ -187,6 +187,28 @@ if (inputElement.type === 'radio') {
 });
 
 
+// Funktion, um den Fehlerstatus zu überprüfen und entsprechend zu aktualisieren
+function checkRadioErrorStatus(group) {
+    let radioButtons = group.querySelectorAll("input[type='radio']");
+    let isSelected = Array.from(radioButtons).some(radio => radio.checked);
+    let groupErrorMessageElement = group.nextElementSibling;
+    if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper')) {
+        groupErrorMessageElement.innerHTML = emptyErrorMsg;
+        groupErrorMessageElement.style.display = 'block';
+        groupErrorMessageElement.style.color = '#9e367a';
+        radioButtons.forEach(radio => {
+            radio.style.borderColor = '#9e367a';
+        });
+    } else if (groupErrorMessageElement) {
+        groupErrorMessageElement.style.display = 'none';
+        groupErrorMessageElement.style.color = '';
+        radioButtons.forEach(radio => {
+            radio.style.borderColor = '';
+        });
+    }
+}
+
+// Event-Listener für den Next-Button
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
@@ -196,32 +218,24 @@ nextBtn.addEventListener('click', function() {
             inputElement.style.borderColor = '#9e367a';
             inputElement.style.borderWidth = '1.5px';
             validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline'; // Zeigt das X an
+            invalidSymbol.style.display = 'inline';
             shakeOnInvalid(inputElement);
         } else {
-            let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender"); // Alle Radio-Button-Gruppen mit dem spezifischen Klassennamen auswählen
-            radioGroups.forEach(group => {
-                let radioButtons = group.querySelectorAll("input[type='radio']");
-                let isSelected = Array.from(radioButtons).some(radio => radio.checked); // Überprüfen, ob einer der Radio-Buttons ausgewählt ist
-                let groupErrorMessageElement = group.nextElementSibling; // Zugriff auf das Geschwisterelement für die Fehlermeldung
-                if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper')) {
-                    groupErrorMessageElement.innerHTML = emptyErrorMsg;
-                    groupErrorMessageElement.style.display = 'block';
-                    groupErrorMessageElement.style.color = '#9e367a'; // Setzt die Farbe des Fehlernachrichtenelements
-                    radioButtons.forEach(radio => {
-                        radio.style.borderColor = '#9e367a'; // Setzt die Farbe des Radio-Buttons
-                    });
-                } else if (groupErrorMessageElement) {
-                    groupErrorMessageElement.style.display = 'none'; // Verstecke die Fehlermeldung, wenn eine Option ausgewählt ist
-                    groupErrorMessageElement.style.color = ''; // Setzt die Farbe des Fehlernachrichtenelements zurück
-                    radioButtons.forEach(radio => {
-                        radio.style.borderColor = ''; // Setzt die Farbe des Radio-Buttons zurück
-                    });
-                }
-            });
+            let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
+            radioGroups.forEach(checkRadioErrorStatus);
         }
     }
 });
+
+// Event-Listener für Änderungen an Radio-Buttons
+let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
+allRadioButtons.forEach(radio => {
+    radio.addEventListener('change', function() {
+        let group = radio.closest('.form_item-input-bottom-gender');
+        checkRadioErrorStatus(group);
+    });
+});
+
 
 
 
