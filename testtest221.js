@@ -559,10 +559,11 @@ function removeInputField(labelId, inputId) {
         // Entfernen Sie die zugehörige Fehlermeldung, bevor Sie das Eingabeelement entfernen
         const errorMessageElement = vorhandenesInputFeld.parentNode.querySelector('.form_input-error-message-wrapper');
         if (errorMessageElement) {
-            errorMessageElement.style.display = 'none';
+            errorMessageElement.parentNode.removeChild(errorMessageElement);
         }
 
         vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
     }
 }
+
 
