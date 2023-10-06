@@ -549,21 +549,17 @@ inputFeld.addEventListener("input", validateForm);
 }
 
 function removeInputField(labelId, inputId) {
-    const vorhandenerText = document.getElementById(labelId);
-    if (vorhandenerText) {
-        vorhandenerText.parentNode.removeChild(vorhandenerText);
-    }
+const vorhandenerText = document.getElementById(labelId);
+if (vorhandenerText) {
+    vorhandenerText.parentNode.removeChild(vorhandenerText);
+}
 
-    const vorhandenesInputFeld = document.getElementById(inputId);
-    if (vorhandenesInputFeld) {
-        // Entfernen Sie die zugehörige Fehlermeldung, bevor Sie das Eingabeelement entfernen
-        const errorMessageElement = vorhandenesInputFeld.parentNode.querySelector('.form_input-error-message-wrapper');
-        if (errorMessageElement) {
-            errorMessageElement.parentNode.removeChild(errorMessageElement);
-        }
-
-        vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
-    }
+const vorhandenesInputFeld = document.getElementById(inputId);
+if (vorhandenesInputFeld) {
+    vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
+     invalidSymbol.style.display = 'none';
+     errorMessageElement.style.display = 'none';
+}
 }
 
 
