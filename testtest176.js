@@ -172,19 +172,21 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 });
 
-   nextBtn.addEventListener('click', function() {
-        if (nextBtn.classList.contains('disabled')) {
-            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
-                errorMessageElement.innerHTML = emptyErrorMsg;
-                errorMessageElement.style.display = 'block';
-                inputElement.style.borderColor = '#9e367a';
-                inputElement.style.borderWidth = '1.5px';
-                validSymbol.style.display = 'none';
-                invalidSymbol.style.display = 'inline'; // Zeigt das X an
-                shakeOnInvalid(inputElement);
-            }
+nextBtn.addEventListener('click', function() {
+    if (nextBtn.classList.contains('disabled')) {
+        // Überprüfen Sie, ob das Eingabefeld sichtbar ist
+        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && window.getComputedStyle(inputElement, null).display !== 'none') {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = '#9e367a';
+            inputElement.style.borderWidth = '1.5px';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline'; // Zeigt das X an
+            shakeOnInvalid(inputElement);
         }
-    });
+    }
+});
+
   
 }
 
