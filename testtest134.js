@@ -103,6 +103,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     validSymbol.style.right = '1.2rem';
     validSymbol.style.top = '50%';
     validSymbol.style.transform = 'translateY(-50%)';
+    validSymbol.style.zIndex = '3';
 
     invalidSymbol.textContent = '✗';
     invalidSymbol.style.color = '#9e367a';
@@ -111,6 +112,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     invalidSymbol.style.right = '1.2rem';
     invalidSymbol.style.top = '50%';
     invalidSymbol.style.transform = 'translateY(-50%)';
+    invalidSymbol.style.zIndex = '3';
 
     if (pattern !== null) {
         inputElement.setAttribute('pattern', pattern);
