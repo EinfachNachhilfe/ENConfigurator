@@ -203,7 +203,7 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
 
 function validateOnButtonClick(inputElement, step) {
 nextBtn.addEventListener('click', function() {
-    if (nextbtn.classList.contains('disabled')) {
+    if (nextBtn.classList.contains('disabled')) {
         // Durchlaufen Sie alle sichtbaren Eingabefelder
         allInputs.forEach(inputElement => {
             if (inputElement.style.display !== 'none' && !inputElement.disabled) {
