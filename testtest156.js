@@ -318,20 +318,6 @@ function nextPrev(n) {
 
 
 function validateForm() {
-   let valid = true;
-    const inputs = formItems[currentTab].getElementsByTagName("input");
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].className += " invalid";
-            // Zeige die Fehlermeldung für dieses Eingabefeld an
-            const errorMessageElement = inputs[i].parentNode.querySelector('#error_message');
-            if (errorMessageElement) {
-                errorMessageElement.style.display = 'block';
-            }
-            valid = false;
-        }
-    }
-        
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
         let radioGroups = {};
