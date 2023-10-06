@@ -131,7 +131,18 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
-    const errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+   let errorMessageWrapper;
+
+if (inputElement.type === 'radio') {
+    // Für Radiobuttons
+    errorMessageWrapper = inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+} else {
+    // Für andere Eingabeelemente
+    errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+}
+
+// Weiterer Code, um mit dem errorMessageWrapper zu arbeiten...
+
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
 
     if (errorMessageWrapper) {
