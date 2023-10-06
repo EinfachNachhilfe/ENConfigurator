@@ -201,35 +201,38 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
 
-function validateOnButtonClick(inputElement, step) {
-nextBtn.addEventListener('click', function() {
-    if (nextBtn.classList.contains('disabled')) {
-        // Durchlaufen Sie alle sichtbaren Eingabefelder
-        allInputs.forEach(inputElement => {
-            if (inputElement.style.display !== 'none' && !inputElement.disabled) {
-                // Setzen Sie die Fehlermeldung für das jeweilige Eingabefeld
-                const errorMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper span');
-                if (errorMessageElement) {
-                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                    errorMessageElement.style.display = 'block';
+function validateOnButtonClick(step) {
+    nextBtn.addEventListener('click', function() {
+        if (nextBtn.classList.contains('disabled')) {
+            // Durchlaufen Sie alle sichtbaren Eingabefelder innerhalb des aktuellen Schritts
+            const inputFieldsInCurrentStep = step.querySelectorAll('input'); // Annahme, dass alle Eingabefelder <input>-Tags sind.
+            inputFieldsInCurrentStep.forEach(inputElement => {
+                if (window.getComputedStyle(inputElement, null).display !== 'none' && !inputElement.disabled) {
+                    // Setzen Sie die Fehlermeldung für das jeweilige Eingabefeld
+                    const errorMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper span');
+                    if (errorMessageElement) {
+                        errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                        errorMessageElement.style.display = 'block';
+                    }
+                    inputElement.style.borderColor = '#9e367a';
+                    inputElement.style.borderWidth = '1.5px';
+                    const invalidSymbol = inputElement.closest('.form_input-validation-image-wrapper').querySelector('span[style*="#9e367a"]');
+                    if (invalidSymbol) {
+                        invalidSymbol.style.display = 'inline'; // Zeigt das X an
+                    }
+                    shakeOnInvalid(inputElement);
                 }
-                inputElement.style.borderColor = '#9e367a';
-                inputElement.style.borderWidth = '1.5px';
-                const invalidSymbol = inputElement.closest('.form_input-validation-image-wrapper').querySelector('span[style*="#9e367a"]');
-                if (invalidSymbol) {
-                    invalidSymbol.style.display = 'inline'; // Zeigt das X an
-                }
-                shakeOnInvalid(inputElement);
-            }
-        });
-    }
-});
+            });
+        }
+    });
 }
 
+validateOnButtonClick(step1Rt3ob); // Für den ersten Schritt
+validateOnButtonClick(step2Rt3ob); // Für den zweiten Schritt
 
 
 
-
+ 
 
 
 //start function shake
