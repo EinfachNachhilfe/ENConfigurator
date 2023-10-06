@@ -177,16 +177,28 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
-        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
-            errorMessageElement.innerHTML = emptyErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a';
-            inputElement.style.borderWidth = '1.5px';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline'; // Zeigt das X an
-            shakeOnInvalid(inputElement);
-        }
+  if (inputElement.type === 'radio') {
+    // Überprüfen, ob einer der Radiobuttons in der Gruppe ausgewählt ist
+    let radioGroup = document.getElementsByName(inputElement.name);
+    let isOneChecked = Array.from(radioGroup).some(radio => radio.checked);
+
+    if (!isOneChecked) {
+        // Keiner der Radiobuttons ist ausgewählt
+        errorMessageElement.innerHTML = emptyErrorMsg;
+        errorMessageElement.style.display = 'block';
+        // Hier können Sie zusätzliche Stile oder Aktionen hinzufügen, um dem Benutzer anzuzeigen, dass eine Auswahl erforderlich ist
+        shakeOnInvalid(inputElement);
+    }
+} else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+    errorMessageElement.innerHTML = emptyErrorMsg;
+    errorMessageElement.style.display = 'block';
+    inputElement.style.borderColor = '#9e367a';
+    inputElement.style.borderWidth = '1.5px';
+    validSymbol.style.display = 'none';
+    invalidSymbol.style.display = 'inline'; // Zeigt das X an
+    shakeOnInvalid(inputElement);
+}
+
     }
 });
 
