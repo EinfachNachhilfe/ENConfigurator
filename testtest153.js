@@ -135,8 +135,8 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
-    inputElement.addEventListener("change", function() {
-       if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+   inputElement.addEventListener("change", function() {
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
         inputElement.style.borderColor = '#9e367a';
@@ -144,22 +144,30 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         validSymbol.style.display = 'none';
         invalidSymbol.style.display = 'inline'; // Zeigt das X an
         shakeOnInvalid(inputElement);
-        } else if (inputElement.checkValidity()) {
-            inputElement.style.borderColor = '#589b32';
-            inputElement.style.borderWidth = '1.5px';
-            validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else {
-            errorMessageElement.innerHTML = invalidErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a';
-            inputElement.style.borderWidth = '1.5px';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline'; // Zeigt das X an
-            shakeOnInvalid(inputElement);
-        }
-    });
+    } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+        // Setzen Sie den Standardzustand des Feldes zurück
+        inputElement.style.borderColor = ''; // Oder setzen Sie es auf die ursprüngliche Farbe
+        inputElement.style.borderWidth = ''; // Oder setzen Sie es auf die ursprüngliche Breite
+        validSymbol.style.display = 'none';
+        invalidSymbol.style.display = 'none';
+        errorMessageElement.style.display = 'none';
+    } else if (inputElement.checkValidity()) {
+        inputElement.style.borderColor = '#589b32';
+        inputElement.style.borderWidth = '1.5px';
+        validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
+        invalidSymbol.style.display = 'none';
+        errorMessageElement.style.display = 'none';
+    } else {
+        errorMessageElement.innerHTML = invalidErrorMsg;
+        errorMessageElement.style.display = 'block';
+        inputElement.style.borderColor = '#9e367a';
+        inputElement.style.borderWidth = '1.5px';
+        validSymbol.style.display = 'none';
+        invalidSymbol.style.display = 'inline'; // Zeigt das X an
+        shakeOnInvalid(inputElement);
+    }
+});
+
 }
 
 
