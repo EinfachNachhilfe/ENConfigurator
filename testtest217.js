@@ -549,19 +549,15 @@ inputFeld.addEventListener("input", validateForm);
 }
 
 function removeInputField(labelId, inputId) {
-    const vorhandenerText = document.getElementById(labelId);
-    if (vorhandenerText) {
-        vorhandenerText.parentNode.removeChild(vorhandenerText);
-    }
+const vorhandenerText = document.getElementById(labelId);
+if (vorhandenerText) {
+    vorhandenerText.parentNode.removeChild(vorhandenerText);
+}
 
-    const vorhandenesInputFeld = document.getElementById(inputId);
-    if (vorhandenesInputFeld) {
-        // Entfernen Sie die zugehörige Fehlermeldung
-        const errorMessageElement = vorhandenesInputFeld.parentNode.querySelector('.form_input-error-message-wrapper');
-        if (errorMessageElement) {
-            errorMessageElement.style.display = 'none';
-        }
-        vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
-    }
+const vorhandenesInputFeld = document.getElementById(inputId);
+if (vorhandenesInputFeld) {
+    vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
+}
+    validateForm();
 }
 
