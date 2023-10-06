@@ -192,6 +192,27 @@ if (inputElement.type === 'radio') {
 
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
+
+        let radioButtons = Array.from(document.getElementsByName(radioName));
+
+    // Wir überprüfen, ob einer von ihnen ausgewählt ist
+    let isSelected = radioButtons.some(button => button.checked);
+
+    let errorMessageContainer = document.querySelector('#error_message_container');
+    let existingErrorMessage = errorMessageContainer.querySelector('#error_message');
+
+    if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+
+      // Add event listeners to each radio button
+  Array.from(document.getElementsByName(radioName)).forEach(button => {
+    button.addEventListener('change', () => {
+      let errorMessage = document.querySelector('#error_message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+      
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
@@ -204,6 +225,7 @@ nextBtn.addEventListener('click', function() {
         }
     }
 });
+
 
 
 
