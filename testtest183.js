@@ -176,6 +176,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 });
 
 nextBtn.addEventListener('click', function() {
+  if (nextBtn.classList.contains('disabled')) {
 if (inputElement.type === 'radio') {
     // Überprüfen, ob einer der Radiobuttons in der Gruppe ausgewählt ist
     let radioGroup = document.getElementsByName(inputElement.name);
