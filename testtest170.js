@@ -204,8 +204,9 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
 function validateOnButtonClick(step) {
     nextBtn.addEventListener('click', function() {
         if (nextBtn.classList.contains('disabled')) {
-            // Durchlaufen Sie alle sichtbaren Eingabefelder
-            allInputs.forEach(inputElement => {
+            // Durchlaufen Sie alle sichtbaren Eingabefelder innerhalb des aktuellen Schritts
+            const inputFieldsInCurrentStep = step.querySelectorAll('input, select, textarea'); // Annahme, dass alle Eingabefelder <input>-Tags sind.
+            inputFieldsInCurrentStep.forEach(inputElement => {
                 if (window.getComputedStyle(inputElement, null).display !== 'none' && !inputElement.disabled) {
                     const parentElement = inputElement.parentNode && inputElement.parentNode.parentNode;
                     const errorMessageElement = parentElement ? parentElement.querySelector('.form_input-error-message-wrapper span') : null;
