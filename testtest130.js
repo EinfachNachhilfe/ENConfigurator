@@ -99,15 +99,14 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     if (pattern !== null) {
         inputElement.setAttribute('pattern', pattern);
     }
-    errorMessageElement.id = 'error_message';
     errorMessageElement.style.color = '#9d367a';
     errorMessageElement.style.display = 'none';
     errorMessageElement.style.marginTop = '-0.625rem';
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
-    const errorMessageWrapper = inputElement.closest.querySelector('.form_input-error-message-wrapper');
-    if (errorMessageWrapper) {
+    const errorMessageWrapper = inputElement.nextElementSibling;
+    if (errorMessageWrapper && errorMessageWrapper.classList.contains('form_input-error-message-wrapper')) {
         errorMessageWrapper.appendChild(errorMessageElement);
     }
 
