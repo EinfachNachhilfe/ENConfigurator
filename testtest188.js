@@ -188,32 +188,23 @@ if (inputElement.type === 'radio') {
 
 nextBtn.addEventListener('click', function() {
   if (nextBtn.classList.contains('disabled')) {
-    // Sammeln Sie alle eindeutigen Radiogruppennamen in Ihrem Formular
-    const radioGroups = {};
-    document.querySelectorAll('input[type="radio"]').forEach(radio => {
-      radioGroups[radio.name] = true;
-    });
-
-    // Überprüfen Sie jede Radiogruppe
-    for (let groupName in radioGroups) {
-      let radioGroup = document.getElementsByName(groupName);
+    if (inputElement.type === 'radio') {
+      // Überprüfen, ob einer der Radiobuttons in der Gruppe ausgewählt ist
+      let radioGroup = document.getElementsByName(inputElement.name);
       let isOneChecked = Array.from(radioGroup).some(radio => radio.checked);
 
-      if (!isOneChecked) {
-        // Keiner der Radiobuttons ist ausgewählt
-        let errorMessageWrapper = radioGroup[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
-        if (errorMessageWrapper) {
-          errorMessageWrapper.innerHTML = emptyErrorMsg;
-          errorMessageWrapper.style.display = 'block';
-          // Hier können Sie zusätzliche Stile oder Aktionen hinzufügen, um dem Benutzer anzuzeigen, dass eine Auswahl erforderlich ist
-          shakeOnInvalid(radioGroup[0]);
-        }
-        return; // Beenden Sie die Funktion, da bereits eine Fehlermeldung angezeigt wird
-      }
-    }
+      // Überprüfen, ob bereits eine Fehlermeldung für diese Gruppe angezeigt wird
+      const existingErrorMessage = document.querySelector(`.form_input-error-message-wrapper[data-group='${inputElement.name}']`);
 
-    // Überprüfen Sie andere Eingabeelemente
-    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+      if (!isOneChecked && !existingErrorMessage) {
+        // Keiner der Radiobuttons ist ausgewählt und es gibt noch keine Fehlermeldung für diese Gruppe
+        errorMessageElement.innerHTML = emptyErrorMsg;
+        errorMessageElement.style.display = 'block';
+        errorMessageElement.setAttribute('data-group', inputElement.name); // Setzen Sie das data-group-Attribut
+        // Hier können Sie zusätzliche Stile oder Aktionen hinzufügen, um dem Benutzer anzuzeigen, dass eine Auswahl erforderlich ist
+        shakeOnInvalid(inputElement);
+      }
+    } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
       errorMessageElement.innerHTML = emptyErrorMsg;
       errorMessageElement.style.display = 'block';
       inputElement.style.borderColor = '#9e367a';
@@ -224,6 +215,7 @@ nextBtn.addEventListener('click', function() {
     }
   }
 });
+
 
 
 
