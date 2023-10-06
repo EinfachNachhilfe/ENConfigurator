@@ -139,6 +139,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 }
 
 
+
 const specificElements = [
     {element: firstNameSecondName, pattern: '^[A-Za-zäöüÄÖÜß ]+$', invalidErrorMsg: 'Bitte geben Sie einen gültigen Namen ein.'},
     {element: zipCode, pattern: '\\d+', invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'},
