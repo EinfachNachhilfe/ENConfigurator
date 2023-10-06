@@ -208,15 +208,16 @@ function validateOnButtonClick(step) {
             const inputFieldsInCurrentStep = step.querySelectorAll('input'); // Annahme, dass alle Eingabefelder <input>-Tags sind.
             inputFieldsInCurrentStep.forEach(inputElement => {
                 if (window.getComputedStyle(inputElement, null).display !== 'none' && !inputElement.disabled) {
-                    // Setzen Sie die Fehlermeldung für das jeweilige Eingabefeld
-                    const errorMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper span');
+                    const parentElement = inputElement.parentNode && inputElement.parentNode.parentNode;
+                    const errorMessageElement = parentElement ? parentElement.querySelector('.form_input-error-message-wrapper span') : null;
                     if (errorMessageElement) {
                         errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
                         errorMessageElement.style.display = 'block';
                     }
                     inputElement.style.borderColor = '#9e367a';
                     inputElement.style.borderWidth = '1.5px';
-                    const invalidSymbol = inputElement.closest('.form_input-validation-image-wrapper').querySelector('span[style*="#9e367a"]');
+                    const validationWrapper = inputElement.closest('.form_input-validation-image-wrapper');
+                    const invalidSymbol = validationWrapper ? validationWrapper.querySelector('span[style*="#9e367a"]') : null;
                     if (invalidSymbol) {
                         invalidSymbol.style.display = 'inline'; // Zeigt das X an
                     }
@@ -226,6 +227,7 @@ function validateOnButtonClick(step) {
         }
     });
 }
+
 
 validateOnButtonClick(step1Rt3ob); // Für den ersten Schritt
 validateOnButtonClick(step2Rt3ob); // Für den zweiten Schritt
