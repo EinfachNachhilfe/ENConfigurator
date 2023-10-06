@@ -2,10 +2,7 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
-const step1Rt3ob = document.getElementById('step-1-rt3ob');
-const step2Rt3ob = document.getElementById('step-2-rt3ob');
-const step3Rt3ob = document.getElementById('step-3-rt3ob');
-const step4Rt3ob = document.getElementById('step-4-rt3ob');
+
 
 //start const registration 3 or better
   const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
@@ -204,7 +201,7 @@ nextBtn.addEventListener('click', function() {
         }
 
         // Überprüfen Sie, ob ein Radiobutton in der Radiogruppe ausgewählt ist
-        let radioButtons = Array.from(document.getElementsByName(radioName));
+    
         let isSelected = radioButtons.some(button => button.checked);
 
         if (window.getComputedStyle(step, null).display === "block" && !isSelected && !existingErrorMessage) {
