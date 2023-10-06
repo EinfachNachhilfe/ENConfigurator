@@ -236,23 +236,26 @@ showTab(currentTab);
 
 
 function showErrorForEmptyInputs() {
-    // Alle sichtbaren Eingabefelder im aktuellen Tab holen
-    const visibleInputs = formItems[currentTab].querySelectorAll("input:required:visible, select:required:visible, textarea:required:visible");
+    // Alle erforderlichen Eingabefelder im aktuellen Tab holen
+    const requiredInputs = formItems[currentTab].querySelectorAll("input:required, select:required, textarea:required");
     
-    for (let input of visibleInputs) {
-        if (input.value.trim() === '') {
-            // Fehlermeldung anzeigen
-            const errorMessageElement = input.parentNode.querySelector('.form_input-error-message-wrapper > span');
-            if (errorMessageElement) {
-                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                errorMessageElement.style.display = 'block';
-                input.style.borderColor = '#9e367a';
-                input.style.borderWidth = '1.5px';
-                const validSymbol = input.parentNode.querySelector('.form_input-validation-image-wrapper > span:nth-child(1)');
-                const invalidSymbol = input.parentNode.querySelector('.form_input-validation-image-wrapper > span:nth-child(2)');
-                if (validSymbol) validSymbol.style.display = 'none';
-                if (invalidSymbol) invalidSymbol.style.display = 'inline'; // Zeigt das X an
-                shakeOnInvalid(input);
+    for (let input of requiredInputs) {
+        // Überprüfen, ob das Eingabefeld sichtbar ist
+        if (getComputedStyle(input).display !== 'none') {
+            if (input.value.trim() === '') {
+                // Fehlermeldung anzeigen
+                const errorMessageElement = input.parentNode.querySelector('.form_input-error-message-wrapper > span');
+                if (errorMessageElement) {
+                    errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                    errorMessageElement.style.display = 'block';
+                    input.style.borderColor = '#9e367a';
+                    input.style.borderWidth = '1.5px';
+                    const validSymbol = input.parentNode.querySelector('.form_input-validation-image-wrapper > span:nth-child(1)');
+                    const invalidSymbol = input.parentNode.querySelector('.form_input-validation-image-wrapper > span:nth-child(2)');
+                    if (validSymbol) validSymbol.style.display = 'none';
+                    if (invalidSymbol) invalidSymbol.style.display = 'inline'; // Zeigt das X an
+                    shakeOnInvalid(input);
+                }
             }
         }
     }
@@ -266,6 +269,7 @@ nextBtn.addEventListener("click", function() {
         nextPrev(1);
     }
 });
+
 
 
 
