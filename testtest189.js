@@ -186,6 +186,10 @@ if (inputElement.type === 'radio') {
     }
 });
 
+function hasErrorMessageForGroup(groupName) {
+    return !!document.querySelector(`.form_input-error-message-wrapper[data-group='${groupName}']`);
+}
+
 nextBtn.addEventListener('click', function() {
   if (nextBtn.classList.contains('disabled')) {
     if (inputElement.type === 'radio') {
@@ -193,10 +197,7 @@ nextBtn.addEventListener('click', function() {
       let radioGroup = document.getElementsByName(inputElement.name);
       let isOneChecked = Array.from(radioGroup).some(radio => radio.checked);
 
-      // Überprüfen, ob bereits eine Fehlermeldung für diese Gruppe angezeigt wird
-      const existingErrorMessage = document.querySelector(`.form_input-error-message-wrapper[data-group='${inputElement.name}']`);
-
-      if (!isOneChecked && !existingErrorMessage) {
+      if (!isOneChecked && !hasErrorMessageForGroup(inputElement.name)) {
         // Keiner der Radiobuttons ist ausgewählt und es gibt noch keine Fehlermeldung für diese Gruppe
         errorMessageElement.innerHTML = emptyErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -215,6 +216,7 @@ nextBtn.addEventListener('click', function() {
     }
   }
 });
+
 
 
 
