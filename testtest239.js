@@ -225,10 +225,15 @@ nextBtn.addEventListener('click', function() {
             shakeOnInvalid(inputElement);
         } else {
             let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
-          
+            radioGroups.forEach(group => {
+                if (isElementVisible(group)) {
+                    checkRadioErrorStatus(group);
+                }
+            });
         }
     }
 });
+
 
 // Event-Listener für Änderungen an Radio-Buttons
 let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
