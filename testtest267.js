@@ -609,3 +609,5 @@ function removeInputField(labelId, inputId) {
         vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
     }
 }
+
+}
