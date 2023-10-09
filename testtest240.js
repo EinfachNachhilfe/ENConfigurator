@@ -210,7 +210,6 @@ function checkRadioErrorStatus(group) {
     }
 }
 
-
 // Event-Listener für den Next-Button
 nextBtn.addEventListener('click', function() {
     if (nextBtn.classList.contains('disabled')) {
@@ -225,11 +224,7 @@ nextBtn.addEventListener('click', function() {
             shakeOnInvalid(inputElement);
         } else {
             let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
-            radioGroups.forEach(group => {
-                if (isElementVisible(group)) {
-                    checkRadioErrorStatus(group);
-                }
-            });
+            radioGroups.forEach(checkRadioErrorStatus);
         }
     }
 });
