@@ -6,11 +6,11 @@ let validationElements = {};
 
 
 //start const registration 3 or better
-  const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
-  const bdayStudent = document.getElementById('bday_student');
-  const emailPayable = document.getElementById('email_payable');
-  const phoneNumberPayable = document.getElementById('phone-number_payable');
-  const ibanPayable = document.getElementById('iban_payable');
+ const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location') || null;
+const bdayStudent = document.getElementById('bday_student') || null;
+const emailPayable = document.getElementById('email_payable') || null;
+const phoneNumberPayable = document.getElementById('phone-number_payable') || null;
+const ibanPayable = document.getElementById('iban_payable') || null;
 //end const registration 3 or better
 
 
@@ -283,12 +283,40 @@ submitBtn.addEventListener('click', function() {
 
 
 
-const specificElements = [
-    {element: zipCodeTeachingLocation, pattern: '\\d+', invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'},
-    {element: bdayStudent, pattern: '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$', invalidErrorMsg: 'Bitte geben Sie ein gültiges Geburtsdatum ein.'},
-    {element: emailPayable, pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'},
-    {element: phoneNumberPayable, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
-];
+const specificElements = [];
+
+if (zipCodeTeachingLocation) {
+  specificElements.push({
+    element: zipCodeTeachingLocation,
+    pattern: '\\d+',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'
+  });
+}
+
+if (bdayStudent) {
+  specificElements.push({
+    element: bdayStudent,
+    pattern: '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$',
+    invalidErrorMsg: 'Bitte geben Sie ein gültiges Geburtsdatum ein.'
+  });
+}
+
+if (emailPayable) {
+  specificElements.push({
+    element: emailPayable,
+    pattern: '^\\S+@\\S+\\.\\S+$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+  });
+}
+
+if (phoneNumberPayable) {
+  specificElements.push({
+    element: phoneNumberPayable,
+    pattern: '^\\+49[1-9]\\d{4,}$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
+  });
+}
+
 
 allInputs.forEach(inputElement => {
     // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
