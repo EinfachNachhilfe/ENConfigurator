@@ -184,15 +184,7 @@ if (inputElement.type === 'radio') {
         validSymbol.style.display = 'none';
         invalidSymbol.style.display = 'inline'; // Zeigt das X an
         shakeOnInvalid(inputElement);
-    }
-
-    validationElements[inputElement.id] = {
-        validSymbol: validSymbol,
-        invalidSymbol: invalidSymbol,
-        errorMessageElement: errorMessageElement
-    };
-
-     
+    }     
 });
 
 
@@ -270,7 +262,11 @@ submitBtn.addEventListener('click', function() {
     }
 });
 
-
+    validationElements[inputElement.id] = {
+        validSymbol: validSymbol,
+        invalidSymbol: invalidSymbol,
+        errorMessageElement: errorMessageElement
+    };
   
 }
 
