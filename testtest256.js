@@ -31,12 +31,14 @@ document.addEventListener("keydown", function(event) {
 
 //start Validation Phone Number
 function applyPhoneValidation(inputElement) {
-inputElement.addEventListener('focus', () => {
-if(inputElement.value === '') {
-inputElement.value = '+49';
-}
-});
-inputElement.addEventListener('input', () => checkInputPhone(inputElement));
+    if (inputElement) {
+        inputElement.addEventListener('focus', () => {
+            if (inputElement.value === '') {
+                inputElement.value = '+49';
+            }
+        });
+        inputElement.addEventListener('input', () => checkInputPhone(inputElement));
+    }
 }
 
 function checkInputPhone(inputElement) {
