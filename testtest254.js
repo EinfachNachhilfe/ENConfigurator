@@ -74,22 +74,30 @@ applyDateInputFormat(bdayStudent);
 //end bday validation
 
 //start iban validation
-function addIbanValidation(inputElement) {
-    inputElement.addEventListener('input', function() {
-      checkIbanInput(inputElement);
+function applyIbanValidation(inputElement, countryPrefix = 'DE') {
+    inputElement.addEventListener('focus', function() {
+        if (inputElement.value.trim() === '') {
+            inputElement.value = countryPrefix;
+        }
     });
-  }
-  
-  function checkIbanInput(inputElement) {
-    if (inputElement.value.substring(0, 2) !== 'DE') {
-      inputElement.value = 'DE';
-      inputElement.setSelectionRange(2,2);
+
+    inputElement.addEventListener('input', function() {
+        validateIbanInput(inputElement, countryPrefix);
+    });
+}
+
+function validateIbanInput(inputElement, countryPrefix) {
+    if (inputElement.value.substring(0, 2) !== countryPrefix) {
+        inputElement.value = countryPrefix;
+        inputElement.setSelectionRange(countryPrefix.length, countryPrefix.length);
     } else {
-      // Remove any non-numeric characters after 'DE'
-      inputElement.value = 'DE' + inputElement.value.substring(2).replace(/\D/g, '');
+        // Remove any non-numeric characters after the country prefix
+        let newValue = countryPrefix + inputElement.value.substring(2).replace(/\D/g, '');
+        inputElement.value = newValue;
     }
-  }
-  checkIbanInput(ibanPayable);
+}
+
+  applyIbanValidation(ibanPayable);
 
 //end iban validation
 
