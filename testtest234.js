@@ -190,8 +190,8 @@ if (inputElement.type === 'radio') {
 
 // Funktion, um den Fehlerstatus zu überprüfen und entsprechend zu aktualisieren
 function checkRadioErrorStatus(group) {
+   console.log("checkRadioErrorStatus wurde aufgerufen");
     if (!isElementVisible(group)) return; // Überprüfen Sie, ob die Gruppe sichtbar ist
-
     let radioButtons = group.querySelectorAll("input[type='radio']");
     let isSelected = Array.from(radioButtons).some(radio => radio.checked);
     let groupErrorMessageElement = group.nextElementSibling;
@@ -235,12 +235,13 @@ nextBtn.addEventListener('click', function() {
 let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
 allRadioButtons.forEach(radio => {
     radio.addEventListener('change', function() {
-        if (radio.type === "radio") {  // nur wenn es ein Radiobutton ist
-            let group = radio.closest('.form_item-input-bottom-gender');
-            checkRadioErrorStatus(group);
-        }
+        let group = radio.closest('.form_item-input-bottom-gender');
+        checkRadioErrorStatus(group);
     });
 });
+
+
+
 
 
 
@@ -533,7 +534,7 @@ inputFeld.name = inputId;
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
  
-  let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+    let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     let invalidErrorMsg = 'Ungültige Eingabe.';
     applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
 }
