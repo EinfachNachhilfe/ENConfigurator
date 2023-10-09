@@ -528,9 +528,7 @@ inputFeld.name = inputId;
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
  
-  let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
-    let invalidErrorMsg = 'Ungültige Eingabe.';
-    applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
+
 }
 
 function removeInputField(labelId, inputId) {
