@@ -360,13 +360,12 @@ input.style.transform = '';
 
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
-const currentStepElem = document.getElementById("currentStep");
-const totalStepsElem = document.getElementById("totalSteps");
 const regForm = document.getElementById("regForm");
+const nextBtn = document.querySelector('#nextBtn');
+const prevBtn = document.querySelector('#prevBtn');
+const submitBtn = document.querySelector('#submitBtn');
+
 let currentTab = 0;
-
-nextBtn.classList.add("disabled");
-
 
 if (nextBtn) {
     nextBtn.classList.add("disabled");
@@ -407,8 +406,10 @@ function showTab(n) {
         if (nextBtn) nextBtn.style.display = "flex";
     }
 
-    currentStepElem.textContent = n + 1;
-    totalStepsElem.textContent = formItems.length;
+    const currentStepElem = document.getElementById("currentStep");
+    const totalStepsElem = document.getElementById("totalSteps");
+    if (currentStepElem) currentStepElem.textContent = n + 1;
+    if (totalStepsElem) totalStepsElem.textContent = formItems.length;
 
     fixStepIndicator(n);
 }
