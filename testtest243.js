@@ -287,18 +287,6 @@ const specificElements = [
     {element: phoneNumber, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
 ];
 
-const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-        if (mutation.addedNodes.length) {
-            // Aktualisiere die allInputs-Liste jedes Mal, wenn ein Knoten hinzugefügt wird:
-            allInputs = document.querySelectorAll('input');  // oder eine spezifischere Auswahl
-            validateInputs();
-        }
-    });
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
-
 function validateInputs() {
     allInputs.forEach(inputElement => {
         if (!specificElements.some(e => e.element === inputElement)) {
@@ -548,7 +536,7 @@ inputFeld.name = inputId;
   
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
-   
+   validateInputs();
 }
 
 function removeInputField(labelId, inputId) {
