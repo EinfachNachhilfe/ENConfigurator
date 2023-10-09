@@ -368,9 +368,12 @@ let currentTab = 0;
 nextBtn.classList.add("disabled");
 
 
-nextBtn.addEventListener("click", function() {
-    nextPrev(1);
-});
+if (nextBtn) {
+    nextBtn.classList.add("disabled");
+    nextBtn.addEventListener("click", function() {
+        nextPrev(1);
+    });
+}
 prevBtn.addEventListener("click", function() {
     nextPrev(-1);
 });
