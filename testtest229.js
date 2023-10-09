@@ -456,29 +456,6 @@ function fixStepIndicator(n) {
 }
 
 
-function showErrorsForCurrentTab() {
-    const inputs = formItems[currentTab].querySelectorAll("input, select, textarea");
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            const errorMessageElement = inputs[i].parentNode.querySelector('.form_input-error-message-wrapper');
-            if (errorMessageElement) {
-                errorMessageElement.style.display = 'block';
-            }
-        }
-    }
-}
-
-nextBtn.addEventListener("click", function() {
-    if (!validateForm()) {
-        showErrorsForCurrentTab();
-    } else {
-        nextPrev(1);
-    }
-});
-
-
-
-
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
 const radioLearningDisorderJa = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='1']");
 const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='2']");
