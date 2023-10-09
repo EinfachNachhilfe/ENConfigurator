@@ -490,11 +490,19 @@ function validateForm() {
 
     if (valid) {
         formItems[currentTab].className += " finish";
-        nextBtn.classList.remove("disabled");
-      submitBtn.classList.remove("disabled");
+        if(nextBtn) {
+            nextBtn.classList.remove("disabled");
+        }
+        if(submitBtn) {
+            submitBtn.classList.remove("disabled");
+        }
     } else {
-       nextBtn.classList.add("disabled");
-       submitBtn.classList.add("disabled");
+        if(nextBtn) {
+            nextBtn.classList.add("disabled");
+        }
+        if(submitBtn) {
+            submitBtn.classList.add("disabled");
+        }
     }
     return valid;
 }
