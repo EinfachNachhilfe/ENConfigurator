@@ -383,7 +383,6 @@ if (prevBtn) {
 
 showTab(currentTab);
 
-
 function showTab(n) {
     formItems[n].style.display = "block";
 
@@ -395,16 +394,17 @@ function showTab(n) {
     validateForm();
 
     if (n === 0) {
-        prevBtn.style.display = "none";
+        if (prevBtn) prevBtn.style.display = "none";
     } else {
-        prevBtn.style.display = "flex";
+        if (prevBtn) prevBtn.style.display = "flex";
     }
+    
     if (n === (formItems.length - 1)) {
- submitBtn.style.display = "block";
- nextBtn.style.display = "none";
+        if (submitBtn) submitBtn.style.display = "block";
+        if (nextBtn) nextBtn.style.display = "none";
     } else {
-        nextBtn.style.display = "flex";
-       submitBtn.style.display = "none";
+        if (submitBtn) submitBtn.style.display = "none";
+        if (nextBtn) nextBtn.style.display = "flex";
     }
 
     currentStepElem.textContent = n + 1;
@@ -414,10 +414,10 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-    if (n == 1 && !validateForm()) {
+    if (nextBtn && n == 1 && !validateForm()) {
         nextBtn.classList.add("disabled");
         return false;
-    } else {
+    } else if (nextBtn) {
         nextBtn.classList.remove("disabled");
     }
 
@@ -429,6 +429,7 @@ function nextPrev(n) {
     }
     showTab(currentTab);
 }
+
 
 
 function validateForm() {
