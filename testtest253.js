@@ -89,7 +89,7 @@ function addIbanValidation(inputElement) {
       inputElement.value = 'DE' + inputElement.value.substring(2).replace(/\D/g, '');
     }
   }
-  checkIbanInput(checkIbanInput);
+  checkIbanInput(ibanPayable);
 
 //end iban validation
 
