@@ -510,20 +510,22 @@ const radioLearningDisorderJa = document.querySelector("input[type='radio'][name
 const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='2']");
 const containerLearningDisorder = document.getElementById("create-learning-disorder_student");
 
-radioLearningDisorderJa.addEventListener("change", function() {
-if (radioLearningDisorderJa.checked) {
-    createInputField(containerLearningDisorder, "infoText", "Welche Lernstörung?", "learning-disorder_student", "Lernstörung eingeben");
-  validateForm();
+if (radioLearningDisorderJa) {
+    radioLearningDisorderJa.addEventListener("change", function() {
+        if (radioLearningDisorderJa.checked) {
+            createInputField(containerLearningDisorder, "infoText", "Welche Lernstörung?", "learning-disorder_student", "Lernstörung eingeben");
+            validateForm();
+        }
+    });
 }
-});
 
-// Wenn "nein" ausgewählt wird, entfernen wir das Eingabefeld
-radioLearningDisorderNein.addEventListener("change", function() {
-removeInputField("infoText", "learning-disorder_student");
-  validateForm();
-});
+if (radioLearningDisorderNein) {
+    radioLearningDisorderNein.addEventListener("change", function() {
+        removeInputField("infoText", "learning-disorder_student");
+        validateForm();
+    });
+}
 
-// Überwachen Sie den Radio-Button "ja" für Rechnungsadresse
 const radioBillingAddressJa = document.querySelector("input[type='radio'][name='trigger_billing-address-rt3ob'][value='1']");
 const radioBillingAddressNein = document.querySelector("input[type='radio'][name='trigger_billing-address-rt3ob'][value='2']");
 
@@ -534,23 +536,28 @@ const billingDetails = [
 { containerId: "create-city-name_billing-address", labelId: "cityNameLabel", labelText: "Ort ", inputId: "city-name_billing-address", inputPlaceholder: "Ort eingeben" }
 ];
 
-// Wenn "ja" ausgewählt wird, erstellen wir die Eingabefelder für die Rechnungsadresse
-radioBillingAddressNein.addEventListener("change", function() {
-if (radioBillingAddressNein.checked) {
-    billingDetails.forEach(detail => {
-        createInputField(document.getElementById(detail.containerId), detail.labelId, detail.labelText, detail.inputId, detail.inputPlaceholder);
+if (radioBillingAddressNein) {
+    radioBillingAddressNein.addEventListener("change", function() {
+        if (radioBillingAddressNein.checked) {
+            billingDetails.forEach(detail => {
+                const container = document.getElementById(detail.containerId);
+                if (container) {
+                    createInputField(container, detail.labelId, detail.labelText, detail.inputId, detail.inputPlaceholder);
+                }
+            });
+            validateForm();
+        }
     });
-  validateForm();
 }
-});
 
-// Wenn "nein" ausgewählt wird, entfernen wir die Eingabefelder für die Rechnungsadresse
-radioBillingAddressJa.addEventListener("change", function() {
-billingDetails.forEach(detail => {
-    removeInputField(detail.labelId, detail.inputId);
-});
-  validateForm();
-});
+if (radioBillingAddressJa) {
+    radioBillingAddressJa.addEventListener("change", function() {
+        billingDetails.forEach(detail => {
+            removeInputField(detail.labelId, detail.inputId);
+        });
+        validateForm();
+    });
+
 
 function createInputField(container, labelId, labelText, inputId, inputPlaceholder) {
 const textDiv = document.createElement("div");
