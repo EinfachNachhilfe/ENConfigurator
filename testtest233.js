@@ -235,8 +235,10 @@ nextBtn.addEventListener('click', function() {
 let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
 allRadioButtons.forEach(radio => {
     radio.addEventListener('change', function() {
-        let group = radio.closest('.form_item-input-bottom-gender');
-        checkRadioErrorStatus(group);
+        if (radio.type === "radio") {  // nur wenn es ein Radiobutton ist
+            let group = radio.closest('.form_item-input-bottom-gender');
+            checkRadioErrorStatus(group);
+        }
     });
 });
 
