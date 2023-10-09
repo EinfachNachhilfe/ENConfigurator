@@ -72,7 +72,11 @@ if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
 e.target.value = value;
 });
 }
-applyDateInputFormat(bdayStudent);
+
+if (phoneNumberPayable) {
+    applyDateInputFormat(bdayStudent);
+}
+
 //end bday validation
 
 //start iban validation
@@ -98,8 +102,10 @@ function validateIbanInput(inputElement, countryPrefix) {
         inputElement.value = newValue;
     }
 }
+if (phoneNumberPayable) {
+    applyIbanValidation(ibanPayable);
+}
 
-  applyIbanValidation(ibanPayable);
 
 //end iban validation
 
