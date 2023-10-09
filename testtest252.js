@@ -6,15 +6,11 @@ let validationElements = {};
 
 
 //start const registration 3 or better
-  const zipCode = document.getElementById('zip-code_teaching-location');
-const firstNameSecondName = [
-    document.getElementById('first-name_student'),
-    document.getElementById('second-name_student')
-];
-
-  const bday = document.getElementById('bday_student');
-  const email = document.getElementById('email_payable');
-  const phoneNumber = document.getElementById('phone-number_payable');
+  const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
+  const bdayStudent = document.getElementById('bday_student');
+  const emailPayable = document.getElementById('email_payable');
+  const phoneNumberPayable = document.getElementById('phone-number_payable');
+  const ibanPayable = document.getElementById('iban_payable');
 //end const registration 3 or better
 
 
@@ -54,7 +50,7 @@ numberPart = numberPart.substring(1);
 inputElement.value = '+49' + numberPart;
 }
 }
-applyPhoneValidation(phoneNumber);
+applyPhoneValidation(phoneNumberPayable);
 
 //end Validation Phone Number
 
@@ -74,7 +70,7 @@ if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
 e.target.value = value;
 });
 }
-applyDateInputFormat(bday);
+applyDateInputFormat(bdayStudent);
 //end bday validation
 
 //start iban validation
@@ -93,7 +89,8 @@ function addIbanValidation(inputElement) {
       inputElement.value = 'DE' + inputElement.value.substring(2).replace(/\D/g, '');
     }
   }
-  
+  checkIbanInput(checkIbanInput);
+
 //end iban validation
 
 
@@ -279,11 +276,10 @@ submitBtn.addEventListener('click', function() {
 
 
 const specificElements = [
-    {element: firstNameSecondName, pattern: '^[A-Za-zäöüÄÖÜß ]+$', invalidErrorMsg: 'Bitte geben Sie einen gültigen Namen ein.'},
-    {element: zipCode, pattern: '\\d+', invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'},
-    {element: bday, pattern: '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$', invalidErrorMsg: 'Bitte geben Sie ein gültiges Geburtsdatum ein.'},
-    {element: email, pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'},
-    {element: phoneNumber, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
+    {element: zipCodeTeachingLocation, pattern: '\\d+', invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'},
+    {element: bdayStudent, pattern: '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$', invalidErrorMsg: 'Bitte geben Sie ein gültiges Geburtsdatum ein.'},
+    {element: emailPayable, pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'},
+    {element: phoneNumberPayable, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
 ];
 
 allInputs.forEach(inputElement => {
