@@ -510,6 +510,7 @@ billingDetails.forEach(detail => {
 });
 
 function createInputField(container, labelId, labelText, inputId, inputPlaceholder) {
+     console.log("Input-Feld wurde erstellt");
 const textDiv = document.createElement("div");
 textDiv.className = "form_label";
 textDiv.id = labelId;
