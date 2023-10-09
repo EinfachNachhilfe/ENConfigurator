@@ -361,9 +361,6 @@ input.style.transform = '';
 
 const formItems = document.getElementsByClassName("form_item-input-wrapper-tab");
 const regForm = document.getElementById("regForm");
-const nextBtn = document.querySelector('#nextBtn');
-const prevBtn = document.querySelector('#prevBtn');
-const submitBtn = document.querySelector('#submitBtn');
 
 let currentTab = 0;
 
