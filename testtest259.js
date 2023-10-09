@@ -50,7 +50,9 @@ numberPart = numberPart.substring(1);
 inputElement.value = '+49' + numberPart;
 }
 }
-applyPhoneValidation(phoneNumberPayable);
+if (phoneNumberPayable) {
+    applyPhoneValidation(phoneNumberPayable);
+}
 
 //end Validation Phone Number
 
