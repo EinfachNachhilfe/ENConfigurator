@@ -7,7 +7,11 @@ let validationElements = {};
 
 //start const registration 3 or better
   const zipCode = document.getElementById('zip-code_teaching-location');
-  const firstNameSecondName = document.getElementById('first-name_student');
+const firstNameSecondName = [
+    document.getElementById('first-name_student'),
+    document.getElementById('second-name_student')
+];
+
   const bday = document.getElementById('bday_student');
   const email = document.getElementById('email_payable');
   const phoneNumber = document.getElementById('phone-number_payable');
