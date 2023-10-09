@@ -287,15 +287,14 @@ const specificElements = [
     {element: phoneNumber, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
 ];
 
-function validateInputs() {
-    allInputs.forEach(inputElement => {
-        if (!specificElements.some(e => e.element === inputElement)) {
-            let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
-            let invalidErrorMsg = 'Ungültige Eingabe.';
-            applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
-        }
-    });
-}
+allInputs.forEach(inputElement => {
+    // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
+    if (!specificElements.some(e => e.element === inputElement)) {
+        let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+        let invalidErrorMsg = 'Ungültige Eingabe.';
+        applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
+    }
+});
 
 
 // Jetzt wenden Sie die applyValidation-Funktion mit benutzerdefinierten Mustern und Fehlermeldungen auf die spezifischen Elemente an
@@ -536,7 +535,7 @@ inputFeld.name = inputId;
   
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
-   validateInputs();
+  
 }
 
 function removeInputField(labelId, inputId) {
