@@ -11,8 +11,6 @@ let validationElements = {};
   const emailPayable = document.getElementById('email_payable');
   const phoneNumberPayable = document.getElementById('phone-number_payable');
   const ibanPayable = document.getElementById('iban_payable');
-  const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
-  const emailContactPerson = document.getElementById('email_contact-person');
 //end const registration 3 or better
 
 
@@ -31,14 +29,12 @@ document.addEventListener("keydown", function(event) {
 
 //start Validation Phone Number
 function applyPhoneValidation(inputElement) {
-    if (inputElement) {
-        inputElement.addEventListener('focus', () => {
-            if (inputElement.value === '') {
-                inputElement.value = '+49';
-            }
-        });
-        inputElement.addEventListener('input', () => checkInputPhone(inputElement));
-    }
+inputElement.addEventListener('focus', () => {
+if(inputElement.value === '') {
+inputElement.value = '+49';
+}
+});
+inputElement.addEventListener('input', () => checkInputPhone(inputElement));
 }
 
 function checkInputPhone(inputElement) {
@@ -55,7 +51,6 @@ inputElement.value = '+49' + numberPart;
 }
 }
 applyPhoneValidation(phoneNumberPayable);
-applyPhoneValidation(phoneNumberContactPerson);
 
 //end Validation Phone Number
 
@@ -292,7 +287,6 @@ const specificElements = [
     {element: zipCodeTeachingLocation, pattern: '\\d+', invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'},
     {element: bdayStudent, pattern: '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$', invalidErrorMsg: 'Bitte geben Sie ein gültiges Geburtsdatum ein.'},
     {element: emailPayable, pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'},
-   {element: emailContactPerson, pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'},
     {element: phoneNumberPayable, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
 ];
 
