@@ -2,6 +2,7 @@ const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
+let validationElements = {};
 
 
 //start const registration 3 or better
@@ -184,6 +185,14 @@ if (inputElement.type === 'radio') {
         invalidSymbol.style.display = 'inline'; // Zeigt das X an
         shakeOnInvalid(inputElement);
     }
+
+    validationElements[inputElement.id] = {
+        validSymbol: validSymbol,
+        invalidSymbol: invalidSymbol,
+        errorMessageElement: errorMessageElement
+    };
+
+     
 });
 
 
@@ -546,18 +555,28 @@ inputFeld.addEventListener("input", validateForm);
   let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     let invalidErrorMsg = 'Ungültige Eingabe.';
     applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
+    inputFeld.dispatchEvent(new Event('change'));
 }
 
 function removeInputField(labelId, inputId) {
-const vorhandenerText = document.getElementById(labelId);
-if (vorhandenerText) {
-    vorhandenerText.parentNode.removeChild(vorhandenerText);
-}
+    const vorhandenerText = document.getElementById(labelId);
+    if (vorhandenerText) {
+        vorhandenerText.parentNode.removeChild(vorhandenerText);
+    }
 
-const vorhandenesInputFeld = document.getElementById(inputId);
-if (vorhandenesInputFeld) {
-    vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
-}
+    const vorhandenesInputFeld = document.getElementById(inputId);
+    if (vorhandenesInputFeld) {
+        // Entfernen Sie auch die zugehörigen Validierungselemente
+        const elements = validationElements[inputId];
+        if (elements) {
+            elements.validSymbol.remove();
+            elements.invalidSymbol.remove();
+            elements.errorMessageElement.remove();
+            delete validationElements[inputId];
+        }
+
+        vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
+    }
 }
 
 
