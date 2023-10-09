@@ -6,11 +6,11 @@ let validationElements = {};
 
 
 //start const registration 3 or better
- const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location') || null;
-const bdayStudent = document.getElementById('bday_student') || null;
-const emailPayable = document.getElementById('email_payable') || null;
-const phoneNumberPayable = document.getElementById('phone-number_payable') || null;
-const ibanPayable = document.getElementById('iban_payable') || null;
+ const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
+const bdayStudent = document.getElementById('bday_student');
+const emailPayable = document.getElementById('email_payable');
+const phoneNumberPayable = document.getElementById('phone-number_payable');
+const ibanPayable = document.getElementById('iban_payable');
 //end const registration 3 or better
 
 
@@ -227,23 +227,25 @@ function checkRadioErrorStatus(group) {
 }
 
 // Event-Listener für den Next-Button
-nextBtn.addEventListener('click', function() {
-    if (nextBtn.classList.contains('disabled')) {
-        // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
-            errorMessageElement.innerHTML = emptyErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a';
-            inputElement.style.borderWidth = '1.5px';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline';
-            shakeOnInvalid(inputElement);
-        } else {
-            let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
-            radioGroups.forEach(checkRadioErrorStatus);
+if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+        if (nextBtn.classList.contains('disabled')) {
+            // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
+            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+                errorMessageElement.innerHTML = emptyErrorMsg;
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = '#9e367a';
+                inputElement.style.borderWidth = '1.5px';
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'inline';
+                shakeOnInvalid(inputElement);
+            } else {
+                let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
+                radioGroups.forEach(checkRadioErrorStatus);
+            }
         }
-    }
-});
+    });
+}
 
 // Event-Listener für Änderungen an Radio-Buttons
 let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
