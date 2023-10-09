@@ -301,6 +301,21 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
+
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            // Nehmen wir an, dass ein neues Eingabefeld erstellt wird, wenn das Radio-Input ausgewählt wird
+            let newInput = document.createElement('input');
+            newInput.type = 'text';
+            e.target.parentNode.appendChild(newInput); // Hier nur ein Beispiel, wo das neue Feld hinzugefügt wird
+            
+            // Füge das neue Eingabefeld zur Liste allInputs hinzu
+            allInputs.push(newInput);
+        }
+    });
+});
+
  
 
 
@@ -533,9 +548,6 @@ inputFeld.name = inputId;
   
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
-  let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
-    let invalidErrorMsg = 'Ungültige Eingabe.';
-    applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
    
 }
 
