@@ -555,7 +555,6 @@ inputFeld.addEventListener("input", validateForm);
   let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     let invalidErrorMsg = 'Ungültige Eingabe.';
     applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
-    inputFeld.dispatchEvent(new Event('change'));
 }
 
 function removeInputField(labelId, inputId) {
