@@ -212,7 +212,6 @@ function checkRadioErrorStatus(group) {
 
 // Event-Listener für den Next-Button
 nextBtn.addEventListener('click', function() {
-    if (nextBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
@@ -226,7 +225,6 @@ nextBtn.addEventListener('click', function() {
             let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
             radioGroups.forEach(checkRadioErrorStatus);
         }
-    }
 });
 
 
@@ -304,7 +302,6 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
 });
 
  
-
 
 
 //start function shake
@@ -535,6 +532,9 @@ inputFeld.name = inputId;
   
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
+  let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+    let invalidErrorMsg = 'Ungültige Eingabe.';
+    applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
   
 }
 
