@@ -486,8 +486,8 @@ const billingDetails = [
 ];
 
 // Wenn "ja" ausgewählt wird, erstellen wir die Eingabefelder für die Rechnungsadresse
-radioBillingAddressJa.addEventListener("change", function() {
-if (radioBillingAddressJa.checked) {
+radioBillingAddressNein.addEventListener("change", function() {
+if (radioBillingAddressNein.checked) {
     billingDetails.forEach(detail => {
         createInputField(document.getElementById(detail.containerId), detail.labelId, detail.labelText, detail.inputId, detail.inputPlaceholder);
     });
@@ -496,7 +496,7 @@ if (radioBillingAddressJa.checked) {
 });
 
 // Wenn "nein" ausgewählt wird, entfernen wir die Eingabefelder für die Rechnungsadresse
-radioBillingAddressNein.addEventListener("change", function() {
+radioBillingAddressJa.addEventListener("change", function() {
 billingDetails.forEach(detail => {
     removeInputField(detail.labelId, detail.inputId);
 });
