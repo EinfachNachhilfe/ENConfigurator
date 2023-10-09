@@ -287,33 +287,33 @@ const specificElements = [
     {element: phoneNumber, pattern: '^\\+49[1-9]\\d{4,}$', invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'}
 ];
 
-allInputs.forEach(inputElement => {
-    // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
-    if (!specificElements.some(e => e.element === inputElement)) {
-        let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
-        let invalidErrorMsg = 'Ungültige Eingabe.';
-        applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
-    }
+const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.addedNodes.length) {
+            // Aktualisiere die allInputs-Liste jedes Mal, wenn ein Knoten hinzugefügt wird:
+            allInputs = document.querySelectorAll('input');  // oder eine spezifischere Auswahl
+            validateInputs();
+        }
+    });
 });
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+function validateInputs() {
+    allInputs.forEach(inputElement => {
+        if (!specificElements.some(e => e.element === inputElement)) {
+            let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+            let invalidErrorMsg = 'Ungültige Eingabe.';
+            applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg);
+        }
+    });
+}
+
 
 // Jetzt wenden Sie die applyValidation-Funktion mit benutzerdefinierten Mustern und Fehlermeldungen auf die spezifischen Elemente an
 specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
-});
-
-document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
-        if (e.target.checked) {
-            // Nehmen wir an, dass ein neues Eingabefeld erstellt wird, wenn das Radio-Input ausgewählt wird
-            let newInput = document.createElement('input');
-            newInput.type = 'text';
-            e.target.parentNode.appendChild(newInput); // Hier nur ein Beispiel, wo das neue Feld hinzugefügt wird
-            
-            // Füge das neue Eingabefeld zur Liste allInputs hinzu
-            allInputs.push(newInput);
-        }
-    });
 });
 
  
