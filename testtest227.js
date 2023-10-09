@@ -488,14 +488,15 @@ const radioLearningDisorderJa = document.querySelector("input[type='radio'][name
 const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='2']");
 const containerLearningDisorder = document.getElementById("create-learning-disorder_student");
 
-radioLearningDisorderNein.addEventListener("change", function() {
-if (radioLearningDisorderNein.checked) {
+radioLearningDisorderJa.addEventListener("change", function() {
+if (radioLearningDisorderJa.checked) {
     createInputField(containerLearningDisorder, "infoText", "Welche Lernstörung?", "learning-disorder_student", "Lernstörung eingeben");
   validateForm();
 }
 });
 
-radioLearningDisorderJa.addEventListener("change", function() {
+// Wenn "nein" ausgewählt wird, entfernen wir das Eingabefeld
+radioLearningDisorderNein.addEventListener("change", function() {
 removeInputField("infoText", "learning-disorder_student");
   validateForm();
 });
@@ -511,8 +512,9 @@ const billingDetails = [
 { containerId: "create-city-name_billing-address", labelId: "cityNameLabel", labelText: "Ort ", inputId: "city-name_billing-address", inputPlaceholder: "Ort eingeben" }
 ];
 
-radioBillingAddressNein.addEventListener("change", function() {
-if (radioBillingAddressNein.checked) {
+// Wenn "ja" ausgewählt wird, erstellen wir die Eingabefelder für die Rechnungsadresse
+radioBillingAddressJa.addEventListener("change", function() {
+if (radioBillingAddressJa.checked) {
     billingDetails.forEach(detail => {
         createInputField(document.getElementById(detail.containerId), detail.labelId, detail.labelText, detail.inputId, detail.inputPlaceholder);
     });
@@ -520,7 +522,8 @@ if (radioBillingAddressNein.checked) {
 }
 });
 
-radioBillingAddressJa.addEventListener("change", function() {
+// Wenn "nein" ausgewählt wird, entfernen wir die Eingabefelder für die Rechnungsadresse
+radioBillingAddressNein.addEventListener("change", function() {
 billingDetails.forEach(detail => {
     removeInputField(detail.labelId, detail.inputId);
 });
