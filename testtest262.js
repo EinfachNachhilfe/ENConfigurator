@@ -374,9 +374,12 @@ if (nextBtn) {
         nextPrev(1);
     });
 }
-prevBtn.addEventListener("click", function() {
-    nextPrev(-1);
-});
+
+if (prevBtn) {
+    prevBtn.addEventListener("click", function() {
+        nextPrev(-1);
+    });
+}
 
 showTab(currentTab);
 
