@@ -6,11 +6,11 @@ let validationElements = {};
 
 
 //start const registration 3 or better
-  const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
-  const firstNameSecondName = document.getElementById('first-name_student-rt3ob');
-  const bday = document.getElementById('bday_student-rt3ob');
-  const email = document.getElementById('email_payable-rt3ob');
-  const phoneNumber = document.getElementById('phone-number_payable-rt3ob');
+  const zipCode = document.getElementById('zip-code_teaching-location');
+  const firstNameSecondName = document.getElementById('first-name_student');
+  const bday = document.getElementById('bday_student');
+  const email = document.getElementById('email_payable');
+  const phoneNumber = document.getElementById('phone-number_payable');
 //end const registration 3 or better
 
 
