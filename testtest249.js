@@ -6,15 +6,11 @@ let validationElements = {};
 
 
 //start const registration 3 or better
-  const zipCode = document.getElementById('zip-code_teaching-location');
- const firstNameSecondName = [
-    document.getElementById('first-name_student'),
-    document.getElementById('second-name_student')
-];
-
-  const bday = document.getElementById('bday_student');
-  const email = document.getElementById('email_payable');
-  const phoneNumber = document.getElementById('phone-number_payable');
+  const zipCode = document.getElementById('zip-code_teaching-location-rt3ob');
+  const firstNameSecondName = document.getElementById('first-name_student-rt3ob');
+  const bday = document.getElementById('bday_student-rt3ob');
+  const email = document.getElementById('email_payable-rt3ob');
+  const phoneNumber = document.getElementById('phone-number_payable-rt3ob');
 //end const registration 3 or better
 
 
@@ -105,7 +101,6 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-  console.log("applyValidation wurde aufgerufen");
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -216,6 +211,7 @@ function checkRadioErrorStatus(group) {
 
 // Event-Listener für den Next-Button
 nextBtn.addEventListener('click', function() {
+    if (nextBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
@@ -229,8 +225,8 @@ nextBtn.addEventListener('click', function() {
             let radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
             radioGroups.forEach(checkRadioErrorStatus);
         }
+    }
 });
-
 
 // Event-Listener für Änderungen an Radio-Buttons
 let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
@@ -240,9 +236,6 @@ allRadioButtons.forEach(radio => {
         checkRadioErrorStatus(group);
     });
 });
-
-
-
 
 
 
@@ -298,14 +291,13 @@ allInputs.forEach(inputElement => {
     }
 });
 
-
 // Jetzt wenden Sie die applyValidation-Funktion mit benutzerdefinierten Mustern und Fehlermeldungen auf die spezifischen Elemente an
 specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
-
  
+
 
 
 //start function shake
@@ -512,7 +504,6 @@ billingDetails.forEach(detail => {
 });
 
 function createInputField(container, labelId, labelText, inputId, inputPlaceholder) {
-     console.log("Input-Feld wurde erstellt");
 const textDiv = document.createElement("div");
 textDiv.className = "form_label";
 textDiv.id = labelId;
@@ -536,10 +527,10 @@ inputFeld.name = inputId;
   
 container.appendChild(inputFeld);
 inputFeld.addEventListener("input", validateForm);
+ 
   let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     let invalidErrorMsg = 'Ungültige Eingabe.';
     applyValidation(inputFeld, emptyErrorMsg, invalidErrorMsg);
-  
 }
 
 function removeInputField(labelId, inputId) {
@@ -562,7 +553,3 @@ function removeInputField(labelId, inputId) {
         vorhandenesInputFeld.parentNode.removeChild(vorhandenesInputFeld);
     }
 }
-
-
-
-
