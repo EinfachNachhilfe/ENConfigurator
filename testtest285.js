@@ -3,34 +3,6 @@
         return;
     }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Beim Laden der Seite: Eingaben aus dem Local Storage wiederherstellen
-    const allInputs = document.querySelectorAll("input, select");
-    allInputs.forEach(input => {
-        let savedValue = localStorage.getItem(input.id);
-        if (savedValue) {
-            input.value = savedValue;
-        }
-
-        // Eingabefelder im Local Storage speichern, sobald sie bearbeitet werden
-        input.addEventListener("input", function() {
-            localStorage.setItem(input.id, input.value);
-        });
-    });
-
-    // Bei Formularabsendung: gespeicherte Daten aus dem Local Storage löschen
-    const regForm = document.getElementById("regForm");
-    if (regForm) {
-        regForm.addEventListener("submit", function() {
-            allInputs.forEach(input => {
-                localStorage.removeItem(input.id);
-            });
-        });
-    }
-});
-
-
-
 
 //start general
 const nextBtn = document.querySelector('#nextBtn');
