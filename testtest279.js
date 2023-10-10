@@ -51,7 +51,7 @@ window.addEventListener("beforeunload", saveState);
 document.addEventListener("DOMContentLoaded", restoreState);
 
 // Zustand löschen, nachdem das Formular erfolgreich abgeschickt wurde
-regForm.addEventListener('submit', clearState);
+
 
 
 //start general
