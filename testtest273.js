@@ -1,9 +1,10 @@
+//start general
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
 let validationElements = {};
-
+//end general
 
 //start const registration 3 or better
 const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
@@ -11,10 +12,13 @@ const bdayStudent = document.getElementById('bday_student');
 const emailPayable = document.getElementById('email_payable');
 const phoneNumberPayable = document.getElementById('phone-number_payable');
 const ibanPayable = document.getElementById('iban_payable');
+//end const registration 3 or better
+
+//start cancel tutoring
 const emailCustomer = document.getElementById('email_customer');
 const phoneNumberCustomer = document.getElementById('phone-number_customer');
 const contractTerminationCustomer = document.getElementById('contract-termination_customer');
-//end const registration 3 or better
+//end cancel tutoring
 
 
 //start stepchange with enter
@@ -53,6 +57,7 @@ numberPart = numberPart.substring(1);
 inputElement.value = '+49' + numberPart;
 }
 }
+
 if (phoneNumberPayable) {
     applyPhoneValidation(phoneNumberPayable);
 }
@@ -60,7 +65,6 @@ if (phoneNumberPayable) {
 if (phoneNumberCustomer) {
     applyPhoneValidation(phoneNumberCustomer);
 }
-
 //end Validation Phone Number
 
 
@@ -116,11 +120,11 @@ function validateIbanInput(inputElement, countryPrefix) {
 if (phoneNumberPayable) {
     applyIbanValidation(ibanPayable);
 }
-
-
 //end iban validation
 
 
+
+//start form validation
 function isElementVisible(el) {
     if (!el || el === document.body) return true; // Wenn wir den Body erreichen, ist das Element sichtbar
     if (window.getComputedStyle(el, null).display === 'none') return false; // Das Element ist unsichtbar
@@ -384,7 +388,7 @@ input.style.transform = '';
 }
 //end function shake
 
-
+//end form validation
 
 
 
