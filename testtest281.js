@@ -3,10 +3,18 @@
         return;
     }
 
-document.addEventListener("DOMContentLoaded", function() {
+//start general
+const nextBtn = document.querySelector('#nextBtn');
+const prevBtn = document.querySelector('#prevBtn');
+const submitBtn = document.querySelector('#submitBtn');
+const allInputs = document.querySelectorAll('input, select, textarea');
+let validationElements = {};
+//end general
+
+    document.addEventListener("DOMContentLoaded", function() {
+    applyValidation();
     // Beim Laden der Seite: Eingaben aus dem Local Storage wiederherstellen
-    const allInputs = document.querySelectorAll("input, select");
-    allInputs.forEach(input => {
+  allInputs.forEach(input => {
         let savedValue = localStorage.getItem(input.id);
         if (savedValue) {
             input.value = savedValue;
@@ -27,18 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     }
+
+    
 });
-
-
-
-
-//start general
-const nextBtn = document.querySelector('#nextBtn');
-const prevBtn = document.querySelector('#prevBtn');
-const submitBtn = document.querySelector('#submitBtn');
-const allInputs = document.querySelectorAll('input, select, textarea');
-let validationElements = {};
-//end general
 
 //start const registration 3 or better
 const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
