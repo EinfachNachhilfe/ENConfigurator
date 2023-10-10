@@ -6,11 +6,14 @@ let validationElements = {};
 
 
 //start const registration 3 or better
- const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
+const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
 const bdayStudent = document.getElementById('bday_student');
 const emailPayable = document.getElementById('email_payable');
 const phoneNumberPayable = document.getElementById('phone-number_payable');
 const ibanPayable = document.getElementById('iban_payable');
+const emailCustomer = document.getElementById('email_customer');
+const phoneNumberCustomer = document.getElementById('phone-number_customer');
+const contractTerminationCustomer = document.getElementById('contract-termination_customer');
 //end const registration 3 or better
 
 
@@ -75,6 +78,10 @@ e.target.value = value;
 
 if (phoneNumberPayable) {
     applyDateInputFormat(bdayStudent);
+}
+
+if (contractTerminationCustomer) {
+    applyDateInputFormat(contractTerminationCustomer);
 }
 
 //end bday validation
@@ -322,6 +329,22 @@ if (emailPayable) {
 if (phoneNumberPayable) {
   specificElements.push({
     element: phoneNumberPayable,
+    pattern: '^\\+49[1-9]\\d{4,}$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
+  });
+}
+
+if (emailCustomer) {
+  specificElements.push({
+    element: emailCustomer,
+    pattern: '^\\S+@\\S+\\.\\S+$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+  });
+}
+
+if (phoneNumberCustomer) {
+  specificElements.push({
+    element: phoneNumberCustomer,
     pattern: '^\\+49[1-9]\\d{4,}$',
     invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
   });
