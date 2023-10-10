@@ -305,15 +305,6 @@ allRadioButtons.forEach(radio => {
 });
 
 
-
-
-
-
-
-
-
-
-
 submitBtn.addEventListener('click', function() {
     if (submitBtn.classList.contains('disabled')) {
         // Überprüfen Sie, ob das Eingabefeld und seine übergeordneten Elemente sichtbar sind
