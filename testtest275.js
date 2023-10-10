@@ -1,6 +1,7 @@
-if (window.SKIP_MAIN_SCRIPT) {
-    return;
-}
+(function() {
+    if (window.SKIP_MAIN_SCRIPT) {
+        return;
+    }
 
 //start general
 const nextBtn = document.querySelector('#nextBtn');
@@ -656,3 +657,5 @@ function removeInputField(labelId, inputId) {
 }
 
 }
+
+    })();
