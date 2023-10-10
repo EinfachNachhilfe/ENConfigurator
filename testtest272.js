@@ -57,6 +57,10 @@ if (phoneNumberPayable) {
     applyPhoneValidation(phoneNumberPayable);
 }
 
+if (phoneNumberCustomer) {
+    applyPhoneValidation(phoneNumberCustomer);
+}
+
 //end Validation Phone Number
 
 
