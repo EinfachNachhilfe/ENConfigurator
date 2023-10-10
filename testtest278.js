@@ -2,7 +2,58 @@
     if (window.SKIP_MAIN_SCRIPT) {
         return;
     }
-applyValidation();
+
+    // Funktion zum Speichern des aktuellen Zustands
+function saveState() {
+    const state = {
+        currentTab: currentTab,
+        validation: Array.from(formItems).map(item => {
+            const inputs = item.getElementsByTagName("input");
+            return Array.from(inputs).map(input => ({
+                id: input.id,
+                validity: input.checkValidity(),
+                value: input.value
+            }));
+        })
+    };
+    localStorage.setItem('formState', JSON.stringify(state));
+}
+
+// Funktion zum Wiederherstellen des gespeicherten Zustands
+function restoreState() {
+    const savedState = JSON.parse(localStorage.getItem('formState'));
+    if (savedState) {
+        currentTab = savedState.currentTab;
+        savedState.validation.forEach((tab, tabIndex) => {
+            tab.forEach(inputState => {
+                const input = document.getElementById(inputState.id);
+                if (input) {
+                    input.value = inputState.value;
+                    if (!inputState.validity) {
+                        input.className += " invalid";
+                    }
+                }
+            });
+        });
+        showTab(currentTab);
+    }
+}
+
+// Funktion zum Löschen des gespeicherten Zustands
+function clearState() {
+    localStorage.removeItem('formState');
+}
+
+// Zustand beim Verlassen der Seite speichern
+window.addEventListener("beforeunload", saveState);
+
+// Zustand beim Laden der Seite wiederherstellen
+document.addEventListener("DOMContentLoaded", restoreState);
+
+// Zustand löschen, nachdem das Formular erfolgreich abgeschickt wurde
+regForm.addEventListener('submit', clearState);
+
+
 //start general
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
