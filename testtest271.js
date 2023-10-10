@@ -539,8 +539,8 @@ function fixStepIndicator(n) {
 
 
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
-const radioLearningDisorderJa = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='1']");
-const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder-rt3ob'][value='2']");
+const radioLearningDisorderJa = document.querySelector("input[type='radio'][name='trigger_learning-disorder'][value='1']");
+const radioLearningDisorderNein = document.querySelector("input[type='radio'][name='trigger_learning-disorder'][value='2']");
 const containerLearningDisorder = document.getElementById("create-learning-disorder_student");
 
 if (radioLearningDisorderJa) {
@@ -559,8 +559,8 @@ if (radioLearningDisorderNein) {
     });
 }
 
-const radioBillingAddressJa = document.querySelector("input[type='radio'][name='trigger_billing-address-rt3ob'][value='1']");
-const radioBillingAddressNein = document.querySelector("input[type='radio'][name='trigger_billing-address-rt3ob'][value='2']");
+const radioBillingAddressJa = document.querySelector("input[type='radio'][name='trigger_billing-address'][value='1']");
+const radioBillingAddressNein = document.querySelector("input[type='radio'][name='trigger_billing-address'][value='2']");
 
 const billingDetails = [
 { containerId: "create-street-name_billing-address", labelId: "streetNameLabel", labelText: "Straßenname ", inputId: "street-name_billing-address", inputPlaceholder: "Straßenname eingeben" },
