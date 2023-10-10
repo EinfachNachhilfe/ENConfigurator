@@ -12,7 +12,7 @@ let validationElements = {};
 //end general
 
     document.addEventListener("DOMContentLoaded", function() {
-    applyValidation();
+
     // Beim Laden der Seite: Eingaben aus dem Local Storage wiederherstellen
   allInputs.forEach(input => {
         let savedValue = localStorage.getItem(input.id);
