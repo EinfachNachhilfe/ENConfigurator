@@ -44,6 +44,7 @@ var submitBtn = document.getElementById('submit-btn');
  const inputValidationZipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
  const inputValidationClassStudent = document.getElementById('class_student');
  const inputValidationCouponCode = document.getElementById('coupon-code');
+const inputValidationRecallContactPerson = document.getElementById('recall_contact-person');
 
 
  //start stepchange with enter
@@ -138,6 +139,7 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
   applyValidation(inputValidationPhoneNumberContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.','^\\+49[1-9]\\d{1,}$');
   applyValidation(inputValidationZipCodeTeachingLocation, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.', '\\d+');
   applyValidation(inputValidationClassStudent, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.'); 
+applyValidation(inputValidationRecallContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
  
 
 function applyValidationCouponCode(inputElement) {
@@ -229,7 +231,7 @@ applyValidationCouponCode(inputValidationCouponCode);
     validateOnButtonClick(inputValidationEmailContactPerson, step8);
     validateOnButtonClick(inputValidationClassStudent, step8);
     validateOnButtonClick(inputValidationZipCodeTeachingLocation, step8);
- 
+    validateOnButtonClick(inputValidationRecallContactPerson, step8);
 
 
   //start function shake
