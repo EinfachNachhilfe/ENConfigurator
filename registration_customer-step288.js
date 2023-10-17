@@ -44,7 +44,7 @@ const inputValidationStreetNameBillingAddress = document.getElementById('street-
 const inputValidationHouseNumberBillingAddress = document.getElementById('house-number_billing-address'); 
 const inputValidationZipCodeBillingAddress = document.getElementById('zip-code_billing-address'); 
 const inputValidationCityNameBillingAddress = document.getElementById('city-name_billing-address');
-const inputValidationRecallContactPerson = document.getElementById('recall_contact-person');
+
 
 const inputValidationGenderStudent = document.querySelector('input[name="gender_student"]');
 const inputValidationGenderPayable = document.querySelector('input[name="gender_payable"]');
@@ -168,7 +168,7 @@ applyValidation(inputValidationStreetNameBillingAddress, 'Dieses Feld muss ausge
 applyValidation(inputValidationHouseNumberBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationZipCodeBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 applyValidation(inputValidationCityNameBillingAddress, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-applyValidation(inputValidationRecallContactPerson, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+
 
 
  function validateOnButtonClick(inputElement, step) {
@@ -210,7 +210,7 @@ validateOnButtonClick(inputValidationStreetNameBillingAddress, step3);
 validateOnButtonClick(inputValidationHouseNumberBillingAddress, step3);
 validateOnButtonClick(inputValidationZipCodeBillingAddress, step3);
 validateOnButtonClick(inputValidationCityNameBillingAddress, step3);
-validateOnButtonClick(inputValidationRecallContactPerson, step3);
+
 
 
 
