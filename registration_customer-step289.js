@@ -389,7 +389,7 @@ billingAddressPayable.forEach(function(radio) {
 });
   
   function checkCheckboxSelected1() {
-    if (selectedCheckboxes === 2) {
+    if (selectedCheckboxes === 1) {
       submitBtn.classList.remove('disabled');
     } else {
       submitBtn.classList.add('disabled');
