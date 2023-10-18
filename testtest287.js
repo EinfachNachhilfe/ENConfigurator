@@ -27,6 +27,11 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 //end cancel tutoring
 
 
+//start contact form
+    const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
+//end contact form
+
+
 //start stepchange with enter
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
@@ -70,6 +75,10 @@ if (phoneNumberPayable) {
 
 if (phoneNumberCustomer) {
     applyPhoneValidation(phoneNumberCustomer);
+}
+
+    if (phoneNumberContactPerson) {
+    applyPhoneValidation(phoneNumberContactPerson);
 }
 //end Validation Phone Number
 
@@ -359,6 +368,15 @@ if (emailCustomer) {
 if (phoneNumberCustomer) {
   specificElements.push({
     element: phoneNumberCustomer,
+    pattern: '^\\+49[1-9]\\d{4,}$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
+  });
+}
+
+
+    if (phoneNumberContactPerson) {
+  specificElements.push({
+    element: phoneNumberContactPerson,
     pattern: '^\\+49[1-9]\\d{4,}$',
     invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
   });
