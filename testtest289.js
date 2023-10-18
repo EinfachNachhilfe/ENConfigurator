@@ -26,6 +26,10 @@ const phoneNumberCustomer = document.getElementById('phone-number_customer');
 const contractTerminationCustomer = document.getElementById('contract-termination_customer');
 //end cancel tutoring
 
+    //start contact form
+    const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
+//end contact form
+
 
 
 
@@ -75,6 +79,9 @@ if (phoneNumberCustomer) {
     applyPhoneValidation(phoneNumberCustomer);
 }
 
+        if (phoneNumberContactPerson) {
+    applyPhoneValidation(phoneNumberContactPerson);
+}
 
 //end Validation Phone Number
 
@@ -369,6 +376,13 @@ if (phoneNumberCustomer) {
   });
 }
 
+        if (phoneNumberContactPerson) {
+  specificElements.push({
+    element: phoneNumberContactPerson,
+    pattern: '^\\+49[1-9]\\d{4,}$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
+  });
+}
 
 
 
