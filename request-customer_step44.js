@@ -655,14 +655,6 @@ var isAllFieldsFilled4 = false;
         });
 
 
-//remove empty input
-document.getElementById("myForm").addEventListener("submit", function(event){
-    event.preventDefault();
-    customSubmit();
-});
-
-
-
 
 
 
