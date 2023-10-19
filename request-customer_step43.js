@@ -656,16 +656,11 @@ var isAllFieldsFilled4 = false;
 
 
 //remove empty input
-document.addEventListener('submit', function(e) {
-    if (e.target.name === 'request_customer') {
-        var inputs = e.target.querySelectorAll('input, textarea, select');
-        inputs.forEach(function(input) {
-            if (!input.value) {
-                input.disabled = true;
-            }
-        });
-    }
+document.getElementById("myForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    customSubmit();
 });
+
 
 
 
