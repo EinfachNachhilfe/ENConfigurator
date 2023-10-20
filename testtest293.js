@@ -1,3 +1,7 @@
+(function() {
+    if (window.SKIP_MAIN_SCRIPT) {
+        return;
+    }
 
 
 //start general
@@ -678,4 +682,4 @@ function removeInputField(labelId, inputId) {
 }
 
 }
-
+})
