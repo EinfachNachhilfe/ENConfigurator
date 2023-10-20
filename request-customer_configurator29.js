@@ -1684,7 +1684,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 var currentDateTime = year + month + day + hours + minutes + seconds;
 
-                var referenz = codegenerator + currentDateTime;
+                var referenz = currentDateTime;
 
 		
                 $('.customer-referenz').val(referenz);
@@ -1717,6 +1717,9 @@ document.addEventListener("DOMContentLoaded", function() {
         totalBudget1 = totalBudget1.toFixed(2).replace(".", ",");
         $("[bloc=lifetimeValue]").text(totalBudget1);
         $('.send-lifetimeValue').val(totalBudget1);
+
+	totalsalary = totalsalary.toFixed(2).replace(".", ",");
+        $('.teacher-salary').val(totalsalary);
 
 	}
 
