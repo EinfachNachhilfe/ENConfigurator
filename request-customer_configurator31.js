@@ -1706,8 +1706,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
       // Preis pro Minute berechnen
-const salaryPerMinute = totalsalary / 45;          
-const totalsalaryhour = salaryPerMinute * 60;
+let salaryPerMinute = totalsalary / 45;          
+let totalsalaryhour = salaryPerMinute * 60;
 
 
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
