@@ -1,8 +1,3 @@
-if (window.SKIP_MAIN_SCRIPT) {
-    return;
-}
-
-
 //start general
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
