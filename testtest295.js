@@ -682,4 +682,4 @@ function removeInputField(labelId, inputId) {
 }
 
 }
-});
+})();
