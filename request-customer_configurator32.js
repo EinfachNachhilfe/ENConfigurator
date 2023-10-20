@@ -1641,7 +1641,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     mycustomradiobox4.forEach(function(radio) {
                   if (radio.checked) {
                     if (radio.value == '1') {
-                      totalBudget1 = totalBudget1 * 4;
+                      totalBudget1 = totalBudget1 * 4 + 69.99;
                     } else if (radio.value == '2') {
                       totalBudget1 = totalBudget1 * 12;
                     } else if (radio.value == '3') {
@@ -1653,7 +1653,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     mycustomradiobox5.forEach(function(radio) {
                   if (radio.checked) {
                     if (radio.value == '1') {
-                      totalBudget1 = totalBudget1 * 4;
+                      totalBudget1 = totalBudget1 * 4 + 69.99;
                     } else if (radio.value == '2') {
                       totalBudget1 = totalBudget1 * 12;
                     } else if (radio.value == '3') {
@@ -1665,7 +1665,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     mycustomradiobox6.forEach(function(radio) {
                   if (radio.checked) {
                     if (radio.value == '1') {
-                      totalBudget1 = totalBudget1 * 4;
+                      totalBudget1 = totalBudget1 * 4 + 69.99;
                     } else if (radio.value == '2') {
                       totalBudget1 = totalBudget1 * 12;
                     } else if (radio.value == '3') {
