@@ -1705,7 +1705,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-                
+      // Preis pro Minute berechnen
+const salaryPerMinute = totalsalary / 45;          
+const totalsalaryhour = salaryPerMinute * 60;
 
 
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
@@ -1718,8 +1720,8 @@ document.addEventListener("DOMContentLoaded", function() {
         $("[bloc=lifetimeValue]").text(totalBudget1);
         $('.send-lifetimeValue').val(totalBudget1);
 
-	totalsalary = totalsalary.toFixed(2).replace(".", ",");
-        $('.teacher-salary').val(totalsalary);
+	totalsalaryhour = totalsalaryhour.toFixed(2).replace(".", ",");
+        $('.teacher-salary').val(totalsalaryhour);
 
 	}
 
