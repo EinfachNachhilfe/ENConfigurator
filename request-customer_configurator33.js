@@ -109,6 +109,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+	function toggleHiddenInput() {
+    console.log("Funktion toggleHiddenInput wurde aufgerufen.");
+
+    // Wenn die Checkbox ausgewählt ist
+    if (mycustomcheckbox34[0].checked) {
+        console.log("Checkbox ist ausgewählt.");
+
+        // Erstellen eines neuen versteckten Eingabefelds
+        const hiddenInput = document.createElement("input");
+        hiddenInput.setAttribute("type", "hidden");
+        hiddenInput.setAttribute("id", "hiddenInput");
+        hiddenInput.setAttribute("value", "Nachhilfelehrerin");
+        
+        // Füge das Eingabefeld dem Dokument hinzu
+        document.body.appendChild(hiddenInput);
+        console.log("Verstecktes Eingabefeld wurde hinzugefügt.");
+    } else {
+        console.log("Checkbox ist nicht ausgewählt.");
+
+        // Wenn die Checkbox nicht ausgewählt ist, entferne das versteckte Eingabefeld (falls es existiert)
+        let existingHiddenInput = document.getElementById("hiddenInput");
+        if (existingHiddenInput) {
+            document.body.removeChild(existingHiddenInput);
+            console.log("Verstecktes Eingabefeld wurde entfernt.");
+        }
+    }
+}
+
+
+
 
 	function isCondition1Met(codegenerator) {
 		return codegenerator.substr(2, 2) === "0A";
