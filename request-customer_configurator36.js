@@ -238,14 +238,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if (mycustomcheckbox35[0].checked) {
 			popupAnswer2.style.display = "flex";
-			        const hiddenInput = document.createElement("input");
-                                hiddenInput.setAttribute("type", "hidden");
-                                hiddenInput.setAttribute("id", "hiddenInput");
-                                hiddenInput.setAttribute("value", "Nachhilfelehrerin");
-        
-                               // Füge das Eingabefeld dem Dokument hinzu
-                              document.body.appendChild(hiddenInput);
-                              console.log("Verstecktes Eingabefeld wurde hinzugefügt.");
 			if (isCondition1Met(codegenerator)) {
 				codegenerator = codegenerator.substr(0, 2) + "AA" + codegenerator.substr(4);
 			} else if (isCondition2Met(codegenerator)) {
