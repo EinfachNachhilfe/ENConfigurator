@@ -109,9 +109,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-	function toggleHiddenInput() {
-    console.log("Funktion toggleHiddenInput wurde aufgerufen.");
-
     // Wenn die Checkbox ausgewählt ist
     if (mycustomcheckbox34[0].checked) {
         console.log("Checkbox ist ausgewählt.");
@@ -135,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Verstecktes Eingabefeld wurde entfernt.");
         }
     }
-}
+
 
 
 
