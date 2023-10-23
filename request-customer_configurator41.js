@@ -1711,14 +1711,16 @@ document.addEventListener("DOMContentLoaded", function() {
       // Preis pro Minute berechnen
 let salaryPerMinute = totalsalary / 45;          
 let totalsalaryhour = salaryPerMinute * 60;
-
+		
+totalBudget = totalBudget.toFixed(2);
 	$('.send-preisPro45Min').val(totalBudget);
 	$("[bloc=lifetimeValue]").text(totalBudget1);
         $('.send-lifetimeValue').val(totalBudget1);
         $('.teacher-salary').val(totalsalaryhour);
         $("[bloc=codegenerator]").text(codegenerator);	
 	$('.send-vertragscode').val(codegenerator);	
-		
+
+
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
 
