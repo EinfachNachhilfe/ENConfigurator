@@ -107,34 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	var popupAnswer41 = document.querySelectorAll('.choice.chatsupporthausaufgaben')[0];
 	var popupAnswer42 = document.querySelectorAll('.choice.abholservice')[0];
 
-function addHiddenInputForCheckbox(checkboxElem, hiddenInputValue, hiddenInputName) {
-    const form = document.getElementById("request_customer");
 
-    if (checkboxElem && form) {
-        checkboxElem.addEventListener("change", function() {
-            if (checkboxElem.checked) {
-                const hiddenInput = document.createElement("input");
-                hiddenInput.setAttribute("type", "hidden");
-                hiddenInput.setAttribute("id", checkboxElem.id + "_hidden"); // Wir fügen "_hidden" zur Checkbox-ID hinzu, um eine eindeutige ID für das versteckte Eingabefeld zu erhalten.
-                hiddenInput.setAttribute("name", hiddenInputName);
-                hiddenInput.setAttribute("value", hiddenInputValue);
-
-                // Füge das Eingabefeld dem Formular hinzu
-                form.appendChild(hiddenInput);
-            } else {
-                let existingHiddenInput = document.getElementById(checkboxElem.id + "_hidden");
-                if (existingHiddenInput) {
-                    form.removeChild(existingHiddenInput);
-                }
-            }
-        });
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    addHiddenInputForCheckbox(document.getElementById("subjectMathe"), "Mathe", "Fach1");
- 
-});
 
 
 
