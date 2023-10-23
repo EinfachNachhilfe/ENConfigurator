@@ -1712,19 +1712,19 @@ document.addEventListener("DOMContentLoaded", function() {
 let salaryPerMinute = totalsalary / 45;          
 let totalsalaryhour = salaryPerMinute * 60;
 
-
+	$('.send-preisPro45Min').val(totalBudget);
+	$("[bloc=lifetimeValue]").text(totalBudget1);
+        $('.send-lifetimeValue').val(totalBudget1);
+        $('.teacher-salary').val(totalsalaryhour);
+        $("[bloc=codegenerator]").text(codegenerator);	
+	$('.send-vertragscode').val(codegenerator);	
+		
 		totalBudget = totalBudget.toFixed(2).replace(".", ",");
 		$("[bloc=budget]").text(totalBudget);
-		$("[bloc=codegenerator]").text(codegenerator);
-		$('.send-vertragscode').val(codegenerator);
-		$('.send-preisPro45Min').val(totalBudget);
 
-        totalBudget1 = totalBudget1.toFixed(2).replace(".", ",");
-        $("[bloc=lifetimeValue]").text(totalBudget1);
-        $('.send-lifetimeValue').val(totalBudget1);
+	
 
-	totalsalaryhour = totalsalaryhour.toFixed(2).replace(".", ",");
-        $('.teacher-salary').val(totalsalaryhour);
+
 
 	}
 
