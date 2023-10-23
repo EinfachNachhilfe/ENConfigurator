@@ -1712,17 +1712,22 @@ document.addEventListener("DOMContentLoaded", function() {
 let salaryPerMinute = totalsalary / 45;          
 let totalsalaryhour = salaryPerMinute * 60;
 		
-totalBudget = totalBudget.toFixed(2);
-	$('.send-preisPro45Min').val(totalBudget);
-	$("[bloc=lifetimeValue]").text(totalBudget1);
-        $('.send-lifetimeValue').val(totalBudget1);
-        $('.teacher-salary').val(totalsalaryhour);
-        $("[bloc=codegenerator]").text(codegenerator);	
-	$('.send-vertragscode').val(codegenerator);	
+// Konvertiere totalBudget zu einem String mit zwei Dezimalstellen
+totalBudgetFixed = totalBudget.toFixed(2);
 
+// Setzen Sie den Wert für verschiedene Elemente, wobei Sie den Wert mit dem Punkt verwenden
+$('.send-preisPro45Min').val(totalBudgetFixed);
+$("[bloc=lifetimeValue]").text(totalBudget1); 
+$('.send-lifetimeValue').val(totalBudget1);
+$('.teacher-salary').val(totalsalaryhour);
+$("[bloc=codegenerator]").text(codegenerator);	
+$('.send-vertragscode').val(codegenerator);
 
-		totalBudget = totalBudget.toFixed(2).replace(".", ",");
-		$("[bloc=budget]").text(totalBudget);
+// Ersetzen Sie den Punkt durch ein Komma für die Anzeige
+totalBudgetDisplay = totalBudgetFixed.replace(".", ",");
+// Stellen Sie sicher, dass totalBudgetDisplay genau zwei Dezimalstellen hat und setzen Sie den Wert für das entsprechende Element
+$("[bloc=budget]").text(totalBudgetDisplay);
+
 
 	
 
