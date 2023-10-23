@@ -55,43 +55,43 @@ document.addEventListener("DOMContentLoaded", function() {
 	addHiddenInputForCheckbox(document.getElementById("experiencedTutor-1Unit"), "Erfahrene Lehrkraft", "AddOn6");
 	addHiddenInputForCheckbox(document.getElementById("premiumTutor-1Unit"), "Premium Lehrkraft", "AddOn7");
 
-	addHiddenInputForCheckbox(document.getElementById("continueTutor-2Unit"), "Ohne AddOn", "AddOn1");
-	addHiddenInputForCheckbox(document.getElementById("TutorFemale-2Unit"), "Nachhilfelehrerin", "AddOn2");
-	addHiddenInputForCheckbox(document.getElementById("TutorMale-2Unit"), "Nachhilfelehrer", "AddOn3");
-	addHiddenInputForCheckbox(document.getElementById("oneTutor-2Unit"), "Allroundlehrkraft", "AddOn4");
-	addHiddenInputForCheckbox(document.getElementById("nativSpeaker-2Unit"), "Muttersprachler", "AddOn5");
-	addHiddenInputForCheckbox(document.getElementById("experiencedTutor-2Unit"), "Erfahrene Lehrkraft", "AddOn6");
-	addHiddenInputForCheckbox(document.getElementById("premiumTutor-2Unit"), "Premium Lehrkraft", "AddOn7");
+	addHiddenInputForCheckbox(document.getElementById("continueTutor-2Unit"), "Ohne AddOn", "AddOn8");
+	addHiddenInputForCheckbox(document.getElementById("TutorFemale-2Unit"), "Nachhilfelehrerin", "AddOn9");
+	addHiddenInputForCheckbox(document.getElementById("TutorMale-2Unit"), "Nachhilfelehrer", "AddOn10");
+	addHiddenInputForCheckbox(document.getElementById("oneTutor-2Unit"), "Allroundlehrkraft", "AddOn11");
+	addHiddenInputForCheckbox(document.getElementById("nativSpeaker-2Unit"), "Muttersprachler", "AddOn12");
+	addHiddenInputForCheckbox(document.getElementById("experiencedTutor-2Unit"), "Erfahrene Lehrkraft", "AddOn13");
+	addHiddenInputForCheckbox(document.getElementById("premiumTutor-2Unit"), "Premium Lehrkraft", "AddOn14");
 
-	addHiddenInputForCheckbox(document.getElementById("continueTutor-3Unit"), "Ohne AddOn", "AddOn1");
-	addHiddenInputForCheckbox(document.getElementById("TutorFemale-3Unit"), "Nachhilfelehrerin", "AddOn2");
-	addHiddenInputForCheckbox(document.getElementById("TutorMale-3Unit"), "Nachhilfelehrer", "AddOn3");
-	addHiddenInputForCheckbox(document.getElementById("oneTutor-3Unit"), "Allroundlehrkraft", "AddOn4");
-	addHiddenInputForCheckbox(document.getElementById("nativSpeaker-3Unit"), "Muttersprachler", "AddOn5");
-	addHiddenInputForCheckbox(document.getElementById("experiencedTutor-3Unit"), "Erfahrene Lehrkraft", "AddOn6");
-	addHiddenInputForCheckbox(document.getElementById("premiumTutor-3Unit"), "Premium Lehrkraft", "AddOn7");
+	addHiddenInputForCheckbox(document.getElementById("continueTutor-3Unit"), "Ohne AddOn", "AddOn15");
+	addHiddenInputForCheckbox(document.getElementById("TutorFemale-3Unit"), "Nachhilfelehrerin", "AddOn16");
+	addHiddenInputForCheckbox(document.getElementById("TutorMale-3Unit"), "Nachhilfelehrer", "AddOn17");
+	addHiddenInputForCheckbox(document.getElementById("oneTutor-3Unit"), "Allroundlehrkraft", "AddOn18");
+	addHiddenInputForCheckbox(document.getElementById("nativSpeaker-3Unit"), "Muttersprachler", "AddOn19");
+	addHiddenInputForCheckbox(document.getElementById("experiencedTutor-3Unit"), "Erfahrene Lehrkraft", "AddOn20");
+	addHiddenInputForCheckbox(document.getElementById("premiumTutor-3Unit"), "Premium Lehrkraft", "AddOn21");
 
 
-	addHiddenInputForCheckbox(document.getElementById("continueLesson-1Unit"), "Ohne AddOn", "AddOn1");
-	addHiddenInputForCheckbox(document.getElementById("contractBreak-1Unit"), "Vertragspause", "AddOn2");
-	addHiddenInputForCheckbox(document.getElementById("doubleStorage-1Unit"), "Doppelter Gutstundenspeicher", "AddOn3");
-	addHiddenInputForCheckbox(document.getElementById("qualityAnalysis-1Unit"), "Erfolgssicherung", "AddOn4");
-	addHiddenInputForCheckbox(document.getElementById("chatsupport-1Unit"), "Hausaufgaben Chatsupport", "AddOn5");
-	addHiddenInputForCheckbox(document.getElementById("PickUpService-1Unit"), "Abholservice", "AddOn6");
+	addHiddenInputForCheckbox(document.getElementById("continueLesson-1Unit"), "Ohne AddOn", "AddOn22");
+	addHiddenInputForCheckbox(document.getElementById("contractBreak-1Unit"), "Vertragspause", "AddOn23");
+	addHiddenInputForCheckbox(document.getElementById("doubleStorage-1Unit"), "Doppelter Gutstundenspeicher", "AddOn24");
+	addHiddenInputForCheckbox(document.getElementById("qualityAnalysis-1Unit"), "Erfolgssicherung", "AddOn25");
+	addHiddenInputForCheckbox(document.getElementById("chatsupport-1Unit"), "Hausaufgaben Chatsupport", "AddOn26");
+	addHiddenInputForCheckbox(document.getElementById("PickUpService-1Unit"), "Abholservice", "AddOn27");
 
-	addHiddenInputForCheckbox(document.getElementById("continueLesson-2Unit"), "Ohne AddOn", "AddOn1");
-	addHiddenInputForCheckbox(document.getElementById("contractBreak-2Unit"), "Vertragspause", "AddOn2");
-	addHiddenInputForCheckbox(document.getElementById("doubleStorage-2Unit"), "Doppelter Gutstundenspeicher", "AddOn3");
-	addHiddenInputForCheckbox(document.getElementById("qualityAnalysis-2Unit"), "Erfolgssicherung", "AddOn4");
-	addHiddenInputForCheckbox(document.getElementById("chatsupport-2Unit"), "Hausaufgaben Chatsupport", "AddOn5");
-	addHiddenInputForCheckbox(document.getElementById("PickUpService-2Unit"), "Abholservice", "AddOn6");
+	addHiddenInputForCheckbox(document.getElementById("continueLesson-2Unit"), "Ohne AddOn", "AddOn28");
+	addHiddenInputForCheckbox(document.getElementById("contractBreak-2Unit"), "Vertragspause", "AddOn29");
+	addHiddenInputForCheckbox(document.getElementById("doubleStorage-2Unit"), "Doppelter Gutstundenspeicher", "AddOn30");
+	addHiddenInputForCheckbox(document.getElementById("qualityAnalysis-2Unit"), "Erfolgssicherung", "AddOn31");
+	addHiddenInputForCheckbox(document.getElementById("chatsupport-2Unit"), "Hausaufgaben Chatsupport", "AddOn32");
+	addHiddenInputForCheckbox(document.getElementById("PickUpService-2Unit"), "Abholservice", "AddOn33");
 
-	addHiddenInputForCheckbox(document.getElementById("continueLesson-3Unit"), "Ohne AddOn", "AddOn1");
-	addHiddenInputForCheckbox(document.getElementById("contractBreak-3Unit"), "Vertragspause", "AddOn2");
-	addHiddenInputForCheckbox(document.getElementById("doubleStorage-3Unit"), "Doppelter Gutstundenspeicher", "AddOn3");
-	addHiddenInputForCheckbox(document.getElementById("qualityAnalysis-3Unit"), "Erfolgssicherung", "AddOn4");
-	addHiddenInputForCheckbox(document.getElementById("chatsupport-3Unit"), "Hausaufgaben Chatsupport", "AddOn5");
-	addHiddenInputForCheckbox(document.getElementById("PickUpService-3Unit"), "Abholservice", "AddOn6");
+	addHiddenInputForCheckbox(document.getElementById("continueLesson-3Unit"), "Ohne AddOn", "AddOn34");
+	addHiddenInputForCheckbox(document.getElementById("contractBreak-3Unit"), "Vertragspause", "AddOn35");
+	addHiddenInputForCheckbox(document.getElementById("doubleStorage-3Unit"), "Doppelter Gutstundenspeicher", "AddOn36");
+	addHiddenInputForCheckbox(document.getElementById("qualityAnalysis-3Unit"), "Erfolgssicherung", "AddOn37");
+	addHiddenInputForCheckbox(document.getElementById("chatsupport-3Unit"), "Hausaufgaben Chatsupport", "AddOn38");
+	addHiddenInputForCheckbox(document.getElementById("PickUpService-3Unit"), "Abholservice", "AddOn39");
 
 });
 
