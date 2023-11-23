@@ -22,6 +22,7 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 
     //start contact form
     const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
+    const emailContactPerson = document.getElementById('email_contact-person');
 //end contact form
 
 
@@ -377,6 +378,14 @@ if (phoneNumberCustomer) {
     element: phoneNumberContactPerson,
     pattern: '^\\+49[1-9]\\d{4,}$',
     invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
+  });
+}
+
+if (emailContactPerson) {
+  specificElements.push({
+    element: emailContactPerson,
+    pattern: '^\\S+@\\S+\\.\\S+$',
+    invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
   });
 }
 
