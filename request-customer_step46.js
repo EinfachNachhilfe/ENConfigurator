@@ -148,12 +148,13 @@ function applyValidationCouponCode(inputElement) {
   let errorMessageElement = document.createElement('span');   
   let successMessageElement = document.createElement('span'); 
   let patterns = {
-    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe für lernen2023!' },
-    "herbst4": { regex: /^herbst4$/i, message: 'Sonderaktion Herbst: Genießen Sie exklusive Vorteile mit herbst4!' },
-    "schulstart4": { regex: /^schulstart4$/i, message: 'Willkommen zum Schulstart: Spezielles Angebot mit schulstart4!' },
-    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Google Partner Angebot: Profitieren Sie mit schulstartg4!' },
-    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Briefaktion: Sichern Sie sich Ihre Vorteile mit schulstart1b4!' },
-    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Zeitungsangebot: Exklusive Rabatte mit schulstartz4!' }
+    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
   };
 
   errorMessageElement.id = 'error_message';
