@@ -80,13 +80,13 @@ classFromDropdown.addEventListener('change', function() {
     }
 });
 
-function areConditionsMet() {
+function areConditionsMetClass() {
     return subjectDropdown.value && parseInt(classFromDropdown.value) > 0 && parseInt(classToDropdown.value) > 0;
 }
 
 
 addSelectedSubjectBtn.addEventListener('click', function() {
-    if (!areConditionsMet()) {
+    if (!areConditionsMetClass()) {
         return; // Breche die Ausführung der Funktion ab, wenn die Bedingungen nicht erfüllt sind
     }
     const subject = subjectDropdown.value;
@@ -209,13 +209,13 @@ function addExperienceToDropdown(experience) {
 
 
 
-function areConditionsMet() {
+function areConditionsMetEx() {
     return experienceTutor.value !== '0' && durationTutor.value !== '0' && whenTutor.value !== '0';
 }
 
 
 addSelectedexperiencetBtn.addEventListener('click', function() {
-    if (!areConditionsMet()) {
+    if (!areConditionsMetEx()) {
         return;
     }
     const experience = experienceTutor.value;
