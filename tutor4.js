@@ -7,7 +7,7 @@ const classToDropdown = document.getElementById('classToDropdown');
 const emailForm = document.getElementById('regform');
 const addedSubjects = document.getElementById('addedSubjects');
 const popup = document.getElementById('popup_subject-tutor');
-const closePopupX = document.querySelector('.close-popup');
+const closePopupXElements = document.querySelectorAll('.close-popup');
 const background = document.getElementById('background');
 
 popup.style.display = 'none';
@@ -29,18 +29,15 @@ classToDropdown.add(option);
 });
 
 
-closePopupX[0].addEventListener('click', function() {
-    popup.style.display = 'none';
-    popupExperienceTutor.style.display = 'none';
-    background.style.display = 'none';
+
+closePopupXElements.forEach(function(element) {
+    element.addEventListener('click', function() {
+        popup.style.display = 'none';
+        popupExperienceTutor.style.display = 'none';
+        background.style.display = 'none';
+    });
 });
 
-
-closePopupX[1].addEventListener('click', function() {
-    popup.style.display = 'none';
-    popupExperienceTutor.style.display = 'none';
-    background.style.display = 'none';
-});
 
 
 background.addEventListener('click', function() {
