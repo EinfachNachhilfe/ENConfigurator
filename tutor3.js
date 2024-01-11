@@ -28,12 +28,20 @@ classToDropdown.add(option);
 
 });
 
-closePopupX.addEventListener('click', function() {
+
+closePopupX[0].addEventListener('click', function() {
     popup.style.display = 'none';
     popupExperienceTutor.style.display = 'none';
     background.style.display = 'none';
-
 });
+
+
+closePopupX[1].addEventListener('click', function() {
+    popup.style.display = 'none';
+    popupExperienceTutor.style.display = 'none';
+    background.style.display = 'none';
+});
+
 
 background.addEventListener('click', function() {
     popup.style.display = 'none';
