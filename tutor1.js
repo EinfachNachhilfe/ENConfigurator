@@ -30,12 +30,14 @@ classToDropdown.add(option);
 
 closePopupX.addEventListener('click', function() {
     popup.style.display = 'none';
+    popupExperienceTutor.style.display = 'none';
     background.style.display = 'none';
 
 });
 
 background.addEventListener('click', function() {
     popup.style.display = 'none';
+    popupExperienceTutor.style.display = 'none';
     background.style.display = 'none';
 
 });
@@ -180,22 +182,6 @@ addExperienceBtn.addEventListener('click', function() {
 
 
 });
-
-
-closePopupX.forEach(function(button) {
-    button.addEventListener('click', function() {
-        popupExperienceTutor.style.display = 'none';
-        background.style.display = 'none';
-    });
-});
-
-
-background.addEventListener('click', function() {
-    popupExperienceTutor.style.display = 'none';
-    background.style.display = 'none';
-
-});
-
 
 
 function addExperienceToDropdown(experience) {
