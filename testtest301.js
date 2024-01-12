@@ -495,24 +495,41 @@ function nextPrev(n) {
 }
 
 
+function isAtLeastOneSubjectAdded() {
+    return addedSubjects.children.length > 0;
+}
+
+function isAtLeastOneExperienceAdded() {
+    return addedExperience.children.length > 0;
+}
+
 
 function validateForm() {
-      let valid = true;
-    const currentFormItem = formItems[currentTab];
-
-    // Überprüfen, ob im aktuellen Tab mindestens ein Eingabefeld vorhanden ist
-    const inputFields = currentFormItem.querySelectorAll('input, select, textarea');
-    if (inputFields.length === 0) {
-        valid = false;
-    }
-
-    const inputs = currentFormItem.getElementsByTagName("input");
+ let valid = true;
+    const inputs = formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
             inputs[i].className += " invalid";
             valid = false;
         }
     }
+
+    // Zusätzliche Validierung für Fächer
+if (currentTab === 1) {
+    if (!isAtLeastOneSubjectAdded()) {
+        valid = false;
+     
+    }
+}
+
+// Zusätzliche Validierung für Erfahrungen
+if (currentTab === 2) {
+    if (!isAtLeastOneExperienceAdded()) {
+        valid = false;
+    }
+}
+
+    
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
         let radioGroups = {};
