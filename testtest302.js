@@ -529,6 +529,18 @@ if (currentTab === 2) {
     }
 }
 
+        // Aktualisieren des Status des Next-Buttons basierend auf der Validierung
+    if (valid) {
+        if(nextBtn) {
+            nextBtn.classList.remove("disabled");
+        }
+    } else {
+        if(nextBtn) {
+            nextBtn.classList.add("disabled");
+        }
+    }
+
+    return valid;
     
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
