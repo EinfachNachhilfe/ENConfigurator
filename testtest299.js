@@ -498,6 +498,13 @@ function nextPrev(n) {
 
 function validateForm() {
    let valid = true;
+
+    // Überprüfen, ob im aktuellen Tab mindestens ein Eingabefeld vorhanden ist
+    const inputFields = currentFormItem.querySelectorAll('input, select, textarea');
+    if (inputFields.length === 0) {
+        valid = false;
+    }
+    
     const inputs = formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
