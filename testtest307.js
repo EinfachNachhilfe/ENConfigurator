@@ -494,10 +494,6 @@ function nextPrev(n) {
     showTab(currentTab);
 }
 
-const config = {
-    validateSubjects: true, // Optional: Validierung für Fächer
-    validateExperiences: true, // Optional: Validierung für Erfahrungen
-};
 
 function validateForm() {
  let valid = true;
@@ -509,23 +505,6 @@ function validateForm() {
         }
     }
 
-   // Zusätzliche optionale Validierung für Fächer
-    if (currentTab === 1 && config.validateSubjects) {
-        if (!isAtLeastOneSubjectAdded()) {
-            valid = false;
-            // Optional: Feedback an den Benutzer
-            // Zum Beispiel: Zeigen Sie eine Fehlermeldung an oder markieren Sie ein relevantes Element
-        }
-    }
-
-    // Zusätzliche optionale Validierung für Erfahrungen
-    if (currentTab === 2 && config.validateExperiences) {
-        if (!isAtLeastOneExperienceAdded()) {
-            valid = false;
-            // Optional: Feedback an den Benutzer
-            // Zum Beispiel: Zeigen Sie eine Fehlermeldung an oder markieren Sie ein relevantes Element
-        }
-    }
     
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
