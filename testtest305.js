@@ -514,7 +514,7 @@ function validateForm() {
     }
 
     // Zusätzliche Validierung für Fächer
-    if (currentTab === /* Index des Tabs mit Fächern */) {
+    if (currentTab === 1) {
         if (!isAtLeastOneSubjectAdded()) {
             valid = false;
             // Optional: Feedback an den Benutzer, dass mindestens ein Fach hinzugefügt werden muss
@@ -522,7 +522,7 @@ function validateForm() {
     }
 
     // Zusätzliche Validierung für Erfahrungen
-    if (currentTab === /* Index des Tabs mit Erfahrungen */) {
+    if (currentTab === 2) {
         if (!isAtLeastOneExperienceAdded()) {
             valid = false;
             // Optional: Feedback an den Benutzer, dass mindestens eine Erfahrung hinzugefügt werden muss
