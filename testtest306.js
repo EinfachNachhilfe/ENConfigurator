@@ -494,14 +494,10 @@ function nextPrev(n) {
     showTab(currentTab);
 }
 
-
-function isAtLeastOneSubjectAdded() {
-    return addedSubjects.children.length > 0;
-}
-
-function isAtLeastOneExperienceAdded() {
-    return addedExperience.children.length > 0;
-}
+const config = {
+    validateSubjects: true, // Optional: Validierung für Fächer
+    validateExperiences: true, // Optional: Validierung für Erfahrungen
+};
 
 function validateForm() {
  let valid = true;
@@ -513,19 +509,21 @@ function validateForm() {
         }
     }
 
-    // Zusätzliche Validierung für Fächer
-    if (currentTab === 1) {
+   // Zusätzliche optionale Validierung für Fächer
+    if (currentTab === 1 && config.validateSubjects) {
         if (!isAtLeastOneSubjectAdded()) {
             valid = false;
-            // Optional: Feedback an den Benutzer, dass mindestens ein Fach hinzugefügt werden muss
+            // Optional: Feedback an den Benutzer
+            // Zum Beispiel: Zeigen Sie eine Fehlermeldung an oder markieren Sie ein relevantes Element
         }
     }
 
-    // Zusätzliche Validierung für Erfahrungen
-    if (currentTab === 2) {
+    // Zusätzliche optionale Validierung für Erfahrungen
+    if (currentTab === 2 && config.validateExperiences) {
         if (!isAtLeastOneExperienceAdded()) {
             valid = false;
-            // Optional: Feedback an den Benutzer, dass mindestens eine Erfahrung hinzugefügt werden muss
+            // Optional: Feedback an den Benutzer
+            // Zum Beispiel: Zeigen Sie eine Fehlermeldung an oder markieren Sie ein relevantes Element
         }
     }
     
