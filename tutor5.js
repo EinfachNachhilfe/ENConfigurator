@@ -158,7 +158,6 @@ function removeSubject(btn, subject, classFrom, classTo) {
     if (classToInputs[0]) classToInputs[0].remove();
 
     btn.parentElement.remove(); // Entfernen des sichtbaren Eintrags aus der Liste
-    
     addSubjectToDropdown(subject);
 }
 
@@ -241,7 +240,7 @@ addSelectedexperiencetBtn.addEventListener('click', function() {
 
 
 
-newSubjectElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeSubject(this, '${experience}', '${duration}', '${when}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
+newSubjectElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeExperience(this, '${experience}', '${duration}', '${when}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
 addedExperience.appendChild(newSubjectElement);
 
 
@@ -275,7 +274,7 @@ addedExperience.appendChild(newSubjectElement);
     }
 });
 
-function removeSubject(btn, experience, duration, when) {
+function removeExperience(btn, experience, duration, when) {
     // Finden der versteckten input-Elemente basierend auf ihren Werten
     const experienceInput = Array.from(regform.querySelectorAll(`input[name="experience_${experience}"]`)).filter(input => input.value === experience);
     const durationInput = Array.from(regform.querySelectorAll(`input[name="duration_${experience}"]`)).filter(input => input.value === duration);
@@ -287,6 +286,5 @@ function removeSubject(btn, experience, duration, when) {
     if (whenInput[0]) whenInput[0].remove();
 
     btn.parentElement.remove(); // Entfernen des sichtbaren Eintrags aus der Liste
-    
     addExperienceToDropdown(experience);
 }
