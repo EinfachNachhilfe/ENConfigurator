@@ -495,6 +495,14 @@ function nextPrev(n) {
 }
 
 
+function isAtLeastOneSubjectAdded() {
+    return addedSubjects.children.length > 0;
+}
+
+function isAtLeastOneExperienceAdded() {
+    return addedExperience.children.length > 0;
+}
+
 function validateForm() {
  let valid = true;
     const inputs = formItems[currentTab].getElementsByTagName("input");
@@ -505,25 +513,21 @@ function validateForm() {
         }
     }
 
-    // Zusätzliche Validierung für Fächer im Tab 1
-    if (currentTab === 1) {
-        if (addedSubjects.children.length === 0) {
-            // Hier können Sie zusätzliches Feedback für den Benutzer einfügen, falls erforderlich
+    // Zusätzliche Validierung für Fächer
+    if (currentTab === /* Index des Tabs mit Fächern */) {
+        if (!isAtLeastOneSubjectAdded()) {
             valid = false;
+            // Optional: Feedback an den Benutzer, dass mindestens ein Fach hinzugefügt werden muss
         }
     }
 
-    // Zusätzliche Validierung für Erfahrungen im Tab 2
-    if (currentTab === 2) {
-        if (addedExperience.children.length === 0) {
-            // Hier können Sie zusätzliches Feedback für den Benutzer einfügen, falls erforderlich
+    // Zusätzliche Validierung für Erfahrungen
+    if (currentTab === /* Index des Tabs mit Erfahrungen */) {
+        if (!isAtLeastOneExperienceAdded()) {
             valid = false;
+            // Optional: Feedback an den Benutzer, dass mindestens eine Erfahrung hinzugefügt werden muss
         }
     }
-
-
-
-    return valid;
     
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
