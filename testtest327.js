@@ -591,11 +591,11 @@ if (valid) {
 
 
     const configuratorForm = document.getElementById('configurator');
-    if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
-        const hasClicked = formItems[currentTab].querySelector('.custom-input-clicked') !== null;
+if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
+        const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
         if (!hasClicked) {
             valid = false;
-            if (nextBtn) nextBtn.classList.add("disabled");
+   if (nextBtn) nextBtn.classList.add("disabled");
         } else {
             if (nextBtn) nextBtn.classList.remove("disabled");
         }
