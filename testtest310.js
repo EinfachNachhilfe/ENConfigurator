@@ -505,6 +505,13 @@ function validateForm() {
         }
     }
 
+    if (regForm && regForm.id === 'configurator' && ![5, 6].includes(currentTab)) {
+    const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
+    if (!hasClicked) {
+        valid = false;
+    }
+}
+
 
         // Validierung für Radio-Buttons
         const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
