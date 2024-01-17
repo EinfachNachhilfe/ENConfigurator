@@ -554,7 +554,7 @@ function validateForm() {
 
 
            const configuratorForm = document.getElementById('configurator');
-        if (configuratorForm && ![6].includes(currentTab)) {
+        if (configuratorForm && ![4,5,6].includes(currentTab)) {
             const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
             if (!hasClicked) {
                 valid = false;
