@@ -455,7 +455,9 @@ function showTab(n) {
 
     validateForm();
 
-if (valid) {
+   const isTabValid = validateForm();
+
+    if (isTabValid) {
         if (nextBtn) nextBtn.classList.remove("disabled");
     } else {
         if (nextBtn) nextBtn.classList.add("disabled");
@@ -531,7 +533,44 @@ function validateForm() {
           }
           if (!radioChecked) {
             valid = false;
-          }
+          }function showTab(n) {
+    formItems[n].style.display = "block";
+
+    const inputs = formItems[n].querySelectorAll("input, select");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("input", validateForm);
+    }
+
+    validateForm();
+
+if (valid) {
+        if (nextBtn) nextBtn.classList.remove("disabled");
+    } else {
+        if (nextBtn) nextBtn.classList.add("disabled");
+    }
+
+    
+    if (n === 0) {
+        if (prevBtn) prevBtn.style.display = "none";
+    } else {
+        if (prevBtn) prevBtn.style.display = "flex";
+    }
+    
+    if (n === (formItems.length - 1)) {
+        if (submitBtn) submitBtn.style.display = "block";
+        if (nextBtn) nextBtn.style.display = "none";
+    } else {
+        if (submitBtn) submitBtn.style.display = "none";
+        if (nextBtn) nextBtn.style.display = "flex";
+    }
+
+    const currentStepElem = document.getElementById("currentStep");
+    const totalStepsElem = document.getElementById("totalSteps");
+    if (currentStepElem) currentStepElem.textContent = n + 1;
+    if (totalStepsElem) totalStepsElem.textContent = formItems.length;
+
+    fixStepIndicator(n);
+}valid
         }
         }
         
