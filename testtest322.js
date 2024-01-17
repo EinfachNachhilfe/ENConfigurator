@@ -430,9 +430,7 @@ const regForm = document.getElementById("regForm");
 
 let currentTab = 0;
 
-const nextBtn = document.getElementById("nextBtn"); // Stelle sicher, dass diese IDs korrekt sind
-const prevBtn = document.getElementById("prevBtn");
-const submitBtn = document.getElementById("submitBtn");
+
 
 if (nextBtn) {
     nextBtn.classList.add("disabled");
