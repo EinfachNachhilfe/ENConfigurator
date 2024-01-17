@@ -28,9 +28,10 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 
 
     //start configurator
- document.addEventListener('DOMContentLoaded', () => {
-    const configuratorForm = document.getElementById('configurator');
+ const configuratorForm = document.getElementById('configurator');
 
+ document.addEventListener('DOMContentLoaded', () => {
+   
     if (configuratorForm) {
         const buttonTexts = {
     'btnAddOnDuoTeaching': 'Text für Duo Teaching',
