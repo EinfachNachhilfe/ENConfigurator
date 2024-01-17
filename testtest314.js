@@ -563,8 +563,8 @@ function validateForm() {
   
     updateButtonStates(valid);
 
-    return valid;
-}
+  
+
 
 function updateButtonStates(isValid) {
     if (isValid) {
@@ -593,6 +593,8 @@ function updateButtonStates(isValid) {
         }
     }
     return valid;
+
+    }
 
 
 function fixStepIndicator(n) {
