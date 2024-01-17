@@ -580,9 +580,6 @@ function validateForm() {
     return valid;
 }
 
-console.log("Current Tab: ", currentTab, "Valid: ", valid);
-
-
 
 function fixStepIndicator(n) {
     for (let i = 0; i < formItems.length; i++) {
