@@ -590,14 +590,18 @@ if (valid) {
         }
 
 
-           const configuratorForm = document.getElementById('configurator');
-        if (configuratorForm && ![4,5,6].includes(currentTab)) {
-      const hasClicked = formItems[currentTab].querySelector('.custom-input-clicked') !== null;
-if (!hasClicked) {
-    valid = false;
-}
-
+    const configuratorForm = document.getElementById('configurator');
+    if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
+        const hasClicked = formItems[currentTab].querySelector('.custom-input-clicked') !== null;
+        if (!hasClicked) {
+            valid = false;
+            if (nextBtn) nextBtn.classList.add("disabled");
+        } else {
+            if (nextBtn) nextBtn.classList.remove("disabled");
         }
+    }
+    return valid;
+}
 
     if (valid) {
         formItems[currentTab].className += " finish";
