@@ -600,8 +600,8 @@ if (valid) {
             if (nextBtn) nextBtn.classList.remove("disabled");
         }
     }
-    return valid;
-}
+
+
 
     if (valid) {
         formItems[currentTab].className += " finish";
@@ -620,6 +620,8 @@ if (valid) {
         }
     }
     return valid;
+}
+
 
 
 function fixStepIndicator(n) {
