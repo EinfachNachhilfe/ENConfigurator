@@ -553,28 +553,13 @@ function validateForm() {
         }
 
 
-  if (configuratorForm && ![5, 6].includes(currentTab)) {
-        const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
-        if (!hasClicked) {
-            valid = false;
+           const configuratorForm = document.getElementById('configurator');
+        if (configuratorForm && ![5, 6].includes(currentTab)) {
+            const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
+            if (!hasClicked) {
+                valid = false;
+            }
         }
-    }
-
-  
-    updateButtonStates(valid);
-
-  
-
-
-function updateButtonStates(isValid) {
-    if (isValid) {
-        if (nextBtn) nextBtn.classList.remove("disabled");
-        if (submitBtn) submitBtn.classList.remove("disabled");
-    } else {
-        if (nextBtn) nextBtn.classList.add("disabled");
-        if (submitBtn) submitBtn.classList.add("disabled");
-    }
-}
 
     if (valid) {
         formItems[currentTab].className += " finish";
@@ -593,8 +578,7 @@ function updateButtonStates(isValid) {
         }
     }
     return valid;
-
-    }
+}
 
 
 function fixStepIndicator(n) {
