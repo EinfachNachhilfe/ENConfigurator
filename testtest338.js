@@ -30,8 +30,6 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
     //start configurator
  const configuratorForm = document.getElementById('configurator');
 
- document.addEventListener('DOMContentLoaded', () => {
-   
     if (configuratorForm) {
         const buttonTexts = {
     'btnAddOnDuoTeaching': 'Text für Duo Teaching',
@@ -120,7 +118,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
     elements.forEach(element => {
         observer.observe(element, { attributes: true });
     });
-}
+
 
 
         manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
@@ -152,7 +150,9 @@ function manageSelection(elements, maxSelected, selectionClass) {
  makeExclusivePair('premiumTutor', 'experiencedTutor', 'custom-input-clicked');
   makeExclusivePair('femaleTutor', 'maleTutor', 'custom-input-clicked');
     }
-});
+
+}
+
 
 //end configurator
 
