@@ -620,7 +620,6 @@ if (valid) {
         }
     }
     return valid;
-}
 
 
 function fixStepIndicator(n) {
