@@ -599,7 +599,7 @@ const configuratorForm = document.getElementById('configurator');
     }
 
     console.log("Valid status:", valid);
-console.log("Has clicked:", hasClicked);
+
 
 
 
