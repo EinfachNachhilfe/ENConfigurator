@@ -498,9 +498,6 @@ function nextPrev(n) {
 function validateForm() {
  let valid = true;
 
-    console.log("Valid status:", valid);
-console.log("Has clicked:", hasClicked);
-
     const inputs = formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
@@ -600,6 +597,9 @@ const configuratorForm = document.getElementById('configurator');
             valid = false;
         }
     }
+
+    console.log("Valid status:", valid);
+console.log("Has clicked:", hasClicked);
 
 
 
