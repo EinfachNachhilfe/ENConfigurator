@@ -593,7 +593,7 @@ function updateButtonStates(isValid) {
         }
     }
     return valid;
-}
+
 
 function fixStepIndicator(n) {
     for (let i = 0; i < formItems.length; i++) {
@@ -709,4 +709,3 @@ function removeInputField(labelId, inputId) {
 }
 
 }
-
