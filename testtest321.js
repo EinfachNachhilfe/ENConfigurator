@@ -430,6 +430,10 @@ const regForm = document.getElementById("regForm");
 
 let currentTab = 0;
 
+const nextBtn = document.getElementById("nextBtn"); // Stelle sicher, dass diese IDs korrekt sind
+const prevBtn = document.getElementById("prevBtn");
+const submitBtn = document.getElementById("submitBtn");
+
 if (nextBtn) {
     nextBtn.classList.add("disabled");
     nextBtn.addEventListener("click", function() {
@@ -453,17 +457,9 @@ function showTab(n) {
         inputs[i].addEventListener("input", validateForm);
     }
 
-    validateForm();
-
-   const isTabValid = validateForm();
-
-    if (isTabValid) {
-        if (nextBtn) nextBtn.classList.remove("disabled");
-    } else {
-        if (nextBtn) nextBtn.classList.add("disabled");
-    }
-
-    
+    const isTabValid = validateForm();
+    updateButtonState(isTabValid);
+   
     if (n === 0) {
         if (prevBtn) prevBtn.style.display = "none";
     } else {
@@ -487,12 +483,14 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-    if (nextBtn && n == 1 && !validateForm()) {
+    const isTabValid = validateForm();
+
+    if (nextBtn && n == 1 && !isTabValid) {
         nextBtn.classList.add("disabled");
         return false;
-    } else if (nextBtn) {
-        nextBtn.classList.remove("disabled");
     }
+
+    updateButtonState(isTabValid);
 
     formItems[currentTab].style.display = "none";
     currentTab = currentTab + n;
@@ -502,7 +500,6 @@ function nextPrev(n) {
     }
     showTab(currentTab);
 }
-
 
 function validateForm() {
  let valid = true;
@@ -626,6 +623,15 @@ if (valid) {
     return valid;
 }
 
+function updateButtonState(isValid) {
+    if (isValid) {
+        if (nextBtn) nextBtn.classList.remove("disabled");
+        if (submitBtn) submitBtn.classList.remove("disabled");
+    } else {
+        if (nextBtn) nextBtn.classList.add("disabled");
+        if (submitBtn) submitBtn.classList.add("disabled");
+    }
+}
 
 function fixStepIndicator(n) {
     for (let i = 0; i < formItems.length; i++) {
@@ -633,6 +639,7 @@ function fixStepIndicator(n) {
     }
     formItems[n].className += " active";
 }
+
 
 
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
