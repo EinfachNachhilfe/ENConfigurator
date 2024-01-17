@@ -430,8 +430,6 @@ const regForm = document.getElementById("regForm");
 
 let currentTab = 0;
 
-
-
 if (nextBtn) {
     nextBtn.classList.add("disabled");
     nextBtn.addEventListener("click", function() {
@@ -455,8 +453,7 @@ function showTab(n) {
         inputs[i].addEventListener("input", validateForm);
     }
 
-    const isTabValid = validateForm();
-    updateButtonState(isTabValid);
+    validateForm();
    
     if (n === 0) {
         if (prevBtn) prevBtn.style.display = "none";
@@ -481,14 +478,12 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-    const isTabValid = validateForm();
-
-    if (nextBtn && n == 1 && !isTabValid) {
+    if (nextBtn && n == 1 && !validateForm()) {
         nextBtn.classList.add("disabled");
         return false;
+    } else if (nextBtn) {
+        nextBtn.classList.remove("disabled");
     }
-
-    updateButtonState(isTabValid);
 
     formItems[currentTab].style.display = "none";
     currentTab = currentTab + n;
@@ -498,6 +493,7 @@ function nextPrev(n) {
     }
     showTab(currentTab);
 }
+
 
 function validateForm() {
  let valid = true;
@@ -596,10 +592,11 @@ if (valid) {
 
            const configuratorForm = document.getElementById('configurator');
         if (configuratorForm && ![4,5,6].includes(currentTab)) {
-            const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
-            if (!hasClicked) {
-                valid = false;
-            }
+      const hasClicked = formItems[currentTab].querySelector('.custom-input-clicked') !== null;
+if (!hasClicked) {
+    valid = false;
+}
+
         }
 
     if (valid) {
@@ -621,15 +618,6 @@ if (valid) {
     return valid;
 }
 
-function updateButtonState(isValid) {
-    if (isValid) {
-        if (nextBtn) nextBtn.classList.remove("disabled");
-        if (submitBtn) submitBtn.classList.remove("disabled");
-    } else {
-        if (nextBtn) nextBtn.classList.add("disabled");
-        if (submitBtn) submitBtn.classList.add("disabled");
-    }
-}
 
 function fixStepIndicator(n) {
     for (let i = 0; i < formItems.length; i++) {
@@ -637,7 +625,6 @@ function fixStepIndicator(n) {
     }
     formItems[n].className += " active";
 }
-
 
 
 // Überwachen Sie den Radio-Button "ja" für Lernstörung
