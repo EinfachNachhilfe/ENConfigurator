@@ -28,6 +28,7 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 
 
     //start configurator
+document.addEventListener('DOMContentLoaded', () => {
  const configuratorForm = document.getElementById('configurator');
 
     if (configuratorForm) {
@@ -153,7 +154,9 @@ function manageSelection(elements, maxSelected, selectionClass) {
 
 }
 
-
+  
+});
+  
 //end configurator
 
 
@@ -718,7 +721,7 @@ if (valid) {
         }
         }
     
-
+const configuratorForm = document.getElementById('configurator');
 if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
     const hasClicked = formItems[currentTab].querySelectorAll(".custom-input-clicked").length > 0;
     if (hasClicked) {
