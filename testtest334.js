@@ -590,13 +590,15 @@ if (valid) {
         }
         }
 
-const configuratorForm = document.getElementById('configurator');
-    if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
-        const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
-        if (!hasClicked) {
-            valid = false;
-        }
+if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
+    const hasClicked = Array.from(formItems[currentTab].querySelectorAll('.custom-input-clicked')).length > 0;
+    if (hasClicked) {
+        valid = true; // Setzen Sie valid auf true, wenn mindestens ein Element angeklickt wurde
+    } else {
+        valid = false;
     }
+}
+
 
     console.log("Valid status:", valid);
 
