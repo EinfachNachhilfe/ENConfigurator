@@ -455,6 +455,13 @@ function showTab(n) {
 
     validateForm();
 
+if (valid) {
+        if (nextBtn) nextBtn.classList.remove("disabled");
+    } else {
+        if (nextBtn) nextBtn.classList.add("disabled");
+    }
+
+    
     if (n === 0) {
         if (prevBtn) prevBtn.style.display = "none";
     } else {
