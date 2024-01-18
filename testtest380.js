@@ -243,8 +243,9 @@ function updateTotalCostDisplay() {
     const costDisplay = document.getElementById('totalCostDisplay');
     costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
 }
+updateTotalCostDisplay();
 
-// Beispielhafte Anwendung der Funktion
+
 createInputField(subjectMathematics, 0.6, "Mathe");
 createInputField(subjectGerman, 0, "Deutsch");
 createInputField(subjectEnglish, 0, "Englisch");
