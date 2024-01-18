@@ -160,49 +160,52 @@ makeExclusivePair('femaleTutor', 'maleTutor', 'custom-input-clicked');
 
 
 let currentTotalCost = 20; // Basiskosten
-const subjectMath  = document.getElementById('subjectMath');
+const subjectMath = document.getElementById('subjectMath');
 
-
-function setupClassChangeObserver(elements, additionalCost, defaultValue) {
-    Array.from(elements).forEach(element => {
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach(mutation => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    handleClassChange(element, additionalCost, defaultValue);
-                }
-            });
+function createInputField(elementOrElements, additionalCost, defaultValue) {
+    const container = document.getElementById('hiddenInputFieldContainer');
+    
+    // Beobachtet Änderungen an den Klassen der Elemente
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                handleClassChange(targetElement, additionalCost, defaultValue);
+            }
         });
+    });
 
+    // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
+    const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
+
+    // Überwacht jedes Element in der Liste
+    elements.forEach(element => {
         observer.observe(element, { attributes: true });
     });
 }
 
 function handleClassChange(element, additionalCost, defaultValue) {
-    const container = document.getElementById('hiddenInputFieldContainer');
     const inputFieldName = element.id;
-    let inputField = container.querySelector("input[name='" + inputFieldName + "']");
+    let inputField = document.getElementById('input_' + inputFieldName);
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
             inputField = document.createElement('input');
-            inputField.type = 'hidden';
+            inputField.type = 'text';
+            inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
             container.appendChild(inputField);
 
-            // Preis erhöhen
             currentTotalCost += additionalCost;
         }
     } else {
         if (inputField) {
             container.removeChild(inputField);
-
-            // Preis reduzieren
             currentTotalCost -= additionalCost;
         }
     }
 
-    // Anzeige der Gesamtkosten aktualisieren
     updateTotalCostDisplay();
 }
 
@@ -212,7 +215,9 @@ function updateTotalCostDisplay() {
 }
 
 // Beispielhafte Anwendung der Funktion
-setupClassChangeObserver(subjectMath, 0.5, "Mathe");
+createInputField(subjectMath, 0.5, "Standardwert");
+
+
 
 
 
