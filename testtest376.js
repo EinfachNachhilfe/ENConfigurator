@@ -184,45 +184,35 @@ function createInputField(elementOrElements, additionalCost, defaultValue) {
     });
 }
 
+function handleClassChange(element, additionalCost, defaultValue) {
+    const inputFieldName = element.id;
+    let inputField = document.getElementById('input_' + inputFieldName);
 
-function createInputField(elements, additionalCost, defaultValue) {
-    const container = document.getElementById('inputFieldsContainer');
+    if (element.classList.contains('custom-input-clicked')) {
+        if (!inputField) {
+            inputField = document.createElement('input');
+            inputField.type = 'hidden';
+            inputField.id = 'input_' + inputFieldName;
+            inputField.name = inputFieldName;
+            inputField.value = defaultValue;
+            container.appendChild(inputField);
 
-    elements.forEach(element => {
-        element.addEventListener('click', () => {
-            const inputFieldName = element.id;
-            let inputFieldExists = !!container.querySelector("input[name='" + inputFieldName + "']");
+            currentTotalCost += additionalCost;
+        }
+    } else {
+        if (inputField) {
+            container.removeChild(inputField);
+            currentTotalCost -= additionalCost;
+        }
+    }
 
-            if (element.classList.contains('custom-input-clicked')) {
-                if (!inputFieldExists) {
-                    // Erstellen eines sichtbaren Eingabefeldes
-                    container.innerHTML += `<input type="text" id="input_${inputFieldName}" name="${inputFieldName}" value="${defaultValue}">`;
-
-                    currentTotalCost += additionalCost;
-                }
-            } else {
-                if (inputFieldExists) {
-                    // Entfernen des Eingabefeldes
-                    let inputField = container.querySelector("input[name='" + inputFieldName + "']");
-                    container.removeChild(inputField);
-
-                    currentTotalCost -= additionalCost;
-                }
-            }
-
-            updateTotalCostDisplay();
-        });
-    });
+    updateTotalCostDisplay();
 }
 
 function updateTotalCostDisplay() {
     const costDisplay = document.getElementById('totalCostDisplay');
     costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
 }
-
-// Anwendung der Funktion
-createInputField([subjectMath], 0.5, "Standardwert");
-
 
 // Beispielhafte Anwendung der Funktion
 createInputField(subjectMath, 0.5, "Standardwert");
