@@ -133,29 +133,34 @@ function manageSelection(elements, maxSelected, selectionClass) {
         
     
    //exclude specific fields at the same time
-function makeExclusivePair(id1, id2) {
+function makeExclusivePair(id1, id2, exclusiveClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
+    // Hilfsfunktion, um die Klasse umzuschalten
+    function toggleClass(element) {
+        if (element.classList.contains(exclusiveClass)) {
+            element.classList.remove(exclusiveClass);
+        } else {
+            element.classList.add(exclusiveClass);
+        }
+    }
+
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (!element1.classList.contains('custom-input-clicked')) {
-                element1.classList.add('custom-input-clicked');
-                if (element2.classList.contains('custom-input-clicked')) {
-                    element2.classList.remove('custom-input-clicked');
-                }
-                validateForm();
+            toggleClass(element1); // Umschalten der Klasse für element1
+            if (element1.classList.contains(exclusiveClass)) {
+                element2.classList.remove(exclusiveClass); // Klasse von element2 entfernen, wenn element1 ausgewählt wird
             }
+            validateForm(); // Aktualisieren der Validierung
         });
 
         element2.addEventListener('click', () => {
-            if (!element2.classList.contains('custom-input-clicked')) {
-                element2.classList.add('custom-input-clicked');
-                if (element1.classList.contains('custom-input-clicked')) {
-                    element1.classList.remove('custom-input-clicked');
-                }
-                validateForm();
+            toggleClass(element2); // Umschalten der Klasse für element2
+            if (element2.classList.contains(exclusiveClass)) {
+                element1.classList.remove(exclusiveClass); // Klasse von element1 entfernen, wenn element2 ausgewählt wird
             }
+            validateForm(); // Aktualisieren der Validierung
         });
     }
 }
