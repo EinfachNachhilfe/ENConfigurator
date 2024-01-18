@@ -48,11 +48,9 @@ if (configuratorForm) {
         'btnTutoringAtHome': 'Text für At Home Tutoring'
     };
 
-          const popup = document.getElementById('popupInformation');
+        const popup = document.getElementById('popupInformation');
         const background = document.getElementById('background');
-        
-                const customCheckboxInput = document.querySelectorAll('.custom-checkbox-input');
-        
+        const customCheckboxInput = document.querySelectorAll('.custom-checkbox-input');
         const tripperClosePopupInformation = document.getElementById('tripperClosePopupInformation');
         const textPopupInformation = document.getElementById('textPopupInformation');
         const customCheckboxInputSubject = document.querySelectorAll('.custom-checkbox-input-subject');
@@ -67,7 +65,7 @@ if (configuratorForm) {
         const femaleTutor  = document.getElementById('femaleTutor');
 
 
-
+//show "Mehr Infos" Popup
         Object.keys(buttonTexts).forEach(buttonId => {
             const button = document.getElementById(buttonId);
             button.addEventListener('click', () => {
@@ -87,6 +85,8 @@ if (configuratorForm) {
             background.style.display = 'none';
         });
 
+    
+//add "custom-input-clicked" class and set max. clickable fields
 function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
@@ -106,7 +106,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
             validateForm();
         });
     });
-
+//check the change event 
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.attributeName === 'class') {
@@ -131,7 +131,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
         manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
         manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
         
-        
+    //exclude specific fields at the same time
  function makeExclusivePair(id1, id2, exclusiveClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
@@ -625,8 +625,15 @@ function nextPrev(n) {
 
 function validateForm() {
  let valid = true;
-
-    const inputs = formItems[currentTab].getElementsByTagName("input");
+const currentStepElem = document.getElementById("currentStep");
+const totalStepsElem = document.getElementById("totalSteps");
+const inputs = formItems[currentTab].getElementsByTagName("input, select");
+const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
+const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
+const selects = formItems[currentTab].querySelectorAll("select[required]");
+    
+    // Validierung für inputs
+    if (checkboxes.length > 0) {
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
             inputs[i].className += " invalid";
@@ -635,7 +642,6 @@ function validateForm() {
     }
 
         // Validierung für Radio-Buttons
-        const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
         let radioGroups = {};
         for (let j = 0; j < radios.length; j++) {
         let name = radios[j].getAttribute("name");
@@ -656,47 +662,21 @@ function validateForm() {
           }function showTab(n) {
     formItems[n].style.display = "block";
 
-    const inputs = formItems[n].querySelectorAll("input, select");
+    
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("input", validateForm);
     }
 
-    validateForm();
 
-if (valid) {
-        if (nextBtn) nextBtn.classList.remove("disabled");
-    } else {
-        if (nextBtn) nextBtn.classList.add("disabled");
-    }
-
-    
-    if (n === 0) {
-        if (prevBtn) prevBtn.style.display = "none";
-    } else {
-        if (prevBtn) prevBtn.style.display = "flex";
-    }
-    
-    if (n === (formItems.length - 1)) {
-        if (submitBtn) submitBtn.style.display = "block";
-        if (nextBtn) nextBtn.style.display = "none";
-    } else {
-        if (submitBtn) submitBtn.style.display = "none";
-        if (nextBtn) nextBtn.style.display = "flex";
-    }
-
-    const currentStepElem = document.getElementById("currentStep");
-    const totalStepsElem = document.getElementById("totalSteps");
     if (currentStepElem) currentStepElem.textContent = n + 1;
     if (totalStepsElem) totalStepsElem.textContent = formItems.length;
 
     fixStepIndicator(n);
-}valid
+          }valid
         }
         }
         
         // Validierung für Checkboxen
-        const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
-        if (checkboxes.length > 0) {
         let checkboxChecked = false;
         for (let l = 0; l < checkboxes.length; l++) {
           if (checkboxes[l].checked) {
@@ -710,7 +690,6 @@ if (valid) {
         }
         
         // Validierung für <select>-Felder
-        const selects = formItems[currentTab].querySelectorAll("select[required]");
         for (let m = 0; m < selects.length; m++) {
         if (!selects[m].value) {
           selects[m].className += " invalid";
@@ -727,10 +706,6 @@ if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
         valid = false;
     }
 }
-
-
-
-
 
     if (valid) {
         formItems[currentTab].className += " finish";
