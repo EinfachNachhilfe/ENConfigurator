@@ -243,17 +243,22 @@ const valueUnitSmall= document.getElementById('valueUnitSmall');
 const valueUnitMiddle= document.getElementById('valueUnitMiddle');
 const valueUnitLarge= document.getElementById('valueUnitLarge');   
 const costDisplay = document.getElementById('totalCostDisplay');
+let testcost = 20;
+
 
 function updateTotalCostDisplay() {
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-        // Wenn ja, ändere den Wert von testcost
-        testcost = 30; // Beispielhafter neuer Wert
-
-        // Ändere die Werte von valueUnitSmall, valueUnitMiddle und valueUnitLarge
+        testcost = 30; 
         valueUnitSmall.textContent = '1x90min';
         valueUnitMiddle.textContent = '2x90min';
         valueUnitLarge.textContent = '3x90min';
+    }
+
+        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
+        valueUnitSmall.textContent = '2x45min';
+        valueUnitMiddle.textContent = '4x45min';
+        valueUnitLarge.textContent = '6x45min';
     }
     
     costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
@@ -261,7 +266,7 @@ function updateTotalCostDisplay() {
 //show the TotalCost directly
 updateTotalCostDisplay();
 
-let testcost = 20;
+
 
 createInputField(subjectMathematics, testcost, "Mathe");
 createInputField(subjectGerman, 0, "Deutsch");
