@@ -154,16 +154,68 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
         });
     }
 }
+makeExclusivePair('premiumTutor', 'experiencedTutor', 'custom-input-clicked');
+makeExclusivePair('femaleTutor', 'maleTutor', 'custom-input-clicked');
+}
 
 
+let currentTotalCost = 20; // Basiskosten
+const subjectMath  = document.getElementById('subjectMath');
 
 
+function setupClassChangeObserver(elements, additionalCost, defaultValue) {
+    elements.forEach(element => {
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    handleClassChange(element, additionalCost, defaultValue);
+                }
+            });
+        });
 
+        observer.observe(element, { attributes: true });
+    });
+}
 
+function handleClassChange(element, additionalCost, defaultValue) {
+    const container = document.getElementById('hiddenInputFieldContainer');
+    const inputFieldName = element.id;
+    let inputField = container.querySelector("input[name='" + inputFieldName + "']");
 
- makeExclusivePair('premiumTutor', 'experiencedTutor', 'custom-input-clicked');
-  makeExclusivePair('femaleTutor', 'maleTutor', 'custom-input-clicked');
+    if (element.classList.contains('custom-input-clicked')) {
+        if (!inputField) {
+            inputField = document.createElement('input');
+            inputField.type = 'hidden';
+            inputField.name = inputFieldName;
+            inputField.value = defaultValue;
+            container.appendChild(inputField);
+
+            // Preis erhöhen
+            currentTotalCost += additionalCost;
+        }
+    } else {
+        if (inputField) {
+            container.removeChild(inputField);
+
+            // Preis reduzieren
+            currentTotalCost -= additionalCost;
+        }
     }
+
+    // Anzeige der Gesamtkosten aktualisieren
+    updateTotalCostDisplay();
+}
+
+function updateTotalCostDisplay() {
+    const costDisplay = document.getElementById('totalCostDisplay');
+    costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
+}
+
+// Beispielhafte Anwendung der Funktion
+setupClassChangeObserver(subjectMath, 0.5, "Mathe");
+
+
+
 //end configurator
 
 
