@@ -184,8 +184,6 @@ function createInputField(elementOrElements, additionalCost, defaultValue) {
     });
 }
 
-let currentTotalCost = 20; // Basiskosten
-const subjectMath = document.getElementById('subjectMath');
 
 function createInputField(elements, additionalCost, defaultValue) {
     const container = document.getElementById('inputFieldsContainer');
