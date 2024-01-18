@@ -140,19 +140,19 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
     if (element1 && element2) {
         element1.addEventListener('click', () => {
             if (element1.classList.contains(exclusiveClass)) {
-                element1.click();
+                 element1.classList.remove(exclusiveClass);
             } else {
                 element1.click();
-                element2.click();
+                element2.classList.remove(exclusiveClass);
             }
         });
 
         element2.addEventListener('click', () => {
             if (element2.classList.contains(exclusiveClass)) {
-               element2.click();
+              element2.classList.remove(exclusiveClass);
             } else {
                 element2.click();
-                element1.click();
+                element1.classList.remove(exclusiveClass);
             }
         });
     }
