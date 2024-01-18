@@ -239,8 +239,23 @@ function handleClassChange(element, additionalCost, defaultValue) {
     updateTotalCostDisplay();
 }
 
+const valueUnitSmall= document.getElementById('valueUnitSmall');
+const valueUnitMiddle= document.getElementById('valueUnitMiddle');
+const valueUnitLarge= document.getElementById('valueUnitLarge');   
+const costDisplay = document.getElementById('totalCostDisplay');
+
 function updateTotalCostDisplay() {
-    const costDisplay = document.getElementById('totalCostDisplay');
+
+    if (tutoringAtHome.classList.contains('custom-input-clicked')) {
+        // Wenn ja, ändere den Wert von testcost
+        testcost = 30; // Beispielhafter neuer Wert
+
+        // Ändere die Werte von valueUnitSmall, valueUnitMiddle und valueUnitLarge
+        valueUnitSmall.textContent = '1x90min';
+        valueUnitMiddle.textContent = '2x90min';
+        valueUnitLarge.textContent = '3x90min';
+    }
+    
     costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
 }
 //show the TotalCost directly
