@@ -281,7 +281,7 @@ function updateTotalCostDisplay() {
 
 
     
-    costDisplay.textContent = 'Gesamtkosten: ' + totalMonthPrice + '€';
+    costDisplay.textContent = totalMonthPrice;
 }
 //show the TotalCost directly
 updateTotalCostDisplay();
