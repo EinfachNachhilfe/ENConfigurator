@@ -133,38 +133,24 @@ function manageSelection(elements, maxSelected, selectionClass) {
         
     
    //exclude specific fields at the same time
-function makeExclusivePair(id1, id2, exclusiveClass) {
+function makeExclusivePair(id1, id2) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
-    // Hilfsfunktion, um die Klasse umzuschalten
-    function toggleClass(element) {
-        if (element.classList.contains(exclusiveClass)) {
-            element.classList.remove(exclusiveClass);
-        } else {
-            element.classList.add(exclusiveClass);
-        }
-    }
-
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            toggleClass(element1); // Umschalten der Klasse für element1
-            if (element1.classList.contains(exclusiveClass)) {
-                element2.classList.remove(exclusiveClass); // Klasse von element2 entfernen, wenn element1 ausgewählt wird
+            if (element2.classList.contains('custom-input-clicked')) {
+                element2.click(); // Löst das Klick-Event von element2 aus
             }
-            validateForm(); // Aktualisieren der Validierung
         });
 
         element2.addEventListener('click', () => {
-            toggleClass(element2); // Umschalten der Klasse für element2
-            if (element2.classList.contains(exclusiveClass)) {
-                element1.classList.remove(exclusiveClass); // Klasse von element1 entfernen, wenn element2 ausgewählt wird
+            if (element1.classList.contains('custom-input-clicked')) {
+                element1.click(); // Löst das Klick-Event von element1 aus
             }
-            validateForm(); // Aktualisieren der Validierung
         });
     }
 }
-
 
 
 
