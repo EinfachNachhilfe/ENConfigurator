@@ -243,10 +243,12 @@ function updateTotalCostDisplay() {
     const costDisplay = document.getElementById('totalCostDisplay');
     costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
 }
+//show the TotalCost directly
 updateTotalCostDisplay();
 
+let testcost = 20;
 
-createInputField(subjectMathematics, 0.6, "Mathe");
+createInputField(subjectMathematics, testcost, "Mathe");
 createInputField(subjectGerman, 0, "Deutsch");
 createInputField(subjectEnglish, 0, "Englisch");
 createInputField(subjectFrench, 1.2, "Französisch");
