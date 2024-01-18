@@ -164,7 +164,7 @@ const subjectMath  = document.getElementById('subjectMath');
 
 
 function setupClassChangeObserver(elements, additionalCost, defaultValue) {
-    elements.forEach(element => {
+    Array.from(elements).forEach(element => {
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
