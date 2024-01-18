@@ -172,7 +172,6 @@ makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 
 
 let totalLessonPrice = 20;
-let totalMonthPrice = totalLessonPrice;
 
 const subjectMathematics = document.getElementById('subjectMathematics');
 const subjectGerman = document.getElementById('subjectGerman');
@@ -236,8 +235,8 @@ function handleClassChange(element, additionalCost, defaultValue) {
             totalLessonPrice -= additionalCost;
         }
     }
-
-    updateTotalCostDisplay();
+    calculateTotalCost();
+    updateTextUnit();
 }
 
 const textUnitSmall= document.getElementById('textUnitSmall');
@@ -254,7 +253,7 @@ let valueAddOnMale = 0;
 let valueAddOnFemale = 0;
 
 
-function updateTotalCostDisplay() {
+function updateTextUnit() {
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '1x90min';
@@ -266,27 +265,28 @@ function updateTotalCostDisplay() {
         textUnitMiddle.textContent = '4x45min';
         textUnitLarge.textContent = '6x45min';
     }
+}
+function calculateTotalCost() {
+    let multiplier = 1;
 
     if (unitSmall.classList.contains('custom-input-clicked')) {
-        totalMonthPrice*2*4.3333333333;
+        multiplier = 2;
     }
 
     if (unitMiddle.classList.contains('custom-input-clicked')) {
-        totalMonthPrice*4*4.3333333333;
+        multiplier = 4;
     }
 
     if (unitLarge.classList.contains('custom-input-clicked')) {
-        totalMonthPrice*6*4.3333333333;
+        multiplier = 6;
     }
 
-
-    
+    const totalMonthPrice = totalMonthPrice * multiplier * 4.3333333333;
     costDisplay.textContent = totalMonthPrice;
+
 }
 //show the TotalCost directly
-updateTotalCostDisplay();
-
-
+calculateTotalCost();
 
 createInputField(subjectMathematics, 0.6, "Mathe");
 createInputField(subjectGerman, 0, "Deutsch");
