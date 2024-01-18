@@ -163,7 +163,7 @@ let currentTotalCost = 20; // Basiskosten
 const subjectMath = document.getElementById('subjectMath');
 
 function createInputField(elementOrElements, additionalCost, defaultValue) {
-    const container = document.getElementById('hiddenInputFieldContainer');
+  
     
     // Beobachtet Änderungen an den Klassen der Elemente
     const observer = new MutationObserver(mutations => {
@@ -195,13 +195,13 @@ function handleClassChange(element, additionalCost, defaultValue) {
             inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
-            container.appendChild(inputField);
+            configuratorForm.appendChild(inputField);
 
             currentTotalCost += additionalCost;
         }
     } else {
         if (inputField) {
-            container.removeChild(inputField);
+            configuratorForm.removeChild(inputField);
             currentTotalCost -= additionalCost;
         }
     }
