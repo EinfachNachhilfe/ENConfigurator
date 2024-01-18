@@ -133,22 +133,31 @@ function manageSelection(elements, maxSelected, selectionClass) {
         
     
    //exclude specific fields at the same time
- function makeExclusivePair(id1, id2, exclusiveClass) {
+function makeExclusivePair(id1, id2, exclusiveClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            element1.classList.add(exclusiveClass);
-            element2.classList.remove(exclusiveClass);
+            if (element1.classList.contains(exclusiveClass)) {
+                element1.classList.remove(exclusiveClass);
+            } else {
+                element1.classList.add(exclusiveClass);
+                element2.classList.remove(exclusiveClass);
+            }
         });
 
         element2.addEventListener('click', () => {
-            element2.classList.add(exclusiveClass);
-            element1.classList.remove(exclusiveClass);
+            if (element2.classList.contains(exclusiveClass)) {
+                element2.classList.remove(exclusiveClass);
+            } else {
+                element2.classList.add(exclusiveClass);
+                element1.classList.remove(exclusiveClass);
+            }
         });
     }
 }
+
 
 
 
