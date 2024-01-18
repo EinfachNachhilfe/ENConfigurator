@@ -282,6 +282,8 @@ function calculateTotalCost() {
     }
 
     const totalMonthPrice = totalLessonPrice * multiplier * 4.3333333333;
+    
+    totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
     costDisplay.textContent = totalMonthPrice;
 
 }
