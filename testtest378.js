@@ -191,7 +191,7 @@ function handleClassChange(element, additionalCost, defaultValue) {
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
             inputField = document.createElement('input');
-            inputField.type = 'hidden';
+            inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
