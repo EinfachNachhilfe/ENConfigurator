@@ -171,7 +171,8 @@ makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 }
 
 
-let currentTotalCost = 20; // Basiskosten
+let totalLessonPrice = 20;
+let totalMonthPrice = totalLessonPrice;
 
 const subjectMathematics = document.getElementById('subjectMathematics');
 const subjectGerman = document.getElementById('subjectGerman');
@@ -227,48 +228,67 @@ function handleClassChange(element, additionalCost, defaultValue) {
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
 
-            currentTotalCost += additionalCost;
+            totalLessonPrice += additionalCost;
         }
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
-            currentTotalCost -= additionalCost;
+            totalLessonPrice -= additionalCost;
         }
     }
 
     updateTotalCostDisplay();
 }
 
-const valueUnitSmall= document.getElementById('valueUnitSmall');
-const valueUnitMiddle= document.getElementById('valueUnitMiddle');
-const valueUnitLarge= document.getElementById('valueUnitLarge');   
+const textUnitSmall= document.getElementById('textUnitSmall');
+const textUnitMiddle= document.getElementById('textUnitMiddle');
+const textUnitLarge= document.getElementById('textUnitLarge');   
 const costDisplay = document.getElementById('totalCostDisplay');
-let testcost = 20;
+
+let valueAddOnAllRoundTutor = 0;
+let valueAddOnExperiencedTutor = 0;
+let valueAddOnContractBreak = 0;
+let valueAddTandemLesson = 0;
+let valueAddOnPremiumTutor = 0;
+let valueAddOnMale = 0;
+let valueAddOnFemale = 0;
 
 
 function updateTotalCostDisplay() {
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-        testcost = 30; 
-        valueUnitSmall.textContent = '1x90min';
-        valueUnitMiddle.textContent = '2x90min';
-        valueUnitLarge.textContent = '3x90min';
+        textUnitSmall.textContent = '1x90min';
+        textUnitMiddle.textContent = '2x90min';
+        textUnitLarge.textContent = '3x90min';
+    }
+        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
+        textUnitSmall.textContent = '2x45min';
+        textUnitMiddle.textContent = '4x45min';
+        textUnitLarge.textContent = '6x45min';
     }
 
-        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
-        valueUnitSmall.textContent = '2x45min';
-        valueUnitMiddle.textContent = '4x45min';
-        valueUnitLarge.textContent = '6x45min';
+    if (unitSmall.classList.contains('custom-input-clicked')) {
+        totalMonthPrice*2*4.3333333333;
     }
+
+    if (unitMiddle.classList.contains('custom-input-clicked')) {
+        totalMonthPrice*4*4.3333333333;
+    }
+
+    if (unitLarge.classList.contains('custom-input-clicked')) {
+        totalMonthPrice*6*4.3333333333;
+    }
+
+
     
-    costDisplay.textContent = 'Gesamtkosten: ' + currentTotalCost + '€';
+    costDisplay.textContent = 'Gesamtkosten: ' + totalMonthPrice + '€';
 }
 //show the TotalCost directly
 updateTotalCostDisplay();
 
 
 
-createInputField(subjectMathematics, testcost, "Mathe");
+createInputField(subjectMathematics, 0.6, "Mathe");
 createInputField(subjectGerman, 0, "Deutsch");
 createInputField(subjectEnglish, 0, "Englisch");
 createInputField(subjectFrench, 1.2, "Französisch");
@@ -285,19 +305,23 @@ createInputField(subjectComputerScience, 1.6, "Informatik");
 createInputField(subjectPhysicalEducation, 0.8, "Sport");
 createInputField(subjectEconomics, 1.4, "Wirtschaft");
 createInputField(subjectOther, 2.2, "Sonstiges");
-createInputField(tutoringAtHome, 0.5, "Nachhilfe zu Hause");
-createInputField(tutoringHybrid, 0.5, "Hybrid Nachhilfe");
-createInputField(tutoringOnline, 0.5, "Online Nachhilfe");
-createInputField(unitSmall, 0.5, "Kleine Einheit");
-createInputField(unitMiddle, 0.5, "Mittlere Einheit");
-createInputField(unitLarge, 0.5, "Große Einheit");
-createInputField(contractSmall, 0.5, "0 Monate");
-createInputField(contractMiddle, 0.5, "12 Monate");
-createInputField(contractLarge, 0.5, "24 Monate");
-createInputField(addOnAllRoundTutor, 0.5, "Allround-Nachhilfelehrer");
-createInputField(addOnExperiencedTutor, 0.5, "Erfahrener Nachhilfelehrer");
-createInputField(addOnContractBreak, 0.5, "Vertragspause");
-createInputField(addTandemLesson, 0.5, "Tandem-Unterricht");
+createInputField(tutoringAtHome, 5, "Nachhilfe zu Hause");
+createInputField(tutoringHybrid, 3, "Hybrid Nachhilfe");
+createInputField(tutoringOnline, 0, "Online Nachhilfe");
+createInputField(unitSmall, 6, "Kleine Einheit");
+createInputField(unitMiddle, 2.6, "Mittlere Einheit");
+createInputField(unitLarge, 0, "Große Einheit");
+createInputField(contractSmall, 6.8, "0 Monate");
+createInputField(contractMiddle, 2, "12 Monate");
+createInputField(contractLarge, 0, "24 Monate");
+createInputField(addOnAllRoundTutor, 0.6, "Allround-Nachhilfelehrer");
+createInputField(addOnExperiencedTutor, 1.2, "Erfahrener Nachhilfelehrer");
+createInputField(addOnContractBreak, 1, "Vertragspause");
+createInputField(addTandemLesson, 10, "Tandem-Unterricht");
+createInputField(addOnPremiumTutor, 2.6, "Premium Nachhilfelehrer");
+createInputField(addOnMale, 0.4, "Nachhilfelehrer");
+createInputField(addOnFemale, 0.4, "Nachhilfelehrerin");
+
 
 
 
