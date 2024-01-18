@@ -25,6 +25,136 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
     const emailContactPerson = document.getElementById('email_contact-person');
 //end contact form
 
+    //start configurator
+   const configuratorForm = document.getElementById('configurator');
+
+if (configuratorForm) {
+     const buttonTexts = {
+        'btnAddOnDuoTeaching': 'Text für Duo Teaching',
+        'btnAddOnContractBreak': 'Text für Contract Break',
+        'btnAddOnPremiumTutor': 'Text für Premium Tutor',
+        'btnAddOnExperiencedTutor': 'Text für Experienced Tutor',
+        'btnAddOnAllRoundTutor': 'Text für All Round Tutor',
+        'btnAddOnMale': 'Text für Male Tutor',
+        'btnAddOnFemale': 'Text für Female Tutor',
+        'btnContractLarge': 'Text für Large Contract',
+        'btnContractMiddle': 'Text für Middle Contract',
+        'btnContractSmall': 'Text für Small Contract',
+        'btnUnitLarge': 'Text für Large Unit',
+        'btnUnitMiddle': 'Text für Middle Unit',
+        'btnUnitSmall': 'Text für Small Unit',
+        'btnTutoringOnline': 'Text für Online Tutoring',
+        'btnTutoringHybrid': 'Text für Hybrid Tutoring',
+        'btnTutoringAtHome': 'Text für At Home Tutoring'
+    };
+
+          const popup = document.getElementById('popupInformation');
+        const background = document.getElementById('background');
+        
+                const customCheckboxInput = document.querySelectorAll('.custom-checkbox-input');
+        
+        const tripperClosePopupInformation = document.getElementById('tripperClosePopupInformation');
+        const textPopupInformation = document.getElementById('textPopupInformation');
+        const customCheckboxInputSubject = document.querySelectorAll('.custom-checkbox-input-subject');
+        const customRadioInputTutoring = document.querySelectorAll('.custom-radio-input.tutoring');
+        const customRadioInputUnit = document.querySelectorAll('.custom-radio-input.unit');
+        const customRadioInputContract = document.querySelectorAll('.custom-radio-input.contract');
+        const customCheckboxInputTutor = document.querySelectorAll('.custom-checkbox-input-tutor');
+        const customCheckboxInputOther = document.querySelectorAll('.custom-checkbox-input-other');
+        const premiumTutor  = document.getElementById('premiumTutor');
+        const experiencedTutor  = document.getElementById('experiencedTutor');
+        const maleTutor  = document.getElementById('maleTutor');
+        const femaleTutor  = document.getElementById('femaleTutor');
+
+
+
+        Object.keys(buttonTexts).forEach(buttonId => {
+            const button = document.getElementById(buttonId);
+            button.addEventListener('click', () => {
+                background.style.display = 'block';
+                popup.style.display = 'block';
+                textPopupInformation.textContent = buttonTexts[buttonId];
+            });
+        });
+
+        background.addEventListener('click', () => {
+            popup.style.display = 'none';
+            background.style.display = 'none';
+        });
+
+        tripperClosePopupInformation.addEventListener('click', () => {
+            popup.style.display = 'none';
+            background.style.display = 'none';
+        });
+
+function manageSelection(elements, maxSelected, selectionClass) {
+    let selectedElements = [];
+
+    elements.forEach(element => {
+        element.addEventListener('click', () => {
+            if (element.classList.contains(selectionClass)) {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+            } else {
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
+                }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
+            }
+            validateForm();
+        });
+    });
+
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
+}
+
+
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
+        
+        
+ function makeExclusivePair(id1, id2, exclusiveClass) {
+    const element1 = document.getElementById(id1);
+    const element2 = document.getElementById(id2);
+
+    if (element1 && element2) {
+        element1.addEventListener('click', () => {
+            element1.classList.add(exclusiveClass);
+            element2.classList.remove(exclusiveClass);
+        });
+
+        element2.addEventListener('click', () => {
+            element2.classList.add(exclusiveClass);
+            element1.classList.remove(exclusiveClass);
+        });
+    }
+}
+
+
+ makeExclusivePair('premiumTutor', 'experiencedTutor', 'custom-input-clicked');
+  makeExclusivePair('femaleTutor', 'maleTutor', 'custom-input-clicked');
+    }
+//end configurator
+
 
 
 //start stepchange with enter
@@ -588,7 +718,7 @@ if (valid) {
         }
         }
     
-const configuratorForm = document.getElementById('configurator');
+
 if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
     const hasClicked = formItems[currentTab].querySelectorAll(".custom-input-clicked").length > 0;
     if (hasClicked) {
