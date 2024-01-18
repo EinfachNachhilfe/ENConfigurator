@@ -30,7 +30,7 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 
 if (configuratorForm) {
      const buttonTexts = {
-        'btnAddOnDuoTeaching': 'Text für Duo Teaching',
+        'btnAddTandemLesson': 'Text für Duo Teaching',
         'btnAddOnContractBreak': 'Text für Contract Break',
         'btnAddOnPremiumTutor': 'Text für Premium Tutor',
         'btnAddOnExperiencedTutor': 'Text für Experienced Tutor',
@@ -50,7 +50,6 @@ if (configuratorForm) {
 
         const popup = document.getElementById('popupInformation');
         const background = document.getElementById('background');
-        const customCheckboxInput = document.querySelectorAll('.custom-checkbox-input');
         const tripperClosePopupInformation = document.getElementById('tripperClosePopupInformation');
         const textPopupInformation = document.getElementById('textPopupInformation');
         const customCheckboxInputSubject = document.querySelectorAll('.custom-checkbox-input-subject');
@@ -59,10 +58,23 @@ if (configuratorForm) {
         const customRadioInputContract = document.querySelectorAll('.custom-radio-input.contract');
         const customCheckboxInputTutor = document.querySelectorAll('.custom-checkbox-input-tutor');
         const customCheckboxInputOther = document.querySelectorAll('.custom-checkbox-input-other');
-        const premiumTutor  = document.getElementById('premiumTutor');
-        const experiencedTutor  = document.getElementById('experiencedTutor');
-        const maleTutor  = document.getElementById('maleTutor');
-        const femaleTutor  = document.getElementById('femaleTutor');
+        const addOnPremiumTutor  = document.getElementById('addOnPremiumTutor');
+        const addOnExperiencedTutor  = document.getElementById('addOnExperiencedTutor');
+        const addOnMale  = document.getElementById('addOnMale');
+        const addOnFemale  = document.getElementById('addOnFemale');
+        const tutoringAtHome = document.getElementById('tutoringAtHome');
+        const tutoringHybrid = document.getElementById('tutoringHybrid');
+        const tutoringOnline = document.getElementById('tutoringOnline');
+        const unitSmall = document.getElementById('unitSmall');
+        const unitMiddle = document.getElementById('unitMiddle');
+        const unitLarge = document.getElementById('unitLarge');
+        const contractSmall = document.getElementById('contractSmall');
+        const contractMiddle = document.getElementById('contractMiddle');
+        const contractLarge = document.getElementById('contractLarge');
+        const addOnAllRoundTutor = document.getElementById('addOnAllRoundTutor');  
+        const addOnContractBreak = document.getElementById('addOnContractBreak');
+        const addTandemLesson = document.getElementById('addTandemLesson');
+
 
 
 //show "Mehr Infos" Popup
@@ -154,13 +166,31 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
         });
     }
 }
-makeExclusivePair('premiumTutor', 'experiencedTutor', 'custom-input-clicked');
-makeExclusivePair('femaleTutor', 'maleTutor', 'custom-input-clicked');
+makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
+makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 }
 
 
 let currentTotalCost = 20; // Basiskosten
-const subjectMath = document.getElementById('subjectMath');
+
+const subjectMathematics = document.getElementById('subjectMathematics');
+const subjectGerman = document.getElementById('subjectGerman');
+const subjectEnglish = document.getElementById('subjectEnglish');
+const subjectFrench = document.getElementById('subjectFrench');
+const subjectLatin = document.getElementById('subjectLatin');
+const subjectItalian = document.getElementById('subjectItalian');
+const subjectSpanish = document.getElementById('subjectSpanish');
+const subjectPhysics = document.getElementById('subjectPhysics');
+const subjectChemistry = document.getElementById('subjectChemistry');
+const subjectBiology = document.getElementById('subjectBiology');
+const subjectGeography = document.getElementById('subjectGeography');
+const subjectHistory = document.getElementById('subjectHistory');
+const subjectSocialStudies = document.getElementById('subjectSocialStudies');
+const subjectComputerScience = document.getElementById('subjectComputerScience');
+const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
+const subjectEconomics = document.getElementById('subjectEconomics');
+const subjectOther = document.getElementById('subjectOther');
+
 
 function createInputField(elementOrElements, additionalCost, defaultValue) {
   
@@ -215,7 +245,37 @@ function updateTotalCostDisplay() {
 }
 
 // Beispielhafte Anwendung der Funktion
-createInputField(subjectMath, 0.5, "Standardwert");
+createInputField(subjectMathematics, 0.6, "Mathe");
+createInputField(subjectGerman, 0, "Deutsch");
+createInputField(subjectEnglish, 0, "Englisch");
+createInputField(subjectFrench, 1.2, "Französisch");
+createInputField(subjectLatin, 1.4, "Latein");
+createInputField(subjectItalian, 1.2, "Italienisch");
+createInputField(subjectSpanish, 0.8, "Spanisch");
+createInputField(subjectPhysics, 1.2, "Physik");
+createInputField(subjectChemistry, 1.4, "Chemie");
+createInputField(subjectBiology, 0.8, "Biologie");
+createInputField(subjectGeography, 0.2, "Geografie");
+createInputField(subjectHistory, 0.2, "Geschichte");
+createInputField(subjectSocialStudies, 0.2, "Sozialkunde");
+createInputField(subjectComputerScience, 1.6, "Informatik");
+createInputField(subjectPhysicalEducation, 0.8, "Sport");
+createInputField(subjectEconomics, 1.4, "Wirtschaft");
+createInputField(subjectOther, 2.2, "Sonstiges");
+createInputField(tutoringAtHome, 0.5, "Nachhilfe zu Hause");
+createInputField(tutoringHybrid, 0.5, "Hybrid Nachhilfe");
+createInputField(tutoringOnline, 0.5, "Online Nachhilfe");
+createInputField(unitSmall, 0.5, "Kleine Einheit");
+createInputField(unitMiddle, 0.5, "Mittlere Einheit");
+createInputField(unitLarge, 0.5, "Große Einheit");
+createInputField(contractSmall, 0.5, "0 Monate");
+createInputField(contractMiddle, 0.5, "12 Monate");
+createInputField(contractLarge, 0.5, "24 Monate");
+createInputField(addOnAllRoundTutor, 0.5, "Allround-Nachhilfelehrer");
+createInputField(addOnExperiencedTutor, 0.5, "Erfahrener Nachhilfelehrer");
+createInputField(addOnContractBreak, 0.5, "Vertragspause");
+createInputField(addTandemLesson, 0.5, "Tandem-Unterricht");
+
 
 
 
