@@ -141,6 +141,7 @@ function makeExclusivePair(id1, id2) {
         element1.addEventListener('click', () => {
             if (element2.classList.contains('custom-input-clicked')) {
                 element2.click(); // Löst das Klick-Event von element2 aus
+                element1.classList.add('custom-input-clicked');
             }
         });
 
