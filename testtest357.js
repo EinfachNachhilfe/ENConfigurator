@@ -103,7 +103,8 @@ function manageSelection(elements, maxSelected, selectionClass) {
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             }
-            validateForm();
+           validateForm();
+           makeExclusivePair();
         });
     });
 //check the change event 
@@ -141,13 +142,11 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
         element1.addEventListener('click', () => {
             element1.classList.add(exclusiveClass);
             element2.classList.remove(exclusiveClass);
-            manageSelection();
         });
 
         element2.addEventListener('click', () => {
             element2.classList.add(exclusiveClass);
             element1.classList.remove(exclusiveClass);
-            manageSelection();
         });
     }
 }
