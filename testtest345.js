@@ -138,26 +138,23 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (!element1.classList.contains(exclusiveClass)) {
-                element1.classList.add(exclusiveClass);
+            if (element2.classList.contains(exclusiveClass)) {
                 element2.classList.remove(exclusiveClass);
-            } else {
-                element1.classList.remove(exclusiveClass);
             }
+            element1.classList.toggle(exclusiveClass);
             validateForm();
         });
 
         element2.addEventListener('click', () => {
-            if (!element2.classList.contains(exclusiveClass)) {
-                element2.classList.add(exclusiveClass);
+            if (element1.classList.contains(exclusiveClass)) {
                 element1.classList.remove(exclusiveClass);
-            } else {
-                element2.classList.remove(exclusiveClass);
             }
+            element2.classList.toggle(exclusiveClass);
             validateForm();
         });
     }
 }
+
 
 
 
