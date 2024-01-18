@@ -133,21 +133,19 @@ function manageSelection(elements, maxSelected, selectionClass) {
         
     
    //exclude specific fields at the same time
-function makeExclusivePair(id1, id2) {
+function makeExclusivePair(id1, id2, exclusiveClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (element2.classList.contains('custom-input-clicked')) {
-                element2.click(); // löst das Klick-Event auf dem anderen Element aus
-            }
+            element1.classList.add(exclusiveClass);
+            element2.classList.remove(exclusiveClass);
         });
 
         element2.addEventListener('click', () => {
-            if (element1.classList.contains('custom-input-clicked')) {
-                element1.click(); // löst das Klick-Event auf dem anderen Element aus
-            }
+            element2.classList.add(exclusiveClass);
+            element1.classList.remove(exclusiveClass);
         });
     }
 }
