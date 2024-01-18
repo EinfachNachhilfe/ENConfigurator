@@ -281,7 +281,7 @@ function calculateTotalCost() {
         multiplier = 6;
     }
 
-    const totalMonthPrice = totalMonthPrice * multiplier * 4.3333333333;
+    const totalMonthPrice = totalLessonPrice * multiplier * 4.3333333333;
     costDisplay.textContent = totalMonthPrice;
 
 }
