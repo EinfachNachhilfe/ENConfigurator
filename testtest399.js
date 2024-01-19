@@ -248,12 +248,12 @@ const textUnitLarge= document.getElementById('textUnitLarge');
 const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
+const textLessonPrice = document.getElementById('textLessonPrice');
+
 
 
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
-
-let valueDb1Lesson = totalLessonPrice - tutorSalary;
 
 function updateTextUnit() {
 
@@ -292,14 +292,21 @@ function calculateTotalCost() {
     let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
     totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
     textTotalMonthPrice.textContent = totalMonthPrice;
-
+    
+    //calculation months salary tutor
+    let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
+    
     //calculation LTV
-    let valueTotalLtv = valueDb1Lesson * multiplierUnit * 4.3333333333 * multiplierContract  + setUpFee ; 
+    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
     valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
     textTotalLtv.textContent = valueTotalLtv;
 
     //display tutor salary
     textTotalTutorSalary.textContent = tutorSalary;
+
+    //display lesson price
+    totalLessonPrice.textContent = totalLessonPrice;
+
 
 
 
