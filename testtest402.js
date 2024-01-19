@@ -298,14 +298,14 @@ function calculateTotalCost() {
     
     //calculation LTV
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
-    valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
+   
     textTotalLtv.textContent = valueTotalLtv;
 
     //display tutor salary
     textTotalTutorSalary.textContent = tutorSalary;
 
     //display lesson price
-    totalLessonPrice = totalLessonPrice.toFixed(2).replace('.', ',');
+    
     textLessonPrice.textContent = totalLessonPrice;
 
 
