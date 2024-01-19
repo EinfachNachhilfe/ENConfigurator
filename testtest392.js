@@ -172,7 +172,7 @@ makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 
 
 let totalLessonPrice = 20;
-    totalLessonPrice += valueUnitSmall;
+    
 
 const subjectMathematics = document.getElementById('subjectMathematics');
 const subjectGerman = document.getElementById('subjectGerman');
@@ -246,7 +246,7 @@ const textUnitLarge= document.getElementById('textUnitLarge');
 const costDisplay = document.getElementById('totalCostDisplay');
 
 let valueUnitSmall = 6;
-
+totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
 
