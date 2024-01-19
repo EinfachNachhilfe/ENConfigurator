@@ -290,7 +290,7 @@ function calculateTotalCost() {
 
     //calculation months Price
     let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
-    totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
+   
     textTotalMonthPrice.textContent = totalMonthPrice;
     
     //calculation months salary tutor
