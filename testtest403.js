@@ -297,7 +297,7 @@ function calculateTotalCost() {
     let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
     
     //calculation LTV
-    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
+    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract;
    
     textTotalLtv.textContent = valueTotalLtv;
 
