@@ -168,7 +168,7 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
 }
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
 makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
-}
+
 
 
 let totalLessonPrice = 20;
@@ -344,8 +344,7 @@ createInputField(addOnMale, 0.4, 0, "Nachhilfelehrer");
 createInputField(addOnFemale, 0.4, 0, "Nachhilfelehrerin");
 
 
-
-
+}
 
 
 
