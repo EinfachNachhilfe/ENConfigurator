@@ -290,22 +290,19 @@ function calculateTotalCost() {
 
     //calculation months Price
     let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
-    textTotalMonthPrice.textContent = totalMonthPrice;
-    
+   
     //calculation months salary tutor
     let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
-     textTotalTutorSalary.textContent = tutorSalary;
     
     //calculation LTV
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract;
-    textTotalLtv.textContent = valueTotalLtv;
+
 
     //display lesson price
-    textLessonPrice.textContent = totalLessonPrice;
-
-    totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
-    monthlyTutorCost = monthlyTutorCost.toFixed(2).replace('.', ',');
-    valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
+    textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ',');
+    textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+    textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
+    textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
     
 
 }
