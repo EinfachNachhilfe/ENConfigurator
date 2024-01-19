@@ -280,7 +280,7 @@ function calculateTotalCost() {
     totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
     textTotalMothPrice.textContent = totalMonthPrice;
 
-    tutorSalary = tutorSalary.toFixed(2).replace('.', ',');
+  
     textTotalTutorSalary.textContent = tutorSalary;
 
 }
