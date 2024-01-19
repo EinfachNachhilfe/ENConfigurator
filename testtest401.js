@@ -305,6 +305,7 @@ function calculateTotalCost() {
     textTotalTutorSalary.textContent = tutorSalary;
 
     //display lesson price
+    totalLessonPrice = totalLessonPrice.toFixed(2).replace('.', ',');
     textLessonPrice.textContent = totalLessonPrice;
 
 
