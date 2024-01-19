@@ -306,7 +306,7 @@ function calculateTotalCost() {
     totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
     monthlyTutorCost = monthlyTutorCost.toFixed(2).replace('.', ',');
     valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
-    textLessonPrice = textLessonPrice.toFixed(2).replace('.', ',');
+    
 
 }
 //show the TotalCost directly
