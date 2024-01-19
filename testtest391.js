@@ -172,6 +172,7 @@ makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 
 
 let totalLessonPrice = 20;
+    totalLessonPrice += valueUnitSmall;
 
 const subjectMathematics = document.getElementById('subjectMathematics');
 const subjectGerman = document.getElementById('subjectGerman');
@@ -244,13 +245,7 @@ const textUnitMiddle= document.getElementById('textUnitMiddle');
 const textUnitLarge= document.getElementById('textUnitLarge');   
 const costDisplay = document.getElementById('totalCostDisplay');
 
-let valueAddOnAllRoundTutor = 0;
-let valueAddOnExperiencedTutor = 0;
-let valueAddOnContractBreak = 0;
-let valueAddTandemLesson = 0;
-let valueAddOnPremiumTutor = 0;
-let valueAddOnMale = 0;
-let valueAddOnFemale = 0;
+let valueUnitSmall = 6;
 
 
 function updateTextUnit() {
@@ -306,7 +301,7 @@ createInputField(subjectOther, 2.2, "Sonstiges");
 createInputField(tutoringAtHome, 5, "Nachhilfe zu Hause");
 createInputField(tutoringHybrid, 3, "Hybrid Nachhilfe");
 createInputField(tutoringOnline, 0, "Online Nachhilfe");
-createInputField(unitSmall, 6, "Kleine Einheit");
+createInputField(unitSmall, 0, "Kleine Einheit"); //The value is 0 as it is always added directly to totalLessonPrice
 createInputField(unitMiddle, 2.6, "Mittlere Einheit");
 createInputField(unitLarge, 0, "Große Einheit");
 createInputField(contractSmall, 6.8, "0 Monate");
