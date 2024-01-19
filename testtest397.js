@@ -306,7 +306,6 @@ function calculateTotalCost() {
     textTotalMonthPrice.textContent = totalMonthPrice;
 
     //display tutor salary
-    tutorSalary = tutorSalary.replace('.', ',');
     textTotalTutorSalary.textContent = tutorSalary;
 
     //display LTV
