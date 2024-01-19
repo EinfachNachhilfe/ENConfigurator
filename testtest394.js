@@ -172,7 +172,7 @@ makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 
 
 let totalLessonPrice = 20;
-let tutorSalary =12;
+let tutorSalary = 12;
     
 
 const subjectMathematics = document.getElementById('subjectMathematics');
@@ -287,39 +287,39 @@ function calculateTotalCost() {
 //show the TotalCost directly
 calculateTotalCost();
 
-createInputField(subjectMathematics, 0.6,0, "Mathe");
-createInputField(subjectGerman, 0,0, "Deutsch");
-createInputField(subjectEnglish, 0,0, "Englisch");
-createInputField(subjectFrench, 1.2,0, "Französisch");
-createInputField(subjectLatin, 1.4,0, "Latein");
-createInputField(subjectItalian, 1.2,0, "Italienisch");
-createInputField(subjectSpanish, 0.8,0, "Spanisch");
-createInputField(subjectPhysics, 1.2,0, "Physik");
-createInputField(subjectChemistry, 1.4,0, "Chemie");
-createInputField(subjectBiology, 0.8,0, "Biologie");
-createInputField(subjectGeography, 0.2,0, "Geografie");
+createInputField(subjectMathematics, 0.6, 0, "Mathe");
+createInputField(subjectGerman, 0, 0, "Deutsch");
+createInputField(subjectEnglish, 0, 0, "Englisch");
+createInputField(subjectFrench, 1.2, 0, "Französisch");
+createInputField(subjectLatin, 1.4, 0, "Latein");
+createInputField(subjectItalian, 1.2, 0, "Italienisch");
+createInputField(subjectSpanish, 0.8, 0, "Spanisch");
+createInputField(subjectPhysics, 1.2, 0, "Physik");
+createInputField(subjectChemistry, 1.4, 0, "Chemie");
+createInputField(subjectBiology, 0.8, 0, "Biologie");
+createInputField(subjectGeography, 0.2, 0, "Geografie");
 createInputField(subjectHistory, 0.2,0, "Geschichte");
-createInputField(subjectSocialStudies, 0.2,0, "Sozialkunde");
-createInputField(subjectComputerScience, 1.6,0, "Informatik");
-createInputField(subjectPhysicalEducation, 0.8,0, "Sport");
-createInputField(subjectEconomics, 1.4,0, "Wirtschaft");
-createInputField(subjectOther, 2.2,0, "Sonstiges");
-createInputField(tutoringAtHome, 5,1.5, "Nachhilfe zu Hause");
-createInputField(tutoringHybrid, 3,0.75, "Hybrid Nachhilfe");
-createInputField(tutoringOnline, 0,0, "Online Nachhilfe");
-createInputField(unitSmall, 0,0, "Kleine Einheit"); //The value is 0 as it is always added directly to totalLessonPrice
-createInputField(unitMiddle, 2.6,0, "Mittlere Einheit");
+createInputField(subjectSocialStudies, 0.2, 0, "Sozialkunde");
+createInputField(subjectComputerScience, 1.6, 0, "Informatik");
+createInputField(subjectPhysicalEducation, 0.8, 0, "Sport");
+createInputField(subjectEconomics, 1.4, 0, "Wirtschaft");
+createInputField(subjectOther, 2.2, 0, "Sonstiges");
+createInputField(tutoringAtHome, 5, 1.5, "Nachhilfe zu Hause");
+createInputField(tutoringHybrid, 3, 0.75, "Hybrid Nachhilfe");
+createInputField(tutoringOnline, 0, 0, "Online Nachhilfe");
+createInputField(unitSmall, 0, 0, "Kleine Einheit"); //The value is 0 as it is always added directly to totalLessonPrice
+createInputField(unitMiddle, 2.6, 0, "Mittlere Einheit");
 createInputField(unitLarge, 0,0, "Große Einheit");
-createInputField(contractSmall, 6.8,0, "0 Monate");
-createInputField(contractMiddle, 2,0, "12 Monate");
-createInputField(contractLarge, 0,0, "24 Monate");
-createInputField(addOnAllRoundTutor, 0.6,0, "Allround-Nachhilfelehrer");
-createInputField(addOnExperiencedTutor, 1.2,0.45, "Erfahrener Nachhilfelehrer");
-createInputField(addOnContractBreak, 1.5,0, "Vertragspause");
-createInputField(addTandemLesson, 10,1.5, "Tandem-Unterricht");
-createInputField(addOnPremiumTutor, 2.6,0.75, "Premium Nachhilfelehrer");
-createInputField(addOnMale, 0.4,0, "Nachhilfelehrer");
-createInputField(addOnFemale, 0.4,0, "Nachhilfelehrerin");
+createInputField(contractSmall, 6.8, 0, "0 Monate");
+createInputField(contractMiddle, 2, 0, "12 Monate");
+createInputField(contractLarge, 0, 0, "24 Monate");
+createInputField(addOnAllRoundTutor, 0.6, 0, "Allround-Nachhilfelehrer");
+createInputField(addOnExperiencedTutor, 1.2, 0.45, "Erfahrener Nachhilfelehrer");
+createInputField(addOnContractBreak, 1.5, 0, "Vertragspause");
+createInputField(addTandemLesson, 10, 1.5, "Tandem-Unterricht");
+createInputField(addOnPremiumTutor, 2.6, 0.75, "Premium Nachhilfelehrer");
+createInputField(addOnMale, 0.4, 0, "Nachhilfelehrer");
+createInputField(addOnFemale, 0.4, 0, "Nachhilfelehrerin");
 
 
 
