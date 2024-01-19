@@ -245,11 +245,15 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
 const textUnitSmall= document.getElementById('textUnitSmall');
 const textUnitMiddle= document.getElementById('textUnitMiddle');
 const textUnitLarge= document.getElementById('textUnitLarge');   
-const textTotalMothPrice = document.getElementById('textTotalMothPrice');
+const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
+const textTotalLtv = document.getElementById('textTotalLtv');
+
 
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
+
+let valueTotalLtv = totalLessonPrice - tutorSalary;
 
 function updateTextUnit() {
 
@@ -265,23 +269,49 @@ function updateTextUnit() {
     }
 }
 function calculateTotalCost() {
-    let multiplier = 2;
+    let multiplierUnit = 2;
+    let multiplierContract = 1;
+    let  setUpFee = 0;
 
     if (unitMiddle.classList.contains('custom-input-clicked')) {
-        multiplier = 4;
+        multiplierUnit = 4;
     }
 
     if (unitLarge.classList.contains('custom-input-clicked')) {
-        multiplier = 6;
+        multiplierUnit = 6;
     }
 
-    let totalMonthPrice = totalLessonPrice * multiplier * 4.3333333333;
-    
-    totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
-    textTotalMothPrice.textContent = totalMonthPrice;
 
-  
+    if (contractSmall.classList.contains('custom-input-clicked')) {
+        multiplierContract = 6;
+        setUpFee = 69.99;
+    }
+
+    if (unitLarge.classList.contains('custom-input-clicked')) {
+        multiplierContract = 12;
+    }
+
+    if (unitLarge.classList.contains('custom-input-clicked')) {
+        multiplierContract = 24;
+    }
+
+    //calculation months Price
+    let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
+
+    //calculation LTV
+    valueTotalLtv = valueTotalLtv * multiplierContract *  4.3333333333 + setUpFee ; 
+
+    //display months price
+    totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
+    textTotalMonthPrice.textContent = totalMonthPrice;
+
+    //display tutor salary
+    tutorSalary = tutorSalary.replace('.', ',');
     textTotalTutorSalary.textContent = tutorSalary;
+
+    //display LTV
+    valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
+    textTotalLtv.textContent = valueTotalLtv;
 
 }
 //show the TotalCost directly
