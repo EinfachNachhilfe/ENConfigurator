@@ -253,7 +253,7 @@ const textTotalLtv = document.getElementById('textTotalLtv');
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
 
-let valueTotalLtv = totalLessonPrice - tutorSalary;
+let valueDb1Lesson = totalLessonPrice - tutorSalary;
 
 function updateTextUnit() {
 
@@ -275,42 +275,34 @@ function calculateTotalCost() {
 
     if (unitMiddle.classList.contains('custom-input-clicked')) {
         multiplierUnit = 4;
-    }
-
-    if (unitLarge.classList.contains('custom-input-clicked')) {
+    } else if (unitLarge.classList.contains('custom-input-clicked')) {
         multiplierUnit = 6;
     }
-
 
     if (contractSmall.classList.contains('custom-input-clicked')) {
         multiplierContract = 6;
         setUpFee = 69.99;
-    }
-
-    if (unitLarge.classList.contains('custom-input-clicked')) {
+    } else if (contractMiddle.classList.contains('custom-input-clicked')) {
         multiplierContract = 12;
-    }
-
-    if (unitLarge.classList.contains('custom-input-clicked')) {
+    } else if (contractLarge.classList.contains('custom-input-clicked')) {
         multiplierContract = 24;
     }
 
     //calculation months Price
     let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
-
-    //calculation LTV
-    valueTotalLtv = valueTotalLtv * multiplierContract *  4.3333333333 + setUpFee ; 
-
-    //display months price
     totalMonthPrice = totalMonthPrice.toFixed(2).replace('.', ',');
     textTotalMonthPrice.textContent = totalMonthPrice;
+
+    //calculation LTV
+    let valueTotalLtv = valueDb1Lesson * multiplierUnit * 4.3333333333 * multiplierContract  + setUpFee ; 
+    valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
+    textTotalLtv.textContent = valueTotalLtv;
 
     //display tutor salary
     textTotalTutorSalary.textContent = tutorSalary;
 
-    //display LTV
-    valueTotalLtv = valueTotalLtv.toFixed(2).replace('.', ',');
-    textTotalLtv.textContent = valueTotalLtv;
+
+
 
 }
 //show the TotalCost directly
