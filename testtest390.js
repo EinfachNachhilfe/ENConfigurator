@@ -267,11 +267,7 @@ function updateTextUnit() {
     }
 }
 function calculateTotalCost() {
-    let multiplier = 1;
-
-    if (unitSmall.classList.contains('custom-input-clicked')) {
-        multiplier = 2;
-    }
+    let multiplier = 2;
 
     if (unitMiddle.classList.contains('custom-input-clicked')) {
         multiplier = 4;
