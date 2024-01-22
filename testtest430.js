@@ -116,6 +116,9 @@ function manageSelection(elements, maxSelected, selectionClass) {
                 element.classList.add(selectionClass);
             }
            validateForm();
+           updateCodeGenerator();
+           removeCodeGenerator();
+            
         });
     });
 //check the change event 
@@ -326,22 +329,10 @@ const areaAddOn = { start: 18, end: 42 };
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-
-    // Ersetze vorhandenen Code in derselben Kategorie
-    Object.keys(codePositions).forEach(existingCode => {
-        if (existingCode.startsWith(area.prefix) && currentCodes.includes(existingCode)) {
-            currentCodes = currentCodes.replace(existingCode, "0A");
-            delete codePositions[existingCode];
-        }
-    });
-
-    // Füge den neuen Code hinzu
-    let newCodes = currentCodes.replace("0A", codeToAdd);
+    let newCodes = currentCodes.replace("0A", codeToAdd); // Ersetzt den ersten Platzhalter '0A' mit dem Code
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    codePositions[codeToAdd] = area.start + newCodes.indexOf(codeToAdd);
-    textCodeGenerator.textContent = baseCode;
+    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
 }
-
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
@@ -351,6 +342,9 @@ function removeCodeGenerator(area, codeToRemove) {
     }
     textCodeGenerator.textContent = baseCode;
 }
+
+
+textCodeGenerator.textContent = baseCode;
 
 
 textCodeGenerator.textContent = baseCode;
