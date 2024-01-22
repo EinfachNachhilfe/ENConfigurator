@@ -326,10 +326,22 @@ const areaAddOn = { start: 18, end: 42 };
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace("0A", codeToAdd); // Ersetzt den ersten Platzhalter '0A' mit dem Code
+
+    // Ersetze vorhandenen Code in derselben Kategorie
+    Object.keys(codePositions).forEach(existingCode => {
+        if (existingCode.startsWith(area.prefix) && currentCodes.includes(existingCode)) {
+            currentCodes = currentCodes.replace(existingCode, "0A");
+            delete codePositions[existingCode];
+        }
+    });
+
+    // Füge den neuen Code hinzu
+    let newCodes = currentCodes.replace("0A", codeToAdd);
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
+    codePositions[codeToAdd] = area.start + newCodes.indexOf(codeToAdd);
+    textCodeGenerator.textContent = baseCode;
 }
+
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
