@@ -194,7 +194,7 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
 
-function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, defaultValue) {
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue) {
   
     
     // Beobachtet Änderungen an den Klassen der Elemente
@@ -202,7 +202,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         mutations.forEach(mutation => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
-                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, defaultValue);
+                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue);
             }
         });
     });
@@ -216,7 +216,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, defaultValue) {
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
@@ -230,12 +230,14 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary +=additionalLessonTutorSalary;
+            updateCodeGenerator(codeGenerator);
         }
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(codeGenerator);
         }
     }
     calculateTotalCost();
@@ -309,45 +311,60 @@ function calculateTotalCost() {
 //show the TotalCost directly
 calculateTotalCost();
 
-createInputField(subjectMathematics, 0.6, 0, "Mathe");
-createInputField(subjectGerman, 0, 0, "Deutsch");
-createInputField(subjectEnglish, 0, 0, "Englisch");
-createInputField(subjectFrench, 1.2, 0, "Französisch");
-createInputField(subjectLatin, 1.4, 0, "Latein");
-createInputField(subjectItalian, 1.2, 0, "Italienisch");
-createInputField(subjectSpanish, 0.8, 0, "Spanisch");
-createInputField(subjectPhysics, 1.2, 0, "Physik");
-createInputField(subjectChemistry, 1.4, 0, "Chemie");
-createInputField(subjectBiology, 0.8, 0, "Biologie");
-createInputField(subjectGeography, 0.2, 0, "Geografie");
-createInputField(subjectHistory, 0.2,0, "Geschichte");
-createInputField(subjectSocialStudies, 0.2, 0, "Sozialkunde");
-createInputField(subjectComputerScience, 1.6, 0, "Informatik");
-createInputField(subjectPhysicalEducation, 0.8, 0, "Sport");
-createInputField(subjectEconomics, 1.4, 0, "Wirtschaft");
-createInputField(subjectOther, 2.2, 0, "Sonstiges");
-createInputField(tutoringAtHome, 5, 1.5, "Nachhilfe zu Hause");
-createInputField(tutoringHybrid, 3, 0.75, "Hybrid Nachhilfe");
-createInputField(tutoringOnline, 0, 0, "Online Nachhilfe");
-createInputField(unitSmall, 0, 0, "Kleine Einheit"); //The value is 0 as it is always added directly to totalLessonPrice
-createInputField(unitMiddle, 2.6, 0, "Mittlere Einheit");
-createInputField(unitLarge, 0,0, "Große Einheit");
-createInputField(contractSmall, 6.8, 0, "0 Monate");
-createInputField(contractMiddle, 2, 0, "12 Monate");
-createInputField(contractLarge, 0, 0, "24 Monate");
-createInputField(addOnAllRoundTutor, 0.6, 0, "Allround-Nachhilfelehrer");
-createInputField(addOnExperiencedTutor, 1.2, 0.45, "Erfahrener Nachhilfelehrer");
-createInputField(addOnContractBreak, 1.5, 0, "Vertragspause");
-createInputField(addTandemLesson, 10, 1.5, "Tandem-Unterricht");
-createInputField(addOnPremiumTutor, 2.6, 0.75, "Premium Nachhilfelehrer");
-createInputField(addOnMale, 0.4, 0, "Nachhilfelehrer");
-createInputField(addOnFemale, 0.4, 0, "Nachhilfelehrerin");
+const textCodeGenerator = document.getElementById('textCodeGenerator');
+let baseCode = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
 
-
+function updateCodeGenerator(codeToAdd) {
+    // Ersetze den ersten Platzhalter '0A' mit dem Code des Faches
+    let placeholderIndex = baseCode.indexOf('0A');
+    if (placeholderIndex !== -1) {
+        baseCode = baseCode.substring(0, placeholderIndex) + codeToAdd + baseCode.substring(placeholderIndex + 2);
+    }
+    console.log("Updated Code:", baseCode);
 }
 
+function removeCodeGenerator(codeToRemove) {
+    // Ersetze den Code des Faches zurück mit '0A'
+    baseCode = baseCode.replace(codeToRemove, '0A');
+    console.log("Updated Code:", baseCode);
+}
 
+textCodeGenerator.textContent = baseCode;
 
+createInputField(subjectGerman, 0, 0, "AA", "Deutsch");
+createInputField(subjectEnglish, 0, 0, "BA", "Englisch");
+createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik");
+createInputField(subjectFrench, 1.2, 0, "DA", "Französisch");
+createInputField(subjectLatin, 1.4, 0, "EA", "Latein");
+createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch");
+createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch");
+createInputField(subjectPhysics, 1.2, 0, "HA", "Physik");
+createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie");
+createInputField(subjectBiology, 0.8, 0, "JA", "Biologie");
+createInputField(subjectGeography, 0.2, 0, "KA", "Geographie");
+createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte");
+createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde");
+createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik");
+createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport");
+createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft");
+createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges");
+createInputField(tutoringOnline, 0, 0, "AA", "Online Nachhilfe");
+createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe");
+createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause");
+createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit");
+createInputField(unitMiddle, 2.6, 0, "BA", "Mittlere Einheit");
+createInputField(unitLarge, 0, 0, "CA", "Große Einheit");
+createInputField(contractSmall, 6.8, 0, "CA", "0 Monate");
+createInputField(contractMiddle, 2, 0, "BA", "12 Monate");
+createInputField(contractLarge, 0, 0, "AA", "24 Monate");
+createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer");
+createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer");
+createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause");
+createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht");
+createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer");
+createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer");
+createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin");
+}
 //end configurator
 
 
