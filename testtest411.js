@@ -331,7 +331,7 @@ function removeCodeGenerator(codeToRemove) {
     console.log("Updated Code:", baseCode);
 }
 
-
+textCodeGenerator.textContent = baseCode;
 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch");
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch");
