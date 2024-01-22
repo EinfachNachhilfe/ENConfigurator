@@ -99,24 +99,33 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator) {
-    let selectedElements = [];
+let selectedCodes = {};
 
+function manageSelection(elements, maxSelected, selectionClass, area) {
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            if (element.classList.contains(selectionClass)) {
+            const elementId = element.id;
+            const isSelected = element.classList.contains(selectionClass);
+            const codeToAdd = elementId; // Verwenden Sie die ID des Elements als Code
+
+            if (isSelected) {
+                // Element ist bereits ausgewählt, wird jetzt abgewählt
                 element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, codeGenerator); // Aktualisiere den Code bei automatischer Abwahl
+                delete selectedCodes[elementId];
+                removeCodeGenerator(area, codeToAdd);
             } else {
-                if (selectedElements.length >= maxSelected) {
-                    const autoDeselectedElement = selectedElements[0];
-                    autoDeselectedElement.classList.remove(selectionClass);
-                    selectedElements.shift();
-                    removeCodeGenerator(area, codeGenerator); // Aktualisiere den Code bei automatischer Abwahl
+                // Neues Element wird ausgewählt
+                if (Object.keys(selectedCodes).length >= maxSelected) {
+                    // Automatisches Abwählen des ältesten Elements
+                    const oldestSelectedElementId = Object.keys(selectedCodes)[0];
+                    const oldestSelectedElement = document.getElementById(oldestSelectedElementId);
+                    oldestSelectedElement.classList.remove(selectionClass);
+                    delete selectedCodes[oldestSelectedElementId];
+                    removeCodeGenerator(area, oldestSelectedElementId);
                 }
-                selectedElements.push(element);
                 element.classList.add(selectionClass);
+                selectedCodes[elementId] = true;
+                updateCodeGenerator(area, codeToAdd);
             }
             validateForm();
         });
