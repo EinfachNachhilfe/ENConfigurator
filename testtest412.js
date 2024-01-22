@@ -312,7 +312,7 @@ function calculateTotalCost() {
 calculateTotalCost();
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
-let baseCode = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
+let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 
 function updateCodeGenerator(codeToAdd) {
     // Ersetze den ersten Platzhalter '0A' mit dem Code des Faches
@@ -325,11 +325,17 @@ function updateCodeGenerator(codeToAdd) {
 }
 
 function removeCodeGenerator(codeToRemove) {
-    // Ersetze den Code des Faches zurück mit '0A'
-    baseCode = baseCode.replace(codeToRemove, '0A');
-    textCodeGenerator.textContent = baseCode;
+    // Finde die Position des zu entfernenden Codes
+    let codeIndex = baseCode.indexOf(codeToRemove);
+    if (codeIndex !== -1) {
+        // Ersetze nur den spezifischen Fach-Code
+        baseCode = baseCode.substring(0, codeIndex) + "0A" + baseCode.substring(codeIndex + 2);
+    }
+
+    textCodeGenerator.textContent = baseCode; // Aktualisiere den Textinhalt des Elements
     console.log("Updated Code:", baseCode);
 }
+
 
 textCodeGenerator.textContent = baseCode;
 
