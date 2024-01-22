@@ -313,7 +313,7 @@ calculateTotalCost();
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-XX-XX-XX-0A0A0A0A0A0A0A0A0A0A0A0A";
-let codePositions = {};
+
 const areaSubject = { start: 2, end: 8 };
 const areaTutoring = { start: 9, end: 11 };
 const areaUnit = { start: 12, end: 14 };
@@ -326,7 +326,7 @@ function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
     let newCodes = currentCodes.replace("0A", codeToAdd);
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    codePositions[codeToAdd] = placeholderIndex;
+
     textCodeGenerator.textContent = baseCode; 
 }
 
@@ -334,7 +334,7 @@ function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
     let newCodes = currentCodes.replace(codeToRemove, "0A");
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    delete codePositions[codeToRemove];
+
     textCodeGenerator.textContent = baseCode;
 }
 textCodeGenerator.textContent = baseCode;
