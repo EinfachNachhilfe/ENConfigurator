@@ -315,21 +315,36 @@ const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 
 function updateCodeGenerator(codeToAdd) {
-    // Ersetze den ersten Platzhalter '0A' mit dem Code des Faches
-    let placeholderIndex = baseCode.indexOf('0A');
-    if (placeholderIndex !== -1) {
-        baseCode = baseCode.substring(0, placeholderIndex) + codeToAdd + baseCode.substring(placeholderIndex + 2);
-        textCodeGenerator.textContent = baseCode;
+    let placeholders = getPlaceholderIndexes(baseCode, '0A');
+    for (let i = 0; i < placeholders.length; i++) {
+        let index = placeholders[i];
+        if (index !== -1) {
+            baseCode = baseCode.substring(0, index) + codeToAdd + baseCode.substring(index + 2);
+            break;
+        }
     }
+    textCodeGenerator.textContent = baseCode; 
 }
 
 function removeCodeGenerator(codeToRemove) {
-    // Ersetze den Code des Faches zurück mit '0A'
-    baseCode = baseCode.replace(codeToRemove, '0A');
-    textCodeGenerator.textContent = baseCode;
+    let index = baseCode.indexOf(codeToRemove);
+    if (index !== -1) {
+        baseCode = baseCode.substring(0, index) + "0A" + baseCode.substring(index + 2);
+    }
+    textCodeGenerator.textContent = baseCode;   
 }
 
+function getPlaceholderIndexes(code, placeholder) {
+    let indexes = [];
+    let index = code.indexOf(placeholder);
+    while (index !== -1) {
+        indexes.push(index);
+        index = code.indexOf(placeholder, index + 2);
+    }
+    return indexes;
+}
 
+    
 textCodeGenerator.textContent = baseCode;
 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch");
