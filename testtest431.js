@@ -99,7 +99,7 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator) {
     let selectedElements = [];
 
     elements.forEach(element => {
@@ -107,18 +107,18 @@ function manageSelection(elements, maxSelected, selectionClass) {
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
+                removeCodeGenerator(area, codeGenerator); // Aktualisiere den Code bei automatischer Abwahl
             } else {
                 if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
+                    const autoDeselectedElement = selectedElements[0];
+                    autoDeselectedElement.classList.remove(selectionClass);
                     selectedElements.shift();
+                    removeCodeGenerator(area, codeGenerator); // Aktualisiere den Code bei automatischer Abwahl
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             }
-           validateForm();
-           updateCodeGenerator();
-           removeCodeGenerator();
-            
+            validateForm();
         });
     });
 //check the change event 
