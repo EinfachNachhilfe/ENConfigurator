@@ -325,36 +325,18 @@ const areaAddOn = { start: 18, end: 42 };
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    // Überprüft, ob bereits ein Code im Bereich ausgewählt wurde
-    let existingCode = currentCodes.match(/[A-Z]{2}/); // Findet den ersten Code im Muster 'XX'
-    if (existingCode && existingCode[0] !== "0A") {
-        // Entfernt den existierenden Code, bevor ein neuer hinzugefügt wird
-        removeCodeGenerator(area, existingCode[0]);
-    }
-
-    let placeholderIndex = currentCodes.indexOf("0A");
-    if (placeholderIndex !== -1) {
-        let actualIndex = area.start + placeholderIndex;
-        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        codePositions[codeToAdd] = actualIndex;
-    }
-    textCodeGenerator.textContent = baseCode;
+    let newCodes = currentCodes.replace("0A", codeToAdd); // Ersetzt den ersten Platzhalter '0A' mit dem Code
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
 }
 
 function removeCodeGenerator(area, codeToRemove) {
-    if (codePositions[codeToRemove] !== undefined) {
-        let actualIndex = codePositions[codeToRemove] - area.start;
-        let currentCodes = baseCode.substring(area.start, area.end);
-        if (currentCodes.substring(actualIndex, actualIndex + 2) === codeToRemove) {
-            // Entfernt nur, wenn der Code an der gespeicherten Position übereinstimmt
-            let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            delete codePositions[codeToRemove];
-        }
-    }
-    textCodeGenerator.textContent = baseCode;
+    let currentCodes = baseCode.substring(area.start, area.end);
+    let newCodes = currentCodes.replace(codeToRemove, "0A"); // Ersetzt den Code zurück mit '0A'
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
 }
+
 
 textCodeGenerator.textContent = baseCode;
 
