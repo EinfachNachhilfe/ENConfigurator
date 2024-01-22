@@ -314,34 +314,24 @@ calculateTotalCost();
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 
+let codePositions = {}; // Speichert die Positionen der Codes
+
 function updateCodeGenerator(codeToAdd) {
-    let placeholders = getPlaceholderIndexes(baseCode, '0A');
-    for (let i = 0; i < placeholders.length; i++) {
-        let index = placeholders[i];
-        if (index !== -1) {
-            baseCode = baseCode.substring(0, index) + codeToAdd + baseCode.substring(index + 2);
-            break;
-        }
+    let placeholderIndex = baseCode.indexOf('0A');
+    if (placeholderIndex !== -1) {
+        baseCode = baseCode.substring(0, placeholderIndex) + codeToAdd + baseCode.substring(placeholderIndex + 2);
+        codePositions[codeToAdd] = placeholderIndex; // Speichert die Position des hinzugefügten Codes
     }
-    textCodeGenerator.textContent = baseCode; 
+    textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(codeToRemove) {
-    let index = baseCode.indexOf(codeToRemove);
-    if (index !== -1) {
+    let index = codePositions[codeToRemove];
+    if (index !== undefined) {
         baseCode = baseCode.substring(0, index) + "0A" + baseCode.substring(index + 2);
+        delete codePositions[codeToRemove]; // Entfernt die gespeicherte Position des Codes
     }
-    textCodeGenerator.textContent = baseCode;   
-}
-
-function getPlaceholderIndexes(code, placeholder) {
-    let indexes = [];
-    let index = code.indexOf(placeholder);
-    while (index !== -1) {
-        indexes.push(index);
-        index = code.indexOf(placeholder, index + 2);
-    }
-    return indexes;
+    textCodeGenerator.textContent = baseCode;
 }
 
     
