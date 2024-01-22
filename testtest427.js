@@ -216,11 +216,12 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
     if (element.classList.contains('custom-input-clicked')) {
+        // Element wurde ausgewählt
         if (!inputField) {
             inputField = document.createElement('input');
             inputField.type = 'text';
@@ -228,21 +229,37 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
-            totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            updateCodeGenerator(area, codeGenerator);
         }
+        totalLessonPrice += additionalLessonCost;
+        tutorSalary += additionalLessonTutorSalary;
+        updateCodeGenerator(area, codeGenerator);
     } else {
+        // Element wurde abgewählt
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
+            tutorSalary -= additionalLessonTutorSalary;
+        }
+        
+        // Überprüfen, ob ein anderes Element in derselben Gruppe aktiviert ist
+        let otherElementSelected = false;
+        document.querySelectorAll('.custom-radio-input.tutoring').forEach(tutoringOption => {
+            if (tutoringOption.classList.contains('custom-input-clicked') && tutoringOption !== element) {
+                otherElementSelected = true;
+                // Aktualisiere den Code für das andere ausgewählte Element
+                updateCodeGenerator(area, tutoringOption.getAttribute('code-generator'));
+            }
+        });
+
+        if (!otherElementSelected) {
             removeCodeGenerator(area, codeGenerator);
         }
     }
+
     calculateTotalCost();
     updateTextUnit();
 }
+
 
 const textUnitSmall= document.getElementById('textUnitSmall');
 const textUnitMiddle= document.getElementById('textUnitMiddle');
