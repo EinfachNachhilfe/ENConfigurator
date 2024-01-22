@@ -321,19 +321,12 @@ function updateCodeGenerator(codeToAdd) {
         baseCode = baseCode.substring(0, placeholderIndex) + codeToAdd + baseCode.substring(placeholderIndex + 2);
         textCodeGenerator.textContent = baseCode;
     }
-    console.log("Updated Code:", baseCode);
 }
 
 function removeCodeGenerator(codeToRemove) {
-    // Finde die Position des zu entfernenden Codes
-    let codeIndex = baseCode.indexOf(codeToRemove);
-    if (codeIndex !== -1) {
-        // Ersetze nur den spezifischen Fach-Code
-        baseCode = baseCode.substring(0, codeIndex) + "0A" + baseCode.substring(codeIndex + 2);
-    }
-
-    textCodeGenerator.textContent = baseCode; // Aktualisiere den Textinhalt des Elements
-    console.log("Updated Code:", baseCode);
+    // Ersetze den Code des Faches zurück mit '0A'
+    baseCode = baseCode.replace(codeToRemove, '0A');
+    textCodeGenerator.textContent = baseCode;
 }
 
 
