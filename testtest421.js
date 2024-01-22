@@ -325,13 +325,18 @@ const areaAddOn = { start: 18, end: 42 };
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
+    // Überprüft, ob bereits ein Code im Bereich ausgewählt wurde
+    let existingCode = currentCodes.match(/[A-Z]{2}/); // Findet den ersten Code im Muster 'XX'
+    if (existingCode && existingCode[0] !== "0A") {
+        // Entfernt den existierenden Code, bevor ein neuer hinzugefügt wird
+        removeCodeGenerator(area, existingCode[0]);
+    }
+
     let placeholderIndex = currentCodes.indexOf("0A");
     if (placeholderIndex !== -1) {
-        // Berechnet die tatsächliche Position im baseCode
         let actualIndex = area.start + placeholderIndex;
         let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        // Speichert die Position des hinzugefügten Codes
         codePositions[codeToAdd] = actualIndex;
     }
     textCodeGenerator.textContent = baseCode;
@@ -339,12 +344,14 @@ function updateCodeGenerator(area, codeToAdd) {
 
 function removeCodeGenerator(area, codeToRemove) {
     if (codePositions[codeToRemove] !== undefined) {
-        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
         let actualIndex = codePositions[codeToRemove] - area.start;
         let currentCodes = baseCode.substring(area.start, area.end);
-        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        delete codePositions[codeToRemove]; // Entfernt die gespeicherte Position
+        if (currentCodes.substring(actualIndex, actualIndex + 2) === codeToRemove) {
+            // Entfernt nur, wenn der Code an der gespeicherten Position übereinstimmt
+            let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+            delete codePositions[codeToRemove];
+        }
     }
     textCodeGenerator.textContent = baseCode;
 }
