@@ -332,9 +332,11 @@ function updateCodeGenerator(area, codeToAdd) {
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace(codeToRemove, "0A"); // Ersetzt den Code zurück mit '0A'
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
+    if (currentCodes.includes(codeToRemove)) {
+        let newCodes = currentCodes.replace(codeToRemove, "0A");
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    }
+    textCodeGenerator.textContent = baseCode;
 }
 
 
