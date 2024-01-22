@@ -116,7 +116,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
                 element.classList.add(selectionClass);
             }
            validateForm();
-           createInputField();
+           handleClassChange();
         });
     });
 //check the change event 
