@@ -319,6 +319,7 @@ function updateCodeGenerator(codeToAdd) {
     let placeholderIndex = baseCode.indexOf('0A');
     if (placeholderIndex !== -1) {
         baseCode = baseCode.substring(0, placeholderIndex) + codeToAdd + baseCode.substring(placeholderIndex + 2);
+        textCodeGenerator.textContent = baseCode;
     }
     console.log("Updated Code:", baseCode);
 }
@@ -326,10 +327,11 @@ function updateCodeGenerator(codeToAdd) {
 function removeCodeGenerator(codeToRemove) {
     // Ersetze den Code des Faches zurück mit '0A'
     baseCode = baseCode.replace(codeToRemove, '0A');
+    textCodeGenerator.textContent = baseCode;
     console.log("Updated Code:", baseCode);
 }
 
-textCodeGenerator.textContent = baseCode;
+
 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch");
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch");
