@@ -325,19 +325,30 @@ const areaAddOn = { start: 18, end: 42 };
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace("0A", codeToAdd);
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    codePositions[codeToAdd] = placeholderIndex;
-    textCodeGenerator.textContent = baseCode; 
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        // Speichert die Position des hinzugefügten Codes
+        codePositions[codeToAdd] = actualIndex;
+    }
+    textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(area, codeToRemove) {
-    let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace(codeToRemove, "0A");
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    delete codePositions[codeToRemove]; 
+    if (codePositions[codeToRemove] !== undefined) {
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove]; // Entfernt die gespeicherte Position
+    }
     textCodeGenerator.textContent = baseCode;
 }
+
 textCodeGenerator.textContent = baseCode;
 
 
