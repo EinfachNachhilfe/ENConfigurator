@@ -99,35 +99,23 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-let selectedCodes = {};
+function manageSelection(elements, maxSelected, selectionClass) {
+    let selectedElements = [];
 
-function manageSelection(elements, maxSelected, selectionClass, area) {
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            const elementId = element.id;
-            const isSelected = element.classList.contains(selectionClass);
-            const codeToAdd = elementId; // Verwenden Sie die ID des Elements als Code
-
-            if (isSelected) {
-                // Element ist bereits ausgewählt, wird jetzt abgewählt
+            if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
-                delete selectedCodes[elementId];
-                removeCodeGenerator(area, codeToAdd);
+                selectedElements = selectedElements.filter(el => el !== element);
             } else {
-                // Neues Element wird ausgewählt
-                if (Object.keys(selectedCodes).length >= maxSelected) {
-                    // Automatisches Abwählen des ältesten Elements
-                    const oldestSelectedElementId = Object.keys(selectedCodes)[0];
-                    const oldestSelectedElement = document.getElementById(oldestSelectedElementId);
-                    oldestSelectedElement.classList.remove(selectionClass);
-                    delete selectedCodes[oldestSelectedElementId];
-                    removeCodeGenerator(area, oldestSelectedElementId);
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
                 }
+                selectedElements.push(element);
                 element.classList.add(selectionClass);
-                selectedCodes[elementId] = true;
-                updateCodeGenerator(area, codeToAdd);
             }
-            validateForm();
+           validateForm();
         });
     });
 //check the change event 
