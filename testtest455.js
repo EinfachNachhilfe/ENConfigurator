@@ -216,42 +216,29 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
-            // Erstelle das Eingabefeld, falls es noch nicht existiert
             inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
-
             totalLessonPrice += additionalLessonCost;
-            tutorSalary += additionalLessonTutorSalary;
-
-            // Überprüfe, ob ein alter Code vorhanden ist und entferne ihn
-            if (currentCodes[inputFieldName] && currentCodes[inputFieldName] !== codeGenerator) {
-                removeCodeGenerator(area, currentCodes[inputFieldName]);
-            }
-
+            tutorSalary +=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
             updateCodeGenerator(area, codeGenerator);
-            currentCodes[inputFieldName] = codeGenerator; // Aktualisieren des gesetzten Codes
         }
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -= additionalLessonTutorSalary;
-
-            // Entferne den Code, wenn das Element deaktiviert wird
-            if (currentCodes[inputFieldName]) {
-                removeCodeGenerator(area, currentCodes[inputFieldName]);
-                currentCodes[inputFieldName] = null; // Zurücksetzen des gesetzten Codes
-            }
+            tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
     }
     calculateTotalCost();
