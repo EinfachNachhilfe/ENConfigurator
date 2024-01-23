@@ -322,6 +322,21 @@ const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
+let selectedArea = null; // Variable zum Speichern des aktuell ausgewählten Elements
+
+function selectArea(area, code) {
+    if (selectedArea !== area) {
+        // Wenn ein neues Element ausgewählt wird, entfernen Sie den Code des vorherigen Elements
+        if (selectedArea !== null) {
+            removeCodeGenerator(selectedArea, "0A");
+        }
+        // Fügen Sie den neuen Code hinzu
+        updateCodeGenerator(area, code);
+        // Aktualisieren Sie das aktuell ausgewählte Element
+        selectedArea = area;
+    }
+}
+
 
 
 function updateCodeGenerator(area, codeToAdd) {
@@ -339,9 +354,6 @@ function removeCodeGenerator(area, codeToRemove) {
     }
     textCodeGenerator.textContent = baseCode;
 }
-
-
-textCodeGenerator.textContent = baseCode;
 
 
 textCodeGenerator.textContent = baseCode;
