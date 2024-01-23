@@ -216,39 +216,48 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-let zuEntfernenderCode = null;    
-    
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
+            // Erstelle das Eingabefeld, falls es noch nicht existiert
             inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
+
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            if (zuEntfernenderCode) {
-                removeCodeGenerator(area, zuEntfernenderCode);
+            tutorSalary += additionalLessonTutorSalary;
+
+            // Überprüfe, ob ein alter Code vorhanden ist und entferne ihn
+            if (currentCodes[inputFieldName] && currentCodes[inputFieldName] !== codeGenerator) {
+                removeCodeGenerator(area, currentCodes[inputFieldName]);
             }
+
             updateCodeGenerator(area, codeGenerator);
-            zuEntfernenderCode = codeGenerator;
+            currentCodes[inputFieldName] = codeGenerator; // Aktualisieren des gesetzten Codes
         }
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-           zuEntfernenderCode = codeGenerator;
+            tutorSalary -= additionalLessonTutorSalary;
+
+            // Entferne den Code, wenn das Element deaktiviert wird
+            if (currentCodes[inputFieldName]) {
+                removeCodeGenerator(area, currentCodes[inputFieldName]);
+                currentCodes[inputFieldName] = null; // Zurücksetzen des gesetzten Codes
+            }
         }
     }
     calculateTotalCost();
     updateTextUnit();
 }
+
 
 
 const textUnitSmall= document.getElementById('textUnitSmall');
