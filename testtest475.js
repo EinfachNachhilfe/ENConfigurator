@@ -97,8 +97,6 @@ if (configuratorForm) {
             background.style.display = 'none';
         });
 
-
-
     
 //add "custom-input-clicked" class and set max. clickable fields
 function manageSelection(elements, maxSelected, selectionClass) {
@@ -218,34 +216,6 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function updateBaseCode() {
-    let currentCode = textCodeGenerator.textContent;
-    let prefix = currentCode.substring(0, areaSubject.start);
-    let suffix = currentCode.substring(areaSubject.end);
-    let middle = "0A0A0A"; // Standardwert für den Bereich
-
-    // Sammelt die aktiven Codes der ausgewählten Fächer
-    let activeCodes = [];
-    [subjectGerman, subjectEnglish, subjectMathematics, subjectFrench, subjectLatin, subjectSpanish, subjectItalian, subjectPhysics, subjectChemistry, subjectBiology, subjectGeography, subjectHistory, subjectSocialStudies, subjectComputerScience, subjectPhysicalEducation, subjectEconomics, subjectOther].forEach(subject => {
-        if (subject.classList.contains('custom-input-clicked')) {
-            let inputField = document.getElementById('input_' + subject.id);
-            if (inputField && inputField.value) {
-                activeCodes.push(inputField.value);
-            }
-        }
-    });
-
-    // Fügt die aktiven Codes in den Mittelteil ein
-    for (let i = 0; i < activeCodes.length; i++) {
-        middle = middle.substring(0, i * 2) + activeCodes[i] + middle.substring((i + 1) * 2);
-    }
-
-    // Aktualisiert den gesamten Code
-    textCodeGenerator.textContent = prefix + middle + suffix;
-}
-
-
-
     
 function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
@@ -263,18 +233,19 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             tutorSalary +=additionalLessonTutorSalary;
             
         }
+        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
         
     
     }
     calculateTotalCost();
     updateTextUnit();
-    updateBaseCode(element, codeGenerator, area);
 }
 
 
@@ -355,6 +326,23 @@ const areaTutoring = { start: 9, end: 11 };
 const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
+
+
+
+function updateCodeGenerator(area, codeToAdd) {
+    let currentCodes = baseCode.substring(area.start, area.end);
+    let newCodes = currentCodes.replace("0A", codeToAdd);
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end); 
+    textCodeGenerator.textContent = baseCode; 
+}
+
+function removeCodeGenerator(area, codeToRemove) {
+    let currentCodes = baseCode.substring(area.start, area.end);
+    let newCodes = currentCodes.replace(codeToRemove, "0A");
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    textCodeGenerator.textContent = baseCode;
+}
+textCodeGenerator.textContent = baseCode;
 
 
 
