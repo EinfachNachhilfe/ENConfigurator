@@ -338,10 +338,18 @@ function updateCodeGenerator(area, codeToAdd) {
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace(codeToRemove, "0A");
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    
+    // Finde die genaue Position des zu entfernenden Codes
+    let codeIndex = currentCodes.indexOf(codeToRemove);
+    if (codeIndex !== -1) {
+        // Ersetze den Code an der gefundenen Position
+        let newCodes = currentCodes.substring(0, codeIndex) + "0A" + currentCodes.substring(codeIndex + codeToRemove.length);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    }
+    
     textCodeGenerator.textContent = baseCode;
 }
+
 textCodeGenerator.textContent = baseCode;
 
 
