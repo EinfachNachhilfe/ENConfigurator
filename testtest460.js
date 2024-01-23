@@ -216,20 +216,10 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-let elementIds = ['tutoringAtHome', 'tutoringHybrid', 'tutoringOnline'];
-
-let currentCodes = {};
-
-elementIds.forEach(id => {
-    currentCodes[id] = null;
-});
-
-    
     
 function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
-    let currentCodes = baseCode.substring(area.start, area.end);
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
@@ -241,13 +231,6 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary +=additionalLessonTutorSalary;
-
-            // Entfernen des alten Codes, falls vorhanden
-            if (currentCodes.includes(codeGenerator)) {
-                removeCodeGenerator(area, codeGenerator);
-            }
-
-            // Hinzufügen des neuen Codes
             updateCodeGenerator(area, codeGenerator);
         }
     } else {
@@ -255,11 +238,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-
-            // Entfernen des Codes, da das Element abgewählt wurde
-            if (currentCodes.includes(codeGenerator)) {
-                removeCodeGenerator(area, codeGenerator);
-            }
+            removeCodeGenerator(area, codeGenerator);
         }
     }
     calculateTotalCost();
