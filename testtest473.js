@@ -218,8 +218,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
- function updateBaseCode(element, codeGenerator, area) {
-    // Ersetzt den Teil des baseCodes im definierten Bereich mit dem codeGenerator Wert oder löscht ihn
+function updateBaseCode(element, codeGenerator, area) {
     let currentCode = textCodeGenerator.textContent;
     let prefix = currentCode.substring(0, area.start);
     let suffix = currentCode.substring(area.end);
@@ -228,11 +227,12 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         // Fügt den codeGenerator Wert ein
         textCodeGenerator.textContent = prefix + codeGenerator + suffix;
     } else {
-        // Setzt den Bereich auf den Standardwert zurück
-        let defaultCode = "A".repeat(area.end - area.start);
+        // Setzt den entsprechenden Bereich auf "0A"
+        let defaultCode = "0A".repeat((area.end - area.start) / 2);
         textCodeGenerator.textContent = prefix + defaultCode + suffix;
     }
 }
+
 
     
 function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
