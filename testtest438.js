@@ -322,38 +322,30 @@ const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
-let selectedArea = null; // Variable zum Speichern des aktuell ausgewählten Elements
 
-function selectArea(area, code) {
-    if (selectedArea !== area) {
-        // Wenn ein neues Element ausgewählt wird, entfernen Sie den Code des vorherigen Elements
-        if (selectedArea !== null) {
-            removeCodeGenerator(selectedArea, "0A");
-        }
-        // Fügen Sie den neuen Code hinzu
-        updateCodeGenerator(area, code);
-        // Aktualisieren Sie das aktuell ausgewählte Element
-        selectedArea = area;
-    }
+function replaceCodeAt(currentCodes, index, length, replacement) {
+    return currentCodes.substring(0, index) + replacement + currentCodes.substring(index + length);
 }
-
-
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace("0A", codeToAdd); // Ersetzt den ersten Platzhalter '0A' mit dem Code
+    // Angenommen, Sie haben die genaue Position von "0A"
+    let index = currentCodes.indexOf("0A");
+    let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd);
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
+    textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    if (currentCodes.includes(codeToRemove)) {
-        let newCodes = currentCodes.replace(codeToRemove, "0A");
+    let index = currentCodes.indexOf(codeToRemove);
+    if (index !== -1) {
+        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 textCodeGenerator.textContent = baseCode;
