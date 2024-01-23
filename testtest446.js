@@ -324,27 +324,36 @@ const areaAddOn = { start: 18, end: 42 };
 
 
 function replaceCodeAt(currentCodes, index, length, replacement) {
+    console.log(`Ersetze in: '${currentCodes}', Index: ${index}, Länge: ${length}, Ersetzung: '${replacement}'`);
     return currentCodes.substring(0, index) + replacement + currentCodes.substring(index + length);
 }
 
 function updateCodeGenerator(area, codeToAdd) {
+    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    // Angenommen, Sie haben die genaue Position von "0A"
+    console.log(`Aktueller Code vor dem Update: '${currentCodes}'`);
     let index = currentCodes.indexOf("0A");
-    let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd);
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    if (index !== -1) {
+        let newCodes = replaceCodeAt(currentCodes, index, "0A".length, codeToAdd);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    }
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(area, codeToRemove) {
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
+    console.log(`Aktueller Code vor dem Entfernen: '${currentCodes}'`);
     let index = currentCodes.indexOf(codeToRemove);
     if (index !== -1) {
         let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
+    console.log(`baseCode nach dem Entfernen: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 textCodeGenerator.textContent = baseCode;
 
