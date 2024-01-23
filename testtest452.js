@@ -323,37 +323,25 @@ const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
 
-function replaceCodeAt(currentCodes, index, length, replacement) {
-    console.log(`Ersetze in: '${currentCodes}', Index: ${index}, Länge: ${length}, Ersetzung: '${replacement}'`);
-    return currentCodes.substring(0, index) + replacement + currentCodes.substring(index + length);
-}
-
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
     console.log(`Aktueller Code vor dem Update: '${currentCodes}'`);
-    let index = currentCodes.indexOf("0A");
-    if (index !== -1) {
-        let newCodes = replaceCodeAt(currentCodes, index, "0A".length, codeToAdd);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    }
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
-    textCodeGenerator.textContent = baseCode;
+    let newCodes = currentCodes.replace("0A", codeToAdd);
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+     console.log(`baseCode nach dem Update: '${baseCode}'`);
+    textCodeGenerator.textContent = baseCode; 
 }
 
 function removeCodeGenerator(area, codeToRemove) {
     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
     console.log(`Aktueller Code vor dem Entfernen: '${currentCodes}'`);
-    let index = currentCodes.indexOf(codeToRemove);
-    if (index !== -1) {
-        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    }
-    console.log(`baseCode nach dem Entfernen: '${baseCode}'`);
+    let newCodes = currentCodes.replace(codeToRemove, "0A");
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+     console.log(`baseCode nach dem Entfernen: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
 textCodeGenerator.textContent = baseCode;
 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
