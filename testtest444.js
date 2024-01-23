@@ -329,11 +329,10 @@ function replaceCodeAt(currentCodes, index, length, replacement) {
 
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
+    // Angenommen, Sie haben die genaue Position von "0A"
     let index = currentCodes.indexOf("0A");
-    if (index !== -1) {
-        let newCodes = replaceCodeAt(currentCodes, index, "0A".length, codeToAdd);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    }
+    let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd);
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     textCodeGenerator.textContent = baseCode;
 }
 
@@ -346,6 +345,7 @@ function removeCodeGenerator(area, codeToRemove) {
     }
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
