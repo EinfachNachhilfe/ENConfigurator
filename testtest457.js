@@ -216,9 +216,24 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+let elementIds = ['tutoringAtHome', 'tutoringHybrid', 'tutoringOnline'];
+
+let currentCodes = {};
+
+elementIds.forEach(id => {
+    currentCodes[id] = null;
+});
+
+    
+    
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
+
+    // Entferne den alten Code, wenn er existiert und anders als der neue Code ist
+    if (currentCodes[inputFieldName] && currentCodes[inputFieldName] !== codeGenerator) {
+        removeCodeGenerator(area, currentCodes[inputFieldName]);
+    }
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
@@ -229,16 +244,16 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+            tutorSalary += additionalLessonTutorSalary;
             updateCodeGenerator(area, codeGenerator);
+            currentCodes[inputFieldName] = codeGenerator; // Aktualisiere den aktuellen Code
         }
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+            tutorSalary -= additionalLessonTutorSalary;
+            currentCodes[inputFieldName] = null; // Setze den aktuellen Code zurück
         }
     }
     calculateTotalCost();
