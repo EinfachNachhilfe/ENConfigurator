@@ -331,7 +331,7 @@ function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
     let index = currentCodes.indexOf("0A");
     if (index !== -1) {
-        let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd); // ersetzt "0A" durch codeToAdd
+        let newCodes = replaceCodeAt(currentCodes, index, "0A".length, codeToAdd);
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
     textCodeGenerator.textContent = baseCode;
@@ -341,11 +341,12 @@ function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
     let index = currentCodes.indexOf(codeToRemove);
     if (index !== -1) {
-        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A"); // ersetzt codeToRemove durch "0A"
+        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
