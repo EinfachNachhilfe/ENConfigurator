@@ -317,7 +317,6 @@ calculateTotalCost();
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
-let codePositions = {};
     
 const areaSubject = { start: 2, end: 8 };
 const areaTutoring = { start: 9, end: 11 };
