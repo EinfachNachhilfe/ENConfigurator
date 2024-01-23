@@ -237,23 +237,20 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
-            inputField = document.createElement('input');
-            inputField.type = 'text';
-            inputField.id = 'input_' + inputFieldName;
-            inputField.name = inputFieldName;
-            inputField.value = defaultValue;
-            configuratorForm.appendChild(inputField);
-            totalLessonPrice += additionalLessonCost;
-            tutorSalary += additionalLessonTutorSalary;
-            updateCodeGenerator(area, codeGenerator);
-            currentCodes[inputFieldName] = codeGenerator; // Aktualisiere den aktuellen Code
+            // ... Code zur Erstellung des Eingabefelds und Aktualisierung der Kosten
+            if (currentCodes[inputFieldName] !== codeGenerator) {
+                if (currentCodes[inputFieldName]) {
+                    removeCodeGenerator(area, currentCodes[inputFieldName]);
+                }
+                updateCodeGenerator(area, codeGenerator);
+                currentCodes[inputFieldName] = codeGenerator;
+            }
         }
     } else {
-        if (inputField) {
-            configuratorForm.removeChild(inputField);
-            totalLessonPrice -= additionalLessonCost;
-            tutorSalary -= additionalLessonTutorSalary;
-            currentCodes[inputFieldName] = null; // Setze den aktuellen Code zurück
+        // ... Code zur Entfernung des Eingabefelds und Aktualisierung der Kosten
+        if (currentCodes[inputFieldName]) {
+            removeCodeGenerator(area, currentCodes[inputFieldName]);
+            currentCodes[inputFieldName] = null;
         }
     }
     calculateTotalCost();
