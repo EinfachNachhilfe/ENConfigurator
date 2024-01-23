@@ -216,7 +216,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
@@ -228,16 +228,31 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
+
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
+            tutorSalary += additionalLessonTutorSalary;
+
+            // Überprüfe, ob ein alter Code vorhanden ist und entferne ihn
+            if (currentCodes[inputFieldName]) {
+                removeCodeGenerator(area, currentCodes[inputFieldName]);
+            }
+
             updateCodeGenerator(area, codeGenerator);
+
+            // Speichere den neuen Code
+            currentCodes[inputFieldName] = codeGenerator;
         }
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+            tutorSalary -= additionalLessonTutorSalary;
+
+            // Entferne den Code, wenn das Element deaktiviert wird
+            if (currentCodes[inputFieldName]) {
+                removeCodeGenerator(area, currentCodes[inputFieldName]);
+                currentCodes[inputFieldName] = null;
+            }
         }
     }
     calculateTotalCost();
