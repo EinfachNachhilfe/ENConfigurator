@@ -323,13 +323,16 @@ const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
 
+function replaceCodeAt(currentCodes, index, length, replacement) {
+    return currentCodes.substring(0, index) + replacement + currentCodes.substring(index + length);
+}
+
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
+    // Angenommen, Sie haben die genaue Position von "0A"
     let index = currentCodes.indexOf("0A");
-    if (index !== -1) {
-        let newCodes = currentCodes.substring(0, index) + codeToAdd + currentCodes.substring(index + 2);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    }
+    let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd);
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     textCodeGenerator.textContent = baseCode;
 }
 
@@ -337,12 +340,12 @@ function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
     let index = currentCodes.indexOf(codeToRemove);
     if (index !== -1) {
-        // Ersetzen Sie den Code an der gefundenen Position
-        let newCodes = currentCodes.substring(0, index) + "0A" + currentCodes.substring(index + codeToRemove.length);
+        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
