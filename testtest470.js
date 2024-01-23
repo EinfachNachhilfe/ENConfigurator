@@ -239,9 +239,9 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-           
+            removeCodeGenerator(area, codeGenerator);
         }
-         removeCodeGenerator(area, codeGenerator);
+        
     
     }
     calculateTotalCost();
@@ -329,35 +329,25 @@ const areaAddOn = { start: 18, end: 42 };
 
 
 function updateCodeGenerator(area, codeToAdd) {
+     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes;
-
-    // Wenn aktuelle Codes den Platzhalter "0A" enthalten, ersetzen Sie den ersten Platzhalter durch den neuen Code
-    if (currentCodes.includes("0A")) {
-        newCodes = currentCodes.replace("0A", codeToAdd);
-    } else {
-        // Füge den Code am Ende hinzu, wenn kein Platzhalter vorhanden ist
-        newCodes = currentCodes + codeToAdd;
-        // Schneide die Codes ab, um die Bereichslänge zu erhalten
-        newCodes = newCodes.substring(0, area.end - area.start);
-    }
-
+    console.log(`Aktueller Code vor dem Update: '${currentCodes}'`);
+    let newCodes = currentCodes.replace("0A", codeToAdd);
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    textCodeGenerator.textContent = baseCode;
+     console.log(`baseCode nach dem Update: '${baseCode}'`);
+    textCodeGenerator.textContent = baseCode; 
 }
 
 function removeCodeGenerator(area, codeToRemove) {
+     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace(codeToRemove, "");
-
-    // Füge Platzhalter hinzu, um die Bereichslänge zu erhalten
-    while (newCodes.length < (area.end - area.start)) {
-        newCodes += "0A";
-    }
-
+     console.log(`Aktueller Code vor dem Entfernen: '${currentCodes}'`);
+    let newCodes = currentCodes.replace(codeToRemove, "0A");
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 textCodeGenerator.textContent = baseCode;
     
