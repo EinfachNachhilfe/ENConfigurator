@@ -218,20 +218,32 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-function updateBaseCode(element, codeGenerator, area) {
+function updateBaseCode() {
     let currentCode = textCodeGenerator.textContent;
-    let prefix = currentCode.substring(0, area.start);
-    let suffix = currentCode.substring(area.end);
+    let prefix = currentCode.substring(0, areaSubject.start);
+    let suffix = currentCode.substring(areaSubject.end);
+    let middle = "0A0A0A"; // Standardwert für den Bereich
 
-    if (element.classList.contains('custom-input-clicked')) {
-        // Fügt den codeGenerator Wert ein
-        textCodeGenerator.textContent = prefix + codeGenerator + suffix;
-    } else {
-        // Setzt den entsprechenden Bereich auf "0A"
-        let defaultCode = "0A".repeat((area.end - area.start) / 2);
-        textCodeGenerator.textContent = prefix + defaultCode + suffix;
+    // Sammelt die aktiven Codes der ausgewählten Fächer
+    let activeCodes = [];
+    [subjectGerman, subjectEnglish, subjectMathematics, subjectFrench, subjectLatin, subjectSpanish, subjectItalian, subjectPhysics, subjectChemistry, subjectBiology, subjectGeography, subjectHistory, subjectSocialStudies, subjectComputerScience, subjectPhysicalEducation, subjectEconomics, subjectOther].forEach(subject => {
+        if (subject.classList.contains('custom-input-clicked')) {
+            let inputField = document.getElementById('input_' + subject.id);
+            if (inputField && inputField.value) {
+                activeCodes.push(inputField.value);
+            }
+        }
+    });
+
+    // Fügt die aktiven Codes in den Mittelteil ein
+    for (let i = 0; i < activeCodes.length; i++) {
+        middle = middle.substring(0, i * 2) + activeCodes[i] + middle.substring((i + 1) * 2);
     }
+
+    // Aktualisiert den gesamten Code
+    textCodeGenerator.textContent = prefix + middle + suffix;
 }
+
 
 
     
