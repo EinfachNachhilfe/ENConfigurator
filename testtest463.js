@@ -99,7 +99,7 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator) {
     let selectedElements = [];
 
     elements.forEach(element => {
@@ -111,7 +111,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
                 if (selectedElements.length >= maxSelected) {
                     selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
-                    removeCodeGenerator();
+                 updateCodeGenerator(area, codeGenerator);
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
