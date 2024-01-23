@@ -329,24 +329,25 @@ const areaAddOn = { start: 18, end: 42 };
 
 
 function updateCodeGenerator(area, codeToAdd) {
-     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-    let currentCodes = baseCode.substring(area.start, area.end);
-    console.log(`Aktueller Code vor dem Update: '${currentCodes}'`);
-    let newCodes = currentCodes.replace("0A", codeToAdd);
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-     console.log(`baseCode nach dem Update: '${baseCode}'`);
-    textCodeGenerator.textContent = baseCode; 
-}
-
-function removeCodeGenerator(area, codeToRemove) {
-     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-    let currentCodes = baseCode.substring(area.start, area.end);
-     console.log(`Aktueller Code vor dem Entfernen: '${currentCodes}'`);
-    let newCodes = currentCodes.replace(codeToRemove, "0A");
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+    let before = baseCode.substring(0, area.start);
+    let after = baseCode.substring(area.end);
+    let newCodes = codeToAdd + baseCode.substring(area.start + codeToAdd.length, area.end);
+    baseCode = before + newCodes + after;
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
+function removeCodeGenerator(area, codeToRemove) {
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    let before = baseCode.substring(0, area.start);
+    let after = baseCode.substring(area.end);
+    let newCodes = "0A" + baseCode.substring(area.start + codeToRemove.length, area.end);
+    baseCode = before + newCodes + after;
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
+    textCodeGenerator.textContent = baseCode;
+}
+
 
 
 textCodeGenerator.textContent = baseCode;
