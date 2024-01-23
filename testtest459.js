@@ -226,36 +226,46 @@ elementIds.forEach(id => {
 
     
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
-
-    // Entferne den alten Code, wenn er existiert und anders als der neue Code ist
-    if (currentCodes[inputFieldName] && currentCodes[inputFieldName] !== codeGenerator) {
-        removeCodeGenerator(area, currentCodes[inputFieldName]);
-    }
+    let currentCodes = baseCode.substring(area.start, area.end);
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
-            // ... Code zur Erstellung des Eingabefelds und Aktualisierung der Kosten
-            if (currentCodes[inputFieldName] !== codeGenerator) {
-                if (currentCodes[inputFieldName]) {
-                    removeCodeGenerator(area, currentCodes[inputFieldName]);
-                }
-                updateCodeGenerator(area, codeGenerator);
-                currentCodes[inputFieldName] = codeGenerator;
+            inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.id = 'input_' + inputFieldName;
+            inputField.name = inputFieldName;
+            inputField.value = defaultValue;
+            configuratorForm.appendChild(inputField);
+            totalLessonPrice += additionalLessonCost;
+            tutorSalary +=additionalLessonTutorSalary;
+
+            // Entfernen des alten Codes, falls vorhanden
+            if (currentCodes.includes(codeGenerator)) {
+                removeCodeGenerator(area, codeGenerator);
             }
+
+            // Hinzufügen des neuen Codes
+            updateCodeGenerator(area, codeGenerator);
         }
     } else {
-        // ... Code zur Entfernung des Eingabefelds und Aktualisierung der Kosten
-        if (currentCodes[inputFieldName]) {
-            removeCodeGenerator(area, currentCodes[inputFieldName]);
-            currentCodes[inputFieldName] = null;
+        if (inputField) {
+            configuratorForm.removeChild(inputField);
+            totalLessonPrice -= additionalLessonCost;
+            tutorSalary -=additionalLessonTutorSalary;
+
+            // Entfernen des Codes, da das Element abgewählt wurde
+            if (currentCodes.includes(codeGenerator)) {
+                removeCodeGenerator(area, codeGenerator);
+            }
         }
     }
     calculateTotalCost();
     updateTextUnit();
 }
+
 
 
 
