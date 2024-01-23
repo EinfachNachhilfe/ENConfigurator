@@ -329,7 +329,6 @@ function updateCodeGenerator(area, codeToAdd) {
     console.log(`Aktueller Code vor dem Update: '${currentCodes}'`);
     let newCodes = currentCodes.replace("0A", codeToAdd);
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    codePositions[codeToAdd] = placeholderIndex;
      console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode; 
 }
@@ -340,7 +339,6 @@ function removeCodeGenerator(area, codeToRemove) {
     console.log(`Aktueller Code vor dem Entfernen: '${currentCodes}'`);
     let newCodes = currentCodes.replace(codeToRemove, "0A");
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    delete codePositions[codeToRemove];
      console.log(`baseCode nach dem Entfernen: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
