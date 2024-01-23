@@ -346,14 +346,6 @@ function removeCodeGenerator(area, codeToRemove) {
     textCodeGenerator.textContent = baseCode;
 }
 
-
-
-
-
-
-
-
-
 textCodeGenerator.textContent = baseCode;
 
 
@@ -374,7 +366,7 @@ createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik", areaSubject
 createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
-createInputField(tutoringOnline, 0, 0, "AA", "Online Nachhilfe", areaTutoring);
+createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
 createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
 createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring);
 createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit", areaUnit);
