@@ -337,11 +337,13 @@ function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
     let index = currentCodes.indexOf(codeToRemove);
     if (index !== -1) {
+        // Ersetzen Sie den Code an der gefundenen Position
         let newCodes = currentCodes.substring(0, index) + "0A" + currentCodes.substring(index + codeToRemove.length);
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
