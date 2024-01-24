@@ -218,9 +218,9 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
-                 manageSelection([element], area, codeGenerator);
+            
 }
-            }
+            
             
         });
     });
