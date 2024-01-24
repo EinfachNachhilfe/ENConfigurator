@@ -331,32 +331,40 @@ let codePositions = {};
     
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+    
     let currentCodes = baseCode.substring(area.start, area.end);
     let placeholderIndex = currentCodes.indexOf("0A");
+    
     if (placeholderIndex !== -1) {
-        // Berechnet die tatsächliche Position im baseCode
         let actualIndex = area.start + placeholderIndex;
         let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        codePositions[codeToAdd] = actualIndex;
+        codePositions[codeToAdd] = actualIndex; // Speichert die Position des hinzugefügten Codes
     }
+
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
+
 function removeCodeGenerator(area, codeToRemove) {
-     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-    if (codePositions[codeToRemove] !== undefined) {
-        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
-        let actualIndex = codePositions[codeToRemove] - area.start;
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    
+    let actualIndex = codePositions[codeToRemove];
+    if (actualIndex !== undefined) {
         let currentCodes = baseCode.substring(area.start, area.end);
-        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        let newCodes = currentCodes.substring(0, actualIndex - area.start) + "0A" + currentCodes.substring(actualIndex - area.start + 2);
+        
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        delete codePositions[codeToRemove]; 
-         console.log(`baseCode nach dem Update: '${baseCode}'`);
+        delete codePositions[codeToRemove]; // Entfernt den Code aus der gespeicherten Positionenliste
+        
+        console.log(`baseCode nach dem Update: '${baseCode}'`);
     }
+
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
