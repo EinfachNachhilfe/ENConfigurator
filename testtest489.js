@@ -233,7 +233,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             tutorSalary +=additionalLessonTutorSalary;
             
         }
-        updateCodeGenerator(area, codeGenerator);
+       
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
@@ -246,6 +246,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
     }
     calculateTotalCost();
     updateTextUnit();
+    updateCodeGenerator(area, codeGenerator);
 }
 
 
@@ -332,33 +333,33 @@ const areaAddOn = { start: 18, end: 42 };
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let codeLength = 2; // Setzen Sie die Länge der Codes, die Sie hinzufügen/ersetzen möchten
-    let updated = false;
+    let newCodes = currentCodes;
+    let codeLength = codeToAdd.length;
 
-    // Ersetzt den ersten Code im Bereich, wenn vorhanden
+    // Ersetzt den ersten nicht "0A"-Code im Bereich oder fügt am Ende ein, wenn nur "0A" vorhanden sind
+    let replaced = false;
     for (let i = 0; i <= currentCodes.length - codeLength; i += codeLength) {
-        if (currentCodes.substring(i, i + codeLength) === "0A".repeat(codeLength / 2)) {
-            let newCodes = currentCodes.substring(0, i) + codeToAdd + currentCodes.substring(i + codeLength);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = area.start + i;
-            updated = true;
+        if (currentCodes.substring(i, i + codeLength) !== "0A".repeat(codeLength / 2)) {
+            newCodes = currentCodes.substring(0, i) + codeToAdd + currentCodes.substring(i + codeLength);
+            replaced = true;
             break;
         }
     }
 
-    // Wenn kein Code ersetzt wurde, füge den neuen Code am ersten Platzhalter ein
-    if (!updated) {
+    if (!replaced) {
         let placeholderIndex = currentCodes.indexOf("0A".repeat(codeLength / 2));
         if (placeholderIndex !== -1) {
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + codeLength);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = area.start + placeholderIndex;
+            newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + codeLength);
+        } else {
+            newCodes = currentCodes.substring(0, currentCodes.length - codeLength) + codeToAdd;
         }
     }
 
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
