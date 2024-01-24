@@ -99,23 +99,29 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, area, codeToAdd, codeToRemove) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
             if (element.classList.contains(selectionClass)) {
+                // Element wird abgewählt
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
+                removeCodeGenerator(area, codeToRemove); // Entferne Code zuerst
             } else {
+                // Neues Element wird ausgewählt
                 if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
+                    // Maximale Anzahl erreicht, entferne das älteste Element
+                    const elementToRemove = selectedElements.shift();
+                    elementToRemove.classList.remove(selectionClass);
+                    removeCodeGenerator(area, codeToRemove); // Entferne Code zuerst
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
+                updateCodeGenerator(area, codeToAdd); // Füge dann neuen Code hinzu
             }
-           validateForm();
+            validateForm();
         });
     });
 //check the change event 
