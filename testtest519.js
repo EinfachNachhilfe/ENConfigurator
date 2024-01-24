@@ -99,7 +99,7 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator ) {
     let selectedElements = [];
 
     elements.forEach(element => {
@@ -107,13 +107,16 @@ function manageSelection(elements, maxSelected, selectionClass) {
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
+                removeCodeGenerator(area, codeGenerator);
             } else {
                 if (selectedElements.length >= maxSelected) {
                     selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
+                    removeCodeGenerator(area, codeGenerator);
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
+                updateCodeGenerator(area, codeGenerator);
             }
            validateForm();
         });
@@ -203,6 +206,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
+                manageSelection(elements, maxSelected, selectionClass, area, codeGenerator );
             }
         });
     });
@@ -231,7 +235,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary +=additionalLessonTutorSalary;
-             updateCodeGenerator(area, codeGenerator);
+            
         }
        
     } else {
@@ -239,7 +243,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+          
         }
         
     
