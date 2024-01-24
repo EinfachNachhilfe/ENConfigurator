@@ -332,33 +332,16 @@ const areaAddOn = { start: 18, end: 42 };
 
 
 
-    function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let updated = false;
-
-    // Ersetzt den ersten Code im Bereich, wenn vorhanden
-    for (let i = 0; i < currentCodes.length - 1; i += 2) {
-        if (currentCodes.substring(i, i + 2) !== "0A") {
-            let newCodes = currentCodes.substring(0, i) + codeToAdd + currentCodes.substring(i + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = area.start + i;
-            updated = true;
-            break;
-        }
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        codePositions[codeToAdd] = actualIndex;
     }
-
-    // Wenn kein Code ersetzt wurde, füge den neuen Code am ersten Platzhalter ein
-    if (!updated) {
-        let placeholderIndex = currentCodes.indexOf("0A");
-        if (placeholderIndex !== -1) {
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = area.start + placeholderIndex;
-        }
-    }
-
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
