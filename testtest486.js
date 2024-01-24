@@ -239,7 +239,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+           
         }
         
     
@@ -327,9 +327,8 @@ const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
-let codePositions = {};
-    
-function updateCodeGenerator(area, codeToAdd) {
+
+    function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
     let updated = false;
@@ -357,22 +356,6 @@ function updateCodeGenerator(area, codeToAdd) {
 
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
-}
-
-
-function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-    let actualIndex = codePositions[codeToRemove];
-
-    if (actualIndex !== undefined) {
-        let currentCodes = baseCode.substring(area.start, area.end);
-        let newCodes = currentCodes.substring(0, actualIndex - area.start) + "0A" + currentCodes.substring(actualIndex - area.start + 2);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        delete codePositions[codeToRemove];
-
-        console.log(`baseCode nach dem Update: '${baseCode}'`);
-        textCodeGenerator.textContent = baseCode;
-    }
 }
 
 
