@@ -355,13 +355,26 @@ function updateCodeGenerator(area, codeToAdd) {
 
 
 function removeCodeGenerator(area, codeToRemove) {
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace(codeToRemove, "0A");
+    let newCodes = "";
+    let removed = false;
+
+    for (let i = 0; i < currentCodes.length; i += 2) {
+        let currentCode = currentCodes.substring(i, i + 2);
+
+        if (!removed && currentCode === codeToRemove) {
+            removed = true; // Markiert, dass der Code entfernt wurde
+        } else {
+            newCodes += currentCode; // Fügt den aktuellen Code oder Platzhalter hinzu
+        }
+    }
+
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    delete codePositions[codeToRemove];
+    console.log(`baseCode nach dem Remove: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-textCodeGenerator.textContent = baseCode;
+
 
 
 
