@@ -342,7 +342,7 @@ function updateCodeGenerator(area, codeToAdd) {
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
         codePositions[codeToAdd] = actualIndex; // Speichert die Position des hinzugefügten Codes
     }
-
+ console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
@@ -361,7 +361,7 @@ function removeCodeGenerator(area, codeToRemove) {
         
         console.log(`baseCode nach dem Update: '${baseCode}'`);
     }
-
+    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions)
     textCodeGenerator.textContent = baseCode;
 }
 
