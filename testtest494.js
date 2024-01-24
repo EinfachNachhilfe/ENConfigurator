@@ -330,7 +330,7 @@ const areaAddOn = { start: 18, end: 42 };
 
     let codePositions = {};
 
-let codePositions = {};
+
 
     function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
