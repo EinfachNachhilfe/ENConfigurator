@@ -221,7 +221,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
-    if (element.classList.contains('custom-input-clicked')) {
+    if (!element.classList.contains('custom-input-clicked')) {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
