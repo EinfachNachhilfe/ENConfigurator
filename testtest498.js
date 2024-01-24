@@ -332,7 +332,7 @@ const areaAddOn = { start: 18, end: 42 };
 
 
 
-    function updateCodeGenerator(area, codeToAdd) {
+function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
     let updated = false;
@@ -355,12 +355,17 @@ const areaAddOn = { start: 18, end: 42 };
             let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
             baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
             codePositions[codeToAdd] = area.start + placeholderIndex;
+        } else {
+            // Falls kein Platzhalter vorhanden ist, wird der gesamte Bereich auf "0A" gesetzt
+            let filler = "0A".repeat((area.end - area.start) / 2);
+            baseCode = baseCode.substring(0, area.start) + filler + baseCode.substring(area.end);
         }
     }
 
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
