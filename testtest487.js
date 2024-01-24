@@ -327,6 +327,7 @@ const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
+    let codePositions = {};
 
     function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
