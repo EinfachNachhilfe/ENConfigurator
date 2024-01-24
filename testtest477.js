@@ -329,34 +329,33 @@ const areaAddOn = { start: 18, end: 42 };
 
 
 
+function replaceCodeAt(currentCodes, index, length, replacement) {
+    return currentCodes.substring(0, index) + replacement + currentCodes.substring(index + length);
+}
+
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = currentCodes.replace("0A", codeToAdd);
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end); 
-    textCodeGenerator.textContent = baseCode; 
+    // Angenommen, Sie haben die genaue Position von "0A"
+    let index = currentCodes.indexOf("0A");
+    let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd);
+    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    
-    // Finde die genaue Position des zu entfernenden Codes
-    let codeIndex = currentCodes.indexOf(codeToRemove);
-    if (codeIndex !== -1) {
-        // Ersetze den Code an der gefundenen Position
-        let newCodes = currentCodes.substring(0, codeIndex) + "0A" + currentCodes.substring(codeIndex + codeToRemove.length);
+    let index = currentCodes.indexOf(codeToRemove);
+    if (index !== -1) {
+        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
-    
     textCodeGenerator.textContent = baseCode;
 }
 
-textCodeGenerator.textContent = baseCode;
-
-
-
 
 textCodeGenerator.textContent = baseCode;
-    
+
+
 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
