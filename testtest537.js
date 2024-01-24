@@ -111,7 +111,7 @@ function manageSelection(elements, maxSelected, selectionClass, area) {
             const code = element.getAttribute('data-code'); // Holen Sie sich den Code aus dem Element
 
             // Stellen Sie sicher, dass der Code und das Bereichsobjekt existieren
-            if (!code || !area) {
+            if ( !area) {
                 console.error("Code oder Bereichsobjekt fehlen");
                 return;
             }
