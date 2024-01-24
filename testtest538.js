@@ -119,20 +119,20 @@ function manageSelection(elements, maxSelected, selectionClass, area) {
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, code); // Entfernen des Codes
+                removeCodeGenerator(area, codeGenerator); 
             } else {
                 if (selectedElements.length >= maxSelected) {
                     const oldestElement = selectedElements[0];
                     const oldestCode = oldestElement.getAttribute('data-code');
                     oldestElement.classList.remove(selectionClass);
                     selectedElements.shift();
-                    removeCodeGenerator(area, oldestCode); // Entfernen des ältesten Codes
+                    removeCodeGenerator(area, codeGenerator);
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-                updateCodeGenerator(area, code); // Hinzufügen des neuen Codes
+                updateCodeGenerator(area, codeGenerator); 
             }
-            validateForm(); // Optional, abhängig von Ihrer Implementierung
+            validateForm();
         });
     });
 //check the change event 
@@ -248,16 +248,14 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            
+            tutorSalary +=additionalLessonTutorSalary;   
         }
-        updateCodeGenerator(area, codeGenerator);
+       
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
         }
         
     
