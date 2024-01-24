@@ -104,12 +104,18 @@ function manageSelection(elements, maxSelected, selectionClass, area) {
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            const code = element.getAttribute('data-code'); // Angenommen, jedes Element hat ein 'data-code' Attribut
+            const code = element.getAttribute('data-code'); // Holen Sie sich den Code aus dem Element
+
+            // Stellen Sie sicher, dass der Code und das Bereichsobjekt existieren
+            if (!code || !area) {
+                console.error("Code oder Bereichsobjekt fehlen");
+                return;
+            }
 
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, code); // Entfernen des Codes, wenn das Element abgewählt wird
+                removeCodeGenerator(area, code); // Entfernen des Codes
             } else {
                 if (selectedElements.length >= maxSelected) {
                     const oldestElement = selectedElements[0];
@@ -122,7 +128,7 @@ function manageSelection(elements, maxSelected, selectionClass, area) {
                 element.classList.add(selectionClass);
                 updateCodeGenerator(area, code); // Hinzufügen des neuen Codes
             }
-            validateForm(); // Stellen Sie sicher, dass diese Funktion noch relevant ist
+            validateForm(); // Optional, abhängig von Ihrer Implementierung
         });
     });
 //check the change event 
