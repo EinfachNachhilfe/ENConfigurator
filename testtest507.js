@@ -231,22 +231,21 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary +=additionalLessonTutorSalary;
-            updateCodeGenerator(area, codeGenerator);
+            
         }
-       
+        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-           removeCodeGenerator(area, codeToRemove)
+            removeCodeGenerator(area, codeGenerator);
         }
         
     
     }
     calculateTotalCost();
     updateTextUnit();
-
 }
 
 
@@ -328,53 +327,32 @@ const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
-    let codePositions = {};
-
-
-
+let codePositions = {};
+    
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = "";
-    let added = false;
-
-    for (let i = 0; i < currentCodes.length; i += 2) {
-        if (!added && (currentCodes.substring(i, i + 2) === "0A" || i === currentCodes.length - 2)) {
-            newCodes += codeToAdd; // Fügt den neuen Code ein
-            added = true;
-        } else {
-            newCodes += currentCodes.substring(i, i + 2); // Fügt den aktuellen Code oder Platzhalter hinzu
-        }
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        codePositions[codeToAdd] = actualIndex;
     }
-
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
-
 
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-    let currentCodes = baseCode.substring(area.start, area.end);
-    let newCodes = "";
-    let removed = false;
-
-    for (let i = 0; i < currentCodes.length; i += 2) {
-        let currentCode = currentCodes.substring(i, i + 2);
-
-        if (!removed && currentCode === codeToRemove) {
-            removed = true; // Markiert, dass der Code entfernt wurde
-        } else {
-            newCodes += currentCode; // Fügt den aktuellen Code oder Platzhalter hinzu
-        }
+    if (codePositions[codeToRemove] !== undefined) {
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove]; 
     }
-
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    console.log(`baseCode nach dem Remove: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
 
 
 
