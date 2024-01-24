@@ -360,6 +360,22 @@ function updateCodeGenerator(area, codeToAdd) {
 }
 
 
+function removeCodeGenerator(area, codeToRemove) {
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    let actualIndex = codePositions[codeToRemove];
+
+    if (actualIndex !== undefined) {
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex - area.start) + "0A" + currentCodes.substring(actualIndex - area.start + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove];
+
+        console.log(`baseCode nach dem Update: '${baseCode}'`);
+        textCodeGenerator.textContent = baseCode;
+    }
+}
+
+
 
 
 
