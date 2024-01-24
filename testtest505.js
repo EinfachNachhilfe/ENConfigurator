@@ -355,14 +355,13 @@ function updateCodeGenerator(area, codeToAdd) {
 
 
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
     let newCodes = currentCodes.replace(codeToRemove, "0A");
-
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-    console.log(`baseCode nach dem Entfernen: '${baseCode}'`);
+    delete codePositions[codeToRemove];
     textCodeGenerator.textContent = baseCode;
 }
+textCodeGenerator.textContent = baseCode;
 
 
 
