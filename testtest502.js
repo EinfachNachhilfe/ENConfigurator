@@ -246,7 +246,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
     }
     calculateTotalCost();
     updateTextUnit();
-    updateCodeGeneratorForSubjectsAndAddOns(area, codeGenerator);
+
 }
 
 
@@ -335,57 +335,18 @@ const areaAddOn = { start: 18, end: 42 };
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let updated = false;
-
-    // Ersetzt den ersten Code im Bereich, wenn vorhanden
-    for (let i = 0; i < currentCodes.length - 1; i += 2) {
-        if (currentCodes.substring(i, i + 2) !== "0A") {
-            let newCodes = currentCodes.substring(0, i) + codeToAdd + currentCodes.substring(i + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = area.start + i;
-            updated = true;
-            break;
-        }
-    }
-
-    // Wenn kein Code ersetzt wurde, füge den neuen Code am ersten Platzhalter ein
-    if (!updated) {
-        let placeholderIndex = currentCodes.indexOf("0A");
-        if (placeholderIndex !== -1) {
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = area.start + placeholderIndex;
-        }
-    }
-
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
-    textCodeGenerator.textContent = baseCode;
-}
-
-
-function updateCodeGeneratorForSubjectsAndAddOns(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-    let currentCodes = baseCode.substring(area.start, area.end);
-    let codeLength = 2; // Definieren Sie die Länge eines Codes
     let newCodes = "";
     let added = false;
 
-    for (let i = 0; i < currentCodes.length; i += codeLength) {
-        if (!added && currentCodes.substring(i, i + codeLength) === "0A") {
+    for (let i = 0; i < currentCodes.length; i += 2) {
+        if (!added && (currentCodes.substring(i, i + 2) === "0A" || i === currentCodes.length - 2)) {
             newCodes += codeToAdd; // Fügt den neuen Code ein
             added = true;
-            i += codeLength - 2; // Überspringt die Länge des neuen Codes minus 2 (da die Schleife i bereits um 2 erhöht)
         } else {
-            newCodes += currentCodes.substring(i, i + codeLength); // Fügt den aktuellen Code oder Platzhalter hinzu
+            newCodes += currentCodes.substring(i, i + 2); // Fügt den aktuellen Code oder Platzhalter hinzu
         }
     }
 
-    // Wenn der Code nicht hinzugefügt wurde und der Bereich noch nicht voll ist, füge den Code am Ende hinzu
-    if (!added && newCodes.length + codeLength <= currentCodes.length) {
-        newCodes += codeToAdd;
-    }
-
-    // Aktualisiert den baseCode mit den neuen Codes
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
