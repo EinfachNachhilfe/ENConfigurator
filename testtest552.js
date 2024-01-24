@@ -219,7 +219,8 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
                 manageSelection(targetElements, area, codeGenerator)
-
+                updateCodeGenerator(area, codeGenerator)
+                removeCodeGenerator(area, codeGenerator)
 }
             
             
