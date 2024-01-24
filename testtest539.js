@@ -103,7 +103,7 @@ const areaAddOn = { start: 18, end: 42 };
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, area) {
+function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator) {
     let selectedElements = [];
 
     elements.forEach(element => {
