@@ -98,80 +98,6 @@ if (configuratorForm) {
         });
 
     
-//add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator ) {
-    let selectedElements = [];
-
-    elements.forEach(element => {
-        element.addEventListener('click', () => {
-            if (element.classList.contains(selectionClass)) {
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, codeGenerator);
-            } else {
-                if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
-                    removeCodeGenerator(area, codeGenerator);
-                }
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
-                updateCodeGenerator(area, codeGenerator);
-            }
-           validateForm();
-        });
-    });
-//check the change event 
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                if (!targetElement.classList.contains(selectionClass)) {
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
-                }
-            }
-        });
-    });
-
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
-}
-
-
-        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
-        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
-        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
-        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
-        
-    
-   //exclude specific fields at the same time
-function makeExclusivePair(id1, id2, exclusiveClass) {
-    const element1 = document.getElementById(id1);
-    const element2 = document.getElementById(id2);
-
-    if (element1 && element2) {
-        element1.addEventListener('click', () => {
-            if (element2.classList.contains(exclusiveClass)) {
-                element2.classList.remove(exclusiveClass);
-                element1.classList.add(exclusiveClass);
-            }
-        });
-
-        element2.addEventListener('click', () => {
-            if (element1.classList.contains(exclusiveClass)) {
-                element1.classList.remove(exclusiveClass);
-                element2.classList.add(exclusiveClass);
-                
-            }
-        });
-    }
-}
-makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
-makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
-
 
 
 let totalLessonPrice = 20;
@@ -252,6 +178,79 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
     updateTextUnit();
 }
 
+//add "custom-input-clicked" class and set max. clickable fields
+function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator ) {
+    let selectedElements = [];
+
+    elements.forEach(element => {
+        element.addEventListener('click', () => {
+            if (element.classList.contains(selectionClass)) {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+                removeCodeGenerator(area, codeGenerator);
+            } else {
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
+                    removeCodeGenerator(area, codeGenerator);
+                }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
+                updateCodeGenerator(area, codeGenerator);
+            }
+           validateForm();
+        });
+    });
+//check the change event 
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
+}
+
+
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
+        
+    
+   //exclude specific fields at the same time
+function makeExclusivePair(id1, id2, exclusiveClass) {
+    const element1 = document.getElementById(id1);
+    const element2 = document.getElementById(id2);
+
+    if (element1 && element2) {
+        element1.addEventListener('click', () => {
+            if (element2.classList.contains(exclusiveClass)) {
+                element2.classList.remove(exclusiveClass);
+                element1.classList.add(exclusiveClass);
+            }
+        });
+
+        element2.addEventListener('click', () => {
+            if (element1.classList.contains(exclusiveClass)) {
+                element1.classList.remove(exclusiveClass);
+                element2.classList.add(exclusiveClass);
+                
+            }
+        });
+    }
+}
+makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
+makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 
 
 
