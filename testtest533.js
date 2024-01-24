@@ -221,16 +221,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
-    if (!element.classList.contains('custom-input-clicked')) {
-        if (inputField) {
-            configuratorForm.removeChild(inputField);
-            totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
-            
-        }
-       
-    } else {
+    if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
             inputField = document.createElement('input');
             inputField.type = 'text';
@@ -240,7 +231,15 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary +=additionalLessonTutorSalary;
-             updateCodeGenerator(area, codeGenerator);
+            
+        }
+        updateCodeGenerator(area, codeGenerator);
+    } else {
+        if (inputField) {
+            configuratorForm.removeChild(inputField);
+            totalLessonPrice -= additionalLessonCost;
+            tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
         
     
