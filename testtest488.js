@@ -329,15 +329,16 @@ const areaAddOn = { start: 18, end: 42 };
 
     let codePositions = {};
 
-    function updateCodeGenerator(area, codeToAdd) {
+function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
+    let codeLength = 2; // Setzen Sie die Länge der Codes, die Sie hinzufügen/ersetzen möchten
     let updated = false;
 
     // Ersetzt den ersten Code im Bereich, wenn vorhanden
-    for (let i = 0; i < currentCodes.length - 1; i += 2) {
-        if (currentCodes.substring(i, i + 2) !== "0A") {
-            let newCodes = currentCodes.substring(0, i) + codeToAdd + currentCodes.substring(i + 2);
+    for (let i = 0; i <= currentCodes.length - codeLength; i += codeLength) {
+        if (currentCodes.substring(i, i + codeLength) === "0A".repeat(codeLength / 2)) {
+            let newCodes = currentCodes.substring(0, i) + codeToAdd + currentCodes.substring(i + codeLength);
             baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
             codePositions[codeToAdd] = area.start + i;
             updated = true;
@@ -347,9 +348,9 @@ const areaAddOn = { start: 18, end: 42 };
 
     // Wenn kein Code ersetzt wurde, füge den neuen Code am ersten Platzhalter ein
     if (!updated) {
-        let placeholderIndex = currentCodes.indexOf("0A");
+        let placeholderIndex = currentCodes.indexOf("0A".repeat(codeLength / 2));
         if (placeholderIndex !== -1) {
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + codeLength);
             baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
             codePositions[codeToAdd] = area.start + placeholderIndex;
         }
@@ -358,6 +359,7 @@ const areaAddOn = { start: 18, end: 42 };
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
