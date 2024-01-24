@@ -344,14 +344,17 @@ function updateCodeGenerator(area, codeToAdd) {
 }
 
 function removeCodeGenerator(area, codeToRemove) {
-    let currentCodes = baseCode.substring(area.start, area.end);
-    // Überprüfen, ob der zu entfernende Code im aktuellen Codeabschnitt vorhanden ist
-    if (currentCodes.includes(codeToRemove)) {
-        let newCodes = currentCodes.replace(codeToRemove, "0A"); // Ersetzt den Code zurück mit '0A'
+    if (codePositions[codeToRemove] !== undefined) {
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove]; // Entfernt die gespeicherte Position
     }
-    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
+    textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
