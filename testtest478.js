@@ -328,29 +328,30 @@ const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
 
-
-function replaceCodeAt(currentCodes, index, length, replacement) {
-    return currentCodes.substring(0, index) + replacement + currentCodes.substring(index + length);
-}
-
 function updateCodeGenerator(area, codeToAdd) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    // Angenommen, Sie haben die genaue Position von "0A"
-    let index = currentCodes.indexOf("0A");
-    let newCodes = replaceCodeAt(currentCodes, index, 2, codeToAdd);
-    baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        // Speichert die Position des hinzugefügten Codes
+        codePositions[codeToAdd] = actualIndex;
+    }
     textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(area, codeToRemove) {
     let currentCodes = baseCode.substring(area.start, area.end);
-    let index = currentCodes.indexOf(codeToRemove);
-    if (index !== -1) {
-        let newCodes = replaceCodeAt(currentCodes, index, codeToRemove.length, "0A");
+    // Überprüfen, ob der zu entfernende Code im aktuellen Codeabschnitt vorhanden ist
+    if (currentCodes.includes(codeToRemove)) {
+        let newCodes = currentCodes.replace(codeToRemove, "0A"); // Ersetzt den Code zurück mit '0A'
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     }
-    textCodeGenerator.textContent = baseCode;
+    textCodeGenerator.textContent = baseCode; // Aktualisiert den Textinhalt des Elements
 }
+
 
 
 textCodeGenerator.textContent = baseCode;
