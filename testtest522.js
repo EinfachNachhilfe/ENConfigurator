@@ -98,88 +98,8 @@ if (configuratorForm) {
         });
 
     
-
-
-let totalLessonPrice = 20;
-let tutorSalary = 12;
-    
-
-const subjectMathematics = document.getElementById('subjectMathematics');
-const subjectGerman = document.getElementById('subjectGerman');
-const subjectEnglish = document.getElementById('subjectEnglish');
-const subjectFrench = document.getElementById('subjectFrench');
-const subjectLatin = document.getElementById('subjectLatin');
-const subjectItalian = document.getElementById('subjectItalian');
-const subjectSpanish = document.getElementById('subjectSpanish');
-const subjectPhysics = document.getElementById('subjectPhysics');
-const subjectChemistry = document.getElementById('subjectChemistry');
-const subjectBiology = document.getElementById('subjectBiology');
-const subjectGeography = document.getElementById('subjectGeography');
-const subjectHistory = document.getElementById('subjectHistory');
-const subjectSocialStudies = document.getElementById('subjectSocialStudies');
-const subjectComputerScience = document.getElementById('subjectComputerScience');
-const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
-const subjectEconomics = document.getElementById('subjectEconomics');
-const subjectOther = document.getElementById('subjectOther');
-
-
-function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
-  
-    
-    // Beobachtet Änderungen an den Klassen der Elemente
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
-                manageSelection(area, codeGenerator );
-            }
-        });
-    });
-
-    // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
-    const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
-
-    // Überwacht jedes Element in der Liste
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
-}
-
-    
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
-    const inputFieldName = element.id;
-    let inputField = document.getElementById('input_' + inputFieldName);
-
-    if (element.classList.contains('custom-input-clicked')) {
-        if (!inputField) {
-            inputField = document.createElement('input');
-            inputField.type = 'text';
-            inputField.id = 'input_' + inputFieldName;
-            inputField.name = inputFieldName;
-            inputField.value = defaultValue;
-            configuratorForm.appendChild(inputField);
-            totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            
-        }
-       
-    } else {
-        if (inputField) {
-            configuratorForm.removeChild(inputField);
-            totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-          
-        }
-        
-    
-    }
-    calculateTotalCost();
-    updateTextUnit();
-}
-
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator ) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
@@ -187,16 +107,13 @@ function manageSelection(elements, maxSelected, selectionClass, area, codeGenera
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, codeGenerator);
             } else {
                 if (selectedElements.length >= maxSelected) {
                     selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
-                    removeCodeGenerator(area, codeGenerator);
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-                updateCodeGenerator(area, codeGenerator);
             }
            validateForm();
         });
@@ -251,6 +168,86 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
 }
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
 makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
+
+
+
+let totalLessonPrice = 20;
+let tutorSalary = 12;
+    
+
+const subjectMathematics = document.getElementById('subjectMathematics');
+const subjectGerman = document.getElementById('subjectGerman');
+const subjectEnglish = document.getElementById('subjectEnglish');
+const subjectFrench = document.getElementById('subjectFrench');
+const subjectLatin = document.getElementById('subjectLatin');
+const subjectItalian = document.getElementById('subjectItalian');
+const subjectSpanish = document.getElementById('subjectSpanish');
+const subjectPhysics = document.getElementById('subjectPhysics');
+const subjectChemistry = document.getElementById('subjectChemistry');
+const subjectBiology = document.getElementById('subjectBiology');
+const subjectGeography = document.getElementById('subjectGeography');
+const subjectHistory = document.getElementById('subjectHistory');
+const subjectSocialStudies = document.getElementById('subjectSocialStudies');
+const subjectComputerScience = document.getElementById('subjectComputerScience');
+const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
+const subjectEconomics = document.getElementById('subjectEconomics');
+const subjectOther = document.getElementById('subjectOther');
+
+
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+  
+    
+    // Beobachtet Änderungen an den Klassen der Elemente
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
+            }
+        });
+    });
+
+    // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
+    const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
+
+    // Überwacht jedes Element in der Liste
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
+}
+
+    
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+    const inputFieldName = element.id;
+    let inputField = document.getElementById('input_' + inputFieldName);
+
+    if (element.classList.contains('custom-input-clicked')) {
+        if (!inputField) {
+            inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.id = 'input_' + inputFieldName;
+            inputField.name = inputFieldName;
+            inputField.value = defaultValue;
+            configuratorForm.appendChild(inputField);
+            totalLessonPrice += additionalLessonCost;
+            tutorSalary +=additionalLessonTutorSalary;
+            
+        }
+        updateCodeGenerator(area, codeGenerator);
+    } else {
+        if (inputField) {
+            configuratorForm.removeChild(inputField);
+            totalLessonPrice -= additionalLessonCost;
+            tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
+        }
+        
+    
+    }
+    calculateTotalCost();
+    updateTextUnit();
+}
+
 
 
 
@@ -333,43 +330,29 @@ const areaAddOn = { start: 18, end: 42 };
 let codePositions = {};
     
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-
     let currentCodes = baseCode.substring(area.start, area.end);
     let placeholderIndex = currentCodes.indexOf("0A");
-
     if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
         let actualIndex = area.start + placeholderIndex;
         let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
         codePositions[codeToAdd] = actualIndex;
     }
-
-    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-         console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
 
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-
     if (codePositions[codeToRemove] !== undefined) {
-        let actualIndex = codePositions[codeToRemove];
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
         let currentCodes = baseCode.substring(area.start, area.end);
-        let newCodes = currentCodes.substring(0, actualIndex - area.start) + "0A" + currentCodes.substring(actualIndex - area.start + 2);
-
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        delete codePositions[codeToRemove];
+        delete codePositions[codeToRemove]; 
     }
-
-    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
-         console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
-
 
 
 
