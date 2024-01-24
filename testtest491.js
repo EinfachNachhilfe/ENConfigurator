@@ -333,24 +333,29 @@ const areaAddOn = { start: 18, end: 42 };
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-    let blockSize = 2; // Die Größe jedes Blocks im Bereich
-
+    let codeLength = 2; // Die Länge eines einzelnen Codes
     let newCodes = "";
-    let added = false;
-    for (let i = 0; i < currentCodes.length; i += blockSize) {
-        let block = currentCodes.substring(i, i + blockSize);
-        if (!added && (block === "0A" || block === codeToAdd)) {
-            newCodes += codeToAdd;
-            added = true; // Markiert, dass der Code hinzugefügt wurde
+
+    // Erstellt eine neue Code-Sequenz für den Bereich
+    for (let i = 0; i < currentCodes.length; i += codeLength) {
+        if (i + codeLength <= currentCodes.length && currentCodes.substring(i, i + codeLength) === "0A") {
+            newCodes += codeToAdd; // Fügt den neuen Code hinzu, wenn ein Platzhalter gefunden wird
+            break; // Beendet die Schleife, nachdem der neue Code hinzugefügt wurde
         } else {
-            newCodes += block;
+            newCodes += currentCodes.substring(i, i + codeLength); // Behält vorhandene Codes bei
         }
+    }
+
+    // Füllt den Rest des Bereichs mit Platzhaltern, falls erforderlich
+    while (newCodes.length < currentCodes.length) {
+        newCodes += "0A";
     }
 
     baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
