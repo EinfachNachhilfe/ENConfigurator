@@ -75,7 +75,11 @@ if (configuratorForm) {
         const addOnContractBreak = document.getElementById('addOnContractBreak');
         const addTandemLesson = document.getElementById('addTandemLesson');
 
-
+const areaSubject = { start: 2, end: 8 };
+const areaTutoring = { start: 9, end: 11 };
+const areaUnit = { start: 12, end: 14 };
+const areaContract = { start: 15, end: 17 };
+const areaAddOn = { start: 18, end: 42 };
 
 //show "Mehr Infos" Popup
         Object.keys(buttonTexts).forEach(buttonId => {
@@ -149,12 +153,12 @@ function manageSelection(elements, maxSelected, selectionClass, area) {
 }
 
 
-        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
-        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
-        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
-        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked',areaSubject );
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked',areaTutoring );
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', areaUnit);
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked', areaContract );
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', areaAddOn );
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', areaAddOn );
         
     
    //exclude specific fields at the same time
@@ -206,6 +210,7 @@ const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducati
 const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
+    
 
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
@@ -334,11 +339,7 @@ calculateTotalCost();
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
-const areaSubject = { start: 2, end: 8 };
-const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
-const areaAddOn = { start: 18, end: 42 };
+
 
 let codePositions = {};
     
