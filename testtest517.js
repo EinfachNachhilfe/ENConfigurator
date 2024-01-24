@@ -329,23 +329,22 @@ const areaAddOn = { start: 18, end: 42 };
 
 let codePositions = {};
     
-function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-    
-    let currentCodes = baseCode.substring(area.start, area.end);
-    let placeholderIndex = currentCodes.indexOf("0A");
-    
-    if (placeholderIndex !== -1) {
-        let actualIndex = area.start + placeholderIndex;
-        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-        
+function removeCodeGenerator(area, codeToRemove) {
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+
+    if (codePositions[codeToRemove] !== undefined) {
+        let actualIndex = codePositions[codeToRemove];
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex - area.start) + "0A" + currentCodes.substring(actualIndex - area.start + 2);
+
         baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        codePositions[codeToAdd] = actualIndex; // Speichert die Position des hinzugefügten Codes
+        delete codePositions[codeToRemove];
     }
- console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
+
+    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
