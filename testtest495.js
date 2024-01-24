@@ -231,7 +231,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary +=additionalLessonTutorSalary;
-            
+             updateCodeGenerator(area, codeGenerator);
         }
        
     } else {
@@ -246,7 +246,7 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
     }
     calculateTotalCost();
     updateTextUnit();
-    updateCodeGenerator(area, codeGenerator);
+   
 }
 
 
