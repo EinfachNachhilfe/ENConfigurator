@@ -99,29 +99,23 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, area, codeToAdd, codeToRemove) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
             if (element.classList.contains(selectionClass)) {
-                // Element wird abgewählt
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, codeToRemove); // Entferne Code zuerst
             } else {
-                // Neues Element wird ausgewählt
                 if (selectedElements.length >= maxSelected) {
-                    // Maximale Anzahl erreicht, entferne das älteste Element
-                    const elementToRemove = selectedElements.shift();
-                    elementToRemove.classList.remove(selectionClass);
-                    removeCodeGenerator(area, codeToRemove); // Entferne Code zuerst
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-                updateCodeGenerator(area, codeToAdd); // Füge dann neuen Code hinzu
             }
-            validateForm();
+           validateForm();
         });
     });
 //check the change event 
@@ -200,7 +194,7 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
 
-function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, codeToAdd, codeToRemove) {
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
     
     // Beobachtet Änderungen an den Klassen der Elemente
@@ -209,7 +203,6 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
-                manageSelection(area, codeToAdd, codeToRemove)
             }
         });
     });
@@ -240,13 +233,13 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             tutorSalary +=additionalLessonTutorSalary;
             
         }
-       
+        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-           
+            removeCodeGenerator(area, codeGenerator);
         }
         
     
