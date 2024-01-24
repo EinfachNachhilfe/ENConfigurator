@@ -108,11 +108,9 @@ function manageSelection(elements, maxSelected, selectionClass, area, codeGenera
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            const code = element.getAttribute('data-code'); // Holen Sie sich den Code aus dem Element
-
-            // Stellen Sie sicher, dass der Code und das Bereichsobjekt existieren
-            if ( !area) {
-                console.error("Code oder Bereichsobjekt fehlen");
+            // Überprüfen Sie, ob das Bereichsobjekt existiert
+            if (!area) {
+                console.error("Bereichsobjekt fehlt");
                 return;
             }
 
@@ -123,7 +121,6 @@ function manageSelection(elements, maxSelected, selectionClass, area, codeGenera
             } else {
                 if (selectedElements.length >= maxSelected) {
                     const oldestElement = selectedElements[0];
-                    const oldestCode = oldestElement.getAttribute('data-code');
                     oldestElement.classList.remove(selectionClass);
                     selectedElements.shift();
                     removeCodeGenerator(area, codeGenerator);
@@ -221,8 +218,10 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
-                manageSelection(targetElements, area, codeGenerator)
+                 manageSelection([element], area, codeGenerator);
+}
             }
+            
         });
     });
 
