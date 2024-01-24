@@ -200,7 +200,7 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
 
-function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, codeToAdd, codeToRemove) {
   
     
     // Beobachtet Änderungen an den Klassen der Elemente
