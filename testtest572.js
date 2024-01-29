@@ -142,7 +142,7 @@ function manageSelection(elements, maxSelected, selectionClass, getElementConfig
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            let config = getElementConfig(element.id);
+
 
             // Direktes Hinzufügen oder Entfernen des Codes vor der Klassenänderung
             if (!element.classList.contains(selectionClass)) {
@@ -153,13 +153,13 @@ function manageSelection(elements, maxSelected, selectionClass, getElementConfig
                     oldestElement.classList.remove(selectionClass);
                     selectedElements.shift();
                 }
-                updateCodeGenerator(config.area, config.codeGenerator); // Hinzufügen des neuen Codes
+                updateCodeGenerator(getElementConfig.area, getElementConfig.codeGenerator); // Hinzufügen des neuen Codes
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             } else {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                updateCodeGenerator(config.area, "0A"); // Entfernen des Codes
+                updateCodeGenerator(getElementConfig.area, "0A"); // Entfernen des Codes
             }
             validateForm();
         });
