@@ -75,11 +75,7 @@ if (configuratorForm) {
         const addOnContractBreak = document.getElementById('addOnContractBreak');
         const addTandemLesson = document.getElementById('addTandemLesson');
 
-const areaSubject = { start: 2, end: 8 };
-const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
-const areaAddOn = { start: 18, end: 42 };
+
 
 //show "Mehr Infos" Popup
         Object.keys(buttonTexts).forEach(buttonId => {
@@ -103,33 +99,23 @@ const areaAddOn = { start: 18, end: 42 };
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, area, codeGenerator) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            // Überprüfen Sie, ob das Bereichsobjekt existiert
-            if (!area) {
-                console.error("Bereichsobjekt fehlt");
-                return;
-            }
-
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                removeCodeGenerator(area, codeGenerator); 
             } else {
                 if (selectedElements.length >= maxSelected) {
-                    const oldestElement = selectedElements[0];
-                    oldestElement.classList.remove(selectionClass);
+                    selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
-                    removeCodeGenerator(area, codeGenerator);
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-                updateCodeGenerator(area, codeGenerator); 
             }
-            validateForm();
+           validateForm();
         });
     });
 //check the change event 
@@ -150,12 +136,12 @@ function manageSelection(elements, maxSelected, selectionClass, area, codeGenera
 }
 
 
-        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked',areaSubject );
-        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked',areaTutoring );
-        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', areaUnit);
-        manageSelection(customRadioInputContract, 1, 'custom-input-clicked', areaContract );
-        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', areaAddOn );
-        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', areaAddOn );
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
         
     
    //exclude specific fields at the same time
@@ -207,7 +193,6 @@ const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducati
 const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
-    
 
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
@@ -218,12 +203,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
-                manageSelection(elements, area, codeGenerator)
-                updateCodeGenerator(area, codeGenerator)
-                removeCodeGenerator(area, codeGenerator)
-}
-            
-            
+            }
         });
     });
 
@@ -250,14 +230,16 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;   
+            tutorSalary +=additionalLessonTutorSalary;
+            
         }
-       
+        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
         
     
@@ -339,7 +321,11 @@ calculateTotalCost();
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
-
+const areaSubject = { start: 2, end: 8 };
+const areaTutoring = { start: 9, end: 11 };
+const areaUnit = { start: 12, end: 14 };
+const areaContract = { start: 15, end: 17 };
+const areaAddOn = { start: 18, end: 42 };
 
 let codePositions = {};
     
