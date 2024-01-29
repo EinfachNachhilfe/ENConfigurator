@@ -97,36 +97,26 @@ if (configuratorForm) {
             background.style.display = 'none';
         });
 
-let selectedStates = []; 
+    
 //add "custom-input-clicked" class and set max. clickable fields
 function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
-    // Initialisieren des Zustands für jedes Element
-    elements.forEach(element => {
-        selectedStates[element.id] = element.classList.contains(selectionClass);
-    });
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            // Zustand aktualisieren
-            selectedStates[element.id] = !selectedStates[element.id];
-
-            // Verarbeiten der Auswahl
-            if (selectedStates[element.id]) {
+            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
+            if (element.classList.contains(selectionClass)) {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+            } else {
                 if (selectedElements.length >= maxSelected) {
-                    const toDeselect = selectedElements.shift();
-                    toDeselect.classList.remove(selectionClass);
-                    selectedStates[toDeselect.id] = false;
-                    handleClassChange(toDeselect, /* Parameter für toDeselect */);
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-            } else {
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
             }
-
-            handleClassChange(element, /* Parameter für element */);
+            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
         });
     });
@@ -231,11 +221,11 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
-    if (selectedStates[inputFieldName]) {
+    if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
             inputField = document.createElement('input');
             inputField.type = 'text';
@@ -244,18 +234,20 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary += additionalLessonTutorSalary;
+            tutorSalary +=additionalLessonTutorSalary;
+            
         }
         updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -= additionalLessonTutorSalary;
+            tutorSalary -=additionalLessonTutorSalary;
             removeCodeGenerator(area, codeGenerator);
         }
+        
+    
     }
-
     calculateTotalCost();
     updateTextUnit();
 }
@@ -342,35 +334,29 @@ const areaAddOn = { start: 18, end: 42 };
 let codePositions = {};
     
 function updateCodeGenerator(area, codeToAdd) {
-       console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-    let currentCodes = baseCode.substring(area.start, area.end);
-    let placeholderIndex = currentCodes.indexOf("0A");
-    if (placeholderIndex !== -1) {
-        // Berechnet die tatsächliche Position im baseCode
-        let actualIndex = area.start + placeholderIndex;
-        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        codePositions[codeToAdd] = actualIndex;
-    }
-       console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-         console.log(`baseCode nach dem Update: '${baseCode}'`);
+    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+    let newCodes = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
+    baseCode = newCodes;
+    codePositions[codeToAdd] = area.start;
+
+    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
 function removeCodeGenerator(area, codeToRemove) {
-       console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     if (codePositions[codeToRemove] !== undefined) {
-        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
-        let actualIndex = codePositions[codeToRemove] - area.start;
-        let currentCodes = baseCode.substring(area.start, area.end);
-        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
-        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-        delete codePositions[codeToRemove]; 
+        let newCodes = baseCode.substring(0, area.start) + "0A" + baseCode.substring(area.end);
+        baseCode = newCodes;
+        delete codePositions[codeToRemove];
     }
-     console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
-         console.log(`baseCode nach dem Update: '${baseCode}'`);
+
+    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
