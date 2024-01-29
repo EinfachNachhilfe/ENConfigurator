@@ -103,43 +103,50 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
-        element.addEventListener('click', () => {
-            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-            if (element.classList.contains(selectionClass)) {
-                // Das Element wurde zuvor ausgewählt, entferne die Auswahl
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else if (maxSelected === 1) {
-                // Das Element kann ausgewählt werden, solange maxSelected auf 1 festgelegt ist
-                // Automatisch alle anderen Elemente abwählen
-                elements.forEach(otherElement => {
-                    otherElement.classList.remove(selectionClass);
-                });
-                selectedElements = [element];
-                element.classList.add(selectionClass);
-            } else if (selectedElements.length < maxSelected) {
-                // Das Element kann ausgewählt werden, solange maxSelected nicht erreicht ist
-                element.classList.add(selectionClass);
-                selectedElements.push(element);
-            }
+        // Überprüfen, ob der Event-Listener bereits hinzugefügt wurde
+        if (!element.dataset.listenerAdded) {
+            element.addEventListener('click', () => {
+                console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
 
-            // Deaktiviere andere Elemente, wenn maxSelected erreicht ist
-            if (selectedElements.length >= maxSelected) {
-                elements.forEach(otherElement => {
-                    if (!otherElement.classList.contains(selectionClass)) {
-                        otherElement.classList.add(disabledClass);
-                    }
-                });
-            } else {
-                // Aktiviere alle Elemente
-                elements.forEach(otherElement => {
-                    otherElement.classList.remove(disabledClass);
-                });
-            }
+                if (element.classList.contains(selectionClass)) {
+                    // Das Element wurde zuvor ausgewählt, entferne die Auswahl
+                    element.classList.remove(selectionClass);
+                    selectedElements = selectedElements.filter(el => el !== element);
+                } else if (maxSelected === 1) {
+                    // Das Element kann ausgewählt werden, solange maxSelected auf 1 festgelegt ist
+                    // Automatisch alle anderen Elemente abwählen
+                    elements.forEach(otherElement => {
+                        otherElement.classList.remove(selectionClass);
+                    });
+                    selectedElements = [element];
+                    element.classList.add(selectionClass);
+                } else if (selectedElements.length < maxSelected) {
+                    // Das Element kann ausgewählt werden, solange maxSelected nicht erreicht ist
+                    element.classList.add(selectionClass);
+                    selectedElements.push(element);
+                }
 
-            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
-            validateForm();
-        });
+                // Deaktiviere andere Elemente, wenn maxSelected erreicht ist
+                if (selectedElements.length >= maxSelected) {
+                    elements.forEach(otherElement => {
+                        if (!otherElement.classList.contains(selectionClass)) {
+                            otherElement.classList.add(disabledClass);
+                        }
+                    });
+                } else {
+                    // Aktiviere alle Elemente
+                    elements.forEach(otherElement => {
+                        otherElement.classList.remove(disabledClass);
+                    });
+                }
+
+                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+                validateForm();
+            });
+
+            // Markieren des Elements, um anzuzeigen, dass ein Listener hinzugefügt wurde
+            element.dataset.listenerAdded = 'true';
+        }
     });
 }
 
