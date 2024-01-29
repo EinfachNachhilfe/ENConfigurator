@@ -152,28 +152,30 @@ function makeExclusivePair(id1, id2, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
-    function toggleElements(activeElement, disabledElement) {
-        activeElement.classList.remove(disabledClass);
-        disabledElement.classList.add(disabledClass);
+    element1.addEventListener('click', () => {
+        if (!element1.classList.contains(disabledClass)) {
+            element1.classList.remove(disabledClass);
+            element2.classList.add(disabledClass);
+        }
+    });
 
-        // Event-Listener entfernen, um Klicks auf das deaktivierte Element zu verhindern
-        disabledElement.removeEventListener('click', disabledElement.clickHandler);
-    }
-
-    element1.clickHandler = () => toggleElements(element1, element2);
-    element2.clickHandler = () => toggleElements(element2, element1);
-
-    element1.addEventListener('click', element1.clickHandler);
-    element2.addEventListener('click', element2.clickHandler);
+    element2.addEventListener('click', () => {
+        if (!element2.classList.contains(disabledClass)) {
+            element2.classList.remove(disabledClass);
+            element1.classList.add(disabledClass);
+        }
+    });
 }
 
 // CSS-Klasse 'disabled' definieren
 // .disabled {
+//     pointer-events: none; /* Macht das Element unanklickbar */
 //     opacity: 0.5;         /* Visualisiert das Ausgrauen */
 // }
 
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
 makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
+
 
 
 
