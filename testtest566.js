@@ -99,50 +99,35 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, getElementConfig) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            console.log(`Element geklickt: ${element.id}`);
+            let config = getElementConfig(element.id);
 
-            if (element.classList.contains(selectionClass)) {
-                console.log(`Element wird abgewählt: ${element.id}`);
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else {
+            // Direktes Hinzufügen oder Entfernen des Codes vor der Klassenänderung
+            if (!element.classList.contains(selectionClass)) {
                 if (selectedElements.length >= maxSelected) {
-                    console.log(`Maximale Auswahl erreicht. Ältestes Element wird abgewählt: ${selectedElements[0].id}`);
-                    selectedElements[0].classList.remove(selectionClass);
+                    let oldestElement = selectedElements[0];
+                    let oldestConfig = getElementConfig(oldestElement.id);
+                    updateCodeGenerator(oldestConfig.area, "0A"); // Entfernen des alten Codes
+                    oldestElement.classList.remove(selectionClass);
                     selectedElements.shift();
                 }
-                console.log(`Element wird ausgewählt: ${element.id}`);
+                updateCodeGenerator(config.area, config.codeGenerator); // Hinzufügen des neuen Codes
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
+            } else {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+                updateCodeGenerator(config.area, "0A"); // Entfernen des Codes
             }
-
-            console.log(`Aktuell ausgewählte Elemente: ${selectedElements.map(el => el.id).join(', ')}`);
             validateForm();
         });
     });
-
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                console.log(`Klassenänderung erkannt: ${targetElement.id}`);
-                if (!targetElement.classList.contains(selectionClass)) {
-                    console.log(`Element durch Klassenänderung abgewählt: ${targetElement.id}`);
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
-                }
-            }
-        });
-    });
-
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
 }
+
 
 
 
