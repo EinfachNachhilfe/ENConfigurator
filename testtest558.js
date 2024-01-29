@@ -208,23 +208,27 @@ const areaAddOn = { start: 18, end: 42 };
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
     
-    // Beobachtet Änderungen an den Klassen der Elemente
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
+const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const targetElement = mutation.target;
+            const wasClicked = mutation.oldValue.includes('custom-input-clicked');
+            const isClicked = targetElement.classList.contains('custom-input-clicked');
+
+            if (wasClicked !== isClicked) { // Überprüft, ob sich der Status geändert hat
+                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
             }
-        });
+        }
     });
+});
 
     // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
     const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
 
     // Überwacht jedes Element in der Liste
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
+elements.forEach(element => {
+    observer.observe(element, { attributes: true, attributeOldValue: true });
+});
 }
 
     
