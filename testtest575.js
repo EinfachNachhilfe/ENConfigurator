@@ -109,6 +109,9 @@ function getSubjectConfig(elementId) {
     return elementconfig[elementId];
 }
 
+    function getSubjectConfigarea(area) {
+    return elementconfig[area];
+}
 
 
 //show "Mehr Infos" Popup
@@ -149,17 +152,17 @@ function manageSelection(elements, maxSelected, selectionClass, getElementConfig
                 if (selectedElements.length >= maxSelected) {
                     let oldestElement = selectedElements[0];
                     let oldestConfig = getElementConfig(oldestElement.id);
-                    updateCodeGenerator(oldestConfig.area, "0A"); // Entfernen des alten Codes
+                    updateCodeGenerator(oldestConfig.getSubjectConfigarea, "0A"); // Entfernen des alten Codes
                     oldestElement.classList.remove(selectionClass);
                     selectedElements.shift();
                 }
-                updateCodeGenerator(getElementConfig.area, getElementConfig.codeGenerator); // Hinzufügen des neuen Codes
+                updateCodeGenerator(getElementConfig.getSubjectConfigarea, getElementConfig.codeGenerator); // Hinzufügen des neuen Codes
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             } else {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                updateCodeGenerator(getElementConfig.area, "0A"); // Entfernen des Codes
+                updateCodeGenerator(getElementConfig.getSubjectConfigarea, "0A"); // Entfernen des Codes
             }
             validateForm();
         });
