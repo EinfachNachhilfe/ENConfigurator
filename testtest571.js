@@ -65,7 +65,7 @@ const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
-    const subjectConfigs = {
+    const elementconfig = {
     'tutoringAtHome': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'CA', defaultValue: 'Tutoring At Home', area: areaTutoring },
     'tutoringHybrid': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'BA', defaultValue: 'Hybrid Tutoring', area: areaTutoring },
     'tutoringOnline': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'AB', defaultValue: 'Online Tutoring', area: areaTutoring },
@@ -106,7 +106,7 @@ const areaAddOn = { start: 18, end: 42 };
 };
 
 function getSubjectConfig(elementId) {
-    return subjectConfigs[elementId];
+    return elementconfig[elementId];
 }
 
 
@@ -131,25 +131,37 @@ function getSubjectConfig(elementId) {
             background.style.display = 'none';
         });
 
+
+        function getElementConfig(elementId) {
+            return elementconfig[elementId];
+        }
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, getElementConfig) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            if (element.classList.contains(selectionClass)) {
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else {
+            let config = getElementConfig(element.id);
+
+            // Direktes Hinzufügen oder Entfernen des Codes vor der Klassenänderung
+            if (!element.classList.contains(selectionClass)) {
                 if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
+                    let oldestElement = selectedElements[0];
+                    let oldestConfig = getElementConfig(oldestElement.id);
+                    updateCodeGenerator(oldestConfig.area, "0A"); // Entfernen des alten Codes
+                    oldestElement.classList.remove(selectionClass);
                     selectedElements.shift();
                 }
+                updateCodeGenerator(config.area, config.codeGenerator); // Hinzufügen des neuen Codes
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
+            } else {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+                updateCodeGenerator(config.area, "0A"); // Entfernen des Codes
             }
-           validateForm();
+            validateForm();
         });
     });
 //check the change event 
@@ -232,9 +244,9 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
-    for (const elementId in subjectConfigs) {
-    if (subjectConfigs.hasOwnProperty(elementId)) {
-        const config = subjectConfigs[elementId];
+    for (const elementId in elementconfig) {
+    if (elementconfig.hasOwnProperty(elementId)) {
+        const config = elementconfig[elementId];
         const element = document.getElementById(elementId);
         createInputField(element, config.additionalLessonCost, config.additionalLessonTutorSalary, config.codeGenerator, config.defaultValue, config.area);
     }
