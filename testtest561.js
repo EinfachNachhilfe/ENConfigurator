@@ -152,16 +152,18 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
     if (element1 && element2) {
         element1.addEventListener('click', () => {
             if (element2.classList.contains(exclusiveClass)) {
-               element1.classList.add(exclusiveClass);
                 element2.classList.remove(exclusiveClass);
+                element1.classList.add(exclusiveClass);
+  
                 
             }
         });
 
         element2.addEventListener('click', () => {
             if (element1.classList.contains(exclusiveClass)) {
-                element2.classList.add(exclusiveClass);
                 element1.classList.remove(exclusiveClass);
+                element2.classList.add(exclusiveClass);
+               
                 
                 
             }
@@ -231,15 +233,17 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 
     
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
-    console.log("handleClassChange aufgerufen für:", element.id);
-
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
-    if (element.classList.contains('custom-input-clicked')) {
-        console.log("Element ausgewählt:", inputFieldName);
+    let start = area.start;
+    let end = area.end;
+    let currentCodes = baseCode.substring(start, end);
+    let newCodes = currentCodes;
 
+    if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
+            // Erstelle das Input-Feld
             inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
@@ -250,38 +254,43 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             totalLessonPrice += additionalLessonCost;
             tutorSalary += additionalLessonTutorSalary;
 
-            let start = area.start;
-            let end = area.end;
-            baseCode = baseCode.substring(0, start) + codeGenerator + baseCode.substring(end);
-
-            console.log("Code hinzugefügt:", codeGenerator);
+            if (area === areaSubject || area === areaAddOn) {
+                // Mehrere Elemente können ausgewählt sein
+                let placeholderIndex = currentCodes.indexOf("0A");
+                if (placeholderIndex !== -1) {
+                    newCodes = currentCodes.substring(0, placeholderIndex) + codeGenerator + currentCodes.substring(placeholderIndex + 2);
+                }
+            } else {
+                // Nur ein Element kann ausgewählt sein
+                newCodes = codeGenerator + "0A".repeat((end - start) / 2 - 1);
+            }
+            console.log("Code entfernt:", codeGenerator);
             console.log("Aktualisierter baseCode:", baseCode);
         }
     } else {
-        console.log("Element abgewählt:", inputFieldName);
-
         if (inputField) {
+            // Entferne das Input-Feld
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -= additionalLessonTutorSalary;
 
-            let start = area.start;
-            let end = area.end;
-            let placeholder = "0A".repeat((end - start) / 2);
-            baseCode = baseCode.substring(0, start) + placeholder + baseCode.substring(end);
-
+            let codeIndex = currentCodes.indexOf(codeGenerator);
+            if (codeIndex !== -1) {
+                newCodes = currentCodes.substring(0, codeIndex) + "0A" + currentCodes.substring(codeIndex + codeGenerator.length);
+            }
             console.log("Code entfernt:", codeGenerator);
             console.log("Aktualisierter baseCode:", baseCode);
         }
     }
 
+    // Aktualisiere baseCode mit den neuen Codes
+    baseCode = baseCode.substring(0, start) + newCodes + baseCode.substring(end);
+
     calculateTotalCost();
     updateTextUnit();
-    textCodeGenerator.textContent = baseCode;
 }
 
-textCodeGenerator.textContent = baseCode;
-
+    textCodeGenerator.textContent = baseCode;
 
 
 
