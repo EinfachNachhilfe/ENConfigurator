@@ -137,7 +137,7 @@ function getSubjectConfig(elementId) {
         }
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, getElementConfig) {
+function manageSelection(elements, maxSelected, selectionClass, getElementConfig, area) {
     let selectedElements = [];
 
     elements.forEach(element => {
