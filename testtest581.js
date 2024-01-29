@@ -97,7 +97,7 @@ if (configuratorForm) {
             background.style.display = 'none';
         });
 
-let selectedElements = []; 
+let selectedStates = []; 
 //add "custom-input-clicked" class and set max. clickable fields
 function manageSelection(elements, maxSelected, selectionClass) {
     // Initialisieren des Zustands für jedes Element
