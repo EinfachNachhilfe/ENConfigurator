@@ -376,58 +376,33 @@ let codePositions = {};
 let isEventListenerRegistered = false;
 
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+       console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-
-    if (area === areaSubject || area === areaAddOn) {
-        // Verhalten für areaSubject und areaAddOn
-        let placeholderIndex = currentCodes.indexOf("0A");
-        if (placeholderIndex !== -1) {
-            let actualIndex = area.start + placeholderIndex;
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = actualIndex;
-        }
-    } else {
-        // Verhalten für andere Bereiche
-        baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
-        codePositions[codeToAdd] = area.start;
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        codePositions[codeToAdd] = actualIndex;
     }
-
-    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
+       console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+         console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
-if (!isEventListenerRegistered) {
-    elements.forEach(element => {
-        element.addEventListener('click', () => {
-            if (area === areaSubject || area === areaAddOn) {
-                // Hier kannst du area und codeToAdd entsprechend setzen
-                updateCodeGenerator(area, codeToAdd);
-            }
-        });
-    });
-    isEventListenerRegistered = true;
-}
-
-
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-
-    // Überprüfen, ob der Bereich areaSubject oder areaAddOn ist
-    if (area === areaSubject || area === areaAddOn) {
-        if (codePositions[codeToRemove] !== undefined) {
-            let actualIndex = codePositions[codeToRemove] - area.start;
-            let currentCodes = baseCode.substring(area.start, area.end);
-            let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            delete codePositions[codeToRemove];
-        }
+       console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    if (codePositions[codeToRemove] !== undefined) {
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove]; 
     }
-
-    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
+     console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
+         console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
