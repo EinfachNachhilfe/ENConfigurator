@@ -107,13 +107,16 @@ function manageSelection(elements, maxSelected, selectionClass) {
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
+                   handleClassChange();
             } else {
                 if (selectedElements.length >= maxSelected) {
                     selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
+                       handleClassChange();
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
+                  handleClassChange();
             }
            validateForm();
         });
