@@ -104,26 +104,35 @@ function manageSelection(elements, maxSelected, selectionClass) {
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
+            console.log(`Element geklickt: ${element.id}`);
+
             if (element.classList.contains(selectionClass)) {
+                console.log(`Element wird abgewählt: ${element.id}`);
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
             } else {
                 if (selectedElements.length >= maxSelected) {
+                    console.log(`Maximale Auswahl erreicht. Ältestes Element wird abgewählt: ${selectedElements[0].id}`);
                     selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
                 }
+                console.log(`Element wird ausgewählt: ${element.id}`);
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             }
-           validateForm();
+
+            console.log(`Aktuell ausgewählte Elemente: ${selectedElements.map(el => el.id).join(', ')}`);
+            validateForm();
         });
     });
-//check the change event 
+
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
+                console.log(`Klassenänderung erkannt: ${targetElement.id}`);
                 if (!targetElement.classList.contains(selectionClass)) {
+                    console.log(`Element durch Klassenänderung abgewählt: ${targetElement.id}`);
                     selectedElements = selectedElements.filter(el => el !== targetElement);
                 }
             }
@@ -134,6 +143,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
         observer.observe(element, { attributes: true });
     });
 }
+
 
 
         manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
