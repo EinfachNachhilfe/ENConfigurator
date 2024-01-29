@@ -107,16 +107,13 @@ function manageSelection(elements, maxSelected, selectionClass) {
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                  
             } else {
                 if (selectedElements.length >= maxSelected) {
                     selectedElements[0].classList.remove(selectionClass);
                     selectedElements.shift();
-                      
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-    
             }
            validateForm();
         });
@@ -157,8 +154,6 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
             if (element2.classList.contains(exclusiveClass)) {
                 element2.classList.remove(exclusiveClass);
                 element1.classList.add(exclusiveClass);
-  
-                
             }
         });
 
@@ -166,8 +161,6 @@ function makeExclusivePair(id1, id2, exclusiveClass) {
             if (element1.classList.contains(exclusiveClass)) {
                 element1.classList.remove(exclusiveClass);
                 element2.classList.add(exclusiveClass);
-               
-                
                 
             }
         });
@@ -200,17 +193,6 @@ const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducati
 const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
-const textCodeGenerator = document.getElementById('textCodeGenerator');
-let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
-    
-const areaSubject = { start: 2, end: 8 };
-const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
-const areaAddOn = { start: 18, end: 42 };
-
-
-
 
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
@@ -235,65 +217,36 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
-    let start = area.start;
-    let end = area.end;
-    let currentCodes = baseCode.substring(start, end);
-    let newCodes = currentCodes;
-
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
-            // Erstelle das Input-Feld
             inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
-
             totalLessonPrice += additionalLessonCost;
-            tutorSalary += additionalLessonTutorSalary;
-
-            if (area === areaSubject || area === areaAddOn) {
-                // Mehrere Elemente können ausgewählt sein
-                let placeholderIndex = currentCodes.indexOf("0A");
-                if (placeholderIndex !== -1) {
-                    newCodes = currentCodes.substring(0, placeholderIndex) + codeGenerator + currentCodes.substring(placeholderIndex + 2);
-                }
-            } else {
-                // Nur ein Element kann ausgewählt sein
-                newCodes = codeGenerator + "0A".repeat((end - start) / 2 - 1);
-            }
-            console.log("Code entfernt:", codeGenerator);
-            console.log("Aktualisierter baseCode:", baseCode);
+            tutorSalary +=additionalLessonTutorSalary;
+            
         }
+        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
-            // Entferne das Input-Feld
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -= additionalLessonTutorSalary;
-
-            let codeIndex = currentCodes.indexOf(codeGenerator);
-            if (codeIndex !== -1) {
-                newCodes = currentCodes.substring(0, codeIndex) + "0A" + currentCodes.substring(codeIndex + codeGenerator.length);
-            }
-            console.log("Code entfernt:", codeGenerator);
-            console.log("Aktualisierter baseCode:", baseCode);
+            tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
+        
+    
     }
-
-    // Aktualisiere baseCode mit den neuen Codes
-    baseCode = baseCode.substring(0, start) + newCodes + baseCode.substring(end);
-
     calculateTotalCost();
     updateTextUnit();
 }
-
-    textCodeGenerator.textContent = baseCode;
 
 
 
@@ -365,6 +318,52 @@ function calculateTotalCost() {
 //show the TotalCost directly
 calculateTotalCost();
 
+const textCodeGenerator = document.getElementById('textCodeGenerator');
+let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
+    
+const areaSubject = { start: 2, end: 8 };
+const areaTutoring = { start: 9, end: 11 };
+const areaUnit = { start: 12, end: 14 };
+const areaContract = { start: 15, end: 17 };
+const areaAddOn = { start: 18, end: 42 };
+
+let codePositions = {};
+    
+function updateCodeGenerator(area, codeToAdd) {
+       console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+    let currentCodes = baseCode.substring(area.start, area.end);
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        codePositions[codeToAdd] = actualIndex;
+    }
+       console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+         console.log(`baseCode nach dem Update: '${baseCode}'`);
+    textCodeGenerator.textContent = baseCode;
+}
+
+function removeCodeGenerator(area, codeToRemove) {
+       console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    if (codePositions[codeToRemove] !== undefined) {
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove]; 
+    }
+     console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
+         console.log(`baseCode nach dem Update: '${baseCode}'`);
+    textCodeGenerator.textContent = baseCode;
+}
+
+
+
+
+textCodeGenerator.textContent = baseCode;
 
 
 
