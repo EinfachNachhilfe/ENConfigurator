@@ -66,25 +66,25 @@ const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
     const subjectConfigs = {
-    'tutoringAtHome': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'Code5', defaultValue: 'Tutoring At Home', area: areaTutoring },
-    'tutoringHybrid': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'Code6', defaultValue: 'Hybrid Tutoring', area: areaTutoring },
-    'tutoringOnline': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code7', defaultValue: 'Online Tutoring', area: areaTutoring },
+    'tutoringAtHome': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'CA', defaultValue: 'Tutoring At Home', area: areaTutoring },
+    'tutoringHybrid': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'BA', defaultValue: 'Hybrid Tutoring', area: areaTutoring },
+    'tutoringOnline': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'AB', defaultValue: 'Online Tutoring', area: areaTutoring },
         
-    'unitSmall': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.2, codeGenerator: 'Code8', defaultValue: 'Small Unit', area: areaUnit },
-    'unitMiddle': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code9', defaultValue: 'Middle Unit', area: areaUnit },
-    'unitLarge': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.7, codeGenerator: 'Code10', defaultValue: 'Large Unit', area: areaUnit },
+    'unitSmall': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.2, codeGenerator: 'AA', defaultValue: 'Small Unit', area: areaUnit },
+    'unitMiddle': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'BA', defaultValue: 'Middle Unit', area: areaUnit },
+    'unitLarge': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.7, codeGenerator: 'BA', defaultValue: 'Large Unit', area: areaUnit },
         
-    'contractSmall': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'Code11', defaultValue: 'Small Contract', area: areaContract },
-    'contractMiddle': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'Code12', defaultValue: 'Middle Contract', area: areaContract },
-    'contractLarge': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code13', defaultValue: 'Large Contract', area: areaContract },
+    'contractSmall': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'CA', defaultValue: 'Small Contract', area: areaContract },
+    'contractMiddle': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'BA', defaultValue: 'Middle Contract', area: areaContract },
+    'contractLarge': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'AA', defaultValue: 'Large Contract', area: areaContract },
 
-    'addOnPremiumTutor': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code1', defaultValue: 'Premium Tutor', area: areaAddOn },
-    'addOnExperiencedTutor': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.6, codeGenerator: 'Code2', defaultValue: 'Experienced Tutor', area: areaAddOn },
-    'addOnMale': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.3, codeGenerator: 'Code3', defaultValue: 'Male Tutor', area: areaAddOn },
-    'addOnFemale': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.3, codeGenerator: 'Code4', defaultValue: 'Female Tutor', area: areaAddOn },
-    'addOnAllRoundTutor': { additionalLessonCost: 1.2, additionalLessonTutorSalary: 0.6, codeGenerator: 'Code14', defaultValue: 'All Round Tutor', area: areaAddOn },
-    'addOnContractBreak': { additionalLessonCost: 0.8, additionalLessonTutorSalary: 0.4, codeGenerator: 'Code15', defaultValue: 'Contract Break', area: areaAddOn },
-    'addTandemLesson': { additionalLessonCost: 2.5, additionalLessonTutorSalary: 1.2, codeGenerator: 'Code16', defaultValue: 'Tandem Lesson', area: areaAddOn },
+    'addOnPremiumTutor': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'MA', defaultValue: 'Premium Tutor', area: areaAddOn },
+    'addOnExperiencedTutor': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.6, codeGenerator: 'QA', defaultValue: 'Experienced Tutor', area: areaAddOn },
+    'addOnMale': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.3, codeGenerator: 'BA', defaultValue: 'Male Tutor', area: areaAddOn },
+    'addOnFemale': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.3, codeGenerator: 'CA', defaultValue: 'Female Tutor', area: areaAddOn },
+    'addOnAllRoundTutor': { additionalLessonCost: 1.2, additionalLessonTutorSalary: 0.6, codeGenerator: 'DA', defaultValue: 'All Round Tutor', area: areaAddOn },
+    'addOnContractBreak': { additionalLessonCost: 0.8, additionalLessonTutorSalary: 0.4, codeGenerator: 'EA', defaultValue: 'Contract Break', area: areaAddOn },
+    'addTandemLesson': { additionalLessonCost: 2.5, additionalLessonTutorSalary: 1.2, codeGenerator: 'FA', defaultValue: 'Tandem Lesson', area: areaAddOn },
         
     'subjectMathematics': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'MA', defaultValue: 'Mathematics', area: areaSubject },
     'subjectGerman': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.25, codeGenerator: 'GE', defaultValue: 'German', area: areaSubject },
