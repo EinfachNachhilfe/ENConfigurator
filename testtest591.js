@@ -152,22 +152,20 @@ function makeExclusivePair(id1, id2, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
-    element1.addEventListener('click', () => {
-        if (!element1.classList.contains(disabledClass)) {
+    if (element1 && element2) {
+        element1.addEventListener('click', () => {
             element1.classList.remove(disabledClass);
             element2.classList.add(disabledClass);
-        }
-    });
+        });
 
-    element2.addEventListener('click', () => {
-        if (!element2.classList.contains(disabledClass)) {
+        element2.addEventListener('click', () => {
             element2.classList.remove(disabledClass);
             element1.classList.add(disabledClass);
-        }
-    });
+        });
+    }
 }
 
-// CSS-Klasse 'disabled' definieren
+// CSS-Klasse 'disabled' definieren, falls noch nicht vorhanden
 // .disabled {
 //     pointer-events: none; /* Macht das Element unanklickbar */
 //     opacity: 0.5;         /* Visualisiert das Ausgrauen */
@@ -175,6 +173,7 @@ function makeExclusivePair(id1, id2, disabledClass) {
 
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
 makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
+
 
 
 
