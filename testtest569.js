@@ -232,6 +232,15 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
+    for (const elementId in subjectConfigs) {
+    if (subjectConfigs.hasOwnProperty(elementId)) {
+        const config = subjectConfigs[elementId];
+        const element = document.getElementById(elementId);
+        createInputField(element, config.additionalLessonCost, config.additionalLessonTutorSalary, config.codeGenerator, config.defaultValue, config.area);
+    }
+}
+
+
     
 function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
