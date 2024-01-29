@@ -100,6 +100,7 @@ if (configuratorForm) {
 let selectedStates = []; 
 //add "custom-input-clicked" class and set max. clickable fields
 function manageSelection(elements, maxSelected, selectionClass) {
+    let selectedElements = [];
     // Initialisieren des Zustands für jedes Element
     elements.forEach(element => {
         selectedStates[element.id] = element.classList.contains(selectionClass);
