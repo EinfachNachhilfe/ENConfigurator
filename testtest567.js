@@ -58,22 +58,57 @@ if (configuratorForm) {
         const customRadioInputContract = document.querySelectorAll('.custom-radio-input.contract');
         const customCheckboxInputTutor = document.querySelectorAll('.custom-checkbox-input-tutor');
         const customCheckboxInputOther = document.querySelectorAll('.custom-checkbox-input-other');
-        const addOnPremiumTutor  = document.getElementById('addOnPremiumTutor');
-        const addOnExperiencedTutor  = document.getElementById('addOnExperiencedTutor');
-        const addOnMale  = document.getElementById('addOnMale');
-        const addOnFemale  = document.getElementById('addOnFemale');
-        const tutoringAtHome = document.getElementById('tutoringAtHome');
-        const tutoringHybrid = document.getElementById('tutoringHybrid');
-        const tutoringOnline = document.getElementById('tutoringOnline');
-        const unitSmall = document.getElementById('unitSmall');
-        const unitMiddle = document.getElementById('unitMiddle');
-        const unitLarge = document.getElementById('unitLarge');
-        const contractSmall = document.getElementById('contractSmall');
-        const contractMiddle = document.getElementById('contractMiddle');
-        const contractLarge = document.getElementById('contractLarge');
-        const addOnAllRoundTutor = document.getElementById('addOnAllRoundTutor');  
-        const addOnContractBreak = document.getElementById('addOnContractBreak');
-        const addTandemLesson = document.getElementById('addTandemLesson');
+
+const areaSubject = { start: 2, end: 8 };
+const areaTutoring = { start: 9, end: 11 };
+const areaUnit = { start: 12, end: 14 };
+const areaContract = { start: 15, end: 17 };
+const areaAddOn = { start: 18, end: 42 };
+    
+    const subjectConfigs = {
+    'tutoringAtHome': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'Code5', defaultValue: 'Tutoring At Home', area: areaTutoring },
+    'tutoringHybrid': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'Code6', defaultValue: 'Hybrid Tutoring', area: areaTutoring },
+    'tutoringOnline': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code7', defaultValue: 'Online Tutoring', area: areaTutoring },
+        
+    'unitSmall': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.2, codeGenerator: 'Code8', defaultValue: 'Small Unit', area: areaUnit },
+    'unitMiddle': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code9', defaultValue: 'Middle Unit', area: areaUnit },
+    'unitLarge': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.7, codeGenerator: 'Code10', defaultValue: 'Large Unit', area: areaUnit },
+        
+    'contractSmall': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'Code11', defaultValue: 'Small Contract', area: areaContract },
+    'contractMiddle': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'Code12', defaultValue: 'Middle Contract', area: areaContract },
+    'contractLarge': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code13', defaultValue: 'Large Contract', area: areaContract },
+
+    'addOnPremiumTutor': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'Code1', defaultValue: 'Premium Tutor', area: areaAddOn },
+    'addOnExperiencedTutor': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.6, codeGenerator: 'Code2', defaultValue: 'Experienced Tutor', area: areaAddOn },
+    'addOnMale': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.3, codeGenerator: 'Code3', defaultValue: 'Male Tutor', area: areaAddOn },
+    'addOnFemale': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.3, codeGenerator: 'Code4', defaultValue: 'Female Tutor', area: areaAddOn },
+    'addOnAllRoundTutor': { additionalLessonCost: 1.2, additionalLessonTutorSalary: 0.6, codeGenerator: 'Code14', defaultValue: 'All Round Tutor', area: areaAddOn },
+    'addOnContractBreak': { additionalLessonCost: 0.8, additionalLessonTutorSalary: 0.4, codeGenerator: 'Code15', defaultValue: 'Contract Break', area: areaAddOn },
+    'addTandemLesson': { additionalLessonCost: 2.5, additionalLessonTutorSalary: 1.2, codeGenerator: 'Code16', defaultValue: 'Tandem Lesson', area: areaAddOn },
+        
+    'subjectMathematics': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'MA', defaultValue: 'Mathematics', area: areaSubject },
+    'subjectGerman': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.25, codeGenerator: 'GE', defaultValue: 'German', area: areaSubject },
+    'subjectEnglish': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.25, codeGenerator: 'EN', defaultValue: 'English', area: areaSubject },
+    'subjectFrench': { additionalLessonCost: 0.6, additionalLessonTutorSalary: 0.3, codeGenerator: 'FR', defaultValue: 'French', area: areaSubject },
+    'subjectLatin': { additionalLessonCost: 0.7, additionalLessonTutorSalary: 0.35, codeGenerator: 'LA', defaultValue: 'Latin', area: areaSubject },
+    'subjectItalian': { additionalLessonCost: 0.6, additionalLessonTutorSalary: 0.3, codeGenerator: 'IT', defaultValue: 'Italian', area: areaSubject },
+    'subjectSpanish': { additionalLessonCost: 0.6, additionalLessonTutorSalary: 0.3, codeGenerator: 'SP', defaultValue: 'Spanish', area: areaSubject },
+    'subjectPhysics': { additionalLessonCost: 0.7, additionalLessonTutorSalary: 0.35, codeGenerator: 'PH', defaultValue: 'Physics', area: areaSubject },
+    'subjectChemistry': { additionalLessonCost: 0.7, additionalLessonTutorSalary: 0.35, codeGenerator: 'CH', defaultValue: 'Chemistry', area: areaSubject },
+    'subjectBiology': { additionalLessonCost: 0.6, additionalLessonTutorSalary: 0.3, codeGenerator: 'BI', defaultValue: 'Biology', area: areaSubject },
+    'subjectGeography': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.25, codeGenerator: 'GG', defaultValue: 'Geography', area: areaSubject },
+    'subjectHistory': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.25, codeGenerator: 'HI', defaultValue: 'History', area: areaSubject },
+    'subjectSocialStudies': { additionalLessonCost: 0.5, additionalLessonTutorSalary: 0.25, codeGenerator: 'SS', defaultValue: 'Social Studies', area: areaSubject },
+    'subjectComputerScience': { additionalLessonCost: 0.8, additionalLessonTutorSalary: 0.4, codeGenerator: 'CS', defaultValue: 'Computer Science', area: areaSubject },
+    'subjectPhysicalEducation': { additionalLessonCost: 0.3, additionalLessonTutorSalary: 0.15, codeGenerator: 'PE', defaultValue: 'Physical Education', area: areaSubject },
+    'subjectEconomics': { additionalLessonCost: 0.7, additionalLessonTutorSalary: 0.35, codeGenerator: 'EC', defaultValue: 'Economics', area: areaSubject },
+    'subjectOther': { additionalLessonCost: 1, additionalLessonTutorSalary: 0.5, codeGenerator: 'OT', defaultValue: 'Other', area: areaSubject }
+};
+
+function getSubjectConfig(elementId) {
+    return subjectConfigs[elementId];
+}
+
 
 
 
@@ -170,25 +205,6 @@ let totalLessonPrice = 20;
 let tutorSalary = 12;
     
 
-const subjectMathematics = document.getElementById('subjectMathematics');
-const subjectGerman = document.getElementById('subjectGerman');
-const subjectEnglish = document.getElementById('subjectEnglish');
-const subjectFrench = document.getElementById('subjectFrench');
-const subjectLatin = document.getElementById('subjectLatin');
-const subjectItalian = document.getElementById('subjectItalian');
-const subjectSpanish = document.getElementById('subjectSpanish');
-const subjectPhysics = document.getElementById('subjectPhysics');
-const subjectChemistry = document.getElementById('subjectChemistry');
-const subjectBiology = document.getElementById('subjectBiology');
-const subjectGeography = document.getElementById('subjectGeography');
-const subjectHistory = document.getElementById('subjectHistory');
-const subjectSocialStudies = document.getElementById('subjectSocialStudies');
-const subjectComputerScience = document.getElementById('subjectComputerScience');
-const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
-const subjectEconomics = document.getElementById('subjectEconomics');
-const subjectOther = document.getElementById('subjectOther');
-
-
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
     
@@ -210,6 +226,40 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         observer.observe(element, { attributes: true });
     });
 }
+
+createInputField(subjectGerman);
+createInputField(subjectEnglish);
+createInputField(subjectMathematics);
+createInputField(subjectFrench);
+createInputField(subjectLatin);
+createInputField(subjectSpanish);
+createInputField(subjectItalian);
+createInputField(subjectPhysics);
+createInputField(subjectChemistry);
+createInputField(subjectBiology);
+createInputField(subjectGeography);
+createInputField(subjectHistory);
+createInputField(subjectSocialStudies);
+createInputField(subjectComputerScience);
+createInputField(subjectPhysicalEducation);
+createInputField(subjectEconomics);
+createInputField(subjectOther);
+createInputField(tutoringOnline);
+createInputField(tutoringHybrid);
+createInputField(tutoringAtHome);
+createInputField(unitSmall);
+createInputField(unitMiddle);
+createInputField(unitLarge);
+createInputField(contractSmall);
+createInputField(contractMiddle);
+createInputField(contractLarge);
+createInputField(addOnAllRoundTutor);
+createInputField(addOnExperiencedTutor);
+createInputField(addOnContractBreak);
+createInputField(addTandemLesson);
+createInputField(addOnPremiumTutor);
+createInputField(addOnMale);
+createInputField(addOnFemale);
 
     
 function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
@@ -316,12 +366,6 @@ calculateTotalCost();
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
-const areaSubject = { start: 2, end: 8 };
-const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
-const areaAddOn = { start: 18, end: 42 };
-
 let codePositions = {};
     
 function updateCodeGenerator(area, codeToAdd) {
@@ -355,46 +399,7 @@ function removeCodeGenerator(area, codeToRemove) {
     textCodeGenerator.textContent = baseCode;
 }
 
-
-
-
 textCodeGenerator.textContent = baseCode;
-
-
-
-createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
-createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
-createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik", areaSubject);
-createInputField(subjectFrench, 1.2, 0, "DA", "Französisch", areaSubject);
-createInputField(subjectLatin, 1.4, 0, "EA", "Latein", areaSubject);
-createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch", areaSubject);
-createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch", areaSubject);
-createInputField(subjectPhysics, 1.2, 0, "HA", "Physik", areaSubject);
-createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie", areaSubject);
-createInputField(subjectBiology, 0.8, 0, "JA", "Biologie", areaSubject);
-createInputField(subjectGeography, 0.2, 0, "KA", "Geographie", areaSubject);
-createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte", areaSubject);
-createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde", areaSubject);
-createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik", areaSubject);
-createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
-createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
-createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
-createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring);
-createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, "BA", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, "CA", "Große Einheit", areaUnit);
-createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
-createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
-createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
-createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer", areaAddOn);
-createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer", areaAddOn);
-createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause", areaAddOn);
-createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht", areaAddOn);
-createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer", areaAddOn);
-createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer", areaAddOn);
-createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin", areaAddOn);
 }
 //end configurator
 
