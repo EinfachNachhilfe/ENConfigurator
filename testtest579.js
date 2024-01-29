@@ -97,26 +97,35 @@ if (configuratorForm) {
             background.style.display = 'none';
         });
 
-    
+  let selectedStates = {};  
 //add "custom-input-clicked" class and set max. clickable fields
 function manageSelection(elements, maxSelected, selectionClass) {
-    let selectedElements = [];
+    // Initialisieren des Zustands für jedes Element
+    elements.forEach(element => {
+        selectedStates[element.id] = element.classList.contains(selectionClass);
+    });
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-            if (element.classList.contains(selectionClass)) {
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else {
+            // Zustand aktualisieren
+            selectedStates[element.id] = !selectedStates[element.id];
+
+            // Verarbeiten der Auswahl
+            if (selectedStates[element.id]) {
                 if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
+                    const toDeselect = selectedElements.shift();
+                    toDeselect.classList.remove(selectionClass);
+                    selectedStates[toDeselect.id] = false;
+                    handleClassChange(toDeselect, /* Parameter für toDeselect */);
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
+            } else {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
             }
-            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+
+            handleClassChange(element, /* Parameter für element */);
             validateForm();
         });
     });
@@ -221,11 +230,11 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
-    if (element.classList.contains('custom-input-clicked')) {
+    if (selectedStates[inputFieldName]) {
         if (!inputField) {
             inputField = document.createElement('input');
             inputField.type = 'text';
@@ -234,21 +243,18 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            
+            tutorSalary += additionalLessonTutorSalary;
         }
         updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
-             removeCodeGenerator(area, codeGenerator);
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-           
+            tutorSalary -= additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
-        
-    
     }
+
     calculateTotalCost();
     updateTextUnit();
 }
