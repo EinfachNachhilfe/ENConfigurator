@@ -104,6 +104,7 @@ function manageSelection(elements, maxSelected, selectionClass) {
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
+            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
@@ -115,14 +116,17 @@ function manageSelection(elements, maxSelected, selectionClass) {
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             }
-           validateForm();
+            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+            validateForm();
         });
     });
-//check the change event 
+
+    // Überprüfung des Änderungsereignisses
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
+                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
                 if (!targetElement.classList.contains(selectionClass)) {
                     selectedElements = selectedElements.filter(el => el !== targetElement);
                 }
