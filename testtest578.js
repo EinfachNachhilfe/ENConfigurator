@@ -240,10 +240,11 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
         updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
+             removeCodeGenerator(area, codeGenerator);
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+           
         }
         
     
