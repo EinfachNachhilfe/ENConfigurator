@@ -148,30 +148,36 @@ function manageSelection(elements, maxSelected, selectionClass) {
         manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
         
     
-   //exclude specific fields at the same time
-function makeExclusivePair(id1, id2, exclusiveClass) {
+function makeExclusivePair(id1, id2, exclusiveClass, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (element2.classList.contains(exclusiveClass)) {
-                element2.classList.remove(exclusiveClass);
-                element1.classList.add(exclusiveClass);
-            }
+            element1.classList.add(exclusiveClass);
+            element2.classList.remove(exclusiveClass);
+            element2.classList.add(disabledClass);
+            element1.classList.remove(disabledClass);
         });
 
         element2.addEventListener('click', () => {
-            if (element1.classList.contains(exclusiveClass)) {
-                element1.classList.remove(exclusiveClass);
-                element2.classList.add(exclusiveClass);
-                
-            }
+            element2.classList.add(exclusiveClass);
+            element1.classList.remove(exclusiveClass);
+            element1.classList.add(disabledClass);
+            element2.classList.remove(disabledClass);
         });
     }
 }
-makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
-makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
+
+// CSS-Klasse 'disabled' definieren
+// .disabled {
+//     pointer-events: none; /* Macht das Element unanklickbar */
+//     opacity: 0.5; /* Visualisiert das Ausgrauen */
+// }
+
+makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked', 'disabled');
+makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked', 'disabled');
+
 
 
 
