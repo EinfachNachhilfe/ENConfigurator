@@ -231,6 +231,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
+    let currentCodes = baseCode.substring(area.start, area.end);
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
@@ -244,12 +245,12 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             totalLessonPrice += additionalLessonCost;
             tutorSalary += additionalLessonTutorSalary;
 
-            // Füge Code zum baseCode hinzu
-            let start = area.start;
-            let end = area.end;
-            baseCode = baseCode.substring(0, start) + codeGenerator + baseCode.substring(end);
-              textCodeGenerator.textContent = baseCode;
-
+            // Füge Code zum baseCode hinzu, ohne vorhandene Codes zu entfernen
+            let placeholderIndex = currentCodes.indexOf("0A");
+            if (placeholderIndex !== -1) {
+                let actualIndex = area.start + placeholderIndex;
+                baseCode = baseCode.substring(0, actualIndex) + codeGenerator + baseCode.substring(actualIndex + 2);
+            }
         }
     } else {
         if (inputField) {
@@ -257,21 +258,19 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -= additionalLessonTutorSalary;
 
-            // Ersetze den Bereich im baseCode durch den Standard-Platzhalter "0A"
-            let start = area.start;
-            let end = area.end;
-            let placeholder = "0A".repeat((end - start) / 2); // Erstelle Platzhalter-String der passenden Länge
-            baseCode = baseCode.substring(0, start) + placeholder + baseCode.substring(end);
-              textCodeGenerator.textContent = baseCode;
-
+            // Entferne den spezifischen Code aus dem baseCode
+            let codeIndex = baseCode.indexOf(codeGenerator, area.start);
+            if (codeIndex !== -1) {
+                baseCode = baseCode.substring(0, codeIndex) + "0A" + baseCode.substring(codeIndex + codeGenerator.length);
+            }
         }
     }
 
+    textCodeGenerator.textContent = baseCode;
     calculateTotalCost();
     updateTextUnit();
 }
 
-    textCodeGenerator.textContent = baseCode;
 
 
 
