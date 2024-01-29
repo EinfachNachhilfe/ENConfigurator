@@ -208,35 +208,35 @@ const areaAddOn = { start: 18, end: 42 };
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
     
-const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-            const targetElement = mutation.target;
-            const wasClicked = mutation.oldValue.includes('custom-input-clicked');
-            const isClicked = targetElement.classList.contains('custom-input-clicked');
-
-            if (wasClicked !== isClicked) { // Überprüft, ob sich der Status geändert hat
-                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
+    // Beobachtet Änderungen an den Klassen der Elemente
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
             }
-        }
+        });
     });
-});
 
     // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
     const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
 
     // Überwacht jedes Element in der Liste
-elements.forEach(element => {
-    observer.observe(element, { attributes: true, attributeOldValue: true });
-});
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
 }
 
     
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+    console.log("handleClassChange aufgerufen für:", element.id);
+
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
 
     if (element.classList.contains('custom-input-clicked')) {
+        console.log("Element ausgewählt:", inputFieldName);
+
         if (!inputField) {
             inputField = document.createElement('input');
             inputField.type = 'text';
@@ -248,34 +248,37 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             totalLessonPrice += additionalLessonCost;
             tutorSalary += additionalLessonTutorSalary;
 
-            // Füge Code zum baseCode hinzu
             let start = area.start;
             let end = area.end;
             baseCode = baseCode.substring(0, start) + codeGenerator + baseCode.substring(end);
-            
-    textCodeGenerator.textContent = baseCode;
+
+            console.log("Code hinzugefügt:", codeGenerator);
+            console.log("Aktualisierter baseCode:", baseCode);
         }
     } else {
+        console.log("Element abgewählt:", inputFieldName);
+
         if (inputField) {
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -= additionalLessonTutorSalary;
 
-            // Ersetze den Bereich im baseCode durch den Standard-Platzhalter "0A"
             let start = area.start;
             let end = area.end;
-            let placeholder = "0A".repeat((end - start) / 2); // Erstelle Platzhalter-String der passenden Länge
+            let placeholder = "0A".repeat((end - start) / 2);
             baseCode = baseCode.substring(0, start) + placeholder + baseCode.substring(end);
-            
-    textCodeGenerator.textContent = baseCode;
+
+            console.log("Code entfernt:", codeGenerator);
+            console.log("Aktualisierter baseCode:", baseCode);
         }
     }
 
     calculateTotalCost();
     updateTextUnit();
+    textCodeGenerator.textContent = baseCode;
 }
 
-    textCodeGenerator.textContent = baseCode;
+textCodeGenerator.textContent = baseCode;
 
 
 
