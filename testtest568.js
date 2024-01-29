@@ -59,12 +59,12 @@ if (configuratorForm) {
         const customCheckboxInputTutor = document.querySelectorAll('.custom-checkbox-input-tutor');
         const customCheckboxInputOther = document.querySelectorAll('.custom-checkbox-input-other');
 
-const areaSubject = { start: 2, end: 8 };
+    const areaSubject = { start: 2, end: 8 };
 const areaTutoring = { start: 9, end: 11 };
 const areaUnit = { start: 12, end: 14 };
 const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
-    
+
     const subjectConfigs = {
     'tutoringAtHome': { additionalLessonCost: 2, additionalLessonTutorSalary: 1, codeGenerator: 'Code5', defaultValue: 'Tutoring At Home', area: areaTutoring },
     'tutoringHybrid': { additionalLessonCost: 1.5, additionalLessonTutorSalary: 0.8, codeGenerator: 'Code6', defaultValue: 'Hybrid Tutoring', area: areaTutoring },
@@ -111,7 +111,6 @@ function getSubjectConfig(elementId) {
 
 
 
-
 //show "Mehr Infos" Popup
         Object.keys(buttonTexts).forEach(buttonId => {
             const button = document.getElementById(buttonId);
@@ -134,36 +133,41 @@ function getSubjectConfig(elementId) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, getElementConfig) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
-            let config = getElementConfig(element.id);
-
-            // Direktes Hinzufügen oder Entfernen des Codes vor der Klassenänderung
-            if (!element.classList.contains(selectionClass)) {
-                if (selectedElements.length >= maxSelected) {
-                    let oldestElement = selectedElements[0];
-                    let oldestConfig = getElementConfig(oldestElement.id);
-                    updateCodeGenerator(oldestConfig.area, "0A"); // Entfernen des alten Codes
-                    oldestElement.classList.remove(selectionClass);
-                    selectedElements.shift();
-                }
-                updateCodeGenerator(config.area, config.codeGenerator); // Hinzufügen des neuen Codes
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
-            } else {
+            if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                updateCodeGenerator(config.area, "0A"); // Entfernen des Codes
+            } else {
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
+                }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
             }
-            validateForm();
+           validateForm();
         });
     });
+//check the change event 
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
 }
-
-
 
 
         manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
@@ -205,6 +209,7 @@ let totalLessonPrice = 20;
 let tutorSalary = 12;
     
 
+
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
     
@@ -226,40 +231,6 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         observer.observe(element, { attributes: true });
     });
 }
-
-createInputField(subjectGerman);
-createInputField(subjectEnglish);
-createInputField(subjectMathematics);
-createInputField(subjectFrench);
-createInputField(subjectLatin);
-createInputField(subjectSpanish);
-createInputField(subjectItalian);
-createInputField(subjectPhysics);
-createInputField(subjectChemistry);
-createInputField(subjectBiology);
-createInputField(subjectGeography);
-createInputField(subjectHistory);
-createInputField(subjectSocialStudies);
-createInputField(subjectComputerScience);
-createInputField(subjectPhysicalEducation);
-createInputField(subjectEconomics);
-createInputField(subjectOther);
-createInputField(tutoringOnline);
-createInputField(tutoringHybrid);
-createInputField(tutoringAtHome);
-createInputField(unitSmall);
-createInputField(unitMiddle);
-createInputField(unitLarge);
-createInputField(contractSmall);
-createInputField(contractMiddle);
-createInputField(contractLarge);
-createInputField(addOnAllRoundTutor);
-createInputField(addOnExperiencedTutor);
-createInputField(addOnContractBreak);
-createInputField(addTandemLesson);
-createInputField(addOnPremiumTutor);
-createInputField(addOnMale);
-createInputField(addOnFemale);
 
     
 function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
@@ -366,6 +337,8 @@ calculateTotalCost();
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
+
+
 let codePositions = {};
     
 function updateCodeGenerator(area, codeToAdd) {
@@ -399,7 +372,46 @@ function removeCodeGenerator(area, codeToRemove) {
     textCodeGenerator.textContent = baseCode;
 }
 
+
+
+
 textCodeGenerator.textContent = baseCode;
+
+
+
+createInputField(subjectGerman);
+createInputField(subjectEnglish);
+createInputField(subjectMathematics);
+createInputField(subjectFrench);
+createInputField(subjectLatin);
+createInputField(subjectSpanish);
+createInputField(subjectItalian);
+createInputField(subjectPhysics);
+createInputField(subjectChemistry);
+createInputField(subjectBiology);
+createInputField(subjectGeography);
+createInputField(subjectHistory);
+createInputField(subjectSocialStudies);
+createInputField(subjectComputerScience);
+createInputField(subjectPhysicalEducation);
+createInputField(subjectEconomics);
+createInputField(subjectOther);
+createInputField(tutoringOnline);
+createInputField(tutoringHybrid);
+createInputField(tutoringAtHome);
+createInputField(unitSmall);
+createInputField(unitMiddle);
+createInputField(unitLarge);
+createInputField(contractSmall);
+createInputField(contractMiddle);
+createInputField(contractLarge);
+createInputField(addOnAllRoundTutor);
+createInputField(addOnExperiencedTutor);
+createInputField(addOnContractBreak);
+createInputField(addTandemLesson);
+createInputField(addOnPremiumTutor);
+createInputField(addOnMale);
+createInputField(addOnFemale);
 }
 //end configurator
 
