@@ -105,16 +105,28 @@ function manageSelection(elements, maxSelected, selectionClass) {
     elements.forEach(element => {
         element.addEventListener('click', () => {
             console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-            if (element.classList.contains(selectionClass)) {
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else {
-                if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
+            if (maxSelected === 1) {
+                // Nur ein Element kann ausgewählt sein
+                if (!element.classList.contains(selectionClass)) {
+                    selectedElements.forEach(selectedElement => {
+                        selectedElement.classList.remove(selectionClass);
+                    });
+                    element.classList.add(selectionClass);
+                    selectedElements = [element];
                 }
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
+            } else {
+                // Toggle-Logik für mehrere Elemente
+                if (element.classList.contains(selectionClass)) {
+                    element.classList.remove(selectionClass);
+                    selectedElements = selectedElements.filter(el => el !== element);
+                } else {
+                    if (selectedElements.length >= maxSelected) {
+                        selectedElements[0].classList.remove(selectionClass);
+                        selectedElements.shift();
+                    }
+                    selectedElements.push(element);
+                    element.classList.add(selectionClass);
+                }
             }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
@@ -139,13 +151,14 @@ function manageSelection(elements, maxSelected, selectionClass) {
     });
 }
 
+// Verwendung der Funktion für verschiedene Elemente
+manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
 
-        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
-        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
-        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
-        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
         
     
 function makeExclusivePair(id1, id2, disabledClass) {
