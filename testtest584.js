@@ -335,9 +335,22 @@ let codePositions = {};
     
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-    let newCodes = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
-    baseCode = newCodes;
-    codePositions[codeToAdd] = area.start;
+    let currentCodes = baseCode.substring(area.start, area.end);
+
+    if (area === areaSubject || area === areaAddOn) {
+        // Verhalten für areaSubject und areaAddOn
+        let placeholderIndex = currentCodes.indexOf("0A");
+        if (placeholderIndex !== -1) {
+            let actualIndex = area.start + placeholderIndex;
+            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+            codePositions[codeToAdd] = actualIndex;
+        }
+    } else {
+        // Verhalten für andere Bereiche
+        baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
+        codePositions[codeToAdd] = area.start;
+    }
 
     console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
     console.log(`baseCode nach dem Update: '${baseCode}'`);
@@ -347,8 +360,18 @@ function updateCodeGenerator(area, codeToAdd) {
 function removeCodeGenerator(area, codeToRemove) {
     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
     if (codePositions[codeToRemove] !== undefined) {
-        let newCodes = baseCode.substring(0, area.start) + "0A" + baseCode.substring(area.end);
-        baseCode = newCodes;
+        let currentCodes = baseCode.substring(area.start, area.end);
+
+        if (area === areaSubject || area === areaAddOn) {
+            // Verhalten für areaSubject und areaAddOn
+            let actualIndex = codePositions[codeToRemove] - area.start;
+            let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        } else {
+            // Verhalten für andere Bereiche
+            baseCode = baseCode.substring(0, area.start) + "0A" + baseCode.substring(area.end);
+        }
+
         delete codePositions[codeToRemove];
     }
 
