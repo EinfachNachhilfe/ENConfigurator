@@ -154,12 +154,14 @@ function makeExclusivePair(id1, id2, disabledClass) {
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            element1.classList.remove(disabledClass);
+            const isDisabled = element1.classList.contains(disabledClass);
+            element1.classList.toggle(disabledClass, !isDisabled);
             element2.classList.add(disabledClass);
         });
 
         element2.addEventListener('click', () => {
-            element2.classList.remove(disabledClass);
+            const isDisabled = element2.classList.contains(disabledClass);
+            element2.classList.toggle(disabledClass, !isDisabled);
             element1.classList.add(disabledClass);
         });
     }
@@ -173,6 +175,7 @@ function makeExclusivePair(id1, id2, disabledClass) {
 
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
 makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
+
 
 
 
