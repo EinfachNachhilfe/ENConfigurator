@@ -99,57 +99,53 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
             console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
             if (element.classList.contains(selectionClass)) {
-                // Das Element wurde zuvor ausgewählt, entferne die Auswahl
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-            } else if (maxSelected === 1) {
-                // Das Element kann ausgewählt werden, solange maxSelected auf 1 festgelegt ist
-                // Automatisch alle anderen Elemente abwählen
-                elements.forEach(otherElement => {
-                    otherElement.classList.remove(selectionClass);
-                });
-                selectedElements = [element];
-                element.classList.add(selectionClass);
-            } else if (selectedElements.length < maxSelected) {
-                // Das Element kann ausgewählt werden, solange maxSelected nicht erreicht ist
-                element.classList.add(selectionClass);
-                selectedElements.push(element);
-            }
-
-            // Deaktiviere andere Elemente, wenn maxSelected erreicht ist
-            if (selectedElements.length >= maxSelected) {
-                elements.forEach(otherElement => {
-                    if (!otherElement.classList.contains(selectionClass)) {
-                        otherElement.classList.add(disabledClass);
-                    }
-                });
             } else {
-                // Aktiviere alle Elemente
-                elements.forEach(otherElement => {
-                    otherElement.classList.remove(disabledClass);
-                });
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
+                }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
             }
-
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
         });
     });
+
+    // Überprüfung des Änderungsereignisses
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
 }
 
-// Verwendung der Funktion für verschiedene Elemente
-manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
+
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
 
 
 
