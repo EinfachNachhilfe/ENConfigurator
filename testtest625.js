@@ -120,52 +120,65 @@ function manageSelection(elements, maxSelected, selectionClass) {
             validateForm();
         });
     });
+
+    // Überprüfung des Änderungsereignisses
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
+            }
+        });
+    });
+
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
 }
 
+
+    
         manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
         manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
         manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
 
 
         
     
-function makeExclusiveGroup(idList, maxSelected, disabledClass) {
-    const elements = idList.map(id => document.getElementById(id));
-    let selectedCount = 0;
+function makeExclusivePair(id1, id2, disabledClass) {
+    const element1 = document.getElementById(id1);
+    const element2 = document.getElementById(id2);
+    let firstClick1 = true;
+    let firstClick2 = true;
 
-    elements.forEach(element => {
-        if (!element) return; // Ignoriere nicht gefundene Elemente
-
-        element.addEventListener('click', () => {
-            if (element.classList.contains(disabledClass)) return; // Ignoriere deaktivierte Elemente
-
-            if (element.classList.contains('active')) {
-                // Element ist aktiv und wird deaktiviert
-                element.classList.remove('active');
-                selectedCount--;
-            } else if (selectedCount < maxSelected) {
-                // Element ist inaktiv und wird aktiviert, wenn das Maximum noch nicht erreicht ist
-                element.classList.add('active');
-                selectedCount++;
+    if (element1 && element2) {
+        element1.addEventListener('click', () => {
+            if (firstClick1) {
+                element2.classList.add(disabledClass);
+            } else {
+                element2.classList.remove(disabledClass);
             }
-
-            // Überprüfe, ob die maximale Anzahl erreicht ist und deaktiviere die restlichen inaktiven Elemente
-            if (selectedCount >= maxSelected) {
-                elements.forEach(el => {
-                    if (!el.classList.contains('active') && !el.classList.contains(disabledClass)) {
-                        el.classList.add(disabledClass);
-                    }
-                });
-            }
+            firstClick1 = !firstClick1;
         });
-    });
+
+        element2.addEventListener('click', () => {
+            if (firstClick2) {
+                element1.classList.add(disabledClass);
+            } else {
+                element1.classList.remove(disabledClass);
+            }
+            firstClick2 = !firstClick2;
+        });
+    }
 }
-
-// Verwendung der Funktion
-makeExclusiveGroup(['addOnPremiumTutor', 'addOnExperiencedTutor', 'addOnFemale', 'addOnMale'], 2, 'disabled');
-makeExclusiveGroup(['addOnFemale', 'addOnMale'], 1, 'disabled');
     
-
+makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
+makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
 
 
 
