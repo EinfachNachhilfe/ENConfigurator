@@ -146,32 +146,44 @@ function manageSelection(elements, maxSelected, selectionClass) {
         manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
         manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
         manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
+
+
         
     
-   //exclude specific fields at the same time
-function makeExclusivePair(id1, id2, exclusiveClass) {
+function makeExclusivePair(id1, id2, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
+    let firstClick1 = true;
+    let firstClick2 = true;
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (element2.classList.contains(exclusiveClass)) {
-                element2.classList.remove(exclusiveClass);
-                element1.classList.add(exclusiveClass);
+            if (firstClick1) {
+                element2.classList.add(disabledClass);
+            } else {
+                element2.classList.remove(disabledClass);
             }
+            firstClick1 = !firstClick1;
         });
 
         element2.addEventListener('click', () => {
-            if (element1.classList.contains(exclusiveClass)) {
-                element1.classList.remove(exclusiveClass);
-                element2.classList.add(exclusiveClass);
-                
+            if (firstClick2) {
+                element1.classList.add(disabledClass);
+            } else {
+                element1.classList.remove(disabledClass);
             }
+            firstClick2 = !firstClick2;
         });
     }
 }
-makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
-makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
+    
+makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
+makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
+
+
+
+
+
 
 
 
@@ -332,7 +344,10 @@ const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
 let codePositions = {};
+
     
+let isEventListenerRegistered = false;
+
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
@@ -357,6 +372,8 @@ function updateCodeGenerator(area, codeToAdd) {
     textCodeGenerator.textContent = baseCode;
 }
 
+
+
 function removeCodeGenerator(area, codeToRemove) {
     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
 
@@ -375,8 +392,6 @@ function removeCodeGenerator(area, codeToRemove) {
     console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
-
 
 
 
