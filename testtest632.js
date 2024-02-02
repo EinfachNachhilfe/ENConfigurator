@@ -109,6 +109,9 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
             } else {
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
+
                 if (maxSelected > 1 && selectedElements.length >= maxSelected) {
                     // Wenn die maximale Anzahl größer als 1 ist und erreicht ist,
                     // füge die disabledClass für alle anderen Elemente hinzu
@@ -117,20 +120,14 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
                             el.classList.add(disabledClass);
                         }
                     });
-                } else {
-                    // Entferne die disabledClass für alle Elemente, da die maximale Anzahl nicht erreicht ist
-                    elements.forEach(el => {
-                        el.classList.remove(disabledClass);
-                    });
                 }
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
             }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
         });
     });
 }
+
 
 
 
