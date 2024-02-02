@@ -155,6 +155,14 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
 }
 
 
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
+
+
         
     
 function makeExclusivePair(id1, id2, disabledClass) {
