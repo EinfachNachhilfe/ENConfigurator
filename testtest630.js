@@ -117,6 +117,11 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
                             el.classList.add(disabledClass);
                         }
                     });
+                } else {
+                    // Entferne die disabledClass für alle Elemente, da die maximale Anzahl nicht erreicht ist
+                    elements.forEach(el => {
+                        el.classList.remove(disabledClass);
+                    });
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
@@ -126,6 +131,7 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
         });
     });
 }
+
 
 
 
