@@ -99,48 +99,45 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
             console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-
-            // Prüfen, ob das Element bereits ausgewählt ist
             if (element.classList.contains(selectionClass)) {
-                // Wenn ja, Auswahl entfernen und Element aktivieren
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                // Optionale Zeile, falls Sie Elemente nach dem Deselektieren explizit wieder aktivieren möchten
-                element.classList.remove(disabledClass); 
-            } else if (selectedElements.length < maxSelected) {
-                // Wenn das Limit noch nicht erreicht ist, Element auswählen und zur Liste hinzufügen
+            } else {
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
+                }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-            } // Kein Else-Block hier, da wir keine Aktion durchführen, wenn das Limit erreicht ist und auf ein nicht ausgewähltes Element geklickt wird
-
-            // Aktualisiere den Zustand der Elemente basierend auf der maxSelected-Anzahl
-            updateElementsAvailability(elements, selectedElements, maxSelected, selectionClass, disabledClass);
-
+            }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
-            validateForm(); // Formularvalidierung oder andere Aktionen
+            validateForm();
         });
     });
 
-    // Funktion, um die Verfügbarkeit der Elemente zu aktualisieren
-    function updateElementsAvailability(elements, selectedElements, maxSelected, selectionClass, disabledClass) {
-        elements.forEach(el => {
-            if (selectedElements.length >= maxSelected && !el.classList.contains(selectionClass)) {
-                // Deaktiviere Elemente, die nicht ausgewählt sind, wenn das Limit erreicht ist
-                el.classList.add(disabledClass);
-            } else {
-                // Aktiviere alle Elemente wieder, wenn das Limit nicht erreicht ist oder ein Element deselektiert wurde
-                el.classList.remove(disabledClass);
+    // Überprüfung des Änderungsereignisses
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
             }
         });
-    }
-}
+    });
 
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
+}
 
 
         manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
@@ -149,6 +146,8 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
         manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
         manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
         manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
+
+
         
     
 function makeExclusivePair(id1, id2, disabledClass) {
