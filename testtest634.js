@@ -108,12 +108,6 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
             if (element.classList.contains(selectionClass)) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                // Entferne die disabledClass, wenn die maximale Anzahl nicht mehr erreicht ist
-                if (selectedElements.length < maxSelected) {
-                    elements.forEach(el => {
-                        el.classList.remove(disabledClass);
-                    });
-                }
             } else {
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
@@ -133,6 +127,7 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
         });
     });
 }
+
 
 
 
