@@ -367,27 +367,36 @@ let isEventListenerRegistered = false;
 
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+
+    // Holen Sie den aktuellen Code für den spezifischen Bereich
     let currentCodes = baseCode.substring(area.start, area.end);
 
-    if (area === areaSubject || area === areaAddOn) {
-        // Verhalten für areaSubject und areaAddOn
-        let placeholderIndex = currentCodes.indexOf("0A");
-        if (placeholderIndex !== -1) {
-            let actualIndex = area.start + placeholderIndex;
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = actualIndex;
+    // Überprüfen, ob codeToAdd bereits vorhanden ist
+    if (!currentCodes.includes(codeToAdd)) {
+        if (area === areaSubject || area === areaAddOn) {
+            // Verhalten für areaSubject und areaAddOn
+            let placeholderIndex = currentCodes.indexOf("0A");
+            if (placeholderIndex !== -1) {
+                let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+                baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+                console.log(`baseCode nach dem Update: '${baseCode}'`);
+            }
+        } else {
+            // Verhalten für andere Bereiche
+            baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
+            console.log(`baseCode nach dem Update: '${baseCode}'`);
         }
-    } else {
-        // Verhalten für andere Bereiche
-        baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
+
+        // Aktualisieren Sie die codePositions, um den neuen Zustand widerzuspiegeln
         codePositions[codeToAdd] = area.start;
+        console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+    } else {
+        console.log(`${codeToAdd} ist bereits im Bereich vorhanden und wird nicht erneut hinzugefügt.`);
     }
 
-    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 function removeCodeGenerator(area, codeToRemove) {
     console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
