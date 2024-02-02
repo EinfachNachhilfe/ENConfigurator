@@ -137,24 +137,7 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
             // Markiere das Element, um anzuzeigen, dass der Listener hinzugefügt wurde
             element.dataset.listenerAdded = "true";
         }
-    });
-
-        // Überprüfung des Änderungsereignisses
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
-                if (!targetElement.classList.contains(selectionClass)) {
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
-                }
-            }
-        });
-    });
-
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
+    });  
 }
 
 
@@ -163,7 +146,7 @@ manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled
 manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutor, -1, 'custom-input-clicked', 'disabled');
 manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
 
         
