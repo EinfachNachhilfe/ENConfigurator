@@ -99,45 +99,59 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
             console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
             if (element.classList.contains(selectionClass)) {
+                // Das Element wurde zuvor ausgewählt, entferne die Auswahl
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
             } else {
                 if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
+                    // Wenn maxSelected 1 ist und bereits ein Element ausgewählt wurde,
+                    // entferne die Auswahl des zuvor ausgewählten Elements.
+                    if(maxSelected === 1) {
+                        selectedElements.forEach(selectedElement => {
+                            selectedElement.classList.remove(selectionClass);
+                        });
+                        selectedElements = [];
+                    } else {
+                        // Für Checkboxen, die mehr als eine Auswahl erlauben,
+                        // entferne das älteste ausgewählte Element, wenn maxSelected erreicht ist
+                        selectedElements[0].classList.remove(selectionClass);
+                        selectedElements.shift();
+                    }
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
             }
+
+            // Deaktiviere andere Elemente nur, wenn mehr als eine Auswahl möglich ist (maxSelected > 1)
+            if (maxSelected > 1) {
+                if (selectedElements.length >= maxSelected) {
+                    elements.forEach(el => {
+                        if (!selectedElements.includes(el)) {
+                            el.classList.add(disabledClass);
+                            el.setAttribute('disabled', 'disabled'); // Deaktiviert das Element zusätzlich, falls es ein Button oder Input ist
+                        }
+                    });
+                } else {
+                    elements.forEach(el => {
+                        el.classList.remove(disabledClass);
+                        el.removeAttribute('disabled'); // Stellt die Funktionalität wieder her
+                    });
+                }
+            }
+
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
         });
     });
-
-    // Überprüfung des Änderungsereignisses
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
-                if (!targetElement.classList.contains(selectionClass)) {
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
-                }
-            }
-        });
-    });
-
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
 }
+
 
 
         manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
