@@ -99,7 +99,7 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
@@ -109,9 +109,14 @@ function manageSelection(elements, maxSelected, selectionClass) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
             } else {
-                if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
+                if (maxSelected > 1 && selectedElements.length >= maxSelected) {
+                    // Wenn die maximale Anzahl größer als 1 ist und erreicht ist,
+                    // füge die disabledClass für alle anderen Elemente hinzu
+                    elements.forEach(el => {
+                        if (!selectedElements.includes(el)) {
+                            el.classList.add(disabledClass);
+                        }
+                    });
                 }
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
@@ -140,13 +145,13 @@ function manageSelection(elements, maxSelected, selectionClass) {
 }
 
 
-    
-        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
-        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
-        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
 
+    
+manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
 
         
     
