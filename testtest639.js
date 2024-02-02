@@ -131,11 +131,6 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
                         el.classList.remove(disabledClass);
                     }
                 });
-            } else {
-                // Entferne die disabledClass von allen Elementen, wenn die maximale Anzahl nicht erreicht ist
-                elements.forEach(el => {
-                    el.classList.remove(disabledClass);
-                });
             }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
