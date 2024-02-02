@@ -163,7 +163,7 @@ function makeExclusiveGroup(idList, maxSelected, disabledClass) {
 
 // Verwendung der Funktion
 makeExclusiveGroup(['addOnPremiumTutor', 'addOnExperiencedTutor', 'addOnFemale', 'addOnMale'], 2, 'disabled');
-makeExclusivePair(['addOnFemale', 'addOnMale'], 1 'disabled');
+makeExclusivePair(['addOnFemale', 'addOnMale'], 1, 'disabled');
     
 
 
