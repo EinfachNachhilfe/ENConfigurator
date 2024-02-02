@@ -103,41 +103,40 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
-        element.addEventListener('click', () => {
-            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-            if (element.classList.contains(selectionClass)) {
-                // Wenn das geklickte Element bereits ausgewählt ist, entferne die Auswahl
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else {
-                if (maxSelected === 1 && selectedElements.length > 0) {
-                    // Wenn maxSelected 1 ist und bereits ein Element ausgewählt wurde,
-                    // entferne die Auswahl des zuvor ausgewählten Elements
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements = []; // Zurücksetzen der selectedElements
-                }
-                // Füge das neue Element zu den ausgewählten Elementen hinzu
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
-            }
-
-            // Überprüfung und Anpassung der disabledClass für alle Elemente
-            if (maxSelected > 1 && selectedElements.length >= maxSelected) {
-                // Wenn die maximale Anzahl erreicht ist, füge die disabledClass hinzu
-                elements.forEach(el => {
-                    if (!selectedElements.includes(el)) {
-                        el.classList.add(disabledClass);
+        // Überprüfen, ob der Listener bereits hinzugefügt wurde
+        if (!element.dataset.listenerAdded) {
+            element.addEventListener('click', () => {
+                console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
+                if (element.classList.contains(selectionClass)) {
+                    element.classList.remove(selectionClass);
+                    selectedElements = selectedElements.filter(el => el !== element);
+                } else {
+                    if (maxSelected === 1 && selectedElements.length > 0) {
+                        selectedElements[0].classList.remove(selectionClass);
+                        selectedElements = [];
                     }
-                });
-            } else {
-                // Wenn die maximale Anzahl nicht erreicht ist, entferne die disabledClass
-                elements.forEach(el => {
-                    el.classList.remove(disabledClass);
-                });
-            }
-            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
-            validateForm();
-        });
+                    selectedElements.push(element);
+                    element.classList.add(selectionClass);
+                }
+
+                if (maxSelected > 1 && selectedElements.length >= maxSelected) {
+                    elements.forEach(el => {
+                        if (!selectedElements.includes(el)) {
+                            el.classList.add(disabledClass);
+                        }
+                    });
+                } else {
+                    elements.forEach(el => {
+                        el.classList.remove(disabledClass);
+                    });
+                }
+                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+                validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist
+            });
+
+            // Markiere das Element, um anzuzeigen, dass der Listener hinzugefügt wurde
+            element.dataset.listenerAdded = "true";
+        }
     });
 }
 
