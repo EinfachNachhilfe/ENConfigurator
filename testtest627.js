@@ -146,7 +146,7 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
 
 
 
-    
+manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled');    
 manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
