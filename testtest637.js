@@ -106,12 +106,20 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
         element.addEventListener('click', () => {
             console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
             if (element.classList.contains(selectionClass)) {
+                // Wenn das geklickte Element bereits ausgewählt ist, entferne die Auswahl
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
             } else {
+                if (maxSelected === 1 && selectedElements.length > 0) {
+                    // Wenn maxSelected 1 ist und bereits ein Element ausgewählt wurde,
+                    // entferne die Auswahl des zuvor ausgewählten Elements
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements = []; // Zurücksetzen der selectedElements
+                }
+                // Füge das neue Element zu den ausgewählten Elementen hinzu
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-
+                
                 if (maxSelected > 1 && selectedElements.length >= maxSelected) {
                     // Wenn die maximale Anzahl größer als 1 ist und erreicht ist,
                     // füge die disabledClass für alle anderen Elemente hinzu
@@ -127,6 +135,10 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
         });
     });
 }
+
+// Stellen Sie sicher, dass die Funktion validateForm() definiert ist,
+// um Fehler beim Ausführen des Codes zu vermeiden.
+
 
 
 
