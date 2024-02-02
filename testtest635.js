@@ -109,25 +109,23 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
             } else {
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
-
                 if (maxSelected > 1 && selectedElements.length >= maxSelected) {
                     // Wenn die maximale Anzahl größer als 1 ist und erreicht ist,
-                    // füge die disabledClass für alle anderen Elemente hinzu
+                    // entferne die disabledClass für alle anderen Elemente
                     elements.forEach(el => {
                         if (!selectedElements.includes(el)) {
-                            el.classList.add(disabledClass);
+                            el.classList.remove(disabledClass);
                         }
                     });
                 }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
             }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
         });
     });
 }
-
 
 
 
