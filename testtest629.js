@@ -125,31 +125,6 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
             validateForm();
         });
     });
-
-    // Überprüfung des Änderungsereignisses
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
-                if (!targetElement.classList.contains(selectionClass)) {
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
-                }
-                // Wenn die maximale Anzahl nicht erreicht ist, entfernen Sie die disabledClass
-                if (maxSelected > 1 && selectedElements.length < maxSelected) {
-                    elements.forEach(el => {
-                        if (!selectedElements.includes(el)) {
-                            el.classList.remove(disabledClass);
-                        }
-                    });
-                }
-            }
-        });
-    });
-
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
 }
 
 
