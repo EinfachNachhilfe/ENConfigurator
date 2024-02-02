@@ -244,12 +244,15 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
+    let shouldUpdateCode = false; // Flag, um zu überprüfen, ob ein Update erforderlich ist
+    let isAdding = false; // Flag, um zu bestimmen, ob wir hinzufügen oder entfernen
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
+            // Erstellt ein neues Eingabefeld, wenn es noch nicht existiert
             inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
@@ -257,23 +260,33 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary +=additionalLessonTutorSalary;
-            
+            tutorSalary += additionalLessonTutorSalary;
+            shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element ausgewählt wurde
+            isAdding = true; // Wir fügen hinzu
         }
-        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
+            // Entfernt das Eingabefeld, wenn es existiert und das Element nicht mehr ausgewählt ist
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -=additionalLessonTutorSalary;
-            removeCodeGenerator(area, codeGenerator);
+            tutorSalary -= additionalLessonTutorSalary;
+            shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element abgewählt wurde
+            isAdding = false; // Wir entfernen
         }
-        
-    
     }
-    calculateTotalCost();
-    updateTextUnit();
+
+    if (shouldUpdateCode) {
+        // Führt die erforderlichen Aktualisierungen durch, wenn Änderungen vorgenommen wurden
+        calculateTotalCost();
+        updateTextUnit();
+        if (isAdding) {
+            updateCodeGenerator(area, codeGenerator); // Fügt den Code hinzu, wenn ein Element ausgewählt wurde
+        } else {
+            removeCodeGenerator(area, codeGenerator); // Entfernt den Code, wenn ein Element abgewählt wurde
+        }
+    }
 }
+
 
 
 
