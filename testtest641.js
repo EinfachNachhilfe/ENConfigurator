@@ -119,16 +119,21 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
                 // Füge das neue Element zu den ausgewählten Elementen hinzu
                 selectedElements.push(element);
                 element.classList.add(selectionClass);
-                
-                if (maxSelected > 1 && selectedElements.length >= maxSelected) {
-                    // Wenn die maximale Anzahl größer als 1 ist und erreicht ist,
-                    // füge die disabledClass für alle anderen Elemente hinzu
-                    elements.forEach(el => {
-                        if (!selectedElements.includes(el)) {
-                            el.classList.add(disabledClass);
-                        }
-                    });
-                }
+            }
+
+            // Überprüfung und Anpassung der disabledClass für alle Elemente
+            if (maxSelected > 1 && selectedElements.length >= maxSelected) {
+                // Wenn die maximale Anzahl erreicht ist, füge die disabledClass hinzu
+                elements.forEach(el => {
+                    if (!selectedElements.includes(el)) {
+                        el.classList.add(disabledClass);
+                    }
+                });
+            } else {
+                // Wenn die maximale Anzahl nicht erreicht ist, entferne die disabledClass
+                elements.forEach(el => {
+                    el.classList.remove(disabledClass);
+                });
             }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
