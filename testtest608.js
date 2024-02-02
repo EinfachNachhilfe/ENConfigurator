@@ -99,65 +99,53 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
-        // Überprüfen, ob der Event-Listener bereits hinzugefügt wurde
-        if (!element.dataset.listenerAdded) {
-            element.addEventListener('click', () => {
-                console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-
-                if (element.classList.contains(selectionClass)) {
-                    // Das Element wurde zuvor ausgewählt, entferne die Auswahl
-                    element.classList.remove(selectionClass);
-                    selectedElements = selectedElements.filter(el => el !== element);
-                } else if (maxSelected === 1) {
-                    // Das Element kann ausgewählt werden, solange maxSelected auf 1 festgelegt ist
-                    // Automatisch alle anderen Elemente abwählen
-                    elements.forEach(otherElement => {
-                        otherElement.classList.remove(selectionClass);
-                    });
-                    selectedElements = [element];
-                    element.classList.add(selectionClass);
-                } else if (selectedElements.length < maxSelected) {
-                    // Das Element kann ausgewählt werden, solange maxSelected nicht erreicht ist
-                    element.classList.add(selectionClass);
-                    selectedElements.push(element);
-                }
-
-                // Deaktiviere andere Elemente, wenn maxSelected erreicht ist
+        element.addEventListener('click', () => {
+            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
+            if (element.classList.contains(selectionClass)) {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+            } else {
                 if (selectedElements.length >= maxSelected) {
-                    elements.forEach(otherElement => {
-                        if (!otherElement.classList.contains(selectionClass)) {
-                            otherElement.classList.add(disabledClass);
-                        }
-                    });
-                } else {
-                    // Aktiviere alle Elemente
-                    elements.forEach(otherElement => {
-                        otherElement.classList.remove(disabledClass);
-                    });
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
                 }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
+            }
+            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+            validateForm();
+        });
+    });
 
-                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
-                validateForm();
-            });
+    // Überprüfung des Änderungsereignisses
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                }
+            }
+        });
+    });
 
-            // Markieren des Elements, um anzuzeigen, dass ein Listener hinzugefügt wurde
-            element.dataset.listenerAdded = 'true';
-        }
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
     });
 }
 
-// Verwendung der Funktion für verschiedene Elemente
-manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
 
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
 
         
     
@@ -367,33 +355,25 @@ let isEventListenerRegistered = false;
 
 function updateCodeGenerator(area, codeToAdd) {
     console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
-
-    // Holen Sie den aktuellen Code für den spezifischen Bereich
     let currentCodes = baseCode.substring(area.start, area.end);
 
-    // Überprüfen, ob codeToAdd bereits vorhanden ist
-    if (!currentCodes.includes(codeToAdd)) {
-        if (area === areaSubject || area === areaAddOn) {
-            // Verhalten für areaSubject und areaAddOn
-            let placeholderIndex = currentCodes.indexOf("0A");
-            if (placeholderIndex !== -1) {
-                let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-                baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-                console.log(`baseCode nach dem Update: '${baseCode}'`);
-            }
-        } else {
-            // Verhalten für andere Bereiche
-            baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
-            console.log(`baseCode nach dem Update: '${baseCode}'`);
+    if (area === areaSubject || area === areaAddOn) {
+        // Verhalten für areaSubject und areaAddOn
+        let placeholderIndex = currentCodes.indexOf("0A");
+        if (placeholderIndex !== -1) {
+            let actualIndex = area.start + placeholderIndex;
+            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+            codePositions[codeToAdd] = actualIndex;
         }
-
-        // Aktualisieren Sie die codePositions, um den neuen Zustand widerzuspiegeln
-        codePositions[codeToAdd] = area.start;
-        console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
     } else {
-        console.log(`${codeToAdd} ist bereits im Bereich vorhanden und wird nicht erneut hinzugefügt.`);
+        // Verhalten für andere Bereiche
+        baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
+        codePositions[codeToAdd] = area.start;
     }
 
+    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
