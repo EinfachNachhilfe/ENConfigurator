@@ -146,7 +146,7 @@ manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled
 manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutor, -1, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutor, 100, 'custom-input-clicked', 'disabled');
 manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
 
         
