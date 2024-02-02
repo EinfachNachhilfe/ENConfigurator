@@ -99,58 +99,26 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
         element.addEventListener('click', () => {
             console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
             if (element.classList.contains(selectionClass)) {
-                // Wenn ein Element bereits ausgewählt ist, entferne die Auswahl
                 element.classList.remove(selectionClass);
                 selectedElements = selectedElements.filter(el => el !== element);
-                // Entferne die disabledClass von allen Elementen, da die Maximalanzahl nicht erreicht ist
-                elements.forEach(el => el.classList.remove(disabledClass));
             } else {
-                if (selectedElements.length < maxSelected) {
-                    // Füge das Element zur Auswahl hinzu, wenn die Maximalanzahl noch nicht erreicht ist
-                    selectedElements.push(element);
-                    element.classList.add(selectionClass);
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
                 }
-                // Wenn die maximale Anzahl erreicht ist, deaktiviere alle nicht ausgewählten Elemente
-                if (selectedElements.length === maxSelected) {
-                    elements.forEach(el => {
-                        if (!el.classList.contains(selectionClass)) {
-                            el.classList.add(disabledClass);
-                        }
-                    });
-                }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
             }
             console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
             validateForm();
         });
-    });
-
-    // Überprüfung des Änderungsereignisses
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
-                // Aktualisiere die Liste der ausgewählten Elemente, wenn die Auswahlklasse entfernt wird
-                if (!targetElement.classList.contains(selectionClass)) {
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
-                    // Wenn weniger als maxSelected ausgewählt sind, entferne die disabledClass von allen
-                    if (selectedElements.length < maxSelected) {
-                        elements.forEach(el => el.classList.remove(disabledClass));
-                    }
-                }
-            }
-        });
-    });
-
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
     });
 }
 
@@ -161,7 +129,6 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
         manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
         manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
         manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
-
 
         
     
