@@ -151,35 +151,52 @@ manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled')
 
         
     
+// Globales Objekt, um den Zustand des zuletzt aktivierten Elements zu speichern
+let lastClicked = null;
+
 function makeExclusivePair(id1, id2, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
-    let firstClick1 = true;
-    let firstClick2 = true;
+
+    const disableOtherElements = (excludeElement) => {
+        // Füge allen anderen exklusiven Elementen die disabledClass hinzu,
+        // außer dem zuletzt geklickten und seinem exklusiven Partner
+        [element1, element2].forEach(el => {
+            if (el !== excludeElement && lastClicked !== el) {
+                el.classList.add(disabledClass);
+            }
+        });
+    };
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (firstClick1) {
+            if (lastClicked !== element1) {
                 element2.classList.add(disabledClass);
+                lastClicked = element1;
             } else {
                 element2.classList.remove(disabledClass);
+                lastClicked = null;
             }
-            firstClick1 = !firstClick1;
+            disableOtherElements(element1);
         });
 
         element2.addEventListener('click', () => {
-            if (firstClick2) {
+            if (lastClicked !== element2) {
                 element1.classList.add(disabledClass);
+                lastClicked = element2;
             } else {
                 element1.classList.remove(disabledClass);
+                lastClicked = null;
             }
-            firstClick2 = !firstClick2;
+            disableOtherElements(element2);
         });
     }
 }
-    
+
+// Implementiere diese Funktion für jede Gruppe von exklusiven Elementen
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
 makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
+
 
 
 
