@@ -99,95 +99,79 @@ if (configuratorForm) {
 
     
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
+function manageSelection(elements, maxSelected, selectionClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
-        // Überprüfen, ob der Listener bereits hinzugefügt wurde
-        if (!element.dataset.listenerAdded) {
-            element.addEventListener('click', () => {
-                console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-                if (element.classList.contains(selectionClass)) {
-                    element.classList.remove(selectionClass);
-                    selectedElements = selectedElements.filter(el => el !== element);
-                } else {
-                    if (maxSelected === 1 && selectedElements.length > 0) {
-                        selectedElements[0].classList.remove(selectionClass);
-                        selectedElements = [];
-                    }
-                    selectedElements.push(element);
-                    element.classList.add(selectionClass);
+        element.addEventListener('click', () => {
+            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
+            if (element.classList.contains(selectionClass)) {
+                element.classList.remove(selectionClass);
+                selectedElements = selectedElements.filter(el => el !== element);
+            } else {
+                if (selectedElements.length >= maxSelected) {
+                    selectedElements[0].classList.remove(selectionClass);
+                    selectedElements.shift();
                 }
+                selectedElements.push(element);
+                element.classList.add(selectionClass);
+            }
+            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+            validateForm();
+        });
+    });
 
-                if (maxSelected > 1 && selectedElements.length >= maxSelected) {
-                    elements.forEach(el => {
-                        if (!selectedElements.includes(el)) {
-                            el.classList.add(disabledClass);
-                        }
-                    });
-                } else {
-                    elements.forEach(el => {
-                        el.classList.remove(disabledClass);
-                    });
+    // Überprüfung des Änderungsereignisses
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.attributeName === 'class') {
+                const targetElement = mutation.target;
+                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
+                if (!targetElement.classList.contains(selectionClass)) {
+                    selectedElements = selectedElements.filter(el => el !== targetElement);
                 }
-                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
-                validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist
-            });
+            }
+        });
+    });
 
-            // Markiere das Element, um anzuzeigen, dass der Listener hinzugefügt wurde
-            element.dataset.listenerAdded = "true";
-        }
-    });  
+    elements.forEach(element => {
+        observer.observe(element, { attributes: true });
+    });
 }
 
 
-
-manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled');    
-manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
-
+        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
+        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
+        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
+        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
         
     
-// Globales Objekt, um den Zustand des zuletzt aktivierten Elements zu speichern
-let lastClicked = null;
-
-function makeExclusivePair(id1, id2, disabledClass) {
+   //exclude specific fields at the same time
+function makeExclusivePair(id1, id2, exclusiveClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
-    let firstClick1 = true;
-    let firstClick2 = true;
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (firstClick1) {
-                element2.classList.add(disabledClass);
-            } else {
-                element2.classList.remove(disabledClass);
+            if (element2.classList.contains(exclusiveClass)) {
+                element2.classList.remove(exclusiveClass);
+                element1.classList.add(exclusiveClass);
             }
-            firstClick1 = !firstClick1;
         });
 
         element2.addEventListener('click', () => {
-            if (firstClick2) {
-                element1.classList.add(disabledClass);
-            } else {
-                element1.classList.remove(disabledClass);
+            if (element1.classList.contains(exclusiveClass)) {
+                element1.classList.remove(exclusiveClass);
+                element2.classList.add(exclusiveClass);
+                
             }
-            firstClick2 = !firstClick2;
         });
     }
 }
-    
-makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
-makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
-
-
-
-
-
+makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'custom-input-clicked');
+makeExclusivePair('addOnFemale', 'addOnMale', 'custom-input-clicked');
 
 
 
@@ -237,15 +221,12 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
-    let shouldUpdateCode = false; // Flag, um zu überprüfen, ob ein Update erforderlich ist
-    let isAdding = false; // Flag, um zu bestimmen, ob wir hinzufügen oder entfernen
 
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
-            // Erstellt ein neues Eingabefeld, wenn es noch nicht existiert
             inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'input_' + inputFieldName;
@@ -253,33 +234,23 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             inputField.value = defaultValue;
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
-            tutorSalary += additionalLessonTutorSalary;
-            shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element ausgewählt wurde
-            isAdding = true; // Wir fügen hinzu
+            tutorSalary +=additionalLessonTutorSalary;
+            
         }
+        updateCodeGenerator(area, codeGenerator);
     } else {
         if (inputField) {
-            // Entfernt das Eingabefeld, wenn es existiert und das Element nicht mehr ausgewählt ist
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
-            tutorSalary -= additionalLessonTutorSalary;
-            shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element abgewählt wurde
-            isAdding = false; // Wir entfernen
+            tutorSalary -=additionalLessonTutorSalary;
+            removeCodeGenerator(area, codeGenerator);
         }
+        
+    
     }
-
-    if (shouldUpdateCode) {
-        // Führt die erforderlichen Aktualisierungen durch, wenn Änderungen vorgenommen wurden
-        calculateTotalCost();
-        updateTextUnit();
-        if (isAdding) {
-            updateCodeGenerator(area, codeGenerator); // Fügt den Code hinzu, wenn ein Element ausgewählt wurde
-        } else {
-            removeCodeGenerator(area, codeGenerator); // Entfernt den Code, wenn ein Element abgewählt wurde
-        }
-    }
+    calculateTotalCost();
+    updateTextUnit();
 }
-
 
 
 
@@ -361,54 +332,38 @@ const areaContract = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
 let codePositions = {};
-
     
-let isEventListenerRegistered = false;
-
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
+       console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
-
-    if (area === areaSubject || area === areaAddOn) {
-        // Verhalten für areaSubject und areaAddOn
-        let placeholderIndex = currentCodes.indexOf("0A");
-        if (placeholderIndex !== -1) {
-            let actualIndex = area.start + placeholderIndex;
-            let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            codePositions[codeToAdd] = actualIndex;
-        }
-    } else {
-        // Verhalten für andere Bereiche
-        baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
-        codePositions[codeToAdd] = area.start;
+    let placeholderIndex = currentCodes.indexOf("0A");
+    if (placeholderIndex !== -1) {
+        // Berechnet die tatsächliche Position im baseCode
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        codePositions[codeToAdd] = actualIndex;
     }
-
-    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
+       console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+         console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
-
-
 
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-
-    // Überprüfen, ob der Bereich areaSubject oder areaAddOn ist
-    if (area === areaSubject || area === areaAddOn) {
-        if (codePositions[codeToRemove] !== undefined) {
-            let actualIndex = codePositions[codeToRemove] - area.start;
-            let currentCodes = baseCode.substring(area.start, area.end);
-            let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
-            baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
-            delete codePositions[codeToRemove];
-        }
+       console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+    if (codePositions[codeToRemove] !== undefined) {
+        // Nutzt die gespeicherte Position, um den spezifischen Code zu entfernen
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove]; 
     }
-
-    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
+     console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
+         console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
+
 
 
 
