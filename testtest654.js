@@ -158,29 +158,45 @@ let lastClicked = null;
 function makeExclusivePair(id1, id2, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
-    let firstClick1 = true;
-    let firstClick2 = true;
 
     if (element1 && element2) {
+        console.log(`Initialisiere exklusives Paar: ${id1} und ${id2}`);
+
         element1.addEventListener('click', () => {
-            if (firstClick1) {
-                element2.classList.add(disabledClass);
-            } else {
-                element2.classList.remove(disabledClass);
+            console.log(`Klick auf ${id1} erkannt`);
+            if (element1.classList.contains(disabledClass)) {
+                console.log(`${id1} war disabled, wird jetzt aktiviert.`);
             }
-            firstClick1 = !firstClick1;
+            // Toggle der disabledClass basierend auf dem ersten Klick
+            if (element2.classList.contains(disabledClass)) {
+                console.log(`Entferne disabled von ${id2}`);
+                element2.classList.remove(disabledClass);
+            } else {
+                console.log(`Füge ${id2} disabled hinzu`);
+                element2.classList.add(disabledClass);
+            }
         });
 
         element2.addEventListener('click', () => {
-            if (firstClick2) {
-                element1.classList.add(disabledClass);
-            } else {
-                element1.classList.remove(disabledClass);
+            console.log(`Klick auf ${id2} erkannt`);
+            if (element2.classList.contains(disabledClass)) {
+                console.log(`${id2} war disabled, wird jetzt aktiviert.`);
             }
-            firstClick2 = !firstClick2;
+            // Toggle der disabledClass basierend auf dem ersten Klick
+            if (element1.classList.contains(disabledClass)) {
+                console.log(`Entferne disabled von ${id1}`);
+                element1.classList.remove(disabledClass);
+            } else {
+                console.log(`Füge ${id1} disabled hinzu`);
+                element1.classList.add(disabledClass);
+            }
         });
+    } else {
+        if (!element1) console.log(`Element mit ID ${id1} nicht gefunden.`);
+        if (!element2) console.log(`Element mit ID ${id2} nicht gefunden.`);
     }
 }
+
     
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
 makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
