@@ -157,46 +157,32 @@ let lastClicked = null;
 function makeExclusivePair(id1, id2, disabledClass) {
     const element1 = document.getElementById(id1);
     const element2 = document.getElementById(id2);
-
-    const disableOtherElements = (excludeElement) => {
-        // Füge allen anderen exklusiven Elementen die disabledClass hinzu,
-        // außer dem zuletzt geklickten und seinem exklusiven Partner
-        [element1, element2].forEach(el => {
-            if (el !== excludeElement && lastClicked !== el) {
-                el.classList.add(disabledClass);
-            }
-        });
-    };
+    let firstClick1 = true;
+    let firstClick2 = true;
 
     if (element1 && element2) {
         element1.addEventListener('click', () => {
-            if (lastClicked !== element1) {
+            if (firstClick1) {
                 element2.classList.add(disabledClass);
-                lastClicked = element1;
             } else {
                 element2.classList.remove(disabledClass);
-                lastClicked = null;
             }
-            disableOtherElements(element1);
+            firstClick1 = !firstClick1;
         });
 
         element2.addEventListener('click', () => {
-            if (lastClicked !== element2) {
+            if (firstClick2) {
                 element1.classList.add(disabledClass);
-                lastClicked = element2;
             } else {
                 element1.classList.remove(disabledClass);
-                lastClicked = null;
             }
-            disableOtherElements(element2);
+            firstClick2 = !firstClick2;
         });
     }
 }
-
-// Implementiere diese Funktion für jede Gruppe von exklusiven Elementen
+    
 makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
 makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
-
 
 
 
