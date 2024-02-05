@@ -99,10 +99,7 @@ if (configuratorForm) {
         });
 
 
-const exclusivePair1 = [
-    document.getElementById('addOnPremiumTutor'),
-    document.getElementById('addOnExperiencedTutor')
-];
+const exclusivePair1 = [addOnExperiencedTutor, addOnPremiumTutor];
 
 
 //add "custom-input-clicked" class and set max. clickable fields
