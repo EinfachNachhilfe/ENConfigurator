@@ -260,9 +260,11 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
 
-    let valueCodeGeneratorUnitSmall = "AA";
-    let valueCodeGeneratorUnitMiddle = "BA";
-    let valueCodeGeneratorUnitLarge = "CA";
+let valueCodeGeneratorUnitSmall = "AA";
+let valueCodeGeneratorUnitMiddle = "BA";
+let valueCodeGeneratorUnitLarge = "CA";
+
+let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
