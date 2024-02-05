@@ -58,6 +58,8 @@ if (configuratorForm) {
         const customRadioInputUnit = document.querySelectorAll('.custom-radio-input.unit');
         const customRadioInputContract = document.querySelectorAll('.custom-radio-input.contract');
         const customCheckboxInputTutor = document.querySelectorAll('.custom-checkbox-input-tutor');
+        const customCheckboxInputTutorExclusivePair1 = document.querySelectorAll('.custom-checkbox-input-tutor-exclusive-pair-1');
+        const customCheckboxInputTutorExclusivePair2 = document.querySelectorAll('.custom-checkbox-input-tutor-exclusive-pair-2');
         const customCheckboxInputOther = document.querySelectorAll('.custom-checkbox-input-other');
         const addOnPremiumTutor  = document.getElementById('addOnPremiumTutor');
         const addOnExperiencedTutor  = document.getElementById('addOnExperiencedTutor');
@@ -97,9 +99,6 @@ if (configuratorForm) {
             popup.style.display = 'none';
             background.style.display = 'none';
         });
-
-
-const exclusivePair1 = [addOnExperiencedTutor, addOnPremiumTutor];
 
 
 //add "custom-input-clicked" class and set max. clickable fields
@@ -150,9 +149,9 @@ manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled
 manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutor, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
-manageSelection(exclusivePair1, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled');
 
    
 let totalLessonPrice = 20;
