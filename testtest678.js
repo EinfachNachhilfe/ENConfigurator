@@ -260,9 +260,7 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
 
-let valueCodeGeneratorUnitSmall = "AA";
-let valueCodeGeneratorUnitMiddle = "BA";
-let valueCodeGeneratorUnitLarge = "CA";
+
 
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
@@ -273,9 +271,9 @@ function updateTextUnit() {
         textUnitSmall.textContent = '1x90min';
         textUnitMiddle.textContent = '2x90min';
         textUnitLarge.textContent = '3x90min';
-        valueCodeGeneratorUnitSmall = "FA";
-        valueCodeGeneratorUnitMiddle = "DA";
-        valueCodeGeneratorUnitLarge = "BA";
+        let valueCodeGeneratorUnitSmall = "FA";
+        let valueCodeGeneratorUnitMiddle = "DA";
+        let valueCodeGeneratorUnitLarge = "BA";
     }
         if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '2x45min';
