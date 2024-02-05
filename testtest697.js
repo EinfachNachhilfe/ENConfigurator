@@ -180,6 +180,10 @@ const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducati
 const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
+let valueCodeGeneratorUnitSmall ="0A";
+let valueCodeGeneratorUnitMiddle ="0A";
+let valueCodeGeneratorUnitLarge ="0A";
+
     
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     console.log(`createInputField aufgerufen mit codeGenerator=${codeGenerator}`);
@@ -291,9 +295,6 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
       
-let valueCodeGeneratorUnitSmall ="0A";
-let valueCodeGeneratorUnitMiddle ="0A";
-let valueCodeGeneratorUnitLarge ="0A";
 
 
 function updateTextUnit() {
@@ -312,13 +313,6 @@ function updateTextUnit() {
         valueCodeGeneratorUnitMiddle = "CA";
         valueCodeGeneratorUnitLarge = "AA";
     }
-
-    // Aufruf von createInputField für jede Einheit mit den aktuellen Werten
-    createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
-    createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
-    createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
-
-    console.log(`Aktualisierte Einheiten: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
 }
 
     
