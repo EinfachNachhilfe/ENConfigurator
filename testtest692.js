@@ -280,9 +280,6 @@ function updateTextUnit() {
         valueCodeGeneratorUnitSmall = "FA";
         valueCodeGeneratorUnitMiddle = "DA";
         valueCodeGeneratorUnitLarge = "BA";
-        createInputField(unitSmall, 0, 0, "FA", "Kleine Einheit", areaUnit);
-        createInputField(unitMiddle, 2.6, 0, "DA", "Mittlere Einheit", areaUnit);
-        createInputField(unitLarge, 0, 0, "BA", "Große Einheit", areaUnit);
     } else if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '2x45min';
         textUnitMiddle.textContent = '4x45min';
