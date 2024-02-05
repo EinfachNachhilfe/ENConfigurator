@@ -181,43 +181,6 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
     
-const textUnitSmall= document.getElementById('textUnitSmall');
-const textUnitMiddle= document.getElementById('textUnitMiddle');
-const textUnitLarge= document.getElementById('textUnitLarge');   
-const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
-const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
-const textTotalLtv = document.getElementById('textTotalLtv');
-const textLessonPrice = document.getElementById('textLessonPrice');
-
-
-      
-let valueCodeGeneratorUnitSmall;
-let valueCodeGeneratorUnitMiddle;
-let valueCodeGeneratorUnitLarge;
-
-
-    function updateTextUnit() {
-    if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-        textUnitSmall.textContent = '1x90min';
-        textUnitMiddle.textContent = '2x90min';
-        textUnitLarge.textContent = '3x90min';
-        valueCodeGeneratorUnitSmall = "FA";
-        valueCodeGeneratorUnitMiddle = "DA";
-        valueCodeGeneratorUnitLarge = "BA";
-    }
-        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
-        textUnitSmall.textContent = '2x45min';
-        textUnitMiddle.textContent = '4x45min';
-        textUnitLarge.textContent = '6x45min';
-        valueCodeGeneratorUnitSmall = "EA";
-        valueCodeGeneratorUnitMiddle = "CA";
-        valueCodeGeneratorUnitLarge = "AA";
-
-    }
-    console.log(`Updating units: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
-
-}
-
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
   
     
@@ -292,6 +255,43 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
 
+
+const textUnitSmall= document.getElementById('textUnitSmall');
+const textUnitMiddle= document.getElementById('textUnitMiddle');
+const textUnitLarge= document.getElementById('textUnitLarge');   
+const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
+const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
+const textTotalLtv = document.getElementById('textTotalLtv');
+const textLessonPrice = document.getElementById('textLessonPrice');
+
+
+      
+let valueCodeGeneratorUnitSmall;
+let valueCodeGeneratorUnitMiddle;
+let valueCodeGeneratorUnitLarge;
+
+
+    function updateTextUnit() {
+    if (tutoringAtHome.classList.contains('custom-input-clicked')) {
+        textUnitSmall.textContent = '1x90min';
+        textUnitMiddle.textContent = '2x90min';
+        textUnitLarge.textContent = '3x90min';
+        valueCodeGeneratorUnitSmall = "FA";
+        valueCodeGeneratorUnitMiddle = "DA";
+        valueCodeGeneratorUnitLarge = "BA";
+    }
+        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
+        textUnitSmall.textContent = '2x45min';
+        textUnitMiddle.textContent = '4x45min';
+        textUnitLarge.textContent = '6x45min';
+        valueCodeGeneratorUnitSmall = "EA";
+        valueCodeGeneratorUnitMiddle = "CA";
+        valueCodeGeneratorUnitLarge = "AA";
+
+    }
+    console.log(`Updating units: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
+
+}
     
 function calculateTotalCost() {
     let multiplierUnit = 2;
