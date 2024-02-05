@@ -106,45 +106,39 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, i
     let selectedElements = [];
 
     elements.forEach(element => {
-        if (!element.dataset.listenerAdded) {
-            element.addEventListener('click', () => {
-                if (element.classList.contains(selectionClass)) {
-                    element.classList.remove(selectionClass);
-                    selectedElements = selectedElements.filter(el => el !== element);
-                } else {
-                    if (maxSelected === 1 && selectedElements.length > 0) {
-                        if (!isExclusivePair) {
-                            // Nur für Nicht-exklusive Paare: Entferne Auswahl von anderen Elementen
-                            selectedElements[0].classList.remove(selectionClass);
-                            selectedElements = [];
+        element.addEventListener('click', () => {
+            const isSelected = element.classList.contains(selectionClass);
+            element.classList.toggle(selectionClass, !isSelected);
+            if (!isSelected) {
+                selectedElements.push(element);
+                // Exklusive Logik für das Entfernen der disabledClass
+                if (isExclusivePair) {
+                    elements.forEach(el => {
+                        if (el !== element) {
+                            el.classList.remove(disabledClass); // Aktiviere das andere Element
                         }
-                        // Für exklusive Paare: Keine weitere Aktion, erlaube die Auswahl ohne Deaktivierung anderer
+                    });
+                }
+            } else {
+                selectedElements = selectedElements.filter(el => el !== element);
+            }
+
+            // Aktualisiere disabledClass für nicht ausgewählte Elemente
+            if ((maxSelected > 1 && selectedElements.length >= maxSelected) || isExclusivePair) {
+                elements.forEach(el => {
+                    if (!selectedElements.includes(el)) {
+                        el.classList.add(disabledClass);
                     }
-                    selectedElements.push(element);
-                    element.classList.add(selectionClass);
-                }
+                });
+            } else {
+                elements.forEach(el => {
+                    el.classList.remove(disabledClass);
+                });
+            }
 
-                // Anpassung für exklusive Paare: Verhindere das Deaktivieren anderer Elemente
-
-    // Korrigierte Bedingung in der 'if'-Anweisung
-if ((maxSelected > 1 && selectedElements.length >= maxSelected) || isExclusivePair) {
-    elements.forEach(el => {
-        if (!selectedElements.includes(el)) {
-            el.classList.add(disabledClass);
-        }
-    });
-} else {
-    elements.forEach(el => {
-        el.classList.remove(disabledClass);
-    });
-
-
-                }
-                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
-                validateForm();
-            });
-            element.dataset.listenerAdded = "true";
-        }
+            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
+            validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist
+        });
     });
 }
 
