@@ -258,16 +258,18 @@ const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
 
 
-        let valueCodeGeneratorUnitSmall = "FA";
-        let valueCodeGeneratorUnitMiddle = "DA";
-        let valueCodeGeneratorUnitLarge = "BA";
-
+      
 
 
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
+
+    let valueCodeGeneratorUnitSmall = "FA";
+    let valueCodeGeneratorUnitMiddle = "DA";
+    let valueCodeGeneratorUnitLarge = "BA";
+
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '1x90min';
