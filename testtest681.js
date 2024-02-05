@@ -234,11 +234,13 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             isAdding = false; // Wir entfernen
         }
     }
-
+    
+ updateTextUnit();
+    
     if (shouldUpdateCode) {
         // Führt die erforderlichen Aktualisierungen durch, wenn Änderungen vorgenommen wurden
         calculateTotalCost();
-        updateTextUnit();
+       
         if (isAdding) {
             updateCodeGenerator(area, codeGenerator); // Fügt den Code hinzu, wenn ein Element ausgewählt wurde
         } else {
@@ -259,23 +261,19 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
       
-
+let valueCodeGeneratorUnitSmall = "FA";
+let valueCodeGeneratorUnitMiddle = "DA";
+let valueCodeGeneratorUnitLarge = "BA";
 
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
-
-    let valueCodeGeneratorUnitSmall = "FA";
-    let valueCodeGeneratorUnitMiddle = "DA";
-    let valueCodeGeneratorUnitLarge = "BA";
-
-
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '1x90min';
         textUnitMiddle.textContent = '2x90min';
         textUnitLarge.textContent = '3x90min';
-       valueCodeGeneratorUnitSmall = "FA";
+        valueCodeGeneratorUnitSmall = "FA";
         valueCodeGeneratorUnitMiddle = "DA";
         valueCodeGeneratorUnitLarge = "BA";
     }
@@ -286,10 +284,13 @@ function updateTextUnit() {
         valueCodeGeneratorUnitSmall = "EA";
         valueCodeGeneratorUnitMiddle = "CA";
         valueCodeGeneratorUnitLarge = "AA";
+
     }
     console.log(`Updating units: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
 
 }
+
+    
 function calculateTotalCost() {
     let multiplierUnit = 2;
     let multiplierContract = 1;
