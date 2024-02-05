@@ -102,56 +102,63 @@ if (configuratorForm) {
 
 
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass, isExclusivePair = false) {
+function manageSelection(elements, maxSelected, selectionClass, disabledClass, mode) {
     let selectedElements = [];
 
     elements.forEach(element => {
-        element.addEventListener('click', () => {
-            const isSelected = element.classList.contains(selectionClass);
-            element.classList.toggle(selectionClass, !isSelected);
-            if (!isSelected) {
-                selectedElements.push(element);
-                // Exklusive Logik für das Entfernen der disabledClass
-                if (isExclusivePair) {
-                    elements.forEach(el => {
-                        if (el !== element) {
-                            el.classList.remove(disabledClass); // Aktiviere das andere Element
+        if (!element.dataset.listenerAdded) {
+            element.addEventListener('click', () => {
+                if (element.classList.contains(selectionClass)) {
+                    element.classList.remove(selectionClass);
+                    selectedElements = selectedElements.filter(el => el !== element);
+                } else {
+                    if (selectedElements.length >= maxSelected) {
+                        if (mode === 'deselect') {
+                            // Automatisches Abwählen des ältesten ausgewählten Elements, wenn das Limit erreicht ist
+                            const firstSelected = selectedElements.shift(); // Entfernt das erste Element
+                            firstSelected.classList.remove(selectionClass);
                         }
-                    });
-                }
-            } else {
-                selectedElements = selectedElements.filter(el => el !== element);
-            }
-
-            // Aktualisiere disabledClass für nicht ausgewählte Elemente
-            if ((maxSelected > 1 && selectedElements.length >= maxSelected) || isExclusivePair) {
-                elements.forEach(el => {
-                    if (!selectedElements.includes(el)) {
-                        el.classList.add(disabledClass);
+                        // Für 'disable' Modus, keine Aktion hier, die Logik wird unten gehandhabt
                     }
-                });
-            } else {
-                elements.forEach(el => {
-                    el.classList.remove(disabledClass);
-                });
-            }
+                    if (selectedElements.length < maxSelected || mode === 'disable') {
+                        selectedElements.push(element);
+                        element.classList.add(selectionClass);
+                    }
+                }
 
-            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
-            validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist
-        });
+                if (mode === 'disable') {
+                    if (selectedElements.length >= maxSelected) {
+                        elements.forEach(el => {
+                            if (!selectedElements.includes(el)) {
+                                el.classList.add(disabledClass);
+                            }
+                        });
+                    } else {
+                        elements.forEach(el => {
+                            el.classList.remove(disabledClass);
+                        });
+                    }
+                }
+
+                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
+                validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist oder entfernen Sie diesen Aufruf
+            });
+            element.dataset.listenerAdded = "true";
+        }
     });
 }
 
 
 
-manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled');    
-manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
-manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled', true);
-manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', true);
-manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
+
+manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled', 'disable' );    
+manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled', 'deselect');
+manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled', 'deselect');
+manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled', 'deselect');
+manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled','disable' );
+manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled', 'disable' );
+manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', 'disable' );
+manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' );
 
    
 let totalLessonPrice = 20;
