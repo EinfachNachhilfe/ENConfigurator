@@ -137,7 +137,7 @@ if ((maxSelected > 1 && selectedElements.length >= maxSelected) || isExclusivePa
     elements.forEach(el => {
         el.classList.remove(disabledClass);
     });
-}
+
 
                 }
                 console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
