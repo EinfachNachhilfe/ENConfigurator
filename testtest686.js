@@ -182,11 +182,12 @@ const subjectOther = document.getElementById('subjectOther');
 
     
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
-  
-    
+    console.log(`createInputField aufgerufen mit codeGenerator=${codeGenerator}`);
+
     // Beobachtet Änderungen an den Klassen der Elemente
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
+            console.log(`Mutation Typ: ${mutation.type}, geänderte Attribut: ${mutation.attributeName}`);
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
