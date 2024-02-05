@@ -183,6 +183,11 @@ const subjectOther = document.getElementById('subjectOther');
 let valueCodeGeneratorUnitSmall ="0A";
 let valueCodeGeneratorUnitMiddle ="0A";
 let valueCodeGeneratorUnitLarge ="0A";
+    const areaSubject = { start: 2, end: 8 };
+const areaTutoring = { start: 9, end: 11 };
+const areaUnit = { start: 12, end: 14 };
+const areaContract = { start: 15, end: 17 };
+const areaAddOn = { start: 18, end: 42 };
 
     
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
@@ -360,12 +365,6 @@ calculateTotalCost();
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
-const areaSubject = { start: 2, end: 8 };
-const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
-const areaAddOn = { start: 18, end: 42 };
-
 let codePositions = {};
 
     
