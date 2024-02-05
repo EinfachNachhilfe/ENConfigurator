@@ -262,6 +262,9 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
 let valueUnitSmall = 6;
+    let valueCodeGeneratorUnitSmall = "0A";
+    let valueCodeGeneratorUnitMiddle = "0A";
+    let valueCodeGeneratorUnitLarge = "0A";
 totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
@@ -270,11 +273,17 @@ function updateTextUnit() {
         textUnitSmall.textContent = '1x90min';
         textUnitMiddle.textContent = '2x90min';
         textUnitLarge.textContent = '3x90min';
+        valueCodeGeneratorUnitSmall = "FA";
+        valueCodeGeneratorUnitMiddle = "DA";
+        valueCodeGeneratorUnitLarge = "BA";
     }
         if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '2x45min';
         textUnitMiddle.textContent = '4x45min';
         textUnitLarge.textContent = '6x45min';
+        valueCodeGeneratorUnitSmall = "EA";
+        valueCodeGeneratorUnitMiddle = "CA";
+        valueCodeGeneratorUnitLarge = "AA";
     }
 }
 function calculateTotalCost() {
@@ -319,7 +328,7 @@ function calculateTotalCost() {
 calculateTotalCost();
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
-let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
+let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
 const areaSubject = { start: 2, end: 8 };
 const areaTutoring = { start: 9, end: 11 };
@@ -401,17 +410,17 @@ createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring);
-createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, "BA", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, "CA", "Große Einheit", areaUnit);
+createInputField(tutoringHybrid, 3, 0, "BB", "Hybrid Nachhilfe", areaTutoring);
+createInputField(tutoringAtHome, 5, 1.5, "CB", "Nachhilfe zu Hause", areaTutoring);
+createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
 createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
 createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer", areaAddOn);
 createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer", areaAddOn);
-createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause", areaAddOn);
+createInputField(addOnContractBreak, 1.5, 0, "EB", "Vertragspause", areaAddOn);
 createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht", areaAddOn);
 createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer", areaAddOn);
 createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer", areaAddOn);
