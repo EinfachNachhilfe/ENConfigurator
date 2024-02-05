@@ -152,6 +152,7 @@ manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled')
 manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
 manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled');
 manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
 
    
 let totalLessonPrice = 20;
