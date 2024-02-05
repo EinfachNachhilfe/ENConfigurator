@@ -204,6 +204,31 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
     });
 }
 
+// Aufrufen von createInputField für jede Einheit mit den aktuellen Werten
+createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
+
+// Hinzufügen des MutationObserver unmittelbar nach dem Aufrufen von createInputField
+const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        console.log(`Mutation Typ: ${mutation.type}, geänderte Attribut: ${mutation.attributeName}`);
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const targetElement = mutation.target;
+            handleClassChange(targetElement, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area);
+        }
+    });
+});
+
+const elementsToObserve = [unitSmall, unitMiddle, unitLarge]; // Fügen Sie hier alle relevanten Elemente hinzu
+
+elementsToObserve.forEach(element => {
+    observer.observe(element, { attributes: true });
+});
+
+    
+    
+
     
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
     const inputFieldName = element.id;
