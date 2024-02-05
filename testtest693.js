@@ -354,6 +354,7 @@ let codePositions = {};
 let isEventListenerRegistered = false;
 
 function updateCodeGenerator(area, codeToAdd) {
+    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
 
     if (area === areaSubject || area === areaAddOn) {
@@ -370,12 +371,17 @@ function updateCodeGenerator(area, codeToAdd) {
         baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
         codePositions[codeToAdd] = area.start;
     }
+
+    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
 
 
 function removeCodeGenerator(area, codeToRemove) {
+    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
+
     // Überprüfen, ob der Bereich areaSubject oder areaAddOn ist
     if (area === areaSubject || area === areaAddOn) {
         if (codePositions[codeToRemove] !== undefined) {
@@ -386,13 +392,15 @@ function removeCodeGenerator(area, codeToRemove) {
             delete codePositions[codeToRemove];
         }
     }
+
+    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
+    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
 
 
 textCodeGenerator.textContent = baseCode;
-
 
 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
