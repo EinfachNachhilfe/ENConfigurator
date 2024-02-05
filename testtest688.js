@@ -272,7 +272,7 @@ let valueCodeGeneratorUnitMiddle;
 let valueCodeGeneratorUnitLarge;
 
 
-    function updateTextUnit() {
+function updateTextUnit() {
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '1x90min';
         textUnitMiddle.textContent = '2x90min';
@@ -280,19 +280,23 @@ let valueCodeGeneratorUnitLarge;
         valueCodeGeneratorUnitSmall = "FA";
         valueCodeGeneratorUnitMiddle = "DA";
         valueCodeGeneratorUnitLarge = "BA";
-    }
-        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
+    } else if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '2x45min';
         textUnitMiddle.textContent = '4x45min';
         textUnitLarge.textContent = '6x45min';
         valueCodeGeneratorUnitSmall = "EA";
         valueCodeGeneratorUnitMiddle = "CA";
         valueCodeGeneratorUnitLarge = "AA";
+    }
 
-    }
-    console.log(`Updating units: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
-    createInputField();
-    }
+    // Aktualisierte Aufrufe von createInputField mit den neuen Werten
+    createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
+    createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
+    createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
+
+    console.log(`Aktualisierte Einheiten: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
+}
+
     
 function calculateTotalCost() {
     let multiplierUnit = 2;
