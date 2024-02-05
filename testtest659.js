@@ -261,17 +261,6 @@ function handleClassChange(element, additionalLessonCost,additionalLessonTutorSa
 
 
 
-const textUnitSmall= document.getElementById('textUnitSmall');
-const textUnitMiddle= document.getElementById('textUnitMiddle');
-const textUnitLarge= document.getElementById('textUnitLarge');   
-const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
-const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
-const textTotalLtv = document.getElementById('textTotalLtv');
-const textLessonPrice = document.getElementById('textLessonPrice');
-
-
-
-
 
 const textUnitSmall= document.getElementById('textUnitSmall');
 const textUnitMiddle= document.getElementById('textUnitMiddle');
