@@ -98,88 +98,66 @@ if (configuratorForm) {
             background.style.display = 'none';
         });
 
-    
+
+const exclusivePair1 = [
+    document.getElementById('addOnPremiumTutor'),
+    document.getElementById('addOnExperiencedTutor')
+];
+
+
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass) {
+function manageSelection(elements, maxSelected, selectionClass, disabledClass) {
     let selectedElements = [];
 
     elements.forEach(element => {
-        element.addEventListener('click', () => {
-            console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
-            if (element.classList.contains(selectionClass)) {
-                element.classList.remove(selectionClass);
-                selectedElements = selectedElements.filter(el => el !== element);
-            } else {
-                if (selectedElements.length >= maxSelected) {
-                    selectedElements[0].classList.remove(selectionClass);
-                    selectedElements.shift();
+        // Überprüfen, ob der Listener bereits hinzugefügt wurde
+        if (!element.dataset.listenerAdded) {
+            element.addEventListener('click', () => {
+                console.log(`Element geklickt:`, element); // Protokollierung beim Klicken auf ein Element
+                if (element.classList.contains(selectionClass)) {
+                    element.classList.remove(selectionClass);
+                    selectedElements = selectedElements.filter(el => el !== element);
+                } else {
+                    if (maxSelected === 1 && selectedElements.length > 0) {
+                        selectedElements[0].classList.remove(selectionClass);
+                        selectedElements = [];
+                    }
+                    selectedElements.push(element);
+                    element.classList.add(selectionClass);
                 }
-                selectedElements.push(element);
-                element.classList.add(selectionClass);
-            }
-            console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
-            validateForm();
-        });
-    });
 
-    // Überprüfung des Änderungsereignisses
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                console.log(`Klassenänderung beobachtet:`, targetElement); // Protokollierung in der MutationObserver Callback
-                if (!targetElement.classList.contains(selectionClass)) {
-                    selectedElements = selectedElements.filter(el => el !== targetElement);
+                if (maxSelected > 1 && selectedElements.length >= maxSelected) {
+                    elements.forEach(el => {
+                        if (!selectedElements.includes(el)) {
+                            el.classList.add(disabledClass);
+                        }
+                    });
+                } else {
+                    elements.forEach(el => {
+                        el.classList.remove(disabledClass);
+                    });
                 }
-            }
-        });
-    });
+                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements); // Zustand von selectedElements
+                validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist
+            });
 
-    elements.forEach(element => {
-        observer.observe(element, { attributes: true });
-    });
+            // Markiere das Element, um anzuzeigen, dass der Listener hinzugefügt wurde
+            element.dataset.listenerAdded = "true";
+        }
+    });  
 }
 
 
-        manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked');
-        manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputUnit, 1, 'custom-input-clicked');
-        manageSelection(customRadioInputContract, 1, 'custom-input-clicked');
-        manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked');
-        manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked');
-        
 
- // Globales Objekt, um den Zustand des zuletzt aktivierten Elements zu speichern
-function makeExclusivePair(id1, id2, disabledClass) {
-    const element1 = document.getElementById(id1);
-    const element2 = document.getElementById(id2);
+manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled');    
+manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disabled');
+manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled');
+manageSelection(exclusivePair1, 1, 'custom-input-clicked', 'disabled');
 
-    if (element1 && element2) {
-        element1.addEventListener('click', () => {
-            // Toggle der disabledClass für das zweite Element basierend auf der Auswahl des ersten Elements
-            if (element1.classList.contains('custom-input-clicked')) {
-                element2.classList.add(disabledClass);
-            } else {
-                element2.classList.remove(disabledClass);
-            }
-        });
-
-        element2.addEventListener('click', () => {
-            // Toggle der disabledClass für das erste Element basierend auf der Auswahl des zweiten Elements
-            if (element2.classList.contains('custom-input-clicked')) {
-                element1.classList.add(disabledClass);
-            } else {
-                element1.classList.remove(disabledClass);
-            }
-        });
-    }
-}
-
-    
-makeExclusivePair('addOnPremiumTutor', 'addOnExperiencedTutor', 'disabled');
-makeExclusivePair('addOnFemale', 'addOnMale', 'disabled');
-
-    
+   
 let totalLessonPrice = 20;
 let tutorSalary = 12;
     
