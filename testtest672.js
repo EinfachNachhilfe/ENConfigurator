@@ -102,8 +102,9 @@ if (configuratorForm) {
 
 
 //add "custom-input-clicked" class and set max. clickable fields
-function manageSelection(elements, maxSelected, selectionClass, disabledClass, mode) {
+function manageSelection(elements, maxSelected, selectionClass, disabledClass, mode, showErrorMessageOnLimit) {
     let selectedElements = [];
+    let errorMessageDisplayed = false; // Zum Verfolgen, ob die Fehlermeldung bereits angezeigt wurde
 
     elements.forEach(element => {
         if (!element.dataset.listenerAdded) {
@@ -111,14 +112,19 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, m
                 if (element.classList.contains(selectionClass)) {
                     element.classList.remove(selectionClass);
                     selectedElements = selectedElements.filter(el => el !== element);
+                    errorMessageDisplayed = false; // Zurücksetzen, wenn eine Auswahl entfernt wird
                 } else {
                     if (selectedElements.length >= maxSelected) {
                         if (mode === 'deselect') {
                             // Automatisches Abwählen des ältesten ausgewählten Elements, wenn das Limit erreicht ist
-                            const firstSelected = selectedElements.shift(); // Entfernt das erste Element
+                            const firstSelected = selectedElements.shift();
                             firstSelected.classList.remove(selectionClass);
+                            errorMessageDisplayed = false; // Zurücksetzen, da ein Element abgewählt wurde
+                        } else if (mode === 'disable' && showErrorMessageOnLimit && !errorMessageDisplayed) {
+                            alert("Maximale Auswahl erreicht."); // Fehlermeldung anzeigen
+                            errorMessageDisplayed = true; // Verhindert mehrfache Meldungen
                         }
-                        // Für 'disable' Modus, keine Aktion hier, die Logik wird unten gehandhabt
+                        // Für 'disable' Modus, keine weitere Aktion hier, die Logik wird unten gehandhabt
                     }
                     if (selectedElements.length < maxSelected || mode === 'disable') {
                         selectedElements.push(element);
@@ -151,14 +157,15 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, m
 
 
 
-manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled', 'disable' );    
-manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled', 'deselect');
-manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled', 'deselect');
-manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled', 'deselect');
-manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled','disable' );
-manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled', 'disable' );
-manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', 'disable' );
-manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' );
+
+manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled', 'disable', true );    
+manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled', 'deselect', false);
+manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled', 'deselect', false);
+manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled', 'deselect', false);
+manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled','disable', false );
+manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled', 'disable', true );
+manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', 'disable', true );
+manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable', false );
 
    
 let totalLessonPrice = 20;
