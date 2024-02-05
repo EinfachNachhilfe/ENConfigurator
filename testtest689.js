@@ -290,9 +290,7 @@ function updateTextUnit() {
     }
 
     // Aktualisierte Aufrufe von createInputField mit den neuen Werten
-    createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
-    createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
-    createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
+    createInputField(codeGenerator)
 
     console.log(`Aktualisierte Einheiten: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
 }
