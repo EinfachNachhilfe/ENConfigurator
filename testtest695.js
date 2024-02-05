@@ -224,7 +224,6 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             tutorSalary += additionalLessonTutorSalary;
             shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element ausgewählt wurde
             isAdding = true; // Wir fügen hinzu
- updateCodeGenerator(area, codeGenerator); 
         }
     } else {
         if (inputField) {
@@ -267,9 +266,9 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
       
-let valueCodeGeneratorUnitSmall;
-let valueCodeGeneratorUnitMiddle;
-let valueCodeGeneratorUnitLarge;
+let valueCodeGeneratorUnitSmall ="0A";
+let valueCodeGeneratorUnitMiddle ="0A";
+let valueCodeGeneratorUnitLarge ="0A";
 
 
 function updateTextUnit() {
