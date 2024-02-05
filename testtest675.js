@@ -138,8 +138,6 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, m
                         });
                     }
                 }
-
-                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
                 validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist oder entfernen Sie diesen Aufruf
             });
             element.dataset.listenerAdded = "true";
@@ -261,10 +259,10 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 
 
 
-let valueUnitSmall = 6;
-    let valueCodeGeneratorUnitSmall = "0A";
-    let valueCodeGeneratorUnitMiddle = "0A";
-    let valueCodeGeneratorUnitLarge = "0A";
+
+    let valueCodeGeneratorUnitSmall = "AA";
+    let valueCodeGeneratorUnitMiddle = "BA";
+    let valueCodeGeneratorUnitLarge = "CA";
 totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
@@ -342,7 +340,6 @@ let codePositions = {};
 let isEventListenerRegistered = false;
 
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
 
     if (area === areaSubject || area === areaAddOn) {
@@ -359,17 +356,12 @@ function updateCodeGenerator(area, codeToAdd) {
         baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
         codePositions[codeToAdd] = area.start;
     }
-
-    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
 
 
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-
     // Überprüfen, ob der Bereich areaSubject oder areaAddOn ist
     if (area === areaSubject || area === areaAddOn) {
         if (codePositions[codeToRemove] !== undefined) {
@@ -380,9 +372,6 @@ function removeCodeGenerator(area, codeToRemove) {
             delete codePositions[codeToRemove];
         }
     }
-
-    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
 }
 
