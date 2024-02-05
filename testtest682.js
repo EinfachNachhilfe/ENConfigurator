@@ -223,6 +223,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             tutorSalary += additionalLessonTutorSalary;
             shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element ausgewählt wurde
             isAdding = true; // Wir fügen hinzu
+            updateTextUnit();
         }
     } else {
         if (inputField) {
@@ -235,12 +236,12 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
         }
     }
     
- updateTextUnit();
+
     
     if (shouldUpdateCode) {
         // Führt die erforderlichen Aktualisierungen durch, wenn Änderungen vorgenommen wurden
         calculateTotalCost();
-       
+
         if (isAdding) {
             updateCodeGenerator(area, codeGenerator); // Fügt den Code hinzu, wenn ein Element ausgewählt wurde
         } else {
