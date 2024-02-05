@@ -291,8 +291,8 @@ let valueCodeGeneratorUnitLarge;
 
     }
     console.log(`Updating units: Small=${valueCodeGeneratorUnitSmall}, Middle=${valueCodeGeneratorUnitMiddle}, Large=${valueCodeGeneratorUnitLarge}`);
-
-}
+    createInputField();
+    }
     
 function calculateTotalCost() {
     let multiplierUnit = 2;
