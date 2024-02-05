@@ -125,18 +125,20 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, i
                 }
 
                 // Anpassung für exklusive Paare: Verhindere das Deaktivieren anderer Elemente
-                if (!isExclusivePair) {
-                    if (maxSelected > 1 && selectedElements.length >= maxSelected) {
-                        elements.forEach(el => {
-                            if (!selectedElements.includes(el)) {
-                                el.classList.add(disabledClass);
-                            }
-                        });
-                    } else {
-                        elements.forEach(el => {
-                            el.classList.remove(disabledClass);
-                        });
-                    }
+
+    // Korrigierte Bedingung in der 'if'-Anweisung
+if ((maxSelected > 1 && selectedElements.length >= maxSelected) || isExclusivePair) {
+    elements.forEach(el => {
+        if (!selectedElements.includes(el)) {
+            el.classList.add(disabledClass);
+        }
+    });
+} else {
+    elements.forEach(el => {
+        el.classList.remove(disabledClass);
+    });
+}
+
                 }
                 console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
                 validateForm();
