@@ -390,7 +390,7 @@ function removeCodeGenerator(area, codeToRemove) {
 
 
 textCodeGenerator.textContent = baseCode;
-document.querySelector('.send-vertragscode').value = textCodeGenerator;
+document.querySelector('.send-codeGenerator').value = textCodeGenerator;
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
