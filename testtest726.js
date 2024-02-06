@@ -16,7 +16,7 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
 const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
-const couponCode = document.getElementById('coupon-code');
+const couponCodeElement = document.getElementById('coupon-code');
 
 if (configuratorForm) {
      const buttonTexts = {
