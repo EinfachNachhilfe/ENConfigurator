@@ -5,29 +5,29 @@ const prevBtn = document.querySelector('#prevBtn');
 const submitBtn = document.querySelector('#submitBtn');
 const allInputs = document.querySelectorAll('input, select, textarea');
 let validationElements = {};
-//end general
-
-//start const registration 3 or better
 const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
 const bdayStudent = document.getElementById('bday_student');
 const emailPayable = document.getElementById('email_payable');
 const phoneNumberPayable = document.getElementById('phone-number_payable');
 const ibanPayable = document.getElementById('iban_payable');
-//end const registration 3 or better
-
-//start cancel tutoring
 const emailCustomer = document.getElementById('email_customer');
 const phoneNumberCustomer = document.getElementById('phone-number_customer');
 const contractTerminationCustomer = document.getElementById('contract-termination_customer');
-//end cancel tutoring
+const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
+const emailContactPerson = document.getElementById('email_contact-person');
+const configuratorForm = document.getElementById('configurator');
 
-    //start contact form
-    const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
-    const emailContactPerson = document.getElementById('email_contact-person');
-//end contact form
+const couponCodes = {
+    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
+};
 
-    //start configurator
-   const configuratorForm = document.getElementById('configurator');
+const couponCodeElement = document.getElementById('coupon-code');
 
 if (configuratorForm) {
      const buttonTexts = {
@@ -790,6 +790,27 @@ if (emailContactPerson) {
   });
 }
 
+
+
+
+if (couponCodeElement) {
+    specificElements.push({
+        element: couponCodeElement,
+        pattern: Object.keys(couponCodes).map(code => couponCodes[code].regex.source).join("|"),
+        invalidErrorMsg: 'Bitte geben Sie einen gültigen Gutscheincode ein.',
+        validate: function(inputValue) {
+            let isValid = false;
+            let message = '';
+            Object.values(couponCodes).forEach(code => {
+                if (code.regex.test(inputValue)) {
+                    isValid = true;
+                    message = code.message;
+                }
+            });
+            return { isValid, message };
+        }
+    });
+}
 
 
 
