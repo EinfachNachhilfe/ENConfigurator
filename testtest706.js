@@ -389,20 +389,19 @@ let codeValueHybrid = "BA";
 let codeValueAtHome = "CA";
 
 function updateCodeValues() {
-    if (tutoringOnline.classList.contains('custom-input-clicked')) {
-        codeValueOnline = "Neuer Wert für Online Nachhilfe";
-    }
-
+    
     if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
-        codeValueHybrid = "Neuer Wert für Hybrid Nachhilfe";
+    createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
+    createInputField(tutoringHybrid, 2, 0, "CB", "Hybrid Nachhilfe", areaTutoring);
+    createInputField(tutoringAtHome, 4.2, 1.5, "DB", "Nachhilfe zu Hause", areaTutoring);
     }
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-        codeValueAtHome = "Neuer Wert für Nachhilfe zu Hause";
+    createInputField(tutoringOnline, 0, 0, "FB", "Online Nachhilfe", areaTutoring);
+    createInputField(tutoringHybrid, 2, 0, "GB", "Hybrid Nachhilfe", areaTutoring);
+    createInputField(tutoringAtHome, 4.2, 1.5, "HB", "Nachhilfe zu Hause", areaTutoring);
     }
-    createInputField(tutoringOnline, 0, 0, codeValueOnline, "Online Nachhilfe", areaTutoring);
-    createInputField(tutoringHybrid, 2, 0, codeValueHybrid, "Hybrid Nachhilfe", areaTutoring);
-    createInputField(tutoringAtHome, 4.2, 1.5, codeValueAtHome, "Nachhilfe zu Hause", areaTutoring);
+
 }
 
 
@@ -430,9 +429,9 @@ createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik", areaSubject
 createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
-createInputField(tutoringOnline, 0, 0, codeValueOnline, "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, codeValueHybrid, "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, codeValueAtHome, "Nachhilfe zu Hause", areaTutoring);    
+createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
+createInputField(tutoringHybrid, 2, 0, "AB", "Hybrid Nachhilfe", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, "AB", "Nachhilfe zu Hause", areaTutoring);    
 createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit", areaUnit);
 createInputField(unitMiddle, 2.6, 0, "BA", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "CA", "Große Einheit", areaUnit);
