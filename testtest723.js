@@ -547,6 +547,7 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+    const successMessageElement = document.createElement('span'); 
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -578,6 +579,13 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
+  successMessageElement.id = 'success_message';
+  successMessageElement.style.color = '#589b32';
+  successMessageElement.style.display = 'none';
+  successMessageElement.style.marginTop = '-0.625rem';
+  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  successMessageElement.style.fontSize = '0.8rem';
+    
    let errorMessageWrapper;
 
 if (inputElement.type === 'radio') {
@@ -586,9 +594,8 @@ if (inputElement.type === 'radio') {
 } else {
     // Für andere Eingabeelemente
     errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+     successMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 }
-
-// Weiterer Code, um mit dem errorMessageWrapper zu arbeiten...
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
 
@@ -622,6 +629,8 @@ if (inputElement.type === 'radio') {
         validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
         invalidSymbol.style.display = 'none';
         errorMessageElement.style.display = 'none';
+        successMessageElement.innerHTML = matchedPattern.message;
+        successMessageElement.style.display = 'block';
     } else {
         errorMessageElement.innerHTML = invalidErrorMsg;
         errorMessageElement.style.display = 'block';
