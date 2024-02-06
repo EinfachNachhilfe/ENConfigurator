@@ -386,24 +386,32 @@ textCodeGenerator.textContent = baseCode;
 
 
 
-    function updateUnitFields() {
+function updateUnitFields() {
+    console.log('updateUnitFields aufgerufen');
+
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
+        console.log('Tutoring at Home ist ausgewählt');
         createInputField(unitSmall, 0, 0, "GA", "Kleine Einheit", areaUnit);
         createInputField(unitMiddle, 2.6, 0, "HA", "Mittlere Einheit", areaUnit);
         createInputField(unitLarge, 0, 0, "IA", "Große Einheit", areaUnit);
     }
 
-
     if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+        console.log('Tutoring Hybrid oder Online ist ausgewählt');
         createInputField(unitSmall, 0, 0, "CA", "Kleine Einheit", areaUnit);
         createInputField(unitMiddle, 2.6, 0, "EA", "Mittlere Einheit", areaUnit);
         createInputField(unitLarge, 0, 0, "FA", "Große Einheit", areaUnit);
     }
 }
 
-
+// Event-Listener für tutoringAtHome, tutoringHybrid, tutoringOnline hinzufügen
 [tutoringAtHome, tutoringHybrid, tutoringOnline].forEach(element => {
-    element.addEventListener('click', updateUnitFields);
+    if (element) { // Überprüft, ob das Element existiert, bevor der Event-Listener hinzugefügt wird
+        element.addEventListener('click', function() {
+            console.log(element.id + ' wurde geklickt');
+            updateUnitFields();
+        });
+    }
 });
 
     
