@@ -18,6 +18,18 @@ const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
 const couponCode = document.getElementById('coupon-code');
 
+const couponCodes = {
+    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
+};
+
+const couponCodeElement = document.getElementById('couponCode');
+
 if (configuratorForm) {
      const buttonTexts = {
         'btnAddTandemLesson': 'Text für Duo Teaching',
@@ -779,6 +791,25 @@ if (emailContactPerson) {
   });
 }
 
+if (couponCodeElement) {
+    specificElements.push({
+        element: couponCodeElement,
+        pattern: Object.keys(couponCodes).map(code => couponCodes[code].regex.source).join("|"),
+        invalidErrorMsg: 'Bitte geben Sie einen gültigen Gutscheincode ein.',
+        validate: function(inputValue) {
+            let isValid = false;
+            let message = '';
+            Object.values(couponCodes).forEach(code => {
+                if (code.regex.test(inputValue)) {
+                    isValid = true;
+                    message = code.message;
+                }
+            });
+            return { isValid, message };
+        }
+    });
+}
+
 allInputs.forEach(inputElement => {
     // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
     if (!specificElements.some(e => e.element === inputElement)) {
@@ -793,51 +824,6 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
-
-
-//code onnly for coupon Code Field
-if (couponCode) {
- function applyValidationCouponCode(inputElement) {  
-  let successMessageElement = document.createElement('span'); 
-  let patterns = {
-    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
-  };
-
-  successMessageElement.id = 'success_message';
-  successMessageElement.style.color = '#589b32';
-  successMessageElement.style.display = 'none';
-  successMessageElement.style.marginTop = '-0.625rem';
-  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
-  successMessageElement.style.fontSize = '0.8rem';
-
- 
-   successMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
-
- inputElement.addEventListener("change", function() {
-    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
-        successMessageElement.style.display = 'none';
-        shakeOnInvalid(inputElement);
-    } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
-        successMessageElement.style.display = 'none';
-    } else if (inputElement.checkValidity()) {
-      
-        successMessageElement.innerHTML = matchedPattern.message;
-        successMessageElement.style.display = 'block';
-    } else {
-             successMessageElement.style.display = 'none';
-        shakeOnInvalid(inputElement);
-    }     
-});
-
-// Verwenden Sie die Funktion wie folgt:
-applyValidationCouponCode(couponCode);
-    }
 
 
 //start function shake
@@ -1169,4 +1155,4 @@ function removeInputField(labelId, inputId) {
 }
 
 }
-}
+
