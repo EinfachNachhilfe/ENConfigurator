@@ -265,6 +265,34 @@ const textLessonPrice = document.getElementById('textLessonPrice');
 let valueUnitSmall = 6;
 totalLessonPrice += valueUnitSmall;
 
+
+let codeValueOnline = "AB";
+let codeValueHybrid = "BA";
+let codeValueAtHome = "CA";
+
+
+if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+    codeValueAtHome = "FA";
+     codeValueHybrid = "GA";
+     codeValueOnline = "HA";
+}
+
+if (tutoringAtHome.classList.contains('custom-input-clicked')) {
+    codeValueAtHome = "CA";
+     codeValueHybrid = "DA";
+     codeValueOnline = "EA";
+}
+
+createInputField(tutoringOnline, 0, 0, codeValueOnline, "Online Nachhilfe", areaTutoring);
+createInputField(tutoringHybrid, 2, 0, codeValueHybrid, "Hybrid Nachhilfe", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, codeValueAtHome, "Nachhilfe zu Hause", areaTutoring);
+
+
+
+
+
+
+    
 function updateTextUnit() {
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
