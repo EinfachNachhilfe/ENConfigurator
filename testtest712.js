@@ -384,38 +384,6 @@ function removeCodeGenerator(area, codeToRemove) {
 
 textCodeGenerator.textContent = baseCode;
 
-
-
-function updateUnitFields() {
-    console.log('updateUnitFields aufgerufen');
-
-    if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-        console.log('Tutoring at Home ausgewählt');
-        createInputField(unitSmall, 0, 0, "GA", "Kleine Einheit", areaUnit);
-        createInputField(unitMiddle, 2.6, 0, "HA", "Mittlere Einheit", areaUnit);
-        createInputField(unitLarge, 0, 0, "IA", "Große Einheit", areaUnit);
-    }
-
-    if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
-        console.log('Tutoring Hybrid oder Online ausgewählt');
-        createInputField(unitSmall, 0, 0, "CA", "Kleine Einheit", areaUnit);
-        createInputField(unitMiddle, 2.6, 0, "EA", "Mittlere Einheit", areaUnit);
-        createInputField(unitLarge, 0, 0, "FA", "Große Einheit", areaUnit);
-    }
-}
-
-// Stellen Sie sicher, dass dieser Code ausgeführt wird, nachdem das DOM vollständig geladen ist
-document.addEventListener('DOMContentLoaded', () => {
-    [tutoringAtHome, tutoringHybrid, tutoringOnline].forEach(element => {
-        if (element) { // Überprüfung, ob das Element existiert
-            element.addEventListener('click', updateUnitFields);
-        } else {
-            console.log('Ein Element wurde im DOM nicht gefunden');
-        }
-    });
-});
-
-
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
