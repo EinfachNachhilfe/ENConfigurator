@@ -1,3 +1,5 @@
+11:27 05.02.2024
+
 //start general
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
@@ -138,6 +140,8 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, m
                         });
                     }
                 }
+
+                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
                 validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist oder entfernen Sie diesen Aufruf
             });
             element.dataset.listenerAdded = "true";
@@ -180,23 +184,13 @@ const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducati
 const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
-let valueCodeGeneratorUnitSmall ="0A";
-let valueCodeGeneratorUnitMiddle ="0A";
-let valueCodeGeneratorUnitLarge ="0A";
-    const areaSubject = { start: 2, end: 8 };
-const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
-const areaAddOn = { start: 18, end: 42 };
 
-    
 function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
-    console.log(`createInputField aufgerufen mit codeGenerator=${codeGenerator}`);
-
+  
+    
     // Beobachtet Änderungen an den Klassen der Elemente
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
-            console.log(`Mutation Typ: ${mutation.type}, geänderte Attribut: ${mutation.attributeName}`);
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
                 handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
@@ -212,31 +206,6 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         observer.observe(element, { attributes: true });
     });
 }
-
-// Aufrufen von createInputField für jede Einheit mit den aktuellen Werten
-createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
-
-// Hinzufügen des MutationObserver unmittelbar nach dem Aufrufen von createInputField
-const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-        console.log(`Mutation Typ: ${mutation.type}, geänderte Attribut: ${mutation.attributeName}`);
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-            const targetElement = mutation.target;
-            handleClassChange(targetElement, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area);
-        }
-    });
-});
-
-const elementsToObserve = [unitSmall, unitMiddle, unitLarge]; // Fügen Sie hier alle relevanten Elemente hinzu
-
-elementsToObserve.forEach(element => {
-    observer.observe(element, { attributes: true });
-});
-
-    
-    
 
     
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
@@ -269,9 +238,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             isAdding = false; // Wir entfernen
         }
     }
-    
 
-    
     if (shouldUpdateCode) {
         // Führt die erforderlichen Aktualisierungen durch, wenn Änderungen vorgenommen wurden
         calculateTotalCost();
@@ -286,10 +253,6 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
 
 
 
-let valueUnitSmall = 6;
-totalLessonPrice += valueUnitSmall;
-
-
 const textUnitSmall= document.getElementById('textUnitSmall');
 const textUnitMiddle= document.getElementById('textUnitMiddle');
 const textUnitLarge= document.getElementById('textUnitLarge');   
@@ -299,28 +262,23 @@ const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
 
 
-      
 
+let valueUnitSmall = 6;
+totalLessonPrice += valueUnitSmall;
 
 function updateTextUnit() {
+
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '1x90min';
         textUnitMiddle.textContent = '2x90min';
         textUnitLarge.textContent = '3x90min';
-        valueCodeGeneratorUnitSmall = "FA";
-        valueCodeGeneratorUnitMiddle = "DA";
-        valueCodeGeneratorUnitLarge = "BA";
-    } else if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+    }
+        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
         textUnitSmall.textContent = '2x45min';
         textUnitMiddle.textContent = '4x45min';
         textUnitLarge.textContent = '6x45min';
-        valueCodeGeneratorUnitSmall = "EA";
-        valueCodeGeneratorUnitMiddle = "CA";
-        valueCodeGeneratorUnitLarge = "AA";
     }
 }
-
-    
 function calculateTotalCost() {
     let multiplierUnit = 2;
     let multiplierContract = 1;
@@ -363,8 +321,14 @@ function calculateTotalCost() {
 calculateTotalCost();
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
-let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
+let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
+const areaSubject = { start: 2, end: 8 };
+const areaTutoring = { start: 9, end: 11 };
+const areaUnit = { start: 12, end: 14 };
+const areaContract = { start: 15, end: 17 };
+const areaAddOn = { start: 18, end: 42 };
+
 let codePositions = {};
 
     
@@ -420,6 +384,7 @@ function removeCodeGenerator(area, codeToRemove) {
 textCodeGenerator.textContent = baseCode;
 
 
+
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
 createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik", areaSubject);
@@ -438,17 +403,17 @@ createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 3, 0, "BB", "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 5, 1.5, "CB", "Nachhilfe zu Hause", areaTutoring);
-createInputField(unitSmall, 0, 0, valueCodeGeneratorUnitSmall, "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, valueCodeGeneratorUnitMiddle, "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, valueCodeGeneratorUnitLarge, "Große Einheit", areaUnit);
+createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring);
+createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, 2.6, 0, "BA", "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, 0, 0, "CA", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
 createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
 createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer", areaAddOn);
 createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer", areaAddOn);
-createInputField(addOnContractBreak, 1.5, 0, "EB", "Vertragspause", areaAddOn);
+createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause", areaAddOn);
 createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht", areaAddOn);
 createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer", areaAddOn);
 createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer", areaAddOn);
