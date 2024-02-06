@@ -217,7 +217,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
         if (!inputField) {
             // Erstellt ein neues Eingabefeld, wenn es noch nicht existiert
             inputField = document.createElement('input');
-            inputField.type = 'text';
+            inputField.type = 'hidden';
             inputField.id = 'input_' + inputFieldName;
             inputField.name = inputFieldName;
             inputField.value = defaultValue;
@@ -311,10 +311,10 @@ function calculateTotalCost() {
 
 
     //display lesson price
-    textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ',');
+    //textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ',');
     textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
-    textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
-    textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
+    //textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
+    //textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
 
 
 
@@ -412,9 +412,9 @@ createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
 createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
 createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring); 
-createInputField(unitSmall, 0, 0, "FA", "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, "DA", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, "BA", "Große Einheit", areaUnit);
+createInputField(unitSmall, 0, 0, "FB", "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
 createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
