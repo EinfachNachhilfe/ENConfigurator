@@ -547,7 +547,7 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-    const successMessageElement = document.createElement('span'); 
+    let successMessageElement = document.createElement('span'); 
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
