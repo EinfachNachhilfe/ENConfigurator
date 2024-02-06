@@ -319,10 +319,10 @@ function calculateTotalCost() {
 
 
 
-document.querySelector('.send-preisPro45Min').value = totalLessonPrice;
-document.querySelector('.send-lifetimeValue').value = valueTotalLtv;
-document.querySelector('.send-teacherSalary').value = tutorSalary;
-
+document.querySelector('.send-lessonPrice').value = textLessonPrice;
+document.querySelector('.send-totalLtv').value = textTotalLtv;
+document.querySelector('.send-totalTutorSalary').value = textTotalTutorSalary;
+document.querySelector('.send-totalMonthPrice').value = textTotalMonthPrice;
 
 }
 //show the TotalCost directly
@@ -382,16 +382,15 @@ function removeCodeGenerator(area, codeToRemove) {
         }
     }
 
-    console.log(`Aktualisierte codePositions nach dem Entfernen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
+
     textCodeGenerator.textContent = baseCode;
+    
 }
 
 
 
 textCodeGenerator.textContent = baseCode;
-document.querySelector('.send-vertragscode').value = baseCode;
-
+document.querySelector('.send-vertragscode').value = textCodeGenerator;
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
