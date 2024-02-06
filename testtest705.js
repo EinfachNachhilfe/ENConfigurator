@@ -400,15 +400,15 @@ function updateCodeValues() {
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
         codeValueAtHome = "Neuer Wert für Nachhilfe zu Hause";
     }
+    createInputField(tutoringOnline, 0, 0, codeValueOnline, "Online Nachhilfe", areaTutoring);
+    createInputField(tutoringHybrid, 2, 0, codeValueHybrid, "Hybrid Nachhilfe", areaTutoring);
+    createInputField(tutoringAtHome, 4.2, 1.5, codeValueAtHome, "Nachhilfe zu Hause", areaTutoring);
 }
 
-// Funktion aufrufen, um die Werte zu aktualisieren
+
 updateCodeValues();
 
-// Rufen Sie die createInputField-Funktion mit den aktualisierten Werten auf
-createInputField(tutoringOnline, 0, 0, codeValueOnline, "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, codeValueHybrid, "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, codeValueAtHome, "Nachhilfe zu Hause", areaTutoring);
+
 
 
 
