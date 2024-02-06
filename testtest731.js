@@ -28,7 +28,7 @@ const couponCodes = {
     "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
 };
 
-const couponCodeElement = document.getElementById('couponCode');
+const couponCodeElement = document.getElementById('coupon-code');
 
 if (configuratorForm) {
      const buttonTexts = {
@@ -548,7 +548,7 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-  
+    let successMessageElement = document.createElement('span'); 
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -580,6 +580,13 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
+  successMessageElement.id = 'success_message';
+  successMessageElement.style.color = '#589b32';
+  successMessageElement.style.display = 'none';
+  successMessageElement.style.marginTop = '-0.625rem';
+  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  successMessageElement.style.fontSize = '0.8rem';
+    
    let errorMessageWrapper;
 
 if (inputElement.type === 'radio') {
@@ -588,7 +595,7 @@ if (inputElement.type === 'radio') {
 } else {
     // Für andere Eingabeelemente
     errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
-   
+     successMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 }
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
@@ -623,6 +630,8 @@ if (inputElement.type === 'radio') {
         validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
         invalidSymbol.style.display = 'none';
         errorMessageElement.style.display = 'none';
+        successMessageElement.innerHTML = matchedPattern.message;
+        successMessageElement.style.display = 'block';
     } else {
         errorMessageElement.innerHTML = invalidErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -791,6 +800,9 @@ if (emailContactPerson) {
   });
 }
 
+
+
+
 if (couponCodeElement) {
     specificElements.push({
         element: couponCodeElement,
@@ -810,6 +822,8 @@ if (couponCodeElement) {
     });
 }
 
+
+
 allInputs.forEach(inputElement => {
     // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
     if (!specificElements.some(e => e.element === inputElement)) {
@@ -824,7 +838,6 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
-
 
 //start function shake
 function shakeOnInvalid(input) {
