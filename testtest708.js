@@ -384,22 +384,19 @@ function removeCodeGenerator(area, codeToRemove) {
 
 textCodeGenerator.textContent = baseCode;
 
-let codeValueOnline = "AB";
-let codeValueHybrid = "BA";
-let codeValueAtHome = "CA";
 
 function updateCodeValues() {
     
     if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
-    createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
-    createInputField(tutoringHybrid, 2, 0, "CB", "Hybrid Nachhilfe", areaTutoring);
-    createInputField(tutoringAtHome, 4.2, 1.5, "DB", "Nachhilfe zu Hause", areaTutoring);
+createInputField(unitSmall, 0, 0, "CA", "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, 2.6, 0, "EA", "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, 0, 0, "FA", "Große Einheit", areaUnit);
     }
 
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-    createInputField(tutoringOnline, 0, 0, "FB", "Online Nachhilfe", areaTutoring);
-    createInputField(tutoringHybrid, 2, 0, "GB", "Hybrid Nachhilfe", areaTutoring);
-    createInputField(tutoringAtHome, 4.2, 1.5, "HB", "Nachhilfe zu Hause", areaTutoring);
+   createInputField(unitSmall, 0, 0, "GA", "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, 2.6, 0, "HA", "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, 0, 0, "IA", "Große Einheit", areaUnit);
     }
 
 }
@@ -430,8 +427,8 @@ createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, "AB", "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, "AB", "Nachhilfe zu Hause", areaTutoring);    
+createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring); 
 createInputField(unitSmall, 0, 0, "AA", "Kleine Einheit", areaUnit);
 createInputField(unitMiddle, 2.6, 0, "BA", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "CA", "Große Einheit", areaUnit);
