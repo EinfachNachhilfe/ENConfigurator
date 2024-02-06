@@ -386,22 +386,28 @@ textCodeGenerator.textContent = baseCode;
 
 
 
-let codeValueOnline = "AB";
-let codeValueHybrid = "BA";
-let codeValueAtHome = "CA";
+function updateCodeValues() {
+    if (tutoringOnline.classList.contains('custom-input-clicked')) {
+        codeValueOnline = "Neuer Wert für Online Nachhilfe";
+    }
 
+    if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+        codeValueHybrid = "Neuer Wert für Hybrid Nachhilfe";
+    }
 
-if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
-    codeValueAtHome = "FA";
-     codeValueHybrid = "GA";
-     codeValueOnline = "HA";
+    if (tutoringAtHome.classList.contains('custom-input-clicked')) {
+        codeValueAtHome = "Neuer Wert für Nachhilfe zu Hause";
+    }
 }
 
-if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-    codeValueAtHome = "CA";
-     codeValueHybrid = "DA";
-     codeValueOnline = "EA";
-}
+// Funktion aufrufen, um die Werte zu aktualisieren
+updateCodeValues();
+
+// Rufen Sie die createInputField-Funktion mit den aktualisierten Werten auf
+createInputField(tutoringOnline, 0, 0, codeValueOnline, "Online Nachhilfe", areaTutoring);
+createInputField(tutoringHybrid, 2, 0, codeValueHybrid, "Hybrid Nachhilfe", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, codeValueAtHome, "Nachhilfe zu Hause", areaTutoring);
+
 
 
     
