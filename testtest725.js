@@ -16,18 +16,7 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
 const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
-
-const couponCodes = {
-    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
-    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
-};
-
-const couponCodeElement = document.getElementById('coupon-code');
+const couponCode = document.getElementById('coupon-code');
 
 if (configuratorForm) {
      const buttonTexts = {
@@ -547,7 +536,7 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-    let successMessageElement = document.createElement('span'); 
+  
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -579,13 +568,6 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
-  successMessageElement.id = 'success_message';
-  successMessageElement.style.color = '#589b32';
-  successMessageElement.style.display = 'none';
-  successMessageElement.style.marginTop = '-0.625rem';
-  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
-  successMessageElement.style.fontSize = '0.8rem';
-    
    let errorMessageWrapper;
 
 if (inputElement.type === 'radio') {
@@ -629,8 +611,6 @@ if (inputElement.type === 'radio') {
         validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
         invalidSymbol.style.display = 'none';
         errorMessageElement.style.display = 'none';
-        successMessageElement.innerHTML = matchedPattern.message;
-        successMessageElement.style.display = 'block';
     } else {
         errorMessageElement.innerHTML = invalidErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -837,8 +817,75 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
- 
 
+
+//code onnly for coupon Code Field
+if (couponCode) {
+    function applyValidationCouponCode(inputElement) {
+  let validImage = inputElement.parentNode.querySelector('.form_input-valid-image-coupon');
+  let inValidImage = inputElement.parentNode.querySelector('.form_input-invalid-image');
+  let errorMessageElement = document.createElement('span');   
+  let successMessageElement = document.createElement('span'); 
+  let patterns = {
+    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
+  };
+
+  errorMessageElement.id = 'error_message';
+  errorMessageElement.style.color = '#9d367a';
+  errorMessageElement.style.display = 'none';
+  errorMessageElement.style.marginTop = '-0.625rem';
+  errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  errorMessageElement.style.fontSize = '0.8rem';
+
+  successMessageElement.id = 'success_message';
+  successMessageElement.style.color = '#589b32';
+  successMessageElement.style.display = 'none';
+  successMessageElement.style.marginTop = '-0.625rem';
+  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  successMessageElement.style.fontSize = '0.8rem';
+
+  inputElement.parentNode.insertBefore(errorMessageElement, inputElement.nextSibling);
+  inputElement.parentNode.insertBefore(successMessageElement, inputElement.nextSibling);
+
+  inputElement.addEventListener("change", function() {
+      let matchedPattern = null;
+      for (let key in patterns) {
+        if (patterns[key].regex.test(inputElement.value)) {
+          matchedPattern = patterns[key];
+          break;
+        }
+      }
+
+      if (matchedPattern) {
+          inputElement.style.borderColor = '#589b32';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'block';
+          inValidImage.style.display = 'none';
+          errorMessageElement.style.display = 'none';
+          successMessageElement.innerHTML = matchedPattern.message;
+          successMessageElement.style.display = 'block';
+      } else {
+          inputElement.style.borderColor = '#9e367a';
+          inputElement.style.borderWidth = '1.5px';
+          validImage.style.display = 'none';
+          inValidImage.style.display = 'block';
+          errorMessageElement.innerHTML = 'Ungültiger Gutscheincode.';
+          errorMessageElement.style.display = 'block';
+          successMessageElement.style.display = 'none';
+      }
+  });
+}
+
+
+// Verwenden Sie die Funktion wie folgt:
+applyValidationCouponCode(couponCode);
+    }
 
 
 //start function shake
