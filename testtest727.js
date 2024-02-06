@@ -16,7 +16,7 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
 const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
-const couponCodeElement = document.getElementById('coupon-code');
+const couponCode = document.getElementById('coupon-code');
 
 if (configuratorForm) {
      const buttonTexts = {
@@ -778,30 +778,6 @@ if (emailContactPerson) {
     invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
   });
 }
-
-
-
-
-if (couponCodeElement) {
-    specificElements.push({
-        element: couponCodeElement,
-        pattern: Object.keys(couponCodes).map(code => couponCodes[code].regex.source).join("|"),
-        invalidErrorMsg: 'Bitte geben Sie einen gültigen Gutscheincode ein.',
-        validate: function(inputValue) {
-            let isValid = false;
-            let message = '';
-            Object.values(couponCodes).forEach(code => {
-                if (code.regex.test(inputValue)) {
-                    isValid = true;
-                    message = code.message;
-                }
-            });
-            return { isValid, message };
-        }
-    });
-}
-
-
 
 allInputs.forEach(inputElement => {
     // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
