@@ -319,10 +319,11 @@ function calculateTotalCost() {
 
 
 
-document.querySelector('.send-lessonPrice').value = totalLessonPrice;
-document.querySelector('.send-totalLtv').value = valueTotalLtv;
-document.querySelector('.send-totalTutorSalary').value = tutorSalary;
-document.querySelector('.send-totalMonthPrice').value = totalMonthPrice;
+document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2).replace('.', ',');
+document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2).replace('.', ',');
+document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2).replace('.', ',');
+document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2).replace('.', ',');
+
 
 }
 //show the TotalCost directly
@@ -361,9 +362,8 @@ function updateCodeGenerator(area, codeToAdd) {
         codePositions[codeToAdd] = area.start;
     }
 
-    console.log(`Aktualisierte codePositions nach dem Hinzufügen: `, codePositions);
-    console.log(`baseCode nach dem Update: '${baseCode}'`);
     textCodeGenerator.textContent = baseCode;
+    document.querySelector('.send-codeGenerator').value = baseCode;
 }
 
 
@@ -384,13 +384,13 @@ function removeCodeGenerator(area, codeToRemove) {
 
 
     textCodeGenerator.textContent = baseCode;
-    
+   document.querySelector('.send-codeGenerator').value = baseCode; 
 }
 
 
 
 textCodeGenerator.textContent = baseCode;
-document.querySelector('.send-codeGenerator').value = baseCode;
+
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
