@@ -1,4 +1,3 @@
-11:27 05.02.2024
 
 //start general
 const nextBtn = document.querySelector('#nextBtn');
