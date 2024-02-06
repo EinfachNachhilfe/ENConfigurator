@@ -316,10 +316,7 @@ function calculateTotalCost() {
     textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
     textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
 
-    document.querySelector('.send-vertragscode').value = baseCode;
-    document.querySelector('.send-preisPro45Min').value = totalLessonPrice;
-    document.querySelector('.send-lifetimeValue').value = valueTotalLtv;
-    document.querySelector('.send-teacherSalary').value = tutorSalary;
+
 
     
 
@@ -389,6 +386,11 @@ function removeCodeGenerator(area, codeToRemove) {
 
 
 textCodeGenerator.textContent = baseCode;
+
+document.querySelector('.send-vertragscode').value = baseCode;
+document.querySelector('.send-preisPro45Min').value = totalLessonPrice;
+document.querySelector('.send-lifetimeValue').value = valueTotalLtv;
+document.querySelector('.send-teacherSalary').value = tutorSalary;
 
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
