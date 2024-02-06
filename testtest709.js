@@ -385,28 +385,26 @@ function removeCodeGenerator(area, codeToRemove) {
 textCodeGenerator.textContent = baseCode;
 
 
-function updateCodeValues() {
-    
-    if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
-createInputField(unitSmall, 0, 0, "CA", "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, "EA", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, "FA", "Große Einheit", areaUnit);
-    }
 
+    function updateUnitFields() {
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-   createInputField(unitSmall, 0, 0, "GA", "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, 2.6, 0, "HA", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, "IA", "Große Einheit", areaUnit);
+        createInputField(unitSmall, 0, 0, "GA", "Kleine Einheit", areaUnit);
+        createInputField(unitMiddle, 2.6, 0, "HA", "Mittlere Einheit", areaUnit);
+        createInputField(unitLarge, 0, 0, "IA", "Große Einheit", areaUnit);
     }
 
+
+    if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+        createInputField(unitSmall, 0, 0, "CA", "Kleine Einheit", areaUnit);
+        createInputField(unitMiddle, 2.6, 0, "EA", "Mittlere Einheit", areaUnit);
+        createInputField(unitLarge, 0, 0, "FA", "Große Einheit", areaUnit);
+    }
 }
 
 
-updateCodeValues();
-
-
-
-
+[tutoringAtHome, tutoringHybrid, tutoringOnline].forEach(element => {
+    element.addEventListener('click', updateUnitFields);
+});
 
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
