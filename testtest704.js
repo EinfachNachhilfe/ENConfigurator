@@ -384,7 +384,9 @@ function removeCodeGenerator(area, codeToRemove) {
 
 textCodeGenerator.textContent = baseCode;
 
-
+let codeValueOnline = "AB";
+let codeValueHybrid = "BA";
+let codeValueAtHome = "CA";
 
 function updateCodeValues() {
     if (tutoringOnline.classList.contains('custom-input-clicked')) {
