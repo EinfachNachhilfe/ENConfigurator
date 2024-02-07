@@ -414,7 +414,7 @@ createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
 createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
 createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring); 
-createInputField(unitSmall, 0, 0, "FB", "Kleine Einheit", areaUnit);
+createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit);
 createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
