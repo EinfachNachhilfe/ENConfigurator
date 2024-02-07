@@ -318,8 +318,7 @@ function calculateTotalCost() {
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract;
 
     //calculate lowest Price
-    let lowesttotalLessonPrice = 20;
-    lowesttotalLessonPrice += 6
+    let lowesttotalLessonPrice = 26;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
 
     
