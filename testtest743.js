@@ -335,7 +335,7 @@ if (unitSmall.classList.contains('custom-input-clicked')) {
     discountbase -= 2.6;
 }
 
-
++
 let discount1 = discountbase - discountUnitSmall;
 let discount2 = discountbase - discountUnitMiddle;
 let discount1percentrage = discount1 / discountbase * 100;
