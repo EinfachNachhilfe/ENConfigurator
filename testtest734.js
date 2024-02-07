@@ -313,7 +313,7 @@ function calculateTotalCost() {
 
 
     //display lesson price
-    //textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ',');
+    textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ',');
     textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
     //textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
     //textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
