@@ -16,26 +16,39 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
 const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
+const couponCode = document.getElementById('coupon-code');
 
+const couponCodes = {
+    "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "schulstartm4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+    "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
+};
+
+const couponCodeElement = document.getElementById('coupon-code');
 
 if (configuratorForm) {
      const buttonTexts = {
         'btnAddTandemLesson': 'Text für Duo Teaching',
         'btnAddOnContractBreak': 'Text für Contract Break',
-        'btnAddOnPremiumTutor': 'Text für Premium Tutor',
-        'btnAddOnExperiencedTutor': 'Text für Experienced Tutor',
-        'btnAddOnAllRoundTutor': 'Text für All Round Tutor',
-        'btnAddOnMale': 'Text für Male Tutor',
-        'btnAddOnFemale': 'Text für Female Tutor',
-        'btnContractLarge': 'Text für Large Contract',
-        'btnContractMiddle': 'Text für Middle Contract',
-        'btnContractSmall': 'Text für Small Contract',
-        'btnUnitLarge': 'Text für Large Unit',
-        'btnUnitMiddle': 'Text für Middle Unit',
-        'btnUnitSmall': 'Text für Small Unit',
-        'btnTutoringOnline': 'Text für Online Tutoring',
-        'btnTutoringHybrid': 'Text für Hybrid Tutoring',
-        'btnTutoringAtHome': 'Text für At Home Tutoring'
+        'btnAddOnPremiumTutor': 'Hier garantieren wir Ihnen die Vermittlung an unsere besten Lehrkräfte mit besonders viel Erfahrung und wertvollen Kompetenzen. Eine Premiumlehrkraft hat mindestens 100 Schulstunden an Unterrichtserfahrung (in der Regel mehr) oder eine bereits abgeschlossene pädagogische Ausbildung, bei der ähnlich viel Praxiserfahrung abverlangt wurde. Darüber hinaus nimmt sie regelmäßig an professionellen Weiterbildungen teil und bringt so Kompetenzen für anspruchsvolle Förderbedarfe mit (Lern- und Sprachstörungen, LRS, Autismus, Dyskalkulie, HDS, usw. ...).',
+        'btnAddOnExperiencedTutor': 'Hier garantieren wir Ihnen den Einsatz einer besonders erfahrenen Lehrkraft. Erfahrene Lehrkräfte haben mindestens 100 Unterrichtsstunden gehalten und dabei bereits die typischen Herausforderungen gemeistert. Sogar Personen mit einer abgeschlossenen pädagogischen Ausbildung mit einer ähnlichen Praxiserfahrung zählen dazu.',
+        'btnAddOnAllRoundTutor': 'Alle Fächer aus einer Hand. Das Kind und Sie müssen sich nicht auf unterschiedliche Lehrkräfte einstellen. Hiermit garantieren wir, dass eine einzige Lehrkraft den Schüler in allen angefragten Fächern fördern kann und entsprechende Kompetenzen mitbringt. Das sorgt für ein noch vertrauteres Verhältnis zwischen Tutor und Lernendem und spart viel Zeit bei Absprachen und der Kommunikation.',
+        'btnAddOnMale': 'Ihr Kind kommt besser mit einer männlichen Bezugsperson klar, kann sich ihr gegenüber besser öffnen, lernt mit ihr besser oder braucht dahingehend eine Vorbildfunktion? Mit diesem Add-On sichern wir Ihnen unter Berücksichtigung der vorausgesetzten Fach- und Sozialkompetenzen einen männlichen Nachhilfelehrer zu.',
+        'btnAddOnFemale': 'Ihr Kind kommt besser mit einer weiblichen Bezugsperson klar, kann sich ihr gegenüber besser öffnen, lernt mit ihr besser oder braucht dahingehend eine Vorbildfunktion?Mit diesem Add-On sichern wir Ihnen unter Berücksichtigung der vorausgesetzten Fach- und Sozialkompetenzen eine weibliche Nachhilfelehrerin zu.',
+        'btnContractLarge': 'Langfristige Förderung, wenn mehr als nur ein Schuljahr kontinuierlich gefördert werden soll. Für alle, die sich einen hervorragenden persönlichen Bezug zu einem langfristigen Lernpartner wünschen.',
+        'btnContractMiddle': 'Sinnvollste Wahl für eine gründliche Förderung. Wir begleiten durch das ganze Schuljahr und arbeiten nachhaltig an guten Noten. Unser bisheriger Elternfavorit.',
+        'btnContractSmall': 'Die Nachhilfe kann jederzeit zum Folgetag gekündigt werden. Für alle, die 100% flexibel sein möchten. Auch geeignet für Prüfungsvorbereitung oder Schulabgänger. Bei diesem Modell fällt ausnahmsweise eine Anmeldegebühr von 69,99 € an. Diese wird Ihnen nach 6 Monaten Vertragsverhältnis jedoch wieder gutgeschrieben.',
+        'btnUnitLarge': 'Für jene, mit großen Schwierigkeiten in einem oder mehreren Fächern. Für schnelle Erfolge oder für Kinder mit einem langsamen Lerntempo, die viel Betreuung benötigen. Insbesondere geeignet für Prüfungsvorbereitung.',
+        'btnUnitMiddle': 'Für alle mit einem ernsten Verbesserungswunsch in einem Fach. 2 Einheiten geben genügend Zeit, um Lerninhalte nachhaltig zu vertiefen.',
+        'btnUnitSmall': 'Für alle, die ihre Note halten oder moderat verbessern möchten. Erfordert eine hohe Eigeninitiative, um auch außerhalb der Nachhilfestunde Aufgaben zu erledigen.',
+        'btnTutoringOnline': 'Für maximale zeitliche und örtliche Flexibilität. Insbesondere für Sprachförderung und mediale Förderung geeignet. Ideal in den Alltag eines älteren Schülers integrierbar.',
+        'btnTutoringHybrid': 'Das Beste aus beiden Welten. Mit allen Vorteilen aus Online- und Vor-Ort-Unterricht. Jeder zweite Unterricht findet bei Ihnen zuhause statt..',
+        'btnTutoringAtHome': 'Die Förderung findet bei Ihnen zu Hause in gewohnter Umgebung statt. Ohne Fahrtaufwand für Sie. Für alle, die maximale persönliche Nähe vorziehen.'
     };
 
         const popup = document.getElementById('popupInformation');
@@ -248,11 +261,11 @@ const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
+let discountUnitMiddle = document.getElementById('discountUnitMiddle');
+let discountUnitLarge = document.getElementById('discountUnitLarge');
 
 
 
-let valueUnitSmall = 6;
-totalLessonPrice += valueUnitSmall;
 
 
    
@@ -269,15 +282,21 @@ function updateTextUnit() {
         textUnitLarge.textContent = '6x45min';
     }
 }
+
+    
 function calculateTotalCost() {
     let multiplierUnit = 2;
     let multiplierContract = 1;
     let  setUpFee = 0;
 
+    
     if (unitMiddle.classList.contains('custom-input-clicked')) {
         multiplierUnit = 4;
+
+
     } else if (unitLarge.classList.contains('custom-input-clicked')) {
         multiplierUnit = 6;
+
     }
 
     if (contractSmall.classList.contains('custom-input-clicked')) {
@@ -289,6 +308,7 @@ function calculateTotalCost() {
         multiplierContract = 24;
     }
 
+
     //calculation months Price
     let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
    
@@ -296,15 +316,28 @@ function calculateTotalCost() {
     let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
     
     //calculation LTV
-    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract;
+    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
+    //calculate lowest Price
+    let lowesttotalLessonPrice = 26;
+    let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
+
+    
 
     //display lesson price
-    //textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ',');
+    textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
+
+       //display lowest Price
+if (totalMonthPrice > lowestTotalMonthPrice) {
+    // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
     textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+} else {
+    // Andernfalls zeigen Sie totalMonthPrice an
+    textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
+}
+
     //textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
     //textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
-
 
 
 
@@ -317,6 +350,7 @@ document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(
 }
 //show the TotalCost directly
 calculateTotalCost();
+
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
@@ -401,7 +435,7 @@ createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
 createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
 createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring); 
-createInputField(unitSmall, 0, 0, "FB", "Kleine Einheit", areaUnit);
+createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit);//totalLessonPrice wird oben addiert
 createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
@@ -536,6 +570,7 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
+    let successMessageElement = document.createElement('span'); 
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -567,6 +602,13 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
+  successMessageElement.id = 'success_message';
+  successMessageElement.style.color = '#589b32';
+  successMessageElement.style.display = 'none';
+  successMessageElement.style.marginTop = '-0.625rem';
+  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
+  successMessageElement.style.fontSize = '0.8rem';
+    
    let errorMessageWrapper;
 
 if (inputElement.type === 'radio') {
@@ -575,9 +617,8 @@ if (inputElement.type === 'radio') {
 } else {
     // Für andere Eingabeelemente
     errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+     successMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 }
-
-// Weiterer Code, um mit dem errorMessageWrapper zu arbeiten...
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
 
@@ -611,6 +652,8 @@ if (inputElement.type === 'radio') {
         validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
         invalidSymbol.style.display = 'none';
         errorMessageElement.style.display = 'none';
+        successMessageElement.innerHTML = matchedPattern.message;
+        successMessageElement.style.display = 'block';
     } else {
         errorMessageElement.innerHTML = invalidErrorMsg;
         errorMessageElement.style.display = 'block';
@@ -782,6 +825,27 @@ if (emailContactPerson) {
 
 
 
+if (couponCodeElement) {
+    specificElements.push({
+        element: couponCodeElement,
+        pattern: Object.keys(couponCodes).map(code => couponCodes[code].regex.source).join("|"),
+        invalidErrorMsg: 'Bitte geben Sie einen gültigen Gutscheincode ein.',
+        validate: function(inputValue) {
+            let isValid = false;
+            let message = '';
+            Object.values(couponCodes).forEach(code => {
+                if (code.regex.test(inputValue)) {
+                    isValid = true;
+                    message = code.message;
+                }
+            });
+            return { isValid, message };
+        }
+    });
+}
+
+
+
 allInputs.forEach(inputElement => {
     // Überprüfen, ob das aktuelle Element in der Liste der spezifischen Elemente ist
     if (!specificElements.some(e => e.element === inputElement)) {
@@ -796,9 +860,6 @@ specificElements.forEach(({element, pattern, invalidErrorMsg}) => {
     let emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
     applyValidation(element, emptyErrorMsg, invalidErrorMsg, pattern);
 });
- 
-
-
 
 //start function shake
 function shakeOnInvalid(input) {
