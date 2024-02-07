@@ -328,10 +328,10 @@ function calculateTotalCost() {
        //display lowest Price
 if (totalMonthPrice > lowestTotalMonthPrice) {
     // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
-    textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
+    textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 } else {
     // Andernfalls zeigen Sie totalMonthPrice an
-    textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+    textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
 }
 
     //textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
