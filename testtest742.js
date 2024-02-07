@@ -308,6 +308,7 @@ function calculateTotalCost() {
         multiplierContract = 24;
     }
 
+
     //calculation months Price
     let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
    
@@ -315,13 +316,35 @@ function calculateTotalCost() {
     let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
     
     //calculation LTV
-    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract;
+    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
     //calculate lowest Price
     let lowesttotalLessonPrice = 26;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
 
     
+
+let discountbase = 6; 
+discountbase += totalMonthPrice
+let discountUnitSmall = 6; 
+let discountUnitMiddle = 2.6; 
+   
+if (unitSmall.classList.contains('custom-input-clicked')) {
+    discountbase -= 6;
+} else if (unitMiddle.classList.contains('custom-input-clicked')) {
+    discountbase -= 2.6;
+}
+
+
+let discount1 = discountbase - discountUnitSmall;
+let discount2 = discountbase - discountUnitMiddle;
+let discount1percentrage = discount1 / discountbase * 100;
+let discount2percentrage = discount2 / discountbase * 100;
+
+discountUnitMiddle.textContent = discount1percentrage.toFixed(2).replace('.', ','); 
+discountUnitLarge.textContent = discount2percentrage.toFixed(2).replace('.', ','); 
+
+   
     //display lesson price
     textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
 
