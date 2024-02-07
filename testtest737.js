@@ -265,8 +265,7 @@ let discountUnitMiddle = document.getElementById('discountUnitMiddle');
 let discountUnitLarge = document.getElementById('discountUnitLarge');
 
 
-let valueUnitSmall = 6;
-totalLessonPrice += valueUnitSmall;
+
 
 
    
@@ -289,11 +288,17 @@ function calculateTotalCost() {
     let multiplierUnit = 2;
     let multiplierContract = 1;
     let  setUpFee = 0;
+    let valueUnitSmall = 6;
+    
+    totalLessonPrice += valueUnitSmall;
 
     if (unitMiddle.classList.contains('custom-input-clicked')) {
         multiplierUnit = 4;
+        totalLessonPrice -= valueUnitSmall;
+
     } else if (unitLarge.classList.contains('custom-input-clicked')) {
         multiplierUnit = 6;
+        totalLessonPrice -= valueUnitSmall;
     }
 
     if (contractSmall.classList.contains('custom-input-clicked')) {
