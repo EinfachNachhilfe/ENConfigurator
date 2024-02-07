@@ -261,7 +261,8 @@ const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
-
+let discountUnitMiddle = document.getElementById('discountUnitMiddle');
+let discountUnitLarge = document.getElementById('discountUnitLarge');
 
 
 let valueUnitSmall = 6;
@@ -282,6 +283,8 @@ function updateTextUnit() {
         textUnitLarge.textContent = '6x45min';
     }
 }
+
+    
 function calculateTotalCost() {
     let multiplierUnit = 2;
     let multiplierContract = 1;
@@ -330,6 +333,7 @@ document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(
 }
 //show the TotalCost directly
 calculateTotalCost();
+
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
 let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
@@ -414,7 +418,7 @@ createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
 createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
 createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring); 
-createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit);
+createInputField(unitSmall, 0, 0, "FB", "Kleine Einheit", areaUnit);//totalLessonPrice wird oben addiert
 createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
