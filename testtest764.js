@@ -273,6 +273,8 @@ const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
+    
+const textdiscountUnit = document.getElementById('textdiscountUnit');    
 let textdiscountUnitMiddle = document.getElementById('textdiscountUnitMiddle');
 let textdiscountUnitLarge = document.getElementById('textdiscountUnitLarge');
 
@@ -339,6 +341,9 @@ function calculateTotalCost() {
     //display lesson price
     textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
 
+    //display discountUnit price
+    textdiscountUnit.textContent = discountUnit.toFixed(2).replace('.', ','); 
+
        //display lowest Price
 if (totalMonthPrice > lowestTotalMonthPrice) {
     // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
@@ -352,13 +357,13 @@ if (totalMonthPrice > lowestTotalMonthPrice) {
     //textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
 
 
-
+//send value to form
 document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
 document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
-
+//calculate and display discount to unit
     let discountUnitSmall = discountUnit + valueUnitSmall;
     let discountUnitMiddle = discountUnit + valueUnitMiddle;
     let discountUnitLarge = discountUnit + valueUnitLarge;
@@ -366,9 +371,9 @@ document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(
     let totalDiscountUnitMiddle = discountUnitSmall * (discountUnitMiddle/100);
     let totalDiscountUnitLarge = discountUnitSmall * (discountUnitLarge/100);
 
-        //discount Unit
-    textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(2).replace('.', ','); 
-    textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(2).replace('.', ','); 
+textdiscountUnitMiddle.textContent = Math.round(totalDiscountUnitMiddle).toString();
+textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
+
 
 }
 
