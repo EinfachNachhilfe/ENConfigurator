@@ -341,10 +341,10 @@ if (totalMonthPrice > lowestTotalMonthPrice) {
 
 
 
-document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2).replace('.', ',');
-document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2).replace('.', ',');
-document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2).replace('.', ',');
-document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2).replace('.', ',');
+document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
+document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
+document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
+document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
 
 }
@@ -415,39 +415,39 @@ function removeCodeGenerator(area, codeToRemove) {
 textCodeGenerator.textContent = baseCode;
 
     
-createInputField(subjectGerman, 0, 0, "AA", "Deutsch", areaSubject);
-createInputField(subjectEnglish, 0, 0, "BA", "Englisch", areaSubject);
-createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik", areaSubject);
-createInputField(subjectFrench, 1.2, 0, "DA", "Französisch", areaSubject);
-createInputField(subjectLatin, 1.4, 0, "EA", "Latein", areaSubject);
-createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch", areaSubject);
-createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch", areaSubject);
-createInputField(subjectPhysics, 1.2, 0, "HA", "Physik", areaSubject);
-createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie", areaSubject);
-createInputField(subjectBiology, 0.8, 0, "JA", "Biologie", areaSubject);
-createInputField(subjectGeography, 0.2, 0, "KA", "Geographie", areaSubject);
-createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte", areaSubject);
-createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde", areaSubject);
-createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik", areaSubject);
-createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport", areaSubject);
-createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft", areaSubject);
-createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges", areaSubject);
-createInputField(tutoringOnline, 0, 0, "AB", "Online Nachhilfe", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, "BA", "Hybrid Nachhilfe", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Nachhilfe zu Hause", areaTutoring); 
+createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject);
+createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject);
+createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject);
+createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject);
+createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject);
+createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject);
+createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject);
+createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject);
+createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject);
+createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject);
+createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject);
+createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject);
+createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject);
+createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject);
+createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject);
+createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject);
+createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject);
+createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring);
+createInputField(tutoringHybrid, 2, 0, "BA", "50% online 50% vor Ort", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Zuhause", areaTutoring); 
 createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit);//totalLessonPrice wird oben addiert
 createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
 createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
-createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer", areaAddOn);
-createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer", areaAddOn);
-createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause", areaAddOn);
-createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht", areaAddOn);
-createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer", areaAddOn);
-createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer", areaAddOn);
-createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin", areaAddOn);
+createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer,", areaAddOn);
+createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer,", areaAddOn);
+createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause,", areaAddOn);
+createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht,", areaAddOn);
+createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer,", areaAddOn);
+createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer,", areaAddOn);
+createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin,", areaAddOn);
 }
 //end configurator
 
