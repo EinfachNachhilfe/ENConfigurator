@@ -368,7 +368,7 @@ document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(
     let discountUnitLarge = discountUnit + valueUnitLarge;
 
     let totalDiscountUnitMiddle = 1 - (discountUnitMiddle/discountUnitSmall)*100;
-    let totalDiscountUnitMiddle = 1 - (discountUnitLarge/discountUnitSmall)*100;
+    let totalDiscountUnitLarge = 1 - (discountUnitLarge/discountUnitSmall)*100;
 
     textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(1).replace('.', ','); 
     textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(1).replace('.', ','); 
