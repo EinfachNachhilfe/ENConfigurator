@@ -164,10 +164,14 @@ manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' )
 let basePrice = 20;   
 let totalLessonPrice = basePrice;
 let discountUnit = basePrice;
+let discountContract = basePrice;   
 let tutorSalary = 12;
 let valueUnitSmall = 6;
 let valueUnitMiddle = 2.6;
 let valueUnitLarge = 0;
+let valueContractSmall = 6.8;
+let valueContractMiddle = 2;
+let valueContractLarge = 0;
     
 
 const subjectMathematics = document.getElementById('subjectMathematics');
@@ -189,7 +193,7 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
 
-function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable = false) {
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit = false, isDiscountableContract = false) {
   
     
     // Beobachtet Änderungen an den Klassen der Elemente
@@ -197,7 +201,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         mutations.forEach(mutation => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
-                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable);
+                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract);
             }
         });
     });
@@ -212,7 +216,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
     let shouldUpdateCode = false;
@@ -233,8 +237,12 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             isAdding = true;
 
             // Füge den Rabatt hinzu, wenn das Element für einen Rabatt qualifiziert ist
-            if (isDiscountable) {
+            if (isDiscountableUnit) {
                 discountUnit += additionalLessonCost; // Hinzufügen zum Rabatt
+            }
+
+                if (isDiscountableContract) {
+                discountContract += additionalLessonCost; // Hinzufügen zum Rabatt
             }
         }
     } else {
@@ -245,10 +253,16 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             shouldUpdateCode = true;
             isAdding = false;
 
-            // Ziehe den Rabatt ab, wenn das Element zuvor ausgewählt war und für einen Rabatt qualifiziert ist
-            if (isDiscountable && inputField) { // Überprüfe auch, ob inputField existiert, um sicherzustellen, dass das Element zuvor ausgewählt war
-                discountUnit -= additionalLessonCost; // Abziehen vom Rabatt
+        
+            if (isDiscountableUnit && inputField) {
+                discountUnit -= additionalLessonCost;
             }
+
+            if (isDiscountableContract && inputField) {
+                discountContract -= additionalLessonCost;
+            }
+
+            
         }
     }
 
@@ -272,12 +286,12 @@ const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
-    
-const textdiscountUnit = document.getElementById('textdiscountUnit');    
+     
 let textdiscountUnitMiddle = document.getElementById('textdiscountUnitMiddle');
 let textdiscountUnitLarge = document.getElementById('textdiscountUnitLarge');
 
-
+let textdiscountContractMiddle = document.getElementById('discountContractMiddle');
+let textdiscountContractLarge = document.getElementById('discountContractLarge');
 
 
 
@@ -340,9 +354,6 @@ function calculateTotalCost() {
     //display lesson price
     textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
 
-    //display discountUnit price
-    textdiscountUnit.textContent = discountUnit.toFixed(2).replace('.', ','); 
-
        //display lowest Price
 if (totalMonthPrice > lowestTotalMonthPrice) {
     // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
@@ -352,9 +363,6 @@ if (totalMonthPrice > lowestTotalMonthPrice) {
     textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
 }
 
-    //textTotalTutorSalary.textContent = tutorSalary.toFixed(2).replace('.', ',');
-    //textTotalLtv.textContent = valueTotalLtv.toFixed(2).replace('.', ',');
-
 
 //send value to form
 document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
@@ -363,26 +371,28 @@ document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
 //calculate and display discount to unit
-    let discountUnitSmall = discountUnit + valueUnitSmall;
-    let discountUnitMiddle = discountUnit + valueUnitMiddle;
-    let discountUnitLarge = discountUnit + valueUnitLarge;
+let discountUnitSmall = discountUnit + valueUnitSmall;
+let discountUnitMiddle = discountUnit + valueUnitMiddle;
+let discountUnitLarge = discountUnit + valueUnitLarge;
     
 let totalDiscountUnitMiddle = ((discountUnitSmall - discountUnitMiddle) / discountUnitSmall) * 100;
 let totalDiscountUnitLarge = ((discountUnitSmall - discountUnitLarge) / discountUnitSmall) * 100;
-
-
-    console.log(discountUnitSmall);
-    console.log(discountUnitMiddle);
-    console.log(discountUnitLarge);
-        console.log(totalDiscountUnitMiddle);
-        console.log(totalDiscountUnitLarge);
-    
+   
 textdiscountUnitMiddle.textContent = Math.round(totalDiscountUnitMiddle).toString();
 textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
 
+//calculate and display discount to contract
+let discountContractSmall = discountContract + valueContractSmall;
+let discountContractMiddle = discountContract + valueContractMiddle;
+let discountContractLarge = discountContract + valueContractLarge;
 
+let totalDiscountContractMiddle = ((discountContractSmall - discountContractMiddle) / discountContractSmall) * 100;
+let totalDiscountContractLarge = ((discountContractSmall - discountContractLarge) / discountContractSmall) * 100;
+    
+textdiscountContractMiddle.textContent = Math.round(totalDiscountContractMiddle).toString();
+textdiscountContractLarge.textContent = Math.round(totalDiscountContractLarge).toString();
 
-
+    
 }
 
 //show the TotalCost directly
@@ -453,32 +463,32 @@ textCodeGenerator.textContent = baseCode;
 
 
     
-createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true);
-createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true);
-createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true);
-createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject, true);
-createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject, true);
-createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject, true);
-createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject, true);
-createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject, true);
-createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject, true);
-createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject, true);
-createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject, true);
-createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject, true);
-createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject, true);
-createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject, true);
-createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, true);
-createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true);
-createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true);
-createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true);
-createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring, true);
-createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring, true); 
-createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit);
-createInputField(unitMiddle, valueUnitMiddle, 0, "DB", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, valueUnitLarge, 0, "BB", "Große Einheit", areaUnit);
-createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
-createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
-createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
+createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true);
+createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true, true);
+createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true, true);
+createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject, true, true);
+createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject, true, true);
+createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject, true, true);
+createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject, true, true);
+createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject, true, true);
+createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject, true, true);
+createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject, true, true);
+createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject, true, true);
+createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject, true, true);
+createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject, true, true);
+createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject, true, true);
+createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, true, true);
+createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true, true);
+createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true, true);
+createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true, true);
+createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring, true, true);
+createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring, true, true); 
+createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit, false, true);
+createInputField(unitMiddle, valueUnitMiddle, 0, "DB", "Mittlere Einheit", areaUnit, false, true);
+createInputField(unitLarge, valueUnitLarge, 0, "BB", "Große Einheit", areaUnit, false, true);
+createInputField(contractSmall, valueContractSmall, 0, "CA", "0 Monate", areaContract);
+createInputField(contractMiddle, valueContractMiddle, 0, "BA", "12 Monate", areaContract);
+createInputField(contractLarge, valueContractLarge, 0, "AA", "24 Monate", areaContract);
 createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer,", areaAddOn);
 createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer,", areaAddOn);
 createInputField(addOnContractBreak, 1.5, 0, "EB", "Vertragspause,", areaAddOn);
