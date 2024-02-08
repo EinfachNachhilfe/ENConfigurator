@@ -414,6 +414,30 @@ function removeCodeGenerator(area, codeToRemove) {
 
 textCodeGenerator.textContent = baseCode;
 
+
+// Funktion zur Berechnung der Rabattprozentsätze
+function calculateDiscountPercentage(basePrice, comparisonPrice) {
+    let discountAmount = basePrice - comparisonPrice;
+    let discountPercentage = (discountAmount / basePrice) * 100;
+    return discountPercentage.toFixed(2); // Rundet das Ergebnis auf zwei Dezimalstellen
+}
+
+// Annahme: totalLessonPrice wird irgendwie berechnet und aktualisiert
+let totalLessonPriceSmall; // Wird basierend auf Benutzerauswahl gesetzt
+let totalLessonPriceMiddle; // Wird basierend auf Benutzerauswahl gesetzt
+let totalLessonPriceLarge; // Wird basierend auf Benutzerauswahl gesetzt
+
+// Diese Funktion muss aufgerufen werden, nachdem totalLessonPrice für jede Einheit aktualisiert wurde
+function updateDiscountDisplays() {
+    // Angenommen, die Preise wurden bereits entsprechend der Auswahl aktualisiert
+    let discountPercentageMiddle = calculateDiscountPercentage(totalLessonPriceSmall, totalLessonPriceMiddle);
+    let discountPercentageLarge = calculateDiscountPercentage(totalLessonPriceSmall, totalLessonPriceLarge);
+
+    // Annahme: discountUnitMiddle und discountUnitLarge sind Elemente zur Anzeige der Rabatte
+    document.getElementById('discountUnitMiddle').textContent = `${discountPercentageMiddle}% günstiger als Unit Small`;
+    document.getElementById('discountUnitLarge').textContent = `${discountPercentageLarge}% günstiger als Unit Small`;
+}
+
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject);
