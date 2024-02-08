@@ -162,10 +162,13 @@ manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked
 manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', 'disable' );
 manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' );
 
-   
-let totalLessonPrice = 20;
-let discountUnit = 20;
+let basePrice = 20;   
+let totalLessonPrice = basePrice;
+let discountUnit = basePrice;
 let tutorSalary = 12;
+let valueUnitSmall = 6;
+let valueUnitMiddle = 2.6;
+let valueUnitLarge = 0;
     
 
 const subjectMathematics = document.getElementById('subjectMathematics');
@@ -328,7 +331,7 @@ function calculateTotalCost() {
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
     //calculate lowest Price
-    let lowesttotalLessonPrice = 26;
+    let lowesttotalLessonPrice = basePrice + valueUnitSmall;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
 
     
@@ -448,9 +451,9 @@ createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true);
 createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true);
 createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring, true);
 createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring, true); 
-createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit, true);
-createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit, true);
-createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit, true);
+createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, valueUnitMiddle, 0, "DB", "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, valueUnitLarge, 0, "BB", "Große Einheit", areaUnit);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
 createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
