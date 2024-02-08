@@ -259,7 +259,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             removeCodeGenerator(area, codeGenerator);
         }
     }
-}
+  }
 
 
 
@@ -358,7 +358,7 @@ document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
-
+}
 
 //show the TotalCost directly
 calculateTotalCost();
@@ -461,9 +461,9 @@ createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht,", areaAddOn
 createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer,", areaAddOn);
 createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer,", areaAddOn);
 createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin,", areaAddOn);
-}
-//end configurator
 
+//end configurator
+}
 
 
 //start stepchange with enter
