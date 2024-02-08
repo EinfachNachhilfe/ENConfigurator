@@ -370,8 +370,8 @@ document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(
    let totalDiscountUnitMiddle = discountUnitSmall * ((discountUnitSmall - discountUnitMiddle) /100);
     let totalDiscountUnitLarge = discountUnitSmall * ((discountUnitSmall -discountUnitLarge) /100);
 
-    textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(1).replace('.', ','); 
-    textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(1).replace('.', ','); 
+    textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(2).replace('.', ','); 
+    textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(2).replace('.', ','); 
 
 
 }
