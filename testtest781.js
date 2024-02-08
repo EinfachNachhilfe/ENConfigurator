@@ -285,7 +285,7 @@ const textUnitLarge= document.getElementById('textUnitLarge');
 const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
-const textLessonPrice = document.getElementById('textLessonPrice');
+
      
 let textdiscountUnitMiddle = document.getElementById('textdiscountUnitMiddle');
 let textdiscountUnitLarge = document.getElementById('textdiscountUnitLarge');
@@ -348,11 +348,6 @@ function calculateTotalCost() {
     //calculate lowest Price
     let lowesttotalLessonPrice = basePrice + valueUnitSmall;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
-
-    
-
-    //display lesson price
-    textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
 
        //display lowest Price
 if (totalMonthPrice > lowestTotalMonthPrice) {
