@@ -1,4 +1,3 @@
-
 //start general
 const nextBtn = document.querySelector('#nextBtn');
 const prevBtn = document.querySelector('#prevBtn');
@@ -190,25 +189,15 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
 
-function createInputField(options) {
-   const {
-        elementOrElements,
-        additionalLessonCost = 0,
-        additionalLessonTutorSalary = 0,
-        codeGenerator,
-        defaultValue,
-        area,
-        isDiscountableUnit = false,
-        isDiscountableContract = false
-    } = options;
-
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable = false) {
+  
     
     // Beobachtet Änderungen an den Klassen der Elemente
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
-                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract);
+                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable);
             }
         });
     });
@@ -223,7 +212,7 @@ function createInputField(options) {
 }
 
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
     let shouldUpdateCode = false;
@@ -381,8 +370,8 @@ document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(
     let totalDiscountUnitMiddle = discountUnitSmall * ((discountUnitSmall - discountUnitMiddle) /100);
     let totalDiscountUnitLarge = discountUnitSmall * ((discountUnitSmall -discountUnitLarge) /100);
 
-    textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(2).replace('.', ','); 
-    textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(2).replace('.', ','); 
+    textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(1).replace('.', ','); 
+    textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(1).replace('.', ','); 
 
 
 }
@@ -455,39 +444,39 @@ textCodeGenerator.textContent = baseCode;
 
 
     
-createInputField({ elementOrElements: subjectGerman, additionalLessonCost: 0, additionalLessonTutorSalary: 0, codeGenerator: "AA", defaultValue: "Deutsch,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectEnglish, additionalLessonCost: 0, additionalLessonTutorSalary: 0, codeGenerator: "BA", defaultValue: "Englisch,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectMathematics, additionalLessonCost: 0.6, additionalLessonTutorSalary: 0, codeGenerator: "CA", defaultValue: "Mathematik,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectFrench, additionalLessonCost: 1.2, additionalLessonTutorSalary: 0, codeGenerator: "DA", defaultValue: "Französisch,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectLatin, additionalLessonCost: 1.4, additionalLessonTutorSalary: 0, codeGenerator: "EA", defaultValue: "Latein,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectSpanish, additionalLessonCost: 0.8, additionalLessonTutorSalary: 0, codeGenerator: "FA", defaultValue: "Spanisch,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectItalian, additionalLessonCost: 1.2, additionalLessonTutorSalary: 0, codeGenerator: "GA", defaultValue: "Italienisch,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectPhysics, additionalLessonCost: 1.2, additionalLessonTutorSalary: 0, codeGenerator: "HA", defaultValue: "Physik,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectChemistry, additionalLessonCost: 1.4, additionalLessonTutorSalary: 0, codeGenerator: "IA", defaultValue: "Chemie,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectBiology, additionalLessonCost: 0.8, additionalLessonTutorSalary: 0, codeGenerator: "JA", defaultValue: "Biologie,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectGeography, additionalLessonCost: 0.2, additionalLessonTutorSalary: 0, codeGenerator: "KA", defaultValue: "Geographie,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectHistory, additionalLessonCost: 0.2, additionalLessonTutorSalary: 0, codeGenerator: "LA", defaultValue: "Geschichte,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectSocialStudies, additionalLessonCost: 0.2, additionalLessonTutorSalary: 0, codeGenerator: "MA", defaultValue: "Sozialkunde,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectComputerScience, additionalLessonCost: 1.6, additionalLessonTutorSalary: 0, codeGenerator: "NA", defaultValue: "Informatik,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectPhysicalEducation, additionalLessonCost: 0.8, additionalLessonTutorSalary: 0, codeGenerator: "OA", defaultValue: "Sport,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectEconomics, additionalLessonCost: 1.4, additionalLessonTutorSalary: 0, codeGenerator: "PA", defaultValue: "Wirtschaft,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: subjectOther, additionalLessonCost: 2.2, additionalLessonTutorSalary: 0, codeGenerator: "QA", defaultValue: "Sonstiges,", area: areaSubject, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: tutoringOnline, additionalLessonCost: 0, additionalLessonTutorSalary: 0, codeGenerator: "AB", defaultValue: "Online", area: areaTutoring, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: tutoringHybrid, additionalLessonCost: 2, additionalLessonTutorSalary: 0, codeGenerator: "BB", defaultValue: "50% online 50% vor Ort", area: areaTutoring, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: tutoringAtHome, additionalLessonCost: 4.2, additionalLessonTutorSalary: 1.5, codeGenerator: "CB", defaultValue: "Zuhause", area: areaTutoring, isDiscountableUnit: true, isDiscountableContract: true });
-createInputField({ elementOrElements: unitSmall, additionalLessonCost: valueUnitSmall, additionalLessonTutorSalary: 0, codeGenerator: "FB", defaultValue: "Kleine Einheit", area: areaUnit, isDiscountableContract: true });
-createInputField({ elementOrElements: unitMiddle, additionalLessonCost: valueUnitMiddle, additionalLessonTutorSalary: 0, codeGenerator: "DB", defaultValue: "Mittlere Einheit", area: areaUnit, isDiscountableContract: true });
-createInputField({ elementOrElements: unitLarge, additionalLessonCost: valueUnitLarge, additionalLessonTutorSalary: 0, codeGenerator: "BB", defaultValue: "Große Einheit", area: areaUnit, isDiscountableContract: true });
-createInputField({ elementOrElements: contractSmall, additionalLessonCost: 6.8, additionalLessonTutorSalary: 0, codeGenerator: "CA", defaultValue: "0 Monate", area: areaContract });
-createInputField({ elementOrElements: contractMiddle, additionalLessonCost: 2, additionalLessonTutorSalary: 0, codeGenerator: "BA", defaultValue: "12 Monate", area: areaContract });
-createInputField({ elementOrElements: contractLarge, additionalLessonCost: 0, additionalLessonTutorSalary: 0, codeGenerator: "AA", defaultValue: "24 Monate", area: areaContract });
-createInputField({ elementOrElements: addOnAllRoundTutor, additionalLessonCost: 0.6, additionalLessonTutorSalary: 0, codeGenerator: "DA", defaultValue: "Allround-Nachhilfelehrer,", area: areaAddOn });
-createInputField({ elementOrElements: addOnExperiencedTutor, additionalLessonCost: 1.2, additionalLessonTutorSalary: 0.45, codeGenerator: "QA", defaultValue: "Erfahrener Nachhilfelehrer,", area: areaAddOn });
-createInputField({ elementOrElements: addOnContractBreak, additionalLessonCost: 1.5, additionalLessonTutorSalary: 0, codeGenerator: "EB", defaultValue: "Vertragspause,", area: areaAddOn });
-createInputField({ elementOrElements: addTandemLesson, additionalLessonCost: 10, additionalLessonTutorSalary: 1.5, codeGenerator: "FA", defaultValue: "Tandem-Unterricht,", area: areaAddOn });
-createInputField({ elementOrElements: addOnPremiumTutor, additionalLessonCost: 2.6, additionalLessonTutorSalary: 0.75, codeGenerator: "MA", defaultValue: "Premium Nachhilfelehrer,", area: areaAddOn });
-createInputField({ elementOrElements: addOnMale, additionalLessonCost: 0.4, additionalLessonTutorSalary: 0, codeGenerator: "BA", defaultValue: "Nachhilfelehrer,", area: areaAddOn });
-createInputField({ elementOrElements: addOnFemale, additionalLessonCost: 0.4, additionalLessonTutorSalary: 0, codeGenerator: "CA", defaultValue: "Nachhilfelehrerin,", area: areaAddOn });
+createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true);
+createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true);
+createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true);
+createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject, true);
+createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject, true);
+createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject, true);
+createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject, true);
+createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject, true);
+createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject, true);
+createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject, true);
+createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject, true);
+createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject, true);
+createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject, true);
+createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject, true);
+createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, true);
+createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true);
+createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true);
+createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true);
+createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring, true);
+createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring, true); 
+createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit);
+createInputField(unitMiddle, valueUnitMiddle, 0, "DB", "Mittlere Einheit", areaUnit);
+createInputField(unitLarge, valueUnitLarge, 0, "BB", "Große Einheit", areaUnit);
+createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
+createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
+createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
+createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer,", areaAddOn);
+createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer,", areaAddOn);
+createInputField(addOnContractBreak, 1.5, 0, "EB", "Vertragspause,", areaAddOn);
+createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht,", areaAddOn);
+createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer,", areaAddOn);
+createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer,", areaAddOn);
+createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin,", areaAddOn);
 
 //end configurator
 }
