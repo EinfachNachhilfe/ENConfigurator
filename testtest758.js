@@ -213,18 +213,12 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
-    let shouldUpdateCode = false; // Flag, um zu überprüfen, ob ein Update erforderlich ist
-    let isAdding = false; // Flag, um zu bestimmen, ob wir hinzufügen oder entfernen
+    let shouldUpdateCode = false;
+    let isAdding = false;
 
- if (isDiscountable && element.classList.contains('custom-input-clicked')) {
- discountUnit += additionalLessonCost
-    } else
-     discountUnit -= additionalLessonCost 
-}
-    
+    // Überprüfe, ob das Element ausgewählt ist
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
-            // Erstellt ein neues Eingabefeld, wenn es noch nicht existiert
             inputField = document.createElement('input');
             inputField.type = 'hidden';
             inputField.id = 'input_' + inputFieldName;
@@ -233,28 +227,36 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             configuratorForm.appendChild(inputField);
             totalLessonPrice += additionalLessonCost;
             tutorSalary += additionalLessonTutorSalary;
-            shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element ausgewählt wurde
-            isAdding = true; // Wir fügen hinzu
+            shouldUpdateCode = true;
+            isAdding = true;
+
+            // Füge den Rabatt hinzu, wenn das Element für einen Rabatt qualifiziert ist
+            if (isDiscountable) {
+                discountUnit += additionalLessonCost; // Hinzufügen zum Rabatt
+            }
         }
     } else {
         if (inputField) {
-            // Entfernt das Eingabefeld, wenn es existiert und das Element nicht mehr ausgewählt ist
             configuratorForm.removeChild(inputField);
             totalLessonPrice -= additionalLessonCost;
             tutorSalary -= additionalLessonTutorSalary;
-            shouldUpdateCode = true; // Aktualisierung erforderlich, da ein Element abgewählt wurde
-            isAdding = false; // Wir entfernen
+            shouldUpdateCode = true;
+            isAdding = false;
+
+            // Ziehe den Rabatt ab, wenn das Element zuvor ausgewählt war und für einen Rabatt qualifiziert ist
+            if (isDiscountable && inputField) { // Überprüfe auch, ob inputField existiert, um sicherzustellen, dass das Element zuvor ausgewählt war
+                discountUnit -= additionalLessonCost; // Abziehen vom Rabatt
+            }
         }
     }
 
     if (shouldUpdateCode) {
-        // Führt die erforderlichen Aktualisierungen durch, wenn Änderungen vorgenommen wurden
-        calculateTotalCost();
+        calculateTotalCost(); // Stelle sicher, dass diese Funktion den Rabatt berücksichtigt
         updateTextUnit();
         if (isAdding) {
-            updateCodeGenerator(area, codeGenerator); // Fügt den Code hinzu, wenn ein Element ausgewählt wurde
+            updateCodeGenerator(area, codeGenerator);
         } else {
-            removeCodeGenerator(area, codeGenerator); // Entfernt den Code, wenn ein Element abgewählt wurde
+            removeCodeGenerator(area, codeGenerator);
         }
     }
 }
