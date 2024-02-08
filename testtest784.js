@@ -269,7 +269,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             }
 
             if (isDiscountableTandemLesson  && inputField) {
-                discountAddOnOther += additionalLessonCost; 
+                discountAddOnOther -= additionalLessonCost; 
             }
             
         }
