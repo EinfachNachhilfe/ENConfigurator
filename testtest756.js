@@ -164,6 +164,7 @@ manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' )
 
    
 let totalLessonPrice = 20;
+let discountUnit = 20;
 let tutorSalary = 12;
     
 
@@ -186,7 +187,7 @@ const subjectEconomics = document.getElementById('subjectEconomics');
 const subjectOther = document.getElementById('subjectOther');
 
 
-function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function createInputField(elementOrElements, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable = false) {
   
     
     // Beobachtet Änderungen an den Klassen der Elemente
@@ -194,7 +195,7 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
         mutations.forEach(mutation => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const targetElement = mutation.target;
-                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area);
+                handleClassChange(targetElement, additionalLessonCost,additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable);
             }
         });
     });
@@ -209,12 +210,18 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 }
 
     
-function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area) {
+function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountable) {
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
     let shouldUpdateCode = false; // Flag, um zu überprüfen, ob ein Update erforderlich ist
     let isAdding = false; // Flag, um zu bestimmen, ob wir hinzufügen oder entfernen
 
+ if (isDiscountable && element.classList.contains('custom-input-clicked')) {
+ discountUnit += additionalLessonCost
+    } else
+     discountUnit -= additionalLessonCost 
+}
+    
     if (element.classList.contains('custom-input-clicked')) {
         if (!inputField) {
             // Erstellt ein neues Eingabefeld, wenn es noch nicht existiert
@@ -263,7 +270,7 @@ const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
 let discountUnitMiddle = document.getElementById('discountUnitMiddle');
 let discountUnitLarge = document.getElementById('discountUnitLarge');
-
+const textdiscountUnit = document.getElementById('textdiscountUnit');
 
 
 
@@ -326,6 +333,9 @@ function calculateTotalCost() {
 
     //display lesson price
     textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
+
+        //discount Unit
+    textdiscountUnit.textContent = discountUnit.toFixed(2).replace('.', ','); 
 
        //display lowest Price
 if (totalMonthPrice > lowestTotalMonthPrice) {
@@ -415,53 +425,30 @@ function removeCodeGenerator(area, codeToRemove) {
 textCodeGenerator.textContent = baseCode;
 
 
-// Funktion zur Berechnung der Rabattprozentsätze
-function calculateDiscountPercentage(basePrice, comparisonPrice) {
-    let discountAmount = basePrice - comparisonPrice;
-    let discountPercentage = (discountAmount / basePrice) * 100;
-    return discountPercentage.toFixed(2); // Rundet das Ergebnis auf zwei Dezimalstellen
-}
-
-// Annahme: totalLessonPrice wird irgendwie berechnet und aktualisiert
-let totalLessonPriceSmall; // Wird basierend auf Benutzerauswahl gesetzt
-let totalLessonPriceMiddle; // Wird basierend auf Benutzerauswahl gesetzt
-let totalLessonPriceLarge; // Wird basierend auf Benutzerauswahl gesetzt
-
-// Diese Funktion muss aufgerufen werden, nachdem totalLessonPrice für jede Einheit aktualisiert wurde
-function updateDiscountDisplays() {
-    // Angenommen, die Preise wurden bereits entsprechend der Auswahl aktualisiert
-    let discountPercentageMiddle = calculateDiscountPercentage(totalLessonPriceSmall, totalLessonPriceMiddle);
-    let discountPercentageLarge = calculateDiscountPercentage(totalLessonPriceSmall, totalLessonPriceLarge);
-
-    // Annahme: discountUnitMiddle und discountUnitLarge sind Elemente zur Anzeige der Rabatte
-    document.getElementById('discountUnitMiddle').textContent = `${discountPercentageMiddle}% günstiger als Unit Small`;
-    document.getElementById('discountUnitLarge').textContent = `${discountPercentageLarge}% günstiger als Unit Small`;
-}
-
     
-createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject);
-createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject);
-createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject);
-createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject);
-createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject);
-createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject);
-createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject);
-createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject);
-createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject);
-createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject);
-createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject);
-createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject);
-createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject);
-createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject);
-createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject);
-createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject);
-createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject);
-createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring); 
-createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit);//totalLessonPrice wird oben addiert
-createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
-createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
+createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true);
+createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true);
+createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true);
+createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject, true);
+createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject, true);
+createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject, true);
+createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject, true);
+createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject, true);
+createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject, true);
+createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject, true);
+createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject, true);
+createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject, true);
+createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject, true);
+createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject, true);
+createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, true);
+createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true);
+createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true);
+createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true);
+createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring, true);
+createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring, true); 
+createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit, true);
+createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit, true);
+createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit, true);
 createInputField(contractSmall, 6.8, 0, "CA", "0 Monate", areaContract);
 createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
