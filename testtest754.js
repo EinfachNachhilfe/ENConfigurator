@@ -353,7 +353,7 @@ calculateTotalCost();
 
 
 const textCodeGenerator = document.getElementById('textCodeGenerator');
-let baseCode = "A-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
+let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
 const areaSubject = { start: 2, end: 8 };
 const areaTutoring = { start: 9, end: 11 };
@@ -433,8 +433,8 @@ createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject);
 createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring);
-createInputField(tutoringHybrid, 2, 0, "BA", "50% online 50% vor Ort", areaTutoring);
-createInputField(tutoringAtHome, 4.2, 1.5, "CA", "Zuhause", areaTutoring); 
+createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring);
+createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring); 
 createInputField(unitSmall, 6, 0, "FB", "Kleine Einheit", areaUnit);//totalLessonPrice wird oben addiert
 createInputField(unitMiddle, 2.6, 0, "DB", "Mittlere Einheit", areaUnit);
 createInputField(unitLarge, 0, 0, "BB", "Große Einheit", areaUnit);
@@ -443,7 +443,7 @@ createInputField(contractMiddle, 2, 0, "BA", "12 Monate", areaContract);
 createInputField(contractLarge, 0, 0, "AA", "24 Monate", areaContract);
 createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer,", areaAddOn);
 createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer,", areaAddOn);
-createInputField(addOnContractBreak, 1.5, 0, "EA", "Vertragspause,", areaAddOn);
+createInputField(addOnContractBreak, 1.5, 0, "EB", "Vertragspause,", areaAddOn);
 createInputField(addTandemLesson, 10, 1.5, "FA", "Tandem-Unterricht,", areaAddOn);
 createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer,", areaAddOn);
 createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer,", areaAddOn);
