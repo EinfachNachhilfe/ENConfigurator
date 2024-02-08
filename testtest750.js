@@ -153,13 +153,13 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, m
 
 
 
-manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled', 'disable' );    
-manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled', 'deselect');
-manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled', 'deselect');
-manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled', 'deselect');
+manageSelection(customCheckboxInputSubject, 20, 'custom-input-clicked', 'disabled', 'disable' );    
+manageSelection(customRadioInputTutoring, 3, 'custom-input-clicked', 'disabled', 'deselect');
+manageSelection(customRadioInputUnit, 3, 'custom-input-clicked', 'disabled', 'deselect');
+manageSelection(customRadioInputContract, 3, 'custom-input-clicked', 'disabled', 'deselect');
 manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled','disable' );
-manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled', 'disable' );
-manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', 'disable' );
+manageSelection(customCheckboxInputTutorExclusivePair1, 2, 'custom-input-clicked', 'disabled', 'disable' );
+manageSelection(customCheckboxInputTutorExclusivePair2, 2, 'custom-input-clicked', 'disabled', 'disable' );
 manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' );
 
    
