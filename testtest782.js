@@ -290,8 +290,8 @@ const textTotalLtv = document.getElementById('textTotalLtv');
 let textdiscountUnitMiddle = document.getElementById('textdiscountUnitMiddle');
 let textdiscountUnitLarge = document.getElementById('textdiscountUnitLarge');
 
-let textdiscountContractMiddle = document.getElementById('discountContractMiddle');
-let textdiscountContractLarge = document.getElementById('discountContractLarge');
+let textdiscountContractMiddle = document.getElementById('textdiscountContractMiddle');
+let textdiscountContractLarge = document.getElementById('textdiscountContractLarge');
 
 
 
