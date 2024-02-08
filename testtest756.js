@@ -357,7 +357,7 @@ document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
 
-}
+
 //show the TotalCost directly
 calculateTotalCost();
 
