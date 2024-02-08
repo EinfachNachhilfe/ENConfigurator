@@ -273,9 +273,9 @@ const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
 const textLessonPrice = document.getElementById('textLessonPrice');
-let discountUnitMiddle = document.getElementById('discountUnitMiddle');
-let discountUnitLarge = document.getElementById('discountUnitLarge');
-const textdiscountUnit = document.getElementById('textdiscountUnit');
+let textdiscountUnitMiddle = document.getElementById('textdiscountUnitMiddle');
+let textdiscountUnitLarge = document.getElementById('textdiscountUnitLarge');
+
 
 
 
@@ -339,9 +339,6 @@ function calculateTotalCost() {
     //display lesson price
     textLessonPrice.textContent = totalLessonPrice.toFixed(2).replace('.', ','); 
 
-        //discount Unit
-    textdiscountUnit.textContent = discountUnit.toFixed(2).replace('.', ','); 
-
        //display lowest Price
 if (totalMonthPrice > lowestTotalMonthPrice) {
     // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
@@ -360,6 +357,18 @@ document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
 document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
+
+
+    let discountUnitSmall = discountUnit + valueUnitSmall;
+    let discountUnitMiddle = discountUnit + valueUnitMiddle;
+    let discountUnitLarge = discountUnit + valueUnitLarge;
+
+    let totalDiscountUnitMiddle = discountUnitSmall * (discountUnitMiddle/100);
+    let totalDiscountUnitLarge = discountUnitSmall * (discountUnitLarge/100);
+
+        //discount Unit
+    textdiscountUnitMiddle.textContent = discountUnit.toFixed(2).replace('.', ','); 
+    textdiscountUnitLarge.textContent = discountUnit.toFixed(2).replace('.', ','); 
 
 }
 
