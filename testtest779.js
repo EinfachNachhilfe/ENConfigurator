@@ -377,8 +377,10 @@ let totalDiscountUnitLarge = ((discountUnitSmall - discountUnitLarge) / discount
         console.log(totalDiscountUnitMiddle);
         console.log(totalDiscountUnitLarge);
     
-    textdiscountUnitMiddle.textContent = totalDiscountUnitMiddle.toFixed(2).replace('.', ','); 
-    textdiscountUnitLarge.textContent = totalDiscountUnitLarge.toFixed(2).replace('.', ','); 
+textdiscountUnitMiddle.textContent = Math.round(totalDiscountUnitMiddle).toString();
+textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
+
+
 
 
 }
