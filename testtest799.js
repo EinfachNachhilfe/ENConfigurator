@@ -354,7 +354,7 @@ function calculateTotalCost() {
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
      let totalTutorSalary = (tutorSalary / 45) * 60;
-console.log(totalTutorSalary);
+
     //calculate lowest Price
     /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
