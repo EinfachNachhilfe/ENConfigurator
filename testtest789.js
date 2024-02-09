@@ -466,9 +466,12 @@ function removeCodeGenerator(area, codeToRemove) {
 
 
 textCodeGenerator.textContent = baseCode;
-console.log(baseCode);
-
-    
+console.log("codegenerator" + baseCode);
+ console.log("Lehrerlohn" + tutorSalary);
+ console.log("LTV" + valueTotalLtv);
+ console.log("Pro 45min" + totalLessonPrice);
+ console.log("Monatspreis" + totalMonthPrice);
+ 
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true, true, true);
 createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true, true, true);
@@ -487,8 +490,8 @@ createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, 
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true, true, true);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true, true, true);
 createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true, true, true);
-createInputField(tutoringHybrid, 2, 0, "BB", "50% online 50% vor Ort", areaTutoring, true, true, true);
-createInputField(tutoringAtHome, 4.2, 1.5, "CB", "Zuhause", areaTutoring, true, true, true); 
+createInputField(tutoringHybrid, 3, 0, "BB", "50% online 50% vor Ort", areaTutoring, true, true, true);
+createInputField(tutoringAtHome, 5, 1.5, "CB", "Zuhause", areaTutoring, true, true, true); 
 createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit, false, true, true);
 createInputField(unitMiddle, valueUnitMiddle, 0, "DB", "Mittlere Einheit", areaUnit, false, true, true);
 createInputField(unitLarge, valueUnitLarge, 0, "BB", "Große Einheit", areaUnit, false, true, true);
