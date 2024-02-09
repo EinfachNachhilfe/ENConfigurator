@@ -353,9 +353,8 @@ function calculateTotalCost() {
     //calculation LTV
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
-    let totalTutorSalary = (tutorSalary/45)x60;
- 
-
+     let totalTutorSalary = (tutorSalary / 45) * 60;
+console.log(totalTutorSalary);
     //calculate lowest Price
     /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
@@ -370,7 +369,8 @@ if (totalMonthPrice > lowestTotalMonthPrice) {
 }
 */
 
-  textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+ 
+ textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
 //send value to form
 document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
@@ -378,6 +378,7 @@ document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
+ 
 //calculate and display discount to unit
 let discountUnitSmall = discountUnit + valueUnitSmall;
 let discountUnitMiddle = discountUnit + valueUnitMiddle;
@@ -506,7 +507,6 @@ createInputField(addTandemLesson, valueTandemLesson, 1.5, "FA", "Tandem-Unterric
 createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer,", areaAddOn, false, false, true);
 createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer,", areaAddOn, false, false, true);
 createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin,", areaAddOn, false, false, true);
-
 //end configurator
 }
 
