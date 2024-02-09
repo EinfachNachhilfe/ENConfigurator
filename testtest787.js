@@ -440,6 +440,7 @@ function updateCodeGenerator(area, codeToAdd) {
 
     textCodeGenerator.textContent = baseCode;
     document.querySelector('.send-codeGenerator').value = baseCode;
+ console.log(baseCode);
 }
 
 
@@ -459,6 +460,7 @@ function removeCodeGenerator(area, codeToRemove) {
 
     textCodeGenerator.textContent = baseCode;
    document.querySelector('.send-codeGenerator').value = baseCode; 
+ console.log(baseCode);
 }
 
 
