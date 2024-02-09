@@ -399,7 +399,10 @@ let discountTandemLesson = discountAddOnOther + valueTandemLesson;
 let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
 
     textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-    
+     console.log("Lehrerlohn" + tutorSalary);
+ console.log("LTV" + valueTotalLtv);
+ console.log("Pro 45min" + totalLessonPrice);
+ console.log("Monatspreis" + totalMonthPrice);
 }
 
 //show the TotalCost directly
@@ -467,10 +470,7 @@ function removeCodeGenerator(area, codeToRemove) {
 
 textCodeGenerator.textContent = baseCode;
 console.log("codegenerator" + baseCode);
- console.log("Lehrerlohn" + tutorSalary);
- console.log("LTV" + valueTotalLtv);
- console.log("Pro 45min" + totalLessonPrice);
- console.log("Monatspreis" + totalMonthPrice);
+
  
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
 createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true, true, true);
