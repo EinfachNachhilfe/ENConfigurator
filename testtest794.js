@@ -354,7 +354,7 @@ function calculateTotalCost() {
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
     //calculate lowest Price
-    let lowesttotalLessonPrice = basePrice + valueUnitSmall;
+    /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
 
        //display lowest Price
@@ -365,7 +365,9 @@ if (totalMonthPrice > lowestTotalMonthPrice) {
     // Andernfalls zeigen Sie totalMonthPrice an
     textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
 }
+*/
 
+  textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
 //send value to form
 document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
@@ -399,10 +401,6 @@ let discountTandemLesson = discountAddOnOther + valueTandemLesson;
 let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
 
     textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-     console.log("Lehrerlohn" + tutorSalary);
- console.log("LTV" + valueTotalLtv);
- console.log("Pro 45min" + totalLessonPrice);
- console.log("Monatspreis" + totalMonthPrice);
 }
 
 //show the TotalCost directly
@@ -443,7 +441,7 @@ function updateCodeGenerator(area, codeToAdd) {
 
     textCodeGenerator.textContent = baseCode;
     document.querySelector('.send-codeGenerator').value = baseCode;
- console.log(baseCode);
+
 }
 
 
@@ -463,13 +461,13 @@ function removeCodeGenerator(area, codeToRemove) {
 
     textCodeGenerator.textContent = baseCode;
    document.querySelector('.send-codeGenerator').value = baseCode; 
- console.log(baseCode);
+
 }
 
 
 
 textCodeGenerator.textContent = baseCode;
-console.log("codegenerator" + baseCode);
+
 
  
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
