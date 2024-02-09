@@ -141,7 +141,6 @@ function manageSelection(elements, maxSelected, selectionClass, disabledClass, m
                     }
                 }
 
-                console.log(`Aktuelle ausgewählte Elemente:`, selectedElements);
                 validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist oder entfernen Sie diesen Aufruf
             });
             element.dataset.listenerAdded = "true";
@@ -422,7 +421,6 @@ let codePositions = {};
 let isEventListenerRegistered = false;
 
 function updateCodeGenerator(area, codeToAdd) {
-    console.log(`Update Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToAdd: '${codeToAdd}'`);
     let currentCodes = baseCode.substring(area.start, area.end);
 
     if (area === areaSubject || area === areaAddOn) {
@@ -447,8 +445,6 @@ function updateCodeGenerator(area, codeToAdd) {
 
 
 function removeCodeGenerator(area, codeToRemove) {
-    console.log(`Remove Code Generator aufgerufen, Bereich: ${JSON.stringify(area)}, CodeToRemove: '${codeToRemove}'`);
-
     // Überprüfen, ob der Bereich areaSubject oder areaAddOn ist
     if (area === areaSubject || area === areaAddOn) {
         if (codePositions[codeToRemove] !== undefined) {
