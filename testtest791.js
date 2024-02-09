@@ -489,7 +489,7 @@ createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubjec
 createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, true, true, true);
 createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true, true, true);
 createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true, true, true);
-createInputField(tutoringOnline, 0, 0, "AB", "Online", areaTutoring, true, true, true);
+createInputField(tutoringOnline, 0, 0, "AA", "Online", areaTutoring, true, true, true);
 createInputField(tutoringHybrid, 3, 0, "BB", "50% online 50% vor Ort", areaTutoring, true, true, true);
 createInputField(tutoringAtHome, 5, 1.5, "CB", "Zuhause", areaTutoring, true, true, true); 
 createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit, false, true, true);
