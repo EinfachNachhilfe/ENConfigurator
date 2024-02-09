@@ -659,12 +659,6 @@ function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     errorMessageElement.style.fontFamily = 'Roboto, sans-serif';
     errorMessageElement.style.fontSize = '0.8rem';
 
-  successMessageElement.id = 'success_message';
-  successMessageElement.style.color = '#589b32';
-  successMessageElement.style.display = 'none';
-  successMessageElement.style.marginTop = '-0.625rem';
-  successMessageElement.style.fontFamily = 'Roboto, sans-serif';
-  successMessageElement.style.fontSize = '0.8rem';
     
    let errorMessageWrapper;
 
