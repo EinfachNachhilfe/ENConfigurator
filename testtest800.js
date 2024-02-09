@@ -628,7 +628,6 @@ function isElementVisible(el) {
 
 
 function applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) {
-    let successMessageElement = document.createElement('span'); 
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -675,7 +674,6 @@ if (inputElement.type === 'radio') {
 } else {
     // Für andere Eingabeelemente
     errorMessageWrapper = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
-     successMessageElement = inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 }
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
@@ -710,8 +708,6 @@ if (inputElement.type === 'radio') {
         validSymbol.style.display = 'inline'; // Zeigt das Häkchen an
         invalidSymbol.style.display = 'none';
         errorMessageElement.style.display = 'none';
-        successMessageElement.innerHTML = matchedPattern.message;
-        successMessageElement.style.display = 'block';
     } else {
         errorMessageElement.innerHTML = invalidErrorMsg;
         errorMessageElement.style.display = 'block';
