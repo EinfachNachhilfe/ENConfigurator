@@ -464,7 +464,7 @@ function removeCodeGenerator(area, codeToRemove) {
 
 
 textCodeGenerator.textContent = baseCode;
-
+console.log(baseCode);
 
     
 createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
