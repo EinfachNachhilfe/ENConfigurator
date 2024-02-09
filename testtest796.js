@@ -353,6 +353,9 @@ function calculateTotalCost() {
     //calculation LTV
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 
+    let totalTutorSalary = (tutorSalary/45)x60;
+ 
+
     //calculate lowest Price
     /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
@@ -372,7 +375,7 @@ if (totalMonthPrice > lowestTotalMonthPrice) {
 //send value to form
 document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
 document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
-document.querySelector('.send-totalTutorSalary').value = tutorSalary.toFixed(2);
+document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
 document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 
 //calculate and display discount to unit
