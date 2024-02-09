@@ -411,8 +411,8 @@ let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     
 const areaSubject = { start: 2, end: 8 };
 const areaTutoring = { start: 9, end: 11 };
-const areaUnit = { start: 12, end: 14 };
-const areaContract = { start: 15, end: 17 };
+const areaContract = { start: 12, end: 14 };
+const areaUnit = { start: 15, end: 17 };
 const areaAddOn = { start: 18, end: 42 };
 
 let codePositions = {};
