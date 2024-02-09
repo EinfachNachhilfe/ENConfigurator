@@ -335,7 +335,7 @@ function calculateTotalCost() {
     }
 
     if (contractSmall.classList.contains('custom-input-clicked')) {
-        multiplierContract = 6;
+        multiplierContract = 4;
         setUpFee = 69.99;
     } else if (contractMiddle.classList.contains('custom-input-clicked')) {
         multiplierContract = 12;
