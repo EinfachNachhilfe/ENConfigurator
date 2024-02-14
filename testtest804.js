@@ -238,7 +238,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             tutorSalary += additionalLessonTutorSalary;
             shouldUpdateCode = true;
             isAdding = true;
-            summaryField.style.display = 'display';
+            summaryField.style.display = 'flex';
 
             // Füge den Rabatt hinzu, wenn das Element für einen Rabatt qualifiziert ist
             if (isDiscountableUnit) {
