@@ -82,14 +82,15 @@ if (configuratorForm) {
 
 
 //show "Mehr Infos" Popup
-        Object.keys(buttonTexts).forEach(buttonId => {
-            const button = document.getElementById(buttonId);
-            button.addEventListener('click', () => {
-                background.style.display = 'block';
-                popup.style.display = 'block';
-                textPopupInformation.textContent = buttonTexts[buttonId];
-            });
+Object.entries(buttonTexts).forEach(([comboClass, buttonText]) => {
+    const buttons = document.querySelectorAll('.' + comboClass);
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            background.style.display = 'block';
+            popup.style.display = 'block';
+            textPopupInformation.textContent = buttonText;
         });
+    });
 
         background.addEventListener('click', () => {
             popup.style.display = 'none';
