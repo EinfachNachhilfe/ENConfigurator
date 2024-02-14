@@ -82,16 +82,14 @@ if (configuratorForm) {
 
 
 //show "Mehr Infos" Popup
-Object.entries(buttonTexts).forEach(([comboClass, buttonText]) => {
-    const buttons = document.querySelectorAll('.' + comboClass);
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            background.style.display = 'block';
-            popup.style.display = 'block';
-            textPopupInformation.textContent = buttonText;
+        Object.keys(buttonTexts).forEach(buttonId => {
+            const button = document.getElementById(buttonId);
+            button.addEventListener('click', () => {
+                background.style.display = 'block';
+                popup.style.display = 'block';
+                textPopupInformation.textContent = buttonTexts[buttonId];
+            });
         });
-    });
- });
 
         background.addEventListener('click', () => {
             popup.style.display = 'none';
@@ -1096,7 +1094,7 @@ if (valid) {
         }
     
 
-if (configuratorForm && ![4, 5, 6].includes(currentTab)) {
+if (configuratorForm && ![4, 5, 6, 7].includes(currentTab)) {
     const hasClicked = formItems[currentTab].querySelectorAll(".custom-input-clicked").length > 0;
     if (hasClicked) {
         valid = true; // Setzen Sie valid auf true, wenn mindestens ein Element angeklickt wurde
