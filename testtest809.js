@@ -315,16 +315,26 @@ let textdiscountTandemLesson = document.getElementById('textdiscountTandemLesson
 
    
 function updateTextUnit() {
-
     if (tutoringAtHome.classList.contains('custom-input-clicked')) {
-        textUnitSmall.textContent = '1x90min';
-        textUnitMiddle.textContent = '2x90min';
-        textUnitLarge.textContent = '3x90min';
-    }
-        if (tutoringHybrid.classList.contains('custom-input-clicked')|| tutoringOnline.classList.contains('custom-input-clicked')) {
-        textUnitSmall.textContent = '2x45min';
-        textUnitMiddle.textContent = '4x45min';
-        textUnitLarge.textContent = '6x45min';
+        textUnitSmall.forEach(element => {
+            element.textContent = '1x90min';
+        });
+        textUnitMiddle.forEach(element => {
+            element.textContent = '2x90min';
+        });
+        textUnitLarge.forEach(element => {
+            element.textContent = '3x90min';
+        });
+    } else if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+        textUnitSmall.forEach(element => {
+            element.textContent = '2x45min';
+        });
+        textUnitMiddle.forEach(element => {
+            element.textContent = '4x45min';
+        });
+        textUnitLarge.forEach(element => {
+            element.textContent = '6x45min';
+        });
     }
 }
 
