@@ -91,6 +91,7 @@ Object.entries(buttonTexts).forEach(([comboClass, buttonText]) => {
             textPopupInformation.textContent = buttonText;
         });
     });
+ });
 
         background.addEventListener('click', () => {
             popup.style.display = 'none';
