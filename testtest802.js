@@ -218,6 +218,8 @@ function createInputField(elementOrElements, additionalLessonCost,additionalLess
 
     
 function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract, isDiscountableTandemLesson) {
+    const summaryId = element.id + 'Summary';
+    const summaryField = document.getElementById(summaryId);
     const inputFieldName = element.id;
     let inputField = document.getElementById('input_' + inputFieldName);
     let shouldUpdateCode = false;
@@ -236,6 +238,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             tutorSalary += additionalLessonTutorSalary;
             shouldUpdateCode = true;
             isAdding = true;
+            summaryField.style.display = 'block';
 
             // Füge den Rabatt hinzu, wenn das Element für einen Rabatt qualifiziert ist
             if (isDiscountableUnit) {
@@ -257,6 +260,7 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
             tutorSalary -= additionalLessonTutorSalary;
             shouldUpdateCode = true;
             isAdding = false;
+            summaryField.style.display = 'none';
 
         
             if (isDiscountableUnit && inputField) {
