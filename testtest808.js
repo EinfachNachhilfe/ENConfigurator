@@ -290,10 +290,16 @@ function handleClassChange(element, additionalLessonCost, additionalLessonTutorS
   }
 
 
-
+/*
 const textUnitSmall= document.getElementById('textUnitSmall');
 const textUnitMiddle= document.getElementById('textUnitMiddle');
 const textUnitLarge= document.getElementById('textUnitLarge');   
+*/
+ 
+const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
+const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
+const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
+ 
 const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
 const textTotalLtv = document.getElementById('textTotalLtv');
