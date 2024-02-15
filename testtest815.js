@@ -42,6 +42,14 @@
  const popup = document.getElementById('popup_subject-tutor');
  const closePopupXElements = document.querySelectorAll('.close-popup');
  const background = document.getElementById('background');
+ const showFirstNames = document.querySelectorAll('.show_first-name');
+
+
+       firstNameInput.addEventListener('input', function() {
+          showFirstNames.forEach(function(element) {
+              element.textContent = firstNameInput.value;
+          });
+      });
  
  popup.style.display = 'none';
  background.style.display = 'none';
