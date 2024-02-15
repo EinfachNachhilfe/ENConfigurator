@@ -18,7 +18,12 @@
  const applicationTutorForm = document.getElementById('applicationTutor');
  const couponCode = document.getElementById('coupon-code');
  const couponCodeElement = document.getElementById('coupon-code');
- 
+
+ const phoneNumberTutor = document.getElementById('phone-number_tutor');
+  const emailTutor = document.getElementById('email_tutor');
+  const bdayTutor = document.getElementById('bday_tutor');
+  const availabilityTutor = document.getElementById('availability_tutor');
+
  const couponCodes = {
      "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
      "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
@@ -886,6 +891,11 @@
          if (phoneNumberContactPerson) {
      applyPhoneValidation(phoneNumberContactPerson);
  }
+
+         if (phoneNumberTutor) {
+     applyPhoneValidation(phoneNumberTutor);
+ }
+ 
  
  //end Validation Phone Number
  
@@ -912,6 +922,10 @@
  
  if (contractTerminationCustomer) {
      applyDateInputFormat(contractTerminationCustomer);
+ }
+
+ if (bdayTutor) {
+     applyDateInputFormat(bdayTutor);
  }
  
  //end bday validation
@@ -1196,8 +1210,22 @@
      invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
    });
  }
+
+ if (emailTutor) {
+   specificElements.push({
+     element: emailTutor,
+     pattern: '^\\S+@\\S+\\.\\S+$',
+     invalidErrorMsg: 'Bitte gib eine gültige E-Mail-Adresse ein.'
+   });
+ }
  
- 
+  if (availabilityTutor) {
+   specificElements.push({
+     element: availabilityTutor,
+     pattern: '\\d+',
+     invalidErrorMsg: 'Bitte gib eine Zahl ein.'
+   });
+ }
  
  
  if (couponCodeElement) {
