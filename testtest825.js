@@ -1426,25 +1426,6 @@
      }
  }
 
-    if (applicationTutorForm && [2,3].includes(currentTab)) {
-    const buttons = formItems[currentTab].querySelectorAll("button");
-    let choiceAdded = false;
-
-    // Durchlaufen aller Buttons, um zu prüfen, ob einer den Text 'Fach entfernen' enthält
-    buttons.forEach(button => {
-        if (button.textContent === 'Fach entfernen') {
-            choiceAdded = true;
-        }
-    });
-
-    // Setzen Sie valid auf true, wenn mindestens ein Button mit dem Text 'Fach entfernen' gefunden wurde
-    if (choiceAdded) {
-        valid = true;
-    Hab} else {
-        valid = false;
-    }
-}
-
 
 if (applicationTutorForm && [1, 2].includes(currentTab)) {
     const buttons = formItems[currentTab].querySelectorAll("button");
