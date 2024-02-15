@@ -177,6 +177,7 @@
      if (selectedOption) {
          subjectDropdown.removeChild(selectedOption);
      }
+   validateForm();
  });
  
  function removeSubject(btn, subject, classFrom, classTo) {
@@ -192,6 +193,7 @@
  
      btn.parentElement.remove(); // Entfernen des sichtbaren Eintrags aus der Liste
      addSubjectToDropdown(subject);
+     validateForm();
  }
  
  
@@ -304,6 +306,7 @@
      if (selectedOption) {
          experienceTutor.removeChild(selectedOption);
      }
+   validateForm();
  });
  
  function removeExperience(btn, experience, duration, when) {
@@ -319,6 +322,7 @@
  
      btn.parentElement.remove(); // Entfernen des sichtbaren Eintrags aus der Liste
      addExperienceToDropdown(experience);
+   validateForm();
  }
  
   
@@ -1413,7 +1417,7 @@
      }
  }
 
-  if (applicationTutorForm && [2, 3].includes(currentTab)) {
+  if (applicationTutorForm && [1,2, 3].includes(currentTab)) {
     const buttons = formItems[currentTab].querySelectorAll("button");
     let choiceAdded = false;
 
