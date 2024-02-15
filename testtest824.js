@@ -1446,7 +1446,7 @@
 }
 
 
-if (applicationTutorForm && [2, 3].includes(currentTab)) {
+if (applicationTutorForm && [1, 2].includes(currentTab)) {
     const buttons = formItems[currentTab].querySelectorAll("button");
     let choiceAdded = false;
 
