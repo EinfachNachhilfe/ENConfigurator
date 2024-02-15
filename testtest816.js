@@ -43,6 +43,7 @@
  const closePopupXElements = document.querySelectorAll('.close-popup');
  const background = document.getElementById('background');
  const showFirstNames = document.querySelectorAll('.show_first-name');
+  const firstNameInput = document.getElementById('first-name_tutor');
 
 
        firstNameInput.addEventListener('input', function() {
