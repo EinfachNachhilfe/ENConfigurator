@@ -15,7 +15,9 @@ const contractTerminationCustomer = document.getElementById('contract-terminatio
 const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
 const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
+const applicationTutorForm = document.getElementById('applicationTutor');
 const couponCode = document.getElementById('coupon-code');
+const couponCodeElement = document.getElementById('coupon-code');
 
 const couponCodes = {
     "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
@@ -28,7 +30,9 @@ const couponCodes = {
     "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
 };
 
-const couponCodeElement = document.getElementById('coupon-code');
+if (applicationTutorForm){
+ 
+}
 
 if (configuratorForm) {
      const buttonTexts = {
