@@ -1446,7 +1446,7 @@
 }
 
 
-  if (applicationTutorForm.includes(currentTab)) {
+if (applicationTutorForm && [2, 3].includes(currentTab)) {
     const buttons = formItems[currentTab].querySelectorAll("button");
     let choiceAdded = false;
 
@@ -1464,7 +1464,7 @@
         valid = false;
     }
 }
- 
+
  
  
  
