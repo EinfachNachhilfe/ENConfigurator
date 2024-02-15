@@ -201,7 +201,6 @@
  const experienceTutor = document.getElementById('experience_tutor');
  const durationTutor = document.getElementById('duration_tutor');
  const whenTutor = document.getElementById('when_tutor');
- const regform = document.getElementById('regform');
  const addedExperience = document.getElementById('addedExperience');
  const popupExperienceTutor = document.getElementById('popup_experience-tutor');
  
@@ -284,19 +283,19 @@
      experienceInput.type = 'hidden';
      experienceInput.name = `experience_${experience}`;
      experienceInput.value = experience;
-     regform.appendChild(experienceInput);
+     applicationTutorForm.appendChild(experienceInput);
  
      const durationInput = document.createElement('input');
      durationInput.type = 'hidden';
      durationInput.name = `duration_${experience}`;
      durationInput.value = duration;
-     regform.appendChild(durationInput);
+     applicationTutorForm.appendChild(durationInput);
  
      const whenInput = document.createElement('input');
      whenInput.type = 'hidden';
      whenInput.name = `when_${experience}`;
      whenInput.value = when;
-     regform.appendChild(whenInput);
+     applicationTutorForm.appendChild(whenInput);
  
      popupExperienceTutor.style.display = 'none';
      background.style.display = 'none';
@@ -309,9 +308,9 @@
  
  function removeExperience(btn, experience, duration, when) {
      // Finden der versteckten input-Elemente basierend auf ihren Werten
-     const experienceInput = Array.from(regform.querySelectorAll(`input[name="experience_${experience}"]`)).filter(input => input.value === experience);
-     const durationInput = Array.from(regform.querySelectorAll(`input[name="duration_${experience}"]`)).filter(input => input.value === duration);
-     const whenInput = Array.from(regform.querySelectorAll(`input[name="whenInput_${experience}"]`)).filter(input => input.value === when);
+     const experienceInput = Array.from(applicationTutorForm.querySelectorAll(`input[name="experience_${experience}"]`)).filter(input => input.value === experience);
+     const durationInput = Array.from(applicationTutorForm.querySelectorAll(`input[name="duration_${experience}"]`)).filter(input => input.value === duration);
+     const whenInput = Array.from(applicationTutorForm.querySelectorAll(`input[name="whenInput_${experience}"]`)).filter(input => input.value === when);
  
      // Das erste versteckte input-Element jedes Typs entfernen, das den spezifizierten Werten entspricht
      if (experienceInput[0]) experienceInput[0].remove();
