@@ -286,66 +286,7 @@ if (configuratorForm) {
         });
       }
     }
-    function calculateTotalCost() {
-      let multiplierUnit = 2;
-      let multiplierContract = 1;
-      let setUpFee = 0;
-      if (unitMiddle.classList.contains('custom-input-clicked')) {
-        multiplierUnit = 4;
-      } else if (unitLarge.classList.contains('custom-input-clicked')) {
-        multiplierUnit = 6;
-      }
-      if (contractSmall.classList.contains('custom-input-clicked')) {
-        multiplierContract = 4;
-        setUpFee = 69.99;
-      } else if (contractMiddle.classList.contains('custom-input-clicked')) {
-        multiplierContract = 12;
-      } else if (contractLarge.classList.contains('custom-input-clicked')) {
-        multiplierContract = 24;
-      }
-  
-      //calculation months Price
-      let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
-  
-      //calculation months salary tutor
-      let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
-  
-      //calculation LTV
-      let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
-      let totalTutorSalary = tutorSalary / 45 * 60;
-  
-      textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
-  
-      //send value to form
-      document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
-      document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
-      document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
-      document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
-  
-      //calculate and display discount to unit
-      let discountUnitSmall = discountUnit + valueUnitSmall;
-      let discountUnitMiddle = discountUnit + valueUnitMiddle;
-      let discountUnitLarge = discountUnit + valueUnitLarge;
-      let totalDiscountUnitMiddle = (discountUnitSmall - discountUnitMiddle) / discountUnitSmall * 100;
-      let totalDiscountUnitLarge = (discountUnitSmall - discountUnitLarge) / discountUnitSmall * 100;
-      textdiscountUnitMiddle.textContent = Math.round(totalDiscountUnitMiddle).toString();
-      textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
-  
-      //calculate and display discount to contract
-      let discountContractSmall = discountContract + valueContractSmall;
-      let discountContractMiddle = discountContract + valueContractMiddle;
-      let discountContractLarge = discountContract + valueContractLarge;
-      let totalDiscountContractMiddle = (discountContractSmall - discountContractMiddle) / discountContractSmall * 100;
-      let totalDiscountContractLarge = (discountContractSmall - discountContractLarge) / discountContractSmall * 100;
-      textdiscountContractMiddle.textContent = Math.round(totalDiscountContractMiddle).toString();
-      textdiscountContractLarge.textContent = Math.round(totalDiscountContractLarge).toString();
-      let discountTandemLesson = discountAddOnOther + valueTandemLesson;
-      let totalDiscountTandemLesson = (discountAddOnOther - discountTandemLesson / 2) / discountAddOnOther * 100;
-      textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-    }
-  
-    //show the TotalCost directly
-    calculateTotalCost();
+
     const textCodeGenerator = document.getElementById('textCodeGenerator');
     let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     const areaSubject = {
