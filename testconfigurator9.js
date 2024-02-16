@@ -320,7 +320,7 @@ if (configuratorForm) {
         multiplierContract = 24;
       }
   
-      //calculation months Price
+      /*//calculation months Price
       let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
   
       //calculation months salary tutor
@@ -338,7 +338,7 @@ if (configuratorForm) {
       document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
       document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
   
-      /*//calculate and display discount to unit
+      //calculate and display discount to unit
       let discountUnitSmall = discountUnit + valueUnitSmall;
       let discountUnitMiddle = discountUnit + valueUnitMiddle;
       let discountUnitLarge = discountUnit + valueUnitLarge;
