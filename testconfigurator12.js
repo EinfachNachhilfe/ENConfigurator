@@ -319,7 +319,7 @@ if (configuratorForm) {
       } else if (contractLarge.classList.contains('custom-input-clicked')) {
         multiplierContract = 24;
       }
-  
+      */
       //calculation months Price
       let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
   
@@ -358,7 +358,7 @@ if (configuratorForm) {
       let discountTandemLesson = discountAddOnOther + valueTandemLesson;
       let totalDiscountTandemLesson = (discountAddOnOther - discountTandemLesson / 2) / discountAddOnOther * 100;
       textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-      */
+  
     }
   
     //show the TotalCost directly
