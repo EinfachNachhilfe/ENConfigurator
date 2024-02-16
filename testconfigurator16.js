@@ -331,13 +331,13 @@ if (configuratorForm) {
       let totalTutorSalary = tutorSalary / 45 * 60;
   
       textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
-     */
+
       //send value to form
       document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
       document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
       document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
       document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
-     
+          */
       //calculate and display discount to unit
       let discountUnitSmall = discountUnit + valueUnitSmall;
       let discountUnitMiddle = discountUnit + valueUnitMiddle;
