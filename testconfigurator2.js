@@ -34,6 +34,444 @@
      "schulstartm4": { regex: /^schulstartm4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
      "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
  };
+
+if (configuratorForm) {
+  const buttonTexts = {
+    'btnAddTandemLesson': 'Hier können Sie für nur 10 EUR mehr pro Stunde noch ein zweites Kind in den Unterricht dazunehmen. Somit können Sie sich die Kosten für die Nachhilfe mit einem Klassenkamerad oder Nachbar teilen. Wir empfehlen auf ein gleiches Kompetenzniveau und Klassenstufe zu achten. ',
+    'btnAddOnContractBreak': 'Mit diesem Add-On können Sie den Vertrag jederzeit pausieren und sparen somit in Ferienzeiten oder einem sonstigen beliebigen Zeitpunkt, an dem keine Nachhilfe stattfinden kann oder soll. In Summe können maximal 12 Wochen über 12 Monate pausiert werden. Der Vertrag verlängert sich entsprechend. ',
+    'btnAddOnPremiumTutor': 'Hier garantieren wir Ihnen die Vermittlung an unsere besten Lehrkräfte mit besonders viel Erfahrung und wertvollen Kompetenzen. Eine Premiumlehrkraft hat mindestens 100 Schulstunden an Unterrichtserfahrung (in der Regel mehr) oder eine bereits abgeschlossene pädagogische Ausbildung, bei der ähnlich viel Praxiserfahrung abverlangt wurde. Darüber hinaus nimmt sie regelmäßig an professionellen Weiterbildungen teil und bringt so Kompetenzen für anspruchsvolle Förderbedarfe mit (Lern- und Sprachstörungen, LRS, Autismus, Dyskalkulie, HDS, usw. ...).',
+    'btnAddOnExperiencedTutor': 'Hier garantieren wir Ihnen den Einsatz einer besonders erfahrenen Lehrkraft. Erfahrene Lehrkräfte haben mindestens 100 Unterrichtsstunden gehalten und dabei bereits die typischen Herausforderungen gemeistert. Sogar Personen mit einer abgeschlossenen pädagogischen Ausbildung mit einer ähnlichen Praxiserfahrung zählen dazu.',
+    'btnAddOnAllRoundTutor': 'Alle Fächer aus einer Hand. Das Kind und Sie müssen sich nicht auf unterschiedliche Lehrkräfte einstellen. Hiermit garantieren wir, dass eine einzige Lehrkraft den Schüler in allen angefragten Fächern fördern kann und entsprechende Kompetenzen mitbringt. Das sorgt für ein noch vertrauteres Verhältnis zwischen Tutor und Lernendem und spart viel Zeit bei Absprachen und der Kommunikation.',
+    'btnAddOnMale': 'Ihr Kind kommt besser mit einer männlichen Bezugsperson klar, kann sich ihr gegenüber besser öffnen, lernt mit ihr besser oder braucht dahingehend eine Vorbildfunktion? Mit diesem Add-On sichern wir Ihnen unter Berücksichtigung der vorausgesetzten Fach- und Sozialkompetenzen einen männlichen Nachhilfelehrer zu.',
+    'btnAddOnFemale': 'Ihr Kind kommt besser mit einer weiblichen Bezugsperson klar, kann sich ihr gegenüber besser öffnen, lernt mit ihr besser oder braucht dahingehend eine Vorbildfunktion?Mit diesem Add-On sichern wir Ihnen unter Berücksichtigung der vorausgesetzten Fach- und Sozialkompetenzen eine weibliche Nachhilfelehrerin zu.',
+    'btnContractLarge': 'Langfristige Förderung, wenn mehr als nur ein Schuljahr kontinuierlich gefördert werden soll. Für alle, die sich einen hervorragenden persönlichen Bezug zu einem langfristigen Lernpartner wünschen.',
+    'btnContractMiddle': 'Sinnvollste Wahl für eine gründliche Förderung. Wir begleiten durch das ganze Schuljahr und arbeiten nachhaltig an guten Noten. Unser bisheriger Elternfavorit.',
+    'btnContractSmall': 'Die Nachhilfe kann jederzeit zum Folgetag gekündigt werden. Für alle, die 100% flexibel sein möchten. Auch geeignet für Prüfungsvorbereitung oder Schulabgänger. Bei diesem Modell fällt ausnahmsweise eine Anmeldegebühr von 69,99 € an. Diese wird Ihnen nach 6 Monaten Vertragsverhältnis jedoch wieder gutgeschrieben.',
+    'btnUnitLarge': 'Für jene, mit großen Schwierigkeiten in einem oder mehreren Fächern. Für schnelle Erfolge oder für Kinder mit einem langsamen Lerntempo, die viel Betreuung benötigen. Insbesondere geeignet für Prüfungsvorbereitung.',
+    'btnUnitMiddle': 'Für alle mit einem ernsten Verbesserungswunsch in einem Fach. 2 Einheiten geben genügend Zeit, um Lerninhalte nachhaltig zu vertiefen.',
+    'btnUnitSmall': 'Für alle, die ihre Note halten oder moderat verbessern möchten. Erfordert eine hohe Eigeninitiative, um auch außerhalb der Nachhilfestunde Aufgaben zu erledigen.',
+    'btnTutoringOnline': 'Für maximale zeitliche und örtliche Flexibilität. Insbesondere für Sprachförderung und mediale Förderung geeignet. Ideal in den Alltag eines älteren Schülers integrierbar. Erhöht die Wahrscheinlichkeit, dass alle Wünsche zu Merkmalen der Lehrkraft erfüllt werden.',
+    'btnTutoringHybrid': 'Das Beste aus beiden Welten. Mit allen Vorteilen aus Online- und Vor-Ort-Unterricht. Jeder zweite Unterricht findet bei Ihnen zuhause statt..',
+    'btnTutoringAtHome': 'Die Förderung findet bei Ihnen zu Hause in gewohnter Umgebung statt. Ohne Fahrtaufwand für Sie. Für alle, die maximale persönliche Nähe vorziehen.'
+  };
+  const popup = document.getElementById('popupInformation');
+  const background = document.getElementById('background');
+  const tripperClosePopupInformation = document.getElementById('tripperClosePopupInformation');
+  const textPopupInformation = document.getElementById('textPopupInformation');
+  const customCheckboxInputSubject = document.querySelectorAll('.custom-checkbox-input-subject');
+  const customRadioInputTutoring = document.querySelectorAll('.custom-radio-input.tutoring');
+  const customRadioInputUnit = document.querySelectorAll('.custom-radio-input.unit');
+  const customRadioInputContract = document.querySelectorAll('.custom-radio-input.contract');
+  const customCheckboxInputTutor = document.querySelectorAll('.custom-checkbox-input-tutor');
+  const customCheckboxInputTutorExclusivePair1 = document.querySelectorAll('.custom-checkbox-input-tutor-exclusive-pair-1');
+  const customCheckboxInputTutorExclusivePair2 = document.querySelectorAll('.custom-checkbox-input-tutor-exclusive-pair-2');
+  const customCheckboxInputOther = document.querySelectorAll('.custom-checkbox-input-other');
+  const addOnPremiumTutor = document.getElementById('addOnPremiumTutor');
+  const addOnExperiencedTutor = document.getElementById('addOnExperiencedTutor');
+  const addOnMale = document.getElementById('addOnMale');
+  const addOnFemale = document.getElementById('addOnFemale');
+  const tutoringAtHome = document.getElementById('tutoringAtHome');
+  const tutoringHybrid = document.getElementById('tutoringHybrid');
+  const tutoringOnline = document.getElementById('tutoringOnline');
+  const unitSmall = document.getElementById('unitSmall');
+  const unitMiddle = document.getElementById('unitMiddle');
+  const unitLarge = document.getElementById('unitLarge');
+  const contractSmall = document.getElementById('contractSmall');
+  const contractMiddle = document.getElementById('contractMiddle');
+  const contractLarge = document.getElementById('contractLarge');
+  const addOnAllRoundTutor = document.getElementById('addOnAllRoundTutor');
+  const addOnContractBreak = document.getElementById('addOnContractBreak');
+  const addTandemLesson = document.getElementById('addTandemLesson');
+
+  //show "Mehr Infos" Popup
+  Object.keys(buttonTexts).forEach(buttonId => {
+    const button = document.getElementById(buttonId);
+    button.addEventListener('click', () => {
+      background.style.display = 'block';
+      popup.style.display = 'block';
+      textPopupInformation.textContent = buttonTexts[buttonId];
+    });
+  });
+  background.addEventListener('click', () => {
+    popup.style.display = 'none';
+    background.style.display = 'none';
+  });
+  tripperClosePopupInformation.addEventListener('click', () => {
+    popup.style.display = 'none';
+    background.style.display = 'none';
+  });
+
+  //add "custom-input-clicked" class and set max. clickable fields
+  function manageSelection(elements, maxSelected, selectionClass, disabledClass, mode) {
+    let selectedElements = [];
+    elements.forEach(element => {
+      if (!element.dataset.listenerAdded) {
+        element.addEventListener('click', () => {
+          if (element.classList.contains(selectionClass)) {
+            element.classList.remove(selectionClass);
+            selectedElements = selectedElements.filter(el => el !== element);
+          } else {
+            if (selectedElements.length >= maxSelected) {
+              if (mode === 'deselect') {
+                // Automatisches Abwählen des ältesten ausgewählten Elements, wenn das Limit erreicht ist
+                const firstSelected = selectedElements.shift(); // Entfernt das erste Element
+                firstSelected.classList.remove(selectionClass);
+              }
+              // Für 'disable' Modus, keine Aktion hier, die Logik wird unten gehandhabt
+            }
+            if (selectedElements.length < maxSelected || mode === 'disable') {
+              selectedElements.push(element);
+              element.classList.add(selectionClass);
+            }
+          }
+          if (mode === 'disable') {
+            if (selectedElements.length >= maxSelected) {
+              elements.forEach(el => {
+                if (!selectedElements.includes(el)) {
+                  el.classList.add(disabledClass);
+                }
+              });
+            } else {
+              elements.forEach(el => {
+                el.classList.remove(disabledClass);
+              });
+            }
+          }
+          validateForm(); // Stellen Sie sicher, dass diese Funktion definiert ist oder entfernen Sie diesen Aufruf
+        });
+        element.dataset.listenerAdded = "true";
+      }
+    });
+  }
+  manageSelection(customCheckboxInputSubject, 3, 'custom-input-clicked', 'disabled', 'disable');
+  manageSelection(customRadioInputTutoring, 1, 'custom-input-clicked', 'disabled', 'deselect');
+  manageSelection(customRadioInputUnit, 1, 'custom-input-clicked', 'disabled', 'deselect');
+  manageSelection(customRadioInputContract, 1, 'custom-input-clicked', 'disabled', 'deselect');
+  manageSelection(customCheckboxInputOther, 2, 'custom-input-clicked', 'disabled', 'disable');
+  manageSelection(customCheckboxInputTutorExclusivePair1, 1, 'custom-input-clicked', 'disabled', 'disable');
+  manageSelection(customCheckboxInputTutorExclusivePair2, 1, 'custom-input-clicked', 'disabled', 'disable');
+  manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable');
+  let basePrice = 20;
+  let totalLessonPrice = basePrice;
+  let discountUnit = basePrice;
+  let discountContract = basePrice;
+  let discountAddOnOther = basePrice;
+  let tutorSalary = 12;
+  let valueUnitSmall = 6;
+  let valueUnitMiddle = 2.6;
+  let valueUnitLarge = 0;
+  let valueContractSmall = 6.8;
+  let valueContractMiddle = 2;
+  let valueContractLarge = 0;
+  let valueTandemLesson = 10;
+  const subjectMathematics = document.getElementById('subjectMathematics');
+  const subjectGerman = document.getElementById('subjectGerman');
+  const subjectEnglish = document.getElementById('subjectEnglish');
+  const subjectFrench = document.getElementById('subjectFrench');
+  const subjectLatin = document.getElementById('subjectLatin');
+  const subjectItalian = document.getElementById('subjectItalian');
+  const subjectSpanish = document.getElementById('subjectSpanish');
+  const subjectPhysics = document.getElementById('subjectPhysics');
+  const subjectChemistry = document.getElementById('subjectChemistry');
+  const subjectBiology = document.getElementById('subjectBiology');
+  const subjectGeography = document.getElementById('subjectGeography');
+  const subjectHistory = document.getElementById('subjectHistory');
+  const subjectSocialStudies = document.getElementById('subjectSocialStudies');
+  const subjectComputerScience = document.getElementById('subjectComputerScience');
+  const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
+  const subjectEconomics = document.getElementById('subjectEconomics');
+  const subjectOther = document.getElementById('subjectOther');
+  function createInputField(elementOrElements, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit = false, isDiscountableContract = false, isDiscountableTandemLesson = false) {
+    // Beobachtet Änderungen an den Klassen der Elemente
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const targetElement = mutation.target;
+          handleClassChange(targetElement, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract, isDiscountableTandemLesson);
+        }
+      });
+    });
+
+    // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
+    const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
+
+    // Überwacht jedes Element in der Liste
+    elements.forEach(element => {
+      observer.observe(element, {
+        attributes: true
+      });
+    });
+  }
+  function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract, isDiscountableTandemLesson) {
+    const summaryId = element.id + 'Summary';
+    const summaryField = document.getElementById(summaryId);
+    const inputFieldName = element.id;
+    let inputField = document.getElementById('input_' + inputFieldName);
+    let shouldUpdateCode = false;
+    let isAdding = false;
+
+    // Überprüfe, ob das Element ausgewählt ist
+    if (element.classList.contains('custom-input-clicked')) {
+      if (!inputField) {
+        inputField = document.createElement('input');
+        inputField.type = 'hidden';
+        inputField.id = 'input_' + inputFieldName;
+        inputField.name = inputFieldName;
+        inputField.value = defaultValue;
+        configuratorForm.appendChild(inputField);
+        totalLessonPrice += additionalLessonCost;
+        tutorSalary += additionalLessonTutorSalary;
+        shouldUpdateCode = true;
+        isAdding = true;
+        summaryField.style.display = 'flex';
+
+        // Füge den Rabatt hinzu, wenn das Element für einen Rabatt qualifiziert ist
+        if (isDiscountableUnit) {
+          discountUnit += additionalLessonCost;
+        }
+        if (isDiscountableContract) {
+          discountContract += additionalLessonCost;
+        }
+        if (isDiscountableTandemLesson) {
+          discountAddOnOther += additionalLessonCost;
+        }
+      }
+    } else {
+      if (inputField) {
+        configuratorForm.removeChild(inputField);
+        totalLessonPrice -= additionalLessonCost;
+        tutorSalary -= additionalLessonTutorSalary;
+        shouldUpdateCode = true;
+        isAdding = false;
+        summaryField.style.display = 'none';
+        if (isDiscountableUnit && inputField) {
+          discountUnit -= additionalLessonCost;
+        }
+        if (isDiscountableContract && inputField) {
+          discountContract -= additionalLessonCost;
+        }
+        if (isDiscountableTandemLesson && inputField) {
+          discountAddOnOther -= additionalLessonCost;
+        }
+      }
+    }
+    if (shouldUpdateCode) {
+      calculateTotalCost(); // Stelle sicher, dass diese Funktion den Rabatt berücksichtigt
+      updateTextUnit();
+      if (isAdding) {
+        updateCodeGenerator(area, codeGenerator);
+      } else {
+        removeCodeGenerator(area, codeGenerator);
+      }
+    }
+  }
+
+  /*
+  const textUnitSmall= document.getElementById('textUnitSmall');
+  const textUnitMiddle= document.getElementById('textUnitMiddle');
+  const textUnitLarge= document.getElementById('textUnitLarge');   
+  */
+
+  const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
+  const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
+  const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
+  const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
+  const textTotalTutorSalary = document.getElementById('textTotalTutorSalary');
+  const textTotalLtv = document.getElementById('textTotalLtv');
+  let textdiscountUnitMiddle = document.getElementById('textdiscountUnitMiddle');
+  let textdiscountUnitLarge = document.getElementById('textdiscountUnitLarge');
+  let textdiscountContractMiddle = document.getElementById('textdiscountContractMiddle');
+  let textdiscountContractLarge = document.getElementById('textdiscountContractLarge');
+  let textdiscountTandemLesson = document.getElementById('textdiscountTandemLesson');
+  function updateTextUnit() {
+    if (tutoringAtHome.classList.contains('custom-input-clicked')) {
+      textUnitSmall.forEach(element => {
+        element.textContent = '1x90min';
+      });
+      textUnitMiddle.forEach(element => {
+        element.textContent = '2x90min';
+      });
+      textUnitLarge.forEach(element => {
+        element.textContent = '3x90min';
+      });
+    } else if (tutoringHybrid.classList.contains('custom-input-clicked') || tutoringOnline.classList.contains('custom-input-clicked')) {
+      textUnitSmall.forEach(element => {
+        element.textContent = '2x45min';
+      });
+      textUnitMiddle.forEach(element => {
+        element.textContent = '4x45min';
+      });
+      textUnitLarge.forEach(element => {
+        element.textContent = '6x45min';
+      });
+    }
+  }
+  function calculateTotalCost() {
+    let multiplierUnit = 2;
+    let multiplierContract = 1;
+    let setUpFee = 0;
+    if (unitMiddle.classList.contains('custom-input-clicked')) {
+      multiplierUnit = 4;
+    } else if (unitLarge.classList.contains('custom-input-clicked')) {
+      multiplierUnit = 6;
+    }
+    if (contractSmall.classList.contains('custom-input-clicked')) {
+      multiplierContract = 4;
+      setUpFee = 69.99;
+    } else if (contractMiddle.classList.contains('custom-input-clicked')) {
+      multiplierContract = 12;
+    } else if (contractLarge.classList.contains('custom-input-clicked')) {
+      multiplierContract = 24;
+    }
+
+    //calculation months Price
+    let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
+
+    //calculation months salary tutor
+    let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
+
+    //calculation LTV
+    let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
+    let totalTutorSalary = tutorSalary / 45 * 60;
+
+    //calculate lowest Price
+    /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
+    let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
+         //display lowest Price
+    if (totalMonthPrice > lowestTotalMonthPrice) {
+    // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
+    textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+    } else {
+    // Andernfalls zeigen Sie totalMonthPrice an
+    textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
+    }
+    */
+
+    textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+
+    //send value to form
+    document.querySelector('.send-lessonPrice').value = totalLessonPrice.toFixed(2);
+    document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
+    document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
+    document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
+
+    //calculate and display discount to unit
+    let discountUnitSmall = discountUnit + valueUnitSmall;
+    let discountUnitMiddle = discountUnit + valueUnitMiddle;
+    let discountUnitLarge = discountUnit + valueUnitLarge;
+    let totalDiscountUnitMiddle = (discountUnitSmall - discountUnitMiddle) / discountUnitSmall * 100;
+    let totalDiscountUnitLarge = (discountUnitSmall - discountUnitLarge) / discountUnitSmall * 100;
+    textdiscountUnitMiddle.textContent = Math.round(totalDiscountUnitMiddle).toString();
+    textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
+
+    //calculate and display discount to contract
+    let discountContractSmall = discountContract + valueContractSmall;
+    let discountContractMiddle = discountContract + valueContractMiddle;
+    let discountContractLarge = discountContract + valueContractLarge;
+    let totalDiscountContractMiddle = (discountContractSmall - discountContractMiddle) / discountContractSmall * 100;
+    let totalDiscountContractLarge = (discountContractSmall - discountContractLarge) / discountContractSmall * 100;
+    textdiscountContractMiddle.textContent = Math.round(totalDiscountContractMiddle).toString();
+    textdiscountContractLarge.textContent = Math.round(totalDiscountContractLarge).toString();
+    let discountTandemLesson = discountAddOnOther + valueTandemLesson;
+    let totalDiscountTandemLesson = (discountAddOnOther - discountTandemLesson / 2) / discountAddOnOther * 100;
+    textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
+  }
+
+  //show the TotalCost directly
+  calculateTotalCost();
+  const textCodeGenerator = document.getElementById('textCodeGenerator');
+  let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
+  const areaSubject = {
+    start: 2,
+    end: 8
+  };
+  const areaTutoring = {
+    start: 9,
+    end: 11
+  };
+  const areaContract = {
+    start: 12,
+    end: 14
+  };
+  const areaUnit = {
+    start: 15,
+    end: 17
+  };
+  const areaAddOn = {
+    start: 18,
+    end: 42
+  };
+  let codePositions = {};
+  let isEventListenerRegistered = false;
+  function updateCodeGenerator(area, codeToAdd) {
+    let currentCodes = baseCode.substring(area.start, area.end);
+    if (area === areaSubject || area === areaAddOn) {
+      // Verhalten für areaSubject und areaAddOn
+      let placeholderIndex = currentCodes.indexOf("0A");
+      if (placeholderIndex !== -1) {
+        let actualIndex = area.start + placeholderIndex;
+        let newCodes = currentCodes.substring(0, placeholderIndex) + codeToAdd + currentCodes.substring(placeholderIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        codePositions[codeToAdd] = actualIndex;
+      }
+    } else {
+      // Verhalten für andere Bereiche
+      baseCode = baseCode.substring(0, area.start) + codeToAdd + baseCode.substring(area.end);
+      codePositions[codeToAdd] = area.start;
+    }
+    textCodeGenerator.textContent = baseCode;
+    document.querySelector('.send-codeGenerator').value = baseCode;
+  }
+  function removeCodeGenerator(area, codeToRemove) {
+    // Überprüfen, ob der Bereich areaSubject oder areaAddOn ist
+    if (area === areaSubject || area === areaAddOn) {
+      if (codePositions[codeToRemove] !== undefined) {
+        let actualIndex = codePositions[codeToRemove] - area.start;
+        let currentCodes = baseCode.substring(area.start, area.end);
+        let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
+        baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
+        delete codePositions[codeToRemove];
+      }
+    }
+    textCodeGenerator.textContent = baseCode;
+    document.querySelector('.send-codeGenerator').value = baseCode;
+  }
+  textCodeGenerator.textContent = baseCode;
+  createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
+  createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true, true, true);
+  createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true, true, true);
+  createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject, true, true, true);
+  createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject, true, true, true);
+  createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject, true, true, true);
+  createInputField(subjectItalian, 1.2, 0, "GA", "Italienisch,", areaSubject, true, true, true);
+  createInputField(subjectPhysics, 1.2, 0, "HA", "Physik,", areaSubject, true, true, true);
+  createInputField(subjectChemistry, 1.4, 0, "IA", "Chemie,", areaSubject, true, true, true);
+  createInputField(subjectBiology, 0.8, 0, "JA", "Biologie,", areaSubject, true, true, true);
+  createInputField(subjectGeography, 0.2, 0, "KA", "Geographie,", areaSubject, true, true, true);
+  createInputField(subjectHistory, 0.2, 0, "LA", "Geschichte,", areaSubject, true, true, true);
+  createInputField(subjectSocialStudies, 0.2, 0, "MA", "Sozialkunde,", areaSubject, true, true, true);
+  createInputField(subjectComputerScience, 1.6, 0, "NA", "Informatik,", areaSubject, true, true, true);
+  createInputField(subjectPhysicalEducation, 0.8, 0, "OA", "Sport,", areaSubject, true, true, true);
+  createInputField(subjectEconomics, 1.4, 0, "PA", "Wirtschaft,", areaSubject, true, true, true);
+  createInputField(subjectOther, 2.2, 0, "QA", "Sonstiges,", areaSubject, true, true, true);
+  createInputField(tutoringOnline, 0, 0, "AA", "Online", areaTutoring, true, true, true);
+  createInputField(tutoringHybrid, 3, 0, "BB", "50% online 50% vor Ort", areaTutoring, true, true, true);
+  createInputField(tutoringAtHome, 5, 1.5, "CB", "Zuhause", areaTutoring, true, true, true);
+  createInputField(unitSmall, valueUnitSmall, 0, "FB", "Kleine Einheit", areaUnit, false, true, true);
+  createInputField(unitMiddle, valueUnitMiddle, 0, "DB", "Mittlere Einheit", areaUnit, false, true, true);
+  createInputField(unitLarge, valueUnitLarge, 0, "BB", "Große Einheit", areaUnit, false, true, true);
+  createInputField(contractSmall, valueContractSmall, 0, "CA", "0 Monate", areaContract, false, false, true);
+  createInputField(contractMiddle, valueContractMiddle, 0, "BA", "12 Monate", areaContract, false, false, true);
+  createInputField(contractLarge, valueContractLarge, 0, "AA", "24 Monate", areaContract, false, false, true);
+  createInputField(addOnAllRoundTutor, 0.6, 0, "DA", "Allround-Nachhilfelehrer,", areaAddOn, false, false, true);
+  createInputField(addOnExperiencedTutor, 1.2, 0.45, "QA", "Erfahrener Nachhilfelehrer,", areaAddOn, false, false, true);
+  createInputField(addOnContractBreak, 1.5, 0, "EB", "Vertragspause,", areaAddOn, false, false, true);
+  createInputField(addTandemLesson, valueTandemLesson, 1.5, "FA", "Tandem-Unterricht,", areaAddOn, false, false, false);
+  createInputField(addOnPremiumTutor, 2.6, 0.75, "MA", "Premium Nachhilfelehrer,", areaAddOn, false, false, true);
+  createInputField(addOnMale, 0.4, 0, "BA", "Nachhilfelehrer,", areaAddOn, false, false, true);
+  createInputField(addOnFemale, 0.4, 0, "CA", "Nachhilfelehrerin,", areaAddOn, false, false, true);
+  //end configurator
+}
  
  if (applicationTutorForm){
  
