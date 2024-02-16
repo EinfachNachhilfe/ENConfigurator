@@ -83,7 +83,23 @@ if (configuratorForm) {
     const addOnContractBreak = document.getElementById('addOnContractBreak');
     const addTandemLesson = document.getElementById('addTandemLesson');
   
-   
+    //show "Mehr Infos" Popup
+    Object.keys(buttonTexts).forEach(buttonId => {
+      const button = document.getElementById(buttonId);
+      button.addEventListener('click', () => {
+        background.style.display = 'block';
+        popup.style.display = 'block';
+        textPopupInformation.textContent = buttonTexts[buttonId];
+      });
+    });
+    background.addEventListener('click', () => {
+      popup.style.display = 'none';
+      background.style.display = 'none';
+    });
+    tripperClosePopupInformation.addEventListener('click', () => {
+      popup.style.display = 'none';
+      background.style.display = 'none';
+    });
   
     //add "custom-input-clicked" class and set max. clickable fields
     function manageSelection(elements, maxSelected, selectionClass, disabledClass, mode) {
@@ -286,7 +302,7 @@ if (configuratorForm) {
         });
       }
     }
-
+  
     const textCodeGenerator = document.getElementById('textCodeGenerator');
     let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
     const areaSubject = {
