@@ -266,12 +266,6 @@ if (configuratorForm) {
     }
   }
 
-  /*
-  const textUnitSmall= document.getElementById('textUnitSmall');
-  const textUnitMiddle= document.getElementById('textUnitMiddle');
-  const textUnitLarge= document.getElementById('textUnitLarge');   
-  */
-
   const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
   const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
   const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
@@ -333,19 +327,6 @@ if (configuratorForm) {
     //calculation LTV
     let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
     let totalTutorSalary = tutorSalary / 45 * 60;
-
-    //calculate lowest Price
-    /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
-    let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
-         //display lowest Price
-    if (totalMonthPrice > lowestTotalMonthPrice) {
-    // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
-    textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
-    } else {
-    // Andernfalls zeigen Sie totalMonthPrice an
-    textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
-    }
-    */
 
     textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
