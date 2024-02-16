@@ -421,9 +421,9 @@ if (configuratorForm) {
       document.querySelector('.send-codeGenerator').value = baseCode;
     }
     textCodeGenerator.textContent = baseCode;
-    createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
+             /*     createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
     createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true, true, true);
-    createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true, true, true);
+    createInputField(subjectMathematics, 0.6, 0, "CA", "Mathematik,", areaSubject, true, true, true);*/
     createInputField(subjectFrench, 1.2, 0, "DA", "Französisch,", areaSubject, true, true, true);
     createInputField(subjectLatin, 1.4, 0, "EA", "Latein,", areaSubject, true, true, true);
     createInputField(subjectSpanish, 0.8, 0, "FA", "Spanisch,", areaSubject, true, true, true);
