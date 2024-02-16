@@ -181,27 +181,7 @@ if (configuratorForm) {
   const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
   const subjectEconomics = document.getElementById('subjectEconomics');
   const subjectOther = document.getElementById('subjectOther');
-  function createInputField(elementOrElements, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit = false, isDiscountableContract = false, isDiscountableTandemLesson = false) {
-    // Beobachtet Änderungen an den Klassen der Elemente
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const targetElement = mutation.target;
-          handleClassChange(targetElement, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract, isDiscountableTandemLesson);
-        }
-      });
-    });
 
-    // Unterstützt sowohl einzelne Elemente als auch Arrays von Elementen
-    const elements = Array.isArray(elementOrElements) ? elementOrElements : [elementOrElements];
-
-    // Überwacht jedes Element in der Liste
-    elements.forEach(element => {
-      observer.observe(element, {
-        attributes: true
-      });
-    });
-  }
   function handleClassChange(element, additionalLessonCost, additionalLessonTutorSalary, codeGenerator, defaultValue, area, isDiscountableUnit, isDiscountableContract, isDiscountableTandemLesson) {
     const summaryId = element.id + 'Summary';
     const summaryField = document.getElementById(summaryId);
