@@ -664,6 +664,8 @@
 		tutoring.forEach(function(radio) {
 			if (radio.checked) {
 				if (radio.value == 'atHome') {
+					const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
+                                	tutoringAtHomeSummary.style.display = 'flex';
 					baseLessonPrice += lessonValueTutoringAtHome;
 					textUnitSmall.forEach(element => {
 						element.textContent = '1x90min';
@@ -677,6 +679,8 @@
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringAtHome + baseCode .substr(11);
 				} else if (radio.value == 'hybrid') {
 					baseLessonPrice += lessonValueTutoringHybrid;
+					const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
+                              	        tutoringHybridSummary.style.display = 'flex';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
@@ -688,6 +692,8 @@
 					});
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringHybrid + baseCode .substr(11);
 				} else if (radio.value == 'online') {
+					const tutoringOnlineSummary = document.getElementById('tutoringOnlineSummary');
+                              		tutoringOnlineSummary.style.display = 'flex';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
@@ -708,22 +714,23 @@
 		const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 
 		contract.forEach(function(radio) {
-			  const summaryId = radio.name + radio.value + 'Summary';
-                          const summaryElement = document.getElementById(summaryId);
 			if (radio.checked) {
 				if (radio.value == 'small') {
-					summaryElement.style.display = 'flex';
+				const contractSmallSummary = document.getElementById('contractSmallSummary');
+                                contractSmallSummary.style.display = 'flex';
 					baseLessonPrice += lessonValueUnitSmall;
 					multiplierContract = 4;
 					setUpFee = 69.99;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitSmall + baseCode .substr(14);
 				} else if (radio.value == 'middle') {
-					summaryElement.style.display = 'flex';
+					const contractMiddleSummary = document.getElementById('contractMiddleSummary');
+                                        contractMiddleSummary.style.display = 'flex';
 					baseLessonPrice += lessonValueUnitMiddle;
 					multiplierContract = 12;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitMiddle + baseCode .substr(14);
 				} else if (radio.value == 'large') {
-					summaryElement.style.display = 'flex';
+		                        const contractLargeSummary = document.getElementById('contractLargeSummary');
+                                	contractLargeSummary.style.display = 'flex';
 					multiplierContract = 24;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitLarge + baseCode .substr(14);
 				}
@@ -735,13 +742,19 @@
 		unit.forEach(function(radio) {
 			if (radio.checked) {
 				if (radio.value == 'small') {
+					const unitSmallSummary = document.getElementById('unitSmallSummary');
+                                	unitSmallSummary.style.display = 'flex';
 					baseLessonPrice += lessonValueContractSmall;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractSmall + baseCode .substr(17);
 				} else if (radio.value == 'middle') {
+					const unitMiddleSummary = document.getElementById('unitMiddleSummary');
+                                	unitMiddleSummary.style.display = 'flex';
 					baseLessonPrice += lessonValueContractMiddle;
 					multiplierUnit = 4;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractMiddle + baseCode .substr(17);
 				} else if (radio.value == 'large') {
+					const unitLargeSummary = document.getElementById('unitLargeSummary');
+                                	unitLargeSummary.style.display = 'flex';
 					multiplierUnit = 6;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractLarge + baseCode .substr(17);
 					
