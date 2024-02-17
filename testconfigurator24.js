@@ -343,6 +343,25 @@
  }
  
  if (configuratorForm) {
+	 
+	const buttonTexts = {
+         'btnAddTandemLesson': 'Hier können Sie für nur 10 EUR mehr pro Stunde noch ein zweites Kind in den Unterricht dazunehmen. Somit können Sie sich die Kosten für die Nachhilfe mit einem Klassenkamerad oder Nachbar teilen. Wir empfehlen auf ein gleiches Kompetenzniveau und Klassenstufe zu achten. ',
+         'btnAddOnContractBreak': 'Mit diesem Add-On können Sie den Vertrag jederzeit pausieren und sparen somit in Ferienzeiten oder einem sonstigen beliebigen Zeitpunkt, an dem keine Nachhilfe stattfinden kann oder soll. In Summe können maximal 12 Wochen über 12 Monate pausiert werden. Der Vertrag verlängert sich entsprechend. ',
+         'btnAddOnPremiumTutor': 'Hier garantieren wir Ihnen die Vermittlung an unsere besten Lehrkräfte mit besonders viel Erfahrung und wertvollen Kompetenzen. Eine Premiumlehrkraft hat mindestens 100 Schulstunden an Unterrichtserfahrung (in der Regel mehr) oder eine bereits abgeschlossene pädagogische Ausbildung, bei der ähnlich viel Praxiserfahrung abverlangt wurde. Darüber hinaus nimmt sie regelmäßig an professionellen Weiterbildungen teil und bringt so Kompetenzen für anspruchsvolle Förderbedarfe mit (Lern- und Sprachstörungen, LRS, Autismus, Dyskalkulie, HDS, usw. ...).',
+         'btnAddOnExperiencedTutor': 'Hier garantieren wir Ihnen den Einsatz einer besonders erfahrenen Lehrkraft. Erfahrene Lehrkräfte haben mindestens 100 Unterrichtsstunden gehalten und dabei bereits die typischen Herausforderungen gemeistert. Sogar Personen mit einer abgeschlossenen pädagogischen Ausbildung mit einer ähnlichen Praxiserfahrung zählen dazu.',
+         'btnAddOnAllRoundTutor': 'Alle Fächer aus einer Hand. Das Kind und Sie müssen sich nicht auf unterschiedliche Lehrkräfte einstellen. Hiermit garantieren wir, dass eine einzige Lehrkraft den Schüler in allen angefragten Fächern fördern kann und entsprechende Kompetenzen mitbringt. Das sorgt für ein noch vertrauteres Verhältnis zwischen Tutor und Lernendem und spart viel Zeit bei Absprachen und der Kommunikation.',
+         'btnAddOnMale': 'Ihr Kind kommt besser mit einer männlichen Bezugsperson klar, kann sich ihr gegenüber besser öffnen, lernt mit ihr besser oder braucht dahingehend eine Vorbildfunktion? Mit diesem Add-On sichern wir Ihnen unter Berücksichtigung der vorausgesetzten Fach- und Sozialkompetenzen einen männlichen Nachhilfelehrer zu.',
+         'btnAddOnFemale': 'Ihr Kind kommt besser mit einer weiblichen Bezugsperson klar, kann sich ihr gegenüber besser öffnen, lernt mit ihr besser oder braucht dahingehend eine Vorbildfunktion?Mit diesem Add-On sichern wir Ihnen unter Berücksichtigung der vorausgesetzten Fach- und Sozialkompetenzen eine weibliche Nachhilfelehrerin zu.',
+         'btnContractLarge': 'Langfristige Förderung, wenn mehr als nur ein Schuljahr kontinuierlich gefördert werden soll. Für alle, die sich einen hervorragenden persönlichen Bezug zu einem langfristigen Lernpartner wünschen.',
+         'btnContractMiddle': 'Sinnvollste Wahl für eine gründliche Förderung. Wir begleiten durch das ganze Schuljahr und arbeiten nachhaltig an guten Noten. Unser bisheriger Elternfavorit.',
+         'btnContractSmall': 'Die Nachhilfe kann jederzeit zum Folgetag gekündigt werden. Für alle, die 100% flexibel sein möchten. Auch geeignet für Prüfungsvorbereitung oder Schulabgänger. Bei diesem Modell fällt ausnahmsweise eine Anmeldegebühr von 69,99 € an. Diese wird Ihnen nach 6 Monaten Vertragsverhältnis jedoch wieder gutgeschrieben.',
+         'btnUnitLarge': 'Für jene, mit großen Schwierigkeiten in einem oder mehreren Fächern. Für schnelle Erfolge oder für Kinder mit einem langsamen Lerntempo, die viel Betreuung benötigen. Insbesondere geeignet für Prüfungsvorbereitung.',
+         'btnUnitMiddle': 'Für alle mit einem ernsten Verbesserungswunsch in einem Fach. 2 Einheiten geben genügend Zeit, um Lerninhalte nachhaltig zu vertiefen.',
+         'btnUnitSmall': 'Für alle, die ihre Note halten oder moderat verbessern möchten. Erfordert eine hohe Eigeninitiative, um auch außerhalb der Nachhilfestunde Aufgaben zu erledigen.',
+         'btnTutoringOnline': 'Für maximale zeitliche und örtliche Flexibilität. Insbesondere für Sprachförderung und mediale Förderung geeignet. Ideal in den Alltag eines älteren Schülers integrierbar. Erhöht die Wahrscheinlichkeit, dass alle Wünsche zu Merkmalen der Lehrkraft erfüllt werden.',
+         'btnTutoringHybrid': 'Das Beste aus beiden Welten. Mit allen Vorteilen aus Online- und Vor-Ort-Unterricht. Jeder zweite Unterricht findet bei Ihnen zuhause statt..',
+         'btnTutoringAtHome': 'Die Förderung findet bei Ihnen zu Hause in gewohnter Umgebung statt. Ohne Fahrtaufwand für Sie. Für alle, die maximale persönliche Nähe vorziehen.'
+     };
      	const popup = document.getElementById('popupInformation');
 	const background = document.getElementById('background');
 	const tripperClosePopupInformation = document.getElementById('tripperClosePopupInformation');
@@ -400,7 +419,7 @@
 	const lessonValueEconomics = 1.4;
 	const lessonValueOther = 2.2;
 	const lessonValueAllRoundTutor = 0.6;
-    const lessonValueExperiencedTutor = 1.2;
+        const lessonValueExperiencedTutor = 1.2;
 	const lessonValueContractBreak = 1.5;
 	const lessonValueTandemLesson = 10;
 	const lessonValuePremiumTutor = 2.6;
@@ -458,7 +477,25 @@
 	const letterValueContractLarge = "AA";
 
 
-
+ //show "Mehr Infos" Popup
+         Object.keys(buttonTexts).forEach(buttonId => {
+             const button = document.getElementById(buttonId);
+             button.addEventListener('click', () => {
+                 background.style.display = 'block';
+                 popup.style.display = 'block';
+                 textPopupInformation.textContent = buttonTexts[buttonId];
+             });
+         });
+ 
+         background.addEventListener('click', () => {
+             popup.style.display = 'none';
+             background.style.display = 'none';
+         });
+ 
+         tripperClosePopupInformation.addEventListener('click', () => {
+             popup.style.display = 'none';
+             background.style.display = 'none';
+         });
 	function changeUpdateElement(elements) {
 		elements.forEach(element => {
 			element.addEventListener('change', updateElement);
@@ -466,7 +503,7 @@
 	}
 
 	changeUpdateElement(checkboxes);
-    changeUpdateElement(radioBoxes);  
+        changeUpdateElement(radioBoxes);  
 
 
 	function isCondition1Met(baseCode) {
@@ -533,6 +570,8 @@
 		let baseLessonPrice = 20;
 		let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 		let baseTutorSalary = 12;
+
+		conssole.log(baseCode);
 
 
 		function updateSubject(element, lessonValue, letterValue) {
