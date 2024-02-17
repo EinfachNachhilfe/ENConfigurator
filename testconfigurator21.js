@@ -708,15 +708,15 @@
 
 	
 
-		let totalMonthPrice = totalLessonPrice * multiplierUnit * 4.3333333333;
+		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
-		let monthlyTutorCost = tutorSalary * multiplierUnit * 4.3333333333;
+		let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
 		
 		//calculation LTV
 		let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 	
-		 let totalTutorSalary = (tutorSalary / 45) * 60;
+		 let totalTutorSalary = (baseTutorSalary / 45) * 60;
 
 		 textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
  
