@@ -721,7 +721,7 @@
 		 textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
  
 		//send value to form
-		document.querySelector('.send-lessonPrice').value = lessonValue.toFixed(2);
+		document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
 		document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
