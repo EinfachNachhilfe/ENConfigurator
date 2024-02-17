@@ -1450,6 +1450,30 @@
          }
 
 
+
+	 if (configuratorForm && [0, 1, 2, 3].includes(currentTab)) {
+    let isSelected = false; 
+    const selector = `.tab${currentTab}-checkbox, .tab${currentTab}-radio`;
+    
+
+    const inputs = document.querySelectorAll(selector);
+    
+  
+    inputs.forEach(input => {
+        if ((input.type === "checkbox" || input.type === "radio") && input.checked) {
+            isSelected = true;
+        }
+    });
+
+
+    if (isSelected) {
+            valid = true;
+    } else {
+        valid = false;
+    }
+}
+
+
 if (applicationTutorForm && [1, 2].includes(currentTab)) {
     const buttons = formItems[currentTab].querySelectorAll("button");
     let choiceAdded = false;
