@@ -571,7 +571,7 @@
 		let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 		let baseTutorSalary = 12;
 
-		conssole.log(baseCode);
+		console.log(baseCode);
 
 
 		function updateSubject(element, lessonValue, letterValue) {
