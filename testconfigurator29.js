@@ -1448,16 +1448,6 @@
            valid = false;
          }
          }
-     
- 
- if (configuratorForm && ![4, 5, 6, 7].includes(currentTab)) {
-     const hasClicked = formItems[currentTab].querySelectorAll(".custom-input-clicked").length > 0;
-     if (hasClicked) {
-         valid = true; // Setzen Sie valid auf true, wenn mindestens ein Element angeklickt wurde
-     } else {
-         valid = false;
-     }
- }
 
 
 if (applicationTutorForm && [1, 2].includes(currentTab)) {
