@@ -1462,6 +1462,31 @@ if (configuratorForm && [0].includes(currentTab)) {
     }
 }
 
+	 
+if (configuratorForm && [1,2,3].includes(currentTab)) {
+    // Validierung für Radio-Buttons
+    const radios = formItems[currentTab].querySelectorAll("input[type='radio']");
+    let radioGroups = {};
+
+    // Gruppieren der Radio-Buttons nach ihrem Namen
+    for (let j = 0; j < radios.length; j++) {
+        let name = radios[j].getAttribute("name");
+        radioGroups[name] = radioGroups[name] || [];
+        radioGroups[name].push(radios[j]);
+    }
+
+    // Überprüfen, ob mindestens ein Radio-Button in jeder Gruppe ausgewählt wurde
+    for (let groupName in radioGroups) {
+        if (radioGroups.hasOwnProperty(groupName)) {
+            let radioChecked = radioGroups[groupName].some(radio => radio.checked);
+            if (!radioChecked && radioGroups[groupName].length > 0) {
+                valid = false;
+                break; // Sobald ein nicht ausgewähltes Radio gefunden wird, kann die Schleife abgebrochen werden
+            }
+        }
+    }
+}
+
 
 
 if (applicationTutorForm && [1, 2].includes(currentTab)) {
