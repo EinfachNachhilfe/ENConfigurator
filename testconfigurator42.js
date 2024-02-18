@@ -792,31 +792,39 @@
 		document.querySelector('.send-codeGenerator').value = baseCode;
 
 
-	 //maxSelected Checkboxen 
+
+//maxSelected Checkboxen 
 function updateCheckboxLimit() {
     const container = document.getElementById('maxSelectedCheckboxes');
+    console.log("Container:", container); // Überprüft, ob der Container korrekt ausgewählt wurde
+
     if (!container) return;
 
     const maxAllowed = 3;
     const checkboxes = container.querySelectorAll('.checkbox');
+    console.log("Checkboxes:", checkboxes); // Gibt alle Checkboxen im Container aus
+
     const selectedCheckboxes = container.querySelectorAll('.checkbox:checked');
+    console.log("Selected Checkboxes:", selectedCheckboxes.length); // Gibt die Anzahl der ausgewählten Checkboxen aus
 
     if (selectedCheckboxes.length >= maxAllowed) {
+        console.log("Limit erreicht oder überschritten");
         checkboxes.forEach(checkbox => {
             if (!checkbox.checked) {
+                console.log("Disabling checkbox:", checkbox); // Zeigt die Checkbox, die deaktiviert wird
                 checkbox.classList.add('disabled');
                 checkbox.disabled = true;
             }
         });
     } else {
+        console.log("Unter dem Limit");
         checkboxes.forEach(checkbox => {
-            // Hier entfernst du die Klasse 'disabled' vom Elternelement, falls du das möchtest
+            console.log("Enabling checkbox:", checkbox); // Zeigt die Checkbox, die aktiviert wird
             checkbox.classList.remove('disabled');
             checkbox.disabled = false;
         });
     }
 }
-
 
 
 
