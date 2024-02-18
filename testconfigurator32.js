@@ -1451,7 +1451,7 @@
 
 
 
-if (configuratorForm && [0, 1, 2, 3].includes(currentTab)) {
+if (configuratorForm && [0].includes(currentTab)) {
     // Validierung für Checkboxen
     const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox']");
     let checkboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
