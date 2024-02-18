@@ -496,6 +496,8 @@
              popup.style.display = 'none';
              background.style.display = 'none';
          });
+
+	 //change event 
 	function changeUpdateElement(elements) {
 		elements.forEach(element => {
 			element.addEventListener('change', updateElement);
@@ -504,6 +506,30 @@
 
 	changeUpdateElement(checkboxes);
         changeUpdateElement(radioBoxes);  
+
+
+	 //maxSelected Checkboxen 
+    function updateCheckboxLimit() {
+    const maxAllowed = 3;
+    const checkboxes = document.querySelectorAll('.checkbox-field');
+    const selectedCheckboxes = document.querySelectorAll('.checkbox-field:checked');
+
+    if (selectedCheckboxes.length >= maxAllowed) {
+        checkboxes.forEach(checkbox => {
+            if (!checkbox.checked) {
+                checkbox.parentElement.classList.add('disabled');
+                checkbox.disabled = true; 
+            }
+        });
+    } else {
+        checkboxes.forEach(checkbox => {
+            checkbox.parentElement.classList.remove('disabled');
+            checkbox.disabled = false;
+        });
+    }
+}
+
+updateCheckboxLimit();
 
 
 	function isCondition1Met(baseCode) {
