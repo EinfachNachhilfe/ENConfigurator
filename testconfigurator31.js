@@ -1451,27 +1451,17 @@
 
 
 
-	 if (configuratorForm && [0, 1, 2, 3].includes(currentTab)) {
-    let isSelected = false; 
-    const selector = `.tab${currentTab}-checkbox, .tab${currentTab}-radio`;
-    
+if (configuratorForm && [0, 1, 2, 3].includes(currentTab)) {
+    // Validierung für Checkboxen
+    const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox']");
+    let checkboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
-    const inputs = document.querySelectorAll(selector);
-    
-  
-    inputs.forEach(input => {
-        if ((input.type === "checkbox" || input.type === "radio") && input.checked) {
-            isSelected = true;
-        }
-    });
-
-
-    if (isSelected) {
-            valid = true;
-    } else {
+    // Prüfen, ob mindestens eine Checkbox ausgewählt wurde
+    if (!checkboxChecked && checkboxes.length > 0) {
         valid = false;
     }
 }
+
 
 
 if (applicationTutorForm && [1, 2].includes(currentTab)) {
