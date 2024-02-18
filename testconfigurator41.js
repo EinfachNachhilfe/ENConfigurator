@@ -793,22 +793,31 @@
 
 
 	 //maxSelected Checkboxen 
-document.addEventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+function updateCheckboxLimit() {
+    const container = document.getElementById('maxSelectedCheckboxes');
+    if (!container) return;
 
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('click', function() {
-            const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            const isLimitReached = checkedCheckboxes.length >= 2;
+    const maxAllowed = 3;
+    const checkboxes = container.querySelectorAll('.checkbox');
+    const selectedCheckboxes = container.querySelectorAll('.checkbox:checked');
 
-            checkboxes.forEach(function(item) {
-                if (!item.checked) {
-                    item.disabled = isLimitReached;
-                }
-            });
+    if (selectedCheckboxes.length >= maxAllowed) {
+        checkboxes.forEach(checkbox => {
+            if (!checkbox.checked) {
+                checkbox.classList.add('disabled');
+                checkbox.disabled = true;
+            }
         });
-    });
-});
+    } else {
+        checkboxes.forEach(checkbox => {
+            // Hier entfernst du die Klasse 'disabled' vom Elternelement, falls du das möchtest
+            checkbox.classList.remove('disabled');
+            checkbox.disabled = false;
+        });
+    }
+}
+
+
 
 
 
