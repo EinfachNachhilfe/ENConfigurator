@@ -509,16 +509,19 @@
 
 
 	 //maxSelected Checkboxen 
-    function updateCheckboxLimit() {
+function updateCheckboxLimit() {
+    const container = document.getElementById('maxSelectedCheckboxes');
+
+
     const maxAllowed = 3;
-    const checkboxes = document.querySelectorAll('.checkbox-field');
-    const selectedCheckboxes = document.querySelectorAll('.checkbox-field:checked');
+    const checkboxes = container.querySelectorAll('.checkbox');
+    const selectedCheckboxes = container.querySelectorAll('.checkbox:checked');
 
     if (selectedCheckboxes.length >= maxAllowed) {
         checkboxes.forEach(checkbox => {
             if (!checkbox.checked) {
                 checkbox.parentElement.classList.add('disabled');
-                checkbox.disabled = true; 
+                checkbox.disabled = true;
             }
         });
     } else {
@@ -530,6 +533,7 @@
 }
 
 updateCheckboxLimit();
+
 
 
 	function isCondition1Met(baseCode) {
