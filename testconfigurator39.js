@@ -509,38 +509,23 @@
 
 
 	 //maxSelected Checkboxen 
-const checkboxWrapper = document.getElementById('maxSelectedCheckboxen');
-const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-checkboxWrapper.addEventListener('change', function(event) {
-    if(event.target.type === 'checkbox') {
-        const checkedCheckboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]:checked');
-        
-        // Deaktiviere die erste Checkbox, wenn mehr als 3 Checkboxen ausgewählt wurden
-        if(checkedCheckboxes.length > 3) {
-            checkedCheckboxes[0].checked = false;
-            checkedCheckboxes[0].closest('label').style.opacity = '';
-            checkedCheckboxes[0].closest('label').style.pointerEvents = '';
-        }
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('click', function() {
+            const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const isLimitReached = checkedCheckboxes.length >= 2;
 
-        // Deaktiviere die restlichen Checkboxen, wenn genau 3 Checkboxen ausgewählt wurden
-        if(checkedCheckboxes.length === 3) {
-            checkboxes.forEach(function(checkbox) {
-                if(!checkbox.checked) {
-                    checkbox.disabled = true;
-                    checkbox.closest('label').style.opacity = '0.5';
-                    checkbox.closest('label').style.pointerEvents = 'none';
+            checkboxes.forEach(function(item) {
+                if (!item.checked) {
+                    item.disabled = isLimitReached;
                 }
             });
-        } else {
-            checkboxes.forEach(function(checkbox) {
-                checkbox.disabled = false;
-                checkbox.closest('label').style.opacity = '';
-                checkbox.closest('label').style.pointerEvents = '';
-            });
-        }
-    }
+        });
+    });
 });
+
 
 
 
