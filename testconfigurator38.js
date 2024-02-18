@@ -509,30 +509,39 @@
 
 
 	 //maxSelected Checkboxen 
-function updateCheckboxLimit() {
-    const container = document.getElementById('maxSelectedCheckboxes');
+const checkboxWrapper = document.getElementById('maxSelectedCheckboxen');
+const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
 
+checkboxWrapper.addEventListener('change', function(event) {
+    if(event.target.type === 'checkbox') {
+        const checkedCheckboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]:checked');
+        
+        // Deaktiviere die erste Checkbox, wenn mehr als 3 Checkboxen ausgewählt wurden
+        if(checkedCheckboxes.length > 3) {
+            checkedCheckboxes[0].checked = false;
+            checkedCheckboxes[0].closest('label').style.opacity = '';
+            checkedCheckboxes[0].closest('label').style.pointerEvents = '';
+        }
 
-    const maxAllowed = 3;
-    const checkboxes = container.querySelectorAll('.checkbox');
-    const selectedCheckboxes = container.querySelectorAll('.checkbox:checked');
-
-    if (selectedCheckboxes.length >= maxAllowed) {
-        checkboxes.forEach(checkbox => {
-            if (!checkbox.checked) {
-                checkbox.classList.add('disabled');
-                checkbox.disabled = true;
-            }
-        });
-    } else {
-        checkboxes.forEach(checkbox => {
-            checkbox.classList.remove('disabled');
-            checkbox.disabled = false;
-        });
+        // Deaktiviere die restlichen Checkboxen, wenn genau 3 Checkboxen ausgewählt wurden
+        if(checkedCheckboxes.length === 3) {
+            checkboxes.forEach(function(checkbox) {
+                if(!checkbox.checked) {
+                    checkbox.disabled = true;
+                    checkbox.closest('label').style.opacity = '0.5';
+                    checkbox.closest('label').style.pointerEvents = 'none';
+                }
+            });
+        } else {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.disabled = false;
+                checkbox.closest('label').style.opacity = '';
+                checkbox.closest('label').style.pointerEvents = '';
+            });
+        }
     }
-}
+});
 
-updateCheckboxLimit();
 
 
 
