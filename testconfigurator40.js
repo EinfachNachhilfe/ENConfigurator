@@ -508,23 +508,7 @@
         changeUpdateElement(radioBoxes);  
 
 
-	 //maxSelected Checkboxen 
-document.addEventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('click', function() {
-            const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            const isLimitReached = checkedCheckboxes.length >= 2;
-
-            checkboxes.forEach(function(item) {
-                if (!item.checked) {
-                    item.disabled = isLimitReached;
-                }
-            });
-        });
-    });
-});
 
 
 
@@ -808,13 +792,29 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.querySelector('.send-codeGenerator').value = baseCode;
 
 
-	
-	}
+	 //maxSelected Checkboxen 
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-	updateElement()
-	
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('click', function() {
+            const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const isLimitReached = checkedCheckboxes.length >= 2;
+
+            checkboxes.forEach(function(item) {
+                if (!item.checked) {
+                    item.disabled = isLimitReached;
+                }
+            });
+        });
+    });
+});
 
 
+
+
+
+		
 	for (var i = 0; i < addOnFemale.length; i++) {
 		addOnFemale[i].addEventListener('change', function() {
 			addOnMale.forEach(function(checkbox) {
@@ -864,6 +864,14 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		});
 	}
+	
+	}
+
+	updateElement()
+	
+
+
+
 
 
 
