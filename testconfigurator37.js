@@ -520,13 +520,13 @@ function updateCheckboxLimit() {
     if (selectedCheckboxes.length >= maxAllowed) {
         checkboxes.forEach(checkbox => {
             if (!checkbox.checked) {
-                checkbox.parentElement.classList.add('disabled');
+                checkbox.classList.add('disabled');
                 checkbox.disabled = true;
             }
         });
     } else {
         checkboxes.forEach(checkbox => {
-            checkbox.parentElement.classList.remove('disabled');
+            checkbox.classList.remove('disabled');
             checkbox.disabled = false;
         });
     }
