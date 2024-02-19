@@ -577,9 +577,9 @@
 		let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 		let baseTutorSalary = 12;
 
-const checkboxWrapper = document.getElementById('maxSelectedSubject');
-const maxSelectedAddOn = document.getElementById('maxSelectedAddOn');
-
+const maxSelectedSubject = document.getElementById('maxSelectedSubject');
+const maxSelectedAddOnTutor = document.getElementById('maxSelectedAddOnTutor');
+const maxSelectedAddOnGender = document.getElementById('maxSelectedAddOnGender');
 
 function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
     const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
@@ -616,9 +616,9 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
 }
 
 
-handleMaxSelectedCheckboxes(checkboxWrapper, 3);
-handleMaxSelectedCheckboxes(maxSelectedAddOn, 1);
-
+handleMaxSelectedCheckboxes(maxSelectedSubject, 3);
+handleMaxSelectedCheckboxes(maxSelectedAddOnTutor, 1);
+handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
 
