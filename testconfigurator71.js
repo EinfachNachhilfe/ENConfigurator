@@ -621,7 +621,7 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnTutor, 1);
 handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
-
+/* 
 
 function updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
@@ -771,7 +771,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-/* 
+
 		let multiplierUnit = 2;
 		let multiplierContract = 1;
 		let  setUpFee = 0;
