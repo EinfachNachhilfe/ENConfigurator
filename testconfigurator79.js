@@ -622,7 +622,7 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
 
-/* 	
+	
 function updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
    const summaryField = document.getElementById(summaryId);
@@ -840,13 +840,13 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		});
 
 
-		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
+		let totalMonthPrice = (baseLessonPrice * multiplierUnit * 4.3333333333).toFixed(2);
     
 		//calculation months salary tutor
-		let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
+		let monthlyTutorCost = (baseTutorSalary * multiplierUnit * 4.3333333333).toFixed(2);
 		
 		//calculation LTV
-		let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
+		let valueTotalLtv = ((totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee).toFixed(2);
 	
 		let totalTutorSalary = (baseTutorSalary / 45) * 60;
 
@@ -858,7 +858,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-	 */
+	 
 
 	}
 
