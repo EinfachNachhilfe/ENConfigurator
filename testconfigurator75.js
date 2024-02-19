@@ -622,7 +622,7 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
 
-
+/* 	
 function updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
    const summaryField = document.getElementById(summaryId);
@@ -643,7 +643,7 @@ function updateSubject(element, lessonValue, letterValue) {
     }
 }
 
-		/* 	
+		
 		updateSubject(subjectGerman, lessonValueGerman, letterValueGerman);
 		updateSubject(subjectEnglish, lessonValueEnglish, letterValueEnglish);
 		updateSubject(subjectMathematics, lessonValueMathematics, letterValueMathematics);
@@ -662,7 +662,7 @@ function updateSubject(element, lessonValue, letterValue) {
 		updateSubject(subjectEconomics, lessonValueEconomics, letterValueEconomics);
 		updateSubject(subjectOther, lessonValueOther, letterValueOther);
 		
-		 
+ */		 
 		
 
 
@@ -859,7 +859,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		//document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		//document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		//document.querySelector('.send-codeGenerator').value = baseCode;
-	 */
+
 	}
 
 	updateElement()
