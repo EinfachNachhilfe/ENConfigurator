@@ -395,8 +395,7 @@ if (configuratorForm) {
 	const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
 	const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
 	
-	const lessonValueGerman = 1;
-	const lessonValueEnglish = 1;
+
 	const lessonValueMathematics = 0.6;
 	const lessonValueFrench = 1.2;
 	const lessonValueLatin = 1.4;
@@ -413,7 +412,7 @@ if (configuratorForm) {
 	const lessonValueEconomics = 1.4;
 	const lessonValueOther = 2.2;
 	const lessonValueAllRoundTutor = 0.6;
-        const lessonValueExperiencedTutor = 1.2;
+    const lessonValueExperiencedTutor = 1.2;
 	const lessonValueContractBreak = 1.5;
 	const lessonValueTandemLesson = 10;
 	const lessonValuePremiumTutor = 2.6;
@@ -425,13 +424,10 @@ if (configuratorForm) {
 	const lessonValueUnitMiddle = 2.6;
 	const lessonValueContractSmall = 6.8;
 	const lessonValueContractMiddle = 2;
-	const tutorSalaryValueAllRoundTutor = 0;
 	const tutorSalaryValueExperiencedTutor = 0.45;
-	const tutorSalaryValueContractBreak = 0;
 	const tutorSalaryValueTandemLesson = 1.5; 
 	const tutorSalaryValuePremiumTutor = 0.75;
-	const tutorSalaryValueMale = 0;
-	const tutorSalaryValueFemale = 0;
+
    
 	const letterValueGerman = "AA";
 	const letterValueEnglish = "BA";
@@ -466,6 +462,8 @@ if (configuratorForm) {
 	const letterValueContractSmall = "CA";
 	const letterValueContractMiddle = "BA";
 	const letterValueContractLarge = "AA";
+
+
  //show "Mehr Infos" Popup
          Object.keys(buttonTexts).forEach(buttonId => {
              const button = document.getElementById(buttonId);
@@ -596,8 +594,8 @@ function updateSubject(element, lessonValue, letterValue) {
     }
 }
 		
-		updateSubject(subjectGerman, lessonValueGerman, letterValueGerman);
-		updateSubject(subjectEnglish, lessonValueEnglish, letterValueEnglish);
+		updateSubject(subjectGerman, 0, letterValueGerman);
+		updateSubject(subjectEnglish, 0, letterValueEnglish);
 		updateSubject(subjectMathematics, lessonValueMathematics, letterValueMathematics);
 		updateSubject(subjectFrench, lessonValueFrench, letterValueFrench);
 		updateSubject(subjectLatin, lessonValueLatin, letterValueLatin);
@@ -654,13 +652,13 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
     }
 }
 		
-		updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, tutorSalaryValueAllRoundTutor);
+		updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, 0);
 		updateAddOn(addOnExperiencedTutor, lessonValueExperiencedTutor, letterValueExperiencedTutor, tutorSalaryValueExperiencedTutor);
-		updateAddOn(addOnContractBreak, lessonValueContractBreak, letterValueContractBreak, tutorSalaryValueContractBreak);
+		updateAddOn(addOnContractBreak, lessonValueContractBreak, letterValueContractBreak, 0);
 		updateAddOn(addTandemLesson, lessonValueTandemLesson, letterValueTandemLesson, tutorSalaryValueTandemLesson);
 		updateAddOn(addOnPremiumTutor, lessonValuePremiumTutor, letterValuePremiumTutor, tutorSalaryValuePremiumTutor);
-		updateAddOn(addOnMale, lessonValueMale, letterValueMale, tutorSalaryValueMale);
-		updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale);
+		updateAddOn(addOnMale, lessonValueMale, letterValueMale, 0);
+		updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, 0);
 		
 
 
@@ -720,7 +718,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		});
 		let multiplierUnit = 2;
 		let multiplierContract = 1;
-		let  setUpFee = 0;
+		let  setUpFee;
 		const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 		contract.forEach(function(radio) {
 			const contractSmallSummary = document.getElementById('contractSmallSummary');
