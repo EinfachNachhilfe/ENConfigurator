@@ -394,8 +394,9 @@ if (configuratorForm) {
 	const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
 	const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
 	const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
-	const lessonValueGerman = 0;
-	const lessonValueEnglish = 0;
+	
+	const lessonValueGerman = 1;
+	const lessonValueEnglish = 1;
 	const lessonValueMathematics = 0.6;
 	const lessonValueFrench = 1.2;
 	const lessonValueLatin = 1.4;
