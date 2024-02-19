@@ -509,7 +509,7 @@
 
 
 const checkboxWrapper = document.getElementById('maxSelectedSubject');
-const checkboxWrapper = document.getElementById('maxSelectedCheckboxes');
+
 	 
 function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
     const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
