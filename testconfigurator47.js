@@ -510,11 +510,10 @@
 
 //maxSelected
 $(document).ready(function(){
-    const $checkboxWrapper = $('div.div-choice-3-subject');
+    const $checkboxWrapper = $('#maxSelectedCheckboxes');
     const $checkboxes = $checkboxWrapper.find('input[type=checkbox]');
 
     $checkboxes.on('change', function() {
-        // Wenn mehr als 3 Checkboxen ausgewählt wurden, deaktivieren Sie die Checkbox, die zuerst ausgewählt wurde
         if( $checkboxes.filter(':checked').length > 3) {
             var $firstChecked = $checkboxes.filter(':checked').eq(0);
             $firstChecked.prop('checked', false).closest('label').css({'opacity': '', 'pointer-events' : ''});
@@ -528,6 +527,7 @@ $(document).ready(function(){
         }
     });
 });
+
 
 
 
@@ -808,62 +808,6 @@ $(document).ready(function(){
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-
-
-
-		
-	// Für die Checkbox-Gruppe "addOnFemale"
-for (var i = 0; i < addOnFemale.length; i++) {
-    addOnFemale[i].addEventListener('change', function() {
-        addOnMale.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                checkbox.checked = false;
-                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
-                updateElement();
-            }
-        });
-    });
-}
-
-// Für die Checkbox-Gruppe "addOnMale"
-for (var i = 0; i < addOnMale.length; i++) {
-    addOnMale[i].addEventListener('change', function() {
-        addOnFemale.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                checkbox.checked = false;
-                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
-                updateElement();
-            }
-        });
-    });
-}
-
-// Für die Checkbox-Gruppe "addOnExperiencedTutor"
-for (var i = 0; i < addOnExperiencedTutor.length; i++) {
-    addOnExperiencedTutor[i].addEventListener('change', function() {
-        addOnPremiumTutor.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                checkbox.checked = false;
-                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
-                updateElement();
-            }
-        });
-    });
-}
-
-// Für die Checkbox-Gruppe "addOnPremiumTutor"
-for (var i = 0; i < addOnPremiumTutor.length; i++) {
-    addOnPremiumTutor[i].addEventListener('change', function() {
-        addOnExperiencedTutor.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                checkbox.checked = false;
-                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
-                updateElement();
-            }
-        });
-    });
-}
-
 	
 	}
 
