@@ -621,7 +621,7 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnTutor, 1);
 handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
-/* 
+
 
 function updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
@@ -664,7 +664,7 @@ function updateSubject(element, lessonValue, letterValue) {
 		
 		 
 		
-	
+	/* 
 
 function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
     const summaryId = element.id + 'Summary';
