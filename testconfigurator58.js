@@ -623,23 +623,26 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
 
-		function updateSubject(element, lessonValue, letterValue) {
-			const summaryId = element.id + 'Summary';
-			const summaryField = document.getElementById(summaryId);
+function updateSubject(element, lessonValue, letterValue) {
+    const summaryId = element.id + 'Summary';
+    const summaryField = document.getElementById(summaryId);
 
-			if (element.checked) {
-				baseLessonPrice += lessonValue; 
-		        summaryField.style.display = 'flex';
-		
-				if (isCondition1Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 2) + letterValue + baseCode .substr(4);
-				} else if (isCondition2Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 4) + letterValue + baseCode .substr(6);
-				} else if (isCondition3Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 6) + letterValue + baseCode .substr(8);
-				}
-			}
-		}
+    if (element.checked) {
+        baseLessonPrice += lessonValue; 
+        summaryField.style.display = 'flex';
+
+        if (isCondition1Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 2) + letterValue + baseCode .substr(4);
+        } else if (isCondition2Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 4) + letterValue + baseCode .substr(6);
+        } else if (isCondition3Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 6) + letterValue + baseCode .substr(8);
+        }
+    } else {
+        summaryField.style.display = 'none';
+    }
+}
+
 		
 		updateSubject(subjectGerman, lessonValueGerman, letterValueGerman);
 		updateSubject(subjectEnglish, lessonValueEnglish, letterValueEnglish);
