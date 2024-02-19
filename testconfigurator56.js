@@ -617,7 +617,7 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
 
 
 handleMaxSelectedCheckboxes(checkboxWrapper, 3);
-handleMaxSelectedCheckboxes(maxSelectedAddOn, 2);
+handleMaxSelectedCheckboxes(maxSelectedAddOn, 1);
 
 
 
