@@ -509,22 +509,38 @@
 
 
 //maxSelected
-$(document).ready(function(){
-    const $checkboxWrapper = $('#maxSelectedCheckboxes');
-    const $checkboxes = $checkboxWrapper.find('input[type=checkbox]');
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxWrapper = document.getElementById('maxSelectedCheckboxes');
+    const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
 
-    $checkboxes.on('change', function() {
-        if( $checkboxes.filter(':checked').length > 3) {
-            var $firstChecked = $checkboxes.filter(':checked').eq(0);
-            $firstChecked.prop('checked', false).closest('label').css({'opacity': '', 'pointer-events' : ''});
-        }
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const checkedCount = checkboxWrapper.querySelectorAll('input[type=checkbox]:checked').length;
 
-        // Wenn genau 3 Checkboxen ausgewählt wurden, deaktivieren Sie die restlichen
-        if( $checkboxes.filter(':checked').length === 3) {
-            $checkboxes.not(':checked').prop('disabled', true).closest('label').css({'opacity': '0.5', 'pointer-events' : 'none'})
-        } else {
-            $checkboxes.prop('disabled', false).closest('label').css({'opacity': '', 'pointer-events' : ''})
-        }
+            if (checkedCount > 3) {
+                const firstChecked = checkboxWrapper.querySelector('input[type=checkbox]:checked');
+                firstChecked.checked = false;
+                firstChecked.closest('label').style.opacity = '';
+                firstChecked.closest('label').style.pointerEvents = '';
+            }
+
+            // Wenn genau 3 Checkboxen ausgewählt wurden, deaktivieren Sie die restlichen
+            if (checkedCount === 3) {
+                checkboxes.forEach(function(cb) {
+                    if (!cb.checked) {
+                        cb.disabled = true;
+                        cb.closest('label').style.opacity = '0.5';
+                        cb.closest('label').style.pointerEvents = 'none';
+                    }
+                });
+            } else {
+                checkboxes.forEach(function(cb) {
+                    cb.disabled = false;
+                    cb.closest('label').style.opacity = '';
+                    cb.closest('label').style.pointerEvents = '';
+                });
+            }
+        });
     });
 });
 
