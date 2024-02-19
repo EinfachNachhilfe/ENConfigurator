@@ -721,13 +721,12 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
 			const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
 			const tutoringOnlineSummary = document.getElementById('tutoringOnlineSummary');
-			tutoringAtHomeSummary.style.display = 'none';
-		        tutoringHybridSummary.style.display = 'none';
-		        tutoringOnlineSummary.style.display = 'none';
 				
 			if (radio.checked) {
 				if (radio.value == 'atHome') {
                                 	tutoringAtHomeSummary.style.display = 'flex';
+		      			tutoringHybridSummary.style.display = 'none';
+		       			tutoringOnlineSummary.style.display = 'none';
 					baseLessonPrice += lessonValueTutoringAtHome;
 					textUnitSmall.forEach(element => {
 						element.textContent = '1x90min';
@@ -742,6 +741,8 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				} else if (radio.value == 'hybrid') {
 					baseLessonPrice += lessonValueTutoringHybrid;
                               	        tutoringHybridSummary.style.display = 'flex';
+					tutoringAtHomeSummary.style.display = 'none';
+		        		tutoringOnlineSummary.style.display = 'none';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
@@ -754,6 +755,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringHybrid + baseCode .substr(11);
 				} else if (radio.value == 'online') {
                               		tutoringOnlineSummary.style.display = 'flex';
+					tutoringAtHomeSummary.style.display = 'none';
+		        		tutoringHybridSummary.style.display = 'none';
+
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
