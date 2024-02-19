@@ -509,9 +509,9 @@
 
 
 const checkboxWrapper = document.getElementById('maxSelectedSubject');
-const customInputWrapper = document.querySelectorAll('.custom-input-wrapper');
-	 
-	 
+const customInputWrappers = document.querySelectorAll('.custom-input-wrapper');
+
+
 function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
     const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
 
@@ -526,7 +526,7 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
                 firstChecked.closest('label').style.pointerEvents = '';
             }
 
-            // Wenn genau maxCount Checkboxen ausgewählt wurden, deaktivieren Sie die restlichen
+
             if (checkedCount === maxCount) {
                 checkboxes.forEach(function(cb) {
                     if (!cb.checked) {
@@ -546,9 +546,13 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
     });
 }
 
- 
+
 handleMaxSelectedCheckboxes(checkboxWrapper, 3);
-handleMaxSelectedCheckboxes(customInputWrapper, 2);
+
+
+customInputWrappers.forEach(function(wrapper) {
+    handleMaxSelectedCheckboxes(wrapper, 2);
+});
 
 
 
