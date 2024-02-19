@@ -623,7 +623,7 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
 	
-ffunction updateSubject(element, lessonValue, letterValue) {
+function updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
    const summaryField = document.getElementById(summaryId);
 
