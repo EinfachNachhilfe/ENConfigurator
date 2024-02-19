@@ -18,12 +18,10 @@
  const applicationTutorForm = document.getElementById('applicationTutor');
  const couponCode = document.getElementById('coupon-code');
  const couponCodeElement = document.getElementById('coupon-code');
-
  const phoneNumberTutor = document.getElementById('phone-number_tutor');
   const emailTutor = document.getElementById('email_tutor');
   const bdayTutor = document.getElementById('bday_tutor');
   const availabilityTutor = document.getElementById('availability_tutor');
-
  const couponCodes = {
      "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
      "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
@@ -49,8 +47,6 @@
  const background = document.getElementById('background');
  const showFirstNames = document.querySelectorAll('.show_first-name');
   const firstNameInput = document.getElementById('first-name_tutor');
-
-
        firstNameInput.addEventListener('input', function() {
           showFirstNames.forEach(function(element) {
               element.textContent = firstNameInput.value;
@@ -366,8 +362,6 @@ if (configuratorForm) {
 	const background = document.getElementById('background');
 	const tripperClosePopupInformation = document.getElementById('tripperClosePopupInformation');
 	const textPopupInformation = document.getElementById('textPopupInformation');
-
-
 	const addOnPremiumTutor  = document.getElementById('addOnPremiumTutor');
 	const addOnExperiencedTutor  = document.getElementById('addOnExperiencedTutor');
 	const addOnMale  = document.getElementById('addOnMale');
@@ -400,7 +394,6 @@ if (configuratorForm) {
 	const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
 	const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
 	const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
-
 	const lessonValueGerman = 0;
 	const lessonValueEnglish = 0;
 	const lessonValueMathematics = 0.6;
@@ -427,13 +420,10 @@ if (configuratorForm) {
 	const lessonValueFemale = 0.4;
 	const lessonValueTutoringAtHome = 5;
 	const lessonValueTutoringHybrid = 3;
-
 	const lessonValueUnitSmall = 6;
 	const lessonValueUnitMiddle = 2.6;
-
 	const lessonValueContractSmall = 6.8;
 	const lessonValueContractMiddle = 2;
-
 	const tutorSalaryValueAllRoundTutor = 0;
 	const tutorSalaryValueExperiencedTutor = 0.45;
 	const tutorSalaryValueContractBreak = 0;
@@ -475,8 +465,6 @@ if (configuratorForm) {
 	const letterValueContractSmall = "CA";
 	const letterValueContractMiddle = "BA";
 	const letterValueContractLarge = "AA";
-
-
  //show "Mehr Infos" Popup
          Object.keys(buttonTexts).forEach(buttonId => {
              const button = document.getElementById(buttonId);
@@ -496,106 +484,77 @@ if (configuratorForm) {
              popup.style.display = 'none';
              background.style.display = 'none';
          });
-
 	 //change event 
 	function changeUpdateElement(elements) {
 		elements.forEach(element => {
 			element.addEventListener('change', updateElement);
 		});
 	}
-
 	changeUpdateElement(checkboxes);
         changeUpdateElement(radioBoxes);  
-
-
-
-
-
-
 	function isCondition1Met(baseCode) {
 		return baseCode.substr(2, 2) === "0A";
 	}
-
 	function isCondition2Met(baseCode) {
 		return baseCode.substr(4, 2) === "0A";
 	}
-
 	function isCondition3Met(baseCode) {
 		return baseCode.substr(6, 2) === "0A";
 	}
-
 	function isCondition4Met(baseCode) {
 		return baseCode.substr(18, 2) === "0A";
 	}
-
 	function isCondition5Met(baseCode) {
 		return baseCode.substr(20, 2) === "0A";
 	}
-
 	function isCondition6Met(baseCode) {
 		return baseCode.substr(22, 2) === "0A";
 	}
-
 	function isCondition7Met(baseCode) {
 		return baseCode.substr(24, 2) === "0A";
 	}
-
 	function isCondition8Met(baseCode) {
 		return baseCode.substr(26, 2) === "0A";
 	}
-
 	function isCondition9Met(baseCode) {
 		return baseCode.substr(28, 2) === "0A";
 	}
-
 	function isCondition10Met(baseCode) {
 		return baseCode.substr(30, 2) === "0A";
 	}
-
 	function isCondition11Met(baseCode) {
 		return baseCode.substr(32, 2) === "0A";
 	}
-
 	function isCondition12Met(baseCode) {
 		return baseCode.substr(34, 2) === "0A";
 	}
-
 	function isCondition13Met(baseCode) {
 		return baseCode.substr(36, 2) === "0A";
 	}
-
 	function isCondition14Met(baseCode) {
 		return baseCode.substr(38, 2) === "0A";
 	}
-
 	function isCondition15Met(baseCode) {
 		return baseCode.substr(40, 2) === "0A";
 	}
-
 	function updateElement() {
 		let baseLessonPrice = 20;
 		let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 		let baseTutorSalary = 12;
-
 const maxSelectedSubject = document.getElementById('maxSelectedSubject');
 const maxSelectedAddOnTutor = document.getElementById('maxSelectedAddOnTutor');
 const maxSelectedAddOnGender = document.getElementById('maxSelectedAddOnGender');
-
 function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
     const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
-
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
             const checkedCount = checkboxWrapper.querySelectorAll('input[type=checkbox]:checked').length;
-
             if (checkedCount > maxCount) {
                 const firstChecked = checkboxWrapper.querySelector('input[type=checkbox]:checked');
                 firstChecked.checked = false;
                 firstChecked.closest('label').style.opacity = '';
                 firstChecked.closest('label').style.pointerEvents = '';
             }
-
-
             if (checkedCount === maxCount) {
                 checkboxes.forEach(function(cb) {
                     if (!cb.checked) {
@@ -614,23 +573,16 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
         });
     });
 }
-
-
 handleMaxSelectedCheckboxes(maxSelectedSubject, 3);
 handleMaxSelectedCheckboxes(maxSelectedAddOnTutor, 1);
 handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
-
-
-
 	
 function updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
    const summaryField = document.getElementById(summaryId);
-
     if (element.checked) {
         baseLessonPrice += lessonValue; 
       summaryField.style.display = 'flex';
-
         if (isCondition1Met(baseCode )) {
             baseCode  = baseCode .substr(0, 2) + letterValue + baseCode .substr(4);
         } else if (isCondition2Met(baseCode )) {
@@ -642,7 +594,6 @@ function updateSubject(element, lessonValue, letterValue) {
        summaryField.style.display = 'none';
     }
 }
-
 		
 		updateSubject(subjectGerman, lessonValueGerman, letterValueGerman);
 		updateSubject(subjectEnglish, lessonValueEnglish, letterValueEnglish);
@@ -662,19 +613,16 @@ function updateSubject(element, lessonValue, letterValue) {
 		updateSubject(subjectEconomics, lessonValueEconomics, letterValueEconomics);
 		updateSubject(subjectOther, lessonValueOther, letterValueOther);
 		
+	 
 		 
 		
-
-
 function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
     const summaryId = element.id + 'Summary';
     const summaryField = document.getElementById(summaryId);
-
     if (element.checked) {
         baseLessonPrice += lessonValue; 
         baseTutorSalary += tutorSalaryValue;
         summaryField.style.display = 'flex';
-
         if (isCondition4Met(baseCode )) {
             baseCode  = baseCode .substr(0, 18) + letterValue + baseCode .substr(20);
         } else if (isCondition5Met(baseCode )) {
@@ -704,7 +652,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
         summaryField.style.display = 'none'; // Ausblenden, wenn die Checkbox nicht aktiviert ist
     }
 }
-
 		
 		updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, tutorSalaryValueAllRoundTutor);
 		updateAddOn(addOnExperiencedTutor, lessonValueExperiencedTutor, letterValueExperiencedTutor, tutorSalaryValueExperiencedTutor);
@@ -757,7 +704,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                               		tutoringOnlineSummary.style.display = 'flex';
 					tutoringAtHomeSummary.style.display = 'none';
 		        		tutoringHybridSummary.style.display = 'none';
-
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
@@ -771,14 +717,11 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-
 		let multiplierUnit = 2;
 		let multiplierContract = 1;
 		let  setUpFee = 0;
 		const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
-
 		contract.forEach(function(radio) {
-
 			const contractSmallSummary = document.getElementById('contractSmallSummary');
 			const contractMiddleSummary = document.getElementById('contractMiddleSummary');
 			const contractLargeSummary = document.getElementById('contractLargeSummary');
@@ -807,9 +750,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-
-
-
 		unit.forEach(function(radio) {
 			const unitSmallSummary = document.getElementById('unitSmallSummary');
 			const unitMiddleSummary = document.getElementById('unitMiddleSummary');
@@ -838,8 +778,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-
-
+	
 		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
@@ -849,8 +788,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 	
 		let totalTutorSalary = (baseTutorSalary / 45) * 60;
-
-		textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+		 textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
  
 		//send value to form
 		document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
@@ -858,11 +796,10 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-
+	}
 	updateElement()
-
+	
  }
-}
  
  //start stepchange with enter
  document.addEventListener("keydown", function(event) {
@@ -912,7 +849,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
          if (phoneNumberContactPerson) {
      applyPhoneValidation(phoneNumberContactPerson);
  }
-
          if (phoneNumberTutor) {
      applyPhoneValidation(phoneNumberTutor);
  }
@@ -944,7 +880,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
  if (contractTerminationCustomer) {
      applyDateInputFormat(contractTerminationCustomer);
  }
-
  if (bdayTutor) {
      applyDateInputFormat(bdayTutor);
  }
@@ -1231,7 +1166,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
      invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
    });
  }
-
  if (emailTutor) {
    specificElements.push({
      element: emailTutor,
@@ -1464,33 +1398,26 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
            valid = false;
          }
          }
-
-
-
 if (configuratorForm && [0].includes(currentTab)) {
     // Validierung für Checkboxen
     const checkboxes = formItems[currentTab].querySelectorAll("input[type='checkbox']");
     let checkboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-
     // Prüfen, ob mindestens eine Checkbox ausgewählt wurde
     if (!checkboxChecked && checkboxes.length > 0) {
         valid = false;
     }
 }
-
 	 
 if (configuratorForm && [1,2,3].includes(currentTab)) {
     // Validierung für Radio-Buttons
     const radios = formItems[currentTab].querySelectorAll("input[type='radio']");
     let radioGroups = {};
-
     // Gruppieren der Radio-Buttons nach ihrem Namen
     for (let j = 0; j < radios.length; j++) {
         let name = radios[j].getAttribute("name");
         radioGroups[name] = radioGroups[name] || [];
         radioGroups[name].push(radios[j]);
     }
-
     // Überprüfen, ob mindestens ein Radio-Button in jeder Gruppe ausgewählt wurde
     for (let groupName in radioGroups) {
         if (radioGroups.hasOwnProperty(groupName)) {
@@ -1502,20 +1429,15 @@ if (configuratorForm && [1,2,3].includes(currentTab)) {
         }
     }
 }
-
-
-
 if (applicationTutorForm && [1, 2].includes(currentTab)) {
     const buttons = formItems[currentTab].querySelectorAll("button");
     let choiceAdded = false;
-
     // Durchlaufen aller Buttons, um zu prüfen, ob einer den Text 'Fach entfernen' enthält
     buttons.forEach(button => {
         if (button.textContent === 'Fach entfernen') {
             choiceAdded = true;
         }
     });
-
     // Setzen Sie valid auf true, wenn mindestens ein Button mit dem Text 'Fach entfernen' gefunden wurde
     if (choiceAdded) {
         valid = true;
@@ -1523,7 +1445,6 @@ if (applicationTutorForm && [1, 2].includes(currentTab)) {
         valid = false;
     }
 }
-
  
  
  
@@ -1663,4 +1584,3 @@ if (applicationTutorForm && [1, 2].includes(currentTab)) {
  }
  
  }
- 
