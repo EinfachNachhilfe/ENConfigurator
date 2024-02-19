@@ -577,6 +577,52 @@
 		let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 		let baseTutorSalary = 12;
 
+const checkboxWrapper = document.getElementById('maxSelectedSubject');
+const customInputWrappers = document.querySelectorAll('.custom-input-wrapper');
+
+
+function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
+    const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const checkedCount = checkboxWrapper.querySelectorAll('input[type=checkbox]:checked').length;
+
+            if (checkedCount > maxCount) {
+                const firstChecked = checkboxWrapper.querySelector('input[type=checkbox]:checked');
+                firstChecked.checked = false;
+                firstChecked.closest('label').style.opacity = '';
+                firstChecked.closest('label').style.pointerEvents = '';
+            }
+
+
+            if (checkedCount === maxCount) {
+                checkboxes.forEach(function(cb) {
+                    if (!cb.checked) {
+                        cb.disabled = true;
+                        cb.closest('label').style.opacity = '0.5';
+                        cb.closest('label').style.pointerEvents = 'none';
+                    }
+                });
+            } else {
+                checkboxes.forEach(function(cb) {
+                    cb.disabled = false;
+                    cb.closest('label').style.opacity = '';
+                    cb.closest('label').style.pointerEvents = '';
+                });
+            }
+        });
+    });
+}
+
+
+handleMaxSelectedCheckboxes(checkboxWrapper, 3);
+
+
+customInputWrappers.forEach(function(wrapper) {
+    handleMaxSelectedCheckboxes(wrapper, 2);
+});
+
 
 
 		function updateSubject(element, lessonValue, letterValue) {
