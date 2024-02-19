@@ -812,55 +812,58 @@ $(document).ready(function(){
 
 
 		
-	for (var i = 0; i < addOnFemale.length; i++) {
-		addOnFemale[i].addEventListener('change', function() {
-			addOnMale.forEach(function(checkbox) {
-				if (checkbox.checked) {
-					$(checkbox).prop("checked", false);
-					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
-					updateElement();
-				}
-			});
-		});
-	}
-	
-	for (var i = 0; i < addOnMale.length; i++) {
-		addOnMale[i].addEventListener('change', function() {
-			addOnFemale.forEach(function(checkbox) {
-				if (checkbox.checked) {
-					$(checkbox).prop("checked", false);
-					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
-					updateElement();
-				}
-			});
-		});
-	}
+	// Für die Checkbox-Gruppe "addOnFemale"
+for (var i = 0; i < addOnFemale.length; i++) {
+    addOnFemale[i].addEventListener('change', function() {
+        addOnMale.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
+                updateElement();
+            }
+        });
+    });
+}
 
+// Für die Checkbox-Gruppe "addOnMale"
+for (var i = 0; i < addOnMale.length; i++) {
+    addOnMale[i].addEventListener('change', function() {
+        addOnFemale.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
+                updateElement();
+            }
+        });
+    });
+}
 
+// Für die Checkbox-Gruppe "addOnExperiencedTutor"
+for (var i = 0; i < addOnExperiencedTutor.length; i++) {
+    addOnExperiencedTutor[i].addEventListener('change', function() {
+        addOnPremiumTutor.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
+                updateElement();
+            }
+        });
+    });
+}
 
-	for (var i = 0; i < addOnExperiencedTutor.length; i++) {
-		addOnExperiencedTutor[i].addEventListener('change', function() {
-			addOnPremiumTutor.forEach(function(checkbox) {
-				if (checkbox.checked) {
-					$(checkbox).prop("checked", false);
-					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
-					updateElement();
-				}
-			});
-		});
-	}
+// Für die Checkbox-Gruppe "addOnPremiumTutor"
+for (var i = 0; i < addOnPremiumTutor.length; i++) {
+    addOnPremiumTutor[i].addEventListener('change', function() {
+        addOnExperiencedTutor.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                checkbox.nextElementSibling.classList.remove("w--redirected-checked");
+                updateElement();
+            }
+        });
+    });
+}
 
-	for (var i = 0; i < addOnPremiumTutor.length; i++) {
-		addOnPremiumTutor[i].addEventListener('change', function() {
-			addOnExperiencedTutor.forEach(function(checkbox) {
-				if (checkbox.checked) {
-					$(checkbox).prop("checked", false);
-					$(checkbox).siblings("div.w--redirected-checked").removeClass("w--redirected-checked");
-					updateElement();
-				}
-			});
-		});
-	}
 	
 	}
 
