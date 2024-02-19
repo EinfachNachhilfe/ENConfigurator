@@ -578,7 +578,7 @@
 		let baseTutorSalary = 12;
 
 const checkboxWrapper = document.getElementById('maxSelectedSubject');
-const customInputWrappers = document.querySelectorAll('.custom-input-wrapper');
+const maxSelectedAddOn = document.getElementById('maxSelectedAddOn');
 
 
 function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
@@ -617,11 +617,9 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
 
 
 handleMaxSelectedCheckboxes(checkboxWrapper, 3);
+handleMaxSelectedCheckboxes(maxSelectedAddOn, 2);
 
 
-customInputWrappers.forEach(function(wrapper) {
-    handleMaxSelectedCheckboxes(wrapper, 2);
-});
 
 
 
