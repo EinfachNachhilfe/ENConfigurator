@@ -715,7 +715,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale);
 		
 
- */
+
 
 	tutoring.forEach(function(radio) {
 			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
@@ -839,26 +839,26 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			}
 		});
 
-	
+	 */
 
-		//let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
+		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
-		//let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
+		let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
 		
 		//calculation LTV
-		//let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
+		let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 	
-		// let totalTutorSalary = (baseTutorSalary / 45) * 60;
+		let totalTutorSalary = (baseTutorSalary / 45) * 60;
 
 		 //textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
  
 		//send value to form
-		//document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
-		//document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
-		//document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
-		//document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
-		//document.querySelector('.send-codeGenerator').value = baseCode;
+		document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
+		document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
+		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
+		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
+		document.querySelector('.send-codeGenerator').value = baseCode;
 
 	}
 
