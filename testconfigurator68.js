@@ -858,7 +858,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		//document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 		//document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		//document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
-		document.querySelector('.send-codeGenerator').value = baseCode;
+		//document.querySelector('.send-codeGenerator').value = baseCode;
 	
 	}
 
