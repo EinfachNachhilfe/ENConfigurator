@@ -662,7 +662,7 @@ function updateSubject(element, lessonValue, letterValue) {
 		updateSubject(subjectEconomics, lessonValueEconomics, letterValueEconomics);
 		updateSubject(subjectOther, lessonValueOther, letterValueOther);
 		
- */		 
+		 
 		
 
 
@@ -715,7 +715,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale);
 		
 
-
+ */
 
 	tutoring.forEach(function(radio) {
 			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
