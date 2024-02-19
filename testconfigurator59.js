@@ -666,41 +666,45 @@ function updateSubject(element, lessonValue, letterValue) {
 		
 	
 
-		function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
-			const summaryId = element.id + 'Summary';
-			const summaryField = document.getElementById(summaryId);
-			if (element.checked) {
-				baseLessonPrice += lessonValue; 
-				baseTutorSalary += tutorSalaryValue;
-				summaryField.style.display = 'flex';
-		
-				if (isCondition4Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 18) + letterValue + baseCode .substr(20);
-				} else if (isCondition5Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 20) + letterValue + baseCode .substr(22);
-				} else if (isCondition6Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 22) + letterValue + baseCode .substr(24);
-				} else if (isCondition7Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 24) + letterValue + baseCode .substr(26);
-				} else if (isCondition8Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 26) + letterValue + baseCode .substr(28);
-				} else if (isCondition9Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 28) + letterValue + baseCode .substr(30);
-				} else if (isCondition10Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 30) + letterValue + baseCode .substr(32);
-				} else if (isCondition11Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 32) + letterValue + baseCode .substr(34);
-				} else if (isCondition12Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 34) + letterValue + baseCode .substr(36);
-				} else if (isCondition13Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 36) + letterValue + baseCode .substr(38);
-				} else if (isCondition14Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 38) + letterValue + baseCode .substr(40);
-				} else if (isCondition15Met(baseCode )) {
-					baseCode  = baseCode .substr(0, 40) + letterValue + baseCode .substr(42);
-				}
-			}
-		}
+function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
+    const summaryId = element.id + 'Summary';
+    const summaryField = document.getElementById(summaryId);
+
+    if (element.checked) {
+        baseLessonPrice += lessonValue; 
+        baseTutorSalary += tutorSalaryValue;
+        summaryField.style.display = 'flex';
+
+        if (isCondition4Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 18) + letterValue + baseCode .substr(20);
+        } else if (isCondition5Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 20) + letterValue + baseCode .substr(22);
+        } else if (isCondition6Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 22) + letterValue + baseCode .substr(24);
+        } else if (isCondition7Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 24) + letterValue + baseCode .substr(26);
+        } else if (isCondition8Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 26) + letterValue + baseCode .substr(28);
+        } else if (isCondition9Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 28) + letterValue + baseCode .substr(30);
+        } else if (isCondition10Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 30) + letterValue + baseCode .substr(32);
+        } else if (isCondition11Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 32) + letterValue + baseCode .substr(34);
+        } else if (isCondition12Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 34) + letterValue + baseCode .substr(36);
+        } else if (isCondition13Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 36) + letterValue + baseCode .substr(38);
+        } else if (isCondition14Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 38) + letterValue + baseCode .substr(40);
+        } else if (isCondition15Met(baseCode )) {
+            baseCode  = baseCode .substr(0, 40) + letterValue + baseCode .substr(42);
+        }
+    } else {
+        summaryField.style.display = 'none'; // Ausblenden, wenn die Checkbox nicht aktiviert ist
+    }
+}
+
 		
 		updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, tutorSalaryValueAllRoundTutor);
 		updateAddOn(addOnExperiencedTutor, lessonValueExperiencedTutor, letterValueExperiencedTutor, tutorSalaryValueExperiencedTutor);
