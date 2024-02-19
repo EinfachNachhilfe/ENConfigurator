@@ -850,7 +850,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 	
 		let totalTutorSalary = (baseTutorSalary / 45) * 60;
 
-		 textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
+		 textTotalMonthPrice.textContent = totalMonthPrice.replace('.', ',');
  
 		//send value to form
 		document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
