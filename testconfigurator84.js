@@ -862,7 +862,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 	updateElement()
 
  }
-
+}
  
  //start stepchange with enter
  document.addEventListener("keydown", function(event) {
