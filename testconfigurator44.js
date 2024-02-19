@@ -508,8 +508,26 @@
         changeUpdateElement(radioBoxes);  
 
 
+//maxSelected
+$(document).ready(function(){
+    const $checkboxWrapper = $('div.div-choice-3-subject');
+    const $checkboxes = $checkboxWrapper.find('input[type=checkbox]');
 
+    $checkboxes.on('change', function() {
+        // Wenn mehr als 3 Checkboxen ausgewählt wurden, deaktivieren Sie die Checkbox, die zuerst ausgewählt wurde
+        if( $checkboxes.filter(':checked').length > 3) {
+            var $firstChecked = $checkboxes.filter(':checked').eq(0);
+            $firstChecked.prop('checked', false).closest('label').css({'opacity': '', 'pointer-events' : ''});
+        }
 
+        // Wenn genau 3 Checkboxen ausgewählt wurden, deaktivieren Sie die restlichen
+        if( $checkboxes.filter(':checked').length === 3) {
+            $checkboxes.not(':checked').prop('disabled', true).closest('label').css({'opacity': '0.5', 'pointer-events' : 'none'})
+        } else {
+            $checkboxes.prop('disabled', false).closest('label').css({'opacity': '', 'pointer-events' : ''})
+        }
+    });
+});
 
 
 
