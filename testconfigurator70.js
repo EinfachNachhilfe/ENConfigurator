@@ -342,7 +342,7 @@
   
  }
  
-/* if (configuratorForm) {
+if (configuratorForm) {
 	 
 	const buttonTexts = {
          'btnAddTandemLesson': 'Hier können Sie für nur 10 EUR mehr pro Stunde noch ein zweites Kind in den Unterricht dazunehmen. Somit können Sie sich die Kosten für die Nachhilfe mit einem Klassenkamerad oder Nachbar teilen. Wir empfehlen auf ein gleiches Kompetenzniveau und Klassenstufe zu achten. ',
@@ -771,7 +771,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-
+/* 
 		let multiplierUnit = 2;
 		let multiplierContract = 1;
 		let  setUpFee = 0;
@@ -859,7 +859,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		//document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		//document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		//document.querySelector('.send-codeGenerator').value = baseCode;
-	
+	 */
 	}
 
 	updateElement()
@@ -873,7 +873,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 
 
  }
- */
+
  
  //start stepchange with enter
  document.addEventListener("keydown", function(event) {
