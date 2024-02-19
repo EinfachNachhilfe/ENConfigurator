@@ -429,7 +429,7 @@ if (configuratorForm) {
 	const tutorSalaryValuePremiumTutor = 0.75;
 
    
-	const letterValueGerman = "AA";
+
 	const letterValueEnglish = "BA";
 	const letterValueMathematics = "CA";
 	const letterValueFrench = "DA";
@@ -594,7 +594,7 @@ function updateSubject(element, lessonValue, letterValue) {
     }
 }
 		
-		updateSubject(subjectGerman, 0, letterValueGerman);
+		updateSubject(subjectGerman, 0, "AA");
 		updateSubject(subjectEnglish, 0, letterValueEnglish);
 		updateSubject(subjectMathematics, lessonValueMathematics, letterValueMathematics);
 		updateSubject(subjectFrench, lessonValueFrench, letterValueFrench);
