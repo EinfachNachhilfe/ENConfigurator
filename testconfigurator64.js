@@ -778,23 +778,30 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 
 		contract.forEach(function(radio) {
+
+			const contractSmallSummary = document.getElementById('contractSmallSummary');
+			const contractMiddleSummary = document.getElementById('contractMiddleSummary');
+			const contractLargeSummary = document.getElementById('contractLargeSummary');
 			if (radio.checked) {
 				if (radio.value == 'small') {
-				const contractSmallSummary = document.getElementById('contractSmallSummary');
-                                contractSmallSummary.style.display = 'flex';
+                                	contractSmallSummary.style.display = 'flex';
+					contractMiddleSummary.style.display = 'none';
+					contractLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueUnitSmall;
 					multiplierContract = 4;
 					setUpFee = 69.99;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitSmall + baseCode .substr(14);
 				} else if (radio.value == 'middle') {
-					const contractMiddleSummary = document.getElementById('contractMiddleSummary');
+					contractSmallSummary.style.display = 'none';
                                         contractMiddleSummary.style.display = 'flex';
+					contractLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueUnitMiddle;
 					multiplierContract = 12;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitMiddle + baseCode .substr(14);
 				} else if (radio.value == 'large') {
-		                        const contractLargeSummary = document.getElementById('contractLargeSummary');
                                 	contractLargeSummary.style.display = 'flex';
+					contractSmallSummary.style.display = 'none';
+					contractMiddleSummary.style.display = 'none';
 					multiplierContract = 24;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitLarge + baseCode .substr(14);
 				}
@@ -804,21 +811,27 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 
 
 		unit.forEach(function(radio) {
+			const unitSmallSummary = document.getElementById('unitSmallSummary');
+			const unitMiddleSummary = document.getElementById('unitMiddleSummary');
+			const unitLargeSummary = document.getElementById('unitLargeSummary');
 			if (radio.checked) {
 				if (radio.value == 'small') {
-					const unitSmallSummary = document.getElementById('unitSmallSummary');
                                 	unitSmallSummary.style.display = 'flex';
+					unitMiddleSummary.style.display = 'none';
+					unitLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueContractSmall;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractSmall + baseCode .substr(17);
 				} else if (radio.value == 'middle') {
-					const unitMiddleSummary = document.getElementById('unitMiddleSummary');
+					unitSmallSummary.style.display = 'none';
                                 	unitMiddleSummary.style.display = 'flex';
+					unitLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueContractMiddle;
 					multiplierUnit = 4;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractMiddle + baseCode .substr(17);
 				} else if (radio.value == 'large') {
-					const unitLargeSummary = document.getElementById('unitLargeSummary');
                                 	unitLargeSummary.style.display = 'flex';
+					unitMiddleSummary.style.display = 'none';
+					unitSmallSummary.style.display = 'none';
 					multiplierUnit = 6;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractLarge + baseCode .substr(17);
 					
