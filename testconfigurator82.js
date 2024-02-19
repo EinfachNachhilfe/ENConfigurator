@@ -623,7 +623,7 @@ handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
 
 
 	
-function updateSubject(element, lessonValue, letterValue) {
+ffunction updateSubject(element, lessonValue, letterValue) {
     const summaryId = element.id + 'Summary';
    const summaryField = document.getElementById(summaryId);
 
@@ -840,37 +840,26 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		});
 
 
-		let totalMonthPrice = (baseLessonPrice * multiplierUnit * 4.3333333333).toFixed(2);
+		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
-		let monthlyTutorCost = (baseTutorSalary * multiplierUnit * 4.3333333333).toFixed(2);
+		let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
 		
 		//calculation LTV
-		let valueTotalLtv = ((totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee).toFixed(2);
+		let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
 	
 		let totalTutorSalary = (baseTutorSalary / 45) * 60;
 
-		 textTotalMonthPrice.textContent = totalMonthPrice.replace('.', ',');
+		 //textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
  
 		//send value to form
 		document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
-		document.querySelector('.send-totalLtv').value = valueTotalLtv;
+		document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
-		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice;
+		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-	 
-
-	}
 
 	updateElement()
-	
-
-
-
-
-
-
-
 
  }
 
