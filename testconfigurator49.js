@@ -508,24 +508,25 @@
         changeUpdateElement(radioBoxes);  
 
 
-//maxSelected
-document.addEventListener('DOMContentLoaded', function() {
-    const checkboxWrapper = document.getElementById('maxSelectedCheckboxes');
+const checkboxWrapper = document.getElementById('maxSelectedSubject');
+const checkboxWrapper = document.getElementById('maxSelectedCheckboxes');
+	 
+function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
     const checkboxes = checkboxWrapper.querySelectorAll('input[type=checkbox]');
 
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
             const checkedCount = checkboxWrapper.querySelectorAll('input[type=checkbox]:checked').length;
 
-            if (checkedCount > 3) {
+            if (checkedCount > maxCount) {
                 const firstChecked = checkboxWrapper.querySelector('input[type=checkbox]:checked');
                 firstChecked.checked = false;
                 firstChecked.closest('label').style.opacity = '';
                 firstChecked.closest('label').style.pointerEvents = '';
             }
 
-            // Wenn genau 3 Checkboxen ausgewählt wurden, deaktivieren Sie die restlichen
-            if (checkedCount === 3) {
+            // Wenn genau maxCount Checkboxen ausgewählt wurden, deaktivieren Sie die restlichen
+            if (checkedCount === maxCount) {
                 checkboxes.forEach(function(cb) {
                     if (!cb.checked) {
                         cb.disabled = true;
@@ -542,7 +543,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+}
+
+ 
+handleMaxSelectedCheckboxes(checkboxWrapper, 3);
+
 
 
 
