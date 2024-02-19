@@ -841,10 +841,10 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 
 	
 
-		//let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
+		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
-		let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
+		//let monthlyTutorCost = baseTutorSalary * multiplierUnit * 4.3333333333;
 		
 		//calculation LTV
 		//let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
