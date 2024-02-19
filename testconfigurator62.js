@@ -718,9 +718,15 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 
 
 	tutoring.forEach(function(radio) {
+			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
+			const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
+			const tutoringOnlineSummary = document.getElementById('tutoringOnlineSummary');
+			tutoringAtHomeSummary.style.display = 'none';
+		        tutoringHybridSummary.style.display = 'none';
+		        tutoringOnlineSummary.style.display = 'none';
+				
 			if (radio.checked) {
 				if (radio.value == 'atHome') {
-					const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
                                 	tutoringAtHomeSummary.style.display = 'flex';
 					baseLessonPrice += lessonValueTutoringAtHome;
 					textUnitSmall.forEach(element => {
@@ -735,7 +741,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringAtHome + baseCode .substr(11);
 				} else if (radio.value == 'hybrid') {
 					baseLessonPrice += lessonValueTutoringHybrid;
-					const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
                               	        tutoringHybridSummary.style.display = 'flex';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
@@ -748,7 +753,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					});
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringHybrid + baseCode .substr(11);
 				} else if (radio.value == 'online') {
-					const tutoringOnlineSummary = document.getElementById('tutoringOnlineSummary');
                               		tutoringOnlineSummary.style.display = 'flex';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
