@@ -777,7 +777,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-	
+	/*
 		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
@@ -795,6 +795,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
+*/
+  
+  
 	}
 	updateElement()
 	
