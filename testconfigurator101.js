@@ -538,9 +538,11 @@ if (configuratorForm) {
 		return baseCode.substr(40, 2) === "0A";
 	}
 	function updateElement() {
-		let baseLessonPrice = 20;
-		let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
-		let baseTutorSalary = 12;
+	let baseLessonPrice = 20;
+	let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
+	let baseTutorSalary = 12;
+
+		
 const maxSelectedSubject = document.getElementById('maxSelectedSubject');
 const maxSelectedAddOnTutor = document.getElementById('maxSelectedAddOnTutor');
 const maxSelectedAddOnGender = document.getElementById('maxSelectedAddOnGender');
@@ -796,6 +798,35 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
+
+		 //calculate and display discount to unit
+		 let discountUnitSmall = discountUnit + valueUnitSmall;
+		 let discountUnitMiddle = discountUnit + valueUnitMiddle;
+		 let discountUnitLarge = discountUnit + valueUnitLarge;
+		     
+		 let totalDiscountUnitMiddle = ((discountUnitSmall - discountUnitMiddle) / discountUnitSmall) * 100;
+		 let totalDiscountUnitLarge = ((discountUnitSmall - discountUnitLarge) / discountUnitSmall) * 100;
+		    
+		 textdiscountUnitMiddle.textContent = Math.round(totalDiscountUnitMiddle).toString();
+		 textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
+		 
+		 //calculate and display discount to contract
+		 let discountContractSmall = discountContract + valueContractSmall;
+		 let discountContractMiddle = discountContract + valueContractMiddle;
+		 let discountContractLarge = discountContract + valueContractLarge;
+		 
+		 let totalDiscountContractMiddle = ((discountContractSmall - discountContractMiddle) / discountContractSmall) * 100;
+		 let totalDiscountContractLarge = ((discountContractSmall - discountContractLarge) / discountContractSmall) * 100;
+		     
+		 textdiscountContractMiddle.textContent = Math.round(totalDiscountContractMiddle).toString();
+		 textdiscountContractLarge.textContent = Math.round(totalDiscountContractLarge).toString();
+		 
+		 let discountTandemLesson = discountAddOnOther + valueTandemLesson;
+		 let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
+		 
+		 textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
+
+		
 	}
 	updateElement()
 	
