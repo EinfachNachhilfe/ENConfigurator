@@ -1,3 +1,5 @@
+final final
+
  //start general
  const nextBtn = document.querySelector('#nextBtn');
  const prevBtn = document.querySelector('#prevBtn');
@@ -394,9 +396,77 @@ if (configuratorForm) {
 	const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
 	const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
 	const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
-	
-
-
+	const lessonValueGerman = 0;
+	const lessonValueEnglish = 0;
+	const lessonValueMathematics = 0.6;
+	const lessonValueFrench = 1.2;
+	const lessonValueLatin = 1.4;
+	const lessonValueSpanish = 0.8;
+	const lessonValueItalian = 1.2;
+	const lessonValuePhysics = 1.2;
+	const lessonValueChemistry = 1.4;
+	const lessonValueBiology = 0.8;
+	const lessonValueGeography = 0.2;
+	const lessonValueHistory = 0.2;
+	const lessonValueSocialStudies = 0.2;
+	const lessonValueComputerScience = 1.6;
+	const lessonValuePhysicalEducation = 0.8;
+	const lessonValueEconomics = 1.4;
+	const lessonValueOther = 2.2;
+	const lessonValueAllRoundTutor = 0.6;
+        const lessonValueExperiencedTutor = 1.2;
+	const lessonValueContractBreak = 1.5;
+	const lessonValueTandemLesson = 10;
+	const lessonValuePremiumTutor = 2.6;
+	const lessonValueMale = 0.4;
+	const lessonValueFemale = 0.4;
+	const lessonValueTutoringAtHome = 5;
+	const lessonValueTutoringHybrid = 3;
+	const lessonValueUnitSmall = 6;
+	const lessonValueUnitMiddle = 2.6;
+	const lessonValueContractSmall = 6.8;
+	const lessonValueContractMiddle = 2;
+	const tutorSalaryValueAllRoundTutor = 0;
+	const tutorSalaryValueExperiencedTutor = 0.45;
+	const tutorSalaryValueContractBreak = 0;
+	const tutorSalaryValueTandemLesson = 1.5; 
+	const tutorSalaryValuePremiumTutor = 0.75;
+	const tutorSalaryValueMale = 0;
+	const tutorSalaryValueFemale = 0;
+   
+	var letterValueGerman = "AA";
+	var letterValueEnglish = "BA";
+	var letterValueMathematics = "CA";
+	var letterValueFrench = "DA";
+	var letterValueLatin = "EA";
+	var letterValueSpanish = "FA";
+	var letterValueItalian = "GA";
+	var letterValuePhysics = "HA";
+	var letterValueChemistry = "IA";
+	var letterValueBiology = "JA";
+	var letterValueGeography = "KA";
+	var letterValueHistory = "LA";
+	var letterValueSocialStudies = "MA";
+	var letterValueComputerScience = "NA";
+	var letterValuePhysicalEducation = "OA";
+	var letterValueEconomics = "PA";
+	var letterValueOther = "QA";
+	var letterValueAllRoundTutor = "DA";
+	var letterValueExperiencedTutor = "QA";
+	var letterValueContractBreak = "EB";
+	var letterValueTandemLesson = "FA";
+	var letterValuePremiumTutor = "MA";
+	var letterValueMale = "BA";
+	var letterValueFemale = "CA";
+	var letterValueTutoringAtHome = "AA";
+	var letterValueTutoringHybrid = "BB";
+	var letterValueTutoringOnline = "CB";
+	var letterValueUnitSmall = "FB";
+	var letterValueUnitMiddle = "DB";
+	var letterValueUnitLarge = "BB";
+	var letterValueContractSmall = "CA";
+	var letterValueContractMiddle = "BA";
+	var letterValueContractLarge = "AA";
  //show "Mehr Infos" Popup
          Object.keys(buttonTexts).forEach(buttonId => {
              const button = document.getElementById(buttonId);
@@ -527,23 +597,23 @@ function updateSubject(element, lessonValue, letterValue) {
     }
 }
 		
-		updateSubject(subjectGerman, 0, "AA");
-		updateSubject(subjectEnglish, 0, "BA");
-		updateSubject(subjectMathematics, 0.6, "CA");
-		updateSubject(subjectFrench, 1.2, "DA");
-		updateSubject(subjectLatin, 1.4, "EA");
-		updateSubject(subjectSpanish, 0.8, "FA");
-		updateSubject(subjectItalian, 1.2, "GA");
-		updateSubject(subjectPhysics, 1.2, "HA");
-		updateSubject(subjectChemistry, 1.4, "IA");
-		updateSubject(subjectBiology, 0.8, "JA");
-		updateSubject(subjectGeography, 0.2, "KA");
-		updateSubject(subjectHistory, 0.2, "LA");
-		updateSubject(subjectSocialStudies, 0.2, "MA");
-		updateSubject(subjectComputerScience, 1.6, "NA");
-		updateSubject(subjectPhysicalEducation, 0.8, "QA");
-		updateSubject(subjectEconomics, 1.4, "PA");
-		updateSubject(subjectOther, 2.2, "QA");
+		updateSubject(subjectGerman, lessonValueGerman, letterValueGerman);
+		updateSubject(subjectEnglish, lessonValueEnglish, letterValueEnglish);
+		updateSubject(subjectMathematics, lessonValueMathematics, letterValueMathematics);
+		updateSubject(subjectFrench, lessonValueFrench, letterValueFrench);
+		updateSubject(subjectLatin, lessonValueLatin, letterValueLatin);
+		updateSubject(subjectSpanish, lessonValueSpanish, letterValueSpanish);
+		updateSubject(subjectItalian, lessonValueItalian, letterValueItalian);
+		updateSubject(subjectPhysics, lessonValuePhysics, letterValuePhysics);
+		updateSubject(subjectChemistry, lessonValueChemistry, letterValueChemistry);
+		updateSubject(subjectBiology, lessonValueBiology, letterValueBiology);
+		updateSubject(subjectGeography, lessonValueGeography, letterValueGeography);
+		updateSubject(subjectHistory, lessonValueHistory, letterValueHistory);
+		updateSubject(subjectSocialStudies, lessonValueSocialStudies, letterValueSocialStudies);
+		updateSubject(subjectComputerScience, lessonValueComputerScience, letterValueComputerScience);
+		updateSubject(subjectPhysicalEducation, lessonValuePhysicalEducation, letterValuePhysicalEducation);
+		updateSubject(subjectEconomics, lessonValueEconomics, letterValueEconomics);
+		updateSubject(subjectOther, lessonValueOther, letterValueOther);
 		
 	 
 		 
@@ -581,17 +651,17 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
             baseCode  = baseCode .substr(0, 40) + letterValue + baseCode .substr(42);
         }
     } else {
-        summaryField.style.display = 'none'; 
+        summaryField.style.display = 'none'; // Ausblenden, wenn die Checkbox nicht aktiviert ist
     }
 }
 		
-		updateAddOn(addOnAllRoundTutor, 0.6, "DA", 0);
-		updateAddOn(addOnExperiencedTutor, 1.2, "QA", 0.45);
-		updateAddOn(addOnContractBreak, 1.5, "EB", 0);
-		updateAddOn(addTandemLesson, 10, "FA", 1.5);
-		updateAddOn(addOnPremiumTutor, 2.6, "MA", 0.75);
-		updateAddOn(addOnMale, 0.4, "BA", 0);
-		updateAddOn(addOnFemale, 0.4, "CA", 0);
+		updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, tutorSalaryValueAllRoundTutor);
+		updateAddOn(addOnExperiencedTutor, lessonValueExperiencedTutor, letterValueExperiencedTutor, tutorSalaryValueExperiencedTutor);
+		updateAddOn(addOnContractBreak, lessonValueContractBreak, letterValueContractBreak, tutorSalaryValueContractBreak);
+		updateAddOn(addTandemLesson, lessonValueTandemLesson, letterValueTandemLesson, tutorSalaryValueTandemLesson);
+		updateAddOn(addOnPremiumTutor, lessonValuePremiumTutor, letterValuePremiumTutor, tutorSalaryValuePremiumTutor);
+		updateAddOn(addOnMale, lessonValueMale, letterValueMale, tutorSalaryValueMale);
+		updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale);
 		
 
 
@@ -603,10 +673,10 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				
 			if (radio.checked) {
 				if (radio.value == 'atHome') {
-          tutoringAtHomeSummary.style.display = 'flex';
-		      tutoringHybridSummary.style.display = 'none';
-		      tutoringOnlineSummary.style.display = 'none';
-					baseLessonPrice += 5;
+                                	tutoringAtHomeSummary.style.display = 'flex';
+		      			tutoringHybridSummary.style.display = 'none';
+		       			tutoringOnlineSummary.style.display = 'none';
+					baseLessonPrice += lessonValueTutoringAtHome;
 					textUnitSmall.forEach(element => {
 						element.textContent = '1x90min';
 					});
@@ -616,12 +686,12 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					textUnitLarge.forEach(element => {
 						element.textContent = '3x90min';
 					});
-					baseCode  = baseCode .substr(0, 9) + "AA" + baseCode .substr(11);
+					baseCode  = baseCode .substr(0, 9) + letterValueTutoringAtHome + baseCode .substr(11);
 				} else if (radio.value == 'hybrid') {
-					baseLessonPrice += 3;
-          tutoringHybridSummary.style.display = 'flex';
+					baseLessonPrice += lessonValueTutoringHybrid;
+                              	        tutoringHybridSummary.style.display = 'flex';
 					tutoringAtHomeSummary.style.display = 'none';
-		      tutoringOnlineSummary.style.display = 'none';
+		        		tutoringOnlineSummary.style.display = 'none';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
@@ -631,11 +701,11 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					textUnitLarge.forEach(element => {
 						element.textContent = '6x45min';
 					});
-					baseCode  = baseCode .substr(0, 9) + "BB" + baseCode .substr(11);
+					baseCode  = baseCode .substr(0, 9) + letterValueTutoringHybrid + baseCode .substr(11);
 				} else if (radio.value == 'online') {
-          tutoringOnlineSummary.style.display = 'flex';
+                              		tutoringOnlineSummary.style.display = 'flex';
 					tutoringAtHomeSummary.style.display = 'none';
-		      tutoringHybridSummary.style.display = 'none';
+		        		tutoringHybridSummary.style.display = 'none';
 					textUnitSmall.forEach(element => {
 						element.textContent = '2x45min';
 					});
@@ -645,13 +715,13 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					textUnitLarge.forEach(element => {
 						element.textContent = '6x45min';
 					});
-					baseCode  = baseCode .substr(0, 9) + "CB" + baseCode .substr(11);
+					baseCode  = baseCode .substr(0, 9) + letterValueTutoringOnline + baseCode .substr(11);
 				}
 			}
 		});
 		let multiplierUnit = 2;
 		let multiplierContract = 1;
-		let  setUpFee;
+		let  setUpFee = 0;
 		const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
 		contract.forEach(function(radio) {
 			const contractSmallSummary = document.getElementById('contractSmallSummary');
@@ -659,26 +729,26 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			const contractLargeSummary = document.getElementById('contractLargeSummary');
 			if (radio.checked) {
 				if (radio.value == 'small') {
-          contractSmallSummary.style.display = 'flex';
+                                	contractSmallSummary.style.display = 'flex';
 					contractMiddleSummary.style.display = 'none';
 					contractLargeSummary.style.display = 'none';
-					baseLessonPrice += 6;
+					baseLessonPrice += lessonValueUnitSmall;
 					multiplierContract = 4;
 					setUpFee = 69.99;
-					baseCode  = baseCode .substr(0, 12) + "FB" + baseCode .substr(14);
+					baseCode  = baseCode .substr(0, 12) + letterValueUnitSmall + baseCode .substr(14);
 				} else if (radio.value == 'middle') {
 					contractSmallSummary.style.display = 'none';
-          contractMiddleSummary.style.display = 'flex';
+                                        contractMiddleSummary.style.display = 'flex';
 					contractLargeSummary.style.display = 'none';
-					baseLessonPrice += 2.6;
+					baseLessonPrice += lessonValueUnitMiddle;
 					multiplierContract = 12;
-					baseCode  = baseCode .substr(0, 12) + "DB" + baseCode .substr(14);
+					baseCode  = baseCode .substr(0, 12) + letterValueUnitMiddle + baseCode .substr(14);
 				} else if (radio.value == 'large') {
-          contractLargeSummary.style.display = 'flex';
+                                	contractLargeSummary.style.display = 'flex';
 					contractSmallSummary.style.display = 'none';
 					contractMiddleSummary.style.display = 'none';
 					multiplierContract = 24;
-					baseCode  = baseCode .substr(0, 12) + "BB" + baseCode .substr(14);
+					baseCode  = baseCode .substr(0, 12) + letterValueUnitLarge + baseCode .substr(14);
 				}
 			}
 		});
@@ -688,29 +758,29 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			const unitLargeSummary = document.getElementById('unitLargeSummary');
 			if (radio.checked) {
 				if (radio.value == 'small') {
-          unitSmallSummary.style.display = 'flex';
+                                	unitSmallSummary.style.display = 'flex';
 					unitMiddleSummary.style.display = 'none';
 					unitLargeSummary.style.display = 'none';
-					baseLessonPrice += 6.8;
-					baseCode  = baseCode .substr(0, 15) + "CA" + baseCode .substr(17);
+					baseLessonPrice += lessonValueContractSmall;
+					baseCode  = baseCode .substr(0, 15) + letterValueContractSmall + baseCode .substr(17);
 				} else if (radio.value == 'middle') {
 					unitSmallSummary.style.display = 'none';
-          unitMiddleSummary.style.display = 'flex';
+                                	unitMiddleSummary.style.display = 'flex';
 					unitLargeSummary.style.display = 'none';
-					baseLessonPrice += 2;
+					baseLessonPrice += lessonValueContractMiddle;
 					multiplierUnit = 4;
-					baseCode  = baseCode .substr(0, 15) + "BA" + baseCode .substr(17);
+					baseCode  = baseCode .substr(0, 15) + letterValueContractMiddle + baseCode .substr(17);
 				} else if (radio.value == 'large') {
-          unitLargeSummary.style.display = 'flex';
+                                	unitLargeSummary.style.display = 'flex';
 					unitMiddleSummary.style.display = 'none';
 					unitSmallSummary.style.display = 'none';
 					multiplierUnit = 6;
-					baseCode  = baseCode .substr(0, 15) + "AA" + baseCode .substr(17);
+					baseCode  = baseCode .substr(0, 15) + letterValueContractLarge + baseCode .substr(17);
 					
 				}
 			}
 		});
-
+	
 		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
@@ -728,9 +798,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-
-  
-  
 	}
 	updateElement()
 	
