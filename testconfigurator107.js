@@ -837,7 +837,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 
 	
 //rename input element	
-document.addEventListener('DOMContentLoaded', function() {
     submitBtn.addEventListener('click', function(event) {
         if (this.classList.contains('disabled')) {
             return;
@@ -876,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input.parentNode.removeChild(input);
         });
     };
-});
+
 
 
 
