@@ -919,30 +919,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
     }
 }
 
- const addOnAllRoundTutor = document.getElementById('addOnAllRoundTutor');  
-   const addOnContractBreak = document.getElementById('addOnContractBreak');
-   const addTandemLesson = document.getElementById('addTandemLesson');
-   const subjectMathematics = document.getElementById('subjectMathematics');
-   const subjectGerman = document.getElementById('subjectGerman');
-   const subjectEnglish = document.getElementById('subjectEnglish');
-   const subjectFrench = document.getElementById('subjectFrench');
-   const subjectLatin = document.getElementById('subjectLatin');
-   const subjectItalian = document.getElementById('subjectItalian');
-   const subjectSpanish = document.getElementById('subjectSpanish');
-   const subjectPhysics = document.getElementById('subjectPhysics');
-   const subjectChemistry = document.getElementById('subjectChemistry');
-   const subjectBiology = document.getElementById('subjectBiology');
-   const subjectGeography = document.getElementById('subjectGeography');
-   const subjectHistory = document.getElementById('subjectHistory');
-   const subjectSocialStudies = document.getElementById('subjectSocialStudies');
-   const subjectComputerScience = document.getElementById('subjectComputerScience');
-   const subjectPhysicalEducation = document.getElementById('subjectPhysicalEducation');
-   const subjectEconomics = document.getElementById('subjectEconomics');
-   const subjectOther = document.getElementById('subjectOther');
-   const addOnPremiumTutor  = document.getElementById('addOnPremiumTutor');
-   const addOnExperiencedTutor  = document.getElementById('addOnExperiencedTutor');
-   const addOnMale  = document.getElementById('addOnMale');
-   const addOnFemale  = document.getElementById('addOnFemale');
 
 
     
