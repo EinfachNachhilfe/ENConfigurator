@@ -538,7 +538,13 @@ if (configuratorForm) {
 		return baseCode.substr(40, 2) === "0A";
 	}
 	function updateElement() {
-	let baseLessonPrice = 20;
+
+		
+         let basePrice = 20;   
+	 let baseLessonPrice = basePrice;
+	 let discountUnit = basePrice;
+	 let discountContract = basePrice;   
+	 let discountAddOnOther = basePrice;  
 	let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 	let baseTutorSalary = 12;
 
