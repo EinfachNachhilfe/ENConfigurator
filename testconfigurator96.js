@@ -595,7 +595,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		
 
 
-/*
+
 	tutoring.forEach(function(radio) {
 			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
 			const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
@@ -728,7 +728,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-*/
+
   
   
 	}
