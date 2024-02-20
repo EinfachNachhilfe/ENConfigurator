@@ -391,9 +391,9 @@ if (configuratorForm) {
 	const subjectOther = document.getElementById('subjectOther');
 	const checkboxes = document.querySelectorAll('[type="checkbox"]');
 	const radioBoxes = document.querySelectorAll('[type="radio"]');
-	const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
-	const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
-	const textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
+	var textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
+	var textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
+	var textUnitLarge = document.querySelectorAll('.text-checkbox-unit-large');
 	var lessonValueGerman = 0;
 	var lessonValueEnglish = 0;
 	var lessonValueMathematics = 0.6;
