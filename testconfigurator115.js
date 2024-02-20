@@ -920,11 +920,11 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+
     addHiddenInputForCheckbox(document.getElementById("subjectMathematics"), "Mathe,", "Fach1");
 
 
-});
+
 
         
    }
