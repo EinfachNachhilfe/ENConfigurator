@@ -1,4 +1,4 @@
- //start general
+//start general
  const nextBtn = document.querySelector('#nextBtn');
  const prevBtn = document.querySelector('#prevBtn');
  const submitBtn = document.querySelector('#submitBtn');
@@ -540,7 +540,6 @@ if (configuratorForm) {
 		return baseCode.substr(40, 2) === "0A";
 	}
 	function updateElement() {
-
 		
          let basePrice = 20;   
 	 let baseLessonPrice = basePrice;
@@ -549,7 +548,6 @@ if (configuratorForm) {
 	 let discountAddOnOther = basePrice;  
 	let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
 	let baseTutorSalary = 12;
-
 		
 const maxSelectedSubject = document.getElementById('maxSelectedSubject');
 const maxSelectedAddOnTutor = document.getElementById('maxSelectedAddOnTutor');
@@ -671,9 +669,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		updateAddOn(addOnMale, lessonValueMale, letterValueMale, tutorSalaryValueMale);
 		updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale);
 		
-
-
-
 	tutoring.forEach(function(radio) {
 			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
 			const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
@@ -806,7 +801,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
 		document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
 		document.querySelector('.send-codeGenerator').value = baseCode;
-
 		 //calculate and display discount to unit
 		 let discountUnitSmall = discountUnit + lessonValueUnitSmall;
 		 let discountUnitMiddle = discountUnit + lessonValueUnitMiddle;
@@ -835,68 +829,60 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		 textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
 
 
-	
 //rename input element	
+
     submitBtn.addEventListener('click', function(event) {
         if (this.classList.contains('disabled')) {
             return;
         }
         submitSearchForm();
     });
-
-window.submitSearchForm = function() {
-    tutoring.forEach(function(tutoringInput) {
-        if (tutoringInput.checked) {
-            switch (tutoringInput.value) {
+    window.submitSearchForm = function() {
+        tutoring.forEach(function(input) {
+            switch(input.value) {
                 case '1':
-                    // Wenn tutoringInput.value 1 ist, setzen Sie den Vertrag auf verschiedene Werte für alle contractInputs
-                    unit.forEach(function(contractInput, index) {
-                        switch (index + 1) {
-                            case 1:
-                                contractInput.value = '1x90min';
-                                break;
-                            case 2:
-                                contractInput.value = '2x90min';
-                                break;
-                            case 3:
-                                contractInput.value = '3x90min';
-                                break;
-                            default:
-                                break;
-                        }
-                    });
+                    input.value = 'Zuhause';
                     break;
                 case '2':
-                    // Wenn tutoringInput.value 2 ist, setzen Sie den Vertrag auf verschiedene Werte für alle contractInputs
-                    unit.forEach(function(contractInput, index) {
-                        switch (index + 1) {
-                            case 1:
-                                contractInput.value = '2x45min';
-                                break;
-                            case 2:
-                                contractInput.value = '4x45min';
-                                break;
-                            case 3:
-                                contractInput.value = '6x45min';
-                                break;
-                            default:
-                                break;
-                        }
-                    });
-                    break;	    
+                    input.value = '50% online und 50% vor Ort';
+                    break;
+                case '3':
+                    input.value = 'Online';
+                    break;
             }
-        }
-    });
-};
 
+            unit.forEach(function(input) {
+            switch(input.value) {
+                case '1':
+                    input.value = 'Kleine Einheit';
+                    break;
+                case '2':
+                    input.value = 'Mittlere Einheit';
+                    break;
+                case '3':
+                    input.value = 'Große Einheit';
+                    break;
+            }
 
-
+	    contract.forEach(function(input) {
+            switch(input.value) {
+                case '1':
+                    input.value = '0 Monate';
+                    break;
+                case '2':
+                    input.value = '12 Monate';
+                    break;
+                case '3':
+                    input.value = '24 Monate';
+                    break;
+            }
+        });
+	    
         configuratorForm.querySelectorAll('input, textarea').forEach(function(input) {
             if (!input.value) {
                 input.parentNode.removeChild(input);
             }
         });
-
         configuratorForm.querySelectorAll('select').forEach(function(select) {
             if (!select.querySelector('option:checked')) {
                 select.parentNode.removeChild(select);
@@ -911,10 +897,10 @@ window.submitSearchForm = function() {
 
 
 
+
 		
 	}
 	updateElement()
-
 	
  }
  
