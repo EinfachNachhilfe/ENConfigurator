@@ -896,22 +896,21 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
    };
 
 
-   function addHiddenInputForCheckbox(checkboxElem, hiddenInputValue, hiddenInputName) {
-   
+   function addHiddenInputForCheckbox(checkboxElem, hiddenInputValue) {
+
 
     if (checkboxElem && configuratorForm) {
         checkboxElem.addEventListener("change", function() {
+            const hiddenInputName = checkboxElem.id + "_hidden";
             if (checkboxElem.checked) {
                 const hiddenInput = document.createElement("input");
                 hiddenInput.setAttribute("type", "hidden");
-                hiddenInput.setAttribute("id", checkboxElem.id + "_hidden"); // Wir fügen "_hidden" zur Checkbox-ID hinzu, um eine eindeutige ID für das versteckte Eingabefeld zu erhalten.
+                hiddenInput.setAttribute("id", hiddenInputName);
                 hiddenInput.setAttribute("name", hiddenInputName);
                 hiddenInput.setAttribute("value", hiddenInputValue);
-
-                // Füge das Eingabefeld dem Formular hinzu
                 configuratorForm.appendChild(hiddenInput);
             } else {
-                let existingHiddenInput = document.getElementById(checkboxElem.id + "_hidden");
+                let existingHiddenInput = document.getElementById(hiddenInputName);
                 if (existingHiddenInput) {
                     configuratorForm.removeChild(existingHiddenInput);
                 }
@@ -921,7 +920,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 }
 
 
-    addHiddenInputForCheckbox(document.getElementById("subjectMathematics"), "Mathe,", "Fach1");
+addHiddenInputForCheckbox(subjectMathematics, "Mathe,");
 
 
 
