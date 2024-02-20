@@ -422,8 +422,10 @@ if (configuratorForm) {
 	var lessonValueTutoringHybrid = 3;
 	var lessonValueUnitSmall = 6;
 	var lessonValueUnitMiddle = 2.6;
+	var lessonValueUnitLarge = 0;
 	var lessonValueContractSmall = 6.8;
 	var lessonValueContractMiddle = 2;
+	var lessonValueContractLarge = 0;
 	var tutorSalaryValueAllRoundTutor = 0;
 	var tutorSalaryValueExperiencedTutor = 0.45;
 	var tutorSalaryValueContractBreak = 0;
@@ -806,9 +808,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		document.querySelector('.send-codeGenerator').value = baseCode;
 
 		 //calculate and display discount to unit
-		 let discountUnitSmall = discountUnit + valueUnitSmall;
-		 let discountUnitMiddle = discountUnit + valueUnitMiddle;
-		 let discountUnitLarge = discountUnit + valueUnitLarge;
+		 let discountUnitSmall = discountUnit + lessonValueUnitSmall;
+		 let discountUnitMiddle = discountUnit + lessonValueUnitMiddle;
+		 let discountUnitLarge = discountUnit + lessonValueUnitLarge;
 		     
 		 let totalDiscountUnitMiddle = ((discountUnitSmall - discountUnitMiddle) / discountUnitSmall) * 100;
 		 let totalDiscountUnitLarge = ((discountUnitSmall - discountUnitLarge) / discountUnitSmall) * 100;
@@ -817,9 +819,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		 textdiscountUnitLarge.textContent = Math.round(totalDiscountUnitLarge).toString();
 		 
 		 //calculate and display discount to contract
-		 let discountContractSmall = discountContract + valueContractSmall;
-		 let discountContractMiddle = discountContract + valueContractMiddle;
-		 let discountContractLarge = discountContract + valueContractLarge;
+		 let discountContractSmall = discountContract + lessonValueContractSmall;
+		 let discountContractMiddle = discountContract + lessonValueContractMiddle;
+		 let discountContractLarge = discountContract + lessonValueContractLarge;
 		 
 		 let totalDiscountContractMiddle = ((discountContractSmall - discountContractMiddle) / discountContractSmall) * 100;
 		 let totalDiscountContractLarge = ((discountContractSmall - discountContractLarge) / discountContractSmall) * 100;
