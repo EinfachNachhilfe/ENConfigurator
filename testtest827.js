@@ -473,18 +473,18 @@
  manageSelection(customCheckboxInputTutor, 5, 'custom-input-clicked', 'disable' );
  
  let basePrice = 20;   
- let totalLessonPrice = basePrice;
- let discountUnit = basePrice;
- let discountContract = basePrice;   
- let discountAddOnOther = basePrice;  
- let tutorSalary = 12;
- let valueUnitSmall = 6;
- let valueUnitMiddle = 2.6;
- let valueUnitLarge = 0;
- let valueContractSmall = 6.8;
- let valueContractMiddle = 2;
- let valueContractLarge = 0;
- let valueTandemLesson = 10;
+ var totalLessonPrice = basePrice;
+ var discountUnit = basePrice;
+ var discountContract = basePrice;   
+ var discountAddOnOther = basePrice;  
+ var tutorSalary = 12;
+ var valueUnitSmall = 6;
+ var valueUnitMiddle = 2.6;
+ var valueUnitLarge = 0;
+ var valueContractSmall = 6.8;
+ var valueContractMiddle = 2;
+ var valueContractLarge = 0;
+ var valueTandemLesson = 10;
      
  
  const subjectMathematics = document.getElementById('subjectMathematics');
@@ -602,11 +602,7 @@
    }
  
  
- /*
- const textUnitSmall= document.getElementById('textUnitSmall');
- const textUnitMiddle= document.getElementById('textUnitMiddle');
- const textUnitLarge= document.getElementById('textUnitLarge');   
- */
+
   
  const textUnitSmall = document.querySelectorAll('.text-checkbox-unitsmall');
  const textUnitMiddle = document.querySelectorAll('.text-checkbox-unit-middle');
@@ -687,19 +683,7 @@
  
       let totalTutorSalary = (tutorSalary / 45) * 60;
  
-     //calculate lowest Price
-     /*let lowesttotalLessonPrice = basePrice + valueUnitSmall;
-     let lowestTotalMonthPrice = lowesttotalLessonPrice * multiplierUnit * 4.3333333333;
  
-        //display lowest Price
- if (totalMonthPrice > lowestTotalMonthPrice) {
-     // Wenn totalMonthPrice größer als lowestTotalMonthPrice ist, zeigen Sie lowestTotalMonthPrice an
-     textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
- } else {
-     // Andernfalls zeigen Sie totalMonthPrice an
-     textTotalMonthPrice.textContent = lowestTotalMonthPrice.toFixed(2).replace('.', ',');
- }
- */
  
   
   textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
