@@ -366,7 +366,7 @@ if (configuratorForm) {
 	const addOnExperiencedTutor  = document.getElementById('addOnExperiencedTutor');
 	const addOnMale  = document.getElementById('addOnMale');
 	const addOnFemale  = document.getElementById('addOnFemale');
-	const tutoring = document.querySelectorAll('input[name="tutoring"]');
+	var tutoring = document.querySelectorAll('input[name="tutoring"]');
 	const unit = document.querySelectorAll('input[name="unit"]');
 	const contract = document.querySelectorAll('input[name="contract"]');
 	const addOnAllRoundTutor = document.getElementById('addOnAllRoundTutor');  
