@@ -827,8 +827,8 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
         let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
         
         textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-
-
+console.log(totalDiscountContractMiddle);
+    console.log(totalDiscountContractLarge);
 //rename input element	
 
    submitBtn.addEventListener('click', function(event) {
@@ -927,7 +927,7 @@ addHiddenInputForCheckbox(addOnAllRoundTutor, "Allroundlehrkraft,");
 addHiddenInputForCheckbox(addOnContractBreak, "Vertragspause,");
 addHiddenInputForCheckbox(addTandemLesson, "Tandemunterricht,");
 addHiddenInputForCheckbox(subjectMathematics, "Mathe,");
-addHiddenInputForCheckbox(subjectGerman, "Mathe,");
+addHiddenInputForCheckbox(subjectGerman, "Deutsch,");
 addHiddenInputForCheckbox(subjectEnglish, "Englisch,");
 addHiddenInputForCheckbox(subjectFrench, "Französisch,");
 addHiddenInputForCheckbox(subjectLatin, "Latein,");
