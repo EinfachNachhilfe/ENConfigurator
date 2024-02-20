@@ -891,24 +891,6 @@ window.submitSearchForm = function() {
 
 
 
-
-
-
-			    window.submitSearchForm = function() {
-        unit.forEach(function(input) {
-            switch(input.value) {
-                case '1':
-                    input.value = 'Zuhause';
-                    break;
-                case '2':
-                    input.value = '50% online und 50% vor Ort';
-                    break;
-                case '3':
-                    input.value = 'Online';
-                    break;
-            }
-        });
-
         configuratorForm.querySelectorAll('input, textarea').forEach(function(input) {
             if (!input.value) {
                 input.parentNode.removeChild(input);
