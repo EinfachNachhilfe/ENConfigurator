@@ -844,8 +844,58 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
         submitSearchForm();
     });
 
-    window.submitSearchForm = function() {
-        tutoring.forEach(function(input) {
+window.submitSearchForm = function() {
+    tutoring.forEach(function(tutoringInput) {
+        if (tutoringInput.checked) {
+            switch (tutoringInput.value) {
+                case '1':
+                    // Wenn tutoringInput.value 1 ist, setzen Sie den Vertrag auf verschiedene Werte für alle contractInputs
+                    unit.forEach(function(contractInput, index) {
+                        switch (index + 1) {
+                            case 1:
+                                contractInput.value = '1x90min';
+                                break;
+                            case 2:
+                                contractInput.value = '2x90min';
+                                break;
+                            case 3:
+                                contractInput.value = '3x90min';
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    break;
+                case '2':
+                    // Wenn tutoringInput.value 2 ist, setzen Sie den Vertrag auf verschiedene Werte für alle contractInputs
+                    unit.forEach(function(contractInput, index) {
+                        switch (index + 1) {
+                            case 1:
+                                contractInput.value = '2x45min';
+                                break;
+                            case 2:
+                                contractInput.value = '4x45min';
+                                break;
+                            case 3:
+                                contractInput.value = '6x45min';
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    break;	    
+            }
+        }
+    });
+};
+
+
+
+
+
+
+			    window.submitSearchForm = function() {
+        unit.forEach(function(input) {
             switch(input.value) {
                 case '1':
                     input.value = 'Zuhause';
