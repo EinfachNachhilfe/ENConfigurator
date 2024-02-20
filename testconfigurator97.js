@@ -367,8 +367,8 @@ if (configuratorForm) {
 	const addOnMale  = document.getElementById('addOnMale');
 	const addOnFemale  = document.getElementById('addOnFemale');
 	var tutoring = document.querySelectorAll('input[name="tutoring"]');
-	const unit = document.querySelectorAll('input[name="unit"]');
-	const contract = document.querySelectorAll('input[name="contract"]');
+	var unit = document.querySelectorAll('input[name="unit"]');
+	var contract = document.querySelectorAll('input[name="contract"]');
 	const addOnAllRoundTutor = document.getElementById('addOnAllRoundTutor');  
 	const addOnContractBreak = document.getElementById('addOnContractBreak');
 	const addTandemLesson = document.getElementById('addTandemLesson');
