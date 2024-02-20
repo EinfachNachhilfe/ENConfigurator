@@ -897,9 +897,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 
 
    function addHiddenInputForCheckbox(checkboxElem, hiddenInputValue, hiddenInputName) {
-    const form = document.getElementById("request_customer");
+   
 
-    if (checkboxElem && form) {
+    if (checkboxElem && configuratorForm) {
         checkboxElem.addEventListener("change", function() {
             if (checkboxElem.checked) {
                 const hiddenInput = document.createElement("input");
@@ -909,11 +909,11 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                 hiddenInput.setAttribute("value", hiddenInputValue);
 
                 // Füge das Eingabefeld dem Formular hinzu
-                form.appendChild(hiddenInput);
+                configuratorForm.appendChild(hiddenInput);
             } else {
                 let existingHiddenInput = document.getElementById(checkboxElem.id + "_hidden");
                 if (existingHiddenInput) {
-                    form.removeChild(existingHiddenInput);
+                    configuratorForm.removeChild(existingHiddenInput);
                 }
             }
         });
