@@ -680,7 +680,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			const tutoringOnlineSummary = document.getElementById('tutoringOnlineSummary');
 				
 			if (radio.checked) {
-				if (radio.value == 'atHome') {
+				if (radio.value == '1') {
                                 	tutoringAtHomeSummary.style.display = 'flex';
 		      			tutoringHybridSummary.style.display = 'none';
 		       			tutoringOnlineSummary.style.display = 'none';
@@ -695,7 +695,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 						element.textContent = '3x90min';
 					});
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringAtHome + baseCode .substr(11);
-				} else if (radio.value == 'hybrid') {
+				} else if (radio.value == '2') {
 					baseLessonPrice += lessonValueTutoringHybrid;
                               	        tutoringHybridSummary.style.display = 'flex';
 					tutoringAtHomeSummary.style.display = 'none';
@@ -710,7 +710,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 						element.textContent = '6x45min';
 					});
 					baseCode  = baseCode .substr(0, 9) + letterValueTutoringHybrid + baseCode .substr(11);
-				} else if (radio.value == 'online') {
+				} else if (radio.value == '3') {
                               		tutoringOnlineSummary.style.display = 'flex';
 					tutoringAtHomeSummary.style.display = 'none';
 		        		tutoringHybridSummary.style.display = 'none';
@@ -736,7 +736,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			const contractMiddleSummary = document.getElementById('contractMiddleSummary');
 			const contractLargeSummary = document.getElementById('contractLargeSummary');
 			if (radio.checked) {
-				if (radio.value == 'small') {
+				if (radio.value == '1') {
                                 	contractSmallSummary.style.display = 'flex';
 					contractMiddleSummary.style.display = 'none';
 					contractLargeSummary.style.display = 'none';
@@ -744,14 +744,14 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 					multiplierContract = 4;
 					setUpFee = 69.99;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitSmall + baseCode .substr(14);
-				} else if (radio.value == 'middle') {
+				} else if (radio.value == '2') {
 					contractSmallSummary.style.display = 'none';
                                         contractMiddleSummary.style.display = 'flex';
 					contractLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueUnitMiddle;
 					multiplierContract = 12;
 					baseCode  = baseCode .substr(0, 12) + letterValueUnitMiddle + baseCode .substr(14);
-				} else if (radio.value == 'large') {
+				} else if (radio.value == '3') {
                                 	contractLargeSummary.style.display = 'flex';
 					contractSmallSummary.style.display = 'none';
 					contractMiddleSummary.style.display = 'none';
@@ -765,20 +765,20 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 			const unitMiddleSummary = document.getElementById('unitMiddleSummary');
 			const unitLargeSummary = document.getElementById('unitLargeSummary');
 			if (radio.checked) {
-				if (radio.value == 'small') {
+				if (radio.value == '1') {
                                 	unitSmallSummary.style.display = 'flex';
 					unitMiddleSummary.style.display = 'none';
 					unitLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueContractSmall;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractSmall + baseCode .substr(17);
-				} else if (radio.value == 'middle') {
+				} else if (radio.value == '2') {
 					unitSmallSummary.style.display = 'none';
                                 	unitMiddleSummary.style.display = 'flex';
 					unitLargeSummary.style.display = 'none';
 					baseLessonPrice += lessonValueContractMiddle;
 					multiplierUnit = 4;
 					baseCode  = baseCode .substr(0, 15) + letterValueContractMiddle + baseCode .substr(17);
-				} else if (radio.value == 'large') {
+				} else if (radio.value == '3') {
                                 	unitLargeSummary.style.display = 'flex';
 					unitMiddleSummary.style.display = 'none';
 					unitSmallSummary.style.display = 'none';
@@ -834,9 +834,56 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		 
 		 textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
 
+
+	
+//rename input element	
+document.addEventListener('DOMContentLoaded', function() {
+    submitBtn.addEventListener('click', function(event) {
+        if (this.classList.contains('disabled')) {
+            return;
+        }
+        submitSearchForm();
+    });
+
+    window.submitSearchForm = function() {
+        tutoring.forEach(function(input) {
+            switch(input.value) {
+                case '1':
+                    input.value = 'Zuhause';
+                    break;
+                case '2':
+                    input.value = '50% online und 50% vor Ort';
+                    break;
+                case '3':
+                    input.value = 'Online';
+                    break;
+            }
+        });
+
+        configuratorForm.querySelectorAll('input, textarea').forEach(function(input) {
+            if (!input.value) {
+                input.parentNode.removeChild(input);
+            }
+        });
+
+        configuratorForm.querySelectorAll('select').forEach(function(select) {
+            if (!select.querySelector('option:checked')) {
+                select.parentNode.removeChild(select);
+            }
+        });
+        
+        configuratorForm.querySelectorAll('input[type="checkbox"]:not(:checked), input[type="radio"]:not(:checked)').forEach(function(input) {
+            input.parentNode.removeChild(input);
+        });
+    };
+});
+
+
+
 		
 	}
 	updateElement()
+
 	
  }
  
