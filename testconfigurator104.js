@@ -829,7 +829,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		 textdiscountContractMiddle.textContent = Math.round(totalDiscountContractMiddle).toString();
 		 textdiscountContractLarge.textContent = Math.round(totalDiscountContractLarge).toString();
 		 
-		 let discountTandemLesson = discountAddOnOther + valueTandemLesson;
+		 let discountTandemLesson = discountAddOnOther + lessonValueTandemLesson;
 		 let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
 		 
 		 textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
