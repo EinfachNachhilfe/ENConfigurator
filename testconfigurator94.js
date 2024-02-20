@@ -595,7 +595,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 		
 
 
-
+/*
 	tutoring.forEach(function(radio) {
 			const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
 			const tutoringHybridSummary = document.getElementById('tutoringHybridSummary');
@@ -710,7 +710,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
 				}
 			}
 		});
-	/*
+
 		let totalMonthPrice = baseLessonPrice * multiplierUnit * 4.3333333333;
     
 		//calculation months salary tutor
