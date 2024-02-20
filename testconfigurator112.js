@@ -896,10 +896,33 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
    };
 
 
+   function addHiddenInputForCheckbox(element, hiddenInputValue) {
+    const form = document.getElementById("request_customer");
+
+    if (element && form) {
+        element.addEventListener("change", function() {
+            const hiddenInputName = element.id + "_hidden"; // Automatisch generierter Name für das versteckte Eingabefeld
+            if (element.checked) {
+                const hiddenInput = document.createElement("input");
+                hiddenInput.setAttribute("type", "hidden");
+                hiddenInput.setAttribute("id", hiddenInputName);
+                hiddenInput.setAttribute("name", hiddenInputName);
+                hiddenInput.setAttribute("value", hiddenInputValue);
+                form.appendChild(hiddenInput);
+            } else {
+                let existingHiddenInput = document.getElementById(hiddenInputName);
+                if (existingHiddenInput) {
+                    form.removeChild(existingHiddenInput);
+                }
+            }
+        });
+    }
+}
 
 
+addHiddenInputForCheckbox(subjectMathematics, "Mathe,");
 
-       
+        
    }
    updateElement()
    
