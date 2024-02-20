@@ -1,5 +1,3 @@
-final final
-
  //start general
  const nextBtn = document.querySelector('#nextBtn');
  const prevBtn = document.querySelector('#prevBtn');
