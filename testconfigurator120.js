@@ -412,7 +412,7 @@ if (configuratorForm) {
    var lessonValueEconomics = 1.4;
    var lessonValueOther = 2.2;
    var lessonValueAllRoundTutor = 0.6;
-       var lessonValueExperiencedTutor = 1.2;
+   var lessonValueExperiencedTutor = 1.2;
    var lessonValueContractBreak = 1.5;
    var lessonValueTandemLesson = 10;
    var lessonValuePremiumTutor = 2.6;
@@ -420,12 +420,15 @@ if (configuratorForm) {
    var lessonValueFemale = 0.4;
    var lessonValueTutoringAtHome = 5;
    var lessonValueTutoringHybrid = 3;
+   var lessonValueTutoringOnline = 0;
    var lessonValueUnitSmall = 6;
    var lessonValueUnitMiddle = 2.6;
    var lessonValueUnitLarge = 0;
    var lessonValueContractSmall = 6.8;
    var lessonValueContractMiddle = 2;
    var lessonValueContractLarge = 0;
+
+ 
    var tutorSalaryValueAllRoundTutor = 0;
    var tutorSalaryValueExperiencedTutor = 0.45;
    var tutorSalaryValueContractBreak = 0;
@@ -494,6 +497,8 @@ if (configuratorForm) {
    }
    changeUpdateElement(checkboxes);
        changeUpdateElement(radioBoxes);  
+
+ 
    function isCondition1Met(baseCode) {
        return baseCode.substr(2, 2) === "0A";
    }
@@ -541,11 +546,11 @@ if (configuratorForm) {
    }
    function updateElement() {
        
-        let basePrice = 20;   
-    let baseLessonPrice = basePrice;
-    let discountUnit = basePrice;
-    let discountContract = basePrice;   
-    let discountAddOnOther = basePrice;  
+   let basePrice = 20;   
+   let baseLessonPrice = basePrice;
+   let discountUnit = basePrice;
+   let discountContract = basePrice;   
+   let discountAddOnOther = basePrice;  
    let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
    let baseTutorSalary = 12;
        
@@ -590,6 +595,9 @@ function updateSubject(element, lessonValue, letterValue) {
   const summaryField = document.getElementById(summaryId);
    if (element.checked) {
        baseLessonPrice += lessonValue; 
+       discountUnit += lessonValue; 
+       discountContract += lessonValue; 
+       discountAddOnOther += lessonValue; 
      summaryField.style.display = 'flex';
        if (isCondition1Met(baseCode )) {
            baseCode  = baseCode .substr(0, 2) + letterValue + baseCode .substr(4);
@@ -624,12 +632,17 @@ function updateSubject(element, lessonValue, letterValue) {
     
         
        
-function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
+function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDiscountableTandemLesson = false) {
    const summaryId = element.id + 'Summary';
    const summaryField = document.getElementById(summaryId);
    if (element.checked) {
        baseLessonPrice += lessonValue; 
        baseTutorSalary += tutorSalaryValue;
+
+     if (isDiscountableTandemLesson) {
+        discountAddOnOther += lessonValue; 
+             }
+    
        summaryField.style.display = 'flex';
        if (isCondition4Met(baseCode )) {
            baseCode  = baseCode .substr(0, 18) + letterValue + baseCode .substr(20);
@@ -661,13 +674,13 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
    }
 }
        
-       updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, tutorSalaryValueAllRoundTutor);
-       updateAddOn(addOnExperiencedTutor, lessonValueExperiencedTutor, letterValueExperiencedTutor, tutorSalaryValueExperiencedTutor);
-       updateAddOn(addOnContractBreak, lessonValueContractBreak, letterValueContractBreak, tutorSalaryValueContractBreak);
-       updateAddOn(addTandemLesson, lessonValueTandemLesson, letterValueTandemLesson, tutorSalaryValueTandemLesson);
-       updateAddOn(addOnPremiumTutor, lessonValuePremiumTutor, letterValuePremiumTutor, tutorSalaryValuePremiumTutor);
-       updateAddOn(addOnMale, lessonValueMale, letterValueMale, tutorSalaryValueMale);
-       updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale);
+       updateAddOn(addOnAllRoundTutor, lessonValueAllRoundTutor, letterValueAllRoundTutor, tutorSalaryValueAllRoundTutor, true);
+       updateAddOn(addOnExperiencedTutor, lessonValueExperiencedTutor, letterValueExperiencedTutor, tutorSalaryValueExperiencedTutor, true);
+       updateAddOn(addOnContractBreak, lessonValueContractBreak, letterValueContractBreak, tutorSalaryValueContractBreak, true);
+       updateAddOn(addTandemLesson, lessonValueTandemLesson, letterValueTandemLesson, tutorSalaryValueTandemLesson, false);
+       updateAddOn(addOnPremiumTutor, lessonValuePremiumTutor, letterValuePremiumTutor, tutorSalaryValuePremiumTutor, true);
+       updateAddOn(addOnMale, lessonValueMale, letterValueMale, tutorSalaryValueMale, true);
+       updateAddOn(addOnFemale, lessonValueFemale, letterValueFemale, tutorSalaryValueFemale,true);
        
    tutoring.forEach(function(radio) {
            const tutoringAtHomeSummary = document.getElementById('tutoringAtHomeSummary');
@@ -680,6 +693,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                          tutoringHybridSummary.style.display = 'none';
                           tutoringOnlineSummary.style.display = 'none';
                    baseLessonPrice += lessonValueTutoringAtHome;
+                   discountUnit += lessonValueTutoringAtHome; 
+                  discountContract += lessonValueTutoringAtHome; 
+                  discountAddOnOther += lessonValueTutoringAtHome;
                    textUnitSmall.forEach(element => {
                        element.textContent = '1x90min';
                    });
@@ -692,9 +708,13 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                    baseCode  = baseCode .substr(0, 9) + letterValueTutoringAtHome + baseCode .substr(11);
                } else if (radio.value == '2') {
                    baseLessonPrice += lessonValueTutoringHybrid;
+                
                                          tutoringHybridSummary.style.display = 'flex';
                    tutoringAtHomeSummary.style.display = 'none';
                        tutoringOnlineSummary.style.display = 'none';
+                 discountUnit += lessonValueTutoringHybrid; 
+                 discountContract += lessonValueTutoringHybrid; 
+                  discountAddOnOther += lessonValueTutoringHybrid;
                    textUnitSmall.forEach(element => {
                        element.textContent = '2x45min';
                    });
@@ -709,6 +729,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                                      tutoringOnlineSummary.style.display = 'flex';
                    tutoringAtHomeSummary.style.display = 'none';
                        tutoringHybridSummary.style.display = 'none';
+                 discountUnit += lessonValueTutoringOnline; 
+                 discountContract += lessonValueTutoringOnline; 
+                  discountAddOnOther += lessonValueTutoringOnline;
                    textUnitSmall.forEach(element => {
                        element.textContent = '2x45min';
                    });
@@ -735,7 +758,8 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                                    contractSmallSummary.style.display = 'flex';
                    contractMiddleSummary.style.display = 'none';
                    contractLargeSummary.style.display = 'none';
-                   baseLessonPrice += lessonValueUnitSmall;
+                   baseLessonPrice += lessonValueContractSmall;
+                   discountAddOnOther += lessonValueContractSmall;
                    multiplierContract = 4;
                    setUpFee = 69.99;
                    baseCode  = baseCode .substr(0, 12) + letterValueUnitSmall + baseCode .substr(14);
@@ -743,11 +767,13 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                    contractSmallSummary.style.display = 'none';
                                        contractMiddleSummary.style.display = 'flex';
                    contractLargeSummary.style.display = 'none';
-                   baseLessonPrice += lessonValueUnitMiddle;
+                   baseLessonPrice += lessonValueContractMiddle;
+                  discountAddOnOther += lessonValueContractMiddle;
                    multiplierContract = 12;
                    baseCode  = baseCode .substr(0, 12) + letterValueUnitMiddle + baseCode .substr(14);
                } else if (radio.value == '3') {
-                                   contractLargeSummary.style.display = 'flex';
+                   contractLargeSummary.style.display = 'flex';
+                  discountAddOnOther += lessonValueContractLarge;
                    contractSmallSummary.style.display = 'none';
                    contractMiddleSummary.style.display = 'none';
                    multiplierContract = 24;
@@ -764,13 +790,17 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                                    unitSmallSummary.style.display = 'flex';
                    unitMiddleSummary.style.display = 'none';
                    unitLargeSummary.style.display = 'none';
-                   baseLessonPrice += lessonValueContractSmall;
+                   baseLessonPrice += lessonValueUnitSmall;
+                 discountContract += lessonValueUnitSmall; 
+                  discountAddOnOther += lessonValueUnitSmall;
                    baseCode  = baseCode .substr(0, 15) + letterValueContractSmall + baseCode .substr(17);
                } else if (radio.value == '2') {
                    unitSmallSummary.style.display = 'none';
                                    unitMiddleSummary.style.display = 'flex';
                    unitLargeSummary.style.display = 'none';
-                   baseLessonPrice += lessonValueContractMiddle;
+                   baseLessonPrice += lessonValueUnitMiddle;
+                 discountContract += lessonValueUnitMiddle;
+                  discountAddOnOther += lessonValueUnitMiddle;
                    multiplierUnit = 4;
                    baseCode  = baseCode .substr(0, 15) + letterValueContractMiddle + baseCode .substr(17);
                } else if (radio.value == '3') {
@@ -778,6 +808,8 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
                    unitMiddleSummary.style.display = 'none';
                    unitSmallSummary.style.display = 'none';
                    multiplierUnit = 6;
+                  discountContract += lessonValueUnitLarge;
+                   discountAddOnOther += lessonValueUnitLarge;
                    baseCode  = baseCode .substr(0, 15) + letterValueContractLarge + baseCode .substr(17);
                    
                }
@@ -827,8 +859,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue) {
         let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
         
         textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-console.log(totalDiscountContractMiddle);
-    console.log(totalDiscountContractLarge);
+
 //rename input element	
 
    submitBtn.addEventListener('click', function(event) {
