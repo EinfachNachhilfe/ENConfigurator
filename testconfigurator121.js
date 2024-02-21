@@ -586,9 +586,9 @@ function handleMaxSelectedCheckboxes(checkboxWrapper, maxCount) {
        });
    });
 }
-handleMaxSelectedCheckboxes(maxSelectedSubject, 3);
-handleMaxSelectedCheckboxes(maxSelectedAddOnTutor, 1);
-handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 1);
+handleMaxSelectedCheckboxes(maxSelectedSubject, 100);
+handleMaxSelectedCheckboxes(maxSelectedAddOnTutor, 100);
+handleMaxSelectedCheckboxes(maxSelectedAddOnGender, 100);
    
 function updateSubject(element, lessonValue, letterValue) {
    const summaryId = element.id + 'Summary';
@@ -909,7 +909,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                    break;
            }
        });
-       
+ /*      
        configuratorForm.querySelectorAll('input, textarea').forEach(function(input) {
            if (!input.value) {
                input.parentNode.removeChild(input);
@@ -924,6 +924,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        configuratorForm.querySelectorAll('input[type="checkbox"]:not(:checked), input[type="radio"]:not(:checked)').forEach(function(input) {
            input.parentNode.removeChild(input);
        });
+       */
    };
 
 
