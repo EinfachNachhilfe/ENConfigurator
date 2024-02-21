@@ -827,8 +827,9 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        let totalTutorSalary = (baseTutorSalary / 45) * 60;
         textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
-     const textTotalBaseCode = document.getElementById('textTotalMonthPrice');
-     textTotalBaseCode.textContent = baseCode;
+     const textTotalBaseCode = document.getElementById('textTotalBaseCode');
+textTotalBaseCode.textContent = baseCode;
+
     
        //send value to form
        document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
@@ -1241,6 +1242,8 @@ if (nextBtn) {
         }
     });
 }
+
+
 
 // Event-Listener für Änderungen an Radio-Buttons
 let allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
