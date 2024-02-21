@@ -759,7 +759,7 @@
          codePositions[codeToAdd] = area.start;
      }
  
-     textCodeGenerator.textContent = baseCode;
+   
      document.querySelector('.send-codeGenerator').value = baseCode;
  console.log("Aktueller BaseCode:", baseCode);
  }
@@ -780,14 +780,11 @@
      }
  
   console.log("Aktueller BaseCode:", baseCode);
-     textCodeGenerator.textContent = baseCode;
+  
     document.querySelector('.send-codeGenerator').value = baseCode; 
  
  }
  
- 
- 
- textCodeGenerator.textContent = baseCode;
  
  
   
