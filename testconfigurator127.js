@@ -461,9 +461,10 @@ if (configuratorForm) {
    var letterValuePremiumTutor = "MA";
    var letterValueMale = "BA";
    var letterValueFemale = "CA";
-   var letterValueTutoringAtHome = "AA";
+
+   var letterValueTutoringAtHome = "CB";
    var letterValueTutoringHybrid = "BB";
-   var letterValueTutoringOnline = "CB";
+   var letterValueTutoringOnline = "AA";
    var letterValueUnitSmall = "FB";
    var letterValueUnitMiddle = "DB";
    var letterValueUnitLarge = "BB";
