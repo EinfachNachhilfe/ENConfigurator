@@ -859,7 +859,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
         let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
         
         textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
-console.log(baseCode);
+ console.log(baseCode);
 //rename input element	
 
    submitBtn.addEventListener('click', function(event) {
