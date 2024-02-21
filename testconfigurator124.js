@@ -833,6 +833,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
        document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
        document.querySelector('.send-codeGenerator').value = baseCode;
+    console.log("Aktueller BaseCode:", baseCode);
         //calculate and display discount to unit
         let discountUnitSmall = discountUnit + lessonValueUnitSmall;
         let discountUnitMiddle = discountUnit + lessonValueUnitMiddle;
@@ -859,7 +860,8 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
         let totalDiscountTandemLesson = ((discountAddOnOther - (discountTandemLesson/2)) / discountAddOnOther) * 100;
         
         textdiscountTandemLesson.textContent = Math.round(totalDiscountTandemLesson).toString();
- console.log(baseCode);
+
+   
 //rename input element	
 
    submitBtn.addEventListener('click', function(event) {
