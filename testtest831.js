@@ -726,7 +726,9 @@
  //show the TotalCost directly
  calculateTotalCost();
  
- 
+ const textTotalBaseCode = document.getElementById('textTotalBaseCode');
+
+
  const textCodeGenerator = document.getElementById('textCodeGenerator');
  let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
      
@@ -759,9 +761,9 @@
          codePositions[codeToAdd] = area.start;
      }
  
-   
+   textTotalBaseCode.textContent = baseCode;
      document.querySelector('.send-codeGenerator').value = baseCode;
- console.log("Aktueller BaseCode:", baseCode);
+
  }
  
  
@@ -778,15 +780,14 @@
           
          }
      }
- 
-  console.log("Aktueller BaseCode:", baseCode);
+
   
     document.querySelector('.send-codeGenerator').value = baseCode; 
- 
+ textTotalBaseCode.textContent = baseCode;
  }
  
  
- 
+ textTotalBaseCode.textContent = baseCode;
   
  createInputField(subjectGerman, 0, 0, "AA", "Deutsch,", areaSubject, true, true, true);
  createInputField(subjectEnglish, 0, 0, "BA", "Englisch,", areaSubject, true, true, true);
