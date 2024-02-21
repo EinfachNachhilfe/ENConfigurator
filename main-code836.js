@@ -1381,6 +1381,15 @@ if (emailTutor) {
 }
 
 
+ if (ibanTutor) {
+  specificElements.push({
+    element: ibanTutor,
+    pattern: '^DE[0-9]{20}$',  
+    invalidErrorMsg: 'Die IBAN ist falsch'
+  });
+}
+
+
 if (couponCodeElement) {
     specificElements.push({
         element: couponCodeElement,
