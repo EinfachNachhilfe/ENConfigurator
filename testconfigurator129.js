@@ -829,8 +829,6 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        let totalTutorSalary = (baseTutorSalary / 45) * 60;
         textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
-     const textTotalBaseCode = document.getElementById('textTotalBaseCode');
-textTotalBaseCode.textContent = baseCode;
 
     
        //send value to form
