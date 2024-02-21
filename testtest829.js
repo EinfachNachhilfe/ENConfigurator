@@ -761,7 +761,7 @@
  
      textCodeGenerator.textContent = baseCode;
      document.querySelector('.send-codeGenerator').value = baseCode;
- 
+ console.log("Aktueller BaseCode:", baseCode);
  }
  
  
@@ -775,10 +775,11 @@
              let newCodes = currentCodes.substring(0, actualIndex) + "0A" + currentCodes.substring(actualIndex + 2);
              baseCode = baseCode.substring(0, area.start) + newCodes + baseCode.substring(area.end);
              delete codePositions[codeToRemove];
+          
          }
      }
  
- 
+  console.log("Aktueller BaseCode:", baseCode);
      textCodeGenerator.textContent = baseCode;
     document.querySelector('.send-codeGenerator').value = baseCode; 
  
