@@ -750,20 +750,21 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        let multiplierContract = 1;
        let  setUpFee = 0;
        const textTotalMonthPrice = document.getElementById('textTotalMonthPrice');
+    
        contract.forEach(function(radio) {
            const contractSmallSummary = document.getElementById('contractSmallSummary');
            const contractMiddleSummary = document.getElementById('contractMiddleSummary');
            const contractLargeSummary = document.getElementById('contractLargeSummary');
            if (radio.checked) {
                if (radio.value == '1') {
-                                   contractSmallSummary.style.display = 'flex';
+                   contractSmallSummary.style.display = 'flex';
                    contractMiddleSummary.style.display = 'none';
                    contractLargeSummary.style.display = 'none';
                    baseLessonPrice += lessonValueContractSmall;
                    discountAddOnOther += lessonValueContractSmall;
                    multiplierContract = 4;
                    setUpFee = 69.99;
-                   baseCode  = baseCode .substr(0, 12) + letterValueUnitSmall + baseCode .substr(14);
+                   baseCode  = baseCode .substr(0, 12) + letterValueContractSmall + baseCode .substr(14);
                } else if (radio.value == '2') {
                    contractSmallSummary.style.display = 'none';
                                        contractMiddleSummary.style.display = 'flex';
@@ -771,14 +772,14 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                    baseLessonPrice += lessonValueContractMiddle;
                   discountAddOnOther += lessonValueContractMiddle;
                    multiplierContract = 12;
-                   baseCode  = baseCode .substr(0, 12) + letterValueUnitMiddle + baseCode .substr(14);
+                   baseCode  = baseCode .substr(0, 12) + letterValueContractMiddle + baseCode .substr(14);
                } else if (radio.value == '3') {
                    contractLargeSummary.style.display = 'flex';
                   discountAddOnOther += lessonValueContractLarge;
                    contractSmallSummary.style.display = 'none';
                    contractMiddleSummary.style.display = 'none';
                    multiplierContract = 24;
-                   baseCode  = baseCode .substr(0, 12) + letterValueUnitLarge + baseCode .substr(14);
+                   baseCode  = baseCode .substr(0, 12) + letterValueContractLarge + baseCode .substr(14);
                }
            }
        });
@@ -794,7 +795,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                    baseLessonPrice += lessonValueUnitSmall;
                  discountContract += lessonValueUnitSmall; 
                   discountAddOnOther += lessonValueUnitSmall;
-                   baseCode  = baseCode .substr(0, 15) + letterValueContractSmall + baseCode .substr(17);
+                   baseCode  = baseCode .substr(0, 15) + letterValueUnitSmall + baseCode .substr(17);
                } else if (radio.value == '2') {
                    unitSmallSummary.style.display = 'none';
                                    unitMiddleSummary.style.display = 'flex';
@@ -803,7 +804,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                  discountContract += lessonValueUnitMiddle;
                   discountAddOnOther += lessonValueUnitMiddle;
                    multiplierUnit = 4;
-                   baseCode  = baseCode .substr(0, 15) + letterValueContractMiddle + baseCode .substr(17);
+                   baseCode  = baseCode .substr(0, 15) + letterValueUnitMiddle + baseCode .substr(17);
                } else if (radio.value == '3') {
                                    unitLargeSummary.style.display = 'flex';
                    unitMiddleSummary.style.display = 'none';
@@ -811,7 +812,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                    multiplierUnit = 6;
                   discountContract += lessonValueUnitLarge;
                    discountAddOnOther += lessonValueUnitLarge;
-                   baseCode  = baseCode .substr(0, 15) + letterValueContractLarge + baseCode .substr(17);
+                   baseCode  = baseCode .substr(0, 15) + letterValueUnitLarge + baseCode .substr(17);
                    
                }
            }
