@@ -22,6 +22,7 @@ const phoneNumberTutor = document.getElementById('phone-number_tutor');
  const emailTutor = document.getElementById('email_tutor');
  const bdayTutor = document.getElementById('bday_tutor');
  const availabilityTutor = document.getElementById('availability_tutor');
+ const ibanTutor = document.getElementById('iban_tutor');
 const couponCodes = {
     "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
@@ -1102,6 +1103,10 @@ function validateIbanInput(inputElement, countryPrefix) {
 }
 if (phoneNumberPayable) {
     applyIbanValidation(ibanPayable);
+}
+
+if (ibanTutor) {
+    applyIbanValidation(ibanTutor);
 }
 //end iban validation
 
