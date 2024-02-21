@@ -827,6 +827,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
    
        let totalTutorSalary = (baseTutorSalary / 45) * 60;
+    
         textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
 
@@ -834,7 +835,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        //send value to form
        document.querySelector('.send-lessonPrice').value = baseLessonPrice.toFixed(2);
        document.querySelector('.send-totalLtv').value = valueTotalLtv.toFixed(2);
-       document.querySelector('.send-totalTutorSalary').value = baseTutorSalary.toFixed(2);
+       document.querySelector('.send-totalTutorSalary').value = totalTutorSalary.toFixed(2);
        document.querySelector('.send-totalMonthPrice').value = totalMonthPrice.toFixed(2);
        document.querySelector('.send-codeGenerator').value = baseCode;
 
