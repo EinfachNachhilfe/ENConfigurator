@@ -205,7 +205,7 @@ function removeSubject(btn, subject, classFrom, classTo) {
 const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
 const addExperienceBtn = document.getElementById('addexperienceBtn');
 const addSelectedexperiencetBtn = document.getElementById('addSelectedexperienceBtn');
-const experienceTutor = document.getElementById('experience_tutor');
+var experienceTutor = document.getElementById('experience_tutor');
 const durationTutor = document.getElementById('duration_tutor');
 const whenTutor = document.getElementById('when_tutor');
 const addedExperience = document.getElementById('addedExperience');
