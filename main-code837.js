@@ -144,42 +144,33 @@ addSelectedSubjectBtn.addEventListener('click', function() {
     
     const newSubjectElement = document.createElement('div');
     newSubjectElement.style.backgroundColor = '#cfd9e6';
-newSubjectElement.style.padding = '0.5rem 1rem 0.5rem 1rem';
+    newSubjectElement.style.padding = '0.5rem 1rem 0.5rem 1rem';
     newSubjectElement.style.marginBottom = '0.75rem';
     newSubjectElement.style.color = 'black';
     newSubjectElement.style.borderRadius = '0.625rem';
     newSubjectElement.style.fontSize = '0.9rem';
     newSubjectElement.style.minHeight = '3rem';
     newSubjectElement.style.display = 'flex';
-newSubjectElement.style.alignItems = 'center';
+    newSubjectElement.style.alignItems = 'center';
 
 
 
 
-newSubjectElement.innerHTML = `${subject} (Klasse ${classFrom} bis ${classTo}) <button onclick="removeSubject(this, '${subject}', '${classFrom}', '${classTo}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
-addedSubjects.appendChild(newSubjectElement);
+    newSubjectElement.innerHTML = `${subject} (Klasse ${classFrom} bis ${classTo}) <button onclick="removeSubject(this, '${subject}', '${classFrom}', '${classTo}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
+    addedSubjects.appendChild(newSubjectElement);
 
 
 
 
-    // Erstellen von versteckten input-Elementen
-    const subjectInput = document.createElement('input');
-    subjectInput.type = 'hidden';
-    subjectInput.name = `subject_${subject}`;
-    subjectInput.value = subject;
-    applicationTutorForm.appendChild(subjectInput);
+    
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
 
-    const classFromInput = document.createElement('input');
-    classFromInput.type = 'hidden';
-    classFromInput.name = `classFrom_${subject}`;
-    classFromInput.value = classFrom;
-    applicationTutorForm.appendChild(classFromInput);
-
-    const classToInput = document.createElement('input');
-    classToInput.type = 'hidden';
-    classToInput.name = `classTo_${subject}`;
-    classToInput.value = classTo;
-    applicationTutorForm.appendChild(classToInput);
+   
+    const combinedInput = document.createElement('input');
+    combinedInput.type = 'hidden';
+    combinedInput.name = `combined_${subject}`;
+    combinedInput.value = combinedValue;
+    applicationTutorForm.appendChild(combinedInput);
 
     popup.style.display = 'none';
     background.style.display = 'none';
@@ -192,20 +183,18 @@ addedSubjects.appendChild(newSubjectElement);
 });
 
 function removeSubject(btn, subject, classFrom, classTo) {
-    // Finden der versteckten input-Elemente basierend auf ihren Werten
-    const subjectInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name="subject_${subject}"]`)).filter(input => input.value === subject);
-    const classFromInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name="classFrom_${subject}"]`)).filter(input => input.value === classFrom);
-    const classToInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name="classTo_${subject}"]`)).filter(input => input.value === classTo);
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+    const combinedInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
 
-    // Das erste versteckte input-Element jedes Typs entfernen, das den spezifizierten Werten entspricht
-    if (subjectInputs[0]) subjectInputs[0].remove();
-    if (classFromInputs[0]) classFromInputs[0].remove();
-    if (classToInputs[0]) classToInputs[0].remove();
+    if (combinedInputs.length > 0) {
+        combinedInputs[0].remove();
+    }
 
-    btn.parentElement.remove(); // Entfernen des sichtbaren Eintrags aus der Liste
+    btn.parentElement.remove();
     addSubjectToDropdown(subject);
     validateForm();
 }
+
 
 
 const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
