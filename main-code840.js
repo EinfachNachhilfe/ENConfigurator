@@ -23,6 +23,11 @@ const phoneNumberTutor = document.getElementById('phone-number_tutor');
  const bdayTutor = document.getElementById('bday_tutor');
  const availabilityTutor = document.getElementById('availability_tutor');
  const ibanTutor = document.getElementById('iban_tutor');
+ const zipCodeTutor = document.getElementById('zip-code_tutor');
+
+
+
+
 const couponCodes = {
     "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
@@ -1277,6 +1282,14 @@ if (zipCodeTeachingLocation) {
     element: zipCodeTeachingLocation,
     pattern: '\\d+',
     invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.'
+  });
+}
+
+if (zipCodeTutor) {
+  specificElements.push({
+    element: zipCodeTutor,
+    pattern: '\\d+',
+    invalidErrorMsg: 'Bitte eine gültige PLZ eingeben.'
   });
 }
 
