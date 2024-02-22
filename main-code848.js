@@ -206,8 +206,8 @@ const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterric
 const addExperienceBtn = document.getElementById('addexperienceBtn');
 const addSelectedexperiencetBtn = document.getElementById('addSelectedexperienceBtn');
 var experienceTutor = document.getElementById('experience_tutor');
-const durationTutor = document.getElementById('duration_tutor');
-const whenTutor = document.getElementById('when_tutor');
+var durationTutor = document.getElementById('duration_tutor');
+var whenTutor = document.getElementById('when_tutor');
 const addedExperience = document.getElementById('addedExperience');
 const popupExperienceTutor = document.getElementById('popup_experience-tutor');
 
