@@ -213,12 +213,12 @@ const popupExperienceTutor = document.getElementById('popup_experience-tutor');
 
 
 
-popupsubjectDropdown.style.display = 'none';
+popupExperienceTutor.style.display = 'none';
 background.style.display = 'none';
 
 addExperienceBtn.addEventListener('click', function() {
     background.style.display = 'block';
-    popupsubjectDropdown.style.display = 'block';
+    popupExperienceTutor.style.display = 'block';
     experienceTutor.selectedIndex = '0';
     durationTutor.selectedIndex = '0';
     whenTutor.selectedIndex = '0';
