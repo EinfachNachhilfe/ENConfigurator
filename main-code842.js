@@ -205,20 +205,20 @@ function removeSubject(btn, subject, classFrom, classTo) {
 const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
 const addExperienceBtn = document.getElementById('addexperienceBtn');
 const addSelectedexperiencetBtn = document.getElementById('addSelectedexperienceBtn');
-var experienceTutor = document.getElementById('experience_tutor');
+const subjectDropdown = document.getElementById('experience_tutor');
 const durationTutor = document.getElementById('duration_tutor');
 const whenTutor = document.getElementById('when_tutor');
 const addedExperience = document.getElementById('addedExperience');
-const popupExperienceTutor = document.getElementById('popup_experience-tutor');
+const popupsubjectDropdown = document.getElementById('popup_experience-tutor');
 
 
 
-popupExperienceTutor.style.display = 'none';
+popupsubjectDropdown.style.display = 'none';
 background.style.display = 'none';
 
 addExperienceBtn.addEventListener('click', function() {
     background.style.display = 'block';
-    popupExperienceTutor.style.display = 'block';
+    popupsubjectDropdown.style.display = 'block';
     experienceTutor.selectedIndex = '0';
     durationTutor.selectedIndex = '0';
     whenTutor.selectedIndex = '0';
@@ -252,15 +252,10 @@ function addExperienceToDropdown(experience) {
 
 
 
-function areConditionsMetEx() {
-    return experienceTutor.value !== '0' && durationTutor.value !== '0' && whenTutor.value !== '0';
-}
 
 
 addSelectedexperiencetBtn.addEventListener('click', function() {
-    if (!areConditionsMetEx()) {
-        return;
-    }
+
     const experience = experienceTutor.value;
     const duration = durationTutor.value;
     const when = whenTutor.value;
