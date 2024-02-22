@@ -259,7 +259,7 @@ addSelectedexperiencetBtn.addEventListener('click', function() {
     const experience = experienceTutor.value;
     const duration = durationTutor.value;
     const when = whenTutor.value;
-    
+
     const newSubjectElement = document.createElement('div');
     newSubjectElement.style.backgroundColor = '#cfd9e6';
     newSubjectElement.style.padding = '0.5rem 1rem 0.5rem 1rem';
@@ -271,59 +271,41 @@ addSelectedexperiencetBtn.addEventListener('click', function() {
     newSubjectElement.style.display = 'flex';
     newSubjectElement.style.alignItems = 'center';
 
+    newSubjectElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeExperience(this, '${experience}', '${duration}', '${when}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
+    addedExperience.appendChild(newSubjectElement);
 
+    const combinedValue = `${experience}:${duration}:${when}`;
 
-
-newSubjectElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeExperience(this, '${experience}', '${duration}', '${when}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
-addedExperience.appendChild(newSubjectElement);
-
-
-
-
-    // Erstellen von versteckten input-Elementen
-    const experienceInput = document.createElement('input');
-    experienceInput.type = 'hidden';
-    experienceInput.name = `experience_${experience}`;
-    experienceInput.value = experience;
-    applicationTutorForm.appendChild(experienceInput);
-
-    const durationInput = document.createElement('input');
-    durationInput.type = 'hidden';
-    durationInput.name = `duration_${experience}`;
-    durationInput.value = duration;
-    applicationTutorForm.appendChild(durationInput);
-
-    const whenInput = document.createElement('input');
-    whenInput.type = 'hidden';
-    whenInput.name = `when_${experience}`;
-    whenInput.value = when;
-    applicationTutorForm.appendChild(whenInput);
+    const combinedInput = document.createElement('input');
+    combinedInput.type = 'hidden';
+    combinedInput.name = `combined_experience`;
+    combinedInput.value = combinedValue;
+    applicationTutorForm.appendChild(combinedInput);
 
     popupExperienceTutor.style.display = 'none';
     background.style.display = 'none';
-    
+
     const selectedOption = experienceTutor.querySelector(`option[value="${experience}"]`);
     if (selectedOption) {
         experienceTutor.removeChild(selectedOption);
     }
-  validateForm();
+    validateForm();
 });
 
+
 function removeExperience(btn, experience, duration, when) {
-    // Finden der versteckten input-Elemente basierend auf ihren Werten
-    const experienceInput = Array.from(applicationTutorForm.querySelectorAll(`input[name="experience_${experience}"]`)).filter(input => input.value === experience);
-    const durationInput = Array.from(applicationTutorForm.querySelectorAll(`input[name="duration_${experience}"]`)).filter(input => input.value === duration);
-    const whenInput = Array.from(applicationTutorForm.querySelectorAll(`input[name="whenInput_${experience}"]`)).filter(input => input.value === when);
+    const combinedValue = `${experience}:${duration}:${when}`;
+    const combinedInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name="combined_experience"]`)).filter(input => input.value === combinedValue);
 
-    // Das erste versteckte input-Element jedes Typs entfernen, das den spezifizierten Werten entspricht
-    if (experienceInput[0]) experienceInput[0].remove();
-    if (durationInput[0]) durationInput[0].remove();
-    if (whenInput[0]) whenInput[0].remove();
+    if (combinedInputs.length > 0) {
+        combinedInputs[0].remove();
+    }
 
-    btn.parentElement.remove(); // Entfernen des sichtbaren Eintrags aus der Liste
+    btn.parentElement.remove();
     addExperienceToDropdown(experience);
-  validateForm();
+    validateForm();
 }
+
 
  
 }
