@@ -32,6 +32,7 @@ const couponCodes = {
     "lernen2023": { regex: /^lernen2023$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "herbst4": { regex: /^herbst4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "schulstart4": { regex: /^schulstart4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
+   "schulstart4z": { regex: /^schulstart4z$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "schulstartg4": { regex: /^schulstartg4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "schulstart1b4": { regex: /^schulstart1b4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "schulstartz4": { regex: /^schulstartz4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
