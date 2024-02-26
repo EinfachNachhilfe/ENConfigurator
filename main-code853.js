@@ -41,7 +41,6 @@ const couponCodes = {
 
 
 if (phone){
-src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/intlTelInput.js'
 
 var input = $(".int-phone");
  
