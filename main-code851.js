@@ -18,7 +18,6 @@ const configuratorForm = document.getElementById('configurator');
 const applicationTutorForm = document.getElementById('applicationTutor');
 const couponCode = document.getElementById('coupon-code');
 const couponCodeElement = document.getElementById('coupon-code');
-const phoneNumberTutor = document.getElementById('phone-number_tutor');
  const emailTutor = document.getElementById('email_tutor');
  const bdayTutor = document.getElementById('bday_tutor');
  const availabilityTutor = document.getElementById('availability_tutor');
@@ -1017,9 +1016,6 @@ if (phoneNumberCustomer) {
 
         if (phoneNumberContactPerson) {
     applyPhoneValidation(phoneNumberContactPerson);
-}
-        if (phoneNumberTutor) {
-    applyPhoneValidation(phoneNumberTutor);
 }
 
 
