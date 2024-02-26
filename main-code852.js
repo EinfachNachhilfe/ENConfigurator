@@ -23,7 +23,7 @@ const couponCodeElement = document.getElementById('coupon-code');
  const availabilityTutor = document.getElementById('availability_tutor');
  const ibanTutor = document.getElementById('iban_tutor');
  const zipCodeTutor = document.getElementById('zip-code_tutor');
-
+ const phone = document.getElementById('phone');
 
 
 
@@ -38,6 +38,28 @@ const couponCodes = {
     "schulstartm4": { regex: /^schulstartm4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
 };
+
+
+if (phone){
+src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/intlTelInput.js'
+
+var input = $(".int-phone");
+ 
+  input.intlTelInput({
+    initialCountry: "de",
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    separateDialCode: true
+  });
+
+  input.on("change", function () {
+    input.intlTelInput("setNumber", input.val()); //Format phone number e.g: "(123) 456-7890"
+    var fullPhone = input.intlTelInput("getNumber"); //Get number typed by user
+    $("#full_phone").val(fullPhone); //Add the full phone number with the dial code on a hidden input with "#full_phone" ID e.g.  +11234567890
+    var countryData = input.intlTelInput("getSelectedCountryData"); //Get country data array
+    var countryName = countryData.name; //Get country name
+    $("#country").val(countryName); //Add country name on a hidden input with the "#country" ID
+  }); 
+}
 
 if (applicationTutorForm){
 
