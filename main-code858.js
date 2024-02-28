@@ -1262,13 +1262,7 @@ if (emailPayable) {
   });
 }
 
-if (phoneNumberPayable) {
-  specificElements.push({
-    element: phoneNumberPayable,
-    pattern: '^\\+49[1-9]\\d{4,}$',
-    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
-  });
-}
+
 
 if (emailCustomer) {
   specificElements.push({
@@ -1278,21 +1272,7 @@ if (emailCustomer) {
   });
 }
 
-if (phoneNumberCustomer) {
-  specificElements.push({
-    element: phoneNumberCustomer,
-    pattern: '^\\+49[1-9]\\d{4,}$',
-    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
-  });
-}
 
-        if (phoneNumberContactPerson) {
-  specificElements.push({
-    element: phoneNumberContactPerson,
-    pattern: '^\\+49[1-9]\\d{4,}$',
-    invalidErrorMsg: 'Bitte geben Sie eine gültige Telefonnummer ein.'
-  });
-}
 
 if (emailContactPerson) {
   specificElements.push({
