@@ -7,12 +7,9 @@ let validationElements = {};
 const zipCodeTeachingLocation = document.getElementById('zip-code_teaching-location');
 const bdayStudent = document.getElementById('bday_student');
 const emailPayable = document.getElementById('email_payable');
-const phoneNumberPayable = document.getElementById('phone-number_payable');
 const ibanPayable = document.getElementById('iban_payable');
 const emailCustomer = document.getElementById('email_customer');
-const phoneNumberCustomer = document.getElementById('phone-number_customer');
 const contractTerminationCustomer = document.getElementById('contract-termination_customer');
-const phoneNumberContactPerson = document.getElementById('phone-number_contact-person');
 const emailContactPerson = document.getElementById('email_contact-person');
 const configuratorForm = document.getElementById('configurator');
 const applicationTutorForm = document.getElementById('applicationTutor');
@@ -983,44 +980,7 @@ document.addEventListener("keydown", function(event) {
   //end stepchange with enter
 
 
-//start Validation Phone Number
-function applyPhoneValidation(inputElement) {
-inputElement.addEventListener('focus', () => {
-if(inputElement.value === '') {
-inputElement.value = '+49';
-}
-});
-inputElement.addEventListener('input', () => checkInputPhone(inputElement));
-}
 
-function checkInputPhone(inputElement) {
-if (inputElement.value.substring(0, 3) !== '+49') {
-inputElement.value = '+49';
-inputElement.setSelectionRange(3,3);
-} else {
-// Remove any non-numeric characters after '+49'
-let numberPart = inputElement.value.substring(3).replace(/\D/g, '');
-if (numberPart.startsWith('0')) {
-numberPart = numberPart.substring(1);
-}
-inputElement.value = '+49' + numberPart;
-}
-}
-
-if (phoneNumberPayable) {
-    applyPhoneValidation(phoneNumberPayable);
-}
-
-if (phoneNumberCustomer) {
-    applyPhoneValidation(phoneNumberCustomer);
-}
-
-        if (phoneNumberContactPerson) {
-    applyPhoneValidation(phoneNumberContactPerson);
-}
-
-
-//end Validation Phone Number
 
 
 //start bday validation
