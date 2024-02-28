@@ -411,6 +411,8 @@ if (configuratorForm) {
    var tutorSalaryValuePremiumTutor = 0.75;
    var tutorSalaryValueMale = 0;
    var tutorSalaryValueFemale = 0;
+   var tutorSalaryValueTutoringAtHome = 0.75;
+   var tutorSalaryValueTutoringHybrid = 1.5;
   
    var letterValueGerman = "AA";
    var letterValueEnglish = "BA";
@@ -646,7 +648,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
            baseCode  = baseCode .substr(0, 40) + letterValue + baseCode .substr(42);
        }
    } else {
-       summaryField.style.display = 'none'; // Ausblenden, wenn die Checkbox nicht aktiviert ist
+       summaryField.style.display = 'none';
    }
 }
        
@@ -665,13 +667,14 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                
            if (radio.checked) {
                if (radio.value == '1') {
-                                   tutoringAtHomeSummary.style.display = 'flex';
-                         tutoringHybridSummary.style.display = 'none';
-                          tutoringOnlineSummary.style.display = 'none';
-                   baseLessonPrice += lessonValueTutoringAtHome;
-                   discountUnit += lessonValueTutoringAtHome; 
+                  tutoringAtHomeSummary.style.display = 'flex';
+                  tutoringHybridSummary.style.display = 'none';
+                  tutoringOnlineSummary.style.display = 'none';
+                  baseLessonPrice += lessonValueTutoringAtHome;
+                  discountUnit += lessonValueTutoringAtHome; 
                   discountContract += lessonValueTutoringAtHome; 
                   discountAddOnOther += lessonValueTutoringAtHome;
+                  baseTutorSalary += tutorSalaryValueTutoringAtHome;
                    textUnitSmall.forEach(element => {
                        element.textContent = '1x90min';
                    });
@@ -683,14 +686,14 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
                    });
                    baseCode  = baseCode .substr(0, 9) + letterValueTutoringAtHome + baseCode .substr(11);
                } else if (radio.value == '2') {
-                   baseLessonPrice += lessonValueTutoringHybrid;
-                
-                                         tutoringHybridSummary.style.display = 'flex';
-                   tutoringAtHomeSummary.style.display = 'none';
-                       tutoringOnlineSummary.style.display = 'none';
+                 baseLessonPrice += lessonValueTutoringHybrid;
+                 tutoringHybridSummary.style.display = 'flex';
+                 tutoringAtHomeSummary.style.display = 'none';
+                 tutoringOnlineSummary.style.display = 'none';
                  discountUnit += lessonValueTutoringHybrid; 
                  discountContract += lessonValueTutoringHybrid; 
-                  discountAddOnOther += lessonValueTutoringHybrid;
+                 discountAddOnOther += lessonValueTutoringHybrid;
+                 baseTutorSalary += tutorSalaryValueTutoringHybrid;
                    textUnitSmall.forEach(element => {
                        element.textContent = '2x45min';
                    });
