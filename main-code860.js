@@ -413,6 +413,7 @@ if (configuratorForm) {
    var tutorSalaryValueFemale = 0;
    var tutorSalaryValueTutoringAtHome = 0.75;
    var tutorSalaryValueTutoringHybrid = 1.5;
+   var tutorSalaryValueTraining = 0.75;
   
    var letterValueGerman = "AA";
    var letterValueEnglish = "BA";
@@ -804,7 +805,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        //calculation LTV
        let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
    
-       let totalTutorSalary = (baseTutorSalary / 45) * 60;
+       let totalTutorSalary = ((baseTutorSalary + tutorSalaryValueTraining) / 45) * 60;
     
         textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
