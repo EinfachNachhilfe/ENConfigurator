@@ -20,7 +20,7 @@ const couponCodeElement = document.getElementById('coupon-code');
  const availabilityTutor = document.getElementById('availability_tutor');
  const ibanTutor = document.getElementById('iban_tutor');
  const zipCodeTutor = document.getElementById('zip-code_tutor');
-
+ const welcomeMeeting = document.getElementById('welcomeMeeting');
 
 
 
@@ -35,6 +35,20 @@ const couponCodes = {
     "schulstartm4": { regex: /^schulstartm4$/i, message: 'Sie erhalten 2 x 90 Minuten kostenlose Nachhilfe!' },
     "freund100": { regex: /^freund100$/i, message: 'Sie und Ihr Freund erhalten jeweils 100€ Gutschrift!' },
 };
+
+
+if (welcomeMeeting){
+   const dropdown = document.getElementById('date');
+  const heute = new Date();
+  heute.setHours(0, 0, 0, 0); // Setzt die aktuelle Zeit auf Mitternacht, um nur das Datum zu vergleichen
+
+  Array.from(dropdown.options).forEach(function(option) {
+    const terminDatum = new Date(option.value.split('.').reverse().join('-'));
+    if (terminDatum < heute) {
+      dropdown.removeChild(option);
+    }
+  });
+}
 
 
 if (applicationTutorForm){
