@@ -531,7 +531,7 @@ if (configuratorForm) {
    let discountContract = basePrice;   
    let discountAddOnOther = basePrice;  
    let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
-   let baseTutorSalary = 12;
+   let baseTutorSalary = 12.75;
        
 const maxSelectedSubject = document.getElementById('maxSelectedSubject');
 const maxSelectedAddOnTutor = document.getElementById('maxSelectedAddOnTutor');
@@ -805,7 +805,7 @@ function updateAddOn(element, lessonValue, letterValue, tutorSalaryValue, isDisc
        //calculation LTV
        let valueTotalLtv = (totalMonthPrice - monthlyTutorCost) * multiplierContract + setUpFee;
    
-       let totalTutorSalary = ((baseTutorSalary + tutorSalaryValueTraining) / 45) * 60;
+       let totalTutorSalary = (baseTutorSalary / 45) * 60;
     
         textTotalMonthPrice.textContent = totalMonthPrice.toFixed(2).replace('.', ',');
 
