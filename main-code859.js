@@ -1037,6 +1037,11 @@ function validateIbanInput(inputElement, countryPrefix) {
 if (ibanTutor) {
     applyIbanValidation(ibanTutor);
 }
+
+if (ibanPayable) {
+    applyIbanValidation(ibanPayable);
+}
+
 //end iban validation
 
 
