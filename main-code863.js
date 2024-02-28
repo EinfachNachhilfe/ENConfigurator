@@ -411,9 +411,9 @@ if (configuratorForm) {
    var tutorSalaryValuePremiumTutor = 0.75;
    var tutorSalaryValueMale = 0;
    var tutorSalaryValueFemale = 0;
-   var tutorSalaryValueTutoringAtHome = 0.75;
-   var tutorSalaryValueTutoringHybrid = 1.5;
-   var tutorSalaryValueTraining = 0.75;
+   var tutorSalaryValueTutoringAtHome = 1.5;
+   var tutorSalaryValueTutoringHybrid = 0.75;
+
   
    var letterValueGerman = "AA";
    var letterValueEnglish = "BA";
@@ -531,7 +531,7 @@ if (configuratorForm) {
    let discountContract = basePrice;   
    let discountAddOnOther = basePrice;  
    let baseCode = "B-0A0A0A-0A-0A-0A-0A0A0A0A0A0A0A0A0A0A0A0A";
-   let baseTutorSalary = 12.75;
+   let baseTutorSalary = 12;
        
 const maxSelectedSubject = document.getElementById('maxSelectedSubject');
 const maxSelectedAddOnTutor = document.getElementById('maxSelectedAddOnTutor');
