@@ -1032,9 +1032,7 @@ function validateIbanInput(inputElement, countryPrefix) {
         inputElement.value = newValue;
     }
 }
-if (phoneNumberPayable) {
-    applyIbanValidation(ibanPayable);
-}
+
 
 if (ibanTutor) {
     applyIbanValidation(ibanTutor);
