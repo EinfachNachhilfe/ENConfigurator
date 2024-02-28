@@ -999,9 +999,6 @@ e.target.value = value;
 });
 }
 
-if (phoneNumberPayable) {
-    applyDateInputFormat(bdayStudent);
-}
 
 if (contractTerminationCustomer) {
     applyDateInputFormat(contractTerminationCustomer);
