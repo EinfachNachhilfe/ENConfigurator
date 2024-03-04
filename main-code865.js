@@ -37,18 +37,23 @@ const couponCodes = {
 };
 
 
-if (welcomeMeeting){
-   const dropdown = document.getElementById('date');
+if (welcomeMeeting) {
+  const dropdown = document.getElementById('date');
   const heute = new Date();
   heute.setHours(0, 0, 0, 0); // Setzt die aktuelle Zeit auf Mitternacht, um nur das Datum zu vergleichen
 
+  const inDreiMonaten = new Date(heute);
+  inDreiMonaten.setMonth(heute.getMonth() + 3); // Setzt das Datum auf 3 Monate in der Zukunft
+
   Array.from(dropdown.options).forEach(function(option) {
     const terminDatum = new Date(option.value.split('.').reverse().join('-'));
-    if (terminDatum < heute) {
-      dropdown.removeChild(option);
+    // Überprüft, ob das Datum vor heute liegt oder mehr als 3 Monate in der Zukunft
+    if (terminDatum < heute || terminDatum > inDreiMonaten) {
+      dropdown.removeChild(option); // Entfernt Termine, die nicht im gewünschten Zeitraum liegen
     }
   });
 }
+
 
 
 if (applicationTutorForm){
