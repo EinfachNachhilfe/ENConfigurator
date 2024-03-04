@@ -43,7 +43,7 @@ if (welcomeMeeting) {
   heute.setHours(0, 0, 0, 0); // Setzt die aktuelle Zeit auf Mitternacht, um nur das Datum zu vergleichen
 
   const inDreiMonaten = new Date(heute);
-  inDreiMonaten.setMonth(heute.getMonth() + 3); // Setzt das Datum auf 3 Monate in der Zukunft
+  inDreiMonaten.setMonth(heute.getMonth() + 2); // Setzt das Datum auf 3 Monate in der Zukunft
 
   Array.from(dropdown.options).forEach(function(option) {
     const terminDatum = new Date(option.value.split('.').reverse().join('-'));
