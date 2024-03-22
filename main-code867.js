@@ -1030,6 +1030,11 @@ if (bdayTutor) {
     applyDateInputFormat(bdayTutor);
 }
 
+if (bdayStudent ) {
+    applyDateInputFormat(bdayStudent );
+}
+
+
 //end bday validation
 
 //start iban validation
