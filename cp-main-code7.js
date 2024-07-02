@@ -175,41 +175,51 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageWrapper = inputElement.type === 'radio' ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
     if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
     if (validationImageWrapper) {
-        validationImageWrapper.appendChild(validSymbol);
-        validationImageWrapper.appendChild(invalidSymbol);
+      validationImageWrapper.appendChild(validSymbol);
+      validationImageWrapper.appendChild(invalidSymbol);
     }
     inputElement.addEventListener("change", () => {
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+      if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        errorMessageElement.innerHTML = emptyErrorMsg;
+        errorMessageElement.style.display = 'block';
+        inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
+        validSymbol.style.display = 'none';
+        invalidSymbol.style.display = 'inline';
+      } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+        inputElement.style.cssText = '';
+        validSymbol.style.display = 'none';
+        invalidSymbol.style.display = 'none';
+        errorMessageElement.style.display = 'none';
+      } else if (inputElement.checkValidity()) {
+        inputElement.style.cssText = 'border-color: #589b32; border-width: 1.5px;';
+        validSymbol.style.display = 'inline';
+        invalidSymbol.style.display = 'none';
+        errorMessageElement.style.display = 'none';
+      } else {
+        errorMessageElement.innerHTML = invalidErrorMsg;
+        errorMessageElement.style.display = 'block';
+        inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
+        validSymbol.style.display = 'none';
+        invalidSymbol.style.display = 'inline';
+
+      }
+    });
+  
+  
+    const nextBtn = formElements.nextBtn;
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (nextBtn.classList.contains('disabled')) {
+          if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-        } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
-            inputElement.style.cssText = '';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else if (inputElement.checkValidity()) {
-            inputElement.style.cssText = 'border-color: #589b32; border-width: 1.5px;';
-            validSymbol.style.display = 'inline';
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else {
-            errorMessageElement.innerHTML = invalidErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline';
-        }
-    });
-
-
-      const nextBtn = formElements.nextBtn;
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        if (nextBtn.classList.contains('disabled')) {
-          applyValidation()
+    
+          } else {
+            const radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
+            radioGroups.forEach(checkRadioErrorStatus);
           }
         }
       });
@@ -220,21 +230,24 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     if (submitBtn) {
       submitBtn.addEventListener('click', () => {
         if (submitBtn.classList.contains('disabled')) {
-             applyValidation()
+          if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline';
 
           }
         }
       });
     }
-
-    
-
+  
     validationElements[inputElement.className] = {
-        validSymbol,
-        invalidSymbol,
-        errorMessageElement
+      validSymbol,
+      invalidSymbol,
+      errorMessageElement
     };
-};
+  };
 
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
