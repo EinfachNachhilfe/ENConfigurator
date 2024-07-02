@@ -247,6 +247,7 @@ const showTab = (n) => {
 };
 
 const nextPrev = (n) => {
+    applyValidationToAllInputs(); // Apply validation before navigating
     if (n === 1 && !validateForm()) {
         formElements.nextBtn.classList.add("disabled");
         return false;
@@ -334,10 +335,7 @@ const fixStepIndicator = (n) => {
 };
 
 // Event Listeners
-formElements.nextBtn?.addEventListener("click", () => {
-    applyValidationToAllInputs();
-    nextPrev(1);
-});
+formElements.nextBtn?.addEventListener("click", () => nextPrev(1));
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));
 
 // Submit Button Validation
