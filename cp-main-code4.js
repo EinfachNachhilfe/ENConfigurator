@@ -211,32 +211,20 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-const specificElements = [
-    { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
-];
-
-formElements.allInputs.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
-        applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-    }
-});
-
-specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
-    document.querySelectorAll(selector).forEach(element => {
-        applyValidation(element, 'Dieses Feld muss ausgefüllt werden.', invalidErrorMsg, pattern);
-    });
-});
-
-// Function to validate all inputs
-const validateAllInputs = () => {
-    let allValid = true;
+const applyValidationToAllInputs = () => {
     document.querySelectorAll('.form_input').forEach(inputElement => {
-        if (!inputElement.checkValidity()) {
-            inputElement.reportValidity();
-            allValid = false;
+        const emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
+        const invalidErrorMsg = 'Ungültige Eingabe.';
+        let pattern = null;
+
+        // Check for specific patterns
+        if (inputElement.classList.contains('availability-tutor')) {
+            pattern = '\\d+';
+            invalidErrorMsg = 'Bitte gib eine Zahl ein.';
         }
+
+        applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern);
     });
-    return allValid;
 };
 
 // Tab Navigation Functions
@@ -259,7 +247,7 @@ const showTab = (n) => {
 };
 
 const nextPrev = (n) => {
-    if (n === 1 && !validateAllInputs()) {
+    if (n === 1 && !validateForm()) {
         formElements.nextBtn.classList.add("disabled");
         return false;
     }
@@ -346,8 +334,19 @@ const fixStepIndicator = (n) => {
 };
 
 // Event Listeners
-formElements.nextBtn?.addEventListener("click", () => nextPrev(1));
+formElements.nextBtn?.addEventListener("click", () => {
+    applyValidationToAllInputs();
+    nextPrev(1);
+});
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));
+
+// Submit Button Validation
+formElements.submitBtn?.addEventListener("click", (event) => {
+    applyValidationToAllInputs();
+    if (!validateForm()) {
+        event.preventDefault();  // Prevent form submission if validation fails
+    }
+});
 
 // Initial Setup
 showTab(currentTab);
