@@ -211,25 +211,6 @@ document.querySelectorAll('.form_input.email').forEach(el => {
       }
     });
   
-    const checkRadioErrorStatus = (group) => {
-      const radioButtons = group.querySelectorAll("input[type='radio']");
-      const isSelected = Array.from(radioButtons).some(radio => radio.checked);
-      const groupErrorMessageElement = group.nextElementSibling;
-      if (!isSelected && groupErrorMessageElement && groupErrorMessageElement.classList.contains('form_input-error-message-wrapper') && isElementVisible(group)) {
-        groupErrorMessageElement.innerHTML = emptyErrorMsg;
-        groupErrorMessageElement.style.display = 'block';
-        groupErrorMessageElement.style.color = '#9e367a';
-        radioButtons.forEach(radio => {
-          radio.style.borderColor = '#9e367a';
-        });
-      } else if (groupErrorMessageElement) {
-        groupErrorMessageElement.style.display = 'none';
-        groupErrorMessageElement.style.color = '';
-        radioButtons.forEach(radio => {
-          radio.style.borderColor = '';
-        });
-      }
-    };
   
     const nextBtn = formElements.nextBtn;
     if (nextBtn) {
@@ -250,13 +231,6 @@ document.querySelectorAll('.form_input.email').forEach(el => {
       });
     }
   
-    const allRadioButtons = document.querySelectorAll(".form_item-input-bottom-gender input[type='radio']");
-    allRadioButtons.forEach(radio => {
-      radio.addEventListener('change', function () {
-        const group = radio.closest('.form_item-input-bottom-gender');
-        checkRadioErrorStatus(group);
-      });
-    });
   
     const submitBtn = formElements.submitBtn;
     if (submitBtn) {
