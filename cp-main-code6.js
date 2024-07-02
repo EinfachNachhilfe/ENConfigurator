@@ -204,6 +204,31 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     });
 
+
+      const nextBtn = formElements.nextBtn;
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (nextBtn.classList.contains('disabled')) {
+          applyValidation()
+          }
+        }
+      });
+    }
+  
+  
+    const submitBtn = formElements.submitBtn;
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        if (submitBtn.classList.contains('disabled')) {
+             applyValidation()
+
+          }
+        }
+      });
+    }
+
+    
+
     validationElements[inputElement.className] = {
         validSymbol,
         invalidSymbol,
@@ -211,20 +236,32 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-const applyValidationToAllInputs = () => {
-    document.querySelectorAll('.form_input').forEach(inputElement => {
-        const emptyErrorMsg = 'Dieses Feld muss ausgefüllt werden.';
-        const invalidErrorMsg = 'Ungültige Eingabe.';
-        let pattern = null;
+const specificElements = [
+    { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
+];
 
-        // Check for specific patterns
-        if (inputElement.classList.contains('availability-tutor')) {
-            pattern = '\\d+';
-            invalidErrorMsg = 'Bitte gib eine Zahl ein.';
-        }
+formElements.allInputs.forEach(inputElement => {
+    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
+        applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    }
+});
 
-        applyValidation(inputElement, emptyErrorMsg, invalidErrorMsg, pattern);
+specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
+    document.querySelectorAll(selector).forEach(element => {
+        applyValidation(element, 'Dieses Feld muss ausgefüllt werden.', invalidErrorMsg, pattern);
     });
+});
+
+// Function to validate all inputs
+const validateAllInputs = () => {
+    let allValid = true;
+    document.querySelectorAll('.form_input').forEach(inputElement => {
+        if (!inputElement.checkValidity()) {
+            inputElement.reportValidity();
+            allValid = false;
+        }
+    });
+    return allValid;
 };
 
 // Tab Navigation Functions
@@ -247,8 +284,7 @@ const showTab = (n) => {
 };
 
 const nextPrev = (n) => {
-    applyValidationToAllInputs(); // Apply validation before navigating
-    if (n === 1 && !validateForm()) {
+    if (n === 1 && !validateAllInputs()) {
         formElements.nextBtn.classList.add("disabled");
         return false;
     }
@@ -337,14 +373,6 @@ const fixStepIndicator = (n) => {
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => nextPrev(1));
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));
-
-// Submit Button Validation
-formElements.submitBtn?.addEventListener("click", (event) => {
-    applyValidationToAllInputs();
-    if (!validateForm()) {
-        event.preventDefault();  // Prevent form submission if validation fails
-    }
-});
 
 // Initial Setup
 showTab(currentTab);
