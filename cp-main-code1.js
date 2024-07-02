@@ -17,11 +17,6 @@ const formElements = {
   // Helper Functions
   const isElementVisible = (el) => !el || el === document.body || window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode);
   
-  const shakeOnInvalid = (input) => {
-    input.style.transition = 'transform 0.1s ease-in-out';
-    input.style.transform = 'translateX(3px)';
-    setTimeout(() => { input.style.transform = ''; }, 100);
-  };
   
   const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
@@ -60,38 +55,116 @@ const formElements = {
     }
   };
   
-  // Apply Date Input Format
-  const applyDateInputFormat = (inputElement) => {
-    inputElement.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
-      if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
-      e.target.value = value;
-    });
-  };
+// Apply Date Input Format and Validation
+const applyDateInputFormat = (inputElement) => {
+  const datePattern = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/;
   
-  document.querySelectorAll('.form_input.bday').forEach(el => {
-    if (el) applyDateInputFormat(el);
+  inputElement.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
+    if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
+    e.target.value = value;
+
+    // Validate date pattern
+    const isValid = datePattern.test(inputElement.value);
+    if (isValid) {
+      inputElement.setCustomValidity('');
+    } else {
+      inputElement.setCustomValidity('Bitte geben Sie ein gültiges Datum ein.');
+    }
+  });
+
+  inputElement.addEventListener('change', () => {
+    inputElement.reportValidity();
+  });
+};
+
+document.querySelectorAll('.form_input.bday').forEach(el => {
+  if (el) applyDateInputFormat(el);
+});
+
+  
+// Apply IBAN Validation and Pattern
+const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
+  const ibanPattern = new RegExp(`^${countryPrefix}[0-9]{20}$`);
+  
+  inputElement.addEventListener('focus', () => {
+    if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
+  });
+
+  inputElement.addEventListener('input', () => {
+    if (inputElement.value.substring(0, 2) !== countryPrefix) {
+      inputElement.value = countryPrefix;
+      inputElement.setSelectionRange(countryPrefix.length, countryPrefix.length);
+    } else {
+      inputElement.value = countryPrefix + inputElement.value.substring(2).replace(/\D/g, '');
+    }
+
+    // Validate IBAN pattern
+    const isValid = ibanPattern.test(inputElement.value);
+    if (isValid) {
+      inputElement.setCustomValidity('');
+    } else {
+      inputElement.setCustomValidity('Die IBAN ist falsch.');
+    }
+  });
+
+  inputElement.addEventListener('change', () => {
+    inputElement.reportValidity();
+  });
+};
+
+document.querySelectorAll('.form_input.iban').forEach(el => {
+  if (el) applyIbanValidation(el);
+});
+
+
+// Apply PLZ Validation and Pattern
+const applyPlzValidation = (inputElement) => {
+  const plzPattern = /^\d{5}$/;
+
+  inputElement.addEventListener('input', () => {
+    const isValid = plzPattern.test(inputElement.value);
+    if (isValid) {
+      inputElement.setCustomValidity('');
+    } else {
+      inputElement.setCustomValidity('Bitte geben Sie eine gültige PLZ ein.');
+    }
+  });
+
+  inputElement.addEventListener('change', () => {
+    inputElement.reportValidity();
+  });
+};
+
+document.querySelectorAll('.form_input.zip').forEach(el => {
+  if (el) applyPlzValidation(el);
+});
+
+
+
+// Apply Email Pattern Validation
+const applyEmailPatternValidation = (inputElement) => {
+  const emailPattern = /^\S+@\S+\.\S+$/;
+  
+  inputElement.addEventListener('input', () => {
+    const isValid = emailPattern.test(inputElement.value);
+    if (isValid) {
+      inputElement.setCustomValidity('');
+    } else {
+      inputElement.setCustomValidity('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+    }
   });
   
-  // Apply IBAN Validation
-  const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
-    inputElement.addEventListener('focus', () => {
-      if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
-    });
-    inputElement.addEventListener('input', () => {
-      if (inputElement.value.substring(0, 2) !== countryPrefix) {
-        inputElement.value = countryPrefix;
-        inputElement.setSelectionRange(countryPrefix.length, countryPrefix.length);
-      } else {
-        inputElement.value = countryPrefix + inputElement.value.substring(2).replace(/\D/g, '');
-      }
-    });
-  };
-  
-  document.querySelectorAll('.form_input.iban').forEach(el => {
-    if (el) applyIbanValidation(el);
+  inputElement.addEventListener('change', () => {
+    inputElement.reportValidity();
   });
+};
+
+document.querySelectorAll('.form_input.email').forEach(el => {
+  if (el) applyEmailPatternValidation(el);
+});
+
   
   // Apply Validation
   const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
@@ -118,7 +191,6 @@ const formElements = {
         inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
         validSymbol.style.display = 'none';
         invalidSymbol.style.display = 'inline';
-        shakeOnInvalid(inputElement);
       } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
         inputElement.style.cssText = '';
         validSymbol.style.display = 'none';
@@ -135,7 +207,7 @@ const formElements = {
         inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
         validSymbol.style.display = 'none';
         invalidSymbol.style.display = 'inline';
-        shakeOnInvalid(inputElement);
+
       }
     });
   
@@ -169,7 +241,7 @@ const formElements = {
             inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            shakeOnInvalid(inputElement);
+    
           } else {
             const radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
             radioGroups.forEach(checkRadioErrorStatus);
@@ -196,7 +268,7 @@ const formElements = {
             inputElement.style.cssText = 'border-color: #9e367a; border-width: 1.5px;';
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            shakeOnInvalid(inputElement);
+
           }
         }
       });
@@ -210,15 +282,8 @@ const formElements = {
   };
   
   const specificElements = [
-    { selector: '.form_input.zip-code-teaching-location', pattern: '\\d+', invalidErrorMsg: 'Bitte geben Sie eine gültige PLZ ein.' },
-    { selector: '.form_input.zip-code-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte eine gültige PLZ eingeben.' },
-    { selector: '.form_input.bday-student', pattern: '^([0-2][0-9]|(3)[0-1])(\\.)(((0)[0-9])|((1)[0-2]))(\\.)\\d{4}$', invalidErrorMsg: 'Bitte geben Sie ein gültiges Geburtsdatum ein.' },
-    { selector: '.form_input.email-payable', pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
-    { selector: '.form_input.email-customer', pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
-    { selector: '.form_input.email-contact-person', pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
-    { selector: '.form_input.email-tutor', pattern: '^\\S+@\\S+\\.\\S+$', invalidErrorMsg: 'Bitte gib eine gültige E-Mail-Adresse ein.' },
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
-    { selector: '.form_input.iban-tutor', pattern: '^DE[0-9]{20}$', invalidErrorMsg: 'Die IBAN ist falsch' }
+
   ];
   
   formElements.allInputs.forEach(inputElement => {
