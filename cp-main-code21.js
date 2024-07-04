@@ -27,7 +27,7 @@ const createInputField = (container, labelId, labelText, inputClass, inputPlaceh
 
     const inputField = document.createElement("input");
     inputField.type = "text";
-    inputField.className = form_input ${inputClass};
+    inputField.className = `form_input ${inputClass}`;
     inputField.placeholder = inputPlaceholder;
     inputField.required = true;
     container.appendChild(inputField);
@@ -37,7 +37,7 @@ const createInputField = (container, labelId, labelText, inputClass, inputPlaceh
 
 const removeInputField = (labelId, inputClass) => {
     const label = document.getElementById(labelId);
-    const input = document.querySelector(.${inputClass});
+    const input = document.querySelector(`.${inputClass}`);
     label?.remove();
     input?.remove();
 
@@ -80,7 +80,7 @@ document.querySelectorAll('.form_input.bday').forEach(el => {
 
 // Apply IBAN Validation and Pattern
 const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
-    const ibanPattern = new RegExp(^${countryPrefix}[0-9]{20}$);
+    const ibanPattern = new RegExp(`^${countryPrefix}[0-9]{20}$`);
 
     inputElement.addEventListener('focus', () => {
         if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
@@ -177,9 +177,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
-        invalidSymbol.style.cssText = color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
-        errorMessageElement.style.cssText = color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;;
+        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
     };
     setInitialStyles();
 
@@ -259,7 +259,7 @@ const specificElements = [
 ];
 
 formElements.allInputs.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === .${inputElement.className})) {
+    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
@@ -270,17 +270,6 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
     });
 });
 
-// Function to validate all inputs
-const validateAllInputs = () => {
-    let allValid = true;
-    document.querySelectorAll('.form_input').forEach(inputElement => {
-        if (!inputElement.checkValidity()) {
-            inputElement.reportValidity();
-            allValid = false;
-        }
-    });
-    return allValid;
-};
 
 // Tab Navigation Functions
 const showTab = (n) => {
@@ -302,7 +291,7 @@ const showTab = (n) => {
 };
 
 const nextPrev = (n) => {
-    if (n === 1 && !validateAllInputs()) {
+    if (n === 1 && !validateForm()) {
         formElements.nextBtn.classList.add("disabled");
         return false;
     }
@@ -311,8 +300,6 @@ const nextPrev = (n) => {
     formElements.formItems[currentTab].style.display = "none";
     currentTab += n;
     if (currentTab >= formElements.formItems.length) {
-        // Formular abschicken oder eine andere Aktion ausführen, wenn der letzte Tab erreicht ist.
-        alert('Formular abgeschickt');
         return false;
     }
     showTab(currentTab);
@@ -320,10 +307,10 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-    const inputs = formElements.formItems[currentTab].getElementsByClassName("form_input");
-    for (const input of inputs) {
-        if (input.hasAttribute("required") && (!input.checkValidity() || input.value === "")) {
-            input.classList.add("invalid");
+    const inputs = formItems[currentTab].getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
+            inputs[i].className += " invalid";
             valid = false;
         }
     }
