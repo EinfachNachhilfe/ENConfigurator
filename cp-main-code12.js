@@ -316,6 +316,7 @@ const nextPrev = (n) => {
         return false;
     }
     showTab(currentTab);
+    validateForm();
 };
 
 const validateForm = () => {
@@ -328,7 +329,7 @@ const validateForm = () => {
         }
     }
 
-    // Radio Buttons Validation
+     // Radio Buttons Validation
     const radios = formElements.formItems[currentTab].querySelectorAll("input[type='radio'][required]");
     const radioGroups = {};
     for (const radio of radios) {
@@ -340,7 +341,14 @@ const validateForm = () => {
     for (const groupName in radioGroups) {
         if (radioGroups.hasOwnProperty(groupName)) {
             const radioChecked = radioGroups[groupName].some(radio => radio.checked);
-            if (!radioChecked) valid = false;
+            if (!radioChecked) {
+                valid = false;
+                // Optional: Add visual feedback for required radio groups
+                radioGroups[groupName].forEach(radio => radio.classList.add('invalid'));
+            } else {
+                // Optional: Remove visual feedback if valid
+                radioGroups[groupName].forEach(radio => radio.classList.remove('invalid'));
+            }
         }
     }
 
