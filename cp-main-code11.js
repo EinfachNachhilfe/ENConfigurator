@@ -4,10 +4,6 @@ const formElements = {
     prevBtn: document.querySelector('#prevBtn'),
     submitBtn: document.querySelector('#submitBtn'),
     allInputs: document.querySelectorAll('.form_input'),
-    configuratorForm: document.getElementById('configurator'),
-    applicationTutorForm: document.getElementById('applicationTutor'),
-    welcomeMeeting: document.getElementById('welcomeMeeting'),
-    regForm: document.getElementById('regForm'),
     formItems: document.getElementsByClassName('form_item-input-wrapper-tab'),
 };
 
@@ -258,8 +254,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-
-
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
 ];
@@ -317,7 +311,8 @@ const nextPrev = (n) => {
     formElements.formItems[currentTab].style.display = "none";
     currentTab += n;
     if (currentTab >= formElements.formItems.length) {
-        formElements.regForm.submit();
+        // Formular abschicken oder eine andere Aktion ausführen, wenn der letzte Tab erreicht ist.
+        alert('Formular abgeschickt');
         return false;
     }
     showTab(currentTab);
@@ -362,21 +357,7 @@ const validateForm = () => {
         }
     }
 
-    // Specific Form Validations
-    if (formElements.configuratorForm && [0].includes(currentTab)) {
-        if (!Array.from(formElements.formItems[currentTab].querySelectorAll("input[type='checkbox']")).some(checkbox => checkbox.checked)) valid = false;
-    }
-
-    if (formElements.configuratorForm && [1, 2, 3].includes(currentTab)) {
-        for (const groupName in radioGroups) {
-            if (radioGroups.hasOwnProperty(groupName)) {
-                const radioChecked = radioGroups[groupName].some(radio => radio.checked);
-                if (!radioChecked && radioGroups[groupName].length > 0) valid = false;
-            }
-        }
-    }
-
-    if (formElements.applicationTutorForm && [1, 2].includes(currentTab)) {
+    if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
         valid = Array.from(buttons).some(button => button.textContent === 'Fach entfernen');
     }
