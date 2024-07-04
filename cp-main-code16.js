@@ -323,13 +323,6 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-    const inputs = formElements.formItems[currentTab].getElementsByClassName("form_input");
-    for (const input of inputs) {
-        if (input.hasAttribute("required") && (!input.checkValidity() || input.value === "")) {
-            input.classList.add("invalid");
-            valid = false;
-        }
-    }
 
     const inputs = formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
