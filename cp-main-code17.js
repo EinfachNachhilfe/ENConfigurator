@@ -13,8 +13,6 @@ let currentTab = 0;
 // Helper Functions
 const isElementVisible = (el) => !el || el === document.body || window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode);
 
-
-
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
     textDiv.className = "form_label";
@@ -29,7 +27,7 @@ const createInputField = (container, labelId, labelText, inputClass, inputPlaceh
 
     const inputField = document.createElement("input");
     inputField.type = "text";
-    inputField.className = `form_input ${inputClass}`;
+    inputField.className = form_input ${inputClass};
     inputField.placeholder = inputPlaceholder;
     inputField.required = true;
     container.appendChild(inputField);
@@ -39,7 +37,7 @@ const createInputField = (container, labelId, labelText, inputClass, inputPlaceh
 
 const removeInputField = (labelId, inputClass) => {
     const label = document.getElementById(labelId);
-    const input = document.querySelector(`.${inputClass}`);
+    const input = document.querySelector(.${inputClass});
     label?.remove();
     input?.remove();
 
@@ -82,7 +80,7 @@ document.querySelectorAll('.form_input.bday').forEach(el => {
 
 // Apply IBAN Validation and Pattern
 const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
-    const ibanPattern = new RegExp(`^${countryPrefix}[0-9]{20}$`);
+    const ibanPattern = new RegExp(^${countryPrefix}[0-9]{20}$);
 
     inputElement.addEventListener('focus', () => {
         if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
@@ -179,9 +177,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
+        validSymbol.style.cssText = color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
+        invalidSymbol.style.cssText = color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
+        errorMessageElement.style.cssText = color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;;
     };
     setInitialStyles();
 
@@ -261,7 +259,7 @@ const specificElements = [
 ];
 
 formElements.allInputs.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
+    if (!specificElements.some(e => e.selector === .${inputElement.className})) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
@@ -318,12 +316,11 @@ const nextPrev = (n) => {
         return false;
     }
     showTab(currentTab);
-    validateForm();
 };
 
 const validateForm = () => {
     let valid = true;
-
+    
     const inputs = formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
@@ -332,29 +329,31 @@ const validateForm = () => {
         }
     }
 
-    
-    
-     // Radio Buttons Validation
-    const radios = formElements.formItems[currentTab].querySelectorAll("input[type='radio'][required]");
-    const radioGroups = {};
-    for (const radio of radios) {
-        const name = radio.getAttribute("name");
+    // Radio Buttons Validation
+     const radios = formItems[currentTab].querySelectorAll("input[type='radio'][required]");
+        let radioGroups = {};
+        for (let j = 0; j < radios.length; j++) {
+        let name = radios[j].getAttribute("name");
         radioGroups[name] = radioGroups[name] || [];
-        radioGroups[name].push(radio);
-    }
-
-    for (const groupName in radioGroups) {
-        if (radioGroups.hasOwnProperty(groupName)) {
-            const radioChecked = radioGroups[groupName].some(radio => radio.checked);
-            if (!radioChecked) {
-                valid = false;
-                // Optional: Add visual feedback for required radio groups
-                radioGroups[groupName].forEach(radio => radio.classList.add('invalid'));
-            } else {
-                // Optional: Remove visual feedback if valid
-                radioGroups[groupName].forEach(radio => radio.classList.remove('invalid'));
-            }
+        radioGroups[name].push(radios[j]);
         }
+        for (let groupName in radioGroups) {
+        if (radioGroups.hasOwnProperty(groupName)) {
+          let radioChecked = false;
+          for (let k = 0; k < radioGroups[groupName].length; k++) {
+            if (radioGroups[groupName][k].checked) {
+              radioChecked = true;
+              break;
+            }
+          }
+          if (!radioChecked) {
+            valid = false;
+          }function showTab(n) {
+    formItems[n].style.display = "block";
+
+    const inputs = formItems[n].querySelectorAll("input, select");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("input", validateForm);
     }
 
     // Checkboxes Validation
@@ -391,11 +390,6 @@ const fixStepIndicator = (n) => {
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => nextPrev(1));
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));
-
-
-document.querySelectorAll("input[type='radio']").forEach(radio => {
-    radio.addEventListener('change', validateForm);
-});
 
 // Initial Setup
 showTab(currentTab);
