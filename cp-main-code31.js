@@ -224,6 +224,14 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     };
 
+    const isElementValid = (el) => {
+        if (el.type === 'radio' || el.type === 'checkbox') {
+            const group = document.getElementsByName(el.name);
+            return Array.from(group).some(input => input.checked);
+        }
+        return el.checkValidity();
+    };
+    
     inputElement.addEventListener("change", handleValidation);
     
     const buttons = [formElements.nextBtn, formElements.submitBtn];
@@ -238,9 +246,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                         inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
                         invalidSymbol.style.display = 'inline';
-                    } else {
-                        const radioGroups = document.querySelectorAll(".form_item-input-bottom-gender");
-                        radioGroups.forEach(checkRadioErrorStatus);
                     }
                 }
             });
