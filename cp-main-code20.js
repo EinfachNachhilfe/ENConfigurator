@@ -311,12 +311,23 @@ const nextPrev = (n) => {
     formElements.formItems[currentTab].style.display = "none";
     currentTab += n;
     if (currentTab >= formElements.formItems.length) {
+        // Formular abschicken oder eine andere Aktion ausführen, wenn der letzte Tab erreicht ist.
+        alert('Formular abgeschickt');
         return false;
     }
     showTab(currentTab);
 };
 
 const validateForm = () => {
+    let valid = true;
+    const inputs = formElements.formItems[currentTab].getElementsByClassName("form_input");
+    for (const input of inputs) {
+        if (input.hasAttribute("required") && (!input.checkValidity() || input.value === "")) {
+            input.classList.add("invalid");
+            valid = false;
+        }
+    }
+
     // Radio Buttons Validation
     const radios = formElements.formItems[currentTab].querySelectorAll("input[type='radio'][required]");
     const radioGroups = {};
