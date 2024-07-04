@@ -315,21 +315,6 @@ const validateForm = () => {
         }
     }
 
-
-
-    // Checkboxes Validation
-    const checkboxes = formElements.formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
-    if (checkboxes.length > 0 && !Array.from(checkboxes).some(checkbox => checkbox.checked)) valid = false;
-
-    // Select Fields Validation
-    const selects = formElements.formItems[currentTab].querySelectorAll("select[required]");
-    for (const select of selects) {
-        if (!select.value) {
-            select.classList.add("invalid");
-            valid = false;
-        }
-    }
-
     if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
         valid = Array.from(buttons).some(button => button.textContent === 'Fach entfernen');
