@@ -315,21 +315,7 @@ const validateForm = () => {
         }
     }
 
-    // Radio Buttons Validation
-    const radios = formElements.formItems[currentTab].querySelectorAll("input[type='radio'][required]");
-    const radioGroups = {};
-    for (const radio of radios) {
-        const name = radio.getAttribute("name");
-        radioGroups[name] = radioGroups[name] || [];
-        radioGroups[name].push(radio);
-    }
 
-    for (const groupName in radioGroups) {
-        if (radioGroups.hasOwnProperty(groupName)) {
-            const radioChecked = radioGroups[groupName].some(radio => radio.checked);
-            if (!radioChecked) valid = false;
-        }
-    }
 
     // Checkboxes Validation
     const checkboxes = formElements.formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
