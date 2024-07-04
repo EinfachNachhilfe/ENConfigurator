@@ -258,11 +258,13 @@ const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
 ];
 
-formElements.allInputs.forEach(inputElement => {
+const allInputsArray = Array.from(formElements.allInputs);
+allInputsArray.forEach(inputElement => {
     if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
+
 
 specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
     document.querySelectorAll(selector).forEach(element => {
