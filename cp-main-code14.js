@@ -13,9 +13,7 @@ let currentTab = 0;
 // Helper Functions
 const isElementVisible = (el) => !el || el === document.body || window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode);
 
-document.querySelectorAll("input[type='radio']").forEach(radio => {
-    radio.addEventListener('change', validateForm);
-});
+
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
@@ -390,6 +388,11 @@ const fixStepIndicator = (n) => {
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => nextPrev(1));
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));
+
+
+document.querySelectorAll("input[type='radio']").forEach(radio => {
+    radio.addEventListener('change', validateForm);
+});
 
 // Initial Setup
 showTab(currentTab);
