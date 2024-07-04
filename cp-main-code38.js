@@ -228,16 +228,21 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     
     inputElement.addEventListener("change", handleValidation);
     
-     const buttons = [formElements.nextBtn, formElements.submitBtn];
+const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
+                console.log("Button clicked:", button);
                 if (button.classList.contains('disabled')) {
+                    console.log("Button is disabled:", button);
                     if (inputElement.type === 'radio') {
                         const group = document.getElementsByName(inputElement.name);
                         const firstRadio = group[0];
+                        console.log("Radio group:", group);
                         const isGroupValid = Array.from(group).some(input => input.checked);
+                        console.log("Is radio group valid:", isGroupValid);
                         if (!isGroupValid && isElementVisible(firstRadio)) {
+                            console.log("Radio group is invalid and visible.");
                             errorMessageElement.innerHTML = emptyErrorMsg;
                             errorMessageElement.style.display = 'block';
                             firstRadio.style.borderColor = COLORS.invalid;
@@ -246,6 +251,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                             invalidSymbol.style.display = 'inline';
                         }
                     } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
+                        console.log("Input is required, empty and visible.");
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
@@ -257,7 +263,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             });
         }
     });
-
     
     validationElements[inputElement.className] = {
         validSymbol,
