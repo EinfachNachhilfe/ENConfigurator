@@ -3,7 +3,7 @@ const formElements = {
     nextBtn: document.querySelector('#nextBtn'),
     prevBtn: document.querySelector('#prevBtn'),
     submitBtn: document.querySelector('#submitBtn'),
-    allInputs: document.getElementsByTagName("input");
+    allInputs: document.getElementsByTagName("input"),
     formItems: document.getElementsByClassName('form_item-input-wrapper-tab'),
 };
 
