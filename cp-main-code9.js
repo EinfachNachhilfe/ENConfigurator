@@ -161,6 +161,16 @@ document.querySelectorAll('.form_input.email').forEach(el => {
 });
 
 // Apply Validation
+const COLORS = {
+    valid: '#78b8bf',
+    invalid: '#d9544f',
+    errorText: '#d9544f'
+};
+
+const STYLES = {
+    borderWidth: '1.5px'
+};
+
 const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
@@ -171,9 +181,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = 'color: #589b32; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;';
-        invalidSymbol.style.cssText = 'color: #9e367a; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;';
-        errorMessageElement.style.cssText = 'color: #9d367a; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;';
+        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
     };
     setInitialStyles();
 
@@ -192,8 +202,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a';
-            inputElement.style.borderWidth = '1.5px';
+            inputElement.style.borderColor = COLORS.invalid;
+            inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
@@ -203,16 +213,16 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             invalidSymbol.style.display = 'none';
             errorMessageElement.style.display = 'none';
         } else if (inputElement.checkValidity()) {
-            inputElement.style.borderColor = '#589b32';
-            inputElement.style.borderWidth = '1.5px';
+            inputElement.style.borderColor = COLORS.valid;
+            inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'inline';
             invalidSymbol.style.display = 'none';
             errorMessageElement.style.display = 'none';
         } else {
             errorMessageElement.innerHTML = invalidErrorMsg;
             errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = '#9e367a';
-            inputElement.style.borderWidth = '1.5px';
+            inputElement.style.borderColor = COLORS.invalid;
+            inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
         }
@@ -228,8 +238,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     if (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement)) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = '#9e367a';
-                        inputElement.style.borderWidth = '1.5px';
+                        inputElement.style.borderColor = COLORS.invalid;
+                        inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
                         invalidSymbol.style.display = 'inline';
                     } else {
@@ -247,6 +257,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         errorMessageElement
     };
 };
+
 
 
 const specificElements = [
