@@ -233,7 +233,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    if (inputElement.hasAttribute('required') && !isElementValid(inputElement) && isElementVisible(inputElement)) {
+                    if ((inputElement.type === 'radio' && !inputElement.checkValidity() && isElementVisible(inputElement)) || 
+                        (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement))) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
@@ -245,7 +246,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             });
         }
     });
-
     
     validationElements[inputElement.className] = {
         validSymbol,
