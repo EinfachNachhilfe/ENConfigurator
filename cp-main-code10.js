@@ -168,7 +168,7 @@ const COLORS = {
 };
 
 const STYLES = {
-    borderWidth: '1.5px'
+    borderWidth: '2px'
 };
 
 const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
