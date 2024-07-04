@@ -228,19 +228,20 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     
     inputElement.addEventListener("change", handleValidation);
     
-   const buttons = [formElements.nextBtn, formElements.submitBtn];
+     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
                     if (inputElement.type === 'radio') {
                         const group = document.getElementsByName(inputElement.name);
+                        const firstRadio = group[0];
                         const isGroupValid = Array.from(group).some(input => input.checked);
-                        if (!isGroupValid && isElementVisible(inputElement)) {
+                        if (!isGroupValid && isElementVisible(firstRadio)) {
                             errorMessageElement.innerHTML = emptyErrorMsg;
                             errorMessageElement.style.display = 'block';
-                            inputElement.style.borderColor = COLORS.invalid;
-                            inputElement.style.borderWidth = STYLES.borderWidth;
+                            firstRadio.style.borderColor = COLORS.invalid;
+                            firstRadio.style.borderWidth = STYLES.borderWidth;
                             validSymbol.style.display = 'none';
                             invalidSymbol.style.display = 'inline';
                         }
