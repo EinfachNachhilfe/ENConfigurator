@@ -311,25 +311,12 @@ const nextPrev = (n) => {
     formElements.formItems[currentTab].style.display = "none";
     currentTab += n;
     if (currentTab >= formElements.formItems.length) {
-        // Formular abschicken oder eine andere Aktion ausführen, wenn der letzte Tab erreicht ist.
-        alert('Formular abgeschickt');
         return false;
     }
     showTab(currentTab);
 };
 
 const validateForm = () => {
-    let valid = true;
-    const inputs = formElements.formItems[currentTab].getElementsByClassName("form_input");
-    for (const input of inputs) {
-        if (input.hasAttribute("required") && (!input.checkValidity() || input.value === "")) {
-            input.classList.add("invalid");
-            valid = false;
-        } else {
-            input.classList.remove("invalid");
-        }
-    }
-
     // Radio Buttons Validation
     const radios = formElements.formItems[currentTab].querySelectorAll("input[type='radio'][required]");
     const radioGroups = {};
@@ -342,25 +329,13 @@ const validateForm = () => {
     for (const groupName in radioGroups) {
         if (radioGroups.hasOwnProperty(groupName)) {
             const radioChecked = radioGroups[groupName].some(radio => radio.checked);
-            if (!radioChecked) {
-                valid = false;
-                // Optional: Add visual feedback for required radio groups
-                radioGroups[groupName].forEach(radio => radio.classList.add('invalid'));
-            } else {
-                // Optional: Remove visual feedback if valid
-                radioGroups[groupName].forEach(radio => radio.classList.remove('invalid'));
-            }
+            if (!radioChecked) valid = false;
         }
     }
 
     // Checkboxes Validation
     const checkboxes = formElements.formItems[currentTab].querySelectorAll("input[type='checkbox'][required]");
-    if (checkboxes.length > 0 && !Array.from(checkboxes).some(checkbox => checkbox.checked)) {
-        valid = false;
-        checkboxes.forEach(checkbox => checkbox.classList.add('invalid'));
-    } else {
-        checkboxes.forEach(checkbox => checkbox.classList.remove('invalid'));
-    }
+    if (checkboxes.length > 0 && !Array.from(checkboxes).some(checkbox => checkbox.checked)) valid = false;
 
     // Select Fields Validation
     const selects = formElements.formItems[currentTab].querySelectorAll("select[required]");
@@ -368,9 +343,12 @@ const validateForm = () => {
         if (!select.value) {
             select.classList.add("invalid");
             valid = false;
-        } else {
-            select.classList.remove("invalid");
         }
+    }
+
+    if ([1, 2].includes(currentTab)) {
+        const buttons = formElements.formItems[currentTab].querySelectorAll("button");
+        valid = Array.from(buttons).some(button => button.textContent === 'Fach entfernen');
     }
 
     formElements.nextBtn.classList.toggle("disabled", !valid);
@@ -378,7 +356,6 @@ const validateForm = () => {
 
     return valid;
 };
-
 
 const fixStepIndicator = (n) => {
     for (const formItem of formElements.formItems) {
