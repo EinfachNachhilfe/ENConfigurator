@@ -3,15 +3,15 @@ const formElements = {
     nextBtn: document.querySelector('#nextBtn'),
     prevBtn: document.querySelector('#prevBtn'),
     submitBtn: document.querySelector('#submitBtn'),
-    allInputs: document.getElementsByTagName("input"),
-    formItems: document.getElementsByClassName('form_item-input-wrapper-tab'),
+    allInputs: Array.from(document.getElementsByTagName("input")),
+    formItems: Array.from(document.getElementsByClassName('form_item-input-wrapper-tab')),
 };
 
 const validationElements = {};
 let currentTab = 0;
 
 // Helper Functions
-const isElementVisible = (el) => !el || el === document.body || window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode);
+const isElementVisible = (el) => !el || el === document.body || (window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode));
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
@@ -273,18 +273,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
 ];
 
-const allInputsArray = Array.from(formElements.allInputs);
-allInputsArray.forEach(inputElement => {
+formElements.allInputs.forEach(inputElement => {
     if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
-
 
 specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
     document.querySelectorAll(selector).forEach(element => {
@@ -292,10 +289,12 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
     });
 });
 
-
 // Tab Navigation Functions
 const showTab = (n) => {
-    formElements.formItems[n].style.display = "block";
+    formElements.formItems.forEach((item, index) => {
+        item.style.display = index === n ? "block" : "none";
+    });
+
     const inputs = formElements.formItems[n].querySelectorAll(".form_input");
     inputs.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
@@ -328,18 +327,15 @@ const nextPrev = (n) => {
 };
 
 const validateForm = () => {
-    
     let valid = true;
-    
+
     const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].className += " invalid";
-           
+            inputs[i].classList.add("invalid");
             valid = false;
         }
     }
-
 
     if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
@@ -353,9 +349,9 @@ const validateForm = () => {
 };
 
 const fixStepIndicator = (n) => {
-    for (const formItem of formElements.formItems) {
+    formElements.formItems.forEach(formItem => {
         formItem.classList.remove("active");
-    }
+    });
     formElements.formItems[n].classList.add("active");
 };
 
