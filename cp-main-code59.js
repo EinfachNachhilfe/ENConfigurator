@@ -189,7 +189,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
    const errorMessageWrapper = inputElement.type === 'radio' 
   ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
   : inputElement.type === 'checkbox'
-    ? inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
+    ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
     : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
     
