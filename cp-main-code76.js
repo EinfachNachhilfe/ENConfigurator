@@ -231,7 +231,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-    const radioGroups = {};
+   const radioGroups = {};
 
     formElements.allInputs.forEach(input => {
         if (input.type === 'radio') {
@@ -248,13 +248,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (event) => {
                 if (button.classList.contains('disabled')) {
+                    event.preventDefault();
+
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
                     const isGroupRadioInvalid = Object.values(radioGroups).some(radios => !radios.some(radio => radio.checked));
-                    
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
 
-                    if ( isCheckboxInvalid || isGroupRadioInvalid ) {
+                    if (isCheckboxInvalid || isGroupRadioInvalid || isRequiredFieldEmpty) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
