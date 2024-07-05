@@ -166,8 +166,6 @@ const STYLES = {
   borderWidth: '2px'
 };
 
-const validationElements = {};
-
 const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
   const radioGroup = inputElement.parentNode;
   let errorMessageElement = radioGroup.querySelector('.form_input-error-message-wrapper span');
