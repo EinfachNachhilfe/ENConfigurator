@@ -318,6 +318,7 @@ const nextPrev = (n) => {
 const validateForm = () => {
     
     let valid = true;
+    const radioGroups = {};
     const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
