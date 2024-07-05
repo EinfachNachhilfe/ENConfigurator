@@ -316,12 +316,13 @@ const nextPrev = (n) => {
 };
 
 const validateForm = () => {
-    console.log(formElements); 
+    
     let valid = true;
     const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
             inputs[i].className += " invalid";
+            console.log("Radio input found:", inputs[i]);
             valid = false;
         }
     }
