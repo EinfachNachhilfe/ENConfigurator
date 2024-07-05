@@ -156,18 +156,6 @@ document.querySelectorAll('.form_input.email').forEach(el => {
     if (el) applyEmailPatternValidation(el);
 });
 
-
-const ensureSingleErrorMessage = (wrapper) => {
-    const errorMessages = wrapper.querySelectorAll('span');
-    errorMessages.forEach((msg, index) => {
-        if (index > 0) {
-            msg.remove();
-        }
-    });
-};
-
-
-
 // Apply Validation
 const COLORS = {
     valid: '#78b8bf',
@@ -197,22 +185,20 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
-    const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = inputElement.type === 'radio' 
-        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
-        : inputElement.type === 'checkbox'
-            ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
-            : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+   const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
+   const errorMessageWrapper = inputElement.type === 'radio' 
+  ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
+  : inputElement.type === 'checkbox'
+    ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
+    : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (errorMessageWrapper) {
-        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
-        errorMessageWrapper.appendChild(errorMessageElement);
-    }
+    
+    if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(validSymbol);
         validationImageWrapper.appendChild(invalidSymbol);
     }
-
+    
     const handleValidation = () => {
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = emptyErrorMsg;
@@ -221,8 +207,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
-            errorMessageWrapper.appendChild(errorMessageElement);
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
             inputElement.style.borderWidth = '';
@@ -242,43 +226,41 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
-            errorMessageWrapper.appendChild(errorMessageElement);
         }
     };
 
+
+    
     inputElement.addEventListener("change", handleValidation);
+    
+const buttons = [formElements.nextBtn, formElements.submitBtn];
+buttons.forEach(button => {
+    if (button) {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('disabled')) {
+                const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+                const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
 
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
-
-                    if (isRadioOrCheckboxInvalid || isRequiredFieldEmpty) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
-                        errorMessageWrapper.appendChild(errorMessageElement);
-                    }
+                if (isRadioOrCheckboxInvalid || isRequiredFieldEmpty) {
+                    errorMessageElement.innerHTML = emptyErrorMsg;
+                    errorMessageElement.style.display = 'block';
+                    inputElement.style.borderColor = COLORS.invalid;
+                    inputElement.style.borderWidth = STYLES.borderWidth;
+                    validSymbol.style.display = 'none';
+                    invalidSymbol.style.display = 'inline';
                 }
-            });
-        }
-    });
+            }
+        });
+    }
+});
 
-    validationElements[inputElement.className] = {
-        validSymbol,
-        invalidSymbol,
-        errorMessageElement
-    };
+validationElements[inputElement.className] = {
+    validSymbol,
+    invalidSymbol,
+    errorMessageElement
 };
- 
+
+}
 
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
