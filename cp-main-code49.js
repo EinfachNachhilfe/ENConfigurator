@@ -156,102 +156,112 @@ document.querySelectorAll('.form_input.email').forEach(el => {
     if (el) applyEmailPatternValidation(el);
 });
 
-// Apply Validation
 const COLORS = {
-    valid: '#78b8bf',
-    invalid: '#d9544f',
-    errorText: '#d9544f'
+  valid: '#78b8bf',
+  invalid: '#d9544f',
+  errorText: '#d9544f'
 };
 
 const STYLES = {
-    borderWidth: '2px'
+  borderWidth: '2px'
 };
 
 const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
-    const errorMessageElement = document.createElement('span');
-    const validSymbol = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
-    
-    validSymbol.textContent = '✓';
-    invalidSymbol.textContent = '✗';
-
-    // Set initial styles
-    const setInitialStyles = () => {
-        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
-    };
-    setInitialStyles();
-
-    if (pattern !== null) inputElement.setAttribute('pattern', pattern);
-
-   const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = inputElement.type === 'radio' ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
-    
+  const radioGroup = inputElement.parentNode;
+  let errorMessageElement = radioGroup.querySelector('.form_input-error-message-wrapper span');
+  if (!errorMessageElement) {
+    errorMessageElement = document.createElement('span');
+    errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
+    const errorMessageWrapper = radioGroup.querySelector('.form_input-error-message-wrapper');
     if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
-    if (validationImageWrapper) {
-        validationImageWrapper.appendChild(validSymbol);
-        validationImageWrapper.appendChild(invalidSymbol);
+  }
+
+  const validSymbol = document.createElement('span');
+  validSymbol.textContent = '✓';
+
+  const invalidSymbol = document.createElement('span');
+  invalidSymbol.textContent = '✗';
+
+  // Set initial styles
+  const setInitialStyles = () => {
+    validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+    invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+  };
+  setInitialStyles();
+
+  if (pattern !== null) inputElement.setAttribute('pattern', pattern);
+
+  const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
+  const errorMessageWrapper = inputElement.type === 'radio' ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+
+  if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
+  if (validationImageWrapper) {
+    validationImageWrapper.appendChild(validSymbol);
+    validationImageWrapper.appendChild(invalidSymbol);
+  }
+
+  const handleValidation = () => {
+    if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+      errorMessageElement.innerHTML = emptyErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = COLORS.invalid;
+      inputElement.style.borderWidth = STYLES.borderWidth;
+      validSymbol.style.display = 'none';
+      invalidSymbol.style.display = 'inline';
+    } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+      inputElement.style.borderColor = '';
+      inputElement.style.borderWidth = '';
+      validSymbol.style.display = 'none';
+      invalidSymbol.style.display = 'none';
+      errorMessageElement.style.display = 'none';
+    } else if (inputElement.checkValidity()) {
+      inputElement.style.borderColor = COLORS.valid;
+      inputElement.style.borderWidth = STYLES.borderWidth;
+      validSymbol.style.display = 'inline';
+      invalidSymbol.style.display = 'none';
+      errorMessageElement.style.display = 'none';
+    } else {
+      errorMessageElement.innerHTML = invalidErrorMsg;
+      errorMessageElement.style.display = 'block';
+      inputElement.style.borderColor = COLORS.invalid;
+      inputElement.style.borderWidth = STYLES.borderWidth;
+      validSymbol.style.display = 'none';
+      invalidSymbol.style.display = 'inline';
     }
-    
-    const handleValidation = () => {
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+  };
+
+  inputElement.addEventListener("change", handleValidation);
+
+  const buttons = [formElements.nextBtn, formElements.submitBtn];
+  buttons.forEach(button => {
+    if (button) {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('disabled')) {
+          const radioButtons = radioGroup.querySelectorAll('input[type="radio"]');
+          let isValid = false;
+          radioButtons.forEach(radioButton => {
+            if (radioButton.checked) {
+              isValid = true;
+            }
+          });
+          if (!isValid) {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = COLORS.invalid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline';
-        } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
-            inputElement.style.borderColor = '';
-            inputElement.style.borderWidth = '';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else if (inputElement.checkValidity()) {
-            inputElement.style.borderColor = COLORS.valid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'inline';
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else {
-            errorMessageElement.innerHTML = invalidErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = COLORS.invalid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline';
-        }
-    };
-
-
-    
-    inputElement.addEventListener("change", handleValidation);
-    
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    if ((inputElement.type === 'radio' && !inputElement.checkValidity() && isElementVisible(inputElement)) || 
-                        (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement))) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                    }
-                }
+            radioButtons.forEach(radioButton => {
+              radioButton.style.borderColor = COLORS.invalid;
+              radioButton.style.borderWidth = STYLES.borderWidth;
             });
+          }
         }
-    });
-    
-    validationElements[inputElement.className] = {
-        validSymbol,
-        invalidSymbol,
-        errorMessageElement
-    };
+      });
+    }
+  });
+
+  validationElements[inputElement.className] = {
+    validSymbol,
+    invalidSymbol,
+    errorMessageElement
+  };
 };
 
 const specificElements = [
