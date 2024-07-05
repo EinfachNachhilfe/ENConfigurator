@@ -156,7 +156,6 @@ document.querySelectorAll('.form_input.email').forEach(el => {
     if (el) applyEmailPatternValidation(el);
 });
 
-
 // Apply Validation
 const COLORS = {
     valid: '#78b8bf',
@@ -178,9 +177,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
-        invalidSymbol.style.cssText = color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
-        errorMessageElement.style.cssText = color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;;
+        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
     };
     setInitialStyles();
 
@@ -254,8 +253,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         errorMessageElement
     };
 };
-
-
 
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
