@@ -228,7 +228,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     
     inputElement.addEventListener("change", handleValidation);
     
-const buttons = [formElements.nextBtn, formElements.submitBtn];
+   const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
@@ -288,6 +288,33 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
         applyValidation(element, 'Dieses Feld muss ausgefüllt werden.', invalidErrorMsg, pattern);
     });
 });
+
+// Ensure radio groups are only validated once
+const validateRadioGroups = () => {
+    const radioGroups = new Set();
+    formElements.allInputs.forEach(inputElement => {
+        if (inputElement.type === 'radio' && inputElement.hasAttribute('required')) {
+            radioGroups.add(inputElement.name);
+        }
+    });
+
+    radioGroups.forEach(groupName => {
+        const group = document.getElementsByName(groupName);
+        const firstRadio = group[0];
+        const isGroupValid = Array.from(group).some(input => input.checked);
+        if (!isGroupValid && isElementVisible(firstRadio)) {
+            const errorMessageElement = firstRadio.closest('.form_field-wrapper').querySelector('.form_input-error-message-wrapper span');
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            firstRadio.style.borderColor = COLORS.invalid;
+            firstRadio.style.borderWidth = STYLES.borderWidth;
+            const invalidSymbol = firstRadio.closest('.form_input-validation-image-wrapper').querySelector('span:last-child');
+            const validSymbol = firstRadio.closest('.form_input-validation-image-wrapper').querySelector('span:first-child');
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline';
+        }
+    });
+};
 
 
 // Tab Navigation Functions
