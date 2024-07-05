@@ -322,7 +322,19 @@ const validateForm = () => {
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
             inputs[i].className += " invalid";
-            console.log("Radio input found:", inputs[i]);
+           
+            valid = false;
+        }
+    }
+
+       // Validierung der Radio-Gruppen
+    for (const groupName in radioGroups) {
+        const radios = radioGroups[groupName];
+        const isChecked = radios.some(radio => radio.checked);
+        console.log(`Validating radio group ${groupName}:`, radios, "Checked:", isChecked);
+
+        if (!isChecked) {
+            radios.forEach(radio => radio.className += " invalid");
             valid = false;
         }
     }
