@@ -327,7 +327,20 @@ const validateForm = () => {
             valid = false;
         }
     }
+ // Gruppiere Radio-Buttons nach ihrem Namen
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].type === 'radio') {
+            const name = inputs[i].name;
+            if (!radioGroups[name]) {
+                radioGroups[name] = [];
+            }
+            radioGroups[name].push(inputs[i]);
+        }
+    }
 
+    console.log("Radio groups:", radioGroups);
+
+    
        // Validierung der Radio-Gruppen
     for (const groupName in radioGroups) {
         const radios = radioGroups[groupName];
