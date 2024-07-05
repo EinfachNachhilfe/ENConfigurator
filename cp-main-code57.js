@@ -233,30 +233,31 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     
     inputElement.addEventListener("change", handleValidation);
     
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    if ((inputElement.type === 'radio' && !inputElement.checkValidity() && isElementVisible(inputElement)) || 
-                        (inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement))) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                    }
+const buttons = [formElements.nextBtn, formElements.submitBtn];
+buttons.forEach(button => {
+    if (button) {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('disabled')) {
+                const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+                const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
+
+                if (isRadioOrCheckboxInvalid || isRequiredFieldEmpty) {
+                    errorMessageElement.innerHTML = emptyErrorMsg;
+                    errorMessageElement.style.display = 'block';
+                    inputElement.style.borderColor = COLORS.invalid;
+                    inputElement.style.borderWidth = STYLES.borderWidth;
+                    validSymbol.style.display = 'none';
+                    invalidSymbol.style.display = 'inline';
                 }
-            });
-        }
-    });
-    
-    validationElements[inputElement.className] = {
-        validSymbol,
-        invalidSymbol,
-        errorMessageElement
-    };
+            }
+        });
+    }
+});
+
+validationElements[inputElement.className] = {
+    validSymbol,
+    invalidSymbol,
+    errorMessageElement
 };
 
 const specificElements = [
