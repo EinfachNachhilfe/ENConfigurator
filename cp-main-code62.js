@@ -159,12 +159,13 @@ document.querySelectorAll('.form_input.email').forEach(el => {
 
 const ensureSingleErrorMessage = (wrapper) => {
     const errorMessages = wrapper.querySelectorAll('span');
-    if (errorMessages.length > 1) {
-        for (let i = 1; i < errorMessages.length; i++) {
-            errorMessages[i].remove();
+    errorMessages.forEach((msg, index) => {
+        if (index > 0) {
+            msg.remove();
         }
-    }
+    });
 };
+
 
 
 // Apply Validation
