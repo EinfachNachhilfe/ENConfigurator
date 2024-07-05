@@ -230,16 +230,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-   
     const radioGroups = {};
 
     formElements.allInputs.forEach(input => {
-        if (formElements.allInputs.type === 'radio') {
-            const name = formElements.allInputs.name;
+        if (input.type === 'radio') {
+            const name = input.name;
             if (!radioGroups[name]) {
                 radioGroups[name] = [];
             }
-            radioGroups[name].push(formElements.allInputs);
+            radioGroups[name].push(input);
         }
     });
 
@@ -272,7 +271,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         invalidSymbol,
         errorMessageElement
     };
-}
+};
 
 
 const specificElements = [
