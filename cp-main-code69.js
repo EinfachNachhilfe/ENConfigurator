@@ -185,14 +185,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
-   const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-   const errorMessageWrapper = inputElement.type === 'radio' 
-  ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
-  : inputElement.type === 'checkbox'
-    ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
-    : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+    const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
+    const errorMessageWrapper = inputElement.type === 'radio' 
+        ? inputElement.closest('.form_input-error-message-wrapper') 
+        : inputElement.type === 'checkbox'
+            ? inputElement.closest('.form_input-error-message-wrapper')
+            : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    
     if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(validSymbol);
@@ -229,38 +228,52 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     };
 
-
-    
     inputElement.addEventListener("change", handleValidation);
-    
-const buttons = [formElements.nextBtn, formElements.submitBtn];
-buttons.forEach(button => {
-    if (button) {
-        button.addEventListener('click', () => {
-            if (button.classList.contains('disabled')) {
-                const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
-                const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
 
-                if (isRadioOrCheckboxInvalid || isRequiredFieldEmpty) {
-                    errorMessageElement.innerHTML = emptyErrorMsg;
-                    errorMessageElement.style.display = 'block';
-                    inputElement.style.borderColor = COLORS.invalid;
-                    inputElement.style.borderWidth = STYLES.borderWidth;
-                    validSymbol.style.display = 'none';
-                    invalidSymbol.style.display = 'inline';
-                }
+   
+    const radioGroups = {};
+
+    allInputs.forEach(input => {
+        if (allInputs.type === 'radio') {
+            const name = allInputs.name;
+            if (!radioGroups[name]) {
+                radioGroups[name] = [];
             }
-        });
-    }
-});
+            radioGroups[name].push(input);
+        }
+    });
 
-validationElements[inputElement.className] = {
-    validSymbol,
-    invalidSymbol,
-    errorMessageElement
-};
+    console.log("Radio groups:", radioGroups);
 
+    const buttons = [formElements.nextBtn, formElements.submitBtn];
+    buttons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('disabled')) {
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+                    const isGroupRadioInvalid = Object.values(radioGroups).some(radios => !radios.some(radio => radio.checked));
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
+
+                    if (isCheckboxInvalid || isGroupRadioInvalid || isRequiredFieldEmpty) {
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
+                        inputElement.style.borderColor = COLORS.invalid;
+                        inputElement.style.borderWidth = STYLES.borderWidth;
+                        validSymbol.style.display = 'none';
+                        invalidSymbol.style.display = 'inline';
+                    }
+                }
+            });
+        }
+    });
+
+    validationElements[inputElement.className] = {
+        validSymbol,
+        invalidSymbol,
+        errorMessageElement
+    };
 }
+
 
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
@@ -318,7 +331,7 @@ const nextPrev = (n) => {
 const validateForm = () => {
     
     let valid = true;
-    const radioGroups = {};
+    
     const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
@@ -327,31 +340,7 @@ const validateForm = () => {
             valid = false;
         }
     }
- // Gruppiere Radio-Buttons nach ihrem Namen
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].type === 'radio') {
-            const name = inputs[i].name;
-            if (!radioGroups[name]) {
-                radioGroups[name] = [];
-            }
-            radioGroups[name].push(inputs[i]);
-        }
-    }
 
-    console.log("Radio groups:", radioGroups);
-
-    
-       // Validierung der Radio-Gruppen
-    for (const groupName in radioGroups) {
-        const radios = radioGroups[groupName];
-        const isChecked = radios.some(radio => radio.checked);
-        console.log(`Validating radio group ${groupName}:`, radios, "Checked:", isChecked);
-
-        if (!isChecked) {
-            radios.forEach(radio => radio.className += " invalid");
-            valid = false;
-        }
-    }
 
     if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
