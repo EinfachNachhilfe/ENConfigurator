@@ -250,11 +250,11 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+                    
                     const isGroupRadioInvalid = Object.values(radioGroups).some(radios => !radios.some(radio => radio.checked));
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
 
-                    if (isCheckboxInvalid || isGroupRadioInvalid || isRequiredFieldEmpty) {
+                    if ( isGroupRadioInvalid || isRequiredFieldEmpty) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
