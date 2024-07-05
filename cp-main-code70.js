@@ -233,13 +233,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
    
     const radioGroups = {};
 
-    allInputs.forEach(input => {
-        if (allInputs.type === 'radio') {
-            const name = allInputs.name;
+    formElements.allInputs.forEach(input => {
+        if (formElements.allInputs.type === 'radio') {
+            const name = formElements.allInputs.name;
             if (!radioGroups[name]) {
                 radioGroups[name] = [];
             }
-            radioGroups[name].push(input);
+            radioGroups[name].push(formElements.allInputs);
         }
     });
 
