@@ -255,37 +255,48 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-const groups = {};
-let radioValid = true;
+const validateRadioGroups = () => {
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const groups = {};
+    let radioValid = true;
 
+    console.log("Überprüfe Radio-Buttons im aktuellen Tab...");
 
-// Gruppiere Radio-Buttons nach ihrem Namen
-radioButtons.forEach((radio) => {
-    if (!isElementVisibleInTab(radio, currentTabElement)) {
-          console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
-        return;
+    // Gruppiere Radio-Buttons nach ihrem Namen
+    radioButtons.forEach((radio) => {
+        if (!isElementVisibleInTab(radio, currentTabElement)) {
+            console.log(`Radio-Button ${radio.name} ist im aktuellen Tab nicht sichtbar und wird übersprungen`);
+            return;
+        }
+
+        if (!groups[radio.name]) {
+            groups[radio.name] = false;
+            console.log(`Neue Gruppe erstellt: ${radio.name}`);
+        }
+        if (radio.checked) {
+            groups[radio.name] = true;
+            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
+        }
+    });
+
+    console.log("Gruppen und deren Status nach der Initialisierung:");
+    console.log(groups);
+
+    // Überprüfe, ob alle Gruppen eine Auswahl haben
+    for (const group in groups) {
+        const errorMessage = document.getElementById(`error-${group}`);
+        if (!groups[group]) {
+            console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
+            errorMessage.style.display = "block";  // Anzeige der Fehlermeldung
+            radioValid = false;
+        } else {
+            errorMessage.style.display = "none";  // Verbergen der Fehlermeldung
+        }
     }
 
-    if (!groups[radio.name]) {
-        groups[radio.name] = false;
-       
-    }
-    if (radio.checked) {
-        groups[radio.name] = true;
-        console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
-    }
-});
-
-
-
-// Überprüfe, ob alle Gruppen eine Auswahl haben
-for (const group in groups) {
-    if (!groups[group]) {
-        console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
-        radioValid = false;
-    }
-}
+    console.log(`Radio-Validierungsergebnis: ${radioValid}`);
+    return radioValid;
+};
     
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
@@ -294,7 +305,7 @@ for (const group in groups) {
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-                   
+                   const radioValid = validateRadioGroups();
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
