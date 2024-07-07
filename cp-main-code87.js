@@ -248,15 +248,27 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const groups = {};
+    radioButtons.forEach((radio) => {
+        if (!groups[radio.name]) {
+            groups[radio.name] = false;
+        }
+        if (radio.checked) {
+            groups[radio.name] = true;
+        }
+    });
+    
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
-                   
-
-                    if (isRadioOrCheckboxInvalid ) {
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+                    const isGroupRadioInvalid = Object.values(groups).some(valid => !valid);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
+                    
+                    if (isCheckboxInvalid || isGroupRadioInvalid || isRequiredFieldEmpty) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
