@@ -12,10 +12,10 @@ let currentTab = 0;
 const currentTabElement = formElements.formItems[currentTab];
 
 // Helper Functions
-const isElementVisible = (el, tabElement) => {
-    if (!el || el === tabElement) return true;
+const isElementVisible = (el, currentTabElement) => {
+    if (!el || el === currentTabElement) return true;
     if (window.getComputedStyle(el, null).display === 'none') return false;
-    return isElementVisible(el.parentNode, tabElement);
+    return isElementVisible(el.parentNode, currentTabElement);
 };
 
 
