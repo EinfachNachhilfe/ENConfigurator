@@ -12,10 +12,11 @@ let currentTab = 0;
 const currentTabElement = formElements.formItems[currentTab];
 
 // Helper Functions
-const isElementVisible = (el, currentTabElement) => {
-    if (!el || el === currentTabElement) return true;
+const isElementVisibleInTabInTab = (el, tabElement) => {
+    if (!el || el === tabElement) return true;
+    if (!(el instanceof Element)) return false; // Überprüfen, ob el ein Element ist
     if (window.getComputedStyle(el, null).display === 'none') return false;
-    return isElementVisible(el.parentNode, currentTabElement);
+    return isElementVisibleInTabInTab(el.parentNode, tabElement);
 };
 
 
@@ -261,7 +262,7 @@ let radioValid = true;
 
 // Gruppiere Radio-Buttons nach ihrem Namen
 radioButtons.forEach((radio) => {
-    if (!isElementVisible(radio)) {
+    if (!isElementVisibleInTab(radio, currentTabElement)) {
           console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
         return;
     }
@@ -291,8 +292,8 @@ for (const group in groups) {
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                    
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
