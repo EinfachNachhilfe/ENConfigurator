@@ -167,6 +167,174 @@ const STYLES = {
     borderWidth: '2px'
 };
 
+const formElements = {
+    nextBtn: document.querySelector('#nextBtn'),
+    prevBtn: document.querySelector('#prevBtn'),
+    submitBtn: document.querySelector('#submitBtn'),
+    allInputs: Array.from(document.getElementsByTagName("input")),
+    formItems: Array.from(document.getElementsByClassName('form_item-input-wrapper-tab')),
+};
+
+const validationElements = {};
+let currentTab = 0;
+
+// Helper Functions
+const isElementVisible = (el) => !el || el === document.body || (window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode));
+
+const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
+    const textDiv = document.createElement("div");
+    textDiv.className = "form_label";
+    textDiv.id = labelId;
+    textDiv.textContent = labelText;
+    textDiv.style.marginBottom = "0.6rem";
+    const asteriskSpan = document.createElement("span");
+    asteriskSpan.className = "text-span_required";
+    asteriskSpan.textContent = "*";
+    textDiv.appendChild(asteriskSpan);
+    container.parentNode.insertBefore(textDiv, container);
+
+    const inputField = document.createElement("input");
+    inputField.type = "text";
+    inputField.className = form_input ${inputClass};
+    inputField.placeholder = inputPlaceholder;
+    inputField.required = true;
+    container.appendChild(inputField);
+    inputField.addEventListener("input", validateForm);
+    applyValidation(inputField, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+};
+
+const removeInputField = (labelId, inputClass) => {
+    const label = document.getElementById(labelId);
+    const input = document.querySelector(.${inputClass});
+    label?.remove();
+    input?.remove();
+
+    const elements = validationElements[inputClass];
+    if (elements) {
+        elements.validSymbol.remove();
+        elements.invalidSymbol.remove();
+        elements.errorMessageElement.remove();
+        delete validationElements[inputClass];
+    }
+};
+
+// Apply Date Input Format and Validation
+const applyDateInputFormat = (inputElement) => {
+    const datePattern = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/;
+
+    inputElement.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
+        if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
+        e.target.value = value;
+
+        // Validate date pattern
+        const isValid = datePattern.test(inputElement.value);
+        if (isValid) {
+            inputElement.setCustomValidity('');
+        } else {
+            inputElement.setCustomValidity('Bitte geben Sie ein gültiges Datum ein.');
+        }
+    });
+
+    inputElement.addEventListener('change', () => {
+        inputElement.reportValidity();
+    });
+};
+
+document.querySelectorAll('.form_input.bday').forEach(el => {
+    if (el) applyDateInputFormat(el);
+});
+
+// Apply IBAN Validation and Pattern
+const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
+    const ibanPattern = new RegExp(^${countryPrefix}[0-9]{20}$);
+
+    inputElement.addEventListener('focus', () => {
+        if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
+    });
+
+    inputElement.addEventListener('input', () => {
+        if (inputElement.value.substring(0, 2) !== countryPrefix) {
+            inputElement.value = countryPrefix;
+            inputElement.setSelectionRange(countryPrefix.length, countryPrefix.length);
+        } else {
+            inputElement.value = countryPrefix + inputElement.value.substring(2).replace(/\D/g, '');
+        }
+
+        // Validate IBAN pattern
+        const isValid = ibanPattern.test(inputElement.value);
+        if (isValid) {
+            inputElement.setCustomValidity('');
+        } else {
+            inputElement.setCustomValidity('Die IBAN ist falsch.');
+        }
+    });
+
+    inputElement.addEventListener('change', () => {
+        inputElement.reportValidity();
+    });
+};
+
+document.querySelectorAll('.form_input.iban').forEach(el => {
+    if (el) applyIbanValidation(el);
+});
+
+// Apply PLZ Validation and Pattern
+const applyPlzValidation = (inputElement) => {
+    const plzPattern = /^\d{5}$/;
+
+    inputElement.addEventListener('input', () => {
+        const isValid = plzPattern.test(inputElement.value);
+        if (isValid) {
+            inputElement.setCustomValidity('');
+        } else {
+            inputElement.setCustomValidity('Bitte geben Sie eine gültige PLZ ein.');
+        }
+    });
+
+    inputElement.addEventListener('change', () => {
+        inputElement.reportValidity();
+    });
+};
+
+document.querySelectorAll('.form_input.zip').forEach(el => {
+    if (el) applyPlzValidation(el);
+});
+
+// Apply Email Pattern Validation
+const applyEmailPatternValidation = (inputElement) => {
+    const emailPattern = /^\S+@\S+\.\S+$/;
+
+    inputElement.addEventListener('input', () => {
+        const isValid = emailPattern.test(inputElement.value);
+        if (isValid) {
+            inputElement.setCustomValidity('');
+        } else {
+            inputElement.setCustomValidity('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        }
+    });
+
+    inputElement.addEventListener('change', () => {
+        inputElement.reportValidity();
+    });
+};
+
+document.querySelectorAll('.form_input.email').forEach(el => {
+    if (el) applyEmailPatternValidation(el);
+});
+
+// Apply Validation
+const COLORS = {
+    valid: '#78b8bf',
+    invalid: '#d9544f',
+    errorText: '#d9544f'
+};
+
+const STYLES = {
+    borderWidth: '2px'
+};
+
 const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
@@ -177,9 +345,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
+        validSymbol.style.cssText = color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
+        invalidSymbol.style.cssText = color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
+        errorMessageElement.style.cssText = color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;;
     };
     setInitialStyles();
 
@@ -249,6 +417,19 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             button.addEventListener('click', (event) => {
                 if (button.classList.contains('disabled')) {
                     event.preventDefault();
+
+               
+                    const isGroupRadioInvalid = Object.values(groups).some(valid => !valid);
+                   
+
+                    if (isGroupRadioInvalid) {
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
+                        inputElement.style.borderColor = COLORS.invalid;
+                        inputElement.style.borderWidth = STYLES.borderWidth;
+                        validSymbol.style.display = 'none';
+                        invalidSymbol.style.display = 'inline';
+                    }
                 }
             });
         }
@@ -268,7 +449,7 @@ const specificElements = [
 
 
 formElements.allInputs.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
+    if (!specificElements.some(e => e.selector === .${inputElement.className})) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
