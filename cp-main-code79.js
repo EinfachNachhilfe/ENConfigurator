@@ -272,30 +272,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-// New validation function for radio groups
-const validateRadioGroups = (radioGroups) => {
-    let formValid = true;
-    for (const groupName in radioGroups) {
-        const errorMessageElement = document.getElementById(`error-${groupName}`);
-        const groupValid = radioGroups[groupName].some(radio => radio.checked);
-        if (!groupValid) {
-            errorMessageElement.style.display = 'block';
-            formValid = false;
-        } else {
-            errorMessageElement.style.display = 'none';
-        }
-    }
-    return formValid;
-};
 
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
 ];
 
+
+
 formElements.allInputs.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
-        applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-    }
+    applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
 });
 
 specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
