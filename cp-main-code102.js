@@ -9,7 +9,7 @@ const formElements = {
 
 const validationElements = {};
 let currentTab = 0;
-const currentTabElement = formItems[currentTab];
+const currentTabElement = formElements.formItems[currentTab];
 
 // Helper Functions
 const isElementVisibleInTab = (el, tabElement) => {
