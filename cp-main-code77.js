@@ -171,7 +171,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
-    
+
     validSymbol.textContent = '✓';
     invalidSymbol.textContent = '✗';
 
@@ -186,19 +186,18 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = inputElement.type === 'radio' 
-        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
+    const errorMessageWrapper = inputElement.type === 'radio'
+        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
         : inputElement.type === 'checkbox'
-            ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
+            ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
             : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    
     if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(validSymbol);
         validationImageWrapper.appendChild(invalidSymbol);
     }
-    
+
     const handleValidation = () => {
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = emptyErrorMsg;
@@ -231,19 +230,14 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-   const radioGroups = {};
-
-    formElements.allInputs.forEach(input => {
-        if (input.type === 'radio') {
-            const name = input.name;
-            if (!radioGroups[name]) {
-                radioGroups[name] = [];
-            }
-            radioGroups[name].push(input);
+    // Group radio buttons by their name attribute
+    const radioGroups = {};
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        if (!radioGroups[input.name]) {
+            radioGroups[input.name] = [];
         }
+        radioGroups[input.name].push(input);
     });
-
-    console.log("Radio groups:", radioGroups);
 
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
