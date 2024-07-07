@@ -164,16 +164,6 @@ document.querySelectorAll('.form_input.email').forEach(el => {
 });
 
 
-const ensureSingleErrorMessage = (wrapper) => {
-    const errorMessages = wrapper.querySelectorAll('span');
-    if (errorMessages.length > 1) {
-        for (let i = 1; i < errorMessages.length; i++) {
-            errorMessages[i].remove();
-        }
-    }
-};
-
-
 // Apply Validation
 const COLORS = {
     valid: '#78b8bf',
@@ -211,7 +201,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
     if (errorMessageWrapper) {
-        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
         errorMessageWrapper.appendChild(errorMessageElement);
     }
     if (validationImageWrapper) {
@@ -227,7 +216,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
             errorMessageWrapper.appendChild(errorMessageElement);
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
@@ -248,7 +236,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
             errorMessageWrapper.appendChild(errorMessageElement);
         }
     };
@@ -303,7 +290,6 @@ for (const group in groups) {
                         inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
                         invalidSymbol.style.display = 'inline';
-                        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
                         errorMessageWrapper.appendChild(errorMessageElement);
                     }
                 }
