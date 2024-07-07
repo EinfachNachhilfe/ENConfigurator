@@ -248,29 +248,39 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
-    const groups = {};
-    let radioValid = true;
-    radioButtons.forEach((radio) => {
-        if (!groups[radio.name]) {
-            groups[radio.name] = false;
-            console.log(`Neue Gruppe erstellt: ${radio.name}`);
-        }
-        if (radio.checked) {
-            groups[radio.name] = true;
-            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
-        }
-    });
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+const groups = {};
+let radioValid = true;
+
+console.log("Überprüfe Radio-Buttons...");
+
+// Gruppiere Radio-Buttons nach ihrem Namen
+radioButtons.forEach((radio) => {
+    if (!isElementVisible(radio)) {
+        console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
+        return;
+    }
+
+    if (!groups[radio.name]) {
+        groups[radio.name] = false;
+        console.log(`Neue Gruppe erstellt: ${radio.name}`);
+    }
+    if (radio.checked) {
+        groups[radio.name] = true;
+        console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
+    }
+});
 
 console.log("Gruppen und deren Status nach der Initialisierung:");
 console.log(groups);
-    
-  for (const group in groups) {
+
+// Überprüfe, ob alle Gruppen eine Auswahl haben
+for (const group in groups) {
     if (!groups[group]) {
         console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
-      radioValid = false;
-    } 
-  }
+        radioValid = false;
+    }
+}
     
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
@@ -279,9 +289,9 @@ console.log(groups);
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
-                    const isGroupRadioInvalid = !radioValid && isElementVisible(inputElement)
+                   
                     
-                    if (isCheckboxInvalid || isRequiredFieldEmpty || isGroupRadioInvalid) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
