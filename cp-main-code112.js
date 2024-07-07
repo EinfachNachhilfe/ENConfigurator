@@ -283,7 +283,7 @@ for (const group in groups) {
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                    
                     
-                    if (isCheckboxInvalid || isRequiredFieldEmpty ) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
