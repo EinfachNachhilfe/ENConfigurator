@@ -3,15 +3,15 @@ const formElements = {
     nextBtn: document.querySelector('#nextBtn'),
     prevBtn: document.querySelector('#prevBtn'),
     submitBtn: document.querySelector('#submitBtn'),
-    allInputs: Array.from(document.getElementsByTagName("input")),
-    formItems: Array.from(document.getElementsByClassName('form_item-input-wrapper-tab')),
+    allInputs: document.getElementsByTagName("input"),
+    formItems: document.getElementsByClassName('form_item-input-wrapper-tab'),
 };
 
 const validationElements = {};
 let currentTab = 0;
 
 // Helper Functions
-const isElementVisible = (el) => !el || el === document.body || (window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode));
+const isElementVisible = (el) => !el || el === document.body || window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode);
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
@@ -156,173 +156,16 @@ document.querySelectorAll('.form_input.email').forEach(el => {
     if (el) applyEmailPatternValidation(el);
 });
 
-// Apply Validation
-const COLORS = {
-    valid: '#78b8bf',
-    invalid: '#d9544f',
-    errorText: '#d9544f'
-};
 
-const STYLES = {
-    borderWidth: '2px'
-};
-
-const formElements = {
-    nextBtn: document.querySelector('#nextBtn'),
-    prevBtn: document.querySelector('#prevBtn'),
-    submitBtn: document.querySelector('#submitBtn'),
-    allInputs: Array.from(document.getElementsByTagName("input")),
-    formItems: Array.from(document.getElementsByClassName('form_item-input-wrapper-tab')),
-};
-
-const validationElements = {};
-let currentTab = 0;
-
-// Helper Functions
-const isElementVisible = (el) => !el || el === document.body || (window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode));
-
-const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
-    const textDiv = document.createElement("div");
-    textDiv.className = "form_label";
-    textDiv.id = labelId;
-    textDiv.textContent = labelText;
-    textDiv.style.marginBottom = "0.6rem";
-    const asteriskSpan = document.createElement("span");
-    asteriskSpan.className = "text-span_required";
-    asteriskSpan.textContent = "*";
-    textDiv.appendChild(asteriskSpan);
-    container.parentNode.insertBefore(textDiv, container);
-
-    const inputField = document.createElement("input");
-    inputField.type = "text";
-    inputField.className = form_input ${inputClass};
-    inputField.placeholder = inputPlaceholder;
-    inputField.required = true;
-    container.appendChild(inputField);
-    inputField.addEventListener("input", validateForm);
-    applyValidation(inputField, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-};
-
-const removeInputField = (labelId, inputClass) => {
-    const label = document.getElementById(labelId);
-    const input = document.querySelector(.${inputClass});
-    label?.remove();
-    input?.remove();
-
-    const elements = validationElements[inputClass];
-    if (elements) {
-        elements.validSymbol.remove();
-        elements.invalidSymbol.remove();
-        elements.errorMessageElement.remove();
-        delete validationElements[inputClass];
+const ensureSingleErrorMessage = (wrapper) => {
+    const errorMessages = wrapper.querySelectorAll('span');
+    if (errorMessages.length > 1) {
+        for (let i = 1; i < errorMessages.length; i++) {
+            errorMessages[i].remove();
+        }
     }
 };
 
-// Apply Date Input Format and Validation
-const applyDateInputFormat = (inputElement) => {
-    const datePattern = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/;
-
-    inputElement.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
-        if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
-        e.target.value = value;
-
-        // Validate date pattern
-        const isValid = datePattern.test(inputElement.value);
-        if (isValid) {
-            inputElement.setCustomValidity('');
-        } else {
-            inputElement.setCustomValidity('Bitte geben Sie ein gültiges Datum ein.');
-        }
-    });
-
-    inputElement.addEventListener('change', () => {
-        inputElement.reportValidity();
-    });
-};
-
-document.querySelectorAll('.form_input.bday').forEach(el => {
-    if (el) applyDateInputFormat(el);
-});
-
-// Apply IBAN Validation and Pattern
-const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
-    const ibanPattern = new RegExp(^${countryPrefix}[0-9]{20}$);
-
-    inputElement.addEventListener('focus', () => {
-        if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
-    });
-
-    inputElement.addEventListener('input', () => {
-        if (inputElement.value.substring(0, 2) !== countryPrefix) {
-            inputElement.value = countryPrefix;
-            inputElement.setSelectionRange(countryPrefix.length, countryPrefix.length);
-        } else {
-            inputElement.value = countryPrefix + inputElement.value.substring(2).replace(/\D/g, '');
-        }
-
-        // Validate IBAN pattern
-        const isValid = ibanPattern.test(inputElement.value);
-        if (isValid) {
-            inputElement.setCustomValidity('');
-        } else {
-            inputElement.setCustomValidity('Die IBAN ist falsch.');
-        }
-    });
-
-    inputElement.addEventListener('change', () => {
-        inputElement.reportValidity();
-    });
-};
-
-document.querySelectorAll('.form_input.iban').forEach(el => {
-    if (el) applyIbanValidation(el);
-});
-
-// Apply PLZ Validation and Pattern
-const applyPlzValidation = (inputElement) => {
-    const plzPattern = /^\d{5}$/;
-
-    inputElement.addEventListener('input', () => {
-        const isValid = plzPattern.test(inputElement.value);
-        if (isValid) {
-            inputElement.setCustomValidity('');
-        } else {
-            inputElement.setCustomValidity('Bitte geben Sie eine gültige PLZ ein.');
-        }
-    });
-
-    inputElement.addEventListener('change', () => {
-        inputElement.reportValidity();
-    });
-};
-
-document.querySelectorAll('.form_input.zip').forEach(el => {
-    if (el) applyPlzValidation(el);
-});
-
-// Apply Email Pattern Validation
-const applyEmailPatternValidation = (inputElement) => {
-    const emailPattern = /^\S+@\S+\.\S+$/;
-
-    inputElement.addEventListener('input', () => {
-        const isValid = emailPattern.test(inputElement.value);
-        if (isValid) {
-            inputElement.setCustomValidity('');
-        } else {
-            inputElement.setCustomValidity('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-        }
-    });
-
-    inputElement.addEventListener('change', () => {
-        inputElement.reportValidity();
-    });
-};
-
-document.querySelectorAll('.form_input.email').forEach(el => {
-    if (el) applyEmailPatternValidation(el);
-});
 
 // Apply Validation
 const COLORS = {
@@ -339,28 +182,29 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
-
+    
     validSymbol.textContent = '✓';
     invalidSymbol.textContent = '✗';
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
-        invalidSymbol.style.cssText = color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
-        errorMessageElement.style.cssText = color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;;
+        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
     };
     setInitialStyles();
 
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = inputElement.type === 'radio'
-        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
+    const errorMessageWrapper = inputElement.type === 'radio' 
+        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
         : inputElement.type === 'checkbox'
-            ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
+            ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
             : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (errorMessageWrapper && !errorMessageWrapper.contains(errorMessageElement)) {
+    if (errorMessageWrapper) {
+        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
         errorMessageWrapper.appendChild(errorMessageElement);
     }
     if (validationImageWrapper) {
@@ -376,6 +220,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
+            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
+            errorMessageWrapper.appendChild(errorMessageElement);
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
             inputElement.style.borderWidth = '';
@@ -395,40 +241,30 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
+            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
+            errorMessageWrapper.appendChild(errorMessageElement);
         }
     };
 
     inputElement.addEventListener("change", handleValidation);
 
-  const radioButtons = document.querySelectorAll('input[type="radio"]');
-    const groups = {};
-    radioButtons.forEach((radio) => {
-        if (!groups[radio.name]) {
-            groups[radio.name] = false;
-        }
-        if (radio.checked) {
-            groups[radio.name] = true;
-        }
-    });
-
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
-            button.addEventListener('click', (event) => {
+            button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    event.preventDefault();
-
-               
-                    const isGroupRadioInvalid = Object.values(groups).some(valid => !valid);
+                    const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
                    
 
-                    if (isGroupRadioInvalid) {
+                    if (isRadioOrCheckboxInvalid ) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
                         invalidSymbol.style.display = 'inline';
+                        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
+                        errorMessageWrapper.appendChild(errorMessageElement);
                     }
                 }
             });
@@ -441,18 +277,19 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         errorMessageElement
     };
 };
-
+ 
 
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
 ];
 
-
-formElements.allInputs.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === .${inputElement.className})) {
+const allInputsArray = Array.from(formElements.allInputs);
+allInputsArray.forEach(inputElement => {
+    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
+
 
 specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
     document.querySelectorAll(selector).forEach(element => {
@@ -460,12 +297,10 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
     });
 });
 
+
 // Tab Navigation Functions
 const showTab = (n) => {
-    formElements.formItems.forEach((item, index) => {
-        item.style.display = index === n ? "block" : "none";
-    });
-
+    formElements.formItems[n].style.display = "block";
     const inputs = formElements.formItems[n].querySelectorAll(".form_input");
     inputs.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
@@ -499,11 +334,10 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-
     const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].classList.add("invalid");
+            inputs[i].className += " invalid";
             valid = false;
         }
     }
@@ -520,9 +354,9 @@ const validateForm = () => {
 };
 
 const fixStepIndicator = (n) => {
-    formElements.formItems.forEach(formItem => {
+    for (const formItem of formElements.formItems) {
         formItem.classList.remove("active");
-    });
+    }
     formElements.formItems[n].classList.add("active");
 };
 
