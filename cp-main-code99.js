@@ -252,18 +252,16 @@ const radioButtons = document.querySelectorAll('input[type="radio"]');
 const groups = {};
 let radioValid = true;
 
-console.log("Überprüfe Radio-Buttons...");
 
 // Gruppiere Radio-Buttons nach ihrem Namen
 radioButtons.forEach((radio) => {
     if (!isElementVisible(radio)) {
-        console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
         return;
     }
 
     if (!groups[radio.name]) {
         groups[radio.name] = false;
-        console.log(`Neue Gruppe erstellt: ${radio.name}`);
+       
     }
     if (radio.checked) {
         groups[radio.name] = true;
@@ -271,8 +269,7 @@ radioButtons.forEach((radio) => {
     }
 });
 
-console.log("Gruppen und deren Status nach der Initialisierung:");
-console.log(groups);
+
 
 // Überprüfe, ob alle Gruppen eine Auswahl haben
 for (const group in groups) {
