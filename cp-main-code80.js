@@ -232,13 +232,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-    // Group radio buttons by their name attribute
-    const radioGroups = {};
-    document.querySelectorAll('input[type="radio"]').forEach(input => {
-        if (!radioGroups[input.name]) {
-            radioGroups[input.name] = [];
+  const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const groups = {};
+    radioButtons.forEach((radio) => {
+        if (!groups[radio.name]) {
+            groups[radio.name] = false;
         }
-        radioGroups[input.name].push(input);
+        if (radio.checked) {
+            groups[radio.name] = true;
+        }
     });
 
     const buttons = [formElements.nextBtn, formElements.submitBtn];
@@ -249,7 +251,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     event.preventDefault();
 
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
-                    const isGroupRadioInvalid = Object.values(radioGroups).some(radios => !radios.some(radio => radio.checked));
+                    const isGroupRadioInvalid = Object.values(groups).some(valid => !valid);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
 
                     if (isCheckboxInvalid || isGroupRadioInvalid || isRequiredFieldEmpty) {
@@ -278,9 +280,10 @@ const specificElements = [
 ];
 
 
-
 formElements.allInputs.forEach(inputElement => {
-    applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
+        applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    }
 });
 
 specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
