@@ -279,9 +279,9 @@ console.log(groups);
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
-              
+                    const isGroupRadioInvalid = !radioValid && isElementVisible(inputElement)
                     
-                    if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty || isGroupRadioInvalid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
