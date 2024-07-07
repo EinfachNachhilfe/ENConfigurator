@@ -256,6 +256,7 @@ let radioValid = true;
 // Gruppiere Radio-Buttons nach ihrem Namen
 radioButtons.forEach((radio) => {
     if (!isElementVisible(radio)) {
+          console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
         return;
     }
 
