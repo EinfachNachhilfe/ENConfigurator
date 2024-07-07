@@ -9,9 +9,15 @@ const formElements = {
 
 const validationElements = {};
 let currentTab = 0;
+const currentTabElement = formItems[currentTab];
 
 // Helper Functions
-const isElementVisible = (el) => !el || el === document.body || window.getComputedStyle(el, null).display !== 'none' && isElementVisible(el.parentNode);
+const isElementVisibleInTab = (el, tabElement) => {
+    if (!el || el === tabElement) return true;
+    if (window.getComputedStyle(el, null).display === 'none') return false;
+    return isElementVisibleInTab(el.parentNode, tabElement);
+};
+
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
