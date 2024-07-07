@@ -268,7 +268,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                   
                   
                     
-                    if (isCheckboxInvalid || isGroupRadioInvalid ) {
+                    if (isCheckboxInvalid ) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
