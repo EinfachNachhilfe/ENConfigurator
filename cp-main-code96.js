@@ -254,14 +254,20 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     radioButtons.forEach((radio) => {
         if (!groups[radio.name]) {
             groups[radio.name] = false;
+            console.log(`Neue Gruppe erstellt: ${radio.name}`);
         }
         if (radio.checked) {
             groups[radio.name] = true;
+            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
         }
     });
 
+console.log("Gruppen und deren Status nach der Initialisierung:");
+console.log(groups);
+    
   for (const group in groups) {
     if (!groups[group]) {
+        console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
       radioValid = false;
     } 
   }
