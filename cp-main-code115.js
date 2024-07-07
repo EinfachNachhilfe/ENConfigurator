@@ -19,14 +19,6 @@ const isElementVisibleInTab = (el, tabElement) => {
     return isElementVisibleInTab(el.parentNode, tabElement);
 };
 
-const ensureSingleErrorMessage = (wrapper) => {
-    const errorMessages = wrapper.querySelectorAll('span');
-    if (errorMessages.length > 1) {
-        for (let i = 1; i < errorMessages.length; i++) {
-            errorMessages[i].remove();
-        }
-    }
-};
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
@@ -172,6 +164,16 @@ document.querySelectorAll('.form_input.email').forEach(el => {
 });
 
 
+const ensureSingleErrorMessage = (wrapper) => {
+    const errorMessages = wrapper.querySelectorAll('span');
+    if (errorMessages.length > 1) {
+        for (let i = 1; i < errorMessages.length; i++) {
+            errorMessages[i].remove();
+        }
+    }
+};
+
+
 // Apply Validation
 const COLORS = {
     valid: '#78b8bf',
@@ -253,44 +255,38 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
-    const groups = {};
-    let radioValid = true;
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+const groups = {};
+let radioValid = true;
 
-    // Gruppiere Radio-Buttons nach ihrem Namen
-    radioButtons.forEach((radio) => {
-        if (!isElementVisibleInTab(radio, currentTabElement)) {
-            console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
-            return;
-        }
 
-        if (!groups[radio.name]) {
-            groups[radio.name] = {
-                selected: false,
-                errorMessageElement: document.createElement('span')
-            };
-            groups[radio.name].errorMessageElement.textContent = emptyErrorMsg;
-            groups[radio.name].errorMessageElement.style.color = COLORS.errorText;
-            groups[radio.name].errorMessageElement.style.display = 'none';
-            radio.parentNode.parentNode.parentNode.appendChild(groups[radio.name].errorMessageElement);
-        }
-        if (radio.checked) {
-            groups[radio.name].selected = true;
-            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
-        }
-    });
-
-    // Überprüfe, ob alle Gruppen eine Auswahl haben
-    for (const group in groups) {
-        if (!groups[group].selected) {
-            console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
-            groups[group].errorMessageElement.style.display = 'block';
-            radioValid = false;
-        } else {
-            groups[group].errorMessageElement.style.display = 'none';
-        }
+// Gruppiere Radio-Buttons nach ihrem Namen
+radioButtons.forEach((radio) => {
+    if (!isElementVisibleInTab(radio, currentTabElement)) {
+          console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
+        return;
     }
 
+    if (!groups[radio.name]) {
+        groups[radio.name] = false;
+       
+    }
+    if (radio.checked) {
+        groups[radio.name] = true;
+        console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
+    }
+});
+
+
+
+// Überprüfe, ob alle Gruppen eine Auswahl haben
+for (const group in groups) {
+    if (!groups[group]) {
+        console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
+        radioValid = false;
+    }
+}
+    
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
@@ -298,7 +294,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-
+                   
+                    
                     if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
@@ -320,7 +317,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         errorMessageElement
     };
 };
-
  
 
 const specificElements = [
