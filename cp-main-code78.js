@@ -192,7 +192,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
             : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (errorMessageWrapper) errorMessageWrapper.appendChild(errorMessageElement);
+    if (errorMessageWrapper && !errorMessageWrapper.contains(errorMessageElement)) {
+        errorMessageWrapper.appendChild(errorMessageElement);
+    }
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(validSymbol);
         validationImageWrapper.appendChild(invalidSymbol);
@@ -268,6 +270,22 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         invalidSymbol,
         errorMessageElement
     };
+};
+
+// New validation function for radio groups
+const validateRadioGroups = (radioGroups) => {
+    let formValid = true;
+    for (const groupName in radioGroups) {
+        const errorMessageElement = document.getElementById(`error-${groupName}`);
+        const groupValid = radioGroups[groupName].some(radio => radio.checked);
+        if (!groupValid) {
+            errorMessageElement.style.display = 'block';
+            formValid = false;
+        } else {
+            errorMessageElement.style.display = 'none';
+        }
+    }
+    return formValid;
 };
 
 const specificElements = [
