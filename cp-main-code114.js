@@ -19,6 +19,14 @@ const isElementVisibleInTab = (el, tabElement) => {
     return isElementVisibleInTab(el.parentNode, tabElement);
 };
 
+const ensureSingleErrorMessage = (wrapper) => {
+    const errorMessages = wrapper.querySelectorAll('span');
+    if (errorMessages.length > 1) {
+        for (let i = 1; i < errorMessages.length; i++) {
+            errorMessages[i].remove();
+        }
+    }
+};
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
