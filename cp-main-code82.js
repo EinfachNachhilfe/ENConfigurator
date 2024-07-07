@@ -250,11 +250,11 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                 if (button.classList.contains('disabled')) {
                     event.preventDefault();
 
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+               
                     const isGroupRadioInvalid = Object.values(groups).some(valid => !valid);
                    
 
-                    if (isCheckboxInvalid || isGroupRadioInvalid ) {
+                    if (isGroupRadioInvalid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
