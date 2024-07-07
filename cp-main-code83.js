@@ -249,19 +249,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             button.addEventListener('click', (event) => {
                 if (button.classList.contains('disabled')) {
                     event.preventDefault();
-
-               
-                    const isGroupRadioInvalid = Object.values(groups).some(valid => !valid);
-                   
-
-                    if (isGroupRadioInvalid) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                    }
                 }
             });
         }
