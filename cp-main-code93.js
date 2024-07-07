@@ -275,7 +275,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
               
                     
-                    if (isCheckboxInvalid || isGroupRadioInvalid || !radioValid ) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid ) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                         inputElement.style.borderColor = COLORS.invalid;
