@@ -201,6 +201,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
     if (errorMessageWrapper) {
+        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
         errorMessageWrapper.appendChild(errorMessageElement);
     }
     if (validationImageWrapper) {
@@ -216,6 +217,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
+            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
             errorMessageWrapper.appendChild(errorMessageElement);
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
@@ -236,44 +238,51 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
+            ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
             errorMessageWrapper.appendChild(errorMessageElement);
         }
     };
 
     inputElement.addEventListener("change", handleValidation);
 
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-const groups = {};
-let radioValid = true;
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const groups = {};
+    let radioValid = true;
 
+    // Gruppiere Radio-Buttons nach ihrem Namen
+    radioButtons.forEach((radio) => {
+        if (!isElementVisibleInTab(radio, currentTabElement)) {
+            console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
+            return;
+        }
 
-// Gruppiere Radio-Buttons nach ihrem Namen
-radioButtons.forEach((radio) => {
-    if (!isElementVisibleInTab(radio, currentTabElement)) {
-          console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
-        return;
+        if (!groups[radio.name]) {
+            groups[radio.name] = {
+                selected: false,
+                errorMessageElement: document.createElement('span')
+            };
+            groups[radio.name].errorMessageElement.textContent = emptyErrorMsg;
+            groups[radio.name].errorMessageElement.style.color = COLORS.errorText;
+            groups[radio.name].errorMessageElement.style.display = 'none';
+            radio.parentNode.parentNode.parentNode.appendChild(groups[radio.name].errorMessageElement);
+        }
+        if (radio.checked) {
+            groups[radio.name].selected = true;
+            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
+        }
+    });
+
+    // Überprüfe, ob alle Gruppen eine Auswahl haben
+    for (const group in groups) {
+        if (!groups[group].selected) {
+            console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
+            groups[group].errorMessageElement.style.display = 'block';
+            radioValid = false;
+        } else {
+            groups[group].errorMessageElement.style.display = 'none';
+        }
     }
 
-    if (!groups[radio.name]) {
-        groups[radio.name] = false;
-       
-    }
-    if (radio.checked) {
-        groups[radio.name] = true;
-        console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
-    }
-});
-
-
-
-// Überprüfe, ob alle Gruppen eine Auswahl haben
-for (const group in groups) {
-    if (!groups[group]) {
-        console.log(`Gruppe ${group} hat keine Auswahl getroffen`);
-        radioValid = false;
-    }
-}
-    
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
@@ -281,8 +290,7 @@ for (const group in groups) {
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-                   
-                    
+
                     if (isCheckboxInvalid || isRequiredFieldEmpty || !radioValid) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
@@ -290,6 +298,7 @@ for (const group in groups) {
                         inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
                         invalidSymbol.style.display = 'inline';
+                        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
                         errorMessageWrapper.appendChild(errorMessageElement);
                     }
                 }
@@ -303,6 +312,7 @@ for (const group in groups) {
         errorMessageElement
     };
 };
+
  
 
 const specificElements = [
