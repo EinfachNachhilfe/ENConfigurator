@@ -181,7 +181,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const handleValidation = () => {
         console.log('handleValidation called for:', inputElement);
 
-       
+        inputElement.addEventListener("change", handleValidation);
             const buttons = [formElements.nextBtn, formElements.submitBtn];
             buttons.forEach(button => {
                 if (button) {
@@ -277,7 +277,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         
     };
 
-    inputElement.addEventListener("change", handleValidation);
+   
     console.log('Event listener added for:', inputElement);
 
     validationElements[inputElement.className] = {
