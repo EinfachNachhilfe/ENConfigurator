@@ -176,6 +176,11 @@ const STYLES = {
     borderWidth: '2px'
 };
 
+
+    const errorMessageElement = document.createElement('span')
+    const validSymbol = document.createElement('span');
+    const invalidSymbol = document.createElement('span');
+
 const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
     validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
     invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
@@ -188,9 +193,7 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
 
 
     const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
-    const errorMessageElement = document.createElement('span')
-    const validSymbol = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
+
     
    
   setInitialStyles(validSymbol, invalidSymbol, errorMessageElement);
@@ -281,8 +284,6 @@ function validateRadio() {
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const groups = {};
     let radioValid = true;
-    const errorMessageElement = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
     
   setInitialStyles(invalidSymbol, invalidSymbol, errorMessageElement);
     // Gruppiere Radio-Buttons nach ihrem Namen
