@@ -181,7 +181,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const handleValidation = () => {
         console.log('handleValidation called for:', inputElement);
 
-        if (isElementVisibleInTab(inputElement, currentTabElement)) {
+       
             const buttons = [formElements.nextBtn, formElements.submitBtn];
             buttons.forEach(button => {
                 if (button) {
@@ -274,7 +274,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     errorMessageWrapper.appendChild(errorMessageElement);
                 }
             }
-        }
+        
     };
 
     inputElement.addEventListener("change", handleValidation);
