@@ -184,7 +184,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             buttons.forEach(button => {
                 if (button) {
                     button.addEventListener('click', () => {
-                        if (button.classList.contains('disabled')) {
+
 
                             if ((inputElement.type === 'checkbox') && !inputElement.checkValidity()) {
                                 errorMessageElement.innerHTML = emptyErrorMsg;
@@ -243,7 +243,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                             } 
                                
                             
-                        }
+                        
                     });
                 }
             });
