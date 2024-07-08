@@ -280,11 +280,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
+// Definiere einmalig die Fehlermeldung und Symbole
+const { errorMessageElement: radioErrorMessageElement, invalidSymbol: radioInvalidSymbol } = createValidationElements();
+
 const validateRadio = () => {
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const groups = {};
     let radioValid = true;
-    const { errorMessageElement, invalidSymbol } = createValidationElements();
 
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
@@ -303,16 +305,18 @@ const validateRadio = () => {
     const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
     const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (validationImageWrapper) {
-        validationImageWrapper.appendChild(invalidSymbol);
+    if (validationImageWrapper && !validationImageWrapper.contains(radioInvalidSymbol)) {
+        validationImageWrapper.appendChild(radioInvalidSymbol);
     }
 
     // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
         if (!groups[group]) {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-            errorMessageElement.style.display = 'block';
-            errorMessageWrapper.appendChild(errorMessageElement);
+            radioErrorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            radioErrorMessageElement.style.display = 'block';
+            if (!errorMessageWrapper.contains(radioErrorMessageElement)) {
+                errorMessageWrapper.appendChild(radioErrorMessageElement);
+            }
             radioValid = false;
         }
     }
@@ -321,13 +325,20 @@ const validateRadio = () => {
     radioButtons.forEach((radio) => {
         radio.addEventListener('change', () => {
             if (radio.checked) {
-                errorMessageElement.style.display = 'none';
+                radioErrorMessageElement.style.display = 'none';
+                if (errorMessageWrapper.contains(radioErrorMessageElement)) {
+                    errorMessageWrapper.removeChild(radioErrorMessageElement);
+                }
+                if (validationImageWrapper.contains(radioInvalidSymbol)) {
+                    validationImageWrapper.removeChild(radioInvalidSymbol);
+                }
             }
         });
     });
 
     return radioValid;
 };
+
 
 
 const specificElements = [
