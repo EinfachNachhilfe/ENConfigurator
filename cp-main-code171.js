@@ -198,9 +198,7 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = inputElement.type === 'radio' 
-        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
-        : inputElement.type === 'checkbox'
+    const errorMessageWrapper = inputElement.type === 'checkbox'
             ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
             : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
