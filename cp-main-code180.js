@@ -258,13 +258,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
+                        if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
                         invalidSymbol.style.display = 'inline';
                         errorMessageWrapper.appendChild(errorMessageElement);
+                        }
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
                     }
                 }
             });
