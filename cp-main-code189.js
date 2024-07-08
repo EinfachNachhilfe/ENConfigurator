@@ -7,6 +7,286 @@ const formElements = {
     formItems: document.getElementsByClassName('form_item-input-wrapper-tab'),
 };
 
+const form = {
+    applicationTutorForm: document.getElementById('applicationTutor'),
+    };
+
+if (form.applicationTutorForm){
+
+const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
+const addSubjectBtn = document.getElementById('addSubjectBtn');
+const addSelectedSubjectBtn = document.getElementById('addSelectedSubjectBtn');
+const subjectDropdown = document.getElementById('subjectDropdown');
+const classFromDropdown = document.getElementById('classFromDropdown');
+const classToDropdown = document.getElementById('classToDropdown');
+const addedSubjects = document.getElementById('addedSubjects');
+const popup = document.getElementById('popup_subject-tutor');
+const closePopupXElements = document.querySelectorAll('.close-popup');
+const background = document.getElementById('background');
+const showFirstNames = document.querySelectorAll('.show_first-name');
+ const firstNameInput = document.getElementById('first-name_tutor');
+      firstNameInput.addEventListener('input', function() {
+         showFirstNames.forEach(function(element) {
+             element.textContent = firstNameInput.value;
+         });
+     });
+
+popup.style.display = 'none';
+background.style.display = 'none';
+
+addSubjectBtn.addEventListener('click', function() {
+    background.style.display = 'block';
+    popup.style.display = 'block';
+        subjectDropdown.selectedIndex = '0';
+    classFromDropdown.selectedIndex = '0';
+    classToDropdown.innerHTML = '';
+let option = document.createElement("option");
+option.text = "Bis Klasse";
+option.value = '0'
+classToDropdown.add(option);
+
+
+
+});
+
+
+
+closePopupXElements.forEach(function(element) {
+    element.addEventListener('click', function() {
+        popup.style.display = 'none';
+        popupExperienceTutor.style.display = 'none';
+        background.style.display = 'none';
+    });
+});
+
+
+
+background.addEventListener('click', function() {
+    popup.style.display = 'none';
+    popupExperienceTutor.style.display = 'none';
+    background.style.display = 'none';
+
+});
+
+function addSubjectToDropdown(subject) {
+    const option = document.createElement('option');
+    option.value = subject;
+    option.textContent = subject;
+
+    let inserted = false;
+    for (let i = 0; i < subjectsOrder.length; i++) {
+        if (subjectsOrder[i] === subject) {
+            for (let j = 0; j < subjectDropdown.options.length; j++) {
+                if (subjectsOrder.indexOf(subjectDropdown.options[j].value) > i) {
+                    subjectDropdown.insertBefore(option, subjectDropdown.options[j]);
+                    inserted = true;
+                    break;
+                }
+            }
+            if (inserted) break;
+        }
+    }
+    if (!inserted) {
+        subjectDropdown.appendChild(option);
+    }
+}
+
+classFromDropdown.addEventListener('change', function() {
+    const classFrom = parseInt(this.value);
+
+    // Löschen Sie alle aktuellen Optionen im "bis Klasse" Dropdown
+    classToDropdown.innerHTML = '';
+
+    // Fügen Sie Optionen hinzu, die höher sind als die ausgewählte "von Klasse"
+    for (let i = classFrom + 1; i <= 13; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = i + ". Klasse"; // Hier wurde ". Klasse" hinzugefügt
+        classToDropdown.appendChild(option);
+    }
+});
+
+function areConditionsMetClass() {
+    return subjectDropdown.value && parseInt(classFromDropdown.value) > 0 && parseInt(classToDropdown.value) > 0;
+}
+
+
+addSelectedSubjectBtn.addEventListener('click', function() {
+    if (!areConditionsMetClass()) {
+        return; // Breche die Ausführung der Funktion ab, wenn die Bedingungen nicht erfüllt sind
+    }
+    const subject = subjectDropdown.value;
+    const classFrom = classFromDropdown.value;
+    const classTo = classToDropdown.value;
+    
+    const newSubjectElement = document.createElement('div');
+    newSubjectElement.style.backgroundColor = '#cfd9e6';
+    newSubjectElement.style.padding = '0.5rem 1rem 0.5rem 1rem';
+    newSubjectElement.style.marginBottom = '0.75rem';
+    newSubjectElement.style.color = 'black';
+    newSubjectElement.style.borderRadius = '0.625rem';
+    newSubjectElement.style.fontSize = '0.9rem';
+    newSubjectElement.style.minHeight = '3rem';
+    newSubjectElement.style.display = 'flex';
+    newSubjectElement.style.alignItems = 'center';
+
+
+
+
+    newSubjectElement.innerHTML = `${subject} (Klasse ${classFrom} bis ${classTo}) <button onclick="removeSubject(this, '${subject}', '${classFrom}', '${classTo}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
+    addedSubjects.appendChild(newSubjectElement);
+
+
+
+
+    
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+
+   
+    const combinedInput = document.createElement('input');
+    combinedInput.type = 'hidden';
+    combinedInput.name = `combined_${subject}`;
+    combinedInput.value = combinedValue;
+    applicationTutorForm.appendChild(combinedInput);
+
+    popup.style.display = 'none';
+    background.style.display = 'none';
+    
+    const selectedOption = subjectDropdown.querySelector(`option[value="${subject}"]`);
+    if (selectedOption) {
+        subjectDropdown.removeChild(selectedOption);
+    }
+  validateForm();
+});
+
+function removeSubject(btn, subject, classFrom, classTo) {
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+    const combinedInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+
+    if (combinedInputs.length > 0) {
+        combinedInputs[0].remove();
+    }
+
+    btn.parentElement.remove();
+    addSubjectToDropdown(subject);
+    validateForm();
+}
+
+
+
+const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
+const addExperienceBtn = document.getElementById('addexperienceBtn');
+const addSelectedexperiencetBtn = document.getElementById('addSelectedexperienceBtn');
+var experienceTutor = document.getElementById('experience_tutor');
+var durationTutor = document.getElementById('duration_tutor');
+var whenTutor = document.getElementById('when_tutor');
+const addedExperience = document.getElementById('addedExperience');
+const popupExperienceTutor = document.getElementById('popup_experience-tutor');
+
+
+
+popupExperienceTutor.style.display = 'none';
+background.style.display = 'none';
+
+addExperienceBtn.addEventListener('click', function() {
+    background.style.display = 'block';
+    popupExperienceTutor.style.display = 'block';
+    experienceTutor.selectedIndex = '0';
+    durationTutor.selectedIndex = '0';
+    whenTutor.selectedIndex = '0';
+
+
+});
+
+
+function addExperienceToDropdown(experience) {
+    const option = document.createElement('option');
+    option.value = experience;
+    option.textContent = experience;
+
+    let inserted = false;
+    for (let i = 0; i < experienceOrder.length; i++) {
+        if (experienceOrder[i] === experience) {
+            for (let j = 0; j < experienceTutor.options.length; j++) {
+                if (experienceOrder.indexOf(experienceTutor.options[j].value) > i) {
+                    experienceTutor.insertBefore(option, experienceTutor.options[j]);
+                    inserted = true;
+                    break;
+                }
+            }
+            if (inserted) break;
+        }
+    }
+    if (!inserted) {
+        experienceTutor.appendChild(option);
+    }
+}
+
+
+
+function areConditionsMetEx() {
+    return experienceTutor.value !== '0' && durationTutor.value !== '0' && whenTutor.value !== '0';
+}
+
+
+addSelectedexperiencetBtn.addEventListener('click', function() {
+    if (!areConditionsMetEx()) {
+        return;
+    }
+    const experience = experienceTutor.value;
+    const duration = durationTutor.value;
+    const when = whenTutor.value;
+
+    const newSubjectElement = document.createElement('div');
+    newSubjectElement.style.backgroundColor = '#cfd9e6';
+    newSubjectElement.style.padding = '0.5rem 1rem 0.5rem 1rem';
+    newSubjectElement.style.marginBottom = '0.75rem';
+    newSubjectElement.style.color = 'black';
+    newSubjectElement.style.borderRadius = '0.625rem';
+    newSubjectElement.style.fontSize = '0.9rem';
+    newSubjectElement.style.minHeight = '3rem';
+    newSubjectElement.style.display = 'flex';
+    newSubjectElement.style.alignItems = 'center';
+
+    newSubjectElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeExperience(this, '${experience}', '${duration}', '${when}')" style="background-color: white; color: black; border: none; border-radius: 0.625rem; padding: 0.3rem 0.3rem; margin-left: 0.6rem; font-size: 0.9rem;">Fach entfernen</button>`;
+    addedExperience.appendChild(newSubjectElement);
+
+    const combinedValue = `${experience}:${duration}:${when}`;
+
+    const combinedInput = document.createElement('input');
+    combinedInput.type = 'hidden';
+    combinedInput.name = `combined_${experience}`;
+    combinedInput.value = combinedValue;
+    applicationTutorForm.appendChild(combinedInput);
+
+    popupExperienceTutor.style.display = 'none';
+    background.style.display = 'none';
+
+    const selectedOption = experienceTutor.querySelector(`option[value="${experience}"]`);
+    if (selectedOption) {
+        experienceTutor.removeChild(selectedOption);
+    }
+    validateForm();
+});
+
+
+function removeExperience(btn, experience, duration, when) {
+    const combinedValue = `${experience}:${duration}:${when}`;   
+    const combinedInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+
+    if (combinedInputs.length > 0) {
+        combinedInputs[0].remove();
+    }
+
+    btn.parentElement.remove();
+    addExperienceToDropdown(experience);
+    validateForm();
+}
+
+
+ 
+}
+
 const validationElements = {};
 let currentTab = 0;
 const currentTabElement = formElements.formItems[currentTab];
