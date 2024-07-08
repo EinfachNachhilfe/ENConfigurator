@@ -306,16 +306,6 @@ function validateRadio() {
             groups[radio.name] = true;
             console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
         }
-
-        // Add event listener to remove error message on change
-        radio.addEventListener('change', () => {
-             if (groups[group]) {
-                errorMessageElement.style.display = 'none';
-                radio.style.borderColor = '';
-                radio.style.borderWidth = '';
-                invalidSymbol.style.display = 'none';
-            }
-        });
     });
 
     const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
@@ -335,8 +325,20 @@ function validateRadio() {
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
-        } 
+        }
     }
+
+    // Add event listener to each radio button to remove error message on change
+    radioButtons.forEach((radio) => {
+        radio.addEventListener('change', () => {
+            if (groups[radio.name]) {
+                errorMessageElement.style.display = 'none';
+                radio.style.borderColor = '';
+                radio.style.borderWidth = '';
+                invalidSymbol.style.display = 'none';
+            }
+        });
+    });
 
     return radioValid;
 }
