@@ -228,11 +228,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'none';
             errorMessageElement.style.display = 'none';
-        } else if (inputElement.checkValidity() && inputElement.type !== 'radio' && inputElement.type !== 'checkbox') {
-        inputElement.style.borderColor = COLORS.valid;
-        inputElement.style.borderWidth = STYLES.borderWidth;
-        validSymbol.style.display = 'inline';
-        invalidSymbol.style.display = 'none';
+        } else if (inputElement.checkValidity()) {
+          if (inputElement.type !== 'radio' && inputElement.type !== 'checkbox') {
+            inputElement.style.borderColor = COLORS.valid;
+            inputElement.style.borderWidth = STYLES.borderWidth;
+            validSymbol.style.display = 'inline';
+            invalidSymbol.style.display = 'none';
+        }
         errorMessageElement.style.display = 'none';
         } else {
             errorMessageElement.innerHTML = invalidErrorMsg;
