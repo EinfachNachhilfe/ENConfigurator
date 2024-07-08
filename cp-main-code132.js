@@ -229,6 +229,18 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                 }
                                 return radioValid;
                             } 
+
+                            else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+                                errorMessageElement.innerHTML = emptyErrorMsg;
+                                errorMessageElement.style.display = 'block';
+                                inputElement.style.borderColor = COLORS.invalid;
+                                inputElement.style.borderWidth = STYLES.borderWidth;
+                                validSymbol.style.display = 'none';
+                                invalidSymbol.style.display = 'inline';
+                                if (errorMessageWrapper) {
+                                    errorMessageWrapper.appendChild(errorMessageElement);
+                                }
+                            } 
                                
                             
                         }
@@ -236,17 +248,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                 }
             });
 
-            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
-                errorMessageElement.innerHTML = emptyErrorMsg;
-                errorMessageElement.style.display = 'block';
-                inputElement.style.borderColor = COLORS.invalid;
-                inputElement.style.borderWidth = STYLES.borderWidth;
-                validSymbol.style.display = 'none';
-                invalidSymbol.style.display = 'inline';
-                if (errorMessageWrapper) {
-                    errorMessageWrapper.appendChild(errorMessageElement);
-                }
-            } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+         if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
                 inputElement.style.borderColor = '';
                 inputElement.style.borderWidth = '';
                 validSymbol.style.display = 'none';
