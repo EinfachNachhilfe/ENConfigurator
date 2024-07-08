@@ -198,6 +198,7 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
+        
     const errorMessageWrapper = inputElement.type === 'radio' 
         ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
         : inputElement.type === 'checkbox'
@@ -303,8 +304,8 @@ function validateRadio() {
         }
     });
 
-    const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+    const validationImageWrapper = radioButtons.closest('.form_input-validation-image-wrapper');
+    const errorMessageWrapper = radioButtons.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(invalidSymbol);
