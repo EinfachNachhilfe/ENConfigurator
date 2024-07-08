@@ -188,7 +188,7 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
 
 
     const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
-  
+    const errorMessageElement = document.createElement('span')
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
