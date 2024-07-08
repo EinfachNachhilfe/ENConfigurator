@@ -303,18 +303,20 @@ const validateRadio = () => {
     const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
     const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (validationImageWrapper && !validationImageWrapper.contains(invalidSymbol)) {
+    if (errorMessageWrapper) {
+        errorMessageWrapper.appendChild(errorMessageElement);
+    }
+    if (validationImageWrapper) {
+        validationImageWrapper.appendChild(validSymbol);
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
     // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
         if (!groups[group]) {
-            if (!errorMessageWrapper.contains(errorMessageElement)) {
-                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                errorMessageElement.style.display = 'block';
-                errorMessageWrapper.appendChild(errorMessageElement);
-            }
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
         }
     }
@@ -324,16 +326,12 @@ const validateRadio = () => {
         radio.addEventListener('change', () => {
             if (radio.checked) {
                 errorMessageElement.style.display = 'none';
-                if (errorMessageWrapper.contains(errorMessageElement)) {
-                    errorMessageWrapper.removeChild(errorMessageElement);
-                }
             }
         });
     });
 
     return radioValid;
 };
-
 
 
 const specificElements = [
