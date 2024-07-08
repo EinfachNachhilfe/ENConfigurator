@@ -331,10 +331,12 @@ function validateRadio() {
     // Add event listener to each radio button to remove error message on change
     radioButtons.forEach((radio) => {
         radio.addEventListener('change', () => {
-            if (groups[radio.name]) {
+            if (radio.checked) {
                 errorMessageElement.style.display = 'none';
-                radio.style.borderColor = '';
-                radio.style.borderWidth = '';
+                radioButtons.forEach(r => {
+                    r.style.borderColor = '';
+                    r.style.borderWidth = '';
+                });
                 invalidSymbol.style.display = 'none';
             }
         });
