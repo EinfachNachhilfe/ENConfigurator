@@ -180,7 +180,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
-    
+
     validSymbol.textContent = '✓';
     invalidSymbol.textContent = '✗';
 
@@ -210,6 +210,10 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     const handleValidation = () => {
+        if (inputElement.type === 'radio') {
+            return validateRadioGroup(inputElement, emptyErrorMsg, invalidSymbol, errorMessageElement, validationImageWrapper, errorMessageWrapper);
+        }
+
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
@@ -243,30 +247,18 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-
-    
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-                   
-                    
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        errorMessageWrapper.appendChild(errorMessageElement);
+    if (inputElement.type === 'checkbox' || inputElement.type === 'radio') {
+        const buttons = [formElements.nextBtn, formElements.submitBtn];
+        buttons.forEach(button => {
+            if (button) {
+                button.addEventListener('click', () => {
+                    if (button.classList.contains('disabled')) {
+                        handleValidation();
                     }
-                }
-            });
-        }
-    });
+                });
+            }
+        });
+    }
 
     validationElements[inputElement.className] = {
         validSymbol,
@@ -275,50 +267,30 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-
- function validateRadio() {
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
+const validateRadioGroup = (inputElement, emptyErrorMsg, invalidSymbol, errorMessageElement, validationImageWrapper, errorMessageWrapper) => {
+    const radioButtons = document.querySelectorAll(`input[type="radio"][name="${inputElement.name}"]`);
     const groups = {};
     let radioValid = true;
-    const errorMessageElement = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
-    
-    invalidSymbol.textContent = '✗';
 
-    // Set initial styles
-    const setInitialStyles = () => {
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
-    };
-    setInitialStyles();
-
-    // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
         if (!isElementVisibleInTab(radio, currentTabElement)) {
-            console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
             return;
         }
-
         if (!groups[radio.name]) {
             groups[radio.name] = false;
         }
         if (radio.checked) {
             groups[radio.name] = true;
-            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
         }
     });
-
-    const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
-    // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
         if (!groups[group]) {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             radioButtons[0].style.borderColor = COLORS.invalid;
             radioButtons[0].style.borderWidth = STYLES.borderWidth;
@@ -328,7 +300,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     }
     return radioValid;
-}
+};
+
 
 
 const specificElements = [
@@ -414,7 +387,7 @@ const fixStepIndicator = (n) => {
 
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => {
-    validateRadio(); // Call validateRadio function
+    validateRadioGroup (); // Call validateRadio function
     nextPrev(1); // Proceed to the next tab
 });
 
