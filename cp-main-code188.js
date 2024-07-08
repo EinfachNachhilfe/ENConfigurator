@@ -238,15 +238,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         errorMessageElement.style.display = 'none';
         } else {
             if(inputElement.type !== 'checkbox'){
-                 errorMessageElement.innerHTML = invalidErrorMsg;
-            errorMessageElement.style.display = 'block';
+            
             inputElement.style.borderColor = COLORS.invalid;
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
             }
-           
+           errorMessageElement.innerHTML = invalidErrorMsg;
+            errorMessageElement.style.display = 'block';
         }
     };
 
