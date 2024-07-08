@@ -253,7 +253,12 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = inputElement.closest('.form_input-error-message-wrapper');
+    let errorMessageWrapper = null;
+    if (inputElement.type === 'radio' || inputElement.type === 'checkbox') {
+        errorMessageWrapper = inputElement.closest('.form_input-error-message-wrapper');
+    } else {
+        errorMessageWrapper = inputElement.parentNode.querySelector('.form_input-error-message-wrapper');
+    }
 
     if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
@@ -362,6 +367,7 @@ const validateRadio = () => {
 
     return radioValid;
 };
+
 
 
 const specificElements = [
