@@ -178,15 +178,21 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
-   const handleValidation = () => {
+    const handleValidation = () => {
+        console.log('handleValidation called for:', inputElement);
+
         if (isElementVisibleInTab(inputElement, currentTabElement)) {
             const buttons = [formElements.nextBtn, formElements.submitBtn];
             buttons.forEach(button => {
                 if (button) {
                     button.addEventListener('click', () => {
+                        console.log(`${button.id} clicked, disabled: ${button.classList.contains('disabled')}`);
+
                         if (button.classList.contains('disabled')) {
+                            console.log('Button is disabled, performing validation checks');
 
                             if ((inputElement.type === 'checkbox') && !inputElement.checkValidity()) {
+                                console.log('Checkbox invalid');
                                 errorMessageElement.innerHTML = emptyErrorMsg;
                                 errorMessageElement.style.display = 'block';
                                 inputElement.style.borderColor = COLORS.invalid;
@@ -197,6 +203,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                     errorMessageWrapper.appendChild(errorMessageElement);
                                 }
                             } else if ((inputElement.type === 'radio') && !inputElement.checkValidity()) {
+                                console.log('Radio button invalid');
                                 // Gruppiere Radio-Buttons nach ihrem Namen
                                 const radioButtons = document.querySelectorAll('input[type="radio"]');
                                 const groups = {};
@@ -228,6 +235,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                     }
                                 }
                             } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+                                console.log('Required input is empty');
                                 errorMessageElement.innerHTML = emptyErrorMsg;
                                 errorMessageElement.style.display = 'block';
                                 inputElement.style.borderColor = COLORS.invalid;
@@ -237,7 +245,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                 if (errorMessageWrapper) {
                                     errorMessageWrapper.appendChild(errorMessageElement);
                                 }
-                            } 
+                            }
                         }
                     });
                 }
@@ -270,6 +278,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 
     inputElement.addEventListener("change", handleValidation);
+    console.log('Event listener added for:', inputElement);
+
     validationElements[inputElement.className] = {
         validSymbol,
         invalidSymbol,
