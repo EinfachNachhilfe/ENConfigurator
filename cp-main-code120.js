@@ -210,7 +210,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     const handleValidation = () => {
-        if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        if(isElementVisibleInTab(inputElement, currentTabElement)){
+        if((inputElement.type === 'checkbox') && !inputElement.checkValidity()){
+
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = COLORS.invalid;
@@ -218,34 +220,55 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
-        } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
-            inputElement.style.borderColor = '';
-            inputElement.style.borderWidth = '';
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else if (inputElement.checkValidity()) {
-            inputElement.style.borderColor = COLORS.valid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'inline';
-            invalidSymbol.style.display = 'none';
-            errorMessageElement.style.display = 'none';
-        } else {
-            errorMessageElement.innerHTML = invalidErrorMsg;
+
+        }   
+        else if((inputElement.type === 'radio' && !inputElement.checkValidity()){
+
+            errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             inputElement.style.borderColor = COLORS.invalid;
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
+
         }
+        else {
+            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+                errorMessageElement.innerHTML = emptyErrorMsg;
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = COLORS.invalid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'inline';
+                errorMessageWrapper.appendChild(errorMessageElement);
+            } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+                inputElement.style.borderColor = '';
+                inputElement.style.borderWidth = '';
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'none';
+                errorMessageElement.style.display = 'none';
+            } else if (inputElement.checkValidity()) {
+                inputElement.style.borderColor = COLORS.valid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'inline';
+                invalidSymbol.style.display = 'none';
+                errorMessageElement.style.display = 'none';
+            } else {
+                errorMessageElement.innerHTML = invalidErrorMsg;
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = COLORS.invalid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'inline';
+                errorMessageWrapper.appendChild(errorMessageElement);
+            }
+        }
+
+    }
     };
 
     inputElement.addEventListener("change", handleValidation);
-
-
-    
-
 
     validationElements[inputElement.className] = {
         validSymbol,
