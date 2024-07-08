@@ -178,13 +178,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
-    const handleValidation = () => {
+   const handleValidation = () => {
         if (isElementVisibleInTab(inputElement, currentTabElement)) {
             const buttons = [formElements.nextBtn, formElements.submitBtn];
             buttons.forEach(button => {
                 if (button) {
                     button.addEventListener('click', () => {
-
+                        if (button.classList.contains('disabled')) {
 
                             if ((inputElement.type === 'checkbox') && !inputElement.checkValidity()) {
                                 errorMessageElement.innerHTML = emptyErrorMsg;
@@ -198,6 +198,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                 }
                             } else if ((inputElement.type === 'radio') && !inputElement.checkValidity()) {
                                 // Gruppiere Radio-Buttons nach ihrem Namen
+                                const radioButtons = document.querySelectorAll('input[type="radio"]');
+                                const groups = {};
                                 radioButtons.forEach((radio) => {
                                     if (!isElementVisibleInTab(radio, currentTabElement)) {
                                         return;
@@ -216,7 +218,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                 for (const group in groups) {
                                     if (!groups[group]) {
                                         errorMessageElement.innerHTML = emptyErrorMsg;
-                                        errorMessageElement.innerHTML = emptyErrorMsg;
                                         errorMessageElement.style.display = 'block';
                                         radioButtons[0].style.borderColor = COLORS.invalid;
                                         radioButtons[0].style.borderWidth = STYLES.borderWidth;
@@ -224,13 +225,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                         if (errorMessageWrapper) {
                                             errorMessageWrapper.appendChild(errorMessageElement);
                                         }
-                                        radioValid = false;
                                     }
                                 }
-                                return radioValid;
-                            } 
-
-                            else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+                            } else if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
                                 errorMessageElement.innerHTML = emptyErrorMsg;
                                 errorMessageElement.style.display = 'block';
                                 inputElement.style.borderColor = COLORS.invalid;
@@ -241,14 +238,12 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                     errorMessageWrapper.appendChild(errorMessageElement);
                                 }
                             } 
-                               
-                            
-                        
+                        }
                     });
                 }
             });
 
-         if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+            if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
                 inputElement.style.borderColor = '';
                 inputElement.style.borderWidth = '';
                 validSymbol.style.display = 'none';
@@ -271,7 +266,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     errorMessageWrapper.appendChild(errorMessageElement);
                 }
             }
-
         }
     };
 
