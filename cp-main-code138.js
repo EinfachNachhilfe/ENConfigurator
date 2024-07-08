@@ -316,15 +316,20 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     // Überprüfe, ob alle Gruppen eine Auswahl haben
-    for (const group in groups) {
+   for (const group in groups) {
         if (!groups[group]) {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             radioButtons[0].style.borderColor = COLORS.invalid;
             radioButtons[0].style.borderWidth = STYLES.borderWidth;
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
+        } else {
+            errorMessageElement.style.display = 'none';
+            radioButtons[0].style.borderColor = '';
+            radioButtons[0].style.borderWidth = '';
+            invalidSymbol.style.display = 'none';
         }
     }
     return radioValid;
