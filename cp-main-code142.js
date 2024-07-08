@@ -276,7 +276,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 };
 
 
- function validateRadio() {
+function validateRadio() {
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const groups = {};
     let radioValid = true;
@@ -306,6 +306,16 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             groups[radio.name] = true;
             console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
         }
+
+        // Add event listener to remove error message on change
+        radio.addEventListener('change', () => {
+            if (groups[radio.name]) {
+                errorMessageElement.style.display = 'none';
+                radio.style.borderColor = '';
+                radio.style.borderWidth = '';
+                invalidSymbol.style.display = 'none';
+            }
+        });
     });
 
     const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
@@ -326,14 +336,14 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
         } else {
-           errorMessageElement.innerHTML = '';
+            errorMessageElement.innerHTML = '';
             radioButtons[0].style.borderColor = '';
             radioButtons[0].style.borderWidth = '';
             invalidSymbol.style.display = 'none';
         }
     }
+
     return radioValid;
-       inputElement.addEventListener("change", validateRadio);
 }
 
 
