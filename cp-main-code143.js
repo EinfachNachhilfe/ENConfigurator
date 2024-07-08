@@ -309,7 +309,7 @@ function validateRadio() {
 
         // Add event listener to remove error message on change
         radio.addEventListener('change', () => {
-            if (groups[radio.name]) {
+             if (groups[group]) {
                 errorMessageElement.style.display = 'none';
                 radio.style.borderColor = '';
                 radio.style.borderWidth = '';
@@ -335,12 +335,7 @@ function validateRadio() {
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
-        } else {
-            errorMessageElement.innerHTML = '';
-            radioButtons[0].style.borderColor = '';
-            radioButtons[0].style.borderWidth = '';
-            invalidSymbol.style.display = 'none';
-        }
+        } 
     }
 
     return radioValid;
