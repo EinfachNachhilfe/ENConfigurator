@@ -303,16 +303,18 @@ const validateRadio = () => {
     const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
     const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (validationImageWrapper) {
+    if (validationImageWrapper && !validationImageWrapper.contains(invalidSymbol)) {
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
     // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
         if (!groups[group]) {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-            errorMessageElement.style.display = 'block';
-            errorMessageWrapper.appendChild(errorMessageElement);
+            if (!errorMessageWrapper.contains(errorMessageElement)) {
+                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                errorMessageElement.style.display = 'block';
+                errorMessageWrapper.appendChild(errorMessageElement);
+            }
             radioValid = false;
         }
     }
@@ -322,12 +324,16 @@ const validateRadio = () => {
         radio.addEventListener('change', () => {
             if (radio.checked) {
                 errorMessageElement.style.display = 'none';
+                if (errorMessageWrapper.contains(errorMessageElement)) {
+                    errorMessageWrapper.removeChild(errorMessageElement);
+                }
             }
         });
     });
 
     return radioValid;
 };
+
 
 
 const specificElements = [
