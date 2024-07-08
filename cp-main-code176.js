@@ -165,6 +165,25 @@ document.querySelectorAll('.form_input.email').forEach(el => {
 
 
 
+const createValidationElements = () => {
+    const errorMessageElement = document.createElement('span');
+    const validSymbol = document.createElement('span');
+    const invalidSymbol = document.createElement('span');
+
+    validSymbol.textContent = '✓';
+    invalidSymbol.textContent = '✗';
+
+    const setInitialStyles = () => {
+        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
+    };
+
+    setInitialStyles();
+
+    return { errorMessageElement, validSymbol, invalidSymbol };
+};
+
 // Apply Validation
 const COLORS = {
     valid: '#78b8bf',
@@ -176,34 +195,15 @@ const STYLES = {
     borderWidth: '2px'
 };
 
-
-
-
-const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
-    validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-    invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-    errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
-
-    validSymbol.textContent = '✓';
-    invalidSymbol.textContent = '✗';
-};
-
-
-
-    const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
-    const errorMessageElement = document.createElement('span')
-    const validSymbol = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
-    
-   
-  setInitialStyles(validSymbol, invalidSymbol, errorMessageElement);
+const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
+    const { errorMessageElement, validSymbol, invalidSymbol } = createValidationElements();
 
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
     const errorMessageWrapper = inputElement.type === 'checkbox'
-            ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
-            : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+        ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
+        : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
     if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
@@ -247,8 +247,6 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
 
     inputElement.addEventListener("change", handleValidation);
 
-
-    
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
@@ -256,7 +254,6 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-                   
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         errorMessageElement.innerHTML = emptyErrorMsg;
@@ -279,16 +276,16 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
     };
 };
 
-
-function validateRadio() {
+const validateRadio = () => {
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const groups = {};
     let radioValid = true;
-    
-  setInitialStyles(invalidSymbol, invalidSymbol, errorMessageElement);
+    const { errorMessageElement, invalidSymbol } = createValidationElements();
+
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
         if (!isElementVisibleInTab(radio, currentTabElement)) {
+            console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
             return;
         }
 
@@ -297,6 +294,7 @@ function validateRadio() {
         }
         if (radio.checked) {
             groups[radio.name] = true;
+            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
         }
     });
 
@@ -335,7 +333,7 @@ function validateRadio() {
     });
 
     return radioValid;
-}
+};
 
 
 const specificElements = [
