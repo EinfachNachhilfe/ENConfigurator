@@ -222,7 +222,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             errorMessageWrapper.appendChild(errorMessageElement);
 
         }   
-        else if((inputElement.type === 'radio' && !inputElement.checkValidity()){
+        else if((inputElement.type === 'radio') && !inputElement.checkValidity()){
             // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
         if (!isElementVisibleInTab(radio, currentTabElement)) {
