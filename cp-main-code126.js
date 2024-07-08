@@ -34,7 +34,7 @@ const createInputField = (container, labelId, labelText, inputClass, inputPlaceh
 
     const inputField = document.createElement("input");
     inputField.type = "text";
-    inputField.className = `form_input ${inputClass}`;
+    inputField.className = form_input ${inputClass};
     inputField.placeholder = inputPlaceholder;
     inputField.required = true;
     container.appendChild(inputField);
@@ -44,7 +44,7 @@ const createInputField = (container, labelId, labelText, inputClass, inputPlaceh
 
 const removeInputField = (labelId, inputClass) => {
     const label = document.getElementById(labelId);
-    const input = document.querySelector(`.${inputClass}`);
+    const input = document.querySelector(.${inputClass});
     label?.remove();
     input?.remove();
 
@@ -87,7 +87,7 @@ document.querySelectorAll('.form_input.bday').forEach(el => {
 
 // Apply IBAN Validation and Pattern
 const applyIbanValidation = (inputElement, countryPrefix = 'DE') => {
-    const ibanPattern = new RegExp(`^${countryPrefix}[0-9]{20}$`);
+    const ibanPattern = new RegExp(^${countryPrefix}[0-9]{20}$);
 
     inputElement.addEventListener('focus', () => {
         if (inputElement.value.trim() === '') inputElement.value = countryPrefix;
@@ -180,15 +180,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
-
+    
     validSymbol.textContent = '✓';
     invalidSymbol.textContent = '✗';
 
     // Set initial styles
     const setInitialStyles = () => {
-        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
+        validSymbol.style.cssText = color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
+        invalidSymbol.style.cssText = color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;;
+        errorMessageElement.style.cssText = color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;;
     };
     setInitialStyles();
 
@@ -210,88 +210,85 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     const handleValidation = () => {
-        if(isElementVisibleInTab(inputElement, currentTabElement)) {
-            if ((inputElement.type === 'checkbox') && !inputElement.checkValidity()) {
+        if(isElementVisibleInTab(inputElement, currentTabElement)){
+        if((inputElement.type === 'checkbox') && !inputElement.checkValidity()){
+
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            inputElement.style.borderColor = COLORS.invalid;
+            inputElement.style.borderWidth = STYLES.borderWidth;
+            validSymbol.style.display = 'none';
+            invalidSymbol.style.display = 'inline';
+            errorMessageWrapper.appendChild(errorMessageElement);
+
+        }   
+        else if((inputElement.type === 'radio') && !inputElement.checkValidity()){
+            // Gruppiere Radio-Buttons nach ihrem Namen
+    radioButtons.forEach((radio) => {
+        if (!isElementVisibleInTab(radio, currentTabElement)) {
+            return;
+        }
+
+        if (!groups[radio.name]) {
+            groups[radio.name] = false;
+        }
+        if (radio.checked) {
+            groups[radio.name] = true;
+        }
+    });
+
+    if (validationImageWrapper) {
+        validationImageWrapper.appendChild(invalidSymbol);
+    }
+
+    // Überprüfe, ob alle Gruppen eine Auswahl haben
+    for (const group in groups) {
+        if (!groups[group]) {
+            errorMessageElement.innerHTML = emptyErrorMsg;
+            errorMessageElement.style.display = 'block';
+            radioButtons[0].style.borderColor = COLORS.invalid;
+            radioButtons[0].style.borderWidth = STYLES.borderWidth;
+            invalidSymbol.style.display = 'inline';
+         
+            radioValid = false;
+        }
+    }
+    return radioValid;
+
+        }
+        else {
+            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
                 errorMessageElement.innerHTML = emptyErrorMsg;
                 errorMessageElement.style.display = 'block';
                 inputElement.style.borderColor = COLORS.invalid;
                 inputElement.style.borderWidth = STYLES.borderWidth;
                 validSymbol.style.display = 'none';
                 invalidSymbol.style.display = 'inline';
-                if (errorMessageWrapper) {
-                    errorMessageWrapper.appendChild(errorMessageElement);
-                }
-
-            } else if ((inputElement.type === 'radio') && !inputElement.checkValidity()) {
-                const radioButtons = document.querySelectorAll(`input[name="${inputElement.name}"]`);
-                const groups = {};
-                radioButtons.forEach((radio) => {
-                    if (!isElementVisibleInTab(radio, currentTabElement)) {
-                        return;
-                    }
-
-                    if (!groups[radio.name]) {
-                        groups[radio.name] = false;
-                    }
-                    if (radio.checked) {
-                        groups[radio.name] = true;
-                    }
-                });
-
-                if (validationImageWrapper) {
-                    validationImageWrapper.appendChild(invalidSymbol);
-                }
-
-                // Überprüfe, ob alle Gruppen eine Auswahl haben
-                for (const group in groups) {
-                    if (!groups[group]) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        radioButtons[0].style.borderColor = COLORS.invalid;
-                        radioButtons[0].style.borderWidth = STYLES.borderWidth;
-                        invalidSymbol.style.display = 'inline';
-                        if (errorMessageWrapper) {
-                            errorMessageWrapper.appendChild(errorMessageElement);
-                        }
-                    }
-                }
-
+                errorMessageWrapper.appendChild(errorMessageElement);
+            } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+                inputElement.style.borderColor = '';
+                inputElement.style.borderWidth = '';
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'none';
+                errorMessageElement.style.display = 'none';
+            } else if (inputElement.checkValidity()) {
+                inputElement.style.borderColor = COLORS.valid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'inline';
+                invalidSymbol.style.display = 'none';
+                errorMessageElement.style.display = 'none';
             } else {
-                if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
-                    errorMessageElement.innerHTML = emptyErrorMsg;
-                    errorMessageElement.style.display = 'block';
-                    inputElement.style.borderColor = COLORS.invalid;
-                    inputElement.style.borderWidth = STYLES.borderWidth;
-                    validSymbol.style.display = 'none';
-                    invalidSymbol.style.display = 'inline';
-                    if (errorMessageWrapper) {
-                        errorMessageWrapper.appendChild(errorMessageElement);
-                    }
-                } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
-                    inputElement.style.borderColor = '';
-                    inputElement.style.borderWidth = '';
-                    validSymbol.style.display = 'none';
-                    invalidSymbol.style.display = 'none';
-                    errorMessageElement.style.display = 'none';
-                } else if (inputElement.checkValidity()) {
-                    inputElement.style.borderColor = COLORS.valid;
-                    inputElement.style.borderWidth = STYLES.borderWidth;
-                    validSymbol.style.display = 'inline';
-                    invalidSymbol.style.display = 'none';
-                    errorMessageElement.style.display = 'none';
-                } else {
-                    errorMessageElement.innerHTML = invalidErrorMsg;
-                    errorMessageElement.style.display = 'block';
-                    inputElement.style.borderColor = COLORS.invalid;
-                    inputElement.style.borderWidth = STYLES.borderWidth;
-                    validSymbol.style.display = 'none';
-                    invalidSymbol.style.display = 'inline';
-                    if (errorMessageWrapper) {
-                        errorMessageWrapper.appendChild(errorMessageElement);
-                    }
-                }
+                errorMessageElement.innerHTML = invalidErrorMsg;
+                errorMessageElement.style.display = 'block';
+                inputElement.style.borderColor = COLORS.invalid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'inline';
+                errorMessageWrapper.appendChild(errorMessageElement);
             }
         }
+
+    }
     };
 
     inputElement.addEventListener("change", handleValidation);
@@ -305,14 +302,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
 
 
-
 const specificElements = [
     { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
 ];
 
 const allInputsArray = Array.from(formElements.allInputs);
 allInputsArray.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
+    if (!specificElements.some(e => e.selector === .${inputElement.className})) {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
 });
