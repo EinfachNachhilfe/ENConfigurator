@@ -184,7 +184,6 @@ const createValidationElements = () => {
     return { errorMessageElement, validSymbol, invalidSymbol };
 };
 
-// Apply Validation
 const COLORS = {
     valid: '#78b8bf',
     invalid: '#d9544f',
@@ -205,10 +204,10 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
         : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (errorMessageWrapper) {
+    if (errorMessageWrapper && !errorMessageWrapper.contains(errorMessageElement)) {
         errorMessageWrapper.appendChild(errorMessageElement);
     }
-    if (validationImageWrapper) {
+    if (validationImageWrapper && !validationImageWrapper.contains(validSymbol) && !validationImageWrapper.contains(invalidSymbol)) {
         validationImageWrapper.appendChild(validSymbol);
         validationImageWrapper.appendChild(invalidSymbol);
     }
@@ -221,7 +220,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
             inputElement.style.borderWidth = '';
@@ -243,7 +241,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
         }
     };
 
@@ -263,10 +260,12 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                             inputElement.style.borderWidth = STYLES.borderWidth;
                             validSymbol.style.display = 'none';
                             invalidSymbol.style.display = 'inline';
+                        }
+                        if (!errorMessageWrapper.contains(errorMessageElement)) {
+                            errorMessageElement.innerHTML = emptyErrorMsg;
+                            errorMessageElement.style.display = 'block';
                             errorMessageWrapper.appendChild(errorMessageElement);
                         }
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
                     }
                 }
             });
