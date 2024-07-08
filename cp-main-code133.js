@@ -179,12 +179,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     const handleValidation = () => {
-        if (isElementVisibleInTab(inputElement, currentTabElement)) {
+       
             const buttons = [formElements.nextBtn, formElements.submitBtn];
             buttons.forEach(button => {
                 if (button) {
                     button.addEventListener('click', () => {
                         if (button.classList.contains('disabled')) {
+                            if (isElementVisibleInTab(inputElement, currentTabElement)) {
 
                             if ((inputElement.type === 'checkbox') && !inputElement.checkValidity()) {
                                 errorMessageElement.innerHTML = emptyErrorMsg;
@@ -241,7 +242,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                     errorMessageWrapper.appendChild(errorMessageElement);
                                 }
                             } 
-                               
+                        }    
                             
                         }
                     });
@@ -272,7 +273,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                 }
             }
 
-        }
+        
     };
 
     inputElement.addEventListener("change", handleValidation);
