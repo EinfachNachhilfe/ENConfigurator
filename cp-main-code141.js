@@ -333,7 +333,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     }
     return radioValid;
-       inputElement.addEventListener("input", validateRadio);
+       inputElement.addEventListener("change", validateRadio);
 }
 
 
