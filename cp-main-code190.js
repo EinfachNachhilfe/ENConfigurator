@@ -147,7 +147,7 @@ addSelectedSubjectBtn.addEventListener('click', function() {
     combinedInput.type = 'hidden';
     combinedInput.name = `combined_${subject}`;
     combinedInput.value = combinedValue;
-    applicationTutorForm.appendChild(combinedInput);
+    form.applicationTutorForm.appendChild(combinedInput);
 
     popup.style.display = 'none';
     background.style.display = 'none';
@@ -161,7 +161,7 @@ addSelectedSubjectBtn.addEventListener('click', function() {
 
 function removeSubject(btn, subject, classFrom, classTo) {
     const combinedValue = `${subject}:${classFrom}-${classTo}`;
-    const combinedInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    const combinedInputs = Array.from(from.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
 
     if (combinedInputs.length > 0) {
         combinedInputs[0].remove();
@@ -257,7 +257,7 @@ addSelectedexperiencetBtn.addEventListener('click', function() {
     combinedInput.type = 'hidden';
     combinedInput.name = `combined_${experience}`;
     combinedInput.value = combinedValue;
-    applicationTutorForm.appendChild(combinedInput);
+    from.applicationTutorForm.appendChild(combinedInput);
 
     popupExperienceTutor.style.display = 'none';
     background.style.display = 'none';
@@ -272,7 +272,7 @@ addSelectedexperiencetBtn.addEventListener('click', function() {
 
 function removeExperience(btn, experience, duration, when) {
     const combinedValue = `${experience}:${duration}:${when}`;   
-    const combinedInputs = Array.from(applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
 
     if (combinedInputs.length > 0) {
         combinedInputs[0].remove();
