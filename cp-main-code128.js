@@ -146,6 +146,7 @@ const STYLES = {
     borderWidth: '2px'
 };
 const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
+    console.log("Input Element: ", inputElement); // Log the input element
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
@@ -161,6 +162,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     setInitialStyles();
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
     const validationImageWrapper = inputElement.closest('.form_input-validation-image-wrapper');
+      console.log("Validation Image Wrapper: ", validationImageWrapper); // Log the closest element result
     const errorMessageWrapper = inputElement.type === 'radio' 
         ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper') 
         : inputElement.type === 'checkbox'
