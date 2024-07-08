@@ -180,7 +180,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
-    
+
     validSymbol.textContent = '✓';
     invalidSymbol.textContent = '✗';
 
@@ -210,79 +210,88 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     const handleValidation = () => {
-        if(isElementVisibleInTab(inputElement, currentTabElement)){
-        if((inputElement.type === 'checkbox') && !inputElement.checkValidity()){
-
-            errorMessageElement.innerHTML = emptyErrorMsg;
-            errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = COLORS.invalid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
-
-        }   
-        else if((inputElement.type === 'radio') && !inputElement.checkValidity()){
-            // Gruppiere Radio-Buttons nach ihrem Namen
-    radioButtons.forEach((radio) => {
-
-        if (!groups[radio.name]) {
-            groups[radio.name] = false;
-        }
-        if (radio.checked) {
-            groups[radio.name] = true;
-        }
-    });
-
-
-    // Überprüfe, ob alle Gruppen eine Auswahl haben
-    for (const group in groups) {
-        if (!groups[group]) {
-            errorMessageElement.innerHTML = emptyErrorMsg;
-            errorMessageElement.style.display = 'block';
-            radioButtons[0].style.borderColor = COLORS.invalid;
-            radioButtons[0].style.borderWidth = STYLES.borderWidth;
-            invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
-            radioValid = false;
-        }
-    }
-    return radioValid;
-
-        }
-        else {
-            if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+        if(isElementVisibleInTab(inputElement, currentTabElement)) {
+            if ((inputElement.type === 'checkbox') && !inputElement.checkValidity()) {
                 errorMessageElement.innerHTML = emptyErrorMsg;
                 errorMessageElement.style.display = 'block';
                 inputElement.style.borderColor = COLORS.invalid;
                 inputElement.style.borderWidth = STYLES.borderWidth;
                 validSymbol.style.display = 'none';
                 invalidSymbol.style.display = 'inline';
-                errorMessageWrapper.appendChild(errorMessageElement);
-            } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
-                inputElement.style.borderColor = '';
-                inputElement.style.borderWidth = '';
-                validSymbol.style.display = 'none';
-                invalidSymbol.style.display = 'none';
-                errorMessageElement.style.display = 'none';
-            } else if (inputElement.checkValidity()) {
-                inputElement.style.borderColor = COLORS.valid;
-                inputElement.style.borderWidth = STYLES.borderWidth;
-                validSymbol.style.display = 'inline';
-                invalidSymbol.style.display = 'none';
-                errorMessageElement.style.display = 'none';
+                if (errorMessageWrapper) {
+                    errorMessageWrapper.appendChild(errorMessageElement);
+                }
+
+            } else if ((inputElement.type === 'radio') && !inputElement.checkValidity()) {
+                const radioButtons = document.querySelectorAll(`input[name="${inputElement.name}"]`);
+                const groups = {};
+                radioButtons.forEach((radio) => {
+                    if (!isElementVisibleInTab(radio, currentTabElement)) {
+                        return;
+                    }
+
+                    if (!groups[radio.name]) {
+                        groups[radio.name] = false;
+                    }
+                    if (radio.checked) {
+                        groups[radio.name] = true;
+                    }
+                });
+
+                if (validationImageWrapper) {
+                    validationImageWrapper.appendChild(invalidSymbol);
+                }
+
+                // Überprüfe, ob alle Gruppen eine Auswahl haben
+                for (const group in groups) {
+                    if (!groups[group]) {
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
+                        radioButtons[0].style.borderColor = COLORS.invalid;
+                        radioButtons[0].style.borderWidth = STYLES.borderWidth;
+                        invalidSymbol.style.display = 'inline';
+                        if (errorMessageWrapper) {
+                            errorMessageWrapper.appendChild(errorMessageElement);
+                        }
+                    }
+                }
+
             } else {
-                errorMessageElement.innerHTML = invalidErrorMsg;
-                errorMessageElement.style.display = 'block';
-                inputElement.style.borderColor = COLORS.invalid;
-                inputElement.style.borderWidth = STYLES.borderWidth;
-                validSymbol.style.display = 'none';
-                invalidSymbol.style.display = 'inline';
-                errorMessageWrapper.appendChild(errorMessageElement);
+                if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
+                    errorMessageElement.innerHTML = emptyErrorMsg;
+                    errorMessageElement.style.display = 'block';
+                    inputElement.style.borderColor = COLORS.invalid;
+                    inputElement.style.borderWidth = STYLES.borderWidth;
+                    validSymbol.style.display = 'none';
+                    invalidSymbol.style.display = 'inline';
+                    if (errorMessageWrapper) {
+                        errorMessageWrapper.appendChild(errorMessageElement);
+                    }
+                } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
+                    inputElement.style.borderColor = '';
+                    inputElement.style.borderWidth = '';
+                    validSymbol.style.display = 'none';
+                    invalidSymbol.style.display = 'none';
+                    errorMessageElement.style.display = 'none';
+                } else if (inputElement.checkValidity()) {
+                    inputElement.style.borderColor = COLORS.valid;
+                    inputElement.style.borderWidth = STYLES.borderWidth;
+                    validSymbol.style.display = 'inline';
+                    invalidSymbol.style.display = 'none';
+                    errorMessageElement.style.display = 'none';
+                } else {
+                    errorMessageElement.innerHTML = invalidErrorMsg;
+                    errorMessageElement.style.display = 'block';
+                    inputElement.style.borderColor = COLORS.invalid;
+                    inputElement.style.borderWidth = STYLES.borderWidth;
+                    validSymbol.style.display = 'none';
+                    invalidSymbol.style.display = 'inline';
+                    if (errorMessageWrapper) {
+                        errorMessageWrapper.appendChild(errorMessageElement);
+                    }
+                }
             }
         }
-
-    }
     };
 
     inputElement.addEventListener("change", handleValidation);
@@ -293,6 +302,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         errorMessageElement
     };
 };
+
 
 
 
