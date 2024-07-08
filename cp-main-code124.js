@@ -225,9 +225,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         else if((inputElement.type === 'radio') && !inputElement.checkValidity()){
             // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
-        if (!isElementVisibleInTab(radio, currentTabElement)) {
-            return;
-        }
 
         if (!groups[radio.name]) {
             groups[radio.name] = false;
@@ -237,9 +234,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     });
 
-    if (validationImageWrapper) {
-        validationImageWrapper.appendChild(invalidSymbol);
-    }
 
     // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
