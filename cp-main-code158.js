@@ -286,7 +286,7 @@ function validateRadio() {
     const errorMessageElement = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
-  setInitialStyles(validSymbol, invalidSymbol, errorMessageElement);
+  setInitialStyles(invalidSymbol, invalidSymbol, errorMessageElement);
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
         if (!isElementVisibleInTab(radio, currentTabElement)) {
