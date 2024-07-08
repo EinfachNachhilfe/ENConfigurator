@@ -223,14 +223,37 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
         }   
         else if((inputElement.type === 'radio' && !inputElement.checkValidity()){
+            // Gruppiere Radio-Buttons nach ihrem Namen
+    radioButtons.forEach((radio) => {
+        if (!isElementVisibleInTab(radio, currentTabElement)) {
+            return;
+        }
 
-            errorMessageElement.innerHTML = emptyErrorMsg;
+        if (!groups[radio.name]) {
+            groups[radio.name] = false;
+        }
+        if (radio.checked) {
+            groups[radio.name] = true;
+        }
+    });
+
+    if (validationImageWrapper) {
+        validationImageWrapper.appendChild(invalidSymbol);
+    }
+
+    // Überprüfe, ob alle Gruppen eine Auswahl haben
+    for (const group in groups) {
+        if (!groups[group]) {
+            errorMessageElement.innerHTML = 'emptyErrorMsg;
             errorMessageElement.style.display = 'block';
-            inputElement.style.borderColor = COLORS.invalid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'none';
+            radioButtons[0].style.borderColor = COLORS.invalid;
+            radioButtons[0].style.borderWidth = STYLES.borderWidth;
             invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
+            radioValid = false;
+        }
+    }
+    return radioValid;
 
         }
         else {
@@ -277,60 +300,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     };
 };
 
-
- function validateRadio() {
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
-    const groups = {};
-    let radioValid = true;
-    const errorMessageElement = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
-    
-    invalidSymbol.textContent = '✗';
-
-    // Set initial styles
-    const setInitialStyles = () => {
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
-    };
-    setInitialStyles();
-
-    // Gruppiere Radio-Buttons nach ihrem Namen
-    radioButtons.forEach((radio) => {
-        if (!isElementVisibleInTab(radio, currentTabElement)) {
-            console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
-            return;
-        }
-
-        if (!groups[radio.name]) {
-            groups[radio.name] = false;
-        }
-        if (radio.checked) {
-            groups[radio.name] = true;
-            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
-        }
-    });
-
-    const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
-    const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
-
-    if (validationImageWrapper) {
-        validationImageWrapper.appendChild(invalidSymbol);
-    }
-
-    // Überprüfe, ob alle Gruppen eine Auswahl haben
-    for (const group in groups) {
-        if (!groups[group]) {
-            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-            errorMessageElement.style.display = 'block';
-            radioButtons[0].style.borderColor = COLORS.invalid;
-            radioButtons[0].style.borderWidth = STYLES.borderWidth;
-            invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
-            radioValid = false;
-        }
-    }
-    return radioValid;
-}
 
 
 const specificElements = [
@@ -416,7 +385,7 @@ const fixStepIndicator = (n) => {
 
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => {
-    validateRadio(); // Call validateRadio function
+    applyValidation(); // Call validateRadio function
     nextPrev(1); // Proceed to the next tab
 });
 
