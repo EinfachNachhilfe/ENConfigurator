@@ -182,15 +182,16 @@ const STYLES = {
         errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
     };
 
+    validSymbol.textContent = '✓';
+    invalidSymbol.textContent = '✗';
+
 
     const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
     const errorMessageElement = document.createElement('span');
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
-    validSymbol.textContent = '✓';
-    invalidSymbol.textContent = '✗';
-
+   
     setInitialStyles();
 
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
@@ -284,10 +285,6 @@ function validateRadio() {
     const errorMessageElement = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
-    invalidSymbol.textContent = '✗';
-
-    // Set initial styles
-  
     setInitialStyles();
 
     // Gruppiere Radio-Buttons nach ihrem Namen
