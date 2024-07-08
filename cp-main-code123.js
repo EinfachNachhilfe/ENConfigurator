@@ -244,7 +244,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
         if (!groups[group]) {
-            errorMessageElement.innerHTML = 'emptyErrorMsg;
+            errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
             radioButtons[0].style.borderColor = COLORS.invalid;
             radioButtons[0].style.borderWidth = STYLES.borderWidth;
