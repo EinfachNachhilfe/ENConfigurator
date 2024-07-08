@@ -184,6 +184,7 @@ const createValidationElements = () => {
     return { errorMessageElement, validSymbol, invalidSymbol };
 };
 
+// Apply Validation
 const COLORS = {
     valid: '#78b8bf',
     invalid: '#d9544f',
@@ -204,10 +205,10 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         ? inputElement.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper')
         : inputElement.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (errorMessageWrapper && !errorMessageWrapper.contains(errorMessageElement)) {
+    if (errorMessageWrapper) {
         errorMessageWrapper.appendChild(errorMessageElement);
     }
-    if (validationImageWrapper && !validationImageWrapper.contains(validSymbol) && !validationImageWrapper.contains(invalidSymbol)) {
+    if (validationImageWrapper) {
         validationImageWrapper.appendChild(validSymbol);
         validationImageWrapper.appendChild(invalidSymbol);
     }
@@ -220,6 +221,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
+            errorMessageWrapper.appendChild(errorMessageElement);
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
             inputElement.style.borderWidth = '';
@@ -227,13 +229,13 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             invalidSymbol.style.display = 'none';
             errorMessageElement.style.display = 'none';
         } else if (inputElement.checkValidity()) {
-            if (inputElement.type !== 'radio' && inputElement.type !== 'checkbox') {
-                inputElement.style.borderColor = COLORS.valid;
-                inputElement.style.borderWidth = STYLES.borderWidth;
-                validSymbol.style.display = 'inline';
-                invalidSymbol.style.display = 'none';
-            }
-            errorMessageElement.style.display = 'none';
+          if (inputElement.type !== 'radio' && inputElement.type !== 'checkbox') {
+            inputElement.style.borderColor = COLORS.valid;
+            inputElement.style.borderWidth = STYLES.borderWidth;
+            validSymbol.style.display = 'inline';
+            invalidSymbol.style.display = 'none';
+        }
+        errorMessageElement.style.display = 'none';
         } else {
             errorMessageElement.innerHTML = invalidErrorMsg;
             errorMessageElement.style.display = 'block';
@@ -241,6 +243,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
+            errorMessageWrapper.appendChild(errorMessageElement);
         }
     };
 
@@ -255,17 +258,15 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        if (inputElement.type !== 'checkbox') {
-                            inputElement.style.borderColor = COLORS.invalid;
-                            inputElement.style.borderWidth = STYLES.borderWidth;
-                            validSymbol.style.display = 'none';
-                            invalidSymbol.style.display = 'inline';
+                        if(inputElement.type !== 'checkbox') {
+                        inputElement.style.borderColor = COLORS.invalid;
+                        inputElement.style.borderWidth = STYLES.borderWidth;
+                        validSymbol.style.display = 'none';
+                        invalidSymbol.style.display = 'inline';
+                        errorMessageWrapper.appendChild(errorMessageElement);
                         }
-                        if (!errorMessageWrapper.contains(errorMessageElement)) {
-                            errorMessageElement.innerHTML = emptyErrorMsg;
-                            errorMessageElement.style.display = 'block';
-                            errorMessageWrapper.appendChild(errorMessageElement);
-                        }
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
                     }
                 }
             });
@@ -302,18 +303,16 @@ const validateRadio = () => {
     const validationImageWrapper = radioButtons[0].closest('.form_input-validation-image-wrapper');
     const errorMessageWrapper = radioButtons[0].parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
 
-    if (validationImageWrapper && !validationImageWrapper.contains(invalidSymbol)) {
+    if (validationImageWrapper) {
         validationImageWrapper.appendChild(invalidSymbol);
     }
 
     // Überprüfe, ob alle Gruppen eine Auswahl haben
     for (const group in groups) {
         if (!groups[group]) {
-            if (!errorMessageWrapper.contains(errorMessageElement)) {
-                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
-                errorMessageElement.style.display = 'block';
-                errorMessageWrapper.appendChild(errorMessageElement);
-            }
+            errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+            errorMessageElement.style.display = 'block';
+            errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
         }
     }
@@ -323,19 +322,12 @@ const validateRadio = () => {
         radio.addEventListener('change', () => {
             if (radio.checked) {
                 errorMessageElement.style.display = 'none';
-                if (errorMessageWrapper.contains(errorMessageElement)) {
-                    errorMessageWrapper.removeChild(errorMessageElement);
-                }
-                if (validationImageWrapper.contains(invalidSymbol)) {
-                    validationImageWrapper.removeChild(invalidSymbol);
-                }
             }
         });
     });
 
     return radioValid;
 };
-
 
 
 const specificElements = [
