@@ -176,26 +176,24 @@ const STYLES = {
     borderWidth: '2px'
 };
 
-    const setInitialStyles = () => {
-        validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
-        errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
+const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
+    validSymbol.style.cssText = `color: ${COLORS.valid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+    invalidSymbol.style.cssText = `color: ${COLORS.invalid}; display: none; position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); z-index: 3;`;
+    errorMessageElement.style.cssText = `color: ${COLORS.errorText}; display: none; margin-top: -0.625rem; font-family: Roboto, sans-serif; font-size: 0.8rem;`;
 
     validSymbol.textContent = '✓';
     invalidSymbol.textContent = '✗';
-
-        
-    };
+};
 
 
 
     const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
-    const errorMessageElement = document.createElement('span');
+  
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
    
-    setInitialStyles();
+  setInitialStyles(validSymbol, invalidSymbol, errorMessageElement);
 
     if (pattern !== null) inputElement.setAttribute('pattern', pattern);
 
@@ -288,8 +286,7 @@ function validateRadio() {
     const errorMessageElement = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
-    setInitialStyles();
-
+  setInitialStyles(validSymbol, invalidSymbol, errorMessageElement);
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
         if (!isElementVisibleInTab(radio, currentTabElement)) {
