@@ -285,7 +285,6 @@ const validateRadio = () => {
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
         if (!isElementVisibleInTab(radio, currentTabElement)) {
-            console.log(`Radio-Button ${radio.name} ist nicht sichtbar und wird übersprungen`);
             return;
         }
 
@@ -294,7 +293,6 @@ const validateRadio = () => {
         }
         if (radio.checked) {
             groups[radio.name] = true;
-            console.log(`Radio-Button in Gruppe ${radio.name} ausgewählt: ${radio.value}`);
         }
     });
 
@@ -310,9 +308,6 @@ const validateRadio = () => {
         if (!groups[group]) {
             errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
             errorMessageElement.style.display = 'block';
-            radioButtons[0].style.borderColor = COLORS.invalid;
-            radioButtons[0].style.borderWidth = STYLES.borderWidth;
-            invalidSymbol.style.display = 'inline';
             errorMessageWrapper.appendChild(errorMessageElement);
             radioValid = false;
         }
@@ -323,11 +318,6 @@ const validateRadio = () => {
         radio.addEventListener('change', () => {
             if (radio.checked) {
                 errorMessageElement.style.display = 'none';
-                radioButtons.forEach(r => {
-                    r.style.borderColor = '';
-                    r.style.borderWidth = '';
-                });
-                invalidSymbol.style.display = 'none';
             }
         });
     });
