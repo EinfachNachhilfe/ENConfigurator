@@ -243,31 +243,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-
-    
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-                   
-                    
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        errorMessageWrapper.appendChild(errorMessageElement);
-                    }
-                }
-            });
-        }
-    });
-
     validationElements[inputElement.className] = {
         validSymbol,
         invalidSymbol,
@@ -429,6 +404,7 @@ const fixStepIndicator = (n) => {
 
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => {
+    applyValidation();
     validateRadio(); // Call validateRadio function
     nextPrev(1); // Proceed to the next tab
 });
