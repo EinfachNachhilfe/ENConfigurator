@@ -213,6 +213,30 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     }
 
     const handleValidation = () => {
+
+    const buttons = [formElements.nextBtn, formElements.submitBtn];
+    buttons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('disabled')) {
+                    const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
+
+                    if (isRadioOrCheckboxInvalid || isRequiredFieldEmpty) {
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
+                        inputElement.style.borderColor = COLORS.invalid;
+                        inputElement.style.borderWidth = STYLES.borderWidth;
+                        validSymbol.style.display = 'none';
+                        invalidSymbol.style.display = 'inline';
+                        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
+                        errorMessageWrapper.appendChild(errorMessageElement);
+                    }
+                }
+            });
+        }
+    });
+        
         if (inputElement.hasAttribute('required') && inputElement.value.trim() === '') {
             errorMessageElement.innerHTML = emptyErrorMsg;
             errorMessageElement.style.display = 'block';
@@ -248,28 +272,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
 
     inputElement.addEventListener("change", handleValidation);
 
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    const isRadioOrCheckboxInvalid = (inputElement.type === 'radio' || inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisible(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisible(inputElement);
 
-                    if (isRadioOrCheckboxInvalid || isRequiredFieldEmpty) {
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        ensureSingleErrorMessage(errorMessageWrapper); // Ensure only one error message is displayed
-                        errorMessageWrapper.appendChild(errorMessageElement);
-                    }
-                }
-            });
-        }
-    });
 
     validationElements[inputElement.className] = {
         validSymbol,
