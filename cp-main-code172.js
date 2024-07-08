@@ -185,13 +185,13 @@ const setInitialStyles = (validSymbol, invalidSymbol, errorMessageElement) => {
     invalidSymbol.textContent = '✗';
 };
 
-
-
-    const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
     const errorMessageElement = document.createElement('span')
     const validSymbol = document.createElement('span');
     const invalidSymbol = document.createElement('span');
     
+
+    const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern = null) => {
+
    
   setInitialStyles(validSymbol, invalidSymbol, errorMessageElement);
 
@@ -281,8 +281,6 @@ function validateRadio() {
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const groups = {};
     let radioValid = true;
-    const errorMessageElement = document.createElement('span');
-    const invalidSymbol = document.createElement('span');
     
   setInitialStyles(invalidSymbol, invalidSymbol, errorMessageElement);
     // Gruppiere Radio-Buttons nach ihrem Namen
