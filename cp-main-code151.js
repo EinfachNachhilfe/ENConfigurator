@@ -341,15 +341,21 @@ const validateRadio = () => {
 
     if (validationImageWrapper) {
         validationImageWrapper.appendChild(invalidSymbol);
+    } else {
+        console.error('validationImageWrapper is null');
     }
 
-    for (const group in groups) {
-        if (!groups[group]) {
-            handleValidationDisplay(radioButtons[0], 'invalid', errorMessageElement, 'Dieses Feld muss ausgefüllt werden.');
-            invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
-            radioValid = false;
+    if (errorMessageWrapper) {
+        for (const group in groups) {
+            if (!groups[group]) {
+                handleValidationDisplay(radioButtons[0], 'invalid', errorMessageElement, 'Dieses Feld muss ausgefüllt werden.');
+                invalidSymbol.style.display = 'inline';
+                errorMessageWrapper.appendChild(errorMessageElement);
+                radioValid = false;
+            }
         }
+    } else {
+        console.error('errorMessageWrapper is null');
     }
 
     radioButtons.forEach(radio => {
@@ -367,6 +373,7 @@ const validateRadio = () => {
 
     return radioValid;
 };
+
 
 
 
