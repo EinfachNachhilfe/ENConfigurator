@@ -11,10 +11,10 @@ const form = {
     applicationTutorForm: document.getElementById('applicationTutor'),
 };
 
-if (form.applicationTutorForm) {
-    const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
-    const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
+const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
+const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
 
+if (form.applicationTutorForm) {
     const elements = {
         addSubjectBtn: document.getElementById('addSubjectBtn'),
         addSelectedSubjectBtn: document.getElementById('addSelectedSubjectBtn'),
@@ -117,15 +117,6 @@ if (form.applicationTutorForm) {
         validateForm();
     };
 
-    const removeSubject = (btn, subject, classFrom, classTo) => {
-        const combinedValue = `${subject}:${classFrom}-${classTo}`;
-        const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
-        if (combinedInputs.length > 0) combinedInputs[0].remove();
-        btn.parentElement.remove();
-        addOptionToDropdown(elements.subjectDropdown, subject, subjectsOrder);
-        validateForm();
-    };
-
     const addNewExperience = () => {
         if (!areConditionsMet(elements.experienceTutor, elements.durationTutor, elements.whenTutor)) return;
 
@@ -149,15 +140,6 @@ if (form.applicationTutorForm) {
         const selectedOption = elements.experienceTutor.querySelector(`option[value="${experience}"]`);
         if (selectedOption) elements.experienceTutor.removeChild(selectedOption);
 
-        validateForm();
-    };
-
-    const removeExperience = (btn, experience, duration, when) => {
-        const combinedValue = `${experience}:${duration}:${when}`;
-        const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
-        if (combinedInputs.length > 0) combinedInputs[0].remove();
-        btn.parentElement.remove();
-        addOptionToDropdown(elements.experienceTutor, experience, experienceOrder);
         validateForm();
     };
 
@@ -190,6 +172,25 @@ if (form.applicationTutorForm) {
         togglePopup(elements.popupExperienceTutor, 'none');
     });
 }
+
+function removeSubject(btn, subject, classFrom, classTo) {
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    if (combinedInputs.length > 0) combinedInputs[0].remove();
+    btn.parentElement.remove();
+    addOptionToDropdown(document.getElementById('subjectDropdown'), subject, subjectsOrder);
+    validateForm();
+}
+
+function removeExperience(btn, experience, duration, when) {
+    const combinedValue = `${experience}:${duration}:${when}`;   
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    if (combinedInputs.length > 0) combinedInputs[0].remove();
+    btn.parentElement.remove();
+    addOptionToDropdown(document.getElementById('experience_tutor'), experience, experienceOrder);
+    validateForm();
+}
+
 
 
 const validationElements = {};
