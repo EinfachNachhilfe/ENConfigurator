@@ -142,6 +142,24 @@ const addNewExperience = () => {
     validateForm();
 };
 
+const removeSubject = (btn, subject, classFrom, classTo) => {
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    if (combinedInputs.length > 0) combinedInputs[0].remove();
+    btn.parentElement.remove();
+    addOptionToDropdown(elements.subjectDropdown, subject, subjectsOrder);
+    validateForm();
+};
+
+const removeExperience = (btn, experience, duration, when) => {
+    const combinedValue = `${experience}:${duration}:${when}`;   
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    if (combinedInputs.length > 0) combinedInputs[0].remove();
+    btn.parentElement.remove();
+    addOptionToDropdown(elements.experienceTutor, experience, experienceOrder);
+    validateForm();
+};
+
 elements.firstNameInput.addEventListener('input', handleFirstNameInput);
 
 elements.addSubjectBtn.addEventListener('click', () => {
@@ -171,23 +189,11 @@ elements.background.addEventListener('click', () => {
     togglePopup(elements.popupExperienceTutor, 'none');
 });
 
-function removeSubject(btn, subject, classFrom, classTo) {
-    const combinedValue = `${subject}:${classFrom}-${classTo}`;
-    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
-    if (combinedInputs.length > 0) combinedInputs[0].remove();
-    btn.parentElement.remove();
-    addOptionToDropdown(elements.subjectDropdown, subject, subjectsOrder);
-    validateForm();
+function validateForm() {
+    // Dummy function for validation
+    console.log('Validation triggered');
 }
 
-function removeExperience(btn, experience, duration, when) {
-    const combinedValue = `${experience}:${duration}:${when}`;   
-    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
-    if (combinedInputs.length > 0) combinedInputs[0].remove();
-    btn.parentElement.remove();
-    addOptionToDropdown(elements.experienceTutor, experience, experienceOrder);
-    validateForm();
-}
 
 
 
