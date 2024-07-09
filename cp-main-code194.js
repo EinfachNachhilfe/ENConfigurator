@@ -14,171 +14,169 @@ const form = {
 const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
 const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
 
-if (form.applicationTutorForm) {
-    const elements = {
-        addSubjectBtn: document.getElementById('addSubjectBtn'),
-        addSelectedSubjectBtn: document.getElementById('addSelectedSubjectBtn'),
-        subjectDropdown: document.getElementById('subjectDropdown'),
-        classFromDropdown: document.getElementById('classFromDropdown'),
-        classToDropdown: document.getElementById('classToDropdown'),
-        addedSubjects: document.getElementById('addedSubjects'),
-        popupSubject: document.getElementById('popup_subject-tutor'),
-        closePopupElements: document.querySelectorAll('.close-popup'),
-        background: document.getElementById('background'),
-        showFirstNames: document.querySelectorAll('.show_first-name'),
-        firstNameInput: document.getElementById('first-name_tutor'),
-        addExperienceBtn: document.getElementById('addexperienceBtn'),
-        addSelectedExperienceBtn: document.getElementById('addSelectedexperienceBtn'),
-        experienceTutor: document.getElementById('experience_tutor'),
-        durationTutor: document.getElementById('duration_tutor'),
-        whenTutor: document.getElementById('when_tutor'),
-        addedExperience: document.getElementById('addedExperience'),
-        popupExperienceTutor: document.getElementById('popup_experience-tutor')
-    };
+const elements = {
+    addSubjectBtn: document.getElementById('addSubjectBtn'),
+    addSelectedSubjectBtn: document.getElementById('addSelectedSubjectBtn'),
+    subjectDropdown: document.getElementById('subjectDropdown'),
+    classFromDropdown: document.getElementById('classFromDropdown'),
+    classToDropdown: document.getElementById('classToDropdown'),
+    addedSubjects: document.getElementById('addedSubjects'),
+    popupSubject: document.getElementById('popup_subject-tutor'),
+    closePopupElements: document.querySelectorAll('.close-popup'),
+    background: document.getElementById('background'),
+    showFirstNames: document.querySelectorAll('.show_first-name'),
+    firstNameInput: document.getElementById('first-name_tutor'),
+    addExperienceBtn: document.getElementById('addexperienceBtn'),
+    addSelectedExperienceBtn: document.getElementById('addSelectedexperienceBtn'),
+    experienceTutor: document.getElementById('experience_tutor'),
+    durationTutor: document.getElementById('duration_tutor'),
+    whenTutor: document.getElementById('when_tutor'),
+    addedExperience: document.getElementById('addedExperience'),
+    popupExperienceTutor: document.getElementById('popup_experience-tutor')
+};
 
-    const initializeDropdown = (dropdown, placeholder) => {
-        dropdown.innerHTML = '';
-        const option = document.createElement('option');
-        option.text = placeholder;
-        option.value = '0';
-        dropdown.add(option);
-    };
+const initializeDropdown = (dropdown, placeholder) => {
+    dropdown.innerHTML = '';
+    const option = document.createElement('option');
+    option.text = placeholder;
+    option.value = '0';
+    dropdown.add(option);
+};
 
-    const togglePopup = (popup, display) => {
-        elements.background.style.display = display;
-        popup.style.display = display;
-    };
+const togglePopup = (popup, display) => {
+    elements.background.style.display = display;
+    popup.style.display = display;
+};
 
-    const addOptionToDropdown = (dropdown, optionText, orderArray) => {
-        const option = document.createElement('option');
-        option.value = optionText;
-        option.textContent = optionText;
+const addOptionToDropdown = (dropdown, optionText, orderArray) => {
+    const option = document.createElement('option');
+    option.value = optionText;
+    option.textContent = optionText;
 
-        let inserted = false;
-        for (let i = 0; i < orderArray.length; i++) {
-            if (orderArray[i] === optionText) {
-                for (let j = 0; j < dropdown.options.length; j++) {
-                    if (orderArray.indexOf(dropdown.options[j].value) > i) {
-                        dropdown.insertBefore(option, dropdown.options[j]);
-                        inserted = true;
-                        break;
-                    }
+    let inserted = false;
+    for (let i = 0; i < orderArray.length; i++) {
+        if (orderArray[i] === optionText) {
+            for (let j = 0; j < dropdown.options.length; j++) {
+                if (orderArray.indexOf(dropdown.options[j].value) > i) {
+                    dropdown.insertBefore(option, dropdown.options[j]);
+                    inserted = true;
+                    break;
                 }
-                if (inserted) break;
             }
+            if (inserted) break;
         }
-        if (!inserted) dropdown.appendChild(option);
-    };
+    }
+    if (!inserted) dropdown.appendChild(option);
+};
 
-    const handleFirstNameInput = () => {
-        elements.showFirstNames.forEach(element => {
-            element.textContent = elements.firstNameInput.value;
-        });
-    };
-
-    const handleClassFromChange = () => {
-        const classFrom = parseInt(elements.classFromDropdown.value);
-        initializeDropdown(elements.classToDropdown, "Bis Klasse");
-        for (let i = classFrom + 1; i <= 13; i++) {
-            const option = document.createElement('option');
-            option.value = i;
-            option.textContent = `${i}. Klasse`;
-            elements.classToDropdown.appendChild(option);
-        }
-    };
-
-    const areConditionsMet = (dropdown1, dropdown2, dropdown3) => {
-        return dropdown1.value && parseInt(dropdown2.value) > 0 && parseInt(dropdown3.value) > 0;
-    };
-
-    const addNewSubject = () => {
-        if (!areConditionsMet(elements.subjectDropdown, elements.classFromDropdown, elements.classToDropdown)) return;
-
-        const subject = elements.subjectDropdown.value;
-        const classFrom = elements.classFromDropdown.value;
-        const classTo = elements.classToDropdown.value;
-
-        const newSubjectElement = document.createElement('div');
-        newSubjectElement.className = 'subject-element';
-        newSubjectElement.innerHTML = `${subject} (Klasse ${classFrom} bis ${classTo}) <button onclick="removeSubject(this, '${subject}', '${classFrom}', '${classTo}')" class="remove-btn">Fach entfernen</button>`;
-        elements.addedSubjects.appendChild(newSubjectElement);
-
-        const combinedValue = `${subject}:${classFrom}-${classTo}`;
-        const combinedInput = document.createElement('input');
-        combinedInput.type = 'hidden';
-        combinedInput.name = `combined_${subject}`;
-        combinedInput.value = combinedValue;
-        form.applicationTutorForm.appendChild(combinedInput);
-
-        togglePopup(elements.popupSubject, 'none');
-        const selectedOption = elements.subjectDropdown.querySelector(`option[value="${subject}"]`);
-        if (selectedOption) elements.subjectDropdown.removeChild(selectedOption);
-
-        validateForm();
-    };
-
-    const addNewExperience = () => {
-        if (!areConditionsMet(elements.experienceTutor, elements.durationTutor, elements.whenTutor)) return;
-
-        const experience = elements.experienceTutor.value;
-        const duration = elements.durationTutor.value;
-        const when = elements.whenTutor.value;
-
-        const newExperienceElement = document.createElement('div');
-        newExperienceElement.className = 'experience-element';
-        newExperienceElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeExperience(this, '${experience}', '${duration}', '${when}')" class="remove-btn">Fach entfernen</button>`;
-        elements.addedExperience.appendChild(newExperienceElement);
-
-        const combinedValue = `${experience}:${duration}:${when}`;
-        const combinedInput = document.createElement('input');
-        combinedInput.type = 'hidden';
-        combinedInput.name = `combined_${experience}`;
-        combinedInput.value = combinedValue;
-        form.applicationTutorForm.appendChild(combinedInput);
-
-        togglePopup(elements.popupExperienceTutor, 'none');
-        const selectedOption = elements.experienceTutor.querySelector(`option[value="${experience}"]`);
-        if (selectedOption) elements.experienceTutor.removeChild(selectedOption);
-
-        validateForm();
-    };
-
-    elements.firstNameInput.addEventListener('input', handleFirstNameInput);
-
-    elements.addSubjectBtn.addEventListener('click', () => {
-        togglePopup(elements.popupSubject, 'block');
-        initializeDropdown(elements.classToDropdown, "Bis Klasse");
+const handleFirstNameInput = () => {
+    elements.showFirstNames.forEach(element => {
+        element.textContent = elements.firstNameInput.value;
     });
+};
 
-    elements.classFromDropdown.addEventListener('change', handleClassFromChange);
+const handleClassFromChange = () => {
+    const classFrom = parseInt(elements.classFromDropdown.value);
+    initializeDropdown(elements.classToDropdown, "Bis Klasse");
+    for (let i = classFrom + 1; i <= 13; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `${i}. Klasse`;
+        elements.classToDropdown.appendChild(option);
+    }
+};
 
-    elements.addSelectedSubjectBtn.addEventListener('click', addNewSubject);
+const areConditionsMet = (dropdown1, dropdown2, dropdown3) => {
+    return dropdown1.value && parseInt(dropdown2.value) > 0 && parseInt(dropdown3.value) > 0;
+};
 
-    elements.addExperienceBtn.addEventListener('click', () => {
-        togglePopup(elements.popupExperienceTutor, 'block');
-    });
+const addNewSubject = () => {
+    if (!areConditionsMet(elements.subjectDropdown, elements.classFromDropdown, elements.classToDropdown)) return;
 
-    elements.addSelectedExperienceBtn.addEventListener('click', addNewExperience);
+    const subject = elements.subjectDropdown.value;
+    const classFrom = elements.classFromDropdown.value;
+    const classTo = elements.classToDropdown.value;
 
-    elements.closePopupElements.forEach(element => {
-        element.addEventListener('click', () => {
-            togglePopup(elements.popupSubject, 'none');
-            togglePopup(elements.popupExperienceTutor, 'none');
-        });
-    });
+    const newSubjectElement = document.createElement('div');
+    newSubjectElement.className = 'subject-element';
+    newSubjectElement.innerHTML = `${subject} (Klasse ${classFrom} bis ${classTo}) <button onclick="removeSubject(this, '${subject}', '${classFrom}', '${classTo}')" class="remove-btn">Fach entfernen</button>`;
+    elements.addedSubjects.appendChild(newSubjectElement);
 
-    elements.background.addEventListener('click', () => {
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+    const combinedInput = document.createElement('input');
+    combinedInput.type = 'hidden';
+    combinedInput.name = `combined_${subject}`;
+    combinedInput.value = combinedValue;
+    form.applicationTutorForm.appendChild(combinedInput);
+
+    togglePopup(elements.popupSubject, 'none');
+    const selectedOption = elements.subjectDropdown.querySelector(`option[value="${subject}"]`);
+    if (selectedOption) elements.subjectDropdown.removeChild(selectedOption);
+
+    validateForm();
+};
+
+const addNewExperience = () => {
+    if (!areConditionsMet(elements.experienceTutor, elements.durationTutor, elements.whenTutor)) return;
+
+    const experience = elements.experienceTutor.value;
+    const duration = elements.durationTutor.value;
+    const when = elements.whenTutor.value;
+
+    const newExperienceElement = document.createElement('div');
+    newExperienceElement.className = 'experience-element';
+    newExperienceElement.innerHTML = `${experience} (Mit ${duration} Erfahrung, ${when}) <button onclick="removeExperience(this, '${experience}', '${duration}', '${when}')" class="remove-btn">Fach entfernen</button>`;
+    elements.addedExperience.appendChild(newExperienceElement);
+
+    const combinedValue = `${experience}:${duration}:${when}`;
+    const combinedInput = document.createElement('input');
+    combinedInput.type = 'hidden';
+    combinedInput.name = `combined_${experience}`;
+    combinedInput.value = combinedValue;
+    form.applicationTutorForm.appendChild(combinedInput);
+
+    togglePopup(elements.popupExperienceTutor, 'none');
+    const selectedOption = elements.experienceTutor.querySelector(`option[value="${experience}"]`);
+    if (selectedOption) elements.experienceTutor.removeChild(selectedOption);
+
+    validateForm();
+};
+
+elements.firstNameInput.addEventListener('input', handleFirstNameInput);
+
+elements.addSubjectBtn.addEventListener('click', () => {
+    togglePopup(elements.popupSubject, 'block');
+    initializeDropdown(elements.classToDropdown, "Bis Klasse");
+});
+
+elements.classFromDropdown.addEventListener('change', handleClassFromChange);
+
+elements.addSelectedSubjectBtn.addEventListener('click', addNewSubject);
+
+elements.addExperienceBtn.addEventListener('click', () => {
+    togglePopup(elements.popupExperienceTutor, 'block');
+});
+
+elements.addSelectedExperienceBtn.addEventListener('click', addNewExperience);
+
+elements.closePopupElements.forEach(element => {
+    element.addEventListener('click', () => {
         togglePopup(elements.popupSubject, 'none');
         togglePopup(elements.popupExperienceTutor, 'none');
     });
-}
+});
+
+elements.background.addEventListener('click', () => {
+    togglePopup(elements.popupSubject, 'none');
+    togglePopup(elements.popupExperienceTutor, 'none');
+});
 
 function removeSubject(btn, subject, classFrom, classTo) {
     const combinedValue = `${subject}:${classFrom}-${classTo}`;
     const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
     if (combinedInputs.length > 0) combinedInputs[0].remove();
     btn.parentElement.remove();
-    addOptionToDropdown(document.getElementById('subjectDropdown'), subject, subjectsOrder);
+    addOptionToDropdown(elements.subjectDropdown, subject, subjectsOrder);
     validateForm();
 }
 
@@ -187,9 +185,10 @@ function removeExperience(btn, experience, duration, when) {
     const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
     if (combinedInputs.length > 0) combinedInputs[0].remove();
     btn.parentElement.remove();
-    addOptionToDropdown(document.getElementById('experience_tutor'), experience, experienceOrder);
+    addOptionToDropdown(elements.experienceTutor, experience, experienceOrder);
     validateForm();
 }
+
 
 
 
