@@ -25,7 +25,7 @@ const elements = {
     closePopupElements: document.querySelectorAll('.close-popup'),
     background: document.getElementById('background'),
     showFirstNames: document.querySelectorAll('.show_first-name'),
-    firstNameInput: document.getElementById('first-name_tutor'),
+    firstNameInput: document.getElementById('firstNameTutor'),
     addExperienceBtn: document.getElementById('addexperienceBtn'),
     addSelectedExperienceBtn: document.getElementById('addSelectedexperienceBtn'),
     experienceTutor: document.getElementById('experience_tutor'),
