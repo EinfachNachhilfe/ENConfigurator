@@ -189,11 +189,6 @@ elements.background.addEventListener('click', () => {
     togglePopup(elements.popupExperienceTutor, 'none');
 });
 
-function validateForm() {
-    // Dummy function for validation
-    console.log('Validation triggered');
-}
-
 
 
 
