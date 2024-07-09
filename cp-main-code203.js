@@ -87,7 +87,6 @@ const handleClassFromChange = () => {
 };
 
 const areConditionsMet = (dropdown1, dropdown2, dropdown3) => {
-    console.log('Dropdown1:', dropdown1.value, 'Dropdown2:', dropdown2.value, 'Dropdown3:', dropdown3.value);
     return dropdown1.value !== '0' && dropdown2.value !== '0' && dropdown3.value !== '0';
 };
 
@@ -118,9 +117,7 @@ const addNewSubject = () => {
 };
 
 const addNewExperience = () => {
-    console.log('addNewExperience called');
     if (!areConditionsMet(elements.experienceTutor, elements.durationTutor, elements.whenTutor)) {
-        console.log('Conditions not met');
         return;
     }
 
@@ -590,7 +587,6 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-     console.log('Validation triggered');
     const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
