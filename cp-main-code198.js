@@ -88,7 +88,7 @@ const handleClassFromChange = () => {
 
 const areConditionsMet = (dropdown1, dropdown2, dropdown3) => {
     console.log('Dropdown1:', dropdown1.value, 'Dropdown2:', dropdown2.value, 'Dropdown3:', dropdown3.value);
-    return dropdown1.value && parseInt(dropdown2.value) > 0 && parseInt(dropdown3.value) > 0;
+    return dropdown1.value !== '0' && dropdown2.value !== '0' && dropdown3.value !== '0';
 };
 
 const addNewSubject = () => {
