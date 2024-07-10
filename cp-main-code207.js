@@ -446,7 +446,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim();
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
