@@ -626,8 +626,10 @@ formElements.nextBtn?.addEventListener("click", () => {
     nextPrev(1); // Proceed to the next tab
 });
 
-formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));
-formElements.submitBtn?.addEventListener("click", () =>  validateRadio());
+if(formElements.prevBtn){
+formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
+if(formElements.submitBtn){
+formElements.submitBtn?.addEventListener("click", () =>  validateRadio());}
 
 // Initial Setup
 showTab(currentTab);
