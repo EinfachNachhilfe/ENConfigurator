@@ -1,4 +1,5 @@
 // Define constants
+
 const formElements = {
     nextBtn: document.querySelector('#nextBtn'),
     prevBtn: document.querySelector('#prevBtn'),
@@ -560,7 +561,7 @@ const showTab = (n) => {
     validateForm();
 
     if (formElements.prevBtn){
-    formElements.prevv.style.display = n === 0 ? "none" : "flex";}
+    formElements.prevBtn.style.display = n === 0 ? "none" : "flex";}
     
     if (formElements.nextBtn){
         formElements.nextBtn.style.display = n === (formElements.formItems.length - 1) ? "none" : "flex";
