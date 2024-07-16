@@ -11,7 +11,7 @@ const form = {
     applicationTutorForm: document.getElementById('applicationTutor'),
 };
 
-if (form.applicationTutorForm){
+
 
 const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
 const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
@@ -193,7 +193,7 @@ elements.background.addEventListener('click', () => {
     togglePopup(elements.popupExperienceTutor, 'none');
 });
 
-}
+
 
 
 
