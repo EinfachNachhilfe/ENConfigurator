@@ -12,27 +12,7 @@ const form = {
     applicationTutorForm: document.getElementById('applicationTutor'),
 };
 
-const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
-const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
 
-// Defining global functions to ensure availability
-const removeSubject = (btn, subject, classFrom, classTo) => {
-    const combinedValue = `${subject}:${classFrom}-${classTo}`;
-    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
-    if (combinedInputs.length > 0) combinedInputs[0].remove();
-    btn.parentElement.remove();
-    addOptionToDropdown(elements.subjectDropdown, subject, subjectsOrder);
-    validateForm();
-};
-
-const removeExperience = (btn, experience, duration, when) => {
-    const combinedValue = `${experience}:${duration}:${when}`;   
-    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
-    if (combinedInputs.length > 0) combinedInputs[0].remove();
-    btn.parentElement.remove();
-    addOptionToDropdown(elements.experienceTutor, experience, experienceOrder);
-    validateForm();
-};
 
 if (form.applicationTutorForm) {
 
@@ -56,6 +36,28 @@ if (form.applicationTutorForm) {
         addedExperience: document.getElementById('addedExperience'),
         popupExperienceTutor: document.getElementById('popup_experience-tutor')
     };
+
+    const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
+const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
+
+// Defining global functions to ensure availability
+const removeSubject = (btn, subject, classFrom, classTo) => {
+    const combinedValue = `${subject}:${classFrom}-${classTo}`;
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    if (combinedInputs.length > 0) combinedInputs[0].remove();
+    btn.parentElement.remove();
+    addOptionToDropdown(elements.subjectDropdown, subject, subjectsOrder);
+    validateForm();
+};
+
+const removeExperience = (btn, experience, duration, when) => {
+    const combinedValue = `${experience}:${duration}:${when}`;   
+    const combinedInputs = Array.from(form.applicationTutorForm.querySelectorAll(`input[name^="combined_"]`)).filter(input => input.value === combinedValue);
+    if (combinedInputs.length > 0) combinedInputs[0].remove();
+    btn.parentElement.remove();
+    addOptionToDropdown(elements.experienceTutor, experience, experienceOrder);
+    validateForm();
+};
 
     const initializeDropdown = (dropdown, placeholder) => {
         dropdown.innerHTML = '';
