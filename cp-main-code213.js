@@ -560,7 +560,9 @@ const showTab = (n) => {
     inputs.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
 
-    formElements.prevBtn.style.display = n === 0 ? "none" : "flex";
+    if (formElements.prevBtn){
+    formElements.prevBtn.style.display = n === 0 ? "none" : "flex";}
+    
     if (formElements.nextBtn){
         formElements.nextBtn.style.display = n === (formElements.formItems.length - 1) ? "none" : "flex";
     }
