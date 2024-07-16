@@ -561,7 +561,9 @@ const showTab = (n) => {
     validateForm();
 
     formElements.prevBtn.style.display = n === 0 ? "none" : "flex";
-    formElements.nextBtn.style.display = n === (formElements.formItems.length - 1) ? "none" : "flex";
+    if (formElements.nextBtn){
+        formElements.nextBtn.style.display = n === (formElements.formItems.length - 1) ? "none" : "flex";
+    }
     formElements.submitBtn.style.display = n === (formElements.formItems.length - 1) ? "block" : "none";
 
     const currentStepElem = document.getElementById("currentStep");
