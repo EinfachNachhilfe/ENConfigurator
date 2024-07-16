@@ -566,7 +566,10 @@ const showTab = (n) => {
     if (formElements.nextBtn){
         formElements.nextBtn.style.display = n === (formElements.formItems.length - 1) ? "none" : "flex";
     }
-    formElements.submitBtn.style.display = n === (formElements.formItems.length - 1) ? "block" : "none";
+
+    
+    if (formElements.submitBtn){
+    formElements.submitBtn.style.display = n === (formElements.formItems.length - 1) ? "block" : "none";}
 
     const currentStepElem = document.getElementById("currentStep");
     const totalStepsElem = document.getElementById("totalSteps");
