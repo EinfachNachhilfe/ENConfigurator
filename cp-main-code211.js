@@ -604,9 +604,12 @@ const validateForm = () => {
         valid = Array.from(buttons).some(button => button.textContent === 'Fach entfernen');
     }
 
-    formElements.nextBtn.classList.toggle("disabled", !valid);
+    if (formElements.nextBtn){
+        formElements.nextBtn.classList.toggle("disabled", !valid);
+    }
+    if (formElements.submitBtn){
     formElements.submitBtn.classList.toggle("disabled", !valid);
-
+    }
     return valid;
 };
 
