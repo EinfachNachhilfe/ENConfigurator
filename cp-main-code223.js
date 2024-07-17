@@ -1,3 +1,4 @@
+
 // Define constants
 const formElements = {
     nextBtn: document.querySelector('#nextBtn'),
@@ -163,22 +164,35 @@ const addNewExperience = () => {
     validateForm();
 };
 
-elements.firstNameInput.addEventListener('input', handleFirstNameInput);
+// Event listeners initialization with existence checks
+if (elements.firstNameInput) {
+    elements.firstNameInput.addEventListener('input', handleFirstNameInput);
+}
 
-elements.addSubjectBtn.addEventListener('click', () => {
-    togglePopup(elements.popupSubject, 'block');
-    initializeDropdown(elements.classToDropdown, "Bis Klasse");
-});
+if (elements.addSubjectBtn) {
+    elements.addSubjectBtn.addEventListener('click', () => {
+        togglePopup(elements.popupSubject, 'block');
+        initializeDropdown(elements.classToDropdown, "Bis Klasse");
+    });
+}
 
-elements.classFromDropdown.addEventListener('change', handleClassFromChange);
+if (elements.classFromDropdown) {
+    elements.classFromDropdown.addEventListener('change', handleClassFromChange);
+}
 
-elements.addSelectedSubjectBtn.addEventListener('click', addNewSubject);
+if (elements.addSelectedSubjectBtn) {
+    elements.addSelectedSubjectBtn.addEventListener('click', addNewSubject);
+}
 
-elements.addExperienceBtn.addEventListener('click', () => {
-    togglePopup(elements.popupExperienceTutor, 'block');
-});
+if (elements.addExperienceBtn) {
+    elements.addExperienceBtn.addEventListener('click', () => {
+        togglePopup(elements.popupExperienceTutor, 'block');
+    });
+}
 
-elements.addSelectedExperienceBtn.addEventListener('click', addNewExperience);
+if (elements.addSelectedExperienceBtn) {
+    elements.addSelectedExperienceBtn.addEventListener('click', addNewExperience);
+}
 
 elements.closePopupElements.forEach(element => {
     element.addEventListener('click', () => {
@@ -187,10 +201,12 @@ elements.closePopupElements.forEach(element => {
     });
 });
 
-elements.background.addEventListener('click', () => {
-    togglePopup(elements.popupSubject, 'none');
-    togglePopup(elements.popupExperienceTutor, 'none');
-});
+if (elements.background) {
+    elements.background.addEventListener('click', () => {
+        togglePopup(elements.popupSubject, 'none');
+        togglePopup(elements.popupExperienceTutor, 'none');
+    });
+}
 
 
 
