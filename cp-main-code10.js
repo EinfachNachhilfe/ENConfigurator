@@ -8,6 +8,16 @@ const formElements = {
     formItems: document.getElementsByClassName('form_item-input-wrapper-tab'),
 };
 
+
+const validationElements = {};
+let currentTab = 0;
+const currentTabElement = formElements.formItems[currentTab];
+
+const inputs = Array.from(formElements.allInputs).filter(element => 
+    formElements.formItems[currentTab].contains(element)
+);
+
+
 const form = {
     applicationTutorForm: document.getElementById('applicationTutor'),
 };
@@ -210,17 +220,15 @@ if (elements.background) {
 
 
 
-const validationElements = {};
-let currentTab = 0;
-const currentTabElement = formElements.formItems[currentTab];
+
 
 // Helper Functions
-function isElementVisibleInTab(el) {
-    if (!el || el === document.body) return true; 
+const isElementVisibleInTab = (el, tabElement) => {
+    if (!el || el === tabElement) return true;
+    if (!(el instanceof Element)) return false; // Überprüfen, ob el ein Element ist
     if (window.getComputedStyle(el, null).display === 'none') return false;
-    return isElementVisibleInTab(el.parentNode); 
-}
-
+    return isElementVisibleInTab(el.parentNode, tabElement);
+};
 
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
@@ -460,8 +468,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
@@ -496,7 +504,7 @@ const validateRadio = () => {
 
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
-        if (!isElementVisibleInTab(radio)) {
+        if (!isElementVisibleInTab(radio, currentTabElement)) {
             return;
         }
 
@@ -569,8 +577,6 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
 // Tab Navigation Functions
 const showTab = (n) => {
     formElements.formItems[n].style.display = "block";
-    const inputs = formElements.formItems[n].querySelectorAll(".form_input");
-    inputs.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
 
     if (formElements.prevBtn){
@@ -609,7 +615,6 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-    const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
             inputs[i].className += " invalid";
