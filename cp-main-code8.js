@@ -216,11 +216,12 @@ const currentTabElement = formElements.formItems[currentTab];
 
 // Helper Functions
 const isElementVisibleInTab = (el, tabElement) => {
-    if (!el || el === tabElement) return true;
-    if (!(el instanceof Element)) return false; // Überprüfen, ob el ein Element ist
-    if (window.getComputedStyle(el, null).display === 'none') return false;
-    return isElementVisibleInTab(el.parentNode, tabElement);
+    if (!el) return false;
+    if (el === tabElement) return true;
+    if (window.getComputedStyle(el).display === 'none' || window.getComputedStyle(el).visibility === 'hidden') return false;
+    return isElementVisibleInTab(el.parentElement, tabElement);
 };
+
 
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
@@ -460,8 +461,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity();
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
