@@ -641,7 +641,7 @@ const fixStepIndicator = (n) => {
 // Event Listeners
 if(formElements.nextBtn){
 formElements.nextBtn?.addEventListener("click", () => {
-    validateForm()
+    validateForm();
     validateRadio();
     nextPrev(1);
 });
@@ -651,7 +651,7 @@ if(formElements.prevBtn){
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
 
 formElements.submitBtn?.addEventListener("click", () => {
-    validateForm()
+    validateForm();
     validateRadio();
 });
 
