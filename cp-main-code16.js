@@ -572,15 +572,16 @@ const showTab = (n) => {
     validateForm();
 
     if (formElements.prevBtn){
-    formElements.prevBtn.style.display = n === 0 ? "none" : "flex";}
+        formElements.prevBtn.style.display = n === 0 ? "none" : "flex";
+    }
     
     if (formElements.nextBtn){
-        formElements.nextBtn.style.display = n === (formElements.formItems.length - 1) ? "none" : "flex";
+        formElements.nextBtn.style.display = (n === (formElements.formItems.length - 1) || formElements.formItems.length === 1) ? "none" : "flex";
     }
 
-    
     if (formElements.submitBtn){
-    formElements.submitBtn.style.display = n === (formElements.formItems.length - 1) ? "block" : "none";}
+        formElements.submitBtn.style.display = (n === (formElements.formItems.length - 1) || formElements.formItems.length === 1) ? "block" : "none";
+    }
 
     const currentStepElem = document.getElementById("currentStep");
     const totalStepsElem = document.getElementById("totalSteps");
@@ -589,6 +590,7 @@ const showTab = (n) => {
 
     fixStepIndicator(n);
 };
+
 
 const nextPrev = (n) => {
     if (n === 1 && !validateForm()) {
