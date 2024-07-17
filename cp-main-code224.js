@@ -640,14 +640,19 @@ const fixStepIndicator = (n) => {
 
 // Event Listeners
 formElements.nextBtn?.addEventListener("click", () => {
+    validateForm()
     validateRadio(); // Call validateRadio function
     nextPrev(1); // Proceed to the next tab
 });
 
 if(formElements.prevBtn){
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
-if(formElements.submitBtn){
-formElements.submitBtn?.addEventListener("click", () =>  validateRadio());}
+
+formElements.nextBtn?.addEventListener("click", () => {
+    validateForm()
+    validateRadio();
+  
+});
 
 // Initial Setup
 showTab(currentTab);
