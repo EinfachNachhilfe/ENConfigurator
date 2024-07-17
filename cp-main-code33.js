@@ -429,7 +429,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             inputElement.style.borderWidth = STYLES.borderWidth;
             validSymbol.style.display = 'none';
             invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
+            if (errorMessageWrapper) {
+                errorMessageWrapper.appendChild(errorMessageElement);
+            }
         } else if (inputElement.value.trim() === '' && !inputElement.hasAttribute('required')) {
             inputElement.style.borderColor = '';
             inputElement.style.borderWidth = '';
@@ -437,23 +439,24 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             invalidSymbol.style.display = 'none';
             errorMessageElement.style.display = 'none';
         } else if (inputElement.checkValidity()) {
-          if (inputElement.type !== 'radio' && inputElement.type !== 'checkbox') {
-            inputElement.style.borderColor = COLORS.valid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'inline';
-            invalidSymbol.style.display = 'none';
-        }
-        errorMessageElement.style.display = 'none';
-        } else {
-            if(inputElement.type !== 'checkbox'){
-            
-            inputElement.style.borderColor = COLORS.invalid;
-            inputElement.style.borderWidth = STYLES.borderWidth;
-            validSymbol.style.display = 'none';
-            invalidSymbol.style.display = 'inline';
-            errorMessageWrapper.appendChild(errorMessageElement);
+            if (inputElement.type !== 'radio' && inputElement.type !== 'checkbox') {
+                inputElement.style.borderColor = COLORS.valid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'inline';
+                invalidSymbol.style.display = 'none';
             }
-           errorMessageElement.innerHTML = invalidErrorMsg;
+            errorMessageElement.style.display = 'none';
+        } else {
+            if (inputElement.type !== 'checkbox') {
+                inputElement.style.borderColor = COLORS.invalid;
+                inputElement.style.borderWidth = STYLES.borderWidth;
+                validSymbol.style.display = 'none';
+                invalidSymbol.style.display = 'inline';
+                if (errorMessageWrapper) {
+                    errorMessageWrapper.appendChild(errorMessageElement);
+                }
+            }
+            errorMessageElement.innerHTML = invalidErrorMsg;
             errorMessageElement.style.display = 'block';
         }
     };
@@ -469,7 +472,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                     inputs.forEach(inputElement => {
                         const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity();
                         const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
-    
+
                         if (isCheckboxInvalid || isRequiredFieldEmpty) {
                             if (inputElement.type !== 'checkbox') {
                                 inputElement.style.borderColor = COLORS.invalid;
@@ -480,7 +483,10 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                                     validation.invalidSymbol.style.display = 'inline';
                                     validation.errorMessageElement.innerHTML = emptyErrorMsg;
                                     validation.errorMessageElement.style.display = 'block';
-                                    errorMessageWrapper.appendChild(validation.errorMessageElement);
+                                    const errorMessageWrapper = inputElement.closest('.form_input-error-message-wrapper');
+                                    if (errorMessageWrapper) {
+                                        errorMessageWrapper.appendChild(validation.errorMessageElement);
+                                    }
                                 }
                             }
                         }
@@ -489,7 +495,6 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             });
         }
     });
-
 
     validationElements[inputElement.className] = {
         validSymbol,
