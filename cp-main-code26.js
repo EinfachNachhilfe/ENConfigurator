@@ -12,6 +12,13 @@ const form = {
     applicationTutorForm: document.getElementById('applicationTutor'),
 };
 
+const getCurrentTabInputs = () => {
+    const currentTabElement = formElements.formItems[currentTab];
+    const inputs = Array.from(formElements.allInputs).filter(element => currentTabElement.contains(element));
+    console.log("Collected inputs for current tab:", inputs);
+    return inputs;
+};
+
 const subjectsOrder = ["Mathe", "Deutsch", "Englisch", "Französisch", "Latein", "Italienisch", "Spanisch", "Physik", "Chemie", "Biologie", "Geografie", "Geschichte", "Sozialkunde", "Informatik", "Sport und Fitness", "Wirtschaft", "Sonstiges"];
 const experienceOrder = ["Keine Erfahrung", "Einzelunterricht", "Gruppenunterricht", "Hausaufgabenbetreuung", "Prüfungsvorbereitung", "Sprachunterricht"];
 
@@ -605,14 +612,16 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-    const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
+    const inputs = getCurrentTabInputs();
+
     for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].className += " invalid";
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value === "")) {
+            inputs[i].classList.add("invalid");
             valid = false;
+        } else {
+            inputs[i].classList.remove("invalid");
         }
     }
-
     if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
         valid = Array.from(buttons).some(button => button.textContent === 'Fach entfernen');
