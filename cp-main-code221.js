@@ -198,7 +198,7 @@ const removeExperience = (btn, experience, duration, when) => {
     });
 }
 
-}
+
 
 const validationElements = {};
 let currentTab = 0;
