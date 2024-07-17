@@ -577,6 +577,8 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
 // Tab Navigation Functions
 const showTab = (n) => {
     formElements.formItems[n].style.display = "block";
+    const inputsg = formElements.formItems[n].querySelectorAll(".form_input");
+    inputsg.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
 
     if (formElements.prevBtn){
