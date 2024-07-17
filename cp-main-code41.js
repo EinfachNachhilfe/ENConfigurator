@@ -555,27 +555,7 @@ const validateRadio = () => {
 
 
 
-const specificElements = [
-    { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
-];
 
-const allInputsArray = Array.from(formElements.allInputs);
-allInputsArray.forEach(inputElement => {
-    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
-        applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
-    }
-    // Hinzugefügt: Event Listener für 'change' Ereignis
-    if (inputElement.type === 'radio' || inputElement.type === 'checkbox') {
-        inputElement.addEventListener('change', validateForm);
-    }
-});
-
-
-specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
-    document.querySelectorAll(selector).forEach(element => {
-        applyValidation(element, 'Dieses Feld muss ausgefüllt werden.', invalidErrorMsg, pattern);
-    });
-});
 
 
 const showTab = (n) => {
@@ -662,6 +642,29 @@ formElements.submitBtn?.addEventListener("click", () =>  validateRadio());
 
 // Initial Setup
 showTab(currentTab);
+
+
+const specificElements = [
+    { selector: '.form_input.availability-tutor', pattern: '\\d+', invalidErrorMsg: 'Bitte gib eine Zahl ein.' },
+];
+
+const allInputsArray = Array.from(formElements.allInputs);
+allInputsArray.forEach(inputElement => {
+    if (!specificElements.some(e => e.selector === `.${inputElement.className}`)) {
+        applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
+    }
+    // Hinzugefügt: Event Listener für 'change' Ereignis
+    if (inputElement.type === 'radio' || inputElement.type === 'checkbox') {
+        inputElement.addEventListener('change', validateForm);
+    }
+});
+
+
+specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
+    document.querySelectorAll(selector).forEach(element => {
+        applyValidation(element, 'Dieses Feld muss ausgefüllt werden.', invalidErrorMsg, pattern);
+    });
+});
 
 // Additional functionality for dynamic input fields
 const setupDynamicFields = () => {
