@@ -471,16 +471,15 @@ buttons.forEach(button => {
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
 
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        if (inputElement.type !== 'checkbox') {
-                            inputElement.style.borderColor = COLORS.invalid;
-                            inputElement.style.borderWidth = STYLES.borderWidth;
-                            validSymbol.style.display = 'none';
-                            invalidSymbol.style.display = 'inline';
-                            errorMessageElement.innerHTML = emptyErrorMsg;
-                            errorMessageElement.style.display = 'block';
-                            errorMessageWrapper.appendChild(validation.errorMessageElement);
-                            
+                        if(inputElement.type !== 'checkbox') {
+                        inputElement.style.borderColor = COLORS.invalid;
+                        inputElement.style.borderWidth = STYLES.borderWidth;
+                        validSymbol.style.display = 'none';
+                        invalidSymbol.style.display = 'inline';
+                        errorMessageWrapper.appendChild(errorMessageElement);
                         }
+                        errorMessageElement.innerHTML = emptyErrorMsg;
+                        errorMessageElement.style.display = 'block';
                     }
                 });
             }
