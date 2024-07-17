@@ -353,7 +353,7 @@ document.querySelectorAll('.form_input.zip').forEach(el => {
 const applyEmailPatternValidation = (inputElement) => {
     const emailPattern = /^\S+@\S+\.\S+$/;
 
-    inputElement.addEventListener('input', () => {
+    inputElement.addEventListener('change', () => {
         const isValid = emailPattern.test(inputElement.value);
         if (isValid) {
             inputElement.setCustomValidity('');
