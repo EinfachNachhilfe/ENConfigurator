@@ -461,7 +461,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             button.addEventListener('click', () => {
                
                     
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
+                   
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
@@ -471,7 +471,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                         }
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
-                    }
+                    
                 
             });
         }
