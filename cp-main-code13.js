@@ -476,12 +476,12 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                             if (inputElement.type !== 'checkbox') {
                                 inputElement.style.borderColor = COLORS.invalid;
                                 inputElement.style.borderWidth = STYLES.borderWidth;
-                                validationElements[inputElement.className].validSymbol.style.display = 'none';
-                                validationElements[inputElement.className].invalidSymbol.style.display = 'inline';
-                                validationElements[inputElement.className].errorMessageElement.appendChild(errorMessageElement);
+                                validSymbol.style.display = 'none';
+                                invalidSymbol.style.display = 'inline';
+                                errorMessageElement.appendChild(errorMessageElement);
                             }
-                            validationElements[inputElement.className].errorMessageElement.innerHTML = emptyErrorMsg;
-                            validationElements[inputElement.className].errorMessageElement.style.display = 'block';
+                            errorMessageElement.innerHTML = emptyErrorMsg;
+                            errorMessageElement.style.display = 'block';
                         }
                     });
                 }
