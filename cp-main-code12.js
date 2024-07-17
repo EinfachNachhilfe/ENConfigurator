@@ -461,31 +461,34 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         }
     };
 
-    inputElement.addEventListener("change", handleValidation);
+    inputElement.addEventListener("input", handleValidation);
 
     const buttons = [formElements.nextBtn, formElements.submitBtn];
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
-                    
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        if(inputElement.type !== 'checkbox') {
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        errorMessageWrapper.appendChild(errorMessageElement);
+                    inputs.forEach(inputElement => {
+                        const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity();
+                        const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
+    
+                        if (isCheckboxInvalid || isRequiredFieldEmpty) {
+                            if (inputElement.type !== 'checkbox') {
+                                inputElement.style.borderColor = COLORS.invalid;
+                                inputElement.style.borderWidth = STYLES.borderWidth;
+                                validationElements[inputElement.className].validSymbol.style.display = 'none';
+                                validationElements[inputElement.className].invalidSymbol.style.display = 'inline';
+                                validationElements[inputElement.className].errorMessageElement.appendChild(errorMessageElement);
+                            }
+                            validationElements[inputElement.className].errorMessageElement.innerHTML = emptyErrorMsg;
+                            validationElements[inputElement.className].errorMessageElement.style.display = 'block';
                         }
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                    }
+                    });
                 }
             });
         }
     });
+    
 
     validationElements[inputElement.className] = {
         validSymbol,
@@ -577,8 +580,6 @@ specificElements.forEach(({ selector, pattern, invalidErrorMsg }) => {
 // Tab Navigation Functions
 const showTab = (n) => {
     formElements.formItems[n].style.display = "block";
-    const inputsg = formElements.formItems[n].querySelectorAll(".form_input");
-    inputsg.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
 
     if (formElements.prevBtn){
@@ -617,12 +618,12 @@ const nextPrev = (n) => {
 
 const validateForm = () => {
     let valid = true;
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value == "")) {
-            inputs[i].className += " invalid";
+    inputs.forEach(inputElement => {
+        if (inputElement.hasAttribute("required") && (!inputElement.checkValidity() || inputElement.value === "")) {
+            inputElement.classList.add("invalid");
             valid = false;
         }
-    }
+    });
 
     if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
