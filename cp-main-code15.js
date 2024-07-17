@@ -494,7 +494,7 @@ const validateRadio = () => {
 
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
-        if (!isElementVisibleInTab(inputElement)) {
+        if (!isElementVisibleInTab(radio)) {
             return;
         }
 
