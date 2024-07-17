@@ -653,6 +653,7 @@ formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
 formElements.submitBtn?.addEventListener("click", () => {
     validateForm();
     validateRadio();
+    e.preventDefault();
 });
 
 
