@@ -362,7 +362,7 @@ const applyEmailPatternValidation = (inputElement) => {
         }
     });
 
-    inputElement.addEventListener('change', () => {
+    inputElement.addEventListener('input', () => {
         inputElement.reportValidity();
     });
 };
