@@ -639,20 +639,22 @@ const fixStepIndicator = (n) => {
 };
 
 // Event Listeners
+if(formElements.nextBtn){
 formElements.nextBtn?.addEventListener("click", () => {
     validateForm()
-    validateRadio(); // Call validateRadio function
-    nextPrev(1); // Proceed to the next tab
+    validateRadio();
+    nextPrev(1);
 });
+}
 
 if(formElements.prevBtn){
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
 
-formElements.nextBtn?.addEventListener("click", () => {
+formElements.submitBtn?.addEventListener("click", () => {
     validateForm()
     validateRadio();
-  
 });
+
 
 // Initial Setup
 showTab(currentTab);
