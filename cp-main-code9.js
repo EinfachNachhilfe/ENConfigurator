@@ -215,12 +215,11 @@ let currentTab = 0;
 const currentTabElement = formElements.formItems[currentTab];
 
 // Helper Functions
-const isElementVisibleInTab = (el, tabElement) => {
-    if (!el) return false;
-    if (el === tabElement) return true;
-    if (window.getComputedStyle(el).display === 'none' || window.getComputedStyle(el).visibility === 'hidden') return false;
-    return isElementVisibleInTab(el.parentElement, tabElement);
-};
+function isElementVisibleInTab(el) {
+    if (!el || el === document.body) return true; 
+    if (window.getComputedStyle(el, null).display === 'none') return false;
+    return isElementVisibleInTab(el.parentNode); 
+}
 
 
 
@@ -461,8 +460,8 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
@@ -497,7 +496,7 @@ const validateRadio = () => {
 
     // Gruppiere Radio-Buttons nach ihrem Namen
     radioButtons.forEach((radio) => {
-        if (!isElementVisibleInTab(radio, currentTabElement)) {
+        if (!isElementVisibleInTab(radio)) {
             return;
         }
 
