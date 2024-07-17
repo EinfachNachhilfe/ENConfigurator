@@ -650,12 +650,46 @@ formElements.nextBtn?.addEventListener("click", () => {
 if(formElements.prevBtn){
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
 
-formElements.submitBtn?.addEventListener("click", () => {
+formElements.submitBtn?.addEventListener("click", (e) => {
     console.log("Submit button clicked");
     const isFormValid = validateForm();
-        const isRadioValid = validateRadio();
-     console.log("Form valid:", isFormValid);
-        console.log("Radio valid:", isRadioValid);
+    const isRadioValid = validateRadio();
+    console.log("Form valid:", isFormValid);
+    console.log("Radio valid:", isRadioValid);
+
+    if (!isFormValid || !isRadioValid) {
+        e.preventDefault(); // Prevent form submission if invalid
+        
+        // Manually trigger validation messages for all inputs
+        const inputs = formElements.formItems[currentTab].getElementsByTagName("input");
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].hasAttribute("required") && inputs[i].value.trim() === '') {
+                const errorMessageWrapper = inputs[i].parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+                const { errorMessageElement } = createValidationElements();
+                errorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                errorMessageElement.style.display = 'block';
+                if (errorMessageWrapper) {
+                    errorMessageWrapper.appendChild(errorMessageElement);
+                }
+                inputs[i].style.borderColor = COLORS.invalid;
+                inputs[i].style.borderWidth = STYLES.borderWidth;
+            }
+        }
+
+        // Manually trigger validation messages for all radio buttons
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((radio) => {
+            if (!radio.checked) {
+                const errorMessageWrapper = radio.parentNode.parentNode.parentNode.querySelector('.form_input-error-message-wrapper');
+                const { errorMessageElement: radioErrorMessageElement } = createValidationElements();
+                radioErrorMessageElement.innerHTML = 'Dieses Feld muss ausgefüllt werden.';
+                radioErrorMessageElement.style.display = 'block';
+                if (errorMessageWrapper) {
+                    errorMessageWrapper.appendChild(radioErrorMessageElement);
+                }
+            }
+        });
+    }
 });
 
 
