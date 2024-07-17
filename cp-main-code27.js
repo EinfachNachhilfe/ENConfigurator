@@ -615,13 +615,11 @@ const validateForm = () => {
     const inputs = getCurrentTabInputs();
 
     for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value === "")) {
-            inputs[i].classList.add("invalid");
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value === "" || inputs[i].value === "0")) {
             valid = false;
-        } else {
-            inputs[i].classList.remove("invalid");
         }
     }
+    
     if ([1, 2].includes(currentTab)) {
         const buttons = formElements.formItems[currentTab].querySelectorAll("button");
         valid = Array.from(buttons).some(button => button.textContent === 'Fach entfernen');
