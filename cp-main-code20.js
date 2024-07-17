@@ -459,10 +459,9 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
                     const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
-                    const isSelectInvalid = (inputElement.type === 'select') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
                     
-                    if (isCheckboxInvalid || isRequiredFieldEmpty|| isSelectInvalid) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
@@ -636,15 +635,16 @@ const fixStepIndicator = (n) => {
 };
 
 // Event Listeners
+if(formElements.nextBtn){
 formElements.nextBtn?.addEventListener("click", () => {
     validateRadio(); // Call validateRadio function
     nextPrev(1); // Proceed to the next tab
 });
-
+}
 if(formElements.prevBtn){
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
-if(formElements.submitBtn){
-formElements.submitBtn?.addEventListener("click", () =>  validateRadio());}
+
+formElements.submitBtn?.addEventListener("click", () =>  validateRadio());
 
 // Initial Setup
 showTab(currentTab);
