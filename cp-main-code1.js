@@ -652,8 +652,8 @@ formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
 
 formElements.submitBtn?.addEventListener("click", () => {
     console.log("Submit button clicked");
-    validateForm();
-    validateRadio();
+    const isFormValid = validateForm();
+        const isRadioValid = validateRadio();
      console.log("Form valid:", isFormValid);
         console.log("Radio valid:", isRadioValid);
 });
