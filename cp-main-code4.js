@@ -459,9 +459,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement, currentTabElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement, currentTabElement);
+               
                     
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
@@ -474,7 +472,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                     }
-                }
+                
             });
         }
     });
@@ -651,7 +649,6 @@ if(formElements.prevBtn){
 formElements.prevBtn?.addEventListener("click", () => nextPrev(-1));}
 
 formElements.submitBtn?.addEventListener("click", () => {
-    applyValidation();
     validateForm();
     validateRadio();
 });
