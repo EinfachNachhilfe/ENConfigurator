@@ -458,10 +458,11 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (!inputElement.type === 'input') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
+                    const isSelectInvalid = (inputElement.type === 'select') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
                     
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty|| isSelectInvalid) {
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
