@@ -614,15 +614,10 @@ const validateForm = () => {
     let valid = true;
     const inputs = getCurrentTabInputs();
 
-    for (let i = 0; i < inputs.length; i++) {
-        const input = inputs[i];
-     if (input.tagName === 'SELECT') {
-            console.log(`Select field value: ${input.value}`);
-        }
-        
-        if (input.hasAttribute("required") && (!input.checkValidity() || input.value === "" || (input.tagName === 'SELECT' && input.value === '0'))) {
+for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute("required") && (!inputs[i].checkValidity() || inputs[i].value === "")) {
             valid = false;
-        } 
+        }
     }
     
     if ([1, 2].includes(currentTab)) {
