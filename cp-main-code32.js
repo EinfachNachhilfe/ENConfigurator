@@ -465,24 +465,31 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
         if (button) {
             button.addEventListener('click', () => {
                 if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
-                    
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
-                        if(inputElement.type !== 'checkbox') {
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        errorMessageWrapper.appendChild(errorMessageElement);
+                    const inputs = getCurrentTabInputs();
+                    inputs.forEach(inputElement => {
+                        const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity();
+                        const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
+    
+                        if (isCheckboxInvalid || isRequiredFieldEmpty) {
+                            if (inputElement.type !== 'checkbox') {
+                                inputElement.style.borderColor = COLORS.invalid;
+                                inputElement.style.borderWidth = STYLES.borderWidth;
+                                const validation = validationElements[inputElement.className];
+                                if (validation) {
+                                    validation.validSymbol.style.display = 'none';
+                                    validation.invalidSymbol.style.display = 'inline';
+                                    validation.errorMessageElement.innerHTML = emptyErrorMsg;
+                                    validation.errorMessageElement.style.display = 'block';
+                                    errorMessageWrapper.appendChild(validation.errorMessageElement);
+                                }
+                            }
                         }
-                        errorMessageElement.innerHTML = emptyErrorMsg;
-                        errorMessageElement.style.display = 'block';
-                    }
+                    });
                 }
             });
         }
     });
+
 
     validationElements[inputElement.className] = {
         validSymbol,
