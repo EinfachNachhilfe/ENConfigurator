@@ -459,8 +459,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
     buttons.forEach(button => {
         if (button) {
             button.addEventListener('click', () => {
-               
-                    
+                if (button.classList.contains('disabled')) {
                    
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
@@ -472,7 +471,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                     
-                
+                }
             });
         }
     });
