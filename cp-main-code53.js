@@ -461,7 +461,7 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
    
     inputElement.addEventListener("change", handleValidation); 
 
-  const buttons = [formElements.nextBtn, formElements.submitBtn];
+  const buttons = [ formElements.submitBtn];
 buttons.forEach((button) => {
     if (button) {
         button.addEventListener('click', () => {
