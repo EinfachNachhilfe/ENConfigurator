@@ -513,7 +513,7 @@ buttons.forEach((button) => {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                     }
-                    }
+                    
                 });
             }
         });
