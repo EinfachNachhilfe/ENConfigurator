@@ -228,6 +228,36 @@ function isElementVisibleInTab(el) {
     return isElementVisibleInTab(el.parentNode); // Rekursive Überprüfung des übergeordneten Elements
 }
 
+// Funktion, um alle sichtbaren Elemente auf der Seite zu finden
+function getVisibleElements() {
+    // Alle relevanten Elemente auswählen
+    const allElements = document.querySelectorAll('input, select, textarea, button, div, span, p, a');
+    
+    // Array zur Speicherung sichtbarer Elemente
+    const visibleElements = [];
+
+    // Über alle Elemente iterieren und die Sichtbarkeit prüfen
+    allElements.forEach(el => {
+        if (isElementVisibleInTab(el)) {
+            visibleElements.push(el); // Sichtbare Elemente hinzufügen
+        }
+    });
+
+    // Ausgabe der sichtbaren Elemente
+    console.log('Visible elements:', visibleElements);
+
+    // Optional: Sichtbare Elemente in eine lesbare Form konvertieren
+    visibleElements.forEach(el => {
+        console.log(`Tag: ${el.tagName}, ID: ${el.id}, Class: ${el.className}`);
+    });
+
+    return visibleElements;
+}
+
+// Sichtbare Elemente ermitteln
+getVisibleElements();
+
+
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
     textDiv.className = "form_label";
@@ -461,15 +491,16 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
    
     inputElement.addEventListener("change", handleValidation); 
 
-  const buttons = [ formElements.nextBtn, formElements.submitBtn];
+  const buttons = [formElements.nextBtn, formElements.submitBtn];
 buttons.forEach((button) => {
     if (button) {
         button.addEventListener('click', () => {
             if (button.classList.contains('disabled')) {
-              
-            
-                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === ''&& isElementVisibleInTab(inputElement);
+                const inputs = getCurrentTabInputs();
+
+                inputs.forEach((inputElement) => {
+                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
 
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
@@ -481,10 +512,10 @@ buttons.forEach((button) => {
                         }
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
-                    
-                        }
-                
                     }
+                    
+                });
+            }
         });
     }
 });
@@ -563,6 +594,8 @@ const validateRadio = () => {
 
 const showTab = (n) => {
     formElements.formItems[n].style.display = "block";
+    const inputs = formElements.formItems[n].querySelectorAll(".form_input");
+    inputs.forEach(input => input.addEventListener("input", validateForm));
     validateForm();
 
     if (formElements.prevBtn){
