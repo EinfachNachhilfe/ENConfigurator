@@ -221,41 +221,11 @@ const validationElements = {};
 let currentTab = 0;
 const currentTabElement = formElements.formItems[currentTab];
 
-// Funktion zur Überprüfung, ob ein Element sichtbar ist
 function isElementVisibleInTab(el) {
-    if (!el || el === document.body) return true; // Das Element ist sichtbar, wenn es kein Element oder der Body ist
-    if (window.getComputedStyle(el, null).display === 'none') return false; // Das Element ist unsichtbar, wenn der Display-Wert 'none' ist
-    return isElementVisibleInTab(el.parentNode); // Rekursive Überprüfung des übergeordneten Elements
+    if (!el || el === document.body) return true; // Wenn wir den Body erreichen, ist das Element sichtbar
+    if (window.getComputedStyle(el, null).display === 'none') return false; // Das Element ist unsichtbar
+    return isElementVisibleInTab(el.parentNode); // Überprüfen Sie das übergeordnete Element
 }
-
-// Funktion, um alle sichtbaren Elemente auf der Seite zu finden
-function getVisibleElements() {
-    // Alle relevanten Elemente auswählen
-    const allElements = document.querySelectorAll('input, select, textarea, button, div, span, p, a');
-    
-    // Array zur Speicherung sichtbarer Elemente
-    const visibleElements = [];
-
-    // Über alle Elemente iterieren und die Sichtbarkeit prüfen
-    allElements.forEach(el => {
-        if (isElementVisibleInTab(el)) {
-            visibleElements.push(el); // Sichtbare Elemente hinzufügen
-        }
-    });
-
-    // Ausgabe der sichtbaren Elemente
-    console.log('Visible elements:', visibleElements);
-
-    // Optional: Sichtbare Elemente in eine lesbare Form konvertieren
-    visibleElements.forEach(el => {
-        console.log(`Tag: ${el.tagName}, ID: ${el.id}, Class: ${el.className}`);
-    });
-
-    return visibleElements;
-}
-
-// Sichtbare Elemente ermitteln
-getVisibleElements();
 
 
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
@@ -491,17 +461,14 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
    
     inputElement.addEventListener("change", handleValidation); 
 
-  const buttons = [formElements.nextBtn, formElements.submitBtn];
-buttons.forEach((button) => {
-    if (button) {
-        button.addEventListener('click', () => {
-            if (button.classList.contains('disabled')) {
-                const inputs = getCurrentTabInputs();
-
-                inputs.forEach((inputElement) => {
-                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
-
+    const buttons = [formElements.nextBtn, formElements.submitBtn];
+    buttons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('disabled')) {
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
+                    
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
@@ -513,12 +480,11 @@ buttons.forEach((button) => {
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                     }
-                    
-                });
-            }
-        });
-    }
-});
+                }
+            });
+        }
+    });
+
 
 
     validationElements[inputElement.className] = {
