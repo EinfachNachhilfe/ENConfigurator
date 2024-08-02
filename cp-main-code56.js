@@ -657,7 +657,7 @@ allInputsArray.forEach(inputElement => {
         applyValidation(inputElement, 'Dieses Feld muss ausgefüllt werden.', 'Ungültige Eingabe.');
     }
     // Hinzugefügt: Event Listener für 'change' Ereignis
-    if (inputElement.type === 'radio' || inputElement.type === 'checkbox') {
+    if (!inputElement.type === 'input') {
         inputElement.addEventListener('change', validateForm);
     }
 });
