@@ -228,36 +228,6 @@ function isElementVisibleInTab(el) {
     return isElementVisibleInTab(el.parentNode); // Rekursive Überprüfung des übergeordneten Elements
 }
 
-// Funktion, um alle sichtbaren Elemente auf der Seite zu finden
-function getVisibleElements() {
-    // Alle relevanten Elemente auswählen
-    const allElements = document.querySelectorAll('input, select, textarea, button, div, span, p, a');
-    
-    // Array zur Speicherung sichtbarer Elemente
-    const visibleElements = [];
-
-    // Über alle Elemente iterieren und die Sichtbarkeit prüfen
-    allElements.forEach(el => {
-        if (isElementVisibleInTab(el)) {
-            visibleElements.push(el); // Sichtbare Elemente hinzufügen
-        }
-    });
-
-    // Ausgabe der sichtbaren Elemente
-    console.log('Visible elements:', visibleElements);
-
-    // Optional: Sichtbare Elemente in eine lesbare Form konvertieren
-    visibleElements.forEach(el => {
-        console.log(`Tag: ${el.tagName}, ID: ${el.id}, Class: ${el.className}`);
-    });
-
-    return visibleElements;
-}
-
-// Sichtbare Elemente ermitteln
-getVisibleElements();
-
-
 const createInputField = (container, labelId, labelText, inputClass, inputPlaceholder) => {
     const textDiv = document.createElement("div");
     textDiv.className = "form_label";
