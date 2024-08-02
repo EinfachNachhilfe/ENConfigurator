@@ -470,8 +470,8 @@ buttons.forEach((button) => {
  console.log("Validating inputs in current tab:", inputs);
                 inputs.forEach((inputElement) => {
                      console.log("Current Input Element:", inputElement);
-                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
+                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === ''&& isElementVisibleInTab(inputElement);
 
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if(inputElement.type !== 'checkbox') {
