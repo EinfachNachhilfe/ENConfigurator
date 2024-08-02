@@ -470,10 +470,7 @@ buttons.forEach((button) => {
 
                 inputs.forEach((inputElement) => {
                     console.log("Current Input Element:", inputElement);
-                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
-
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
+                
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
@@ -483,7 +480,7 @@ buttons.forEach((button) => {
                         }
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
-                    }
+                    
                     
                 });
             }
