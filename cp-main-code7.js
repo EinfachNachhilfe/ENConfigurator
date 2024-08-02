@@ -469,21 +469,21 @@ buttons.forEach((button) => {
                 const inputs = getCurrentTabInputs();
 
                 inputs.forEach((inputElement) => {
-                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity();
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
 
-                    if ((isCheckboxInvalid || isRequiredFieldEmpty) {
-                      if (inputElement.type !== 'checkbox' && inputElement.type !== 'radio') {
-                        inputElement.style.borderColor = COLORS.invalid;
-                        inputElement.style.borderWidth = STYLES.borderWidth;
-                        validSymbol.style.display = 'none';
-                        invalidSymbol.style.display = 'inline';
-                        errorMessageWrapper.appendChild(errorMessageElement);
+                    // Verwende die vorgeschlagene Bedingung
+                    if (isCheckboxInvalid || isRadioInvalid || isRequiredFieldEmpty) {
+                        if (inputElement.type !== 'checkbox' && inputElement.type !== 'radio') {
+                            inputElement.style.borderColor = COLORS.invalid;
+                            inputElement.style.borderWidth = STYLES.borderWidth;
+                            validSymbol.style.display = 'none';
+                            invalidSymbol.style.display = 'inline';
+                            errorMessageWrapper.appendChild(errorMessageElement);
                         }
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                     }
-                    
                 });
             }
         });
