@@ -469,6 +469,7 @@ buttons.forEach((button) => {
                 const inputs = getCurrentTabInputs();
 
                 inputs.forEach((inputElement) => {
+                    console.log("Current Input Element:", inputElement);
                     const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
 
