@@ -473,7 +473,7 @@ buttons.forEach((button) => {
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
 
                     // Verwende die vorgeschlagene Bedingung
-                    if (isCheckboxInvalid || isRadioInvalid || isRequiredFieldEmpty) {
+                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
                         if (inputElement.type !== 'checkbox' && inputElement.type !== 'radio') {
                             inputElement.style.borderColor = COLORS.invalid;
                             inputElement.style.borderWidth = STYLES.borderWidth;
