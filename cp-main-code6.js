@@ -470,10 +470,10 @@ buttons.forEach((button) => {
 
                 inputs.forEach((inputElement) => {
                     const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
-                   
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
 
-                    if ((isCheckboxInvalid ) && inputElement.type !== 'radio') {
-                        if(inputElement.type !== 'checkbox') {
+                    if ((isCheckboxInvalid || isRequiredFieldEmpty) {
+                      if (inputElement.type !== 'checkbox' && inputElement.type !== 'radio') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
                         validSymbol.style.display = 'none';
