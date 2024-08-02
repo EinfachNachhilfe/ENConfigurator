@@ -466,10 +466,8 @@ buttons.forEach((button) => {
     if (button) {
         button.addEventListener('click', () => {
             if (button.classList.contains('disabled')) {
-                const inputs = getCurrentTabInputs();
- console.log("Validating inputs in current tab:", inputs);
-                inputs.forEach((inputElement) => {
-                     console.log("Current Input Element:", inputElement);
+              
+            
                     const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
                     const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === ''&& isElementVisibleInTab(inputElement);
 
@@ -485,8 +483,8 @@ buttons.forEach((button) => {
                         errorMessageElement.style.display = 'block';
                     
                         }
-                });
-            }
+                
+                    }
         });
     }
 });
