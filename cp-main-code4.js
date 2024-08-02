@@ -461,15 +461,18 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
    
     inputElement.addEventListener("change", handleValidation); 
 
-    const buttons = [formElements.nextBtn, formElements.submitBtn];
-    buttons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                if (button.classList.contains('disabled')) {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
-                    
-                    if (isCheckboxInvalid || isRequiredFieldEmpty) {
+  const buttons = [formElements.nextBtn, formElements.submitBtn];
+buttons.forEach((button) => {
+    if (button) {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('disabled')) {
+                const inputs = getCurrentTabInputs();
+
+                inputs.forEach((inputElement) => {
+                    const isCheckboxInvalid = inputElement.type === 'checkbox' && !inputElement.checkValidity();
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
+
+                    if ((isCheckboxInvalid || isRequiredFieldEmpty) && inputElement.type !== 'radio') {
                         if(inputElement.type !== 'checkbox') {
                         inputElement.style.borderColor = COLORS.invalid;
                         inputElement.style.borderWidth = STYLES.borderWidth;
@@ -480,10 +483,12 @@ const applyValidation = (inputElement, emptyErrorMsg, invalidErrorMsg, pattern =
                         errorMessageElement.innerHTML = emptyErrorMsg;
                         errorMessageElement.style.display = 'block';
                     }
-                }
-            });
-        }
-    });
+                    
+                });
+            }
+        });
+    }
+});
 
 
 
