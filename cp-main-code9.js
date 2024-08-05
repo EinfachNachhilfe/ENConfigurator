@@ -469,8 +469,8 @@ buttons.forEach((button) => {
                 const inputs = getCurrentTabInputs();
 
                 inputs.forEach((inputElement) => {
-                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity();
-                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '';
+                    const isCheckboxInvalid = (inputElement.type === 'checkbox') && !inputElement.checkValidity() && isElementVisibleInTab(inputElement);
+                    const isRequiredFieldEmpty = inputElement.hasAttribute('required') && inputElement.value.trim() === '' && isElementVisibleInTab(inputElement);
 
                     // Verwende die vorgeschlagene Bedingung
                     if (isCheckboxInvalid || isRequiredFieldEmpty) {
